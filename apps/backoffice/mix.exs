@@ -1,9 +1,9 @@
-defmodule Auth.Mixfile do
+defmodule Backoffice.Mixfile do
   use Mix.Project
 
   def project do
     [
-      app: :auth,
+      app: :backoffice,
       version: "0.0.1",
       build_path: "../../_build",
       config_path: "../../config/config.exs",
@@ -22,7 +22,7 @@ defmodule Auth.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Auth.Application, []},
+      mod: {Backoffice.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -38,7 +38,7 @@ defmodule Auth.Mixfile do
     [
       {:postgrex, ">= 0.0.0"},
       {:ecto, "~> 2.1"},
-      {:guardian, "~> 1.0"}
+      {:ex_admin, github: "smpallen99/ex_admin"},
     ]
   end
 

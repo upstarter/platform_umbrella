@@ -23,12 +23,17 @@ defmodule Platform.Umbrella.Mixfile do
   # and cannot be accessed from applications inside the apps folder
   defp deps do
     [
+      {:phoenix_ecto, "~> 3.3", override: true},
+      {:postgrex, "~> 0.13.5", override: true},
+      {:poison, "~> 2.0", override: true},
+      {:hackney, "~> 1.6", override: true},
+      {:gettext, "~> 0.13.0", override: true},
+      {:distillery, "~> 1.5", runtime: false},
+      {:credo, "~> 0.9.0-rc1", only: [:dev, :test], runtime: false},
       # {:basic_auth, "~> 2.2"},
       # {:users, in_umbrella: true},
       # {:partners, in_umbrella: true},
       # {:payments, in_umbrella: true},
-      {:distillery, "~> 1.5", runtime: false},
-      {:credo, "~> 0.9.0-rc1", only: [:dev, :test], runtime: false}
     ]
   end
 end
