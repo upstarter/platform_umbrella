@@ -1,0 +1,15 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{:charset => "utf-8"}
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+    %meta{:content => "", :name => "description"}
+    %meta{:content => "", :name => "author"}
+    %title Hello Landing Page!
+    - css_path = static_path(@conn, "/css/app.css")
+    %link{rel: "stylesheet" href: css_path}
+  %body
+    = render(@view_module, @view_template, assigns)
+    %script{src: "#{static_path(@conn, "/js/app.js")}" }

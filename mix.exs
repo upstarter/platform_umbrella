@@ -25,7 +25,7 @@ defmodule Platform.Umbrella.Mixfile do
     [
       {:phoenix_ecto, "~> 3.3", override: true},
       {:postgrex, "~> 0.13.5", override: true},
-      {:poison, "~> 2.0", override: true},
+      {:poison, "~> 3.1", override: true},
       {:hackney, "~> 1.6", override: true},
       {:gettext, "~> 0.13.0", override: true},
       {:distillery, "~> 1.5", runtime: false},

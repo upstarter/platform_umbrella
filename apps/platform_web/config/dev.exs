@@ -34,11 +34,9 @@ config :platform_web, PlatformWeb.Endpoint,
 config :platform_web, PlatformWeb.Endpoint,
   live_reload: [
     patterns: [
-      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
+      ~r{priv/static/.*(js|css|scss|sass|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
       ~r{lib/platform_web/views/.*(ex)$},
-      ~r{lib/platform_web/templates/.*(eex)$}
+      ~r{lib/platform_web/templates/.*(eex|haml)$}
     ]
   ]
-
-

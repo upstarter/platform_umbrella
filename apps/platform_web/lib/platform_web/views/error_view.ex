@@ -1,6 +1,8 @@
 defmodule PlatformWeb.ErrorView do
   use PlatformWeb, :view
 
+  import PlatformWeb.ErrorHelpers
+
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.
   # def render("500.html", _assigns) do
@@ -13,4 +15,9 @@ defmodule PlatformWeb.ErrorView do
   def template_not_found(template, _assigns) do
     Phoenix.Controller.status_message_from_template(template)
   end
+
+  def render("error.json", %{changeset: changeset}) do
+    Ecto.Changeset.traverse_errors(changeset, &translate_error/1)
+  end
+
 end

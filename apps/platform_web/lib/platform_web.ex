@@ -23,6 +23,9 @@ defmodule PlatformWeb do
       import Plug.Conn
       import PlatformWeb.Router.Helpers
       import PlatformWeb.Gettext
+
+
+      action_fallback(PlatformWeb.FallbackController)
     end
   end
 

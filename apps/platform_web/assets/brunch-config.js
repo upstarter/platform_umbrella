@@ -47,7 +47,17 @@ exports.config = {
     babel: {
       // Do not use ES6 compiler in vendor code
       ignore: [/vendor/]
-    }
+    },
+    sass: {
+      mode: 'native',
+      sourceMapEmbed: true,
+      options: {
+       includePaths: [
+         'node_modules/normalize-scss/sass/',
+         'node_modules/bulma/',
+       ],
+      },
+    },
   },
 
   modules: {

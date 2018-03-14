@@ -20,7 +20,11 @@ defmodule PlatformWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", PlatformWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", PlatformWeb do
+    pipe_through(:api)
+
+    scope "/v1", V1 do
+      post("/leads", LeadController, :create)
+    end
+  end
 end
