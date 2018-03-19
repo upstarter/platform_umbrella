@@ -1,17 +1,19 @@
 .landing-page
-  .main-wrapper
-    .left
-      .hero
-        %h1.title Phoenix  Elm landing page
-        %p.subtitle
-          Real use case of building a landing page using
-          %strong Phoenix
-          and
-          %strong Elm
-      .scroll-to
-        %a.icon
-          %i.fa.fa-chevron-down
-    #subscribe_form.right
+  .main-wrapper.columns
+    .left.column
+      .hero.is-large
+        .hero-body
+          %h1.title Phoenix & Elm landing page
+          %p.subtitle
+            Real use case of building a landing page using
+            %strong Phoenix
+            and
+            %strong Elm
+            following some common best practices.
+        .scroll-to
+          %a.icon
+            %i.fa.fa-chevron-down
+    #subscribe_form.right.column
       %section.section
         .container.is-fluid
           #form_container

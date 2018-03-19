@@ -6,6 +6,7 @@
     "watch": "brunch watch --stdin"
   },
   "dependencies": {
+    "elm": "^0.18.0",
     "normalize-scss": "^7.0.1",
     "npm": "^5.7.1",
     "phoenix": "file:../../../deps/phoenix",
@@ -16,6 +17,7 @@
     "brunch": "2.10.9",
     "bulma": "^0.6.2",
     "clean-css-brunch": "2.10.0",
+    "elm-brunch": "^0.10.0",
     "node-sass": "^4.7.2",
     "sass-brunch": "^2.10.4",
     "uglify-js-brunch": "2.10.0"
