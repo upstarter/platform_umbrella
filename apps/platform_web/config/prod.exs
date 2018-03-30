@@ -15,7 +15,10 @@ use Mix.Config
 # which you typically run after static files are built.
 config :platform_web, PlatformWeb.Endpoint,
   load_from_system_env: true,
-  url: [host: "example.com", port: 80],
+  http: [port: "${PORT}"],
+  check_origin: false,
+  server: true,
+  root: ".",
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # ## SSL Support
