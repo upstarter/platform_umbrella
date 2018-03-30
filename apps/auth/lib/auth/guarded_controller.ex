@@ -1,4 +1,4 @@
-defmodule Designers.Auth.GuardedController do
+defmodule Auth.GuardedController do
   @moduledoc """
   Use this module in a controller to take the advantage of having
   the subject of authentication (eg.: an authenticated user) injected
@@ -20,7 +20,7 @@ defmodule Designers.Auth.GuardedController do
         apply(__MODULE__, action_name(conn), [
           conn,
           conn.params,
-          DesignersWeb.Guardian.Plug.current_resource(conn)
+          Guardian.Plug.current_resource(conn)
         ])
       end
     end

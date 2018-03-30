@@ -1,4 +1,4 @@
-defmodule Designers.Auth.CurrentUser do
+defmodule Auth.CurrentUser do
   import Plug.Conn
   import Guardian.Plug
   def init(opts), do: opts

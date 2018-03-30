@@ -16,8 +16,8 @@ defmodule PlatformWeb.Router do
   end
 
   pipeline :authorized do
-    plug Platform.Auth.Pipeline.Browser
-    plug Platform.Auth.CurrentUser
+    plug Auth.Pipeline.Browser
+    plug Auth.CurrentUser
   end
 
 
@@ -52,6 +52,7 @@ defmodule PlatformWeb.Router do
           get "/sign-out", UserController, :sign_out
           get "/me", UserController, :show
         end
+      end
     end
   end
 end

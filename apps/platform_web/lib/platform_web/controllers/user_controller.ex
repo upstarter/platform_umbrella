@@ -1,8 +1,8 @@
-defmodule PlaformWeb.UserController do
-  alias Plaform.Auth
-  alias Plaform.Auth.Guardian
-  use PlaformWeb, :controller
-  alias Plaform.Users.User
+defmodule PlatformWeb.UserController do
+  alias Platform.Auth
+  alias Platform.Auth.Guardian
+  use PlatformWeb, :controller
+  alias Users.User
   plug :scrub_params, "user" when action in [:create, :sign_in]
 
 
@@ -10,7 +10,7 @@ defmodule PlaformWeb.UserController do
     user = %{id: "1"}
 
     conn
-    |> Plaform.Auth.Guardian.Plug.sign_in(user)
+    |> Platform.Auth.Guardian.Plug.sign_in(user)
     |> send_resp(204, "")
   end
 
@@ -37,7 +37,7 @@ defmodule PlaformWeb.UserController do
 
   def sign_out(conn, _params) do
     conn
-    |> Plaform.Auth.Guardian.Plug.sign_out()
+    |> Platform.Auth.Guardian.Plug.sign_out()
     |> send_resp(204, "")
   end
 

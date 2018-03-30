@@ -1,8 +1,8 @@
-defmodule Designers.Auth.Pipeline.Browser do
+defmodule Auth.Pipeline.Browser do
   use Guardian.Plug.Pipeline,
     otp_app: :designers,
-    error_handler: Designers.Auth.ErrorHandler,
-    module: Designers.Auth.Guardian
+    error_handler: Auth.ErrorHandler,
+    module: Auth.Guardian
   # If there is a session token, validate it
   plug Guardian.Plug.VerifySession, claims: %{"typ" => "access"}
   # If there is an authorization header, validate it

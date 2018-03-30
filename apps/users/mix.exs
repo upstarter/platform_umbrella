@@ -1,9 +1,9 @@
-defmodule PlatformWeb.Mixfile do
+defmodule Users.Mixfile do
   use Mix.Project
 
   def project do
     [
-      app: :platform_web,
+      app: :users,
       version: "0.0.1",
       build_path: "../../_build",
       config_path: "../../config/config.exs",
@@ -11,7 +11,6 @@ defmodule PlatformWeb.Mixfile do
       lockfile: "../../mix.lock",
       elixir: "~> 1.4",
       elixirc_paths: elixirc_paths(Mix.env),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers,
       start_permanent: Mix.env == :prod,
       aliases: aliases(),
       deps: deps()
@@ -23,7 +22,7 @@ defmodule PlatformWeb.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {PlatformWeb.Application, []},
+      mod: {Users.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -37,24 +36,22 @@ defmodule PlatformWeb.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.3.1"},
-      {:phoenix_pubsub, "~> 1.0"},
-      {:phoenix_ecto, "~> 3.2"},
-      {:phoenix_live_reload, "~> 1.0", only: :dev},
-      {:gettext, "~> 0.11"},
-      {:platform, in_umbrella: true},
-      {:cowboy, "~> 1.0"},
-      {:phoenix_haml, "~> 0.2", override: true},
-      {:auth, in_umbrella: true},
-      {:users, in_umbrella: true},
+      {:postgrex, ">= 0.0.0"},
+      {:ecto, "~> 2.1"}
     ]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
-  # For example, we extend the test task to create and migrate the database.
+  # For example, to create, migrate and run the seeds file at once:
+  #
+  #     $ mix ecto.setup
   #
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
-    ["test": ["ecto.create --quiet", "ecto.migrate", "test"]]
+    [
+      "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
+      "ecto.reset": ["ecto.drop", "ecto.setup"],
+      "test": ["ecto.create --quiet", "ecto.migrate", "test"]
+    ]
   end
 end

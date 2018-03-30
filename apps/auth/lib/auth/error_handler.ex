@@ -1,6 +1,6 @@
-defmodule Designers.Auth.ErrorHandler do
+defmodule Auth.ErrorHandler do
   import Plug.Conn
-  use Phoenix.Controller, namespace: DesignersWeb
+  use Phoenix.Controller, namespace: PlatformWeb
 
   def auth_error(conn, {type, _reason}, _opts) do
     # body = Poison.encode!(%{message: to_string(type)})

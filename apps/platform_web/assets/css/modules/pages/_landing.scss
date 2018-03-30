@@ -96,9 +96,10 @@
     }
 
     .right {
-
+      display: flex;
       height: 100vh;
       align-items: center;
+      justify-content: center;
       padding: 1rem;
       padding: 1rem;
 
@@ -134,7 +135,7 @@
     }
 
     .section {
-      width: 100%;
+      width: 60%;
     }
 
     .success-message {
