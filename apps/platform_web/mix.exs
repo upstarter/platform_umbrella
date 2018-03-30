@@ -45,6 +45,8 @@ defmodule PlatformWeb.Mixfile do
       {:platform, in_umbrella: true},
       {:cowboy, "~> 1.0"},
       {:phoenix_haml, "~> 0.2", override: true},
+      {:rummage_ecto, "~> 1.0.0"},
+      {:rummage_phoenix, "~> 1.0.0"},
     ]
   end
 

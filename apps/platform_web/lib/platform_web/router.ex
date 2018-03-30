@@ -9,6 +9,18 @@ defmodule PlatformWeb.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :guest do
+  end
+
+  pipeline :unauthorized do
+  end
+
+  pipeline :authorized do
+    plug Platform.Auth.Pipeline.Browser
+    plug Platform.Auth.CurrentUser
+  end
+
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -24,7 +36,22 @@ defmodule PlatformWeb.Router do
     pipe_through(:api)
 
     scope "/v1", V1 do
+      # LEADS
       post("/leads", LeadController, :create)
+
+      # USERS
+      scope "/users" do
+        scope "/" do
+          pipe_through :unauthorized
+          post "/create", UserController, :create
+          post "/sign-in", UserController, :sign_in
+        end
+
+        scope "/" do
+          pipe_through :authorized
+          get "/sign-out", UserController, :sign_out
+          get "/me", UserController, :show
+        end
     end
   end
 end
