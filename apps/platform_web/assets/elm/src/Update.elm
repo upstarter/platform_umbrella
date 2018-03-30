@@ -7,6 +7,7 @@ import Decoders exposing (validationErrorsDecoder)
 import Messages exposing (Msg(..))
 import Model exposing (..)
 
+
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     let
@@ -24,7 +25,8 @@ update msg model =
                 { model | subscribeForm = Editing { formFields | email = value } } ! []
 
             HandleFormSubmit ->
-                { model | subscribeForm = Saving formFields } ! []
+                { model | subscribeForm = Saving formFields } ! [ Commands.subscribe subscribeForm ]
+
             SubscribeResponse (Ok result) ->
                 { model | subscribeForm = Success } ! []
 

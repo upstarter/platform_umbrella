@@ -36,7 +36,11 @@ var _user$project$Update$update = F2(
 						{
 							subscribeForm: _user$project$Model$Saving(formFields)
 						}),
-					{ctor: '[]'});
+					{
+						ctor: '::',
+						_0: _user$project$Commands$subscribe(subscribeForm),
+						_1: {ctor: '[]'}
+					});
 			default:
 				if (_p0._0.ctor === 'Ok') {
 					return A2(

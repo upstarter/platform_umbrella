@@ -77,8 +77,8 @@ formView subscribeForm =
                         [ Html.class "control" ]
                         [ Html.input
                             [ Html.classList
-                                [  ( "input is-medium", True )
-                                 , ( "is-danger", Dict.member "full_name" validationErrors )
+                                [ ( "input is-medium", True )
+                                , ( "is-danger", Dict.member "full_name" validationErrors )
                                 ]
                             , Html.placeholder "My name is..."
                             , Html.required True

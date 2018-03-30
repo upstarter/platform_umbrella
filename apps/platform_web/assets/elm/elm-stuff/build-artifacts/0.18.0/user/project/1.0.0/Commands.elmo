@@ -43,7 +43,7 @@ var _user$project$Commands$post = function (formFields) {
 };
 var _user$project$Commands$subscribe = function (subscribeForm) {
 	var _p2 = subscribeForm;
-	if (_p2.ctor === 'Saving') {
+	if (_p2.ctor === 'Editing') {
 		return A2(
 			_elm_lang$http$Http$send,
 			_user$project$Messages$SubscribeResponse,

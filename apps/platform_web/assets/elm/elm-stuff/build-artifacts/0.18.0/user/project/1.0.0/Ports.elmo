@@ -1,0 +1,11 @@
+var _user$project$Ports$initRecaptcha = _elm_lang$core$Native_Platform.outgoingPort(
+	'initRecaptcha',
+	function (v) {
+		return v;
+	});
+var _user$project$Ports$resetRecaptcha = _elm_lang$core$Native_Platform.outgoingPort(
+	'resetRecaptcha',
+	function (v) {
+		return null;
+	});
+var _user$project$Ports$setRecaptchaToken = _elm_lang$core$Native_Platform.incomingPort('setRecaptchaToken', _elm_lang$core$Json_Decode$string);

@@ -9144,7 +9144,7 @@ var _user$project$Commands$post = function (formFields) {
 };
 var _user$project$Commands$subscribe = function (subscribeForm) {
 	var _p2 = subscribeForm;
-	if (_p2.ctor === 'Saving') {
+	if (_p2.ctor === 'Editing') {
 		return A2(
 			_elm_lang$http$Http$send,
 			_user$project$Messages$SubscribeResponse,
@@ -9192,7 +9192,11 @@ var _user$project$Update$update = F2(
 						{
 							subscribeForm: _user$project$Model$Saving(formFields)
 						}),
-					{ctor: '[]'});
+					{
+						ctor: '::',
+						_0: _user$project$Commands$subscribe(subscribeForm),
+						_1: {ctor: '[]'}
+					});
 			default:
 				if (_p0._0.ctor === 'Ok') {
 					return A2(

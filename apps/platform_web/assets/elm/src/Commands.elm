@@ -1,17 +1,19 @@
 module Commands exposing (subscribe)
 
+import Dict exposing (Dict)
 import Http
 import Json.Decode as JD
 import Json.Encode as JE
 import Decoders exposing (responseDecoder)
 import Messages exposing (Msg(..))
 import Model exposing (SubscribeForm(..), FormFields)
+import Debug
 
 
 subscribe : SubscribeForm -> Cmd Msg
 subscribe subscribeForm =
     case subscribeForm of
-        Saving formFields ->
+        Editing formFields ->
             Http.send SubscribeResponse (post formFields)
 
         _ ->
