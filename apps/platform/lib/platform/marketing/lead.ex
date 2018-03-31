@@ -20,3 +20,4 @@ defmodule Platform.Marketing.Lead do
     |> unique_constraint(:email)
   end
 end
+# Platform.Repo.one(Platform.Marketing.Lead)

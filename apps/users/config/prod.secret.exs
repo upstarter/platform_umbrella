@@ -15,4 +15,4 @@ config :users, Users.Repo,
   username: "postgres",
   password: "postgres",
   database: "users_prod",
-  pool_size: 15
+  pool_size: 2
