@@ -15,4 +15,4 @@ config :platform, Platform.Repo,
   username: "postgres",
   password: "postgres",
   database: "platform_prod",
-  pool_size: 1
+  pool_size: 2
