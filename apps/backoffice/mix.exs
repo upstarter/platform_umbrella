@@ -38,7 +38,7 @@ defmodule Backoffice.Mixfile do
     [
       {:postgrex, ">= 0.0.0"},
       {:ecto, "~> 2.1"},
-      {:ex_admin, github: "smpallen99/ex_admin"},
+      # {:ex_admin, github: "smpallen99/ex_admin"},
     ]
   end
 
