@@ -15,4 +15,4 @@ config :payments, Payments.Repo,
   username: "postgres",
   password: "postgres",
   database: "payments_prod",
-  pool_size: 15
+  pool_size: 2
