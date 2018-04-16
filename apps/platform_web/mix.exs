@@ -45,6 +45,7 @@ defmodule PlatformWeb.Mixfile do
       {:platform, in_umbrella: true},
       {:cowboy, "~> 1.0"},
       {:phoenix_haml, "~> 0.2", override: true},
+      {:bamboo, "~> 0.8"},
       {:auth, in_umbrella: true},
       {:users, in_umbrella: true},
     ]
