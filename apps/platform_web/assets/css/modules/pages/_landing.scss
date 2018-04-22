@@ -1,13 +1,13 @@
 .landing-page {
   .main-wrapper {
-
+    height: 100vh;
+    
     +desktop {
       display: flex;
-      height: 100vh;
+      align-items: center;
     }
 
     .left {
-      align-items: center;
       background: $purple-dark;
       position: relative;
       text-align: center;
@@ -27,7 +27,7 @@
       }
 
       .hero {
-        height: 100vh;
+        //height: 100vh;
 
         +mobile {
           padding: 0 1em;
@@ -97,7 +97,6 @@
 
     .right {
       display: flex;
-      height: 100vh;
       align-items: center;
       justify-content: center;
       padding: 1rem;
