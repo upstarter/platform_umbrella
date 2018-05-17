@@ -16,8 +16,22 @@
       align-items: center;
     }
 
+    .logo {
+      background: $white;
+      height: 240px;
+
+      text-align: center;
+      padding: 4rem 1rem;
+
+      background-image: url("/images/background_image.png");
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
     .left {
-      background: $purple-dark;
+      background: $white;
+
+
       text-align: center;
       padding: 4rem 1rem;
 
@@ -35,7 +49,6 @@
       }
 
       .hero {
-
         +mobile {
           padding: 0 1em;
           flex: 1;
@@ -75,7 +88,7 @@
       }
 
       .title {
-        color: $white;
+        color: $black;
         text-transform: uppercase;
         font-size: $size-2;
 
@@ -89,7 +102,7 @@
       }
 
       .subtitle{
-        color: rgba($white, .7);
+        color: rgba($black, .7);
 
         +desktop{
           font-size: $size-4;
@@ -98,7 +111,7 @@
       }
 
       strong{
-        color: $white;
+        color: $black;
       }
     }
 

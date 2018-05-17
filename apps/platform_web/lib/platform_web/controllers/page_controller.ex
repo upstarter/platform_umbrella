@@ -9,4 +9,8 @@ defmodule PlatformWeb.PageController do
   def research(conn, _params) do
     render conn, "research.html"
   end
+
+  def home(conn, _params) do
+    render conn, "home.html"
+  end
 end
