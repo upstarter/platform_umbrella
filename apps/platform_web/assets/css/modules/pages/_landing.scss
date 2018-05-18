@@ -2,7 +2,7 @@
   .main-wrapper {
 
     @media all and (min-width: 768px) {
-      margin-top: -16rem;
+      margin-top: -20rem;
     }
 
     // NOT WORKING!
@@ -31,7 +31,6 @@
     .left {
       background: $white;
 
-
       text-align: center;
       padding: 4rem 1rem;
 
@@ -54,6 +53,7 @@
           flex: 1;
           display: flex;
           justify-content: center;
+
         }
       }
 

@@ -64,7 +64,7 @@ formView subscribeForm =
             [ Html.class "content" ]
             [ Html.h3
                 []
-                [ Html.text "Want to know more?" ]
+                [ Html.text "Want free Cryptoasset research?" ]
             , Html.p
                 []
                 [ Html.text "Subscribe to stay updated" ]
