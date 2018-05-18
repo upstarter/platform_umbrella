@@ -9605,7 +9605,7 @@ var _user$project$View$view = function (_p5) {
 							{ctor: '[]'},
 							{
 								ctor: '::',
-								_0: _elm_lang$html$Html$text('We will keep you updated with the latest news'),
+								_0: _elm_lang$html$Html$text('We will keep you updated with the latest research'),
 								_1: {ctor: '[]'}
 							}),
 						_1: {ctor: '[]'}
