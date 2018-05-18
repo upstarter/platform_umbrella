@@ -64,10 +64,10 @@ formView subscribeForm =
             [ Html.class "content" ]
             [ Html.h3
                 []
-                [ Html.text "Want free Cryptoasset research?" ]
+                [ Html.text "Want free cryptoasset research?" ]
             , Html.p
                 []
-                [ Html.text "Subscribe to stay updated" ]
+                [ Html.text "Subscribe to stay informed" ]
             , formError subscribeForm
             , form
                 [ Html.onSubmit HandleFormSubmit ]
