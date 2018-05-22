@@ -11,6 +11,6 @@ defmodule PlatformWeb.PageController do
   end
 
   def home(conn, _params) do
-    render conn, "home.html"
+    render conn, "msgtest3.html"
   end
 end
