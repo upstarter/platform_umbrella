@@ -9312,7 +9312,7 @@ var _user$project$View$formView = function (subscribeForm) {
 				{ctor: '[]'},
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html$text('Cryptoasset Insights'),
+					_0: _elm_lang$html$Html$text('Crypto Investment Insights'),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
@@ -9322,7 +9322,7 @@ var _user$project$View$formView = function (subscribeForm) {
 					{ctor: '[]'},
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html$text('Subscribe to receive free cryptoasset research'),
+						_0: _elm_lang$html$Html$text('Delivered to your inbox'),
 						_1: {ctor: '[]'}
 					}),
 				_1: {
