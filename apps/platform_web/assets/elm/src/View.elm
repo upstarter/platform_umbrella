@@ -64,7 +64,7 @@ formView subscribeForm =
             [ Html.class "content" ]
             [ Html.h3
                 []
-                [ Html.text "Crypto Investment Insights" ]
+                [ Html.text "Cryptoasset Investment Insights" ]
             , Html.p
                 []
                 [ Html.text "Delivered to your inbox" ]
