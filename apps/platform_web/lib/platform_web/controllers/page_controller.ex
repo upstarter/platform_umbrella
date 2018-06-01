@@ -13,4 +13,8 @@ defmodule PlatformWeb.PageController do
   def home(conn, _params) do
     render conn, "msgtest3.html"
   end
+
+  def privacy_policy(conn, _params) do
+    render conn, "privacy_policy.html"
+  end
 end

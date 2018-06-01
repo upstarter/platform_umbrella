@@ -13,6 +13,21 @@
     %link{rel: "stylesheet" href: css_path}
 
   %body
+    / Load Facebook SDK for JavaScript
+    #fb-root
+    :javascript
+      function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk');
+    / Your customer chat code
+    .fb-customerchat{:attribution => "setup_tool", :page_id => "1806273466097268", :theme_color => "#fa3c4c"}
+
     = render(@view_module, @view_template, assigns)
     %script{src: "#{static_path(@conn, "/js/app.js")}" }
     %script{ src: "https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" }
+  #footer{ style: 'text-align: center; margin-bottom: 30px;'}
+    = link("Terms of Service", to: "/privacy_policy")
