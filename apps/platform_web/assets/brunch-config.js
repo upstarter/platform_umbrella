@@ -53,15 +53,16 @@ exports.config = {
       sourceMapEmbed: true,
       options: {
        includePaths: [
-         'node_modules/normalize-scss/sass/',
-         'node_modules/bulma/',
+         './node_modules/normalize-scss/sass/',
+         './node_modules/bulma/',
        ],
       },
     },
     elmBrunch: {
+      executablePath: '../node_modules/elm/binwrappers/',
       elmFolder: "elm",
       mainModules: ['src/Main.elm'],
-      outputFolder: '../js',
+      outputFolder: '../js/',
       outputFile: 'elm.js',
     },
   },

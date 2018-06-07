@@ -1,6 +1,5 @@
 module Messages exposing (Msg(..))
 
-import Dict exposing (Dict)
 import Http
 
 

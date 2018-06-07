@@ -9033,17 +9033,17 @@ var _elm_lang$http$Http$StringPart = F2(
 	});
 var _elm_lang$http$Http$stringPart = _elm_lang$http$Http$StringPart;
 
-var _user$project$Model$emptyValidationErrors = _elm_lang$core$Dict$empty;
-var _user$project$Model$extractValidationErrors = function (subscribeForm) {
+var _ericsteen$platform_umbrella$Model$emptyValidationErrors = _elm_lang$core$Dict$empty;
+var _ericsteen$platform_umbrella$Model$extractValidationErrors = function (subscribeForm) {
 	var _p0 = subscribeForm;
 	if (_p0.ctor === 'Invalid') {
 		return _p0._1;
 	} else {
-		return _user$project$Model$emptyValidationErrors;
+		return _ericsteen$platform_umbrella$Model$emptyValidationErrors;
 	}
 };
-var _user$project$Model$emptyFormFields = {fullName: '', email: ''};
-var _user$project$Model$extractFormFields = function (subscribeForm) {
+var _ericsteen$platform_umbrella$Model$emptyFormFields = {fullName: '', email: ''};
+var _ericsteen$platform_umbrella$Model$extractFormFields = function (subscribeForm) {
 	var _p1 = subscribeForm;
 	switch (_p1.ctor) {
 		case 'Editing':
@@ -9055,51 +9055,51 @@ var _user$project$Model$extractFormFields = function (subscribeForm) {
 		case 'Errored':
 			return _p1._0;
 		default:
-			return _user$project$Model$emptyFormFields;
+			return _ericsteen$platform_umbrella$Model$emptyFormFields;
 	}
 };
-var _user$project$Model$FormFields = F2(
+var _ericsteen$platform_umbrella$Model$FormFields = F2(
 	function (a, b) {
 		return {fullName: a, email: b};
 	});
-var _user$project$Model$Model = function (a) {
+var _ericsteen$platform_umbrella$Model$Model = function (a) {
 	return {subscribeForm: a};
 };
-var _user$project$Model$Success = {ctor: 'Success'};
-var _user$project$Model$Errored = F2(
+var _ericsteen$platform_umbrella$Model$Success = {ctor: 'Success'};
+var _ericsteen$platform_umbrella$Model$Errored = F2(
 	function (a, b) {
 		return {ctor: 'Errored', _0: a, _1: b};
 	});
-var _user$project$Model$Invalid = F2(
+var _ericsteen$platform_umbrella$Model$Invalid = F2(
 	function (a, b) {
 		return {ctor: 'Invalid', _0: a, _1: b};
 	});
-var _user$project$Model$Saving = function (a) {
+var _ericsteen$platform_umbrella$Model$Saving = function (a) {
 	return {ctor: 'Saving', _0: a};
 };
-var _user$project$Model$Editing = function (a) {
+var _ericsteen$platform_umbrella$Model$Editing = function (a) {
 	return {ctor: 'Editing', _0: a};
 };
-var _user$project$Model$initialModel = {
-	subscribeForm: _user$project$Model$Editing(_user$project$Model$emptyFormFields)
+var _ericsteen$platform_umbrella$Model$initialModel = {
+	subscribeForm: _ericsteen$platform_umbrella$Model$Editing(_ericsteen$platform_umbrella$Model$emptyFormFields)
 };
 
-var _user$project$Decoders$validationErrorsDecoder = _elm_lang$core$Json_Decode$dict(
+var _ericsteen$platform_umbrella$Decoders$validationErrorsDecoder = _elm_lang$core$Json_Decode$dict(
 	_elm_lang$core$Json_Decode$list(_elm_lang$core$Json_Decode$string));
-var _user$project$Decoders$responseDecoder = _elm_lang$core$Json_Decode$succeed(true);
+var _ericsteen$platform_umbrella$Decoders$responseDecoder = _elm_lang$core$Json_Decode$succeed(true);
 
-var _user$project$Messages$SubscribeResponse = function (a) {
+var _ericsteen$platform_umbrella$Messages$SubscribeResponse = function (a) {
 	return {ctor: 'SubscribeResponse', _0: a};
 };
-var _user$project$Messages$HandleFormSubmit = {ctor: 'HandleFormSubmit'};
-var _user$project$Messages$HandleEmailInput = function (a) {
+var _ericsteen$platform_umbrella$Messages$HandleFormSubmit = {ctor: 'HandleFormSubmit'};
+var _ericsteen$platform_umbrella$Messages$HandleEmailInput = function (a) {
 	return {ctor: 'HandleEmailInput', _0: a};
 };
-var _user$project$Messages$HandleFullNameInput = function (a) {
+var _ericsteen$platform_umbrella$Messages$HandleFullNameInput = function (a) {
 	return {ctor: 'HandleFullNameInput', _0: a};
 };
 
-var _user$project$Commands$encodeModel = function (_p0) {
+var _ericsteen$platform_umbrella$Commands$encodeModel = function (_p0) {
 	var _p1 = _p0;
 	return _elm_lang$core$Json_Encode$object(
 		{
@@ -9129,34 +9129,34 @@ var _user$project$Commands$encodeModel = function (_p0) {
 			_1: {ctor: '[]'}
 		});
 };
-var _user$project$Commands$post = function (formFields) {
+var _ericsteen$platform_umbrella$Commands$post = function (formFields) {
 	return _elm_lang$http$Http$request(
 		{
 			method: 'POST',
 			headers: {ctor: '[]'},
 			url: '/api/v1/leads',
 			body: _elm_lang$http$Http$jsonBody(
-				_user$project$Commands$encodeModel(formFields)),
-			expect: _elm_lang$http$Http$expectJson(_user$project$Decoders$responseDecoder),
+				_ericsteen$platform_umbrella$Commands$encodeModel(formFields)),
+			expect: _elm_lang$http$Http$expectJson(_ericsteen$platform_umbrella$Decoders$responseDecoder),
 			timeout: _elm_lang$core$Maybe$Nothing,
 			withCredentials: false
 		});
 };
-var _user$project$Commands$subscribe = function (subscribeForm) {
+var _ericsteen$platform_umbrella$Commands$subscribe = function (subscribeForm) {
 	var _p2 = subscribeForm;
 	if (_p2.ctor === 'Editing') {
 		return A2(
 			_elm_lang$http$Http$send,
-			_user$project$Messages$SubscribeResponse,
-			_user$project$Commands$post(_p2._0));
+			_ericsteen$platform_umbrella$Messages$SubscribeResponse,
+			_ericsteen$platform_umbrella$Commands$post(_p2._0));
 	} else {
 		return _elm_lang$core$Platform_Cmd$none;
 	}
 };
 
-var _user$project$Update$update = F2(
+var _ericsteen$platform_umbrella$Update$update = F2(
 	function (msg, model) {
-		var formFields = _user$project$Model$extractFormFields(model.subscribeForm);
+		var formFields = _ericsteen$platform_umbrella$Model$extractFormFields(model.subscribeForm);
 		var subscribeForm = model.subscribeForm;
 		var _p0 = msg;
 		switch (_p0.ctor) {
@@ -9166,7 +9166,7 @@ var _user$project$Update$update = F2(
 					_elm_lang$core$Native_Utils.update(
 						model,
 						{
-							subscribeForm: _user$project$Model$Editing(
+							subscribeForm: _ericsteen$platform_umbrella$Model$Editing(
 								_elm_lang$core$Native_Utils.update(
 									formFields,
 									{fullName: _p0._0}))
@@ -9178,7 +9178,7 @@ var _user$project$Update$update = F2(
 					_elm_lang$core$Native_Utils.update(
 						model,
 						{
-							subscribeForm: _user$project$Model$Editing(
+							subscribeForm: _ericsteen$platform_umbrella$Model$Editing(
 								_elm_lang$core$Native_Utils.update(
 									formFields,
 									{email: _p0._0}))
@@ -9190,11 +9190,11 @@ var _user$project$Update$update = F2(
 					_elm_lang$core$Native_Utils.update(
 						model,
 						{
-							subscribeForm: _user$project$Model$Saving(formFields)
+							subscribeForm: _ericsteen$platform_umbrella$Model$Saving(formFields)
 						}),
 					{
 						ctor: '::',
-						_0: _user$project$Commands$subscribe(subscribeForm),
+						_0: _ericsteen$platform_umbrella$Commands$subscribe(subscribeForm),
 						_1: {ctor: '[]'}
 					});
 			default:
@@ -9203,18 +9203,18 @@ var _user$project$Update$update = F2(
 						_elm_lang$core$Platform_Cmd_ops['!'],
 						_elm_lang$core$Native_Utils.update(
 							model,
-							{subscribeForm: _user$project$Model$Success}),
+							{subscribeForm: _ericsteen$platform_umbrella$Model$Success}),
 						{ctor: '[]'});
 				} else {
 					if (_p0._0._0.ctor === 'BadStatus') {
-						var _p1 = A2(_elm_lang$core$Json_Decode$decodeString, _user$project$Decoders$validationErrorsDecoder, _p0._0._0._0.body);
+						var _p1 = A2(_elm_lang$core$Json_Decode$decodeString, _ericsteen$platform_umbrella$Decoders$validationErrorsDecoder, _p0._0._0._0.body);
 						if (_p1.ctor === 'Ok') {
 							return A2(
 								_elm_lang$core$Platform_Cmd_ops['!'],
 								_elm_lang$core$Native_Utils.update(
 									model,
 									{
-										subscribeForm: A2(_user$project$Model$Invalid, formFields, _p1._0)
+										subscribeForm: A2(_ericsteen$platform_umbrella$Model$Invalid, formFields, _p1._0)
 									}),
 								{ctor: '[]'});
 						} else {
@@ -9223,7 +9223,7 @@ var _user$project$Update$update = F2(
 								_elm_lang$core$Native_Utils.update(
 									model,
 									{
-										subscribeForm: A2(_user$project$Model$Errored, formFields, 'Oops! Something went wrong!')
+										subscribeForm: A2(_ericsteen$platform_umbrella$Model$Errored, formFields, 'Oops! Something went wrong!')
 									}),
 								{ctor: '[]'});
 						}
@@ -9233,7 +9233,7 @@ var _user$project$Update$update = F2(
 							_elm_lang$core$Native_Utils.update(
 								model,
 								{
-									subscribeForm: A2(_user$project$Model$Errored, formFields, 'Oops! Something went wrong!')
+									subscribeForm: A2(_ericsteen$platform_umbrella$Model$Errored, formFields, 'Oops! Something went wrong!')
 								}),
 							{ctor: '[]'});
 					}
@@ -9241,7 +9241,7 @@ var _user$project$Update$update = F2(
 		}
 	});
 
-var _user$project$View$validationErrorView = F2(
+var _ericsteen$platform_umbrella$View$validationErrorView = F2(
 	function (key, validationErrors) {
 		var _p0 = A2(_elm_lang$core$Dict$get, key, validationErrors);
 		if (_p0.ctor === 'Just') {
@@ -9257,7 +9257,7 @@ var _user$project$View$validationErrorView = F2(
 			return _elm_lang$html$Html$text('');
 		}
 	});
-var _user$project$View$formError = function (subscribeForm) {
+var _ericsteen$platform_umbrella$View$formError = function (subscribeForm) {
 	var _p1 = subscribeForm;
 	if (_p1.ctor === 'Errored') {
 		return A2(
@@ -9276,7 +9276,7 @@ var _user$project$View$formError = function (subscribeForm) {
 		return _elm_lang$html$Html$text('');
 	}
 };
-var _user$project$View$formView = function (subscribeForm) {
+var _ericsteen$platform_umbrella$View$formView = function (subscribeForm) {
 	var invalid = function () {
 		var _p2 = subscribeForm;
 		if (_p2.ctor === 'Invalid') {
@@ -9293,11 +9293,11 @@ var _user$project$View$formView = function (subscribeForm) {
 			return false;
 		}
 	}();
-	var _p4 = _user$project$Model$extractFormFields(subscribeForm);
+	var _p4 = _ericsteen$platform_umbrella$Model$extractFormFields(subscribeForm);
 	var fullName = _p4.fullName;
 	var email = _p4.email;
 	var buttonDisabled = _elm_lang$core$Native_Utils.eq(fullName, '') || (_elm_lang$core$Native_Utils.eq(email, '') || (saving || invalid));
-	var validationErrors = _user$project$Model$extractValidationErrors(subscribeForm);
+	var validationErrors = _ericsteen$platform_umbrella$Model$extractValidationErrors(subscribeForm);
 	return A2(
 		_elm_lang$html$Html$div,
 		{
@@ -9327,14 +9327,14 @@ var _user$project$View$formView = function (subscribeForm) {
 					}),
 				_1: {
 					ctor: '::',
-					_0: _user$project$View$formError(subscribeForm),
+					_0: _ericsteen$platform_umbrella$View$formError(subscribeForm),
 					_1: {
 						ctor: '::',
 						_0: A2(
 							_elm_lang$html$Html$form,
 							{
 								ctor: '::',
-								_0: _elm_lang$html$Html_Events$onSubmit(_user$project$Messages$HandleFormSubmit),
+								_0: _elm_lang$html$Html_Events$onSubmit(_ericsteen$platform_umbrella$Messages$HandleFormSubmit),
 								_1: {ctor: '[]'}
 							},
 							{
@@ -9386,7 +9386,7 @@ var _user$project$View$formView = function (subscribeForm) {
 																	_0: _elm_lang$html$Html_Attributes$value(fullName),
 																	_1: {
 																		ctor: '::',
-																		_0: _elm_lang$html$Html_Events$onInput(_user$project$Messages$HandleFullNameInput),
+																		_0: _elm_lang$html$Html_Events$onInput(_ericsteen$platform_umbrella$Messages$HandleFullNameInput),
 																		_1: {ctor: '[]'}
 																	}
 																}
@@ -9396,7 +9396,7 @@ var _user$project$View$formView = function (subscribeForm) {
 													{ctor: '[]'}),
 												_1: {
 													ctor: '::',
-													_0: A2(_user$project$View$validationErrorView, 'full_name', validationErrors),
+													_0: A2(_ericsteen$platform_umbrella$View$validationErrorView, 'full_name', validationErrors),
 													_1: {ctor: '[]'}
 												}
 											}),
@@ -9454,7 +9454,7 @@ var _user$project$View$formView = function (subscribeForm) {
 																			_0: _elm_lang$html$Html_Attributes$value(email),
 																			_1: {
 																				ctor: '::',
-																				_0: _elm_lang$html$Html_Events$onInput(_user$project$Messages$HandleEmailInput),
+																				_0: _elm_lang$html$Html_Events$onInput(_ericsteen$platform_umbrella$Messages$HandleEmailInput),
 																				_1: {ctor: '[]'}
 																			}
 																		}
@@ -9555,7 +9555,7 @@ var _user$project$View$formView = function (subscribeForm) {
 			}
 		});
 };
-var _user$project$View$view = function (_p5) {
+var _ericsteen$platform_umbrella$View$view = function (_p5) {
 	var _p6 = _p5;
 	var _p8 = _p6.subscribeForm;
 	var _p7 = _p8;
@@ -9613,24 +9613,24 @@ var _user$project$View$view = function (_p5) {
 				}
 			});
 	} else {
-		return _user$project$View$formView(_p8);
+		return _ericsteen$platform_umbrella$View$formView(_p8);
 	}
 };
 
-var _user$project$Main$subscriptions = function (model) {
+var _ericsteen$platform_umbrella$Main$subscriptions = function (model) {
 	return _elm_lang$core$Platform_Sub$none;
 };
-var _user$project$Main$init = A2(
+var _ericsteen$platform_umbrella$Main$init = A2(
 	_elm_lang$core$Platform_Cmd_ops['!'],
-	_user$project$Model$initialModel,
+	_ericsteen$platform_umbrella$Model$initialModel,
 	{ctor: '[]'});
-var _user$project$Main$main = _elm_lang$html$Html$program(
-	{init: _user$project$Main$init, view: _user$project$View$view, update: _user$project$Update$update, subscriptions: _user$project$Main$subscriptions})();
+var _ericsteen$platform_umbrella$Main$main = _elm_lang$html$Html$program(
+	{init: _ericsteen$platform_umbrella$Main$init, view: _ericsteen$platform_umbrella$View$view, update: _ericsteen$platform_umbrella$Update$update, subscriptions: _ericsteen$platform_umbrella$Main$subscriptions})();
 
 var Elm = {};
 Elm['Main'] = Elm['Main'] || {};
-if (typeof _user$project$Main$main !== 'undefined') {
-    _user$project$Main$main(Elm['Main'], 'Main', undefined);
+if (typeof _ericsteen$platform_umbrella$Main$main !== 'undefined') {
+    _ericsteen$platform_umbrella$Main$main(Elm['Main'], 'Main', undefined);
 }
 
 if (typeof define === "function" && define['amd'])
