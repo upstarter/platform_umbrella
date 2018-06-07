@@ -5,16 +5,14 @@ ARG PHOENIX_SUBDIR=./apps/platform_web
 ENV PORT=4000 MIX_ENV=prod REPLACE_OS_VARS=true TERM=xterm
 WORKDIR /opt/app
 RUN apk update \
-    && apk --no-cache --update add gmp yarn nodejs nodejs-npm python2 \
+    && apk --no-cache --update add build-base gmp yarn nodejs nodejs-npm python2 \
     && mix local.rebar --force \
     && mix local.hex --force
-RUN apk add build-base
 
 COPY . .
 RUN mix do deps.get, deps.compile, compile
 RUN cd ${PHOENIX_SUBDIR}/assets \
-    && npm install \
-    && yarn global add elm \
+    && yarn install \
     && ./node_modules/brunch/bin/brunch build -p \
     && cd .. \
     && mix phx.digest
