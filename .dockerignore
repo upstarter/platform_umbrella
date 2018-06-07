@@ -8,4 +8,4 @@
 apps/platform_web/_build
 apps/platform_web/deps
 apps/platform_web/test
-apps/platform_web/assets/node_modules
+apps/platform_web/node_modules
