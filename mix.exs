@@ -30,6 +30,9 @@ defmodule Platform.Umbrella.Mixfile do
       {:gettext, "~> 0.13.0", override: true},
       {:distillery, "~> 1.5", runtime: false},
       {:credo, "~> 0.9.0-rc1", only: [:dev, :test], runtime: false},
+      {:elixir_make, "~> 0.4", runtime: false},
+
+
       # {:basic_auth, "~> 2.2"},
       # {:users, in_umbrella: true},
       # {:partners, in_umbrella: true},

@@ -1,51 +1,35 @@
 # Alias this container as builder:
-FROM bitwalker/alpine-elixir-phoenix as builder
+FROM elixir:alpine
+ARG APP_NAME=platform_umbrella
+ARG PHOENIX_SUBDIR=./apps/platform_web
+ENV PORT=4000 MIX_ENV=prod REPLACE_OS_VARS=true TERM=xterm
+WORKDIR /opt/app
+RUN apk update \
+    && apk --no-cache --update add gmp yarn nodejs nodejs-npm python2 \
+    && mix local.rebar --force \
+    && mix local.hex --force
+RUN apk add build-base
 
-WORKDIR /paraguas
+COPY . .
+RUN mix do deps.get, deps.compile, compile
+RUN cd ${PHOENIX_SUBDIR}/assets \
+    && npm install \
+    && yarn global add elm \
+    && ./node_modules/brunch/bin/brunch build -p \
+    && cd .. \
+    && mix phx.digest
+RUN mix release --env=prod --verbose \
+    && mv _build/prod/rel/${APP_NAME} /opt/release \
+    && mv /opt/release/bin/${APP_NAME} /opt/release/bin/start_server
+# End Build Container
 
-ENV MIX_ENV=prod
+# Run Container
+FROM alpine:latest
+RUN apk update && apk --no-cache --update add bash openssl-dev
+ENV PORT=4000 MIX_ENV=prod REPLACE_OS_VARS=true
+WORKDIR /opt/app
+EXPOSE ${PORT}
+COPY --from=0 /opt/release .
+CMD ["/opt/app/bin/start_server", "foreground"]
 
-# Umbrella
-# Copy mix files so we use distillery:
-COPY mix.exs mix.lock ./
-COPY config config
-
-COPY apps apps
-
-RUN mix do deps.get, deps.compile
-
-# Build assets in production mode:
-WORKDIR /paraguas/apps/phoenix_app/assets
-RUN npm install && ./node_modules/brunch/bin/brunch build --production
-
-WORKDIR /paraguas/apps/phoenix_app
-RUN MIX_ENV=prod mix phx.digest
-
-WORKDIR /paraguas
-COPY rel rel
-RUN mix release --env=prod --verbose
-
-FROM alpine:3.6
-
-RUN apk upgrade --no-cache && \
-    apk add --no-cache bash openssl
-    # we need bash and openssl for Phoenix
-
-EXPOSE 4000
-
-ENV PORT=4000 \
-    MIX_ENV=prod \
-    REPLACE_OS_VARS=true \
-    SHELL=/bin/bash
-
-WORKDIR /paraguas
-
-COPY --from=builder /paraguas/_build/prod/rel/paraguas/releases/0.1.0/paraguas.tar.gz .
-
-RUN tar zxf paraguas.tar.gz && rm paraguas.tar.gz
-
-RUN chown -R root ./releases
-
-USER root
-
-CMD ["/paraguas/bin/paraguas", "foreground"]
+# End Run Container
