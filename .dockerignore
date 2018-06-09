@@ -5,7 +5,7 @@
 # Note: If you are using an umbrella app, you might need to add more
 # directories to this list.
 
-apps/platform_web/_build
-apps/platform_web/deps
-apps/platform_web/test
+_build
+deps
+test
 apps/platform_web/node_modules

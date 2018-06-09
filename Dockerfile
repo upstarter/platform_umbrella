@@ -1,13 +1,30 @@
 # Alias this container as builder:
-FROM elixir:alpine
+FROM frolvlad/alpine-glibc
 ARG APP_NAME=platform_umbrella
 ARG PHOENIX_SUBDIR=./apps/platform_web
-ENV PORT=4000 MIX_ENV=prod REPLACE_OS_VARS=true TERM=xterm
+ENV MIX_ENV=prod REPLACE_OS_VARS=true TERM=xterm
 WORKDIR /opt/app
 RUN apk update \
-    && apk --no-cache --update add build-base gmp yarn nodejs nodejs-npm python2 \
-    && mix local.rebar --force \
-    && mix local.hex --force
+    && apk add ca-certificates \
+    && apk add wget python2 \
+    && apk add gmp build-base \
+    && apk --no-cache --update add yarn nodejs nodejs-npm
+
+RUN apk add --update \
+      git \
+      erlang=20.1.7-r2 \
+      elixir=1.5.2-r0 \
+      erlang-crypto \
+      erlang-parsetools \
+      erlang-syntax-tools \
+      erlang-runtime-tools
+
+RUN mix local.rebar --force \
+    && mix local.hex --force \
+    && wget https://dl.bintray.com/elmlang/elm-platform/0.18.0/linux-x64.tar.gz \
+    && tar xvzf linux-x64.tar.gz
+
+ENV PATH="/opt/app/dist_binaries:${PATH}"
 
 COPY . .
 RUN mix do deps.get, deps.compile, compile
@@ -22,9 +39,16 @@ RUN mix release --env=prod --verbose \
 # End Build Container
 
 # Run Container
-FROM alpine:latest
-RUN apk update && apk --no-cache --update add bash openssl-dev
-ENV PORT=4000 MIX_ENV=prod REPLACE_OS_VARS=true
+FROM frolvlad/alpine-glibc:latest
+
+RUN apk update && apk --no-cache --update add \
+    ncurses-libs \
+    zlib \
+    ca-certificates \
+    bash \
+    openssl-dev
+
+ENV PORT=8080 MIX_ENV=prod REPLACE_OS_VARS=true
 WORKDIR /opt/app
 EXPOSE ${PORT}
 COPY --from=0 /opt/release .
