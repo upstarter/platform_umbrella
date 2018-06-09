@@ -1,4 +1,4 @@
 env: flex
-runtime: gs://elixir-runtime/elixir.yaml
+runtime: custom
 runtime_config:
   release_app: platform_umbrella
