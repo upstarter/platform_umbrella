@@ -59,10 +59,10 @@ exports.config = {
       },
     },
     elmBrunch: {
-      executablePath: '../node_modules/elm/binwrappers',
       elmFolder: "elm",
       mainModules: ['src/Main.elm'],
-      outputFolder: '../js',
+      makeParameters: ["--debug"],
+      outputFolder: '../js/',
       outputFile: 'elm.js',
     },
   },
