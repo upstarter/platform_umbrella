@@ -31,6 +31,7 @@ defmodule PlatformWeb.Router do
     get "/", PageController, :home
     get "/research", PageController, :research
     get "/about", PageController, :index
+    get "/privacy_policy", PageController, :privacy_policy
   end
 
   # Other scopes may use custom stacks.
