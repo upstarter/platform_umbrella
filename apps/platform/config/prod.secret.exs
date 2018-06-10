@@ -12,7 +12,8 @@ use Mix.Config
 # Configure your database
 config :platform, Platform.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: System.get_env("POSTGRES_USER"),
+  password: System.get_env("POSTGRES_PASSWORD"),
   database: "platform_prod",
-  pool_size: 2
+  socket: System.get_env("POSTGRES_SOCKET_PATH"),
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")
