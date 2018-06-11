@@ -10,14 +10,6 @@ config :platform_web,
   namespace: PlatformWeb,
   ecto_repos: [Platform.Repo]
 
-# Configures the endpoint
-config :platform_web, PlatformWeb.Endpoint,
-  url: [host: "localhost"],
-  secret_key_base: "zSs42WIom2Vw/5MxHUfi+lqgOBFp0D1n4fJeHxaZ9yYAb9EzzoepurcxCXq3IBha",
-  render_errors: [view: PlatformWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: PlatformWeb.PubSub,
-           adapter: Phoenix.PubSub.PG2]
-
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
