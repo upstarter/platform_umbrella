@@ -7,5 +7,4 @@ beta_settings:
 env_variables:
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: ZQLm3AsToWtXkyePALtGRhjs
-  POSTGRES_SOCKET_PATH: /cloudsql/eternal-sunset-206422:us-central1:umbrella-db
-  DATABASE_URL: /cloudsql/eternal-sunset-206422:us-central1:umbrella-db
+  POSTGRES_SOCKET_PATH: /cloudsql/eternal-sunset-206422:us-central1:umbrella-db/.s.PGSQL.5342
