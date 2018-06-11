@@ -1,5 +1,6 @@
+service: platform-umbrella
 env: flex
-runtime: custom
+runtime: gs://elixir-runtime/elixir.yaml
 runtime_config:
   release_app: platform_umbrella
 beta_settings:
@@ -7,5 +8,5 @@ beta_settings:
 env_variables:
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: ZQLm3AsToWtXkyePALtGRhjs
-  POSTGRES_DATABASE: umbrella-db
+  POSTGRES_DATABASE: platform_prod
   POSTGRES_SOCKET_PATH: /cloudsql/eternal-sunset-206422:us-central1:umbrella-db
