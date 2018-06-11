@@ -15,5 +15,5 @@ config :payments, Payments.Repo,
   username: System.get_env("POSTGRES_USER"),
   password: System.get_env("POSTGRES_PASSWORD"),
   database: "payments_prod",
-  socket: System.get_env("POSTGRES_SOCKET_PATH"),
+  host: System.get_env("POSTGRES_SOCKET_PATH"),
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")
