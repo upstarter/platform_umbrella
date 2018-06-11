@@ -39,7 +39,6 @@ defmodule PlatformWeb.Mixfile do
     [
       {:phoenix, "~> 1.3.1"},
       {:phoenix_pubsub, "~> 1.0"},
-      {:phoenix_ecto, "~> 3.2"},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_haml, "~> 0.2", override: true},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
