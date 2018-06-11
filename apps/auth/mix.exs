@@ -36,8 +36,8 @@ defmodule Auth.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:postgrex, ">= 0.0.0"},
-      {:ecto, "~> 2.1"},
+      {:postgrex, ">= 0.13.5"},
+      {:ecto, "~> 2.2.10"},
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 1.0"},
       {:guardian, "~> 1.0"}
