@@ -24,7 +24,7 @@ defmodule Platform.Umbrella.Mixfile do
   defp deps do
     [
       {:phoenix_ecto, "~> 3.3", override: true},
-      {:postgrex, "~> 0.13.5", override: true},
+      {:postgrex, github: "elixir-ecto/postgrex", override: true},
       {:poison, "~> 3.1", override: true},
       {:hackney, "~> 1.6", override: true},
       {:gettext, "~> 0.13.0", override: true},
