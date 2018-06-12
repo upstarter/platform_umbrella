@@ -1,4 +1,3 @@
-service: platform-umbrella
 env: flex
 runtime: custom
 # runtime: gs://elixir-runtime/elixir.yaml
