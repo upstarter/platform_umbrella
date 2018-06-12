@@ -6,7 +6,7 @@ ENV MIX_ENV=prod REPLACE_OS_VARS=true TERM=xterm
 WORKDIR /opt/app
 RUN apk update \
     && apk add ca-certificates \
-    && apk add wget \
+    && apk add wget python2 \
     && apk add gmp build-base \
     && apk --no-cache --update add yarn nodejs nodejs-npm
 

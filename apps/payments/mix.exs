@@ -38,7 +38,7 @@ defmodule Payments.Mixfile do
     [
       {:postgrex, "~> 0.13.5"},
       {:ecto, "~> 2.2.10"},
-      {:stripity_stripe, "~> 1.4.0"}
+      # {:stripity_stripe, "~> 1.4.0"}
     ]
   end
 
