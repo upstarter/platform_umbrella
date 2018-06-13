@@ -27,15 +27,12 @@ RUN mix local.rebar --force \
 ENV PATH="/opt/app/dist_binaries:${PATH}"
 
 COPY . .
-ENV MIX_ENV=prod
 RUN mix do deps.get, deps.compile, compile
 RUN cd ${PHOENIX_SUBDIR}/assets \
     && yarn install \
     && ./node_modules/brunch/bin/brunch build -p \
     && cd .. \
-    && mix phx.digest \
-    && mix ecto.create --env=prod \
-    && mix ecto.migrate --env=prod
+    && mix phx.digest
 RUN mix release --env=prod --verbose \
     && mv _build/prod/rel/${APP_NAME} /opt/release \
     && mv /opt/release/bin/${APP_NAME} /opt/release/bin/start_server
