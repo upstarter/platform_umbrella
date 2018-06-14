@@ -1,13 +1,18 @@
 env: flex
-runtime: custom
-# runtime: gs://elixir-runtime/elixir.yaml
+# runtime: custom
+runtime: gs://elixir-runtime/elixir.yaml
 runtime_config:
   release_app: platform_umbrella
   packages:
     - python
+    - nodejs-legacy
+  build:
+    - cd ${PHOENIX_SUBDIR}/assets && npm install && ./node_modules/brunch/bin/brunch build -p && cd .. && mix phx.digest
 beta_settings:
   cloud_sql_instances: eternal-sunset-206422:us-central1:umbrella-db
 env_variables:
+  PHOENIX_SUBDIR: apps/platform_web
+  MIX_ENV: prod
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: ZQLm3AsToWtXkyePALtGRhjs
   POSTGRES_SOCKET_PATH: /cloudsql/eternal-sunset-206422:us-central1:umbrella-db/.s.PGSQL.5432
