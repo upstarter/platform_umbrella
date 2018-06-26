@@ -48,6 +48,8 @@ defmodule PlatformWeb.Mixfile do
       {:platform, in_umbrella: true},
       {:auth, in_umbrella: true},
       {:users, in_umbrella: true},
+      {:get_medium, "~> 0.3.0"},
+      {:floki, "~> 0.20.0"}, # html parser
     ]
   end
 

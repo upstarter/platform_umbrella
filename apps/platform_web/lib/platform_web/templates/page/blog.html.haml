@@ -1,0 +1,23 @@
+-# = list = List.first(blog_posts)
+-# = for i in list do
+-#   = inspect i
+-# = Enum.each(blog_posts, fn(x) -> inspect x end)
+#blog_content{style: "margin: 25px auto; width: 52%"}
+  .blog_posts
+    = for post <- blog_posts do
+      .card
+        -# .card-image
+        -#   %figure.image.is-4by3
+        -#     %img{src: "#{first_img_src_in_html(post.content).request_url}", alt: "Placeholder image"}
+        .card-content
+          .card-header
+            .card-header-title
+              .title= post.title
+          %br
+          .items{style: "margin: auto; width: 50%;"}
+            %i=post.date
+            •
+            = link "View on Medium", to: post.link
+          %br
+          .content
+            = raw post.content

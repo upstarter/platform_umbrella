@@ -14,6 +14,14 @@ defmodule PlatformWeb.PageController do
     render conn, "msgtest3.html"
   end
 
+  def blog(conn, _params) do
+    render conn, "blog.html"
+  end
+
+  def press(conn, _params) do
+    render conn, "press.html"
+  end
+
   def privacy_policy(conn, _params) do
     render conn, "privacy_policy.html"
   end
