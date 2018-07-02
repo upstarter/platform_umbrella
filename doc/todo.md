@@ -1,3 +1,9 @@
+INFLUENCERS:
+Spencer Bogart
+Alex Sunnarborg
+Ronnie Moas
+
+
 INCREASE TOP OF FUNNEL IDEAS:
   1. Testing Channels
   2. blog consistently
