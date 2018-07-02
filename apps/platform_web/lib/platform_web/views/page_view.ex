@@ -21,4 +21,10 @@ defmodule PlatformWeb.PageView do
     List.first(it)
   end
 
+  def content do
+    List.first(blog_posts()).content
+    |> Floki.filter_out("h3")
+    |> Floki.raw_html
+  end
+
 end
