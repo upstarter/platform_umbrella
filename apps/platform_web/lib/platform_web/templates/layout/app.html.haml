@@ -5,8 +5,8 @@
     %meta{:charset => "utf-8"}
     %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
-    %meta{:content => "", :name => "description"}
-    %meta{:content => "", :name => "author"}
+    %meta{:content => "CryptoWise, Investment research, Investment analysis, Crypto Trading, Crypto, Cryptocurrency, Blockchain, ICO, ICO Investing", :name => "description"}
+    %meta{:content => "CryptoWise", :name => "author"}
     %title CryptoWise
     %script{src: "https://use.fontawesome.com/2aa13a4a25.js" }
     - css_path = static_path(@conn, "/css/app.css")
@@ -15,35 +15,16 @@
   %body
     / Load Facebook SDK for JavaScript
     #fb-root
-    :javascript
-      function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk');
+    // :javascript
+    //   function(d, s, id) {
+    //     var js, fjs = d.getElementsByTagName(s)[0];
+    //     if (d.getElementById(id)) return;
+    //     js = d.createElement(s); js.id = id;
+    //     js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
+    //     fjs.parentNode.insertBefore(js, fjs);
+    //   }(document, 'script', 'facebook-jssdk');
     / Your customer chat code
-    .fb-customerchat{:attribution => "setup_tool", :page_id => "1806273466097268", :theme_color => "#fa3c4c"}
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="https://www.cryptowise.ai">
-          Home
-          -# <img src="/images/favicon_symbol.png" alt="CryptoWise: Crowd Robo-Advisory" width="95" height="195">
-        </a>
-        <a class="navbar-item" href="https://www.cryptowise.ai/press">
-          Press
-        </a>
-        <a class="navbar-item" href="https://www.cryptowise.ai/blog">
-          Blog
-        </a>
-        -# <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-        -#   <span aria-hidden="true">Press</span>
-        -#   <span aria-hidden="true">Blog</span>
-        -#   <span aria-hidden="true"></span>
-        -# </a>
-      </div>
-    </nav>
+    -# .fb-customerchat{:attribution => "setup_tool", :page_id => "1806273466097268", :theme_color => "#fa3c4c"}
     = render(@view_module, @view_template, assigns)
     %script{src: "#{static_path(@conn, "/js/app.js")}" }
     %script{ src: "https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" }
