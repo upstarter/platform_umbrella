@@ -33,6 +33,7 @@ defmodule PlatformWeb.Router do
     get "/about", PageController, :index
     get "/press", PageController, :press
     get "/blog", PageController, :blog
+    get "/test", PageController, :test
     get "/privacy_policy", PageController, :privacy_policy
   end
 

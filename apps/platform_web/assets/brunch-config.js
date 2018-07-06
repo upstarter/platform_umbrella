@@ -37,7 +37,7 @@ exports.config = {
   // Phoenix paths configuration
   paths: {
     // Dependencies and current project directories to watch
-    watched: ["static", "css", "js", "vendor", "elm"],
+    watched: ["static", "css", "js", "vendor", "elm", "react_app"],
     // Where to compile files to
     public: "../priv/static"
   },
@@ -45,6 +45,7 @@ exports.config = {
   // Configure your plugins
   plugins: {
     babel: {
+      presets: ["es2015", "react"],
       // Do not use ES6 compiler in vendor code
       ignore: [/vendor/]
     },
@@ -75,6 +76,7 @@ exports.config = {
   },
 
   npm: {
+    whitelist: ["phoenix", "phoenix_html", "phoenix_haml", "react", "react-dom"],
     enabled: true
   }
 };

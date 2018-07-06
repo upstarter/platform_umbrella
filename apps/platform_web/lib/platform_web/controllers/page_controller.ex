@@ -1,6 +1,10 @@
 defmodule PlatformWeb.PageController do
   use PlatformWeb, :controller
 
+  def test(conn, _params) do
+    render conn, "home.html"
+  end
+
   def index(conn, _params) do
     render conn, "index.html"
   end
