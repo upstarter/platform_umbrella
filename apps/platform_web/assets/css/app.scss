@@ -1,6 +1,3 @@
-@charset 'utf-8';
-
-@import "bulma";
 // - - css-burrito v1.6 | mit license | github.com/jasonreece/css-burrito
 
 // - - - - - - - - - - - - - - - - - - -
@@ -8,45 +5,50 @@
 // contains an import section for libs, global, and modules, the inbox,
 // and a shame section for quick fixes and hacks.
 
-// - - variable overrides for 3rd party libraries
-@import 'libs/libs-variable-overrides';
+// - - - - - - - - - - - - - - - - - - -
+// - - global
+
+@charset "utf-8";
+
+// - - global/settings
+// sass variables and maps
+@import "global/settings";
 
 // - - - - - - - - - - - - - - - - - - -
 // - - libs
 // add 3rd party libraries here.
 // be sure to load them after the variable overrides file
 
-// - - - - - - - - - - - - - - - - - - -
-// - - global
+// - - variable overrides for 3rd party libraries
+@import "libs/libs-variable-overrides";
 
-// - - global/settings
-// sass variables and maps
-@import 'global/settings';
+// -- css framework 3rd party library
+@import "bulma";
 
 // - - global/utilities
 // extends, functions, and mixins
-@import 'global/utilities';
+@import "global/utilities";
 
 // - - global/base
 // base-level tags (body, p, etc.)
-@import 'global/base';
+@import "global/base";
 
 // - - global/layout
 // margin, padding, sizing
-@import 'global/layout';
+@import "global/layout";
 
 // - - global/skin
 // backgrounds, borders, box-shadow, etc
-@import 'global/skin';
+@import "global/skin";
 
 // - - global/typography
 // fonts and colors
-@import 'global/typography';
+@import "global/typography";
 
 // - - - - - - - - - - - - - - - - - - -
 // - - modules
-// add new modules to the modules/_modules.scss file and they'll get pulled in here.
-@import 'modules/modules';
+// add new modules to the components/_components.scss file and they"ll get pulled in here.
+@import "components/components";
 
 // - - - - - - - - - - - - - - - - - - -
 // - - inbox

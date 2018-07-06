@@ -4,7 +4,7 @@
     "repository": "https://github.com/ericsteen/platform-umbrella.git",
     "license": "BSD3",
     "source-directories": [
-        "src"
+        "./src"
     ],
     "exposed-modules": [],
     "dependencies": {

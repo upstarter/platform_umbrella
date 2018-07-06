@@ -20,18 +20,17 @@ import "phoenix_html"
 
 // import socket from "./socket"
 
+// import Elm from './elm';
+//
+// window.onloadCallback = () => {
+//   const formContainer = document.querySelector('#form_container');
+//
+//   if (formContainer) {
+//     const app = Elm.Main.embed(formContainer);
+//   }
+// };
 
-import Elm from './elm';
-
-window.onloadCallback = () => {
-  const formContainer = document.querySelector('#form_container');
-
-  if (formContainer) {
-    const app = Elm.Main.embed(formContainer);
-  }
-};
-
-// import CryptoWiseApp from '../react_app/index'
+import './react_app/index'
 
 
 // SEGMENT

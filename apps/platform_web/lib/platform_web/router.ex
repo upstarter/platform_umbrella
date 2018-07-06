@@ -29,11 +29,12 @@ defmodule PlatformWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :home
-    get "/research", PageController, :research
-    get "/about", PageController, :index
+    get "/test", PageController, :test
     get "/press", PageController, :press
     get "/blog", PageController, :blog
-    get "/test", PageController, :test
+
+    get "/research", PageController, :research
+    get "/about", PageController, :index
     get "/privacy_policy", PageController, :privacy_policy
   end
 
