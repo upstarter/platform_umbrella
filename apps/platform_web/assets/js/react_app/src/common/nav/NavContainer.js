@@ -1,5 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
+import img from "../../../../../static/images/nav_logo.png"
 
 export default class NavContainer extends React.Component {
   // state = { comments: [] }
@@ -8,9 +9,10 @@ export default class NavContainer extends React.Component {
     return (
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
-          <a className="navbar-item" href="https://cryptowise.ai">
-            <img src="/images/nav_logo.png" alt="CryptoWise: Cryptoasset research & analysis" width="525" height="124"></img>
+          <a className="navbar-item .nav-logo" href="https://cryptowise.ai">
+            <img src={img} alt="CryptoWise: Cryptoasset research & analysis" width="112" height="28"></img>
           </a>
+
           <a className="navbar-item" href="https://www.cryptowise.ai">
             Home
           </a>
@@ -25,8 +27,6 @@ export default class NavContainer extends React.Component {
            <span aria-hidden="true">BBubb</span>
            <span aria-hidden="true">Hobb</span>
           </a>
-        </div>
-        <div className="navbar-menu">
         </div>
       </nav>
     )

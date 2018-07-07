@@ -4,3 +4,20 @@
 body {
   background: $dark-blue;
 }
+
+.hero {
+  border-top: 1px solid rgba(255, 255, 255, .3);
+  -webkit-background-clip: padding-box; /* for Safari */
+  background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding:40px;
+  background:url('/images/hero.jpg') no-repeat;
+  background-size: cover;
+  @include dark-overlay;
+ }
+
+.hero:after{
+  background:rgba(14, 19, 27, 0.84);
+}

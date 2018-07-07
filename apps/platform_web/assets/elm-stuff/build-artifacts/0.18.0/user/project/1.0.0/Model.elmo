@@ -1,0 +1,50 @@
+var _user$project$Model$emptyValidationErrors = _elm_lang$core$Dict$empty;
+var _user$project$Model$extractValidationErrors = function (subscribeForm) {
+	var _p0 = subscribeForm;
+	if (_p0.ctor === 'Invalid') {
+		return _p0._1;
+	} else {
+		return _user$project$Model$emptyValidationErrors;
+	}
+};
+var _user$project$Model$emptyFormFields = {fullName: '', email: ''};
+var _user$project$Model$extractFormFields = function (subscribeForm) {
+	var _p1 = subscribeForm;
+	switch (_p1.ctor) {
+		case 'Editing':
+			return _p1._0;
+		case 'Saving':
+			return _p1._0;
+		case 'Invalid':
+			return _p1._0;
+		case 'Errored':
+			return _p1._0;
+		default:
+			return _user$project$Model$emptyFormFields;
+	}
+};
+var _user$project$Model$FormFields = F2(
+	function (a, b) {
+		return {fullName: a, email: b};
+	});
+var _user$project$Model$Model = function (a) {
+	return {subscribeForm: a};
+};
+var _user$project$Model$Success = {ctor: 'Success'};
+var _user$project$Model$Errored = F2(
+	function (a, b) {
+		return {ctor: 'Errored', _0: a, _1: b};
+	});
+var _user$project$Model$Invalid = F2(
+	function (a, b) {
+		return {ctor: 'Invalid', _0: a, _1: b};
+	});
+var _user$project$Model$Saving = function (a) {
+	return {ctor: 'Saving', _0: a};
+};
+var _user$project$Model$Editing = function (a) {
+	return {ctor: 'Editing', _0: a};
+};
+var _user$project$Model$initialModel = {
+	subscribeForm: _user$project$Model$Editing(_user$project$Model$emptyFormFields)
+};
