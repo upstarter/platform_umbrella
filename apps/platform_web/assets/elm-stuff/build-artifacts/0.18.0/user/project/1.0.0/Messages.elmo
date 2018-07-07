@@ -1,0 +1,10 @@
+var _user$project$Messages$SubscribeResponse = function (a) {
+	return {ctor: 'SubscribeResponse', _0: a};
+};
+var _user$project$Messages$HandleFormSubmit = {ctor: 'HandleFormSubmit'};
+var _user$project$Messages$HandleEmailInput = function (a) {
+	return {ctor: 'HandleEmailInput', _0: a};
+};
+var _user$project$Messages$HandleFullNameInput = function (a) {
+	return {ctor: 'HandleFullNameInput', _0: a};
+};

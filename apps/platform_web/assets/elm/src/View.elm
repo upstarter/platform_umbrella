@@ -22,10 +22,10 @@ view { subscribeForm } =
                     ]
                 , Html.h2
                     []
-                    [ Html.text "You have subscribed with success" ]
+                    [ Html.text "Success!" ]
                 , Html.p
                     []
-                    [ Html.text "We will keep you updated with the latest research" ]
+                    [ Html.text "We will keep you updated." ]
                 ]
 
         _ ->
@@ -62,13 +62,7 @@ formView subscribeForm =
     in
         Html.div
             [ Html.class "content" ]
-            [ Html.h3
-                []
-                [ Html.text "Cryptoasset Investment Insights" ]
-            , Html.p
-                []
-                [ Html.text "Delivered to your inbox" ]
-            , formError subscribeForm
+            [ formError subscribeForm
             , form
                 [ Html.onSubmit HandleFormSubmit ]
                 [ Html.div

@@ -51,26 +51,29 @@ var common = {
             {
               loader: 'css-loader',
             },
+            // {
+            //   loader: 'postcss-loader',
+            //   options: {
+            //     plugins() {
+            //       return [
+            //         require("precss"),
+            //         require("autoprefixer")
+            //       ];
+            //     }
+            //   }
+            // },
             {
-              loader: 'postcss-loader',
+              loader: 'sass-loader',
               options: {
-                plugins() {
-                  return [
-                    require("precss"),
-                    require("autoprefixer")
-                  ];
-                }
+                includePaths: ["/css/"]
               }
-            },
-            {
-              loader: 'sass-loader'
             }
           ]
         })
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
-        loader: "file-loader?name=/images/[name].[ext]"
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader: "url-loader?name=/images/[name].[ext]",
       },
       {
         test: /\.(ttf|otf|eot|svg|woff2?)$/,
@@ -89,7 +92,7 @@ module.exports = [
       __dirname + "/elm/src/Main.elm"
     ],
     output: {
-      path: __dirname + "/../priv/static",
+      path: __dirname + "./priv/static",
       filename: "js/app.js"
     },
     resolve: {

@@ -4,19 +4,26 @@ import ReactDOM from "react-dom"
 export default class HomeComponent extends React.Component {
   render() {
     return (
-      <div className="main-wrapper columns">
+      <div className="main-wrapper">
         <div className="hero is-huge">
           <div className="hero-body">
             <h1 className="subtitle tagline">
-              Your customized Cryptoasset investment intelligence platform.
+              Learn and Earn from our customizable Cryptoasset investment intelligence platform.
             </h1>
             <h5 className="sub-tagline">
-              Beta coming soon. Sign up to stay in the loop.
+              Join our waitlist for early access.
             </h5>
             <div className="scroll-to">
               <a className="icon">
                 <i className="fa fa-chevron-down"></i>
               </a>
+            </div>
+            <div id="subscribe-form" className="email-leadgen">
+              <section className="section">
+                <div className="container is-fluid">
+                  <div id="form_container"></div>
+                </div>
+              </section>
             </div>
           </div>
         </div>

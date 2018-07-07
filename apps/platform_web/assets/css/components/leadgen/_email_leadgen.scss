@@ -1,0 +1,56 @@
+.email-leadgen {
+
+      #recaptcha {
+        > iframe {
+          width: 100%;
+        }
+      }
+
+      +mobile {
+        height: 100vh;
+        button {
+          width: 100%;
+        }
+      }
+
+      +desktop {
+        display: flex;
+        flex: 1;
+        padding: 4rem;
+
+        form {
+          width: 100%;
+        }
+      }
+
+      .control {
+        margin-bottom: 1em;
+
+        .select, select {
+          width: 100%;
+        }
+      }
+    }
+
+    .section {
+      width: 60%;
+    }
+
+    .success-message {
+      text-align: center;
+
+      +mobile {
+        padding: 3rem 0;
+      }
+
+      .fa {
+        color: $red;
+        font-size: 5em;
+        margin-bottom: 1em;
+      }
+
+      h2 {
+        font-size: $size-4;
+        margin-bottom: 1em;
+      }
+    }
