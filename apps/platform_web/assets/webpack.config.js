@@ -50,7 +50,7 @@ module.exports = {
         test: /\.elm$/,
         exclude: ["/elm-stuff/", "/node_modules"],
         loader: "elm-webpack-loader",
-        options: { maxInstances: 2, debug: true, cwd: elmSource }
+        options: { maxInstances: 2, debug: true, warn: true, cwd: elmSource }
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,

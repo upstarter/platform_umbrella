@@ -10,7 +10,6 @@ export default class HomeContainer extends React.Component {
       <div>
         <NavContainer/>
         <HomeComponent />
-        <PanelContainer />
       </div>
     )
   }
