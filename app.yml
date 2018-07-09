@@ -7,11 +7,20 @@ runtime_config:
     - python
     - nodejs-legacy
   build:
-    - cd ${PHOENIX_SUBDIR}/assets && npm install yarn && yarn install && yarn global add elm --prefix /usr/local && ./node_modules/webpack/bin/webpack.js -p && cd .. && mix phx.digest
+    - cd ${PLATFORM_WEB_PATH}/assets
+    - npm install
+    - sudo npm install -g elm
+    # - alias elm-make="${ELM_BIN}/elm-make"
+    # - elm-make ${ELM_SRC_PATH}/Main.elm --yes --output=${ELM_OUTPUT_PATH}/elm.js
+    - ./node_modules/webpack/bin/webpack.js -p
+    - cd .. && mix phx.digest
 beta_settings:
   cloud_sql_instances: eternal-sunset-206422:us-central1:umbrella-db
 env_variables:
-  PHOENIX_SUBDIR: apps/platform_web
+  PLATFORM_WEB_PATH: apps/platform_web
+  ELM_BIN: apps/platform_web/assets/node_modules/elm/binwrappers
+  ELM_OUTPUT_PATH: apps/platform_web/priv/static/js
+  ELM_SRC_PATH: apps/platform_web/assets/js/elm/src
   MIX_ENV: prod
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: ZQLm3AsToWtXkyePALtGRhjs
