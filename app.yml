@@ -7,7 +7,7 @@ runtime_config:
     - python
     - nodejs-legacy
   build:
-    - cd ${PHOENIX_SUBDIR}/assets && npm install && ./node_modules/webpack/bin/webpack.js -p && cd .. && mix phx.digest
+    - cd ${PHOENIX_SUBDIR}/assets && npm install yarn && yarn install && yarn global add elm --prefix /usr/local && ./node_modules/webpack/bin/webpack.js -p && cd .. && mix phx.digest
 beta_settings:
   cloud_sql_instances: eternal-sunset-206422:us-central1:umbrella-db
 env_variables:
