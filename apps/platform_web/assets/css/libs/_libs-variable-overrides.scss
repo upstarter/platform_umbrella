@@ -3,6 +3,22 @@
 // variable overrides for 3rd party libraries
 
 // -- BULMA overrides
+// @import "bulma-material-design-form";
+
+// -- BULMA DERIVED VARIABLES
+$primary: $light-purple;
+// $link: $blue;
+// $info: $cyan;
+// $success: $green;
+// $warning: $yellow;
+// $danger: $red;
+// $dark: $grey-darker;
+// $text: $grey-dark;
+
+// -- BULMA BUTTON
+$button-background-color: $light-purple;
+$button-color: $white;
+
 
 // -- BULMA NAVBAR
 $navbar-background-color: $dark-blue;

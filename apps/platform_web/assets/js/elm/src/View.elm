@@ -62,57 +62,48 @@ formView subscribeForm =
     in
         Html.div
             [ Html.class "content" ]
-            [ Html.h3
-                []
-                [ Html.text "CAI Insights" ]
-            , Html.p
-                []
-                [ Html.text "Delivered to your inbox" ]
-            , formError subscribeForm
+            [ formError subscribeForm
             , form
                 [ Html.onSubmit HandleFormSubmit ]
                 [ Html.div
-                    [ Html.class "field" ]
+                    [ Html.class "field is-horizontal" ]
                     [ Html.div
-                        [ Html.class "control" ]
-                        [ Html.input
-                            [ Html.classList
-                                [ ( "input is-medium", True )
-                                , ( "is-danger", Dict.member "full_name" validationErrors )
+                        [ Html.class "field-body" ]
+                        [ Html.div
+                            [ Html.class "control" ]
+                            [ Html.input
+                                [ Html.classList
+                                    [ ( "input is-focused", True )
+                                    , ( "is-danger", Dict.member "full_name" validationErrors )
+                                    ]
+                                , Html.placeholder "First and Last Name"
+                                , Html.required True
+                                , Html.value fullName
+                                , Html.onInput HandleFullNameInput
                                 ]
-                            , Html.placeholder "My name is..."
-                            , Html.required True
-                            , Html.value fullName
-                            , Html.onInput HandleFullNameInput
+                                []
+                            , validationErrorView "full_name" validationErrors
                             ]
-                            []
-                        , validationErrorView "full_name" validationErrors
                         ]
-                    ]
-                , Html.div
-                    [ Html.class "field" ]
-                    [ Html.div
+                    , Html.div
                         [ Html.class "control" ]
                         [ Html.input
                             [ Html.classList
-                                [ ( "input is-medium", True )
+                                [ ( "input is-focused", True )
                                 , ( "is-danger", Dict.member "email" validationErrors )
                                 ]
                             , Html.type_ "email"
-                            , Html.placeholder "My email address is..."
+                            , Html.placeholder "Email Address"
                             , Html.required True
                             , Html.value email
                             , Html.onInput HandleEmailInput
                             ]
                             []
                         ]
-                    ]
-                , Html.div
-                    [ Html.class "field" ]
-                    [ Html.div
-                        [ Html.class "control" ]
+                    , Html.div
+                        [ Html.class "field control" ]
                         [ Html.button
-                            [ Html.class "button is-primary is-medium"
+                            [ Html.class "button is-primary is-rounded"
                             , Html.disabled buttonDisabled
                             ]
                             [ Html.span

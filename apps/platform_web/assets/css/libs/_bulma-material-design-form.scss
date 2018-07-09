@@ -1,0 +1,444 @@
+// bulma vars
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+// 1. Initial variables
+
+// Colors
+$black:        hsl(0, 0%, 4%) !default
+$black-bis:    hsl(0, 0%, 7%) !default
+$black-ter:    hsl(0, 0%, 14%) !default
+
+$grey-darker:  hsl(0, 0%, 21%) !default
+$grey-dark:    hsl(0, 0%, 29%) !default
+$grey:         hsl(0, 0%, 48%) !default
+$grey-light:   hsl(0, 0%, 71%) !default
+$grey-lighter: hsl(0, 0%, 86%) !default
+
+$white-ter:    hsl(0, 0%, 96%) !default
+$white-bis:    hsl(0, 0%, 98%) !default
+$white:        hsl(0, 0%, 100%) !default
+
+$orange:       hsl(14,  100%, 53%) !default
+$yellow:       hsl(48,  100%, 67%) !default
+$green:        hsl(141, 71%,  48%) !default
+$turquoise:    hsl(171, 100%, 41%) !default
+$blue:         hsl(217, 71%,  53%) !default
+$purple:       hsl(271, 100%, 71%) !default
+$red:          hsl(348, 100%, 61%) !default
+
+// Typography
+$family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !default
+$family-monospace: "Inconsolata", "Consolas", "Monaco", monospace !default
+
+$size-1: 48px !default
+$size-2: 40px !default
+$size-3: 28px !default
+$size-4: 24px !default
+$size-5: 18px !default
+$size-6: 14px !default
+
+$size-7: 11px !default
+
+$weight-normal: 400 !default
+$weight-bold: 700 !default
+$weight-title-normal: 300 !default
+$weight-title-bold: 500 !default
+
+// Miscellaneous
+$easing: ease-out !default
+$radius-small: 2px !default
+$radius: 3px !default
+$radius-large: 5px !default
+$speed: 86ms !default
+
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+// 2. Primary colors
+
+$primary: $turquoise !default
+
+$info: $blue !default
+$success: $green !default
+$warning: $yellow !default
+$danger: $red !default
+
+$light: $white-ter !default
+$dark: $grey-darker !default
+
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+// 3. Applied variables
+
+// Invert colors
+$primary-invert: findColorInvert($primary) !default
+
+$info-invert: findColorInvert($info) !default
+$success-invert: findColorInvert($success) !default
+$warning-invert: findColorInvert($warning) !default
+$danger-invert: findColorInvert($danger) !default
+
+$light-invert: $dark !default
+$dark-invert: $light !default
+
+// General colors
+$body-background: $white-ter !default
+
+$background: $white-ter !default
+
+$border: $grey-lighter !default
+$border-hover: $grey-light !default
+
+// Text colors
+$text: $grey-dark !default
+$text-invert: findColorInvert($text) !default
+$text-light: $grey !default
+$text-strong: $grey-darker !default
+
+// Code colors
+$code: $red !default
+$code-background: $background !default
+
+$pre: $text !default
+$pre-background: $background !default
+
+// Link colors
+$link: $primary !default
+$link-invert: $primary-invert !default
+$link-visited: $purple !default
+
+$link-hover: $grey-darker !default
+$link-hover-background: $white-ter !default
+$link-hover-border: $grey-darker !default
+
+$link-active: $grey-darker !default
+$link-active-border: $grey-darker !default
+
+// Typography
+$family-primary: $family-sans-serif !default
+$family-code: $family-monospace !default
+
+$size-small: $size-7 !default
+$size-normal: $size-6 !default
+$size-medium: $size-5 !default
+$size-large: $size-3 !default
+$size-huge: $size-1 !default
+
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+// 4. Lists and maps
+
+$colors: (white: ($white, $black), black: ($black, $white), light: ($light, $light-invert), dark: ($dark, $dark-invert), primary: ($primary, $primary-invert), info: ($info, $info-invert), success: ($success, $success-invert), warning: ($warning, $warning-invert), danger: ($danger, $danger-invert)) !default
+
+$sizes: $size-1 $size-2 $size-3 $size-4 $size-5 $size-6 !default
+// bulma vars end
+
+/**
+ * Bulma Material Design Form Elements
+ * İsmail Demirbilek
+ * (c) 2016 - MIT
+ * Based on https://s.codepen.io/jonnitto/pen/OVmvPB by Jon Uhlmann
+ */
+// Font Sizes
+$mf-font-size: 1rem !default
+$mf-active-font-size: $mf-font-size * 0.8 !default
+$mf-active-top: -$mf-font-size !default
+
+// Shadows
+$shadow-inset: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14)
+$shadow-0: 0 0 1px rgba(0, 0, 0, 0)
+$shadow-2: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12)
+$shadow-3: 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 3px -2px rgba(0, 0, 0, 0.2), 0 1px 8px 0 rgba(0, 0, 0, 0.12)
+$shadow-4: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2)
+$shadow-6: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2)
+$shadow-8: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2)
+
+// Margin & Paddings
+$mf-gap: $mf-font-size * 1.5 !default
+$mf-spacer: $mf-font-size / 8 !default
+$mf-fieldset-margin: 0 0 ($mf-gap * 2) !default
+$mf-checkbox-gap: $mf-font-size * 2 !default
+$mf-checkbox-top: 0 !default
+$mf-radio-margin: $mf-font-size / -4 !default
+
+// Colors
+$mf-input-color: $text !default
+$mf-border-color: $grey !default
+$mf-label-color: lighten($mf-border-color, 10%) !default
+$mf-active-color: darken($mf-border-color, 10%) !default
+$mf-focus-color: $primary !default
+$mf-error-color: $danger !default
+
+// Animation
+$mf-transition-speed: 0.38s !default
+
+.radio-control,
+.control
+  position: relative
+  margin-top: $mf-gap * 1.5
+  margin-bottom: $mf-gap * 1.5
+
+.form-inline
+  > .control,
+  > .btn
+    display: inline-block
+    margin-bottom: 0
+
+.form-help
+  margin-top: $mf-spacer
+  margin-left: $mf-spacer
+  color: $mf-label-color
+  font-size: $mf-active-font-size
+
+  .checkbox-control &,
+  .radio-control &,
+  .control &
+    position: absolute
+    width: 100%
+
+  .checkbox-control &
+    position: relative
+    margin-bottom: $mf-font-size
+
+  .radio-control &
+    padding-top: $mf-spacer * 2
+    margin-top: -$mf-font-size
+
+.control
+  // scss-lint:disable QualifyingElement, NestingDepth
+  input
+    height: $mf-font-size * 1.9
+
+  textarea
+    resize: none
+
+  select
+    width: 100%
+    font-size: $mf-font-size
+    height: $mf-font-size * 1.6
+    padding: $mf-spacer $mf-spacer ($mf-spacer / 2)
+    background: none
+    border: none
+    line-height: 1.6
+    box-shadow: none
+
+  .label
+    position: absolute
+    top: $mf-font-size / 4
+    pointer-events: none
+    padding-left: $mf-spacer
+    z-index: 1
+    color: $mf-label-color
+    font-size: $mf-font-size
+    font-weight: normal
+    transition: all $mf-transition-speed ease
+
+  .bar
+    position: relative
+    border-bottom: ($mf-font-size / 16) solid $mf-border-color
+    display: block
+
+    &::before
+      content: ''
+      height: $mf-font-size / 8
+      width: 0
+      left: 50%
+      bottom: $mf-font-size / -16
+      position: absolute
+      background: $mf-focus-color
+      transition: left $mf-transition-speed ease, width $mf-transition-speed ease
+      z-index: 2
+
+  input,
+  textarea
+    display: block
+    background: none
+    padding: $mf-spacer $mf-spacer ($mf-spacer / 2)
+    font-size: $mf-font-size
+    border-width: 0
+    border-color: transparent
+    line-height: 1.9
+    width: 100%
+    color: transparent
+    transition: all $mf-transition-speed ease
+    box-shadow: none
+
+  input[type="file"]
+    line-height: 1
+
+    ~ .bar
+      display: none
+
+  select,
+  input:focus,
+  input:valid,
+  input.form-file,
+  input.has-value,
+  textarea:focus,
+  textarea:valid,
+  textarea.form-file,
+  textarea.has-value
+    color: $mf-input-color
+
+    ~ .label
+      font-size: $mf-active-font-size
+      color: $mf-active-color
+      top: $mf-active-top
+      left: 0
+
+  select,
+  input,
+  textarea
+    &:focus
+      outline: none
+
+      ~ .label
+        color: $mf-focus-color
+
+      ~ .bar
+        &::before
+          width: 100%
+          left: 0
+
+// Radio & Checkbox
+.checkbox-control,
+.radio-control
+  label
+    position: relative
+    cursor: pointer
+    padding-left: $mf-checkbox-gap
+    text-align: left
+    color: $mf-input-color
+    display: block
+
+  input
+    width: auto
+    opacity: 0.00000001
+    position: absolute
+    left: 0
+
+.radio-control
+  margin-bottom: $mf-font-size
+
+  .helper
+    position: absolute
+    top: $mf-radio-margin
+    left: $mf-radio-margin
+    cursor: pointer
+    display: block
+    font-size: $mf-font-size
+    user-select: none
+    color: $mf-border-color
+
+    &::before,
+    &::after
+      content: ''
+      position: absolute
+      left: 0
+      top: 0
+      margin: $mf-spacer * 2
+      width: $mf-font-size
+      height: $mf-font-size
+      transition: transform $mf-transition-speed ease
+      border-radius: 50%
+      border: ($mf-font-size / 8) solid currentColor
+
+    &::after
+      transform: scale(0)
+      background-color: $mf-focus-color
+      border-color: $mf-focus-color
+
+  label:hover .helper
+    color: $mf-focus-color
+
+  // scss-lint:disable QualifyingElement, NestingDepth
+  input:checked
+    ~ .helper
+      &::after
+        transform: scale(0.5)
+
+      &::before
+        color: $mf-focus-color
+
+.checkbox-control
+  // scss-lint:disable QualifyingElement
+
+  margin-top: $mf-gap * 2
+  margin-bottom: $mf-font-size
+
+  .helper
+    color: $mf-border-color
+    position: absolute
+    top: $mf-checkbox-top
+    left: 0
+    width: $mf-font-size
+    height: $mf-font-size
+    z-index: 0
+    border: ($mf-font-size / 8) solid currentColor
+    border-radius: $mf-font-size / 16
+    transition: border-color $mf-transition-speed ease
+
+    &::before,
+    &::after
+      position: absolute
+      height: 0
+      width: $mf-font-size * 0.2
+      background-color: $mf-focus-color
+      display: block
+      transform-origin: left top
+      border-radius: $mf-font-size / 4
+      content: ''
+      transition: opacity $mf-transition-speed ease, height 0s linear $mf-transition-speed
+      opacity: 0
+
+    &::before
+      top: $mf-font-size * 0.65
+      left: $mf-font-size * 0.38
+      transform: rotate(-135deg)
+
+    &::after
+      top: $mf-font-size * 0.3
+      left: 0
+      transform: rotate(-45deg)
+
+  label:hover .helper
+    color: $mf-focus-color
+
+  input:checked
+    ~ .helper
+      color: $mf-focus-color
+
+      &::after,
+      &::before
+        opacity: 1
+        transition: height $mf-transition-speed ease
+
+      &::after
+        height: $mf-font-size / 2
+
+      &::before
+        height: $mf-font-size * 1.2
+        transition-delay: $mf-transition-speed
+
+.radio-control + .radio-control,
+.checkbox-control + .checkbox-control
+  margin-top: $mf-font-size
+
+.has-error
+  .legend.legend,
+  &.control .label.label
+    // Prevent !importantRule
+    color: $mf-error-color
+
+  &.control,
+  &.checkbox-control,
+  &.radio-control,
+  &.radio-control
+    .form-help,
+    .helper
+      color: $mf-error-color
+
+  .bar
+    &::before
+      background: $mf-error-color
+      left: 0
+      width: 100%

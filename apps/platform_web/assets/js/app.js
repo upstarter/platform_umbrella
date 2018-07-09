@@ -20,7 +20,7 @@ import "phoenix_html"
 
 // import socket from "./socket"
 
-import Elm from './elm';
+import Elm from './elm/src/Main.elm';
 //
 window.onloadCallback = () => {
   const formContainer = document.querySelector('#form_container');
