@@ -7,12 +7,10 @@ runtime_config:
     - python
     - nodejs-legacy
   build:
-    - cd ${PLATFORM_WEB_PATH}/assets
-    - npm install
+    - cd ${PLATFORM_WEB_PATH}/assets && npm install && ./node_modules/webpack/bin/webpack.js -p
+    - cd ${PLATFORM_WEB_PATH}/assets && chown +x /app/apps/platform_web/assets/node_modules/elm && cd .. && mix phx.digest
     # - alias elm-make="${ELM_BIN}/elm-make"
     # - elm-make ${ELM_SRC_PATH}/Main.elm --yes --output=${ELM_OUTPUT_PATH}/elm.js
-    - ${PLATFORM_WEB_PATH}/assets/node_modules/webpack/bin/webpack.js -p
-    - cd .. && mix phx.digest
 beta_settings:
   cloud_sql_instances: eternal-sunset-206422:us-central1:umbrella-db
 env_variables:
