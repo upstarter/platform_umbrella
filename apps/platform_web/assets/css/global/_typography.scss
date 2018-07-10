@@ -1,8 +1,15 @@
 // - - - - - - - - - - - - - - - - - - -
 // - - typography
 // global typography styles
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5, h6 {
   font-family: $header-font-family;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $white;
 }
 
 .tagline {

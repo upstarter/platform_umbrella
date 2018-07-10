@@ -2,6 +2,7 @@
 -# = for i in list do
 -#   = inspect i
 -# = Enum.each(blog_posts, fn(x) -> inspect x end)
+#blog
 #blog_content{style: "margin: 25px auto; width: 52%"}
   .blog_posts
     = for post <- blog_posts do
@@ -12,7 +13,7 @@
         .card-content
           .card-header
             .card-header-title
-              .title= post.title
+              %h1.title.blog-title= post.title
           %br
           .items{style: "margin: auto; width: 50%;"}
             %i=post.date
