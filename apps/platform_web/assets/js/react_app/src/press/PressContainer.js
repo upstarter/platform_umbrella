@@ -1,15 +1,14 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import NavContainer from "../common/nav/nav"
-import HomeComponent from "./HomeComponent"
-import PanelContainer from "../common/panel/panel"
+import PressComponent from "./PressComponent"
 
-export default class HomeContainer extends React.Component {
+export default class PressContainer extends React.Component {
   render() {
     return (
       <div>
         <NavContainer />
-        <HomeComponent />
+        <PressComponent />
       </div>
     )
   }
