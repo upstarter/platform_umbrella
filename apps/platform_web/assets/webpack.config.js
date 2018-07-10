@@ -1,9 +1,15 @@
+const path = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const elmSource = __dirname + "/js/elm";
+
 const env = process.env.MIX_ENV || "dev";
 const isProduction = env === "prod";
-const path = require("path");
+
+const elmSource = __dirname + "/js/elm";
+
+const prodElm = "/app/apps/platform_web/assets"
+const elmMake = "/node_modules/elm/binwrappers/elm-make"
+const elmMakePath = isProduction ?  prodElm + elmMake : __dirname + elmMake
 
 module.exports = {
   devtool: "source-map",
@@ -42,15 +48,12 @@ module.exports = {
         test: /\.(jsx?)/,
         exclude: ["/node_modules"],
         loader: "babel-loader",
-        options: {
-          presets: ["react", "es2015"]
-        }
       },
       {
         test: /\.elm$/,
         exclude: ["/elm-stuff/", "/node_modules"],
         loader: "elm-webpack-loader",
-        options: { pathToMake: "/app/apps/platform_web/assets/node_modules/elm/binwrappers/elm-make", maxInstances: 2, debug: true, warn: true, cwd: elmSource }
+        options: { pathToMake: elmMakePath, maxInstances: 2, debug: true, warn: true, cwd: elmSource }
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
