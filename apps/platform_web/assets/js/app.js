@@ -20,6 +20,14 @@ import "phoenix_html"
 
 // import socket from "./socket"
 
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker
+    .register('./sw.js', scope: "./")
+    .then(function() {
+      console.log('Service worker registered!');
+    });
+}
+
 import Elm from './elm/src/Main.elm';
 //
 window.onloadCallback = () => {

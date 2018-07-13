@@ -23,9 +23,9 @@ export default class NavContainer extends React.Component {
             Blog
           </a>
           <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false">
-           <span aria-hidden="true">Yo</span>
-           <span aria-hidden="true">BBubb</span>
-           <span aria-hidden="true">Hobb</span>
+           <span aria-hidden="true"></span>
+           <span aria-hidden="true"></span>
+           <span aria-hidden="true"></span>
           </a>
         </div>
       </nav>

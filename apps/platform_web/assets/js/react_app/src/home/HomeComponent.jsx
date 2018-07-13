@@ -8,7 +8,7 @@ export default class HomeComponent extends React.Component {
         <div className="hero is-huge">
           <div className="hero-body">
             <h1 className="subtitle tagline">
-              Join the Cryptoasset intelligence platform made up of expert traders, investors, and analysts.
+              Curated Cryptoasset intelligence for traders, investors, and analysts.
             </h1>
             <h5 className="sub-tagline">
               Join the waitlist for early access.
