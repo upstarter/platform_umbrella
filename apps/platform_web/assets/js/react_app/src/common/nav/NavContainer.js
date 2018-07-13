@@ -9,23 +9,23 @@ export default class NavContainer extends React.Component {
     return (
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
-          <a className="navbar-item .nav-logo" href="https://cryptowise.ai">
+          <a className="navbar-item .nav-logo" href="http://cryptowise.ai">
             <img src={img} alt="CryptoWise: Cryptoasset research & analysis" width="112" height="28"></img>
           </a>
 
-          <a className="navbar-item" href="https://www.cryptowise.ai">
+          <a className="navbar-item" href="http://www.cryptowise.ai">
             Home
           </a>
-          <a className="navbar-item" href="https://www.cryptowise.ai/press">
+          <a className="navbar-item" href="http://www.cryptowise.ai/press">
             Press
           </a>
-          <a className="navbar-item" href="https://www.cryptowise.ai/blog">
+          <a className="navbar-item" href="http://www.cryptowise.ai/blog">
             Blog
           </a>
           <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false">
-           <span aria-hidden="true">Yo</span>
-           <span aria-hidden="true">BBubb</span>
-           <span aria-hidden="true">Hobb</span>
+           <span aria-hidden="true"></span>
+           <span aria-hidden="true"></span>
+           <span aria-hidden="true"></span>
           </a>
         </div>
       </nav>
