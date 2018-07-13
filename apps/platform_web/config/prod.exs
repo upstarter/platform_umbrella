@@ -16,6 +16,11 @@ use Mix.Config
 config :platform_web, PlatformWeb.Endpoint,
   load_from_system_env: true,
   http: [port: "${PORT}"],
+  url: [scheme: "https", host: "cryptowise.ai", port: 443],
+  force_ssl: [
+    host: nil,
+    rewrite_on: [:x_forwarded_proto]
+  ],
   secret_key_base: "zSs42WIom2Vw/5MxHUfi+lqgOBFp0D1n4fJeHxaZ9yYAb9EzzoepurcxCXq3IBha",
   check_origin: false,
   server: true,
