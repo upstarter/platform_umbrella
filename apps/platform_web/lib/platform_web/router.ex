@@ -29,13 +29,10 @@ defmodule PlatformWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :home
-    get "/test", PageController, :test
-    get "/press", PageController, :press
-    get "/blog", PageController, :blog
 
-    get "/research", PageController, :research
-    get "/about", PageController, :index
-    get "/privacy_policy", PageController, :privacy_policy
+    get "/press", PageController, :home
+    get "/blog", PageController, :home
+    get "/privacy_policy", PageController, :home
   end
 
   # Other scopes may use custom stacks.
@@ -45,6 +42,7 @@ defmodule PlatformWeb.Router do
     scope "/v1", V1 do
       # LEADS
       post("/leads", LeadController, :create)
+      get("/blog_posts", BlogController, :blog_posts)
 
       # USERS
       scope "/users" do
@@ -60,6 +58,7 @@ defmodule PlatformWeb.Router do
           get "/me", UserController, :show
         end
       end
+
     end
   end
 end
