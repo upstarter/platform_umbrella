@@ -1,17 +1,45 @@
 // - - - - - - - - - - - - - - - - - - -
 // - - typography
 // global typography styles
+$avenir: "Avenir", sans-serif;
+$avenir-light: "Avenir Light", sans-serif;
+$avenir-medium: "Avenir Medium", sans-serif;
+$avenir-book: "Avenir Book", sans-serif;
+$avenir-roman: "Avenir Roman", sans-serif;
+$light: 300;
+$normal: 400;
+$semibold: 500;
+$bold: 700;
+
+.hero {
+  font-family: $avenir-light;
+  font-size: 56px;
+  line-height: -0.2ch;
+
+}
 
 body {
-  font-family: $font-family;
+  font-family: $avenir-light;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 1.7;
+  line-height: 25px;
+  letter-spacing: 0.2ch;
   color: $white;
+
+  // @include breakpoint(small) {
+  //   font-family: $mobile-font-family;
+  //   font-weight: 400;
+  //   font-size: 14px;
+  //   line-height: 1.7;
+  //   color: $white;
+  // }
 }
 h1, h2, h3, h4, h5, h6 {
-  font-family: $header-font-family;
+  font-family: $font-family;
   letter-spacing: 0.02em;
+}
+
+p {
+  max-width: 75ch;
 }
 
 .title {

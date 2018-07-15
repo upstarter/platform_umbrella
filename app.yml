@@ -4,8 +4,9 @@ runtime: gs://elixir-runtime/elixir.yaml
 manual_scaling:
   instances: 1
 resources:
- cpu: .5
- memory_gb: 0.18
+ cpu: 1
+ # .5 is lowest mem
+ memory_gb: 0.50
  disk_size_gb: 10
 runtime_config:
   release_app: platform_umbrella
