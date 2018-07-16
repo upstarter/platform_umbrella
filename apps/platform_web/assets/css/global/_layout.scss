@@ -5,3 +5,14 @@
 .hero {
   height: 100vh;
 }
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+p {
+  max-width: 125ch;
+  text-align: center;
+}

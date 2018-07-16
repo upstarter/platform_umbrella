@@ -11,20 +11,39 @@ $normal: 400;
 $semibold: 500;
 $bold: 700;
 
-.hero {
+.title {
   font-family: $avenir-light;
+  font-weight: $light;
   font-size: 56px;
-  line-height: -0.2ch;
+  line-height: 65px;
+  letter-spacing: -0.1ch;
+  color: $white;
+}
+.subtitle-big {
+  font-family: $avenir-book;
+  font-weight: $light;
+  line-height: 30px;
+  letter-spacing: 0.2ch;
+  font-size: 17px;
+  color: $silver;
+}
 
+.subtitle-small {
+  font-family: $avenir-book;
+  font-weight: $light;
+  line-height: 20px;
+  letter-spacing: 0.2ch;
+  font-size: 14px;
+  color: $silver;
 }
 
 body {
   font-family: $avenir-light;
-  font-weight: 400;
+  font-weight: $light;
+  font-size: 16px;
   line-height: 25px;
   letter-spacing: 0.2ch;
   color: $white;
-
   // @include breakpoint(small) {
   //   font-family: $mobile-font-family;
   //   font-weight: 400;
@@ -33,26 +52,27 @@ body {
   //   color: $white;
   // }
 }
-h1, h2, h3, h4, h5, h6 {
-  font-family: $font-family;
-  letter-spacing: 0.02em;
+
+h1 {
+  font-family: $avenir-light;
+  font-weight: $normal;
+  line-height: 54px;
+  letter-spacing: 0ch;
+  font-size: 46px;
 }
 
-p {
-  max-width: 75ch;
+h2 {
+  font-family: $avenir-light;
+  font-weight: $normal;
+  font-size: 30px;
+  line-height: 34px;
+  letter-spacing: 0.1ch;
 }
 
-.title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: $white;
-}
-
-.tagline {
-  color: $white;
-}
-
-.sub-tagline {
-  color: $silver;
+h3 {
+  font-family: $avenir-book;
+  font-weight: $normal;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0.2ch;
 }

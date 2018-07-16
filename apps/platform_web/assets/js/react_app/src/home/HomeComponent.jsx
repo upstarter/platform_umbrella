@@ -13,10 +13,10 @@ export default class HomeComponent extends React.Component {
         <div className="main-wrapper">
           <div className="hero is-huge">
             <div className="hero-body">
-              <h1 className="subtitle tagline">
-                Curated Cryptoasset intelligence for traders, investors, and analysts.
+              <h1 className="title">
+                A Cryptoasset symposium for serious investors and analysts.
               </h1>
-              <h5 className="sub-tagline">
+              <h5 className="subtitle-big">
                 Join the waitlist for early access.
               </h5>
               <div className="scroll-to">
