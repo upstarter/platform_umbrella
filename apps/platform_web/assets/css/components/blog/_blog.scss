@@ -1,16 +1,16 @@
 #blog_content {
   height: 100%;
-  margin: 25px auto;
+  margin: 70px auto;
   width: 52%;
 
   .card {
-    background:
-      linear-gradient(to bottom, rgba(255,255,255,0.85), rgba(255,255,255,0.75));
+    background: rgb(240,240,240);
     border: 3px solid rgba(0, 0, 0, 0.1);
     color: $dark-blue;
 
     h1,h2,h3,strong,em { color: $dark-blue; }
 
+    a strong { color: #3273dc; }
     a strong em { color: #3273dc; }
 
   }
