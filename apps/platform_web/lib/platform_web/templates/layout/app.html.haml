@@ -12,7 +12,7 @@
     - css_path = static_path(@conn, "/css/app.css")
     %link{rel: "stylesheet" href: css_path}
 
-  %body
+  %body.has-navbar-fixed-top
     / Load Facebook SDK for JavaScript
     #fb-root
     // :javascript

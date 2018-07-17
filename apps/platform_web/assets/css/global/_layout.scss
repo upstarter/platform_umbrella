@@ -1,18 +1,39 @@
 // - - - - - - - - - - - - - - - - - - -
 // - - layout
-// global layout classes - height, width, padding, margin, etc.
-
-.hero {
-  height: 100vh;
-}
-
-.title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-p {
-  max-width: 125ch;
+// global layout classes - height, width, padding, margin, etc
+#main-wrapper {
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
   text-align: center;
+
+  .navbar {
+    @include breakpoint(small) {
+
+      .nav-logo img {
+        max-height: 500px !important;
+        height: 50px;
+        width: 150px;
+      }
+    }
+  }
+
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    .title {
+      max-width: 700px;
+    }
+
+    @include breakpoint(small) {
+      margin-top: 20px;
+    }
+  }
+
+  p {
+    max-width: 125ch;
+    text-align: center;
+  }
 }

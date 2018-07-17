@@ -5,17 +5,18 @@ body {
   background: $dark-blue;
 }
 
-.hero {
+#main-wrapper {
   border-top: 1px solid rgba(255, 255, 255, .3);
   -webkit-background-clip: padding-box; /* for Safari */
   background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  padding:40px;
   background:
-    linear-gradient(to bottom, rgba(14,19,27,0.90), rgba(14,19,27,0.80)),
+    linear-gradient(to bottom, rgba(14,19,27,0.90), rgba(14,19,27,0.85)),
     url('/images/hero.jpg') no-repeat;
   background-size: cover;
   background-position: top;
+ }
+
+ .navbar {
+   background: transparent;
+   a { background: none !important; }
  }
