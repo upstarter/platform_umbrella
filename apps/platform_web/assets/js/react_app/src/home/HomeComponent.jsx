@@ -13,7 +13,7 @@ export default class HomeComponent extends React.Component {
         <div className="hero is-huge">
           <div className="hero-body">
             <h1 className="title">
-              Wiser cryptoasset investing.
+              Wiser cryptoasset investing starts with the ecosystem.
             </h1>
             <h5 className="subtitle-big">
               Join the conversation & receive free insights.
