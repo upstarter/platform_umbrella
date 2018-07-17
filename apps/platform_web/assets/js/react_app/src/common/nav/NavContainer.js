@@ -13,16 +13,16 @@ export default class NavContainer extends React.Component {
           <Link to="/" className="navbar-item .nav-logo">
             <img src={img} alt="CryptoWise: Cryptoasset research, analysis" width="135" height="60"></img>
           </Link>
-        </div>
-        <div className="navbar-menu" id="navMenu">
-          <Link to="/" className="navbar-item">Home</Link>
-          <Link to="/press" className="navbar-item">Press</Link>
-          <Link to="/blog" className="navbar-item">Blog</Link>
           <div class="navbar-burger burger" data-target="navMenu">
            <span aria-hidden="true"></span>
            <span aria-hidden="true"></span>
            <span aria-hidden="true"></span>
           </div>
+        </div>
+        <div className="navbar-menu" id="navMenu">
+          <Link to="/" className="navbar-item">Home</Link>
+          <Link to="/press" className="navbar-item">Press</Link>
+          <Link to="/blog" className="navbar-item">Blog</Link>
         </div>
       </nav>
     )

@@ -146,7 +146,62 @@ var _ericsteen$platform_umbrella$View$formView = function (subscribeForm) {
 													_1: {ctor: '[]'}
 												}
 											}),
-										_1: {ctor: '[]'}
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$div,
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$class('control'),
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: A2(
+														_elm_lang$html$Html$input,
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html_Attributes$classList(
+																{
+																	ctor: '::',
+																	_0: {ctor: '_Tuple2', _0: 'input is-focused', _1: true},
+																	_1: {
+																		ctor: '::',
+																		_0: {
+																			ctor: '_Tuple2',
+																			_0: 'is-danger',
+																			_1: A2(_elm_lang$core$Dict$member, 'email', validationErrors)
+																		},
+																		_1: {ctor: '[]'}
+																	}
+																}),
+															_1: {
+																ctor: '::',
+																_0: _elm_lang$html$Html_Attributes$type_('email'),
+																_1: {
+																	ctor: '::',
+																	_0: _elm_lang$html$Html_Attributes$placeholder('Email Address'),
+																	_1: {
+																		ctor: '::',
+																		_0: _elm_lang$html$Html_Attributes$required(true),
+																		_1: {
+																			ctor: '::',
+																			_0: _elm_lang$html$Html_Attributes$value(email),
+																			_1: {
+																				ctor: '::',
+																				_0: _elm_lang$html$Html_Events$onInput(_ericsteen$platform_umbrella$Messages$HandleEmailInput),
+																				_1: {ctor: '[]'}
+																			}
+																		}
+																	}
+																}
+															}
+														},
+														{ctor: '[]'}),
+													_1: {ctor: '[]'}
+												}),
+											_1: {ctor: '[]'}
+										}
 									}),
 								_1: {
 									ctor: '::',
@@ -154,123 +209,68 @@ var _ericsteen$platform_umbrella$View$formView = function (subscribeForm) {
 										_elm_lang$html$Html$div,
 										{
 											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$class('control'),
+											_0: _elm_lang$html$Html_Attributes$class('field button-control'),
 											_1: {ctor: '[]'}
 										},
 										{
 											ctor: '::',
 											_0: A2(
-												_elm_lang$html$Html$input,
+												_elm_lang$html$Html$button,
 												{
 													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$classList(
+													_0: _elm_lang$html$Html_Attributes$class('button is-primary'),
+													_1: {
+														ctor: '::',
+														_0: _elm_lang$html$Html_Attributes$disabled(buttonDisabled),
+														_1: {ctor: '[]'}
+													}
+												},
+												{
+													ctor: '::',
+													_0: A2(
+														_elm_lang$html$Html$span,
 														{
 															ctor: '::',
-															_0: {ctor: '_Tuple2', _0: 'input is-focused', _1: true},
-															_1: {
-																ctor: '::',
-																_0: {
-																	ctor: '_Tuple2',
-																	_0: 'is-danger',
-																	_1: A2(_elm_lang$core$Dict$member, 'email', validationErrors)
+															_0: _elm_lang$html$Html_Attributes$class('icon'),
+															_1: {ctor: '[]'}
+														},
+														{
+															ctor: '::',
+															_0: A2(
+																_elm_lang$html$Html$i,
+																{
+																	ctor: '::',
+																	_0: _elm_lang$html$Html_Attributes$classList(
+																		{
+																			ctor: '::',
+																			_0: {ctor: '_Tuple2', _0: 'fa fa-check', _1: !saving},
+																			_1: {
+																				ctor: '::',
+																				_0: {ctor: '_Tuple2', _0: 'fa fa-circle-o-notch fa-spin', _1: saving},
+																				_1: {ctor: '[]'}
+																			}
+																		}),
+																	_1: {ctor: '[]'}
 																},
-																_1: {ctor: '[]'}
-															}
+																{ctor: '[]'}),
+															_1: {ctor: '[]'}
 														}),
 													_1: {
 														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$type_('email'),
-														_1: {
-															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$placeholder('Email Address'),
-															_1: {
-																ctor: '::',
-																_0: _elm_lang$html$Html_Attributes$required(true),
-																_1: {
-																	ctor: '::',
-																	_0: _elm_lang$html$Html_Attributes$value(email),
-																	_1: {
-																		ctor: '::',
-																		_0: _elm_lang$html$Html_Events$onInput(_ericsteen$platform_umbrella$Messages$HandleEmailInput),
-																		_1: {ctor: '[]'}
-																	}
-																}
-															}
-														}
-													}
-												},
-												{ctor: '[]'}),
-											_1: {ctor: '[]'}
-										}),
-									_1: {
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$div,
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$class('field button-control'),
-												_1: {ctor: '[]'}
-											},
-											{
-												ctor: '::',
-												_0: A2(
-													_elm_lang$html$Html$button,
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$class('button is-primary'),
-														_1: {
-															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$disabled(buttonDisabled),
-															_1: {ctor: '[]'}
-														}
-													},
-													{
-														ctor: '::',
 														_0: A2(
 															_elm_lang$html$Html$span,
+															{ctor: '[]'},
 															{
 																ctor: '::',
-																_0: _elm_lang$html$Html_Attributes$class('icon'),
-																_1: {ctor: '[]'}
-															},
-															{
-																ctor: '::',
-																_0: A2(
-																	_elm_lang$html$Html$i,
-																	{
-																		ctor: '::',
-																		_0: _elm_lang$html$Html_Attributes$classList(
-																			{
-																				ctor: '::',
-																				_0: {ctor: '_Tuple2', _0: 'fa fa-check', _1: !saving},
-																				_1: {
-																					ctor: '::',
-																					_0: {ctor: '_Tuple2', _0: 'fa fa-circle-o-notch fa-spin', _1: saving},
-																					_1: {ctor: '[]'}
-																				}
-																			}),
-																		_1: {ctor: '[]'}
-																	},
-																	{ctor: '[]'}),
+																_0: _elm_lang$html$Html$text('Subscribe'),
 																_1: {ctor: '[]'}
 															}),
-														_1: {
-															ctor: '::',
-															_0: A2(
-																_elm_lang$html$Html$span,
-																{ctor: '[]'},
-																{
-																	ctor: '::',
-																	_0: _elm_lang$html$Html$text('Subscribe'),
-																	_1: {ctor: '[]'}
-																}),
-															_1: {ctor: '[]'}
-														}
-													}),
-												_1: {ctor: '[]'}
-											}),
-										_1: {ctor: '[]'}
-									}
+														_1: {ctor: '[]'}
+													}
+												}),
+											_1: {ctor: '[]'}
+										}),
+									_1: {ctor: '[]'}
 								}
 							}),
 						_1: {ctor: '[]'}

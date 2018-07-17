@@ -45,7 +45,7 @@ export default class BlogComponent extends React.Component {
     return (
       <div>
         <NavContainer />
-        <div id="blog_content">
+        <div id="blog_content" className="content">
           <div class="blog_posts">
               {blog_posts.map(post =>
                 <div class="card">

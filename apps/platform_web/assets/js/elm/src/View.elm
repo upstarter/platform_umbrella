@@ -84,21 +84,21 @@ formView subscribeForm =
                                 []
                             , validationErrorView "full_name" validationErrors
                             ]
-                        ]
-                    , Html.div
-                        [ Html.class "control" ]
-                        [ Html.input
-                            [ Html.classList
-                                [ ( "input is-focused", True )
-                                , ( "is-danger", Dict.member "email" validationErrors )
+                        , Html.div
+                            [ Html.class "control" ]
+                            [ Html.input
+                                [ Html.classList
+                                    [ ( "input is-focused", True )
+                                    , ( "is-danger", Dict.member "email" validationErrors )
+                                    ]
+                                , Html.type_ "email"
+                                , Html.placeholder "Email Address"
+                                , Html.required True
+                                , Html.value email
+                                , Html.onInput HandleEmailInput
                                 ]
-                            , Html.type_ "email"
-                            , Html.placeholder "Email Address"
-                            , Html.required True
-                            , Html.value email
-                            , Html.onInput HandleEmailInput
+                                []
                             ]
-                            []
                         ]
                     , Html.div
                         [ Html.class "field button-control" ]
