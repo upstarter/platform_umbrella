@@ -1,22 +1,22 @@
 // - - - - - - - - - - - - - - - - - - -
 // - - layout
 // global layout classes - height, width, padding, margin, etc
-#main-wrapper {
+#app {
   min-height: 100vh;
   position: relative;
   z-index: 1;
   text-align: center;
 
-  .navbar {
-    @include breakpoint(small) {
-
-      .nav-logo img {
-        max-height: 500px !important;
-        height: 50px;
-        width: 150px;
-      }
-    }
-  }
+  // .navbar {
+  //   @include mobile {
+  //
+  //     .nav-logo img {
+  //       max-height: 500px !important;
+  //       height: 50px;
+  //       width: 150px;
+  //     }
+  //   }
+  // }
 
   .hero {
     display: flex;
@@ -27,8 +27,8 @@
       max-width: 700px;
     }
 
-    @include breakpoint(small) {
-      margin-top: 20px;
+    @include mobile {
+      margin-top: 40px;
     }
   }
 

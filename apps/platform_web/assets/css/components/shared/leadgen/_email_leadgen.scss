@@ -1,50 +1,25 @@
 .email-leadgen {
+  display: flex;
+  justify-content: center;
 
-  @include breakpoint(small) {
-    section {
-      display: flex;
-      flex-wrap: nowrap;
-      justify-content: center;
-      align-items: center;
-    }
+  @include mobile {
 
-    #form_container {
-
-
-      .field-body {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-      }
-    }
   }
 
-  @include breakpoint(large) {
-    section {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
 
   .control {
     margin-bottom: 1em;
+    margin-right: 7px;
 
     .select, select {
       width: 100%;
     }
   }
 
-  .button-control {
-    display: flex;
-    justify-content: center;
-  }
-
   .success-message {
     text-align: center;
 
-    @include breakpoint(small) {
+    @include mobile {
       padding: 1rem 0;
     }
 

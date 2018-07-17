@@ -41,7 +41,7 @@ body {
   line-height: 65px;
   letter-spacing: -0.08ch;
   color: $white;;
-  @include breakpoint(small) {
+  @include mobile {
     font-size: 34px;
     line-height: 42px;
   }

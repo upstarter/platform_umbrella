@@ -3,9 +3,6 @@
 // global skin styles - gradients, colors, box-shadows, etc.
 body {
   background: $dark-blue;
-}
-
-#main-wrapper {
   border-top: 1px solid rgba(255, 255, 255, .3);
   -webkit-background-clip: padding-box; /* for Safari */
   background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
@@ -20,4 +17,18 @@ body {
    background:transparent;
      // linear-gradient(to bottom, rgba(14,19,27,0.99), rgba(14,19,27,0.45)), transparent;
    a { background: none !important; }
+
+   @include mobile {
+     background: $dark-blue ;
+     height: 65px;
+     .navbar-brand {
+       height: 65px;
+       .navbar-item {
+         img { height: 60px; }
+       }
+     }
+     .navbar-logo { height: 35px; }
+     .nav-logo { height: 35px; }
+     .navbar-burger { height: 65px; }
+   }
  }
