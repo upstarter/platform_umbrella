@@ -1,6 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import img from "../../../../../static/images/nav_logo.png"
+import img from "../../../../../static/images/nav_logo.svg"
 import { Link } from "react-router-dom"
 
 export default class NavContainer extends React.Component {
@@ -8,10 +8,10 @@ export default class NavContainer extends React.Component {
 
   render() {
     return (
-      <nav className="navbar" role="navigation" aria-label="main navigation">
+      <nav id="nav" className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <Link to="/" className="navbar-item .nav-logo">
-            <img src={img} alt="CryptoWise: Cryptoasset research & analysis" width="112" height="28"></img>
+            <img src={img} alt="CryptoWise: Cryptoasset research & analysis" width="135" height="60"></img>
           </Link>
           <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false">
            <span aria-hidden="true"></span>

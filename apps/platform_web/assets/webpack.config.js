@@ -60,7 +60,7 @@ module.exports = {
         loader: "url-loader?name=/images/[name].[ext]",
       },
       {
-        test: /\.(ttf|otf|eot|svg|woff2?)$/,
+        test: /\.(ttf|otf|eot|woff2?)$/,
         loader: "file-loader?name=/fonts/[name].[ext]",
       }
     ],

@@ -1,29 +1,57 @@
 // - - - - - - - - - - - - - - - - - - -
 // - - typography
 // global typography styles
+
+@font-face {
+    font-family: "Avenir";
+    src:
+      url("/fonts/avenir/AvenirLTStd-Book.otf") format("otf"),
+      url("/fonts/avenir/AvenirLTStd-Light.otf") format("otf"),
+      url("/fonts/avenir/AvenirLTStd-Roman.otf") format("otf"),
+      url("/fonts/avenir/Avenir-Book.ttf") format("truetype"),
+      url("/fonts/avenir/Avenir-Light.ttf") format("truetype"),
+      url("/fonts/avenir/Avenir-Roman.ttf") format("truetype"),
+}
+
+// font types
 $avenir: "Avenir", sans-serif;
-$avenir-light: "Avenir Light", sans-serif;
-$avenir-medium: "Avenir Medium", sans-serif;
-$avenir-book: "Avenir Book", sans-serif;
-$avenir-roman: "Avenir Roman", sans-serif;
+$avenir-light: "Avenir-Light", sans-serif;
+$avenir-medium: "Avenir-Medium", sans-serif;
+$avenir-book: "Avenir-Book", sans-serif;
+$avenir-roman: "Avenir-Roman", sans-serif;
+
+// font weights
 $light: 300;
 $normal: 400;
 $semibold: 500;
 $bold: 700;
+
+body {
+  font-family: $avenir-light;
+  font-weight: $light;
+  font-size: 16px;
+  line-height: 25px;
+  color: $white;
+}
 
 .title {
   font-family: $avenir-light;
   font-weight: $light;
   font-size: 56px;
   line-height: 65px;
-  letter-spacing: -0.1ch;
-  color: $white;
+  letter-spacing: -0.08ch;
+  color: $white;;
+  @include breakpoint(small) {
+    font-size: 34px;
+    line-height: 42px;
+  }
 }
+
 .subtitle-big {
   font-family: $avenir-book;
   font-weight: $light;
   line-height: 30px;
-  letter-spacing: 0.2ch;
+  letter-spacing: 0.05ch;
   font-size: 17px;
   color: $silver;
 }
@@ -32,25 +60,9 @@ $bold: 700;
   font-family: $avenir-book;
   font-weight: $light;
   line-height: 20px;
-  letter-spacing: 0.2ch;
+  letter-spacing: 0.1ch;
   font-size: 14px;
   color: $silver;
-}
-
-body {
-  font-family: $avenir-light;
-  font-weight: $light;
-  font-size: 16px;
-  line-height: 25px;
-  letter-spacing: 0.2ch;
-  color: $white;
-  // @include breakpoint(small) {
-  //   font-family: $mobile-font-family;
-  //   font-weight: 400;
-  //   font-size: 14px;
-  //   line-height: 1.7;
-  //   color: $white;
-  // }
 }
 
 h1 {

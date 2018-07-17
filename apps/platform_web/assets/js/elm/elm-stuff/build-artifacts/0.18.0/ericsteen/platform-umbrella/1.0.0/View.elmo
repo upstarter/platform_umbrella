@@ -80,7 +80,7 @@ var _ericsteen$platform_umbrella$View$formView = function (subscribeForm) {
 							_elm_lang$html$Html$div,
 							{
 								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$class('field is-horizontal'),
+								_0: _elm_lang$html$Html_Attributes$class('field'),
 								_1: {ctor: '[]'}
 							},
 							{
@@ -208,7 +208,7 @@ var _ericsteen$platform_umbrella$View$formView = function (subscribeForm) {
 											_elm_lang$html$Html$div,
 											{
 												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$class('field control'),
+												_0: _elm_lang$html$Html_Attributes$class('field button-control'),
 												_1: {ctor: '[]'}
 											},
 											{
@@ -217,7 +217,7 @@ var _ericsteen$platform_umbrella$View$formView = function (subscribeForm) {
 													_elm_lang$html$Html$button,
 													{
 														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$class('button is-primary is-rounded'),
+														_0: _elm_lang$html$Html_Attributes$class('button is-primary'),
 														_1: {
 															ctor: '::',
 															_0: _elm_lang$html$Html_Attributes$disabled(buttonDisabled),
@@ -261,7 +261,7 @@ var _ericsteen$platform_umbrella$View$formView = function (subscribeForm) {
 																{ctor: '[]'},
 																{
 																	ctor: '::',
-																	_0: _elm_lang$html$Html$text('Subscribe me'),
+																	_0: _elm_lang$html$Html$text('Subscribe'),
 																	_1: {ctor: '[]'}
 																}),
 															_1: {ctor: '[]'}
@@ -306,7 +306,7 @@ var _ericsteen$platform_umbrella$View$view = function (_p5) {
 							_elm_lang$html$Html$i,
 							{
 								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$class('fa fa-3x fa-heart'),
+								_0: _elm_lang$html$Html_Attributes$class('fa fa-2x fa-heart'),
 								_1: {ctor: '[]'}
 							},
 							{ctor: '[]'}),
@@ -319,7 +319,7 @@ var _ericsteen$platform_umbrella$View$view = function (_p5) {
 						{ctor: '[]'},
 						{
 							ctor: '::',
-							_0: _elm_lang$html$Html$text('You have subscribed with success'),
+							_0: _elm_lang$html$Html$text('Thanks for subscribing!'),
 							_1: {ctor: '[]'}
 						}),
 					_1: {
@@ -329,7 +329,7 @@ var _ericsteen$platform_umbrella$View$view = function (_p5) {
 							{ctor: '[]'},
 							{
 								ctor: '::',
-								_0: _elm_lang$html$Html$text('We will keep you updated with the latest research'),
+								_0: _elm_lang$html$Html$text('We will keep you updated.'),
 								_1: {ctor: '[]'}
 							}),
 						_1: {ctor: '[]'}

@@ -5,6 +5,9 @@
 // -- BULMA overrides
 // @import "bulma-material-design-form";
 
+$navbar-height: 70px;
+$navbar-item-img-max-height: 60px;
+
 // -- BULMA DERIVED VARIABLES
 $primary: $light-purple;
 // $link: $blue;
@@ -23,6 +26,7 @@ $button-color: $white;
 // -- BULMA NAVBAR
 $navbar-background-color: $dark-blue;
 $navbar-item-color: $white;
+$navbar-burger-color: $light-purple;
 
 // -- HOVER NAVBAR LINKS
 $navbar-item-hover-background-color: $dark-blue;

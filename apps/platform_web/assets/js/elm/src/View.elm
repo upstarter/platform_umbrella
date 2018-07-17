@@ -17,15 +17,15 @@ view { subscribeForm } =
                 [ Html.div
                     [ Html.class "icon is-large" ]
                     [ Html.i
-                        [ Html.class "fa fa-3x fa-heart" ]
+                        [ Html.class "fa fa-2x fa-heart" ]
                         []
                     ]
                 , Html.h2
                     []
-                    [ Html.text "You have subscribed with success" ]
+                    [ Html.text "Thanks for subscribing!" ]
                 , Html.p
                     []
-                    [ Html.text "We will keep you updated with the latest research" ]
+                    [ Html.text "We will keep you updated." ]
                 ]
 
         _ ->
@@ -66,7 +66,7 @@ formView subscribeForm =
             , form
                 [ Html.onSubmit HandleFormSubmit ]
                 [ Html.div
-                    [ Html.class "field is-horizontal" ]
+                    [ Html.class "field" ]
                     [ Html.div
                         [ Html.class "field-body" ]
                         [ Html.div
@@ -101,9 +101,9 @@ formView subscribeForm =
                             []
                         ]
                     , Html.div
-                        [ Html.class "field control" ]
+                        [ Html.class "field button-control" ]
                         [ Html.button
-                            [ Html.class "button is-primary is-rounded"
+                            [ Html.class "button is-primary"
                             , Html.disabled buttonDisabled
                             ]
                             [ Html.span
@@ -118,7 +118,7 @@ formView subscribeForm =
                                 ]
                             , Html.span
                                 []
-                                [ Html.text "Subscribe me" ]
+                                [ Html.text "Subscribe" ]
                             ]
                         ]
                     ]

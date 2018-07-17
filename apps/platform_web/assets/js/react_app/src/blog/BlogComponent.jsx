@@ -37,8 +37,7 @@ export default class BlogComponent extends React.Component {
       return (
         <div>
           <NavContainer />
-          <div id="blog_content" style={{margin: "25px auto;"}, {width: "52%;"}}>Loading ...</div>;
-
+          <div id="blog_content" style={{margin: "25px auto;"}, {width: "52%;"}}>Loading ...</div>
         </div>
         )
     }
@@ -46,7 +45,6 @@ export default class BlogComponent extends React.Component {
     return (
       <div>
         <NavContainer />
-
         <div id="blog_content" style={{margin: "25px auto;"}, {width: "52%;"}}>
           <div class="blog_posts">
               {blog_posts.map(post =>

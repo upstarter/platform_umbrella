@@ -1,18 +1,18 @@
 @mixin breakpoint($breakpoint) {
   @if $breakpoint == "small" {
-    @media (min-width: 767px) {
+    @media only screen and (max-width: 767px) {
       @content;
     }
   }
 
-  @else if $breakpoint == "medium" {
-    @media (min-width: 992px) {
-      @content;
-    }
-  }
+  // @else if $breakpoint == "medium" {
+  //   @media (min-width: 767px and max-width: 992px) {
+  //     @content;
+  //   }
+  // }
 
   @else if $breakpoint == "large" {
-    @media (min-width: 1200px) {
+    @media only screen and (min-width: 767px) {
       @content;
     }
   }
