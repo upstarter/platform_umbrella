@@ -13,10 +13,10 @@ export default class HomeComponent extends React.Component {
         <div className="hero is-huge">
           <div className="hero-body">
             <h1 className="title">
-              Cryptoasset media channel for serious investors and analysts.
+              Wiser cryptoasset investing.
             </h1>
             <h5 className="subtitle-big">
-              Join in on the conversation & receive free investment analysis.
+              Join the conversation & receive free insights.
             </h5>
             <div className="scroll-to">
               <a className="icon">

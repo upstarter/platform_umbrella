@@ -2,6 +2,13 @@
 // - - modules
 // import new modules here
 @import 'nav/nav';
+
+// -- main screens
 @import 'home/home';
-@import 'leadgen/email_leadgen';
+@import 'home/press';
 @import 'blog/blog';
+
+
+
+// -- shared components
+@import 'shared/leadgen/email_leadgen';

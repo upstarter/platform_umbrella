@@ -1,0 +1,13 @@
+#main-wrapper {
+
+
+
+  .team-image {
+    .image {
+      border: double 4px $silver; //transparent;
+      // background-image: linear-gradient(white, white), linear-gradient(to top, #fff, $silver);
+      background-origin: border-box;
+      background-clip: content-box, border-box;
+    }
+  }
+}
