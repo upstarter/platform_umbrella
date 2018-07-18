@@ -6,29 +6,20 @@ body {
   border-top: 1px solid rgba(255, 255, 255, .3);
   -webkit-background-clip: padding-box; /* for Safari */
   background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
-  background:
-    linear-gradient(to bottom, rgba(14,19,27,0.90), rgba(14,19,27,0.85)),
-    url('/images/hero.jpg') no-repeat;
+  // background:
+  //   linear-gradient(to bottom, rgba(14,19,27,0.90), rgba(14,19,27,0.85)),
+  //   url('/images/hero.jpg') no-repeat;
   background-size: cover;
   background-position: top;
  }
 
  .navbar {
-   background:transparent;
+   background:black;
      // linear-gradient(to bottom, rgba(14,19,27,0.99), rgba(14,19,27,0.45)), transparent;
    a { background: none !important; }
-
+   //
    @include mobile {
-     background: $dark-blue ;
-     height: 65px;
-     .navbar-brand {
-       height: 65px;
-       .navbar-item {
-         img { height: 60px; }
-       }
-     }
-     .navbar-logo { height: 35px; }
-     .nav-logo { height: 35px; }
-     .navbar-burger { height: 65px; }
+     background: $black ;
+
    }
  }
