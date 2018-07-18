@@ -8,7 +8,7 @@ import {Main} from '../../../elm/src/Main'
 export default class HomeComponent extends React.Component {
   render() {
     return (
-      <div className="container">
+      <div className="container is-fluid">
         <NavContainer />
         <div className="hero">
           <div className="hero-body">

@@ -3,30 +3,9 @@
 // global layout classes - height, width, padding, margin, etc
 
 #app {
-  min-height: 100vh;
-
-
-  // .navbar {
-  //
-  //   @include mobile {
-  //     height: 100px;
-  //     .nav-logo img {
-  //       height: 50px;
-  //       width: 150px;
-  //     }
-  //     .navbar- brand {
-  //       height: 65px;
-  //       .navbar-item {
-  //         img { height: 65px; }
-  //       }
-  //     }
-  //     .navbar-logo { height: 35px; }
-  //     .nav-logo { height: 35px; }
-  //     .navbar-burger { height: 65px; }
-  //   }
-  // }
 
   .hero {
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -44,6 +23,6 @@
 
   p {
     max-width: 125ch;
-    text-align: center;
+    // text-align: center;
   }
 }

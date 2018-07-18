@@ -10,7 +10,7 @@
       url("/fonts/avenir/AvenirLTStd-Roman.otf") format("otf"),
       url("/fonts/avenir/Avenir-Book.ttf") format("truetype"),
       url("/fonts/avenir/Avenir-Light.ttf") format("truetype"),
-      url("/fonts/avenir/Avenir-Roman.ttf") format("truetype"),
+      url("/fonts/avenir/Avenir-Roman.ttf") format("truetype")
 }
 
 // font types
@@ -40,7 +40,7 @@ body {
   font-size: 56px;
   line-height: 65px;
   letter-spacing: -0.08ch;
-  color: $white;;
+  color: $white;
   @include mobile {
     font-size: 34px;
     line-height: 42px;
