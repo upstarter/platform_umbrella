@@ -10,7 +10,7 @@ import BlogComponent from "../blog/BlogComponent"
 export default class HomeContainer extends React.Component {
   render() {
     return (
-      <div>
+      <div className="container">
         <BrowserRouter>
           <Switch>
             <Route exact path='/' component={HomeComponent}/>
