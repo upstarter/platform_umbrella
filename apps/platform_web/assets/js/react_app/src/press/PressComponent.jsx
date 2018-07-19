@@ -5,10 +5,9 @@ import NavContainer from "../common/nav/nav"
 export default class PressComponent extends React.Component {
   render() {
     return (
-      <div>
-        <NavContainer />
-        <div class="press" style={{margin: '50px auto', width: '50%', color: 'white'}}>
-          <div id="press_content">
+      <React.Fragment>
+        <section class="press">
+          <div id="press-content">
             <div class="team-image">
               <div class="title">Team</div>
               <figure class="image">
@@ -45,8 +44,8 @@ export default class PressComponent extends React.Component {
               Multi-Agent Reinforcement Learning, Cognitive & Social Sciences.
             </p>
           </div>
-        </div>
-      </div>
+        </section>
+      </React.Fragment>
     )
   }
 }

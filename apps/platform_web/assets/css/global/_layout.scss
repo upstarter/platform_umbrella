@@ -1,23 +1,39 @@
 // - - - - - - - - - - - - - - - - - - -
 // - - layout
 // global layout classes - height, width, padding, margin, etc
+//
+// https://medium.freecodecamp.org/how-to-build-a-responsive-blog-design-with-bulma-css-c2257a17c16b
 
-#app {
+// -- css grid
+.grid {
+    display: grid;
+    grid-template-columns:
+        [xl-start] 1fr 1.5rem [md-start] minmax(0, 624px) [md-end] 1.5rem 1fr [xl-end];
+}
 
+.grid * { grid-column: md; }
+.grid-xl { grid-column: xl; }
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// -- cryptowise app
+#wrapper {
   .hero {
-    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 30px;
     text-align: center;
 
-    .title {
-      max-width: 700px;
-    }
+    .hero-body {
+       height: 100vh;
 
-    @include mobile {
-      margin-top: 40px;
+       .title {
+         max-width: 700px;
+       }
     }
   }
 

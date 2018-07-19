@@ -8,9 +8,8 @@ import {Main} from '../../../elm/src/Main'
 export default class HomeComponent extends React.Component {
   render() {
     return (
-      <div className="container is-fluid">
-        <NavContainer />
-        <div className="hero">
+      <React.Fragment>
+        <section className="hero grid-xl">
           <div className="hero-body">
             <div className="container is-fluid">
               <h1 className="title">
@@ -27,7 +26,7 @@ export default class HomeComponent extends React.Component {
               <div id="subscribe-form" className="email-leadgen">
                 <section className="section">
                   <div className="container is-fluid">
-                    <div id="form_container">
+                    <div id="form-container">
                       <Elm src={Main} />
                     </div>
                   </div>
@@ -35,8 +34,8 @@ export default class HomeComponent extends React.Component {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </section>
+      </React.Fragment>
     )
   }
 }

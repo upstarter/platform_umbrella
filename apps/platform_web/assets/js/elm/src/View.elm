@@ -76,7 +76,7 @@ formView subscribeForm =
                                     [ ( "input is-focused", True )
                                     , ( "is-danger", Dict.member "full_name" validationErrors )
                                     ]
-                                , Html.placeholder "First and Last Name"
+                                , Html.placeholder "Full Name"
                                 , Html.required True
                                 , Html.value fullName
                                 , Html.onInput HandleFullNameInput
