@@ -61,7 +61,7 @@ formView subscribeForm =
             fullName == "" || email == "" || saving || invalid
     in
         Html.div
-            [ Html.class "content" ]
+            [ Html.class "container" ]
             [ formError subscribeForm
             , form
                 [ Html.onSubmit HandleFormSubmit ]

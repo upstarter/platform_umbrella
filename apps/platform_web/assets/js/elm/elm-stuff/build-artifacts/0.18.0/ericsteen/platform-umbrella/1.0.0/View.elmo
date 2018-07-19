@@ -59,7 +59,7 @@ var _ericsteen$platform_umbrella$View$formView = function (subscribeForm) {
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('content'),
+			_0: _elm_lang$html$Html_Attributes$class('container'),
 			_1: {ctor: '[]'}
 		},
 		{

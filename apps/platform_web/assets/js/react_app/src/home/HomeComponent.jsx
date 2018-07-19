@@ -16,7 +16,7 @@ export default class HomeComponent extends React.Component {
                 Wiser cryptoasset investing starts with the ecosystem.
               </h1>
               <h5 className="subtitle-big">
-                Join the conversation & receive free insights.
+                Receive free investing insights & join the conversation.
               </h5>
               <div className="scroll-to">
                 <a className="icon">
