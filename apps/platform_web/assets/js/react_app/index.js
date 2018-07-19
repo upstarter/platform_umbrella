@@ -10,5 +10,5 @@ import HomeContainer from "./src/home/home"
 import "normalize.css"
 
 ReactDOM.render(
-  <HomeContainer/>, document.getElementById("app")
+  <HomeContainer/>, document.getElementById("wrapper")
 )

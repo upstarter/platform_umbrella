@@ -35,18 +35,16 @@ export default class BlogComponent extends React.Component {
 
     if (isLoading) {
       return (
-        <div>
-          <NavContainer />
-          <div id="blog_content">Loading ...</div>
-        </div>
-        )
+        <React.Fragment>
+          <section id="blog-content" class="is-loading">Loading ...</section>
+        </React.Fragment>
+      )
     }
 
     return (
-      <div>
-        <NavContainer />
-        <div id="blog_content" className="content">
-          <div class="blog_posts">
+      <React.Fragment>
+        <section id="blog-content">
+          <div class="blog-posts">
               {blog_posts.map(post =>
                 <div class="card">
                   <div class="card-content">
@@ -56,8 +54,8 @@ export default class BlogComponent extends React.Component {
                 </div>
               )}
           </div>
-        </div>
-      </div>
+        </section>
+      </React.Fragment>
     )
   }
 }
