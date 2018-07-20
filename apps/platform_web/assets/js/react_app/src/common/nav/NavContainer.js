@@ -9,7 +9,7 @@ export default class NavContainer extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <nav id="nav" className="navbar is-fixed-top is-paddingless" role="navigation" aria-label="main navigation">
+        <nav id="nav" className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
           <div className="container">
             <div className="navbar-brand">
               <Link to="/" className="navbar-item .nav-logo">

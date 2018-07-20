@@ -4,25 +4,16 @@
 //
 // https://medium.freecodecamp.org/how-to-build-a-responsive-blog-design-with-bulma-css-c2257a17c16b
 
-// -- css grid
-.grid {
-    display: grid;
-    grid-template-columns:
-        [xl-start] 1fr 1.5rem [md-start] minmax(0, 624px) [md-end] 1.5rem 1fr [xl-end];
+// -- cryptowise app
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.grid * { grid-column: md; }
-.grid-xl { grid-column: xl; }
-
-
-// -- cryptowise app
 #wrapper {
-
   .heero {
-    // margin-top: 100px;
-    // max-height: 70vh;  
-    // min-width: 100vw;
-
     .heero-body {
       text-align: center;
       .container {
@@ -33,12 +24,29 @@
       }
 
       .title {
-        max-width: 700px;
+        max-width: 900px;
       }
     }
   }
-  //
-  // p {
-  //   max-width: 125ch;
-  // }
+
+  .features-wrapper {
+    padding: 60px 0;
+
+    .features-heading {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .features {
+      padding: 20px;
+
+      .feature {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        .feature-icon { padding: 7px; }
+      }
+    }
+  }
 }

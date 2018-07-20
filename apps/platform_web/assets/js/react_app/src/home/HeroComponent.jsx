@@ -11,16 +11,11 @@ export default class HeroComponent extends React.Component {
         <div className="heero-body column">
           <div className="container">
             <h1 className="title">
-              Wiser cryptoasset investing starts with the ecosystem.
+              Become a <span className="fancy-underline">top 1%</span> crypto investor.
             </h1>
             <p className="subtitle-big">
-              Receive free investing insights & join the conversation.
+              Receive free investing insights in your inbox.
             </p>
-            <div className="scroll-to">
-              <a className="icon">
-                <i className="fa fa-chevron-down"></i>
-              </a>
-            </div>
             <div id="subscribe-form" className="email-leadgen">
               <section className="section">
                 <div className="container has-text-centered">
