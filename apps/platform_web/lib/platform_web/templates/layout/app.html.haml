@@ -10,9 +10,13 @@
     %script{src: "https://use.fontawesome.com/2aa13a4a25.js" }
     - css_path = static_path(@conn, "/css/app.css")
     %link{rel: "stylesheet", href: css_path}
+    - favicon = static_path(@conn, "/images/favicon.png")
+    %link{rel: "icon", type:"image/x-icon", href: favicon}
 
-  %body#wrapper.has-navbar-fixed-top
-    = render(@view_module, @view_template, assigns)
+
+  %body
+    #wrapper.has-navbar-fixed-top
+      = render(@view_module, @view_template, assigns)
 
     / Load Facebook SDK for JavaScript
     -# #fb-root

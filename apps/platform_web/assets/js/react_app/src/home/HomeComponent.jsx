@@ -9,15 +9,15 @@ export default class HomeComponent extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <section className="hero grid-xl">
-          <div className="hero-body">
-            <div className="container is-fluid">
+        <section className="heero is-small columns">
+          <div className="heero-body column">
+            <div className="container">
               <h1 className="title">
                 Wiser cryptoasset investing starts with the ecosystem.
               </h1>
-              <h5 className="subtitle-big">
+              <p className="subtitle-big">
                 Receive free investing insights & join the conversation.
-              </h5>
+              </p>
               <div className="scroll-to">
                 <a className="icon">
                   <i className="fa fa-chevron-down"></i>
@@ -25,7 +25,7 @@ export default class HomeComponent extends React.Component {
               </div>
               <div id="subscribe-form" className="email-leadgen">
                 <section className="section">
-                  <div className="container is-fluid">
+                  <div className="container has-text-centered">
                     <div id="form-container">
                       <Elm src={Main} />
                     </div>

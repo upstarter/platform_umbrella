@@ -103,7 +103,7 @@ formView subscribeForm =
                     , Html.div
                         [ Html.class "field button-control" ]
                         [ Html.button
-                            [ Html.class "button is-primary"
+                            [ Html.class "button is-primary is-large"
                             , Html.disabled buttonDisabled
                             ]
                             [ Html.span

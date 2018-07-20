@@ -14,31 +14,30 @@
 .grid * { grid-column: md; }
 .grid-xl { grid-column: xl; }
 
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 // -- cryptowise app
 #wrapper {
-  .hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
 
-    .hero-body {
-       height: 100vh;
+  .heero {
+    margin-top: 100px;
+    height: 70vh;
 
-       .title {
-         max-width: 700px;
-       }
+    .heero-body {
+      text-align: center;
+      .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .title {
+        max-width: 700px;
+      }
     }
   }
-
-  p {
-    max-width: 125ch;
-    // text-align: center;
-  }
+  //
+  // p {
+  //   max-width: 125ch;
+  // }
 }
