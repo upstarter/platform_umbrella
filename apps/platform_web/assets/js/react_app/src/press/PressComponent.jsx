@@ -1,6 +1,5 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import NavContainer from "../common/nav/nav"
 
 export default class PressComponent extends React.Component {
   render() {

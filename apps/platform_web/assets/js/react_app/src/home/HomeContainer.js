@@ -13,7 +13,7 @@ export default class HomeContainer extends React.Component {
     return (
       <React.Fragment>
         <BrowserRouter>
-          <section className="container">
+          <section id="container">
             <NavContainer />
             <Route exact path='/' component={HomeComponent}/>
             <Route exact path='/press' component={PressComponent}/>
