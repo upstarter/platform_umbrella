@@ -9,8 +9,8 @@ export default class HomeComponent extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <section className="heero is-small columns">
-          <div className="heero-body column">
+        <section className="heero is-small">
+          <div className="heero-body">
             <div className="container">
               <h1 className="title">
                 Wiser cryptoasset investing starts with the ecosystem.
