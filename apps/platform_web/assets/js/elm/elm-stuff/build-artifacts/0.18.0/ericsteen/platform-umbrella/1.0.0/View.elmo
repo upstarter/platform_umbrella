@@ -218,7 +218,7 @@ var _ericsteen$platform_umbrella$View$formView = function (subscribeForm) {
 												_elm_lang$html$Html$button,
 												{
 													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$class('button is-primary'),
+													_0: _elm_lang$html$Html_Attributes$class('button is-primary is-large'),
 													_1: {
 														ctor: '::',
 														_0: _elm_lang$html$Html_Attributes$disabled(buttonDisabled),

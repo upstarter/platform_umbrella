@@ -1,6 +1,7 @@
 // - - - - - - - - - - - - - - - - - - -
 // - - skin
 // global skin styles - gradients, colors, box-shadows, etc.
+body { background: $dark-blue; }
 
 #wrapper {
   border-top: 1px solid rgba(255, 255, 255, .3);
