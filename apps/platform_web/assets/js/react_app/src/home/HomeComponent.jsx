@@ -1,6 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import NavContainer from "../common/nav/nav"
+import FeaturesComponent from "../home/FeaturesComponent"
 import Elm from 'react-elm-components'
 import {Main} from '../../../elm/src/Main'
 
@@ -35,6 +35,7 @@ export default class HomeComponent extends React.Component {
             </div>
           </div>
         </section>
+        <FeaturesComponent />
       </React.Fragment>
     )
   }

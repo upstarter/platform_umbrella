@@ -23,6 +23,44 @@ import "phoenix_html"
 
 import './react_app/index'
 
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Get all "navbar-burger" elements
+  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+  // Check if there are any navbar burgers
+  if ($navbarBurgers.length > 0) {
+
+    // Add a click event on each of them
+    $navbarBurgers.forEach( burger => {
+
+      burger.addEventListener('click', () => {
+
+        // Get the target from the "data-target" attribute
+        const target = burger.dataset.target;
+        const $target = document.getElementById(target);
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        burger.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+      });
+    });
+  }
+});
+
+const $navbarLinks = Array.prototype.slice.call(document.querySelectorAll('.navbar-menu a'), 0);
+const $navMenu = $navbarLinks[0].parentElement;
+
+$navbarLinks.forEach( link => {
+
+  link.addEventListener('click', () => {
+    const $burger = document.querySelector('.navbar-burger')
+
+    // Toggle the "is-active" class on burger & "navbar-menu"
+    $burger.classList.toggle('is-active');
+    $navMenu.classList.toggle('is-active');
+  });
+});
+
 // SEGMENT
 // !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t,e){var n=document.createElement("script");n.type="text/javascript";n.async=!0;n.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var o=document.getElementsByTagName("script")[0];o.parentNode.insertBefore(n,o);analytics._loadOptions=e};analytics.SNIPPET_VERSION="4.1.0";
 // analytics.load("DZkRyiXKnNGmbh2EWo1LT78RPyhnVyFy");
