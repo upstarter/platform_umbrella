@@ -42,7 +42,7 @@ export default class FeaturesComponent extends React.Component {
               <h3>Intelligent Software Platform</h3>
               <p className="subtitle-small">
                 Intelligent Agents deliver novel personalized opportunites
-                and guidance based on investor interests and risk tolerance.
+                and guidance based on interests and risk tolerance.
               </p>
             </div>
           </section>
