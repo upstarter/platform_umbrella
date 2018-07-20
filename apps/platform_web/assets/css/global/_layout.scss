@@ -6,6 +6,8 @@
 
 // -- cryptowise app
 
+body { height: 100%; }
+
 .center {
   display: flex;
   justify-content: center;
@@ -13,6 +15,7 @@
 }
 
 #wrapper {
+  // bulma reserves hero
   .heero {
     .heero-body {
       text-align: center;
