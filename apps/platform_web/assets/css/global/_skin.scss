@@ -1,7 +1,17 @@
 // - - - - - - - - - - - - - - - - - - -
 // - - skin
 // global skin styles - gradients, colors, box-shadows, etc.
-body { background: $dark-blue; }
+
+body {
+  background: $dark-blue;
+  @include mobile {
+    overflow-y: hidden; // hide vertical
+    overflow-x: hidden; // hide horizontal
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
 
 #wrapper {
   background: $dark-blue;
