@@ -36,7 +36,7 @@ export default class BlogComponent extends React.Component {
     if (isLoading) {
       return (
         <React.Fragment>
-          <section id="blog-content" class="is-loading">Loading ...</section>
+          <section id="blog-content" className="is-loading">Loading ...</section>
         </React.Fragment>
       )
     }
@@ -44,11 +44,11 @@ export default class BlogComponent extends React.Component {
     return (
       <React.Fragment>
         <section id="blog-content">
-          <div class="blog-posts">
+          <div className="blog-posts">
               {blog_posts.map(post =>
-                <div class="card">
-                  <div class="card-content">
-                    <div class="content" dangerouslySetInnerHTML={{__html: post.content}}>
+                <div key={post.toString()} className="card">
+                  <div className="card-content">
+                    <div className="content" dangerouslySetInnerHTML={{__html: post.content}}>
                     </div>
                   </div>
                 </div>

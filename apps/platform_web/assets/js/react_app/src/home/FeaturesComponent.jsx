@@ -6,11 +6,16 @@ export default class FeaturesComponent extends React.Component {
     return (
       <React.Fragment>
         <div className="features-wrapper container">
+          <div className="scroll-to is-hidden-desktop">
+            <a className="icon">
+              <i className="fa fa-chevron-down"></i>
+            </a>
+          </div>
           <h1 className="features-heading">Features</h1>
           <section className="features columns">
             <div className="feature column">
-              <div class="feature-icon">
-                <figure class="image">
+              <div className="feature-icon">
+                <figure className="image">
                   <img alt="Grow your cryptoasset investments" src="/images/icon1.svg"/>
                 </figure>
               </div>
@@ -22,8 +27,8 @@ export default class FeaturesComponent extends React.Component {
               </p>
             </div>
             <div className="feature column">
-              <div class="feature-icon">
-                <figure class="image">
+              <div className="feature-icon">
+                <figure className="image">
                   <img alt="Informed investment insights" src="/images/icon2.svg"/>
                 </figure>
               </div>
@@ -34,8 +39,8 @@ export default class FeaturesComponent extends React.Component {
               </p>
             </div>
             <div className="feature column">
-              <div class="feature-icon">
-                <figure class="image">
+              <div className="feature-icon">
+                <figure className="image">
                   <img alt="Grow your " src="/images/icon3.svg"/>
                 </figure>
               </div>
