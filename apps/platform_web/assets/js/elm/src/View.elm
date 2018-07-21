@@ -73,7 +73,7 @@ formView subscribeForm =
                             [ Html.class "control" ]
                             [ Html.input
                                 [ Html.classList
-                                    [ ( "input is-focused", True )
+                                    [ ( "input", True )
                                     , ( "is-danger", Dict.member "email" validationErrors )
                                     ]
                                 , Html.type_ "email"

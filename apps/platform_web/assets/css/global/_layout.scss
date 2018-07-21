@@ -26,18 +26,27 @@ body { height: 100%; }
         align-items: center;
       }
 
+      .subtitle-big {
+        max-width: 300px;
+      }
+
       .title {
         max-width: 900px;
       }
-    }
-    .scroll-to {
-      display: flex;
-      justify-content: center;
     }
   }
 
   .features-wrapper {
     padding: 60px 0;
+
+    .scroll-to {
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      align-items: center;
+      left: 50%;
+    }
 
     .features-heading {
       margin-bottom: 30px;
@@ -53,6 +62,7 @@ body { height: 100%; }
         align-items: center;
         text-align: center;
         .feature-icon { padding: 7px; }
+        p { max-width: 300px; }
       }
     }
   }
