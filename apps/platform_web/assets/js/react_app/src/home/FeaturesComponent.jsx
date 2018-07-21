@@ -30,7 +30,7 @@ export default class FeaturesComponent extends React.Component {
               <h3>Informed Investment Insights</h3>
               <p className="subtitle-small">
                 Free access to cryptoasset market insights & financial analysis written
-                by our passionate community of crypto and finance experts.
+                by a passionate community of crypto and finance experts.
               </p>
             </div>
             <div className="feature column">

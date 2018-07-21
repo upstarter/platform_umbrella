@@ -14,7 +14,7 @@ export default class HeroComponent extends React.Component {
               Become a <span className="fancy-underline">top 1%</span> crypto investor.
             </h1>
             <p className="subtitle-big">
-              Receive free insights in your inbox.
+              Receive free insights in your inbox to read at your leisure. Also we will notify you when our platform launches.
             </p>
             <div id="subscribe-form" className="email-leadgen">
               <section className="section">
@@ -26,6 +26,11 @@ export default class HeroComponent extends React.Component {
               </section>
             </div>
           </div>
+        </div>
+        <div className="scroll-to is-hidden-desktop">
+          <a className="icon">
+            <i className="fa fa-chevron-down"></i>
+          </a>
         </div>
       </section>
     )
