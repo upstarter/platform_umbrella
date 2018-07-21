@@ -38,8 +38,7 @@ encodeModel { fullName, email } =
     JE.object
         [ ( "lead"
           , JE.object
-                [ ( "full_name", JE.string fullName )
-                , ( "email", JE.string email )
+                [ ( "email", JE.string email )
                 ]
           )
         ]
