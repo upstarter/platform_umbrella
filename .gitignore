@@ -3,3 +3,4 @@
 /deps
 erl_crash.dump
 *.ez
+/apps/platform_web/assets/js/elm/elm-stuff
