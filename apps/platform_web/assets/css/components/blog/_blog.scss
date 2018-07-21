@@ -3,10 +3,14 @@
   margin: 50px auto;
   width: 52%;
 
+  @include mobile {
+    width: 100%;
+  }
+
   .card {
-    background: rgb(240,240,240);
-    border: 3px solid rgba(0, 0, 0, 0.1);
-    color: $dark-blue;
+    // background: rgb(240,240,240);
+    // border: 3px solid rgba(0, 0, 0, 0.1);
+    color: black;
 
     h1,h2,h3,strong,em { color: $dark-blue; }
 

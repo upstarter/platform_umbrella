@@ -7,20 +7,7 @@
 
 // - - - - - - - - - - - - - - - - - - -
 // - - mixins
-// 
-// @mixin dark-overlay{
-//   &:after{
-//     content: "";
-//     width: 100%;
-//     height: auto;
-//     position: absolute;
-//     z-index: -1;  // Take note of this negative z-index and compare to each article's positive z-index. This helps your content to show up over the overlay.
-//     top: 0;
-// 	right: 0;
-// 	left: 0;
-// 	bottom: 0;
-//   }
-// }
+//
 
 
 // - - - - - - - - - - - - - - - - - - -

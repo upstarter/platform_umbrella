@@ -5,16 +5,16 @@ export default class PressComponent extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <section class="press">
+        <section className="press">
           <div id="press-content">
-            <div class="team-image">
-              <div class="title">Team</div>
-              <figure class="image">
+            <div className="team-image">
+              <div className="title">Team</div>
+              <figure className="image">
                 <img alt="Placeholder image" src="/images/team.png"/>
               </figure>
             </div>
             <br/>
-            <div class="title">About</div>
+            <div className="title">About</div>
             <p>
               CryptoWise is a Robo-Advisory
               connecting investors with expert level cryptoasset financial analysis.
@@ -25,18 +25,18 @@ export default class PressComponent extends React.Component {
               </i>
             </p>
             <br/>
-            <div class="title">Mission</div>
+            <div className="title">Mission</div>
             <p>To help forward-looking investors and analysts achieve valuable accomplishments by providing them with
               advanced software capabilities and community-driven research & analysis.
             </p>
             <br/>
-            <div class="title">Values</div>
+            <div className="title">Values</div>
             <p>Transparency, Integrity, Openness, Empowerment,
               Curiosity, Accuracy, Precision, Autonomy,
               Self Discipline, Dedication, Compassion, Originality, Humor, Fun.
             </p>
             <br/>
-            <div class="title">Pursuits</div>
+            <div className="title">Pursuits</div>
             <p>Cryptoasset & Distributed Ledger Technology, Crypto Economics, Investing & Trading Strategies & Methods,
               Portfolio Management, Dapps, Algorithms & AI, Software Architecture & Systems Design,
               Growth Engineering, Emerging Tech, Internet of Things,
