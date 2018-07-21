@@ -34,7 +34,7 @@ post formFields =
 
 
 encodeModel : FormFields -> JD.Value
-encodeModel { fullName, email } =
+encodeModel { email } =
     JE.object
         [ ( "lead"
           , JE.object

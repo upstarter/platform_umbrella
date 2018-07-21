@@ -15,7 +15,7 @@ view { subscribeForm } =
             Html.div
                 [ Html.class "success-message" ]
                 [ Html.div
-                    [ Html.class "icon is-large" ]
+                    [ Html.class "icon is-medium" ]
                     [ Html.i
                         [ Html.class "fa fa-2x fa-heart" ]
                         []
@@ -25,7 +25,7 @@ view { subscribeForm } =
                     [ Html.text "Thanks for subscribing!" ]
                 , Html.p
                     []
-                    [ Html.text "We will keep you updated." ]
+                    [ Html.text "Be wise and prosper." ]
                 ]
 
         _ ->
@@ -58,7 +58,7 @@ formView subscribeForm =
                     False
 
         buttonDisabled =
-            fullName == "" || email == "" || saving || invalid
+            email == "" || saving || invalid
     in
         Html.div
             [ Html.class "container" ]
@@ -70,21 +70,6 @@ formView subscribeForm =
                     [ Html.div
                         [ Html.class "field-body" ]
                         [ Html.div
-                            [ Html.class "control" ]
-                            [ Html.input
-                                [ Html.classList
-                                    [ ( "input is-focused", True )
-                                    , ( "is-danger", Dict.member "full_name" validationErrors )
-                                    ]
-                                , Html.placeholder "Full Name"
-                                , Html.required True
-                                , Html.value fullName
-                                , Html.onInput HandleFullNameInput
-                                ]
-                                []
-                            , validationErrorView "full_name" validationErrors
-                            ]
-                        , Html.div
                             [ Html.class "control" ]
                             [ Html.input
                                 [ Html.classList
