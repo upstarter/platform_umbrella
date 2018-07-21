@@ -21,10 +21,10 @@
 
 // - - variable overrides for 3rd party libraries
 @import "libs/libs-variable-overrides";
-// @import "libs/bulma-material-design-form";
 
 // -- css framework 3rd party library
-@import "bulma";
+@import "~bulma";
+
 
 // - - global/utilities
 // extends, functions, and mixins
@@ -53,6 +53,8 @@
 // - - modules
 // add new modules to the components/_components.scss file and they"ll get pulled in here.
 @import "components/components";
+
+@import "libs/bulma-material-design-form";
 
 // - - - - - - - - - - - - - - - - - - -
 // - - inbox

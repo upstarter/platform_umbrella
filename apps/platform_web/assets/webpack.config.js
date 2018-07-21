@@ -4,6 +4,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const env = process.env.MIX_ENV || "dev";
 const isProd = env === "prod";
+const mode = env === "prod" ? "production" : "development"
 
 const elmSource = __dirname + "/js/elm";
 
@@ -12,6 +13,7 @@ const elmMake = "/node_modules/elm/binwrappers/elm-make"
 const elmMakePath = isProd ?  prodElm + elmMake : __dirname + elmMake
 
 module.exports = {
+  mode: mode,
   devtool: "source-map",
   entry: {
     app: ["./css/app.scss", "./js/app.js", "./js/elm/src/Main.elm"]
@@ -21,7 +23,7 @@ module.exports = {
     filename: "js/app.js"
   },
   resolve: {
-    extensions: [".css", ".scss", ".js", ".jsx", ".elm"],
+    extensions: [".css", ".sass", ".scss", ".js", ".jsx", ".elm"],
     alias: {
       phoenix: __dirname + "/deps/phoenix/assets/js/phoenix.js"
     }
@@ -38,7 +40,8 @@ module.exports = {
             {
               loader: "sass-loader",
               options: {
-                sourceComments: !isProd
+                sourceComments: !isProd,
+                sourceMap: true
               }
             }
           ]
