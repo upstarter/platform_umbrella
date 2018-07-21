@@ -30,6 +30,10 @@ body { height: 100%; }
         max-width: 900px;
       }
     }
+    .scroll-to {
+      display: flex;
+      justify-content: center;
+    }
   }
 
   .features-wrapper {

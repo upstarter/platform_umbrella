@@ -3,11 +3,10 @@ defmodule Platform.Marketing.Lead do
   import Ecto.Changeset
   alias Platform.Marketing.Lead
 
-  @derive {Poison.Encoder, only: [:full_name, :email]}
+  @derive {Poison.Encoder, only: [:email]}
 
   schema "leads" do
     field(:email, :string)
-    field(:full_name, :string)
 
     timestamps()
   end
@@ -15,8 +14,8 @@ defmodule Platform.Marketing.Lead do
   @doc false
   def changeset(%Lead{} = lead, attrs) do
     lead
-    |> cast(attrs, [:full_name, :email])
-    |> validate_required([:full_name, :email])
+    |> cast(attrs, [:email])
+    |> validate_required([:email])
     |> unique_constraint(:email)
   end
 end
