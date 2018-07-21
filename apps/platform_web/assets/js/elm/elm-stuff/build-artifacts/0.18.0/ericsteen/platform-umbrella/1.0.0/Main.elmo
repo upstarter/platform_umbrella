@@ -1,9 +1,0 @@
-var _ericsteen$platform_umbrella$Main$subscriptions = function (model) {
-	return _elm_lang$core$Platform_Sub$none;
-};
-var _ericsteen$platform_umbrella$Main$init = A2(
-	_elm_lang$core$Platform_Cmd_ops['!'],
-	_ericsteen$platform_umbrella$Model$initialModel,
-	{ctor: '[]'});
-var _ericsteen$platform_umbrella$Main$main = _elm_lang$html$Html$program(
-	{init: _ericsteen$platform_umbrella$Main$init, view: _ericsteen$platform_umbrella$View$view, update: _ericsteen$platform_umbrella$Update$update, subscriptions: _ericsteen$platform_umbrella$Main$subscriptions})();
