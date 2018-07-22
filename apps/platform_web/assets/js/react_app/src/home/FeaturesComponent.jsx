@@ -22,7 +22,7 @@ export default class FeaturesComponent extends React.Component {
               <h3>Investment Strategies</h3>
               <p className="subtitle-small">
                 It takes sophisticated methods to construct, manage and
-                optimize a cryptoasset portfolio. We can help with
+                optimize a cryptoasset portfolio. We help with
                 the complex bits.
               </p>
             </div>
