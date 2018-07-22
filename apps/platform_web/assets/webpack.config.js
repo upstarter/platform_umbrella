@@ -56,7 +56,7 @@ module.exports = {
         test: /\.elm$/,
         exclude: ["/elm-stuff/", "/node_modules"],
         loader: "elm-webpack-loader",
-        options: { pathToMake: elmMakePath, maxInstances: 2, debug: isProd, warn: true, cwd: elmSource }
+        options: { pathToMake: elmMakePath, maxInstances: 2, debug: !isProd, warn: true, cwd: elmSource }
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,

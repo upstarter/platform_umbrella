@@ -19,10 +19,10 @@ export default class FeaturesComponent extends React.Component {
                   <img alt="Grow your cryptoasset investments" src="/images/icon1.svg"/>
                 </figure>
               </div>
-              <h3>Investment & Trading Approaches</h3>
+              <h3>Investment Strategies</h3>
               <p className="subtitle-small">
-                It takes sophisticated methods to manage and
-                optimize a portfolio of cryptoassets. Let us handle
+                It takes sophisticated methods to construct, manage and
+                optimize a cryptoasset portfolio. We can help with
                 the complex bits.
               </p>
             </div>
