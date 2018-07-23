@@ -4,8 +4,22 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
-    <meta content="Crypto investing app, Crypto portfolio app, Alt Coints, Trading, Cryptoassets, Cryptocurrency, Bitcoin, Bitcoin Trading, Blockchain, ICO, Initial Coin Offering" name="description"/>
+    <meta content="Crypto investing strategies, Crypto Portfolio, Crypto investing for beginners,
+     Crypto portfolio management, Crypto Investment Spreadsheet, Crypto Portfolio Allocation,
+     Alt Coints, Trading, Cryptoassets, Cryptocurrency, Bitcoin, Bitcoin Trading,
+     Blockchain, ICO, Initial Coin Offering" name="description"/>
     <meta content="CryptoWise" name="author"/>
+    - if Mix.env == :prod do
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-122688981-1"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-122688981-1');
+      </script>
+
     %title CryptoWise
     %script{src: "https://use.fontawesome.com/2aa13a4a25.js" }
     - css_path = static_path(@conn, "/css/app.css")
