@@ -34,11 +34,12 @@ post formFields =
 
 
 encodeModel : FormFields -> JD.Value
-encodeModel { email } =
+encodeModel { fullName, email, userType } =
     JE.object
         [ ( "lead"
           , JE.object
                 [ ( "email", JE.string email )
+                , ( "userType", JE.string userType )
                 ]
           )
         ]

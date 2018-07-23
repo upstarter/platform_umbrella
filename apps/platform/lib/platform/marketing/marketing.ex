@@ -7,6 +7,7 @@ defmodule Platform.Marketing do
   alias Platform.Repo
 
   alias Platform.Marketing.Lead
+  alias Platform.Marketing.Provider
 
   @doc """
   Returns the list of leads.
@@ -50,9 +51,12 @@ defmodule Platform.Marketing do
 
   """
   def create_lead(attrs \\ %{}) do
-    %Lead{}
-    |> Lead.changeset(attrs)
-    |> Repo.insert()
+    case attrs["userType"] do
+      "provider" ->
+        %Provider{} |> Provider.changeset(attrs) |> Repo.insert()
+      _ ->
+        %Lead{} |> Lead.changeset(attrs) |> Repo.insert()
+    end
   end
 
   @doc """

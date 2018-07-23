@@ -5,7 +5,7 @@ import { BrowserRouter, Switch, Route, Link } from "react-router-dom"
 import HomeComponent from "./HomeComponent"
 import PressComponent from "../press/PressComponent"
 import BlogComponent from "../blog/BlogComponent"
-import ContributeComponent from "../providers/ContributeComponent"
+import ProviderContainer from "../providers/ProviderContainer"
 import NavContainer from "../common/nav/nav"
 
 export default class HomeContainer extends React.Component {
@@ -18,7 +18,7 @@ export default class HomeContainer extends React.Component {
             <Route exact path='/' component={HomeComponent}/>
             <Route exact path='/press' component={PressComponent}/>
             <Route exact path='/blog' component={BlogComponent}/>
-            <Route exact path='/contribute' component={ContributeComponent}/>
+            <Route exact path='/contribute' component={ProviderContainer}/>
           </section>
         </BrowserRouter>
       </React.Fragment>

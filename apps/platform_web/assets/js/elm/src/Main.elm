@@ -1,3 +1,6 @@
+-- https://github.com/NoRedInk/elm-style-guide/blob/master/README.md
+
+
 port module Main exposing (main)
 
 import Html exposing (Html)
@@ -7,9 +10,9 @@ import Update exposing (update)
 import View exposing (view)
 
 
-main : Program Never Model Msg
+main : Program Flags Model Msg
 main =
-    Html.program
+    Html.programWithFlags
         { init = init
         , view = view
         , update = update
@@ -17,9 +20,9 @@ main =
         }
 
 
-init : ( Model, Cmd Msg )
-init =
-    initialModel ! []
+init : Flags -> ( Model, Cmd Msg )
+init flags =
+    initialModel flags ! []
 
 
 subscriptions : Model -> Sub Msg
