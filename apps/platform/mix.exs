@@ -36,6 +36,7 @@ defmodule Platform.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:poison, "~> 3.1", override: true},
       {:postgrex, "~> 0.13.5"},
       {:ecto, "~> 2.2.10"}
     ]

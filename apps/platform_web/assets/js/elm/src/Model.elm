@@ -3,9 +3,15 @@ module Model exposing (..)
 import Dict exposing (Dict)
 
 
+type alias Flags =
+    { userType : String
+    }
+
+
 type alias FormFields =
     { fullName : String
     , email : String
+    , userType : String
     }
 
 
@@ -48,6 +54,15 @@ emptyFormFields : FormFields
 emptyFormFields =
     { fullName = ""
     , email = ""
+    , userType = ""
+    }
+
+
+providerFormFields : FormFields
+providerFormFields =
+    { fullName = ""
+    , email = ""
+    , userType = "provider"
     }
 
 
@@ -66,6 +81,11 @@ emptyValidationErrors =
     Dict.empty
 
 
-initialModel : Model
-initialModel =
-    { subscribeForm = Editing emptyFormFields }
+initialModel : Flags -> Model
+initialModel flags =
+    case flags.userType of
+        "provider" ->
+            { subscribeForm = Editing providerFormFields }
+
+        _ ->
+            { subscribeForm = Editing emptyFormFields }

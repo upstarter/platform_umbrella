@@ -1,12 +1,12 @@
 import React from "react"
 import ReactDOM from "react-dom"
 
-export default class ContributeComponent extends React.Component {
+export default class ProviderComponent extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <section className="contribute">
-          <div id="contribute-content">
+        <section className="provider">
+          <div id="provider-content">
             <h1 className="title">Contributing to CryptoWise</h1>
             <br/>
             <h2 className="title">Mission</h2>

@@ -16,7 +16,7 @@ export default class FeaturesComponent extends React.Component {
             <div className="feature column">
               <div className="feature-icon">
                 <figure className="image">
-                  <img alt="Grow your cryptoasset investments" src="/images/icon1.svg"/>
+                  <img alt="Crypto investing strategies" src="/images/icon1.svg"/>
                 </figure>
               </div>
               <h3>Investment Strategies</h3>
@@ -29,7 +29,7 @@ export default class FeaturesComponent extends React.Component {
             <div className="feature column">
               <div className="feature-icon">
                 <figure className="image">
-                  <img alt="Informed investment insights" src="/images/icon2.svg"/>
+                  <img alt="Crypto Investing" src="/images/icon2.svg"/>
                 </figure>
               </div>
               <h3>Informed Investment Insights</h3>
@@ -41,7 +41,7 @@ export default class FeaturesComponent extends React.Component {
             <div className="feature column">
               <div className="feature-icon">
                 <figure className="image">
-                  <img alt="Grow your " src="/images/icon3.svg"/>
+                  <img alt="Crypto Trading, Crypto Investing" src="/images/icon3.svg"/>
                 </figure>
               </div>
               <h3>Intelligent Software Platform</h3>

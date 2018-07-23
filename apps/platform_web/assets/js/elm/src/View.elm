@@ -22,7 +22,7 @@ view { subscribeForm } =
                     ]
                 , Html.h2
                     []
-                    [ Html.text "Thanks for subscribing!" ]
+                    [ Html.text "The journey of a thousand miles begins with a single step!" ]
                 , Html.p
                     []
                     [ Html.text "Be wise and prosper." ]
