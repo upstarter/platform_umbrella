@@ -26,10 +26,11 @@ export default class PressComponent extends React.Component {
             </p>
             <br/>
             <div className="title">Mission</div>
-            <p>To help forward-looking investors achieve financial independence by providing them with
-              advanced software capabilities and community-driven research & analysis. We believe that fintech and crypto
-              literacy is a critical capability for the modern workforce and we are creating a source of wisdom and guidance 
-              for principled investors.
+            <p>To help forward-looking investors succeed through
+              community-driven research & analysis. We believe that everyone should
+              have the capabilities of a venture capitalist, and that fintech and crypto
+              literacy is a critical skill for the modern workforce. We are
+              creating a source of wisdom and guidance for principled investors.
             </p>
             <br/>
             <div className="title">Values</div>
