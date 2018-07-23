@@ -29,7 +29,7 @@ export default class PressComponent extends React.Component {
             <p>To help forward-looking investors succeed through
               community-driven research & analysis. We believe that everyone should
               have the capabilities of a venture capitalist, and that fintech and crypto
-              literacy is a critical skill for the modern workforce. We are
+              literacy are critical skills for the modern workforce. We are
               creating a source of wisdom and guidance for principled investors.
             </p>
             <br/>
