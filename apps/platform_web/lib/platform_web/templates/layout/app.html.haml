@@ -9,7 +9,8 @@
      Alt Coints, Trading, Cryptoassets, Cryptocurrency, Bitcoin, Bitcoin Trading,
      Blockchain, ICO, Initial Coin Offering" name="description"/>
     <meta content="CryptoWise" name="author"/>
-    - if Mix.env == :prod do
+    - prod = Application.get_env(:platform_web, :environment)
+    - if prod == :prod do
       <!-- Global site tag (gtag.js) - Google Analytics -->
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-122688981-1"></script>
       <script>
@@ -26,7 +27,6 @@
         analytics.page();
         }}();
       </script>
-
     %title CryptoWise
     %script{src: "https://use.fontawesome.com/2aa13a4a25.js" }
     - css_path = static_path(@conn, "/css/app.css")
