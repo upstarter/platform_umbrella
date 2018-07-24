@@ -1,3 +1,3 @@
 #!/bin/sh
 
-$RELEASE_ROOT_DIR/bin/myapp command Elixir.PlatformUmbrella.ReleaseTasks seed
+$RELEASE_ROOT_DIR/bin/platform_umbrella command Elixir.PlatformUmbrella.ReleaseTasks seed
