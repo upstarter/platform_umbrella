@@ -43,8 +43,6 @@ defmodule PlatformWeb.Router do
     scope "/v1", V1 do
       # LEADS
       post("/leads", LeadController, :create)
-      get("/blog_posts", BlogController, :blog_posts)
-      post("/experts", ProviderController, :create)
       # USERS
       scope "/users" do
         scope "/" do
