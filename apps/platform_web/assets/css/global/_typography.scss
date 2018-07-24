@@ -37,13 +37,13 @@ body {
 .title {
   font-family: $avenir-light;
   font-weight: $light;
-  font-size: 56px;
-  line-height: 65px;
-  letter-spacing: -0.08ch;
+  font-size: 34px;
+  line-height: 49px;
+  letter-spacing: -0.02ch;
   color: $white;
-  @include mobile {
-    font-size: 34px;
-    line-height: 49px;
+  @include desktop {
+    font-size: 56px;
+    line-height: 65px;
   }
 }
 
@@ -92,3 +92,10 @@ h3 {
   line-height: 26px;
   letter-spacing: 0.2ch;
 }
+//
+// button.is-large {
+//   font-family: $avenir-medium;
+//   font-size: 16px;
+//   line-height: 24px;
+//   letter-spacing: 0.2ch;
+// }

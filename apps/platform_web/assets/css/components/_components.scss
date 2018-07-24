@@ -4,9 +4,14 @@
 @import 'nav/nav';
 
 // -- main screens
+
+// -- investors
 @import 'home/home';
 @import 'home/press';
-@import 'blog/blog';
+@import 'home/blog';
+
+// -- providers
+@import 'providers/contribute';
 
 
 
