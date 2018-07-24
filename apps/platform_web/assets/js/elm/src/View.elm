@@ -22,10 +22,10 @@ view { subscribeForm } =
                     ]
                 , Html.h2
                     []
-                    [ Html.text "The journey of a thousand miles begins with a single step!" ]
+                    [ Html.text "Be Wise and Prosper!" ]
                 , Html.p
                     []
-                    [ Html.text "Be wise and prosper." ]
+                    [ Html.text "The future is waiting for you." ]
                 ]
 
         _ ->

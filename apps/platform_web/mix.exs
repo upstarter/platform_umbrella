@@ -38,7 +38,6 @@ defmodule PlatformWeb.Mixfile do
   defp deps do
     [
       {:phoenix, "~> 1.3.1"},
-      {:phoenix_pubsub, "~> 1.0"},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_haml, "~> 0.2", override: true},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
@@ -47,8 +46,8 @@ defmodule PlatformWeb.Mixfile do
       {:bamboo, "~> 0.8"},
       {:absinthe, "~> 1.4.0"},
       {:platform, in_umbrella: true},
-      {:auth, in_umbrella: true},
-      {:users, in_umbrella: true},
+      # {:auth, in_umbrella: true},
+      # {:users, in_umbrella: true},
       {:get_medium, "~> 0.3.0"},
       {:floki, "~> 0.20.0"}, # html parser
     ]
