@@ -49,11 +49,12 @@ release :platform_umbrella do
   set applications: [
     :runtime_tools,
     auth: :permanent,
-    backoffice: :permanent,
     payments: :permanent,
     platform: :permanent,
     platform_web: :permanent,
     users: :permanent
   ]
+  set commands: [
+    "migrate": "rel/commands/migrate.sh"
+  ]
 end
-
