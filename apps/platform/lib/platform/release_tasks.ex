@@ -1,4 +1,4 @@
-defmodule Platform.ReleaseTasks do
+defmodule Platform.Umbrella.ReleaseTasks do
 
   @start_apps [
     :crypto,
@@ -7,7 +7,10 @@ defmodule Platform.ReleaseTasks do
     :ecto
   ]
 
-  def myapp, do: Application.get_application(__MODULE__)
+  def myapp do
+     {:ok, app } Application.get_application(__MODULE__)
+     app
+   end
 
   def repos, do: Application.get_env(myapp(), :ecto_repos, [])
 
