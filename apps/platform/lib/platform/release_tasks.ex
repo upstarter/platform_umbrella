@@ -4,17 +4,17 @@ defmodule Platform.Umbrella.ReleaseTasks do
     :crypto,
     :ssl,
     :postgrex,
-    :ecto
+    :ecto,
+    :logger
   ]
 
-  def myapp do
-     {:ok, app } Application.get_application(__MODULE__)
-     app
-   end
+  def myapp, do: :platform
+
 
   def repos, do: Application.get_env(myapp(), :ecto_repos, [])
 
   def seed do
+    IO.puts __MODULE__
     me = myapp()
 
     IO.puts "Loading #{me}.."

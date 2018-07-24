@@ -13,13 +13,13 @@ export default class ProviderComponent extends React.Component {
           </div>
            <div id="provider-text">
             <h1 className="provider-heading">
-              Seeking Experts
+              Seeking Cryptoasset Experts
             </h1>
             <p>
               We're building the Dow Jones of Cryptoassets and we're seeking
               high quality finance and crypto article submissions. Join our
-              wise, talented, and passionate network of  analysts, researchers,
-              economists and industry experts who are focused on helping to form
+              wise, talented, and passionate network of crypto analysts, researchers,
+              crypto-economists and industry experts who are focused on helping to form
               the future of crypto technology by sharing insights and ideas. Our
               editors curate news, research, opinion and discussion on key
               topics of interest to crypto investors in order to help them make
@@ -27,8 +27,9 @@ export default class ProviderComponent extends React.Component {
             </p>
             <br />
             <p>
-              If your interested in generating income through analysis of
-              pertinent topics in categories relevant to investors-- we would love to hear from you.
+              If you're interested in generating income through analysis of
+              pertinent topics in categories relevant to crypto investors we
+              would love to hear from you.
             </p>
             <br/>
             <h3>How it Works</h3>
@@ -40,8 +41,7 @@ export default class ProviderComponent extends React.Component {
               you if there is a good fit.
             </p>
             <br/>
-            <h3>Some of the topics in our current universe of
-              discourse:</h3>
+            <h3>Our universe of discourse:</h3>
 
             <div className="topics columns subtitle-small">
               <div className="crypto-finance column">
