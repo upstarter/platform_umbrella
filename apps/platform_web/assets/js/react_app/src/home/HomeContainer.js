@@ -6,6 +6,7 @@ import HomeComponent from "./HomeComponent"
 import PressComponent from "../press/PressComponent"
 import BlogComponent from "../blog/BlogComponent"
 import ProviderContainer from "../providers/ProviderContainer"
+import PrivacyComponent from "../common/PrivacyComponent"
 import NavContainer from "../common/nav/nav"
 
 export default class HomeContainer extends React.Component {
@@ -19,6 +20,7 @@ export default class HomeContainer extends React.Component {
             <Route exact path='/press' component={PressComponent}/>
             <Route exact path='/blog' component={BlogComponent}/>
             <Route exact path='/contribute' component={ProviderContainer}/>
+            <Route exact path='/privacy_policy' component={PrivacyComponent}/>
           </section>
         </BrowserRouter>
       </React.Fragment>
