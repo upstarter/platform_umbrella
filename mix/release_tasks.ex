@@ -1,4 +1,4 @@
-defmodule PlatformUmbrella.ReleaseTasks do
+defmodule Platform.Umbrella.ReleaseTasks do
 
   @start_apps [
     :crypto,
