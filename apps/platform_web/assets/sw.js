@@ -11,6 +11,7 @@ self.addEventListener('install', function(e) {
         var all = Object.values(cacheManifest.latest).filter(
           function(fn) { return fn.match(/^(images|css|js|fonts)/);
           })
+        all.push('/'); // add the application HTML
         caches.open(cacheName).then(function(cache) {
           return cache.addAll(all).then(function() {
             self.skipWaiting();
