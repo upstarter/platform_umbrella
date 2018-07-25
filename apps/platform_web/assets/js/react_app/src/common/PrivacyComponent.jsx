@@ -4,7 +4,7 @@ export default class PrivacyComponent extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <section className="privacy-policy container">
+        <section className="privacy-policy container content">
           <h1>Privacy Policy</h1>
 
 
