@@ -17,6 +17,22 @@
     // border: 3px solid rgba(0, 0, 0, 0.1);
     color: black;
 
+    &.is-loading {
+        min-height: 100vh;
+
+        &:after {
+            @include loader;
+            position: absolute;
+            top: calc(25% - 2.5em);
+            left: calc(50% - 2.5em);
+            width: 5em;
+            height: 5em;
+            border-width: 0.25em;
+        }
+    }
+
+    .content { min-height: 100%; }
+
     h1,h2,h3,strong,em { color: $dark-blue; }
 
     a strong { color: #3273dc; }

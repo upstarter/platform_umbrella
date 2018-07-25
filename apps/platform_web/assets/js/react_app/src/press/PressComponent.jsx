@@ -26,7 +26,7 @@ export default class PressComponent extends React.Component {
             </p>
             <br/>
             <div className="title">Mission</div>
-            <p>To help forward-looking investors succeed through
+            <p>To help forward-looking investors succeed through in depth
               community-driven research & analysis. We believe that everyone should
               have the capabilities of a venture capitalist, and that fintech and crypto
               literacy are critical skills for the modern workforce. We are
@@ -40,7 +40,7 @@ export default class PressComponent extends React.Component {
             </p>
             <br/>
             <div className="title">Pursuits</div>
-            <p>Cryptoasset & Distributed Ledger Technology, Crypto Economics, Investing & Trading Strategies & Methods,
+            <p>Cryptoasset & Distributed Ledger Technology, Crypto Economics, Trading Strategies & Methods,
               Portfolio Management, Dapps, Algorithms & AI, Software Architecture & Systems Design,
               Growth Engineering, Emerging Tech, Internet of Things,
               Multi-Agent Reinforcement Learning, Cognitive & Social Sciences.

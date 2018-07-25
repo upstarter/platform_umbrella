@@ -27,6 +27,14 @@ export default class ProviderComponent extends React.Component {
             </p>
             <br />
             <p>
+              Behind the scenes we are building the worlds most advanced crypto
+              social science network and cryptoasset information and decision support
+              system for active investors and traders. As an innovator and
+              early adopter you have a unique opportunity to grab mindshare
+              as we cross the chasm to mainstream adoption of cryptoassets.
+            </p>
+            <br />
+            <p>
               If you're interested in generating income through analysis of
               pertinent topics in categories relevant to crypto investors we
               would love to hear from you.
@@ -41,6 +49,11 @@ export default class ProviderComponent extends React.Component {
               you if there is a good fit.
             </p>
             <br/>
+            <p>
+              We handle all aspects of payments including chargebacks and refunds,
+              you just focus on high quality content for your audience.
+            </p>
+            <br />
             <h3 className="list-heading">Our Universe of Discourse:</h3>
 
             <div className="topics columns list">

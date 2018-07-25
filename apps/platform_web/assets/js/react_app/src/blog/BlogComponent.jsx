@@ -36,7 +36,13 @@ export default class BlogComponent extends React.Component {
     if (isLoading) {
       return (
         <React.Fragment>
-          <section id="blog-content" className="is-loading">Loading ...</section>
+          <section id="blog-content">
+            <div className="card is-loading">
+              <div className="card-content">
+                <div className="content"></div>
+              </div>
+            </div>
+          </section>
         </React.Fragment>
       )
     }
