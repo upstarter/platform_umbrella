@@ -21,6 +21,12 @@ export default class HomeContainer extends React.Component {
             <Route exact path='/blog' component={BlogComponent}/>
             <Route exact path='/contribute' component={ProviderContainer}/>
             <Route exact path='/privacy_policy' component={PrivacyComponent}/>
+            <div id="footer">
+              <p className="copyright">
+                Copyright ©2018, Aion Labs, Inc.
+              </p>
+              <Link to="/privacy_policy" className="footer-link">Privacy Policy</Link>
+            </div>
           </section>
         </BrowserRouter>
       </React.Fragment>

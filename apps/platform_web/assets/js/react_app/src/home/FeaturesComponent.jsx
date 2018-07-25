@@ -5,14 +5,14 @@ export default class FeaturesComponent extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="features-wrapper container">
+        <section id="dark-wrap" className="features-wrapper container">
           <div className="scroll-to is-hidden-desktop">
             <a className="icon">
               <i className="fa fa-chevron-down"></i>
             </a>
           </div>
           <h1 className="features-heading">Features</h1>
-          <section className="features columns">
+          <div className="features columns">
             <div className="feature column">
               <div className="feature-icon">
                 <figure className="image">
@@ -50,8 +50,8 @@ export default class FeaturesComponent extends React.Component {
                 and guidance based on preferences.
               </p>
             </div>
-          </section>
-        </div>
+          </div>
+        </section>
       </React.Fragment>
     )
   }

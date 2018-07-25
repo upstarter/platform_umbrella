@@ -3,8 +3,7 @@
   .provider-contribute-wrapper {
     margin: 0px auto;
     padding: 60px 20px;
-    max-width: 700px;
-    text-align: center;
+    max-width: 900px;
 
     .scroll-to {
       display: flex;
@@ -19,6 +18,10 @@
       .provider-heading {
         margin-bottom: 30px;
       }
+    }
+
+    .list-heading {
+      text-align: center;
     }
     .topics {
       padding: 20px;

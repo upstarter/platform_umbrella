@@ -5,7 +5,7 @@ export default class ProviderComponent extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <section className="provider-contribute-wrapper container">
+        <section id="normal-wrap" className="provider-contribute-wrapper container">
           <div className="scroll-to is-hidden-desktop">
             <a className="icon">
               <i className="fa fa-chevron-down"></i>
@@ -41,9 +41,9 @@ export default class ProviderComponent extends React.Component {
               you if there is a good fit.
             </p>
             <br/>
-            <h3>Our universe of discourse:</h3>
+            <h3 className="list-heading">Our universe of discourse:</h3>
 
-            <div className="topics columns subtitle-small">
+            <div className="topics columns subtitle-big">
               <div className="crypto-finance column">
                 <ul>
                   <li className="topic">Cryptoeconomics</li>
