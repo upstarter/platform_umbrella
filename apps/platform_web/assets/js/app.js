@@ -20,10 +20,10 @@ import "phoenix_html"
 
 // import socket from "./socket"
 
-if('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js')
-           .then(function() { console.log("Service Worker Registered"); });
-}
+// if('serviceWorker' in navigator) {
+//   navigator.serviceWorker.register('/sw.js')
+//            .then(function() { console.log("Service Worker Registered"); });
+// }
 
 import './react_app/index'
 
