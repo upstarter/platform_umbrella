@@ -16,8 +16,8 @@ defmodule PlatformWeb.Router do
   end
 
   pipeline :authorized do
-    plug Auth.Pipeline.Browser
-    plug Auth.CurrentUser
+    # plug Auth.Pipeline.Browser
+    # plug Auth.CurrentUser
   end
 
 
