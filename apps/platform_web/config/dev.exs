@@ -1,5 +1,7 @@
 use Mix.Config
 
+config :platform_web, :env, :dev
+
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #
@@ -11,7 +13,14 @@ config :platform_web, PlatformWeb.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: [yarn: ["run", "watch", cd: Path.expand("../assets", __DIR__)]]
+  watchers: [yarn: ["run", "watch", cd: Path.expand("../assets", __DIR__)]],
+  pubsub: [adapter: Phoenix.PubSub.PG2, name: PlatformWeb.PubSub]
+
+  # It also supports custom adapter configuration:
+  #
+  # [name: :my_pubsub, adapter: Phoenix.PubSub.Redis,
+  #  host: "192.168.100.1"]
+
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed
