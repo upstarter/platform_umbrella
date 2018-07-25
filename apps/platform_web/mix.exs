@@ -44,7 +44,7 @@ defmodule PlatformWeb.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:bamboo, "~> 0.8"},
-      {:absinthe, "~> 1.4.0"},
+      # {:absinthe, "~> 1.4.0"},
       {:platform, in_umbrella: true},
       # {:auth, in_umbrella: true},
       # {:users, in_umbrella: true},
