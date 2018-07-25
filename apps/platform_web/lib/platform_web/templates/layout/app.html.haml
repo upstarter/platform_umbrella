@@ -33,9 +33,6 @@
     //   }(document, 'script', 'facebook-jssdk');
     / Your customer chat code
     -# .fb-customerchat{:attribution => "setup_tool", :page_id => "1806273466097268", :theme_color => "#fa3c4c"}
-    #footer{ style: 'font-size: 12px; text-align: center; margin-bottom: 30px;'}
-      .copyright Copyright ©2018, Aion Labs, Inc.
-      = link("Privacy Policy", to: "/privacy_policy")
 
     %script{src: "#{static_path(@conn, "/js/app.js")}" }
     - prod = Application.get_env(:platform_web, :env)

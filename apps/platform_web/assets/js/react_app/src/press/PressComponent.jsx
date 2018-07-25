@@ -5,7 +5,7 @@ export default class PressComponent extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <section className="press">
+        <section id="main-white" className="press">
           <div id="press-content">
             <div className="team-image">
               <div className="title">Team</div>
