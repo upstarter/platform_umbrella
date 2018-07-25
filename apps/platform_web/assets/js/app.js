@@ -13,10 +13,6 @@
 // to also remove its path from "config.paths.watched".
 import "phoenix_html"
 
-if('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/assets/sw.js')
-   .then(function() { console.log("Service Worker Registered"); });
-}
 // Import local files
 //
 // Local files can be imported directly using relative
@@ -24,6 +20,10 @@ if('serviceWorker' in navigator) {
 
 // import socket from "./socket"
 
+if('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js')
+           .then(function() { console.log("Service Worker Registered"); });
+}
 
 import './react_app/index'
 
