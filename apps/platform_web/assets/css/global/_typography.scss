@@ -3,14 +3,14 @@
 // global typography styles
 
 @font-face {
-    font-family: "Avenir";
-    src:
-      url("/fonts/avenir/AvenirLTStd-Book.otf") format("otf"),
-      url("/fonts/avenir/AvenirLTStd-Light.otf") format("otf"),
-      url("/fonts/avenir/AvenirLTStd-Roman.otf") format("otf"),
-      url("/fonts/avenir/Avenir-Book.ttf") format("truetype"),
-      url("/fonts/avenir/Avenir-Light.ttf") format("truetype"),
-      url("/fonts/avenir/Avenir-Roman.ttf") format("truetype")
+  font-family: "Avenir";
+  src:
+    url("/fonts/avenir/AvenirLTStd-Book.otf") format("otf"),
+    url("/fonts/avenir/AvenirLTStd-Light.otf") format("otf"),
+    url("/fonts/avenir/AvenirLTStd-Roman.otf") format("otf"),
+    url("/fonts/avenir/Avenir-Book.ttf") format("truetype"),
+    url("/fonts/avenir/Avenir-Light.ttf") format("truetype"),
+    url("/fonts/avenir/Avenir-Roman.ttf") format("truetype")
 }
 
 // font types
@@ -75,6 +75,15 @@ body {
   letter-spacing: 0.1ch;
   font-size: 14px;
   color: $silver;
+}
+
+.list {
+  font-family: $avenir-book;
+  font-weight: $bold;
+  line-height: 30px;
+  letter-spacing: 0.05ch;
+  font-size: 17px;
+  color: $black;
 }
 
 h1 {
