@@ -2,19 +2,17 @@
 
   .provider-contribute-wrapper {
     margin: 0px auto;
-    padding: 60px 20px;
-    max-width: 900px;
-
+    position: relative;
     .scroll-to {
       display: flex;
       justify-content: center;
       position: absolute;
       top: 0;
-      align-items: center;
       left: 50%;
     }
 
     #provider-text {
+      justify-content: center;
       .provider-heading {
         margin-bottom: 30px;
       }
