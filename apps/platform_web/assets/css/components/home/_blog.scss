@@ -1,10 +1,15 @@
 #blog-content {
-  min-height: 100vh;
-  margin: 50px auto;
-  width: 52%;
+  // min-height: 100vh;
+  margin: 70px auto;
+  width: 95%;
+  @include tablet {
+    margin: 70px auto;
+    width: 37rem;
+  }
 
-  @include mobile {
-    width: 100%;
+  @include desktop {
+    margin: 70px auto;
+    width: 37rem;
   }
 
   .card {
