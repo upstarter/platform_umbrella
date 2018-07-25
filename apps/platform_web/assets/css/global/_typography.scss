@@ -27,18 +27,22 @@ $semibold: 500;
 $bold: 700;
 
 body {
-  font-family: $avenir-medium;
+  font-family: $avenir;
   font-weight: $normal;
   font-size: 17px;
   line-height: 25px;
   color: $white;
 }
 #wrapper {
-  #white-wrap {
+  #normal-wrap {
     font-family: $avenir;
     font-weight: $normal;
     font-size: 17px;
     color: #000;
+
+    .title {
+      color: black;
+    }
   }
 }
 
