@@ -6,10 +6,15 @@ import { Link } from "react-router-dom"
 export default class NavContainer extends React.Component {
   // state = { comments: [] }
 
+  constructor(props) {
+    super(props);
+    this.state = { didScroll: false, lastScrollTop: 0, delta: 5 }
+  }
+
   render() {
     return (
       <React.Fragment>
-        <nav id="nav" className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+        <nav id="nav" className="navbar nav-down" role="navigation" aria-label="main navigation">
           <div className="container">
             <div className="navbar-brand">
               <Link to="/" className="navbar-item .nav-logo">
@@ -30,5 +35,48 @@ export default class NavContainer extends React.Component {
         </nav>
       </React.Fragment>
     )
+  }
+
+  componentDidMount() {
+    // Hide Header on on scroll down
+    this.setState({navbarHeight: $('#nav').outerHeight()});
+    $(window).scroll((event) => {
+        this.setState({didScroll: true})
+    });
+
+    this.inverval = setInterval(() => {
+        if (this.state.didScroll) {
+            this.hasScrolled();
+            this.setState({didScroll: false})
+        }
+    }, 250);
+
+  }
+
+  hasScrolled() {
+      let st = $(document).scrollTop();
+      console.log(this.state);
+
+      // Make sure they scroll more than delta
+      if(Math.abs(this.state.lastScrollTop - st) <= this.state.delta)
+          return;
+
+      //console.log(this.state.lastScrollTop);
+      // If they scrolled down and are past the navbar, add class .nav-up.
+      // This is necessary so you never see what is "behind" the navbar.
+      if (st > this.state.lastScrollTop && st > this.state.navbarHeight){
+          // Scroll Down
+          $('#nav').removeClass('nav-down').addClass('nav-up');
+      } else {
+          // Scroll Up
+          if(st + $(window).height() < $(document).height()) {
+              $('#nav').removeClass('nav-up').addClass('nav-down');
+          }
+      }
+
+      this.state.lastScrollTop = st;
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 }

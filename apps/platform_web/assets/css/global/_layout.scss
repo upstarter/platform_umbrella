@@ -6,7 +6,10 @@
 
 // -- cryptowise app
 
-body { height: 100%; }
+body {
+  height: 100%;
+  padding-top: 50px; // same as header height
+}
 
 .center {
   display: flex;

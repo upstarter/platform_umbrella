@@ -1,20 +1,33 @@
+//  -- hide navbar on scroll foobar, see app.js
+#nav {
+  z-index: 1;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  transition: top .1s ease-in-out;
+  width: 100%;
+}
+
+.nav-up {
+  top: -60px !important;
+}
 
 
-  @include mobile {
-    .navbar {
-      display: flex;
-      flex-wrap: wrap;
-    }
-    .navbar-brand {
-      min-width: 100%;
-    }
-    .navbar-menu {
-      margin-left: auto;
-      min-width: 50%;
+@include mobile {
+  .navbar {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .navbar-brand {
+    min-width: 100%;
+  }
+  .navbar-menu {
+    margin-left: auto;
+    min-width: 50%;
 
-      .navbar-item {
-        min-height: 50px;
-        font-size: 20px;
-      }
+    .navbar-item {
+      min-height: 50px;
+      font-size: 20px;
     }
   }
+}
