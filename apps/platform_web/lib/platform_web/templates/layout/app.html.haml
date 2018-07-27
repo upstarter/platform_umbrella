@@ -16,6 +16,26 @@
     - favicon = static_path(@conn, "/images/favicon.png")
     %link{rel: "icon", type:"image/x-icon", href: favicon}
     %script{src: "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" }
+    - prod = Application.get_env(:platform_web, :env)
+    - if prod == :prod do
+
+      -# <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-122688981-1"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-122688981-1');
+      </script>
+
+      -# <!-- Segment -->
+      <script>
+        !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t,e){var n=document.createElement("script");n.type="text/javascript";n.async=!0;n.src="https://cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(n,a);analytics._loadOptions=e};analytics.SNIPPET_VERSION="4.1.0";
+        analytics.load("DZkRyiXKnNGmbh2EWo1LT78RPyhnVyFy");
+        analytics.page();
+        }}();
+      </script>
 
   %body
     #wrapper
@@ -35,24 +55,5 @@
     -# .fb-customerchat{:attribution => "setup_tool", :page_id => "1806273466097268", :theme_color => "#fa3c4c"}
 
     %script{src: "#{static_path(@conn, "/js/app.js")}" }
-    - prod = Application.get_env(:platform_web, :env)
-    - if prod == :prod do
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-122688981-1"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'UA-122688981-1');
-      </script>
-
-      <!-- Segment -->
-      <script>
-        !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t,e){var n=document.createElement("script");n.type="text/javascript";n.async=!0;n.src="https://cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(n,a);analytics._loadOptions=e};analytics.SNIPPET_VERSION="4.1.0";
-        analytics.load("DZkRyiXKnNGmbh2EWo1LT78RPyhnVyFy");
-        analytics.page();
-        }}();
-      </script>
 
     -# %script{ src: "https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" }
