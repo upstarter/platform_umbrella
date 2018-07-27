@@ -1,16 +1,17 @@
 #wrapper {
 
-  .press {
+  .about {
     padding: 20px 0;
     margin-top: 70px;
     margin: 0 auto;
     width: 50%;
 
+
     @include mobile {
       min-width: 90%;
     }
   }
-  #press-content {
+  #about-content {
 
     .team-image {
       .image {
