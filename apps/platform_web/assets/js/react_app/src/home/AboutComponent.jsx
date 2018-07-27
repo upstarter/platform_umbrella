@@ -59,9 +59,7 @@ export default class AboutComponent extends React.Component {
               with an injection and synthesis of scientific values. As natural
               cryptoeconomics take root, guided via game theory & mechanism
               design, the result will be a cambrian explosion of new investment
-              and trading ideas, helping americans slay the dragon of the
-              inevitable evaporation of social security and a retirement crisis
-              in the making.
+              and trading ideas.
             </p>
             <div className="team-image">
               <h1 className="title">Team</h1>
@@ -75,7 +73,9 @@ export default class AboutComponent extends React.Component {
               community-driven research & analysis. We believe that everyone
               should have the capabilities of a venture capitalist, and that
               fintech and crypto literacy are critical skills for the modern
-              workforce. We are creating a source of wisdom and guidance for
+              workforce that will help americans through the inevitable
+              evaporation of social security and a retirement crisis in the
+              making. We are creating a source of wisdom and guidance for
               principled investors.
             </p>
             <h1 className="title">Values</h1>
