@@ -9,9 +9,10 @@ export default class AboutComponent extends React.Component {
           <div id="about-content" className="about content">
             <h1 className="title">About</h1>
             <h3 className="subtitle">
-              CryptoWise is a collaborative investment
-              ecosystem harnessing the wisdom of the crowd and AI to optimize
-              individual & collective investment outcomes.
+              CryptoWise is a collaborative investment ecosystem harnessing the
+              wisdom of the crowd and AI to optimize individual & collective
+              investment outcomes. Open source wealth-building is the future,
+              and we're helping create it.
             </h3>
             <p className="paragraph">
               We are connecting retail investors with expert level cryptoasset
@@ -53,18 +54,15 @@ export default class AboutComponent extends React.Component {
               become key values.
             </p>
             <p className="">
-              Accordingly, we provide a web native publishing platform for analysts,
-              researchers, academics-- enriching the network and enabling an
-              injection and synthesis of scientific values. As natural
+              Accordingly, we provide a web native publishing platform for
+              crypto analysts, researchers, academics-- to seed and enrich the network
+              with an injection and synthesis of scientific values. As natural
               cryptoeconomics take root, guided via game theory & mechanism
               design, the result will be a cambrian explosion of new investment
-              and trading ideas, slaying the dragon of the inevitable evaporation
-              of social security and a retirement crisis in the making.
+              and trading ideas, helping americans slay the dragon of the
+              inevitable evaporation of social security and a retirement crisis
+              in the making.
             </p>
-            <h4 className="subtitle">
-              Open source wealth-building is the future, and we're helping create
-              it.
-            </h4>
             <div className="team-image">
               <h1 className="title">Team</h1>
               <figure className="image">
@@ -78,7 +76,7 @@ export default class AboutComponent extends React.Component {
               should have the capabilities of a venture capitalist, and that
               fintech and crypto literacy are critical skills for the modern
               workforce. We are creating a source of wisdom and guidance for
-              principled individual & fund investors.
+              principled investors.
             </p>
             <h1 className="title">Values</h1>
             <p>
