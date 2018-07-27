@@ -4,7 +4,6 @@ import img from "../../../../../static/images/nav_logo.svg"
 import { Link } from "react-router-dom"
 
 export default class NavContainer extends React.Component {
-  // state = { comments: [] }
 
   constructor(props) {
     super(props);
@@ -55,13 +54,11 @@ export default class NavContainer extends React.Component {
 
   hasScrolled() {
       let st = $(document).scrollTop();
-      console.log(this.state);
 
       // Make sure they scroll more than delta
       if(Math.abs(this.state.lastScrollTop - st) <= this.state.delta)
           return;
 
-      //console.log(this.state.lastScrollTop);
       // If they scrolled down and are past the navbar, add class .nav-up.
       // This is necessary so you never see what is "behind" the navbar.
       if (st > this.state.lastScrollTop && st > this.state.navbarHeight){
