@@ -10,6 +10,7 @@ import PrivacyComponent from "../common/PrivacyComponent"
 import NavContainer from "../common/nav/nav"
 
 export default class HomeContainer extends React.Component {
+
   render() {
     return (
       <React.Fragment>

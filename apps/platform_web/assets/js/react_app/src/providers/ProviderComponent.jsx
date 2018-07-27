@@ -17,21 +17,23 @@ export default class ProviderComponent extends React.Component {
             </h1>
             <p>
               We're building the Dow Jones of Cryptoassets and we're seeking
-              high quality finance and crypto article submissions. Join our
-              wise, talented, and passionate network of crypto analysts, researchers,
+              cryptoasset article writers. Join our wise, talented, and
+              passionate network of crypto analysts, researchers,
               crypto-economists and industry experts who are focused on forming
-              the future of crypto technology, filtering fraud, and who love
-              sharing insights and ideas. Our editors curate news, research,
-              opinion and discussion on key topics of interest to crypto investors
-              in order to help them make better financial decisions.
+              the future of cryptoasset technologies, filtering fraud, curing
+              crypto confusion, and who love sharing insights and ideas. Our
+              writers help crypto investors make better financial decisions with
+              news, research, opinion and discussion on relevant topics of
+              interest.
             </p>
             <br />
             <p>
-              Behind the scenes we are building the worlds most advanced crypto
-              social science network and cryptoasset information and decision support
-              system for active investors and traders. As an innovator and
-              early adopter you have a unique opportunity to grab mindshare
-              as we cross the chasm to mainstream adoption of cryptoassets.
+              Behind the scenes we are building a collaborative investment
+              ecosystem harnessing the wisdom of the crowd and AI to optimize
+              individual & collective investment outcomes. As an early adopter
+              you have a unique opportunity to become an influencer and attain
+              mindshare as we cross the chasm to mainstream adoption of
+              cryptoassets.
             </p>
             <br />
             <p>
@@ -42,11 +44,11 @@ export default class ProviderComponent extends React.Component {
             <br/>
             <h3>How it Works</h3>
             <p>
-              Submit your email address above if you feel you are uniquely qualified to
-              contribute articles on the below topics within
-              the context of cryptoassets. We will send you a link to
-              our contributor application. After you apply we will get back to
-              you if there is a good fit.
+              Submit your email address above if you feel you are uniquely
+              qualified to contribute articles on the below topics within the
+              context of cryptoassets. We will send you a link to our
+              contributor application. After you apply we will get back to you
+              if there is a good fit.
             </p>
             <br/>
             <p>
