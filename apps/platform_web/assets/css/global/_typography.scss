@@ -31,92 +31,98 @@ body {
   font-weight: $normal;
   font-size: 17px;
   line-height: 25px;
-  color: $white;
-}
-#wrapper {
-  #normal-wrap {
-    font-family: $avenir;
-    font-weight: $normal;
-    font-size: 17px;
-    color: #000;
-
-    .title {
-      color: black;
-    }
-  }
-}
-
-.title {
-  font-family: $avenir-light;
-  font-weight: $light;
-  font-size: 34px;
-  line-height: 49px;
-  letter-spacing: -0.02ch;
-  color: $white;
-  @include desktop {
-    font-size: 56px;
-    line-height: 65px;
-  }
-}
-
-.subtitle-big {
-  font-family: $avenir-book;
-  font-weight: $light;
-  line-height: 30px;
-  letter-spacing: 0.05ch;
-  font-size: 17px;
-  color: $silver;
-}
-
-.subtitle-small {
-  font-family: $avenir-book;
-  font-weight: $light;
-  line-height: 20px;
-  letter-spacing: 0.1ch;
-  font-size: 14px;
-  color: $silver;
-}
-
-.list {
-  font-family: $avenir-book;
-  font-weight: $bold;
-  line-height: 30px;
-  letter-spacing: 0.05ch;
-  font-size: 17px;
   color: $black;
 }
-
-h1 {
-  font-family: $avenir-light;
+#wrapper {
+  font-family: $avenir;
   font-weight: $normal;
-  line-height: 38px;
-  letter-spacing: 0ch;
-  font-size: 30px;
+  font-size: 17px;
+  color: #000;
 
-  @include desktop {
-    font-size: 46px;
+  // -- font skintones
+  #normal-wrap {
+    color: $black;
+    .title { color: $black; }
+    .subtitle-big { color: $black; }
+    .subtitle-small { color: $black; }
+    .list { color: $black; }
+  }
+
+  #dark-wrap {
+    color: $white;
+    .title { color: $white; }
+    .subtitle-big { color: $silver; }
+    .subtitle-small { color: $silver; }
+    .list { color: $white; }
+  }
+
+  .heero {
+    color: $white;
+    .title { color: $white; }
+  }
+
+
+  .title {
+    font-family: $avenir-light;
+    font-weight: $light;
+    font-size: 34px;
+    line-height: 49px;
+    letter-spacing: -0.02ch;
+    @include desktop {
+      font-size: 56px;
+      line-height: 65px;
+    }
+  }
+
+  .subtitle-big {
+    font-family: $avenir-book;
+    font-weight: $light;
+    line-height: 30px;
+    letter-spacing: 0.05ch;
+    font-size: 17px;
+  }
+
+  .subtitle-small {
+    font-family: $avenir-book;
+    font-weight: $light;
+    line-height: 20px;
+    letter-spacing: 0.1ch;
+    font-size: 14px;
+  }
+
+  .list {
+    font-family: $avenir-book;
+    font-weight: $bold;
+    line-height: 30px;
+    letter-spacing: 0.05ch;
+    font-size: 17px;
+  }
+
+  h1 {
+    font-family: $avenir-light;
+    font-weight: $normal;
+    line-height: 38px;
+    letter-spacing: 0ch;
+    font-size: 30px;
+
+    @include desktop {
+      font-size: 46px;
+    }
+  }
+
+  h2 {
+    font-family: $avenir-light;
+    font-weight: $normal;
+    font-size: 24px;
+    line-height: 34px;
+    letter-spacing: 0.1ch;
+  }
+
+  h3 {
+    font-family: $avenir-book;
+    font-weight: $normal;
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 0.2ch;
   }
 }
-
-h2 {
-  font-family: $avenir-light;
-  font-weight: $normal;
-  font-size: 24px;
-  line-height: 34px;
-  letter-spacing: 0.1ch;
-}
-
-h3 {
-  font-family: $avenir-book;
-  font-weight: $normal;
-  font-size: 20px;
-  line-height: 26px;
-  letter-spacing: 0.2ch;
-}
-//
-// button.is-large {
-//   font-family: $avenir-medium;
-//   font-size: 16px;
-//   line-height: 24px;
-//   letter-spacing: 0.2ch;
-// }
