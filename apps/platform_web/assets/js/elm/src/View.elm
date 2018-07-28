@@ -25,7 +25,7 @@ view { subscribeForm } =
                     [ Html.text "Be Wise and Prosper!" ]
                 , Html.p
                     []
-                    [ Html.text "The future is waiting for you." ]
+                    [ Html.text "We'll keep you updated." ]
                 ]
 
         _ ->
@@ -88,7 +88,7 @@ formView subscribeForm =
                     , Html.div
                         [ Html.class "field button-control" ]
                         [ Html.button
-                            [ Html.class "button is-primary is-large"
+                            [ Html.class "button is-rounded is-primary is-large"
                             , Html.disabled buttonDisabled
                             ]
                             [ Html.span

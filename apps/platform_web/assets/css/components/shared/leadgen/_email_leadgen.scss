@@ -6,7 +6,19 @@
   @include mobile {
 
   }
+  .button-control, button {
+    background: transparent;
+    // border-radius: 50px;
 
+  }
+
+  .button-control:hover {
+    transform: translateY(-2px);
+    // box-shadow: 0 10px 20px; //rgba(0,0,0,.2);
+  }
+  .button-control:active {
+    transform: translateY(-1px);
+  }
   .control {
     margin-bottom: 1em;
     margin-left: 3px;

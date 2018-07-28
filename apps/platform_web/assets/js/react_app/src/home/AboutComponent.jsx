@@ -11,8 +11,7 @@ export default class AboutComponent extends React.Component {
             <h3 className="subtitle">
               CryptoWise is a collaborative investment ecosystem harnessing the
               wisdom of the crowd and AI to optimize individual & collective
-              investment outcomes. Open source wealth-building is the future,
-              and we're helping create it.
+              investment outcomes.
             </h3>
             <p className="paragraph">
               We are connecting retail investors with expert level cryptoasset
@@ -54,7 +53,7 @@ export default class AboutComponent extends React.Component {
               become key values.
             </p>
             <p className="">
-              Accordingly, we provide a web native publishing platform for
+              Accordingly, we are prototyping web native solutions for
               crypto analysts, researchers, academics-- to seed and enrich the network
               with an injection and synthesis of scientific values. As natural
               cryptoeconomics take root, guided via game theory & mechanism
