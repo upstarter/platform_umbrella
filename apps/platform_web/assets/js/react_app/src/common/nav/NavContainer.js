@@ -16,7 +16,7 @@ export default class NavContainer extends React.Component {
         <nav id="nav" className="navbar nav-down" role="navigation" aria-label="main navigation">
           <div className="container">
             <div className="navbar-brand">
-              <Link to="/" className="navbar-item .nav-logo">
+              <Link to="/" className="navbar-item nav-logo">
                 <img src={img} alt="Logo for CryptoWise: Cryptoasset research, analysis" width="130" height="60"></img>
               </Link>
               <div className="navbar-burger burger" data-target="navMenu">

@@ -4,14 +4,23 @@
   height: 50px;
   position: fixed;
   top: 0;
-  transition: top .1s ease-in-out;
+  transition: top .2s ease-in-out;
   width: 100%;
 }
 
 .nav-up {
   top: -60px !important;
+
+}
+.nav-down {
+  // animation-delay: 3s;
+  // animation-iteraction-count: 3;
+  // animation-timing-function: ease-out;
 }
 
+.nav-logo {
+
+}
 
 @include mobile {
   .navbar {
@@ -29,5 +38,38 @@
       min-height: 50px;
       font-size: 20px;
     }
+  }
+}
+
+@keyframes moveUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-60px);
+    top: -60px !important;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
   }
 }
