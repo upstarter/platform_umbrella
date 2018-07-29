@@ -17,6 +17,8 @@
 
 // -- shared components
 @import 'shared/leadgen/email_leadgen';
-@import 'shared/privacy_policy';
 @import 'shared/spinner';
 @import 'shared/blockquote';
+
+// -- LRU least recently useds
+@import 'shared/privacy_policy';

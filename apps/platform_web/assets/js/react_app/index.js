@@ -7,8 +7,9 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import HomeContainer from "./src/home/home"
+import AppContainer from "./src/app"
 import "normalize.css"
 
 ReactDOM.render(
-  <HomeContainer/>, document.getElementById("wrapper")
+  <AppContainer/>, document.getElementById("wrapper")
 )
