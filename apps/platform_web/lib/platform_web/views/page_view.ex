@@ -5,11 +5,10 @@ defmodule PlatformWeb.PageView do
   end
 
   def blog_posts do
-    # url = "https://medium.com/@eric_11842/latest?format=json"
-    # HTTPoison.get(url)
-
-    url = "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2F/@cryptowise"
-    GetMedium.Full.blog_posts(url, raw: true)
+    ConCache.get_or_store(:wise_cache, "blogPosts", fn() ->
+      url = "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2F/@cryptowise"
+      GetMedium.Full.blog_posts(url, raw: true)
+    end)
   end
 
   def first_img_src_in_html(html) do

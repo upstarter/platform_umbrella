@@ -10,6 +10,11 @@ defmodule PlatformWeb.Application do
       supervisor(PlatformWeb.Endpoint, []),
       # Start your own worker by calling: PlatformWeb.Worker.start_link(arg1, arg2, arg3)
       # worker(PlatformWeb.Worker, [arg1, arg2, arg3]),
+      worker(ConCache, [[name: :wise_cache,
+                         ttl_check_interval: :timer.seconds(1),
+                         global_ttl: :timer.seconds(1200000)]
+                       ]),
+
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
