@@ -34,8 +34,8 @@ export default class AboutComponent extends React.Component {
               crowd fund management capabilities and which relies on the wisdom
               of the crowd to make funding decisions, yet which also enables
               individual managers to sell tokens tied to their fund(s)
-              performance, and the funds are ranked judiciously on a variety of
-              factors determined to be of interest to the ecosystem.
+              performance, and the funds are surfaced on a variety of
+              factors of interest to the ecosystem.
             </p>
             <blockquote
             cite="https://www.goodreads.com/work/quotes/3250675-the-wisdom-of-crowds">

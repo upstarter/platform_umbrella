@@ -1,5 +1,9 @@
 import React from "react"
 import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
+import selectPost from "../actions/index"
+import BlogListItem from './BlogListItem'
+
 
 class BlogListContainer extends React.Component {
 
@@ -15,6 +19,7 @@ class BlogListContainer extends React.Component {
 
 
   componentDidMount() {
+
       this.setState({ isLoading: true });
 
       fetch('/api/v1/blog_posts')
@@ -26,30 +31,51 @@ class BlogListContainer extends React.Component {
           }
         })
         .then(data => this.setState({
-          blogPosts: data.blogPosts,
-          selectedPost: data.blogPosts[0],
+          blogPosts: data.blog_posts,
+          selectedPost: data.blog_posts[0],
           isLoading: false
         }))
         .catch(error => this.setState({ error, isLoading: false }));
-    }
+  }
 
 
   render() {
+    console.log(this);
     return (
-      <BlogDetail />
-      <BlogList
-        onPostSelect={selectedPost => this.setState({selectedPost}) } />
+      <div>
+        <ul className="blog-list">
+          {
+            this.state.blogPosts.map((blogPost) => {
+              return (
+                <BlogListItem
+                  onPostSelect={this.state.onPostSelect}
+                  key={blogPost}
+                  blogPost={blogPost} />
+              )
+            })
+          }
+        </ul>
+      </div>
     )
   }
 }
 
-function mapStateToProps(state) {
-  // whatever is returned will show up as props inside BookList
+
+// whatever is returned will show up as props inside BookList
+
+const mapStateToProps = (state, ownProps) => {
   return {
-    blogPosts: state.blogPosts;
-  };
+    blogPosts: state.blogPosts
+  }
+}
+//anything returned from here will end up as props on BookListContainer
+//whenever selectPost is called the result should be passed to all reducers
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return bindActionCreators({selectPost: selectPost}, dispatch);
 }
 
 // connect takes a function and component and produces a container that is aware
 // of state contained by redux
-export default connect(mapStateToProps)(BlogListContainer)
+// promote BookList to Container
+export default connect(mapStateToProps, mapDispatchToProps)(BlogListContainer);

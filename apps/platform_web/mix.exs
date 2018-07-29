@@ -50,6 +50,7 @@ defmodule PlatformWeb.Mixfile do
       # {:users, in_umbrella: true},
       {:get_medium, "~> 0.3.0"},
       {:floki, "~> 0.20.0"}, # html parser
+      {:con_cache, "~> 0.13.0"},
     ]
   end
 

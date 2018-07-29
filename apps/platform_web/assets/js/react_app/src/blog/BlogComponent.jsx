@@ -6,13 +6,13 @@ import { Link } from "react-router-dom"
 export default class BlogComponent extends React.Component {
 
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       blogPosts: [],
       selectedPost: null,
       isLoading: true,
       error: null
-    }
+    };
   }
 
 
@@ -28,8 +28,8 @@ export default class BlogComponent extends React.Component {
           }
         })
         .then(data => this.setState({
-          blogPosts: data.blogPosts,
-          selectedVideo: data.blogPosts[0],
+          blogPosts: data.blog_posts,
+          selectedPost: data.blog_posts[0],
           isLoading: false
         }))
         .catch(error => this.setState({ error, isLoading: false }));

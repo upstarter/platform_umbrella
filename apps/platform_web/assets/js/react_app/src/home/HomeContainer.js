@@ -4,10 +4,12 @@ import { BrowserRouter, Switch, Route, Link } from "react-router-dom"
 
 import HomeComponent from "./HomeComponent"
 import AboutComponent from "./AboutComponent"
-import BlogComponent from "../blog/BlogComponent"
 import ProviderContainer from "../providers/ProviderContainer"
 import PrivacyComponent from "../common/PrivacyComponent"
 import NavContainer from "../common/nav/nav"
+import BlogComponent from "../blog/BlogComponent"
+import BlogListContainer from "../blog/BlogListContainer"
+
 
 export default class HomeContainer extends React.Component {
 

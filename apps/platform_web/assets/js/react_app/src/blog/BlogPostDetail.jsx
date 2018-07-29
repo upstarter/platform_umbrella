@@ -7,3 +7,5 @@ const BlogDetail = (props) => {
     </div>
   )
 }
+
+export default BlogDetail;
