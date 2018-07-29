@@ -7,7 +7,12 @@ export default class BlogComponent extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = { blog_posts: [], isLoading: true, error: null }
+    this.state = {
+      blogPosts: [],
+      selectedPost: null,
+      isLoading: true,
+      error: null
+    }
   }
 
 
@@ -22,12 +27,16 @@ export default class BlogComponent extends React.Component {
             throw new Error('Something went wrong ...');
           }
         })
-        .then(data => this.setState({ blog_posts: data.blog_posts, isLoading: false }))
+        .then(data => this.setState({
+          blogPosts: data.blogPosts,
+          selectedVideo: data.blogPosts[0],
+          isLoading: false
+        }))
         .catch(error => this.setState({ error, isLoading: false }));
     }
 
   render() {
-    const { blog_posts, isLoading, error } = this.state;
+    const { blogPosts, isLoading, error } = this.state;
 
     if (error) {
       return <p>{error.message}</p>;
@@ -51,7 +60,7 @@ export default class BlogComponent extends React.Component {
       <React.Fragment>
         <section id="blog-content">
           <div className="blog-posts">
-              {blog_posts.map(post =>
+              {blogPosts.map(post =>
                 <div key={post.toString()} className="card">
                   <div className="card-content">
                     <div className="content" dangerouslySetInnerHTML={{__html: post.content}}>
