@@ -1,27 +1,27 @@
 .email-leadgen {
-  // display: flex;
-  // justify-content: center;
-  // align-items: flex-start;
+  font-size: 3rem;
 
-  @include mobile {
-
-  }
   .button-control, button {
     background: transparent;
-    // border-radius: 50px;
+    font-size: 1.8rem !important;
 
   }
 
   .button-control:hover {
-    transform: translateY(-2px);
-    // box-shadow: 0 10px 20px; //rgba(0,0,0,.2);
+    transform: translateY(-.2rem);
   }
   .button-control:active {
-    transform: translateY(-1px);
+    transform: translateY(-.1rem);
   }
+
   .control {
-    margin-bottom: 1em;
-    margin-left: 3px;
+    margin-bottom: 1rem;
+    margin-left: .3rem;
+
+    input {
+      font-size: 1.6rem;
+    }
+
 
     .select, select {
       width: 100%;
@@ -37,14 +37,14 @@
 
     .fa {
       color: $light-purple;
-      font-size: 5em;
-      margin-bottom: 1em;
-      padding-top: 1em;
+      font-size: 5rem;
+      margin-bottom: 1rem;
+      padding-top: 1rem;
     }
 
     h2 {
       font-size: $size-4;
-      margin-bottom: 1em;
+      margin-bottom: 1rem;
     }
   }
 

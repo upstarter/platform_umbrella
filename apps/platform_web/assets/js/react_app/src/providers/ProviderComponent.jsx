@@ -16,39 +16,33 @@ export default class ProviderComponent extends React.Component {
               Seeking Cryptoasset Experts
             </h1>
             <p>
-              We're building the Dow Jones of Cryptoassets and we're seeking
-              cryptoasset article writers. Join our wise, talented, and
-              passionate network of crypto analysts, researchers,
-              crypto-economists and industry experts who are focused on forming
-              the future of cryptoasset technologies, filtering fraud, curing
-              crypto confusion, and who love sharing insights and ideas. Our
-              writers help crypto investors make better financial decisions with
-              news, research, opinion and discussion on relevant topics of
-              interest.
+              We're building the Dow Jones of Cryptoassets, and we're seeking cryptoasset
+              article writers. Join our wise, talented, and passionate network of crypto
+              analysts, researchers, crypto-economists and industry experts — all focused on
+              forming the future of cryptoasset technologies. We love sharing insights and
+              ideas, filtering fraud, and curing crypto confusion. Our writers help crypto
+              investors make better financial decisions by making use of news, research,
+              opinion and in-depth discussion on relevant topics of interest.
             </p>
             <br />
             <p>
-              Behind the scenes we are building a collaborative investment
-              ecosystem harnessing the wisdom of the crowd and AI to optimize
-              individual & collective investment outcomes. As an early adopter
-              you have a unique opportunity to become an influencer and attain
-              mindshare as we cross the chasm to mainstream adoption of
-              cryptoassets.
+              We’re building a collaborative investment ecosystem
+              harnessing the wisdom of the crowd and AI to optimize individual & collective
+              investment outcomes. As an early adopter you have a unique opportunity to become
+              an influencer — and attain mindshare — as we cross the chasm to mainstream
+              adoption of cryptoassets.
             </p>
             <br />
             <p>
-              If you're interested in generating income through analysis of
-              pertinent topics in categories relevant to crypto investors we
-              would love to hear from you.
+              If you're interested in generating income through analysis of pertinent topics
+              in categories relevant to crypto investors, we would love to hear from you.
             </p>
             <br/>
             <h3>How it Works</h3>
             <p>
-              Submit your email address above if you feel you are uniquely
-              qualified to contribute articles on the below topics within the
-              context of cryptoassets. We will send you a link to our
-              contributor application. After you apply we will get back to you
-              if there is a good fit.
+              If you feel you’re qualified to contribute cryptoasset articles on the topics
+              below, submit your email address and we’ll send a link to our contributor
+              application. After you apply we’ll get back to you if there’s a good fit.
             </p>
             <br/>
             <p>

@@ -1,7 +1,7 @@
 //  -- hide navbar on scroll foobar, see app.js
 #nav {
   z-index: 1;
-  height: 50px;
+  height: 5rem;
   position: fixed;
   top: 0;
   transition: top .2s ease-in-out;
@@ -9,7 +9,7 @@
 }
 
 .nav-up {
-  top: -60px !important;
+  top: -6rem !important;
 
 }
 .nav-down {
@@ -20,6 +20,19 @@
 
 .nav-logo {
 
+}
+
+.navbar-item {
+  min-height: 5rem;
+  font-size: 2rem;
+  img {
+    width: 13rem;
+    max-height: 4rem;
+  }
+}
+
+.navbar-burger {
+  min-height: 5rem;
 }
 
 @include mobile {
@@ -35,8 +48,12 @@
     min-width: 50%;
 
     .navbar-item {
-      min-height: 50px;
-      font-size: 20px;
+      min-height: 5rem;
+      font-size: 2rem;
+      img {
+        width: 13rem;
+        max-height: 6rem;
+      }
     }
   }
 }
@@ -49,8 +66,8 @@
 
   100% {
     opacity: 0;
-    transform: translateY(-60px);
-    top: -60px !important;
+    transform: translateY(-6rem);
+    top: -6rem !important;
   }
 }
 
