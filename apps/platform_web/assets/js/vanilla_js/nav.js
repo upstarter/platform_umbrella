@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-const $navbarLinks = Array.prototype.slice.call(document.querySelectorAll('.navbar-menu a'), 0);
-const $navMenu = $navbarLinks[0].parentElement;
+const $navbarLinks = Array.prototype.slice.call(document.querySelectorAll('.navbar-menu div a'), 0);
+const $navMenu = $navbarLinks[0].parentElement.parentElement;
 
 $navbarLinks.forEach( link => {
 
