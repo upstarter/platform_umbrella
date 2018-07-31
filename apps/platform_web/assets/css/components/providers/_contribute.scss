@@ -3,6 +3,12 @@
   .provider-contribute-wrapper {
     margin: 0px auto;
     position: relative;
+    width: 60ch;
+
+
+    @include mobile {
+      max-width: 95vw;
+    }
     .scroll-to {
       display: flex;
       justify-content: center;
@@ -22,14 +28,14 @@
       text-align: center;
     }
     .topics {
-      padding: 20px;
-
       .topic {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
+        list-style-type: circle;
+
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: center;
+        // align-items: center;
+        // text-align: center;
         .feature-icon { padding: 7px; }
         p { max-width: 300px; }
       }

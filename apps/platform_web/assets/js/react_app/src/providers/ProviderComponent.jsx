@@ -11,8 +11,8 @@ export default class ProviderComponent extends React.Component {
               <i className="fa fa-chevron-down"></i>
             </a>
           </div>
-           <div id="provider-text" className="text">
-            <h1 className="provider-heading">
+           <div id="provider-text" className="content">
+            <h1 className="title provider-heading">
               Seeking Cryptoasset Experts
             </h1>
             <p>
@@ -60,8 +60,7 @@ export default class ProviderComponent extends React.Component {
                   <li className="topic">Cryptocurrencies</li>
                   <li className="topic">Regulatory</li>
                   <li className="topic">Compliance</li>
-                  <li className="topic">CryptoCloud Compute</li>
-                  <li className="topic">CryptoCloud Storage</li>
+                  <li className="topic">CryptoCloud</li>
                   <li className="topic">Sustainability</li>
                   <li className="topic">Network Ownership Effects</li>
                   <li className="topic">Social Impact</li>
@@ -80,7 +79,6 @@ export default class ProviderComponent extends React.Component {
                   <li className="topic">Artificial Intelligence</li>
                   <li className="topic">Robotics</li>
                   <li className="topic">Internet of Things</li>
-                  <li className="topic">Taxes</li>
                 </ul>
               </div>
             </div>
