@@ -14,7 +14,7 @@ export default class AboutComponent extends React.Component {
               investment outcomes.
             </h3>
             <p className="paragraph">
-              We are connecting retail investors with expert level cryptoasset
+              We are connecting investors with expert level cryptoasset
               financial analysis and next-generation cloud capabilities for
               automated, scalable data gathering, insight generation, and
               decision-making. <i> We're harnessing the acquired wisdom and
@@ -27,16 +27,6 @@ export default class AboutComponent extends React.Component {
               decision as a whole than the most intelligent person in the
               group alone.
             </h3>
-            <p>
-              Our long term vision is aimed at providing an intelligent
-              micro-investing platform where anyone can be a fund manager or
-              participate in a fund. An investment platform with democratized
-              crowd fund management capabilities and which relies on the wisdom
-              of the crowd to make funding decisions, yet which also enables
-              individual managers to sell tokens tied to their fund(s)
-              performance, and the funds are surfaced on a variety of
-              factors of interest to the ecosystem.
-            </p>
             <blockquote
             cite="https://www.goodreads.com/work/quotes/3250675-the-wisdom-of-crowds">
               Groups are only smart when there is a balance between the
@@ -46,19 +36,14 @@ export default class AboutComponent extends React.Component {
               them right, some of the wrong, that keeps the group wise. - James
               Surowiecki, The Wisdom of Crowds
             </blockquote>
-            <p>
-              When the crowd, not fund managers, banks or middlemen, decide on
-              how fund's are constructed, managed, and optimized-- accurate and
-              precise analysis, diversity of thought, and public discourse
-              become key values.
-            </p>
+
             <p className="">
-              Accordingly, we are prototyping web native solutions for
+              We are prototyping web native solutions for
               crypto analysts, researchers, academics-- to seed and enrich the network
               with an injection and synthesis of scientific values. As natural
               cryptoeconomics take root, guided via game theory & mechanism
               design, the result will be a cambrian explosion of new investment
-              and trading ideas.
+              and trading ideas for the next generation of investors to capitalize on.
             </p>
             <div className="team-image">
               <h1 className="title">Team</h1>
@@ -97,3 +82,20 @@ export default class AboutComponent extends React.Component {
     )
   }
 }
+
+// <p>
+//   When the crowd, not fund managers, banks or middlemen, decide on
+//   how fund's are constructed, managed, and optimized-- accurate and
+//   precise analysis, diversity of thought, and public discourse
+//   become key values.
+// </p>
+// <p>
+//   Our long term vision is aimed at providing an intelligent
+//   micro-investing platform where anyone can be a fund manager or
+//   participate in a fund. An investment platform with democratized
+//   crowd fund management capabilities and which relies on the wisdom
+//   of the crowd to make funding decisions, yet which also enables
+//   individual managers to sell tokens tied to their fund(s)
+//   performance, and the funds are surfaced on a variety of
+//   factors of interest to the ecosystem.
+// </p>
