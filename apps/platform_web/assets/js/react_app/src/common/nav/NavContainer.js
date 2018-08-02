@@ -27,12 +27,13 @@ export default class NavContainer extends React.Component {
             </div>
             <div className="navbar-menu" id="navMenu">
               <div className="navbar-start">
-                <Link to="/contribute" className="navbar-item">Crypto Experts</Link>
+                <Link to="/" className="navbar-item">Investors</Link>
                 <Link to="/about" className="navbar-item">About</Link>
                 <Link to="/blog" className="navbar-item">Blog</Link>
               </div>
 
               <div className="navbar-end">
+                <Link to="/contribute" className="navbar-item">Analysts</Link>
 
               </div>
 
