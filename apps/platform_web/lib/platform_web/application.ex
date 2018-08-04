@@ -12,7 +12,7 @@ defmodule PlatformWeb.Application do
       # worker(PlatformWeb.Worker, [arg1, arg2, arg3]),
       worker(ConCache, [[name: :wise_cache,
                          ttl_check_interval: :timer.seconds(1),
-                         global_ttl: :timer.seconds(1200000)]
+                         global_ttl: :timer.seconds(86400)]
                        ]),
 
     ]
