@@ -1,9 +1,20 @@
 #wrapper {
 
   .features {
+
     img {
       height: 55px;
       width: 50px;
+    }
+
+    .feature {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      .feature-icon { padding: .7rem; }
+      p { max-width: 35rem; }
     }
   }
 }

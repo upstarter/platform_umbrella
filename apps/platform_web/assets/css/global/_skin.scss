@@ -13,12 +13,14 @@ body {
 }
 
 #wrapper {
-  #normal-wrap {
+  .light-wrap {
     background: $white;
   }
 
-  #dark-wrap {
+  .dark-wrap {
     background: $primary-dark;
+
+    // &.lighten { background: $dark-blue }
   }
 
   //-- hero is reserved in bulma
@@ -35,11 +37,11 @@ body {
     background-size: 100% 100%;
 
     .heero-body {
-      padding: 4.5rem 1.5rem 1rem;
+      padding: 10.5rem 5.5rem 5rem;
     }
   }
 
-  #dark-wrap, #footer, .navbar {
+  .dark-wrap, #footer, .navbar {
     color: $white;
     a { background: none !important; }
   }

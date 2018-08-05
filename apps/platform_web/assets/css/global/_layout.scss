@@ -6,26 +6,6 @@
 
 // -- cryptowise app
 
-*,
-*::after,
-*::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
-}
-
-body {
-  height: 100%;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 #wrapper {
 
   h1 { padding-top: 2.5rem; }
@@ -51,15 +31,19 @@ body {
     }
   }
 
-  #normal-wrap {
+  .light-wrap {
     display: flex;
     justify-content: center;
     padding: 6rem 3rem;
 
   }
 
-  #dark-wrap {
-    padding: 3rem 0;
+  .dark-wrap {
+    padding: 6rem 3rem;
+  }
+
+  .section-heading {
+    text-align: center;
   }
 
   .scroll-to {
@@ -68,22 +52,6 @@ body {
     align-items: center;
   }
 
-  .features-heading {
-    text-align: center;
-  }
-
-  .features {
-
-    .feature {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      .feature-icon { padding: .7rem; }
-      p { max-width: 30rem; }
-    }
-  }
 
   #footer {
     font-size: 1.2rem;

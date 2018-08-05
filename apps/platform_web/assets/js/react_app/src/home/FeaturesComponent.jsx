@@ -5,13 +5,8 @@ export default class FeaturesComponent extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <section id="dark-wrap" className="features text">
-          <div className="scroll-to is-hidden-desktop">
-            <a className="icon">
-              <i className="fa fa-chevron-down"></i>
-            </a>
-          </div>
-          <div className="features-heading">
+        <section id="features" className="dark-wrap features text">
+          <div className="section-heading">
             <h1>Features</h1>
           </div>
           <div className="features columns">

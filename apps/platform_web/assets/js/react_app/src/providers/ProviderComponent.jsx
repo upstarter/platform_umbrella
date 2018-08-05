@@ -5,7 +5,7 @@ export default class ProviderComponent extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <section id="normal-wrap" className="provider-contribute-wrapper">
+        <section id="provider" className="light-wrap">
           <div className="scroll-to is-hidden-desktop">
             <a className="icon">
               <i className="fa fa-chevron-down"></i>
