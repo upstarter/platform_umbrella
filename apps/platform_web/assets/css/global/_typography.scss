@@ -41,7 +41,7 @@ html, body {
   color: #000;
 
   // -- font skintones
-  #normal-wrap {
+  .light-wrap {
     color: $black;
     .title { color: $black; }
     .subtitle-big { color: $black; }
@@ -49,7 +49,7 @@ html, body {
     .list { color: $black; }
   }
 
-  #dark-wrap {
+  .dark-wrap {
     color: $white;
     .title { color: $white; }
     .subtitle-big { color: $silver; }
@@ -81,6 +81,7 @@ html, body {
     line-height: 3rem;
     letter-spacing: 0.05ch;
     font-size: 1.7rem;
+    color: $smoke;
   }
 
   .subtitle-small {
@@ -89,6 +90,7 @@ html, body {
     line-height: 2rem;
     letter-spacing: 0.1ch;
     font-size: 1.4rem;
+    color: $smoke;
   }
 
   .list {
@@ -97,6 +99,15 @@ html, body {
     line-height: 3rem;
     letter-spacing: 0.05ch;
     font-size: 1.7rem;
+  }
+
+  .caption {
+    font-family: $avenir-medium;
+    font-size: 1.2rem;
+    font-weight: $semibold;
+    line-height: 1.2rem;
+    letter-spacing: .2ch;
+    text-transform: uppercase;
   }
 
   h1 {
@@ -116,7 +127,7 @@ html, body {
     font-weight: $normal;
     font-size: 2.4rem;
     line-height: 3.4rem;
-    letter-spacing: 0.1ch;
+    letter-spacing: 0.15ch;
   }
 
   h3 {
@@ -124,6 +135,14 @@ html, body {
     font-weight: $normal;
     font-size: 2rem;
     line-height: 2.6rem;
-    letter-spacing: 0.2ch;
+    letter-spacing: 0.15ch;
+  }
+
+  h4 {
+    font-family: $avenir-roman;
+    font-weight: $normal;
+    font-size: 2rem;
+    line-height: 2.6rem;
+    letter-spacing: 0.15ch;
   }
 }

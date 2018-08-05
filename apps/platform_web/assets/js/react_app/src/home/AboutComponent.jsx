@@ -5,7 +5,7 @@ export default class AboutComponent extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <section id="normal-wrap">
+        <section id="about" className="light-wrap">
           <div id="about-content" className="about content">
             <h1 className="title">About</h1>
             <h3 className="subtitle">

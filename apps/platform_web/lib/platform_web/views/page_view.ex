@@ -7,7 +7,7 @@ defmodule PlatformWeb.PageView do
   def blog_posts do
     ConCache.get_or_store(:wise_cache, "blogPosts", fn() ->
       url = "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2F/@cryptowise"
-      GetMedium.Full.blog_posts(url, raw: true)
+      GetMedium.Truncated.blog_posts(url, raw: true)
     end)
   end
 

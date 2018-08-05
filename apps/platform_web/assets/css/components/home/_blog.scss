@@ -1,22 +1,52 @@
-#blog-content {
-  min-height: 100vh;
-  margin: 70px auto;
-  width: 95vw;
+#blog {
+
+      // [xl-start] 1fr 1.5rem [xl-end] 1.5rem 1fr;
+  // .grid * { grid-column: md; }
+  // .grid-xl { grid-column: xl; }
+
+  .blog-posts {
+
+    @include desktop {
+      width: 60vw;
+      margin: 0 auto;
+    }
+    // display: grid;
+    // grid-template-columns: 2fr 1fr;
+
+    .card {
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
+      // text-align: center;
+      @include desktop {
+        max-width: 60ch;
+      }
+
+      &:first-of-type {
+        // background: red;
+        // grid-column: 1/2;
+      }
+
+      &:not(:first-of-type) {
+        // background: grey;
+        // grid-column: 2/2;
+      }
+
+    }
+  }
 
   @include tablet {
-    margin: 70px auto;
-    width: 60ch;
   }
 
   @include desktop {
-    margin: 70px auto;
-    width: 60ch;
+
   }
 
   .card {
-    // background: rgb(240,240,240);
+    background: $primary-dark;
+    margin: 20px;
     // border: 3px solid rgba(0, 0, 0, 0.1);
-    color: black;
+    // color: $light-blue;
 
     &.is-loading {
         min-height: 100vh;
@@ -34,10 +64,33 @@
 
     .content { min-height: 100%; }
 
-    h1,h2,h3,strong,em { color: $primary-dark; }
+    h1,h2,h3,h4,h5,h6,strong,em { color: $white; }
+    h3 {
+      font-family: $avenir-medium;
+      font-weight: $normal;
+      font-size: 2rem;
+      line-height: 2.6rem;
+      letter-spacing: 0.1ch;
+    }
+    h4 {
+      font-family: $avenir-book;
+      font-weight: $normal;
+      font-size: 1.6rem;
+      line-height: 2.6rem;
+      letter-spacing: 0.1ch;
+      color: $smoke;
+    }
+    p {
+      font-family: $avenir-book;
+      font-weight: $light;
+      line-height: 2rem;
+      letter-spacing: 0.1ch;
+      font-size: 1.4rem;
+      color: $smoke;
+    }
 
-    a strong { color: #3273dc; }
-    a strong em { color: #3273dc; }
+    a strong { color: $white }
+    a strong em { color: $white }
 
   }
 }
