@@ -12,7 +12,7 @@
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
-    "bulma": "^0.6.2",
+    "bulma": "^0.7.0",
     "create-react-class": "^15.6.3",
     "elm": "^0.18.0",
     "font-awesome": "4",
