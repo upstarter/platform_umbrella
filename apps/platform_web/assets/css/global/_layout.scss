@@ -13,6 +13,7 @@
   .heero {
     min-height: 61.8vh;
     .heero-body {
+      padding: 11rem 6rem 10rem;
       text-align: center;
       .container {
         display: flex;
@@ -34,12 +35,12 @@
   .light-wrap {
     display: flex;
     justify-content: center;
-    // padding: 6rem 3rem;
+    padding: 6rem 3rem 13rem;
 
   }
 
   .dark-wrap {
-    padding: 6rem 3rem;
+    padding: 6rem 3rem 12rem;
   }
 
   .section-heading {

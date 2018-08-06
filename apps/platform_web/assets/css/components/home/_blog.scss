@@ -1,10 +1,7 @@
 #blog {
-
-      // [xl-start] 1fr 1.5rem [xl-end] 1.5rem 1fr;
-  // .grid * { grid-column: md; }
-  // .grid-xl { grid-column: xl; }
-
+  background: $dark-blue !important;
   .blog-posts {
+    background: $dark-blue;
 
     @include desktop {
       width: 60vw;
@@ -43,7 +40,7 @@
   }
 
   .card {
-    background: $primary-dark;
+    background: $dark-blue;
     margin: 20px;
     // border: 3px solid rgba(0, 0, 0, 0.1);
     // color: $light-blue;
