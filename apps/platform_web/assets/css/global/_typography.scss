@@ -34,6 +34,13 @@ html, body {
   color: $black;
 }
 
+a {
+  color: $green;
+}
+
+a:hover {
+   color: $light-blue;
+}
 #wrapper {
   font-family: $avenir;
   font-weight: $normal;
