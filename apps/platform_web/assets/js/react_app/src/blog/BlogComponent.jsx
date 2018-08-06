@@ -70,9 +70,7 @@ export default class BlogComponent extends React.Component {
                     </p>
                     <div className="content" dangerouslySetInnerHTML={{__html: post.content}}>
                     </div>
-                    <a className="link">
-                      {post.link}
-                    </a>
+                    <a href={post.link} className="link">Read More</a>
                   </div>
                 </div>
               )}
