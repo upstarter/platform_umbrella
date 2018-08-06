@@ -25,7 +25,7 @@ view { subscribeForm } =
                     [ Html.text "Be Wise and Prosper!" ]
                 , Html.p
                     []
-                    [ Html.text "We'll keep you informed." ]
+                    [ Html.text "We'll let you know when we launch." ]
                 ]
 
         _ ->
