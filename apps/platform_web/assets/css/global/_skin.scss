@@ -36,9 +36,6 @@ body {
     position: relative;
     background-size: 100% 100%;
 
-    .heero-body {
-      padding: 10.5rem 5.5rem 5rem;
-    }
   }
 
   .dark-wrap, #footer, .navbar {
@@ -66,5 +63,5 @@ body {
    bottom
    transparent
    no-repeat;
-   background-size:100% .2rem ;/* if linear-gradient, we need to resize it */
+   background-size:100% .3rem ;/* if linear-gradient, we need to resize it */
 }

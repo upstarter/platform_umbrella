@@ -1,13 +1,12 @@
 #wrapper {
 
   #provider {
-    margin: 4rem auto;
-    position: relative;
-    width: 60ch;
+    margin: 0 auto;
+    width: 95vw;
 
 
-    @include mobile {
-      max-width: 95vw;
+    @include desktop {
+      max-width: 60ch;
     }
     .scroll-to {
       display: flex;
