@@ -1,6 +1,9 @@
 #wrapper {
 
-  .about {
+  #about {
+
+  }
+  #about-content {
     padding: 2rem 0;
     margin-top: 7rem;
     margin: 0 auto;
@@ -10,9 +13,7 @@
     @include mobile {
       max-width: 95vw;
     }
-  }
-  #about-content {
-
+    
     .team-image {
       .image {
         border: double .4rem $silver; //transparent;
