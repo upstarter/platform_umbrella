@@ -12,6 +12,7 @@ type alias FormFields =
     { fullName : String
     , email : String
     , userType : String
+    , buttonText : String
     }
 
 
@@ -54,7 +55,8 @@ emptyFormFields : FormFields
 emptyFormFields =
     { fullName = ""
     , email = ""
-    , userType = ""
+    , userType = "Investor"
+    , buttonText = "Subscribe"
     }
 
 
@@ -63,6 +65,7 @@ providerFormFields =
     { fullName = ""
     , email = ""
     , userType = "provider"
+    , buttonText = "Apply"
     }
 
 

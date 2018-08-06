@@ -25,7 +25,7 @@ view { subscribeForm } =
                     [ Html.text "Be Wise and Prosper!" ]
                 , Html.p
                     []
-                    [ Html.text "We'll keep you updated." ]
+                    [ Html.text "We'll keep you informed." ]
                 ]
 
         _ ->
@@ -38,7 +38,7 @@ formView subscribeForm =
         validationErrors =
             extractValidationErrors subscribeForm
 
-        { fullName, email } =
+        { fullName, email, userType, buttonText } =
             extractFormFields subscribeForm
 
         saving =
@@ -103,7 +103,7 @@ formView subscribeForm =
                                 ]
                             , Html.span
                                 []
-                                [ Html.text "Subscribe" ]
+                                [ Html.text buttonText ]
                             ]
                         ]
                     ]
