@@ -47,21 +47,3 @@ body {
     background: $primary-dark;
   }
 }
-
-
-.fancy-underline {
- padding-bottom: .5rem;
- background: /* gradient can be an image */
-   linear-gradient(
-     to right,
-     rgba(167, 249, 205,0) 0%,
-     rgba(167, 249, 205,.35) 55%,
-     rgba(167, 249, 205,.50) 80%,
-     rgba(167, 249, 205,1) 100%
-   )
-   left
-   bottom
-   transparent
-   no-repeat;
-   background-size:100% .3rem ;/* if linear-gradient, we need to resize it */
-}
