@@ -38,12 +38,13 @@ export default class AboutComponent extends React.Component {
             </blockquote>
 
             <p className="">
-              We are prototyping web native solutions for
-              crypto analysts, researchers, academics-- to seed and enrich the network
-              with an injection and synthesis of scientific values. As natural
+              We are prototyping web-native solutions for crypto analysts,
+              researchers, academics-- to seed and enrich the network with an
+              injection and synthesis of scientific values. As natural
               cryptoeconomics take root, guided via game theory & mechanism
-              design, the result will be a cambrian explosion of new investment
-              and trading ideas for the next generation of investors to capitalize on.
+              design, the result will be a Cambrian explosion of new investment
+              and trading opportunities for the next generation of investors to
+              capitalize on.
             </p>
             <div className="team-image">
               <h1 className="title">Team</h1>
@@ -57,10 +58,12 @@ export default class AboutComponent extends React.Component {
               community-driven research & analysis. We believe that everyone
               should have the capabilities of a venture capitalist, and that
               fintech and crypto literacy are critical skills for the modern
-              workforce that will help americans through the inevitable
-              evaporation of social security and a retirement crisis in the
-              making. We are creating a source of wisdom and guidance for
-              principled investors.
+              workforce.  Investing skills are not widely taught in high schools
+              or universities. These skills are critical to an  economic system.
+              Becoming highly investing saavy will help americans through the
+              looming evaporation of social security and help to prevent a
+              retirement crisis in the making. We are creating a source of
+              wisdom and guidance for principled investors.
             </p>
             <h1 className="title">Values</h1>
             <p>
