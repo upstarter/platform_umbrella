@@ -69,15 +69,15 @@ export default class ProviderComponent extends React.Component {
               </div>
               <div className="emerging-tech column">
                 <ul>
-                  <li className="topic">Crypto Investment Strategy</li>
-                  <li className="topic">Global Asset Allocation</li>
+                  <li className="topic">Crypto Investing Strategy</li>
+                  <li className="topic">Global Tactical Asset Allocation</li>
                   <li className="topic">Trading Systems & Methods</li>
                   <li className="topic">Decentralized Exchanges</li>
                   <li className="topic">Portfolio Optimization</li>
                   <li className="topic">Game Theory</li>
                   <li className="topic">Mechanism Design</li>
                   <li className="topic">Artificial Intelligence</li>
-                  <li className="topic">Robotics</li>
+                  <li className="topic">Security</li>
                   <li className="topic">Internet of Things</li>
                 </ul>
               </div>

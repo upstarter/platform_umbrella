@@ -16,7 +16,7 @@ export default class ProviderHeroComponent extends React.Component {
               <span className="fancy-underline">Monetize</span> your crypto capabilities.
             </h1>
             <p className="subtitle-big">
-              Earn $USD while contributing to the crypto ecosystem.
+              Earn money for contributing to the crypto economy.
             </p>
             <div id="subscribe-form" className="email-leadgen">
               <section className="section">
