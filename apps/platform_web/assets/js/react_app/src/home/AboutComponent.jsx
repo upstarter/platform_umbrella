@@ -57,9 +57,7 @@ export default class AboutComponent extends React.Component {
               To help forward-looking investors succeed through in-depth
               community-driven research & analysis. We believe that everyone
               should have the capabilities of a venture capitalist, and that
-              fintech and crypto literacy are critical skills for the modern
-              workforce.  Investing skills are not widely taught in high schools
-              or universities. These skills are critical to an  economic system.
+              fintech and crypto literacy are critical skills of the future.
               Becoming highly investing saavy will help americans through the
               looming evaporation of social security and help to prevent a
               retirement crisis in the making. We are creating a source of

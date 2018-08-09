@@ -27,7 +27,7 @@ defmodule Mix.Tasks.Data.Ingest.List do
         |> Stream.map(&String.trim/1)
         |> Stream.with_index()
         |> Stream.map(fn {line, file_path} ->
-          case Designers.Repo.insert(%Designers.Designers.Designer{
+          case Asset.Repo.insert(%Designers.Designers.Designer{
                  name: line,
                  name_length: Integer.to_string(String.length(line))
                }) do

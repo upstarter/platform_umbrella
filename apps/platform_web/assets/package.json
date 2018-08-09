@@ -15,6 +15,7 @@
     "bulma": "^0.7.0",
     "create-react-class": "^15.6.3",
     "elm": "^0.18.0",
+    "evergreen-ui": "^3.2.4",
     "font-awesome": "4",
     "phoenix": "file:../../../deps/phoenix",
     "phoenix_html": "file:../../../deps/phoenix_html",
