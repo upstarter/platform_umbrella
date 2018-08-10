@@ -10,7 +10,7 @@ const elmSource = __dirname + "/js/elm";
 
 const prodElm = "/app/apps/platform_web/assets"
 const elmMake = "/node_modules/elm/binwrappers/elm-make"
-const elmMakePath = isProd ?  prodElm + elmMake : __dirname + elmMake
+const elmMakePath = isProd ? prodElm + elmMake : __dirname + elmMake
 
 module.exports = {
   mode: mode,
@@ -22,6 +22,9 @@ module.exports = {
     path: path.resolve(__dirname, "../priv/static/"),
     filename: "js/app.js"
   },
+  devServer: {
+    contentBase: path.resolve(__dirname, "../priv/static/")
+  },
   resolve: {
     extensions: [".css", ".sass", ".scss", ".js", ".jsx", ".elm"],
     alias: {
@@ -29,14 +32,14 @@ module.exports = {
     }
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.(sass|scss|css)$/,
         include: /css/,
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
-          use: [
-            { loader: "css-loader" },
+          use: [{
+              loader: "css-loader"
+            },
             {
               loader: "sass-loader",
               options: {
@@ -56,7 +59,13 @@ module.exports = {
         test: /\.elm$/,
         exclude: ["/elm-stuff/", "/node_modules"],
         loader: "elm-webpack-loader",
-        options: { pathToMake: elmMakePath, maxInstances: 2, debug: !isProd, warn: true, cwd: elmSource }
+        options: {
+          pathToMake: elmMakePath,
+          maxInstances: 2,
+          debug: !isProd,
+          warn: true,
+          cwd: elmSource
+        }
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
@@ -71,7 +80,9 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin("css/app.css"),
-    new CopyWebpackPlugin([{ from: "./static" }])
+    new CopyWebpackPlugin([{
+      from: "./static"
+    }])
   ]
 };
 
