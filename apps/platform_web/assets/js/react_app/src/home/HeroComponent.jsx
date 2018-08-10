@@ -1,7 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import Elm from 'react-elm-components'
-import {Main} from '../../../elm/src/Main'
+// import Elm from 'react-elm-components'
+// import {Main} from '../../../elm/src/Main'
 
 
 export default class HeroComponent extends React.Component {
@@ -23,7 +23,7 @@ export default class HeroComponent extends React.Component {
               <section className="section">
                 <div className="container has-text-centered">
                   <div id="form-container">
-                    <Elm src={Main} flags={flags} />
+                    {/* <Elm src={Main} flags={flags} /> */}
                   </div>
                 </div>
               </section>
