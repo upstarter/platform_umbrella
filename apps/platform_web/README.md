@@ -14,7 +14,7 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
 
 To start Front-end Development:
 
- * run "yarn start" in "/platform_umbrella/apps/platform_web/assets"
+ * run `yarn start` in "/platform_umbrella/apps/platform_web/assets"
 
 ## Learn more
 
