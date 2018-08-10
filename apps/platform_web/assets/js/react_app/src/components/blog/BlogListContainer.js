@@ -1,7 +1,7 @@
-import React from "react"
+import React from 'react'
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
-import selectPost from "../actions/index"
+import selectPost from "../../actions/index"
 import BlogListItem from './BlogListItem'
 
 

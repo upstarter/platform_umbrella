@@ -1,8 +1,8 @@
-import React from "react"
-import ReactDOM from "react-dom"
-import HeroComponent from "../home/HeroComponent"
-import FeaturesComponent from "../home/FeaturesComponent"
-import BlogComponent from "../blog/BlogComponent"
+import React from 'react'
+import ReactDOM from 'react-dom'
+import HeroComponent from "./HeroComponent"
+import FeaturesComponent from "./FeaturesComponent"
+import BlogComponent from "../../components/blog/BlogComponent"
 // import Elm from 'react-elm-components'
 // import {Main} from '../../../elm/src/Main'
 

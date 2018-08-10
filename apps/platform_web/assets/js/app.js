@@ -27,7 +27,7 @@
 import './react_app/index'
 
 
-import './vanilla_js/nav'
+// import './vanilla_js/nav'
 
 // FB
 // (function(d, s, id) {
