@@ -11,7 +11,7 @@
 //
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
-import "phoenix_html"
+// import "phoenix_html"
 
 // Import local files
 //
@@ -27,7 +27,7 @@ import "phoenix_html"
 import './react_app/index'
 
 
-import './vanilla_js/nav'
+// import './vanilla_js/nav'
 
 // FB
 // (function(d, s, id) {
