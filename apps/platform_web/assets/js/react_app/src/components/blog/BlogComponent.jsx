@@ -1,7 +1,8 @@
-import React from "react"
-import ReactDOM from "react-dom"
-import NavContainer from "../common/nav/NavContainer"
+import React from 'react'
+import ReactDOM from 'react-dom'
+import NavContainer from "../../components/nav/NavContainer"
 import { Link } from "react-router-dom"
+import {url} from '../../utils/consts'
 
 export default class BlogComponent extends React.Component {
 
@@ -17,9 +18,11 @@ export default class BlogComponent extends React.Component {
 
 
   componentDidMount() {
+    console.log(`${url}/api/v1/blog_posts`);
+    
       this.setState({ isLoading: true });
 
-      fetch('/api/v1/blog_posts')
+      fetch(`https://${url}/api/v1/blog_posts`)
         .then(response => {
           if (response.ok) {
             return response.json();
