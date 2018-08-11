@@ -19,10 +19,10 @@ export default class BlogComponent extends React.Component {
 
   componentDidMount() {
     console.log(`${url}/api/v1/blog_posts`);
-    
+
       this.setState({ isLoading: true });
 
-      fetch(`https://${url}/api/v1/blog_posts`)
+      fetch(`${url}/api/v1/blog_posts`)
         .then(response => {
           if (response.ok) {
             return response.json();
