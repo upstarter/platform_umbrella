@@ -26,7 +26,7 @@ export default class HeroComponent extends React.Component {
             <div id="subscribe-form" className="email-leadgen">
               <section className="section">
                 <div className="container has-text-centered">
-                  <div id="form-container">
+                  <div id="form-container" className="control container">
                     <input
                       className="input"
                       type="text"

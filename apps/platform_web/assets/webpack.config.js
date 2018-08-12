@@ -16,7 +16,9 @@ module.exports = {
   mode: mode,
   devtool: "source-map",
   entry: {
-    app: ["./css/app.scss", "./js/app.js", "./js/elm/src/Main.elm"]
+    app: ["./css/app.scss", "./js/app.js"
+      // , "./js/elm/src/Main.elm"
+    ]
   },
   output: {
     path: path.resolve(__dirname, "../priv/static/"),
