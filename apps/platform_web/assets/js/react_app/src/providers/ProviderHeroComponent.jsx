@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 // import {Main} from '../../../elm/src/Main'
 import Button from "../components/Button/Button";
 import Modal from "react-modal";
+import SignUpWizard from "../components/signUpWizard/SignUpWizard";
 
 export default class ProviderHeroComponent extends React.Component {
   constructor() {
@@ -40,6 +41,7 @@ export default class ProviderHeroComponent extends React.Component {
         >
           {/* <h2 ref={subtitle => (this.subtitle = subtitle)}>Hello</h2> */}
           <button onClick={this.handleCloseModal}>close</button>
+          <SignUpWizard />
         </Modal>
         <div className="heero-body column">
           <div className="container">
@@ -55,7 +57,7 @@ export default class ProviderHeroComponent extends React.Component {
                 <div className="container has-text-centered">
                   <div id="form-container">
                     {/* <Elm src={Main} flags={flags}/> */}
-                    <div className="control">
+                    <div className="control has-text-centered">
                       <input
                         className="input"
                         type="text"
