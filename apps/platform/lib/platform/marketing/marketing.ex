@@ -7,7 +7,7 @@ defmodule Platform.Marketing do
   alias Platform.Repo
 
   alias Platform.Marketing.Lead
-  alias Platform.Marketing.Provider
+  alias Platform.Providers.Provider
 
   @doc """
   Returns the list of leads.

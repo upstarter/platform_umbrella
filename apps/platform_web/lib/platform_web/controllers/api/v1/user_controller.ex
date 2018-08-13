@@ -1,8 +1,8 @@
-defmodule DesignersWeb.UserController do
-  alias Designers.Auth
-  alias Designers.Auth.Guardian
-  use DesignersWeb, :controller
-  alias Designers.Users.User
+defmodule PlatformWeb.UserController do
+  alias Platform.Auth
+  alias Platform.Auth.Guardian
+  use PlatformWeb, :controller
+  alias Platform.Users.User
   plug :scrub_params, "user" when action in [:create, :sign_in]
 
 
@@ -10,7 +10,7 @@ defmodule DesignersWeb.UserController do
     user = %{id: "1"}
 
     conn
-    |> Designers.Auth.Guardian.Plug.sign_in(user)
+    |> Guardian.Plug.sign_in(user)
     |> send_resp(204, "")
   end
 
@@ -37,7 +37,7 @@ defmodule DesignersWeb.UserController do
 
   def sign_out(conn, _params) do
     conn
-    |> Designers.Auth.Guardian.Plug.sign_out()
+    |> Guardian.Plug.sign_out()
     |> send_resp(204, "")
   end
 
