@@ -1,7 +1,7 @@
-defmodule Platform.Marketing.Provider do
+defmodule Platform.Providers.Provider do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Platform.Marketing.Provider
+  alias Platform.Providers.Provider
 
   @derive {Poison.Encoder, only: [:email]}
 
