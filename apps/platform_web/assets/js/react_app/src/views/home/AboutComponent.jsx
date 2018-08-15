@@ -1,10 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import NavContainer from "../../components/nav/nav";
+
 
 export default class AboutComponent extends React.Component {
   render() {
     return (
       <React.Fragment>
+        <NavContainer />
         <section id="about" className="light-wrap">
           <div id="about-content" className="content">
             <h1 className="title">About</h1>
