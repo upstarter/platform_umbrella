@@ -1,0 +1,19 @@
+#portfolio{style: "margin: 25px auto; width: 52%"}
+  .portfolio
+    = for asset <- portfolio_assets do
+      .card
+        -# .card-image
+        -#   %figure.image.is-4by3
+        -#     %img{src: "#{first_img_src_in_html(asset.content).request_url}", alt: "Placeholder image"}
+        .card-content
+          .card-header
+            .card-header-title
+              %h1.title.portfolio-title= asset.title
+          %br
+          .items{style: "margin: auto; width: 50%;"}
+            %i=asset.date
+            •
+            = link "View on Medium", to: asset.link
+          %br
+          .content
+            = raw content
