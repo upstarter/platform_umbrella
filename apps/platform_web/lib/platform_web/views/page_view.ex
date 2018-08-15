@@ -1,8 +1,5 @@
 defmodule PlatformWeb.PageView do
   use PlatformWeb, :view
-  def team do
-
-  end
 
   def blog_posts do
     ConCache.get_or_store(:wise_cache, "blogPosts", fn() ->

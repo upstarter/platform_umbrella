@@ -44,8 +44,12 @@ defmodule PlatformWeb.Router do
     scope "/v1", V1 do
       # LEADS
       post("/leads", LeadController, :create)
-      get("/portfolio", PortfolioController, :assets)
       get("/blog_posts", BlogController, :blog_posts)
+
+      # PROVIDERS
+      scope "/", Providers do
+        resources("portfolio", PortfolioController, only: [:index])
+      end
       # USERS
       scope "/users" do
         scope "/" do

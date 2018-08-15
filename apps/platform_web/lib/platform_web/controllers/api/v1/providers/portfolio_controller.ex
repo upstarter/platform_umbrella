@@ -1,7 +1,8 @@
 defmodule PlatformWeb.V1.Providers.PortfolioController do
   use PlatformWeb, :controller
 
-  def assets(conn, _params) do
-    render conn, tokens: Platform.Asset.portfolio
+  def index(conn, _params) do
+    tokens = Platform.Asset.portfolio
+    render conn, "index.json", tokens: tokens
   end
 end
