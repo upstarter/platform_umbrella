@@ -3,7 +3,7 @@ defmodule Platform.Asset do
   defstruct [:ticker, :name, :img, :site, :desc]
   alias Platform.Asset
 
-  def coinfund_assets do
+  def portfolio do
     [
       %Asset{ticker: "ETH",
              name: "Etherum",
@@ -122,8 +122,13 @@ defmodule Platform.Asset do
       %Asset{ticker: "BOTC",
              name: "BotChain",
              site: "https://botchain.talla.com/",
-             desc: "Infrastructure for Trust and Audit of AI Systems It helps with increased adoption of AI",
-             img: "https://icowatchlist.com/logos/botchain.png"}
+             desc: "Infrastructure for Trust and Audit of AI Systems. It helps with increased adoption of AI",
+             img: "https://icowatchlist.com/logos/botchain.png"},
+      %Asset{ticker: "CND",
+             name: "Cindicator",
+             site: "https://cindicator.com/",
+             desc: "Hybrid Intelligence for effective asset management",
+             img: ""}
     ]
   end
 
@@ -153,5 +158,16 @@ defmodule Platform.Asset do
     ]
   end
 
+  def the_token_io_portfolio do
+
+    "QTM"
+    "STRATIS"
+    "WAVES"
+    "AELF"
+    "REQUEST NETWORK"
+    "ICON"
+    "TOKEN BOX"
+
+  end
 
 end
