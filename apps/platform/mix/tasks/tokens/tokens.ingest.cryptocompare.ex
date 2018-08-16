@@ -11,7 +11,7 @@ defmodule Mix.Tasks.Data.Ingest.List do
   def run(_args) do
     Mix.shell().info("Starting CryptoAsset import...")
     Mix.Task.run("app.start")
-    file_path = Path.expand("assets/static/data/designers.txt", "./../designers/")
+    file_path = Path.expand("assets/static/data/cryptos.txt", "./../platform/")
     file_data = File.stream!(file_path)
     path = file_data.path
     IO.puts(path)
