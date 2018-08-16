@@ -47,12 +47,20 @@ defmodule PlatformWeb.Router do
       get("/blog_posts", BlogController, :blog_posts)
 
       # PROVIDERS
-      resources "/providers", Providers.ProviderController do
-        resources("/portfolios", PortfolioController)
+      scope "/", Providers do
+        resources "/providers", ProviderController, except: [:delete] do
+          resources("/portfolios", PortfolioController)
+          resources "/topics", TopicController, except: [:new, :edit]
+        end
+      end
+
+      # TOPICS
+      scope "/topics", Topics do
+        resources "/topics", TopicController, except: [:new, :edit]
       end
 
       # USERS
-      scope "/users" do
+      scope "/users", Users do
         scope "/" do
           pipe_through :unauthorized
           post "/create", UserController, :create
