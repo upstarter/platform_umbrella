@@ -1,4 +1,4 @@
-defmodule PlatformWeb.UserController do
+defmodule PlatformWeb.Users.UserController do
   alias Platform.Auth
   alias Platform.Auth.Guardian
   use PlatformWeb, :controller
