@@ -13,12 +13,13 @@ const styles = {
     backgroundColor: "#373A40",
     height: "220px",
     width: "100%",
-    padding: "15em 15em 0 15em"
+    padding: "8.5em 15em 0 15em",
+    lineHeight: "4.5em"
   },
   title: {
     fontSize: "32px",
-    color: "white"
-    // textAlign: "center"
+    color: "white",
+    textAlign: "center"
   },
   main: {
     padding: "1em 15em"
@@ -32,7 +33,7 @@ const styles = {
   }
 };
 
-class Step2Unstyled extends Component {
+class Step1Unstyled extends Component {
   constructor(props) {
     super(props);
     this._validate = this._validate.bind(this);
@@ -57,7 +58,7 @@ class Step2Unstyled extends Component {
       <div className={classes.container}>
         <div className={classes.header}>
           <h2 className={classes.title}>
-            What topics do you know the most about?
+            Which of these topics do you most want to learn about?
           </h2>
         </div>
         <div className={classes.main}>
@@ -66,15 +67,15 @@ class Step2Unstyled extends Component {
         <div className={classes.main}>
           <button
             className="button is-primary is-rounded"
-            onClick={this._validate}
-          >
-            Next
-          </button>
-          <button
-            className="button is-primary is-rounded"
             onClick={() => this.props.prev()}
           >
             Back
+          </button>
+          <button
+            className="button is-primary is-rounded"
+            onClick={this._validate}
+          >
+            Next
           </button>
         </div>
       </div>
@@ -82,5 +83,5 @@ class Step2Unstyled extends Component {
   }
 }
 
-const Step2 = injectSheet(styles)(Step2Unstyled);
-export default Step2;
+const Step1 = injectSheet(styles)(Step1Unstyled);
+export default Step1;
