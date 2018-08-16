@@ -5,8 +5,8 @@ import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import HomeComponent from "./HomeComponent";
 import AboutComponent from "./AboutComponent";
 import ProviderContainer from "../../providers/ProviderContainer";
+import PortfolioContainer from "../../components/portfolio/PortfolioContainer";
 import PrivacyComponent from "../PrivacyComponent";
-import NavContainer from "../../components/nav/nav";
 import BlogComponent from "../../components/blog/BlogComponent";
 import BlogListContainer from "../../components/blog/BlogListContainer";
 import ProviderComponent from "../../providers/ProviderComponent";
@@ -17,11 +17,9 @@ export default class HomeContainer extends React.Component {
       <React.Fragment>
         <BrowserRouter>
           <section id="container">
-            <NavContainer />
-            {/* <Route exact path="/" component={HomeComponent} /> */}
-            <Route exact path="/" component={ProviderContainer} />
+            <Route exact path="/" component={HomeComponent} />
             <Route exact path="/about" component={AboutComponent} />
-            <Route exact path="/blog" component={BlogComponent} />
+            <Route exact path="/portfolio" component={PortfolioContainer} />
             <Route exact path="/contribute" component={ProviderContainer} />
             <Route exact path="/privacy_policy" component={PrivacyComponent} />
             <div id="footer">

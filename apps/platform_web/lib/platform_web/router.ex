@@ -33,6 +33,7 @@ defmodule PlatformWeb.Router do
     get "/about", PageController, :home
     get "/blog", PageController, :home
     get "/contribute", PageController, :home
+    get("/portfolio", PageController, :home)
     get "/privacy_policy", PageController, :home
   end
 
@@ -44,6 +45,12 @@ defmodule PlatformWeb.Router do
       # LEADS
       post("/leads", LeadController, :create)
       get("/blog_posts", BlogController, :blog_posts)
+
+      # PROVIDERS
+      scope "/", Providers do
+        resources("providers", ProviderController)
+        resources("portfolio", PortfolioController, only: [:index])
+      end
       # USERS
       scope "/users" do
         scope "/" do

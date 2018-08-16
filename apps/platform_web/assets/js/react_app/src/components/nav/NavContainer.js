@@ -28,6 +28,7 @@ export default class NavContainer extends React.Component {
             <div className="navbar-menu" id="navMenu">
               <div className="navbar-start">
                 <Link to="/about" className="navbar-item">About</Link>
+                <Link to="/portfolio" className="navbar-item">Porfolio</Link>
               </div>
 
               <div className="navbar-end">
