@@ -47,10 +47,10 @@ defmodule PlatformWeb.Router do
       get("/blog_posts", BlogController, :blog_posts)
 
       # PROVIDERS
-      scope "/", Providers do
-        resources("providers", ProviderController)
-        resources("portfolio", PortfolioController, only: [:index])
+      resources "/providers", Providers.ProviderController do
+        resources("/portfolios", PortfolioController)
       end
+
       # USERS
       scope "/users" do
         scope "/" do
