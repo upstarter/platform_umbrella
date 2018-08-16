@@ -40,7 +40,7 @@ export default class ProviderHeroComponent extends React.Component {
           contentLabel="Example Modal"
         >
           {/* <h2 ref={subtitle => (this.subtitle = subtitle)}>Hello</h2> */}
-          <button onClick={this.handleCloseModal}>close</button>
+          {/* <button onClick={this.handleCloseModal}>close</button> */}
           <SignUpWizard />
         </Modal>
         <div className="heero-body column">
@@ -97,6 +97,8 @@ const modalStyles = {
   content: {
     width: "960px",
     height: "714px",
-    margin: "auto auto"
+    margin: "auto auto",
+    padding: '0',
+    border: '0'
   }
 };

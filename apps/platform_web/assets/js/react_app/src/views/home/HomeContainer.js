@@ -9,6 +9,7 @@ import PrivacyComponent from "../PrivacyComponent";
 import NavContainer from "../../components/nav/nav";
 import BlogComponent from "../../components/blog/BlogComponent";
 import BlogListContainer from "../../components/blog/BlogListContainer";
+import ProviderComponent from "../../providers/ProviderComponent";
 
 export default class HomeContainer extends React.Component {
   render() {
@@ -17,7 +18,8 @@ export default class HomeContainer extends React.Component {
         <BrowserRouter>
           <section id="container">
             <NavContainer />
-            <Route exact path="/" component={HomeComponent} />
+            {/* <Route exact path="/" component={HomeComponent} /> */}
+            <Route exact path="/" component={ProviderContainer} />
             <Route exact path="/about" component={AboutComponent} />
             <Route exact path="/blog" component={BlogComponent} />
             <Route exact path="/contribute" component={ProviderContainer} />

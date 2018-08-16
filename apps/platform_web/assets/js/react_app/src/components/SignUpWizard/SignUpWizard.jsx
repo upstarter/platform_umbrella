@@ -44,14 +44,29 @@ export default class SignUpWizard extends Component {
   render() {
     let state = this.state;
     return (
-      <div>
-        {this.state.currentStep}
-        <Step1 currentStep={state.currentStep} />
-        <Step2 currentStep={state.currentStep} />
-        <Step3 currentStep={state.currentStep} />
-        <Step4 currentStep={state.currentStep} />
-        <button className="button" onClick={this._prev}>Prev</button>
-        <button className="button" onClick={this._next}>Next</button>
+      <div style={{ height: "100%" }}>
+        <Step1 currentStep={state.currentStep} afterValid={this._next} />
+        <Step2
+          currentStep={state.currentStep}
+          afterValid={this._next}
+          prev={() => this._prev()}
+        />
+        <Step3
+          currentStep={state.currentStep}
+          afterValid={this._next}
+          prev={() => this._prev()}
+        />
+        <Step4
+          currentStep={state.currentStep}
+          afterValid={this._next}
+          prev={() => this._prev()}
+        />
+        {/* <button className="button" onClick={this._prev}>
+          Prev
+        </button>
+        <button className="button" onClick={this._next}>
+          Next
+        </button> */}
       </div>
     );
   }
