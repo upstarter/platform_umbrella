@@ -48,6 +48,7 @@ defmodule PlatformWeb.Router do
 
       # PROVIDERS
       scope "/", Providers do
+        resources("providers", ProviderController)
         resources("portfolio", PortfolioController, only: [:index])
       end
       # USERS
