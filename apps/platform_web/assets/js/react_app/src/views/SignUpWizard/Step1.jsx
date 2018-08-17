@@ -33,42 +33,64 @@ const styles = {
   }
 };
 
-class Step2Unstyled extends Component {
+class Step1Unstyled extends Component {
   constructor(props) {
     super(props);
     this._validate = this._validate.bind(this);
     // Bindings for form fields would go here,
+    this.state = {
+      topic_knowledge_ids: []
+    };
   }
   _validate() {
+    if (this.state.topic_knowledge_ids.length >= 3) {
+      this.props.saveForm(this.state.topic_knowledge_ids);
+    }
     this.props.afterValid(this.state);
+  }
+  collectTopicKnowledgeIds(id) {
+    this.setState({
+      topic_knowledge_ids: [...this.state.topic_knowledge_ids, id]
+    });
+  }
+  removeTopicKnowledgeIds(id) {
+    let state = this.state;
+    let i = state.topic_knowledge_ids.indexOf(id);
+    if (i != -1) {
+      state.topic_knowledge_ids.splice(i, 1);
+    }
   }
   render() {
     let props = this.props;
     let classes = props.classes;
-    if (props.currentStep !== 2) {
+    if (props.currentStep !== 1) {
       return null;
     }
     let tiles = this.props.topics
       ? props.topics.map((data, i) => {
-          return <Tile title={data.name} key={i} />;
+          return (
+            <Tile
+              title={data.name}
+              key={data.id}
+              id={data.id}
+              removeTopicKnowledgeIds={id => this.removeTopicKnowledgeIds(id)}
+              collectTopicKnowledgeIds={id => this.collectTopicKnowledgeIds(id)}
+            />
+          );
         })
       : [];
     return (
       <div className={classes.container}>
         <div className={classes.header}>
           <h2 className={classes.title}>
-          Which of these topics do you most want to learn about?          </h2>
+            Which of these topics do you know the most about?
+          </h2>
         </div>
         <div className={classes.main}>
           <div className={classes.tileGrid}>{tiles}</div>
         </div>
         <div className={classes.main}>
-          <button
-            className="button is-primary is-rounded"
-            onClick={() => this.props.prev()}
-          >
-            Back
-          </button>
+          <p>choose at least 3</p>
           <button
             className="button is-primary is-rounded"
             onClick={this._validate}
@@ -81,5 +103,5 @@ class Step2Unstyled extends Component {
   }
 }
 
-const Step2 = injectSheet(styles)(Step2Unstyled);
-export default Step2;
+const Step1 = injectSheet(styles)(Step1Unstyled);
+export default Step1;

@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Button from "../../components/Button/Button";
 import Modal from "react-modal";
-import SignUpWizard from "../../components/signUpWizard/SignUpWizard";
+import SignUpWizard from "../SignUpWizard/SignUpWizard";
 import { url } from "../../utils/consts";
 
 export default class HeroComponent extends React.Component {

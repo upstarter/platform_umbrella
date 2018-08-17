@@ -33,7 +33,7 @@ const styles = {
   }
 };
 
-class Step1Unstyled extends Component {
+class step2Unstyled extends Component {
   constructor(props) {
     super(props);
     this._validate = this._validate.bind(this);
@@ -43,22 +43,19 @@ class Step1Unstyled extends Component {
     };
   }
   _validate() {
+    if (this.state.topic_knowledge_ids.length >= 3) {
+      this.props.saveForm(this.state.topic_knowledge_ids);
+    }
     this.props.afterValid(this.state);
   }
   collectTopicKnowledgeIds(id) {
-    console.log("collectTopicKnowledgeIds", id);
-    this.setState(
-      {
-        topic_knowledge_ids: [...this.state.topic_knowledge_ids, id]
-      },
-      console.log("step1state:", this.state)
-    );
+    this.setState({
+      topic_knowledge_ids: [...this.state.topic_knowledge_ids, id]
+    });
   }
   removeTopicKnowledgeIds(id) {
-    console.log("filter", id);
     let state = this.state;
     let i = state.topic_knowledge_ids.indexOf(id);
-    console.log("post", i);
     if (i != -1) {
       state.topic_knowledge_ids.splice(i, 1);
     }
@@ -66,7 +63,7 @@ class Step1Unstyled extends Component {
   render() {
     let props = this.props;
     let classes = props.classes;
-    if (props.currentStep !== 1) {
+    if (props.currentStep !== 2) {
       return null;
     }
     let tiles = this.props.topics
@@ -86,13 +83,14 @@ class Step1Unstyled extends Component {
       <div className={classes.container}>
         <div className={classes.header}>
           <h2 className={classes.title}>
-            Which of these topics do you know the most about?
+            Which of these topics do you most want to learn about?
           </h2>
         </div>
         <div className={classes.main}>
           <div className={classes.tileGrid}>{tiles}</div>
         </div>
         <div className={classes.main}>
+          <p>choose at least 3</p>
           <button
             className="button is-primary is-rounded"
             onClick={this._validate}
@@ -105,5 +103,5 @@ class Step1Unstyled extends Component {
   }
 }
 
-const Step1 = injectSheet(styles)(Step1Unstyled);
-export default Step1;
+const step2 = injectSheet(styles)(step2Unstyled);
+export default step2;
