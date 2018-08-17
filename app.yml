@@ -20,7 +20,7 @@ runtime_config:
 beta_settings:
   cloud_sql_instances: eternal-sunset-206422:us-central1:umbrella-db
 env_variables:
-  POOL_SIZE: 50
+  POOL_SIZE: 25
   PLATFORM_WEB_PATH: apps/platform_web
   ELM_BIN: apps/platform_web/assets/node_modules/elm/binwrappers
   ELM_OUTPUT_PATH: apps/platform_web/priv/static/js

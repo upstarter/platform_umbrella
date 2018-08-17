@@ -64,6 +64,14 @@ defmodule Platform.Topics do
         long_desc: ""
       },
       %Topic{
+        name: "Security",
+        id: 6,
+        short_desc:
+          "How, where, when, and why to store your cryptoassets, and how to protect yourself
+        from hackers.",
+        long_desc: ""
+      },
+      %Topic{
         name: "Network Ownership Effects",
         id: 7,
         short_desc: "A network ownership effect describes when the utility of the service and
