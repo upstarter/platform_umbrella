@@ -33,7 +33,7 @@ const styles = {
   }
 };
 
-class Step1Unstyled extends Component {
+class Step2Unstyled extends Component {
   constructor(props) {
     super(props);
     this._validate = this._validate.bind(this);
@@ -83,5 +83,5 @@ class Step1Unstyled extends Component {
   }
 }
 
-const Step1 = injectSheet(styles)(Step1Unstyled);
-export default Step1;
+const Step2 = injectSheet(styles)(Step2Unstyled);
+export default Step2;
