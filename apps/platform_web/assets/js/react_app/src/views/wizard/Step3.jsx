@@ -113,7 +113,7 @@ class Step3Unstyled extends Component {
           </div>
           <div className={classes.vl} />
           <div className={classes.loginForm}>
-            <form action>
+            <form>
               <div className="field">
                 <label htmlFor className="label">
                   Email

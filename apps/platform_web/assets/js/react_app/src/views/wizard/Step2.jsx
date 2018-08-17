@@ -38,10 +38,8 @@ class Step2Unstyled extends Component {
     super(props);
     this._validate = this._validate.bind(this);
     // Bindings for form fields would go here,
-    // and state would keep track of field input
   }
   _validate() {
-    // a sanitized version of state can be passed instead
     this.props.afterValid(this.state);
   }
   render() {
@@ -50,19 +48,19 @@ class Step2Unstyled extends Component {
     if (props.currentStep !== 2) {
       return null;
     }
-    let Tiles = [];
-    for (let i = 0; i < 18; i++) {
-      Tiles.push(<Tile />);
-    }
+    let tiles = this.props.topics
+      ? props.topics.map((data, i) => {
+          return <Tile title={data.name} key={i} />;
+        })
+      : [];
     return (
       <div className={classes.container}>
         <div className={classes.header}>
           <h2 className={classes.title}>
-            Which of these topics do you most want to learn about?
-          </h2>
+          Which of these topics do you most want to learn about?          </h2>
         </div>
         <div className={classes.main}>
-          <div className={classes.tileGrid}>{Tiles}</div>
+          <div className={classes.tileGrid}>{tiles}</div>
         </div>
         <div className={classes.main}>
           <button

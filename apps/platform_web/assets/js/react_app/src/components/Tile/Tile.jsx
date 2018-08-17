@@ -19,7 +19,7 @@ class TileUnstyled extends Component {
     return (
       <div className={classes.tile}>
         <img src="" alt="" />
-        <h3 className={classes.title}>props.title</h3>
+        <h3 className={classes.title}>{props.title}</h3>
       </div>
     );
   }

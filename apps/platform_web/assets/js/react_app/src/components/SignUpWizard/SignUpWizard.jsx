@@ -8,7 +8,8 @@ export default class SignUpWizard extends Component {
   constructor() {
     super();
     this.state = {
-      currentStep: 1
+      currentStep: 1,
+      topics: null
     };
     this._next = this._next.bind(this);
     this._prev = this._prev.bind(this);
@@ -45,11 +46,16 @@ export default class SignUpWizard extends Component {
     let state = this.state;
     return (
       <div style={{ height: "100%" }}>
-        <Step1 currentStep={state.currentStep} afterValid={this._next} />
+        <Step1
+          currentStep={state.currentStep}
+          afterValid={this._next}
+          topics={this.props.topics}
+        />
         <Step2
           currentStep={state.currentStep}
           afterValid={this._next}
           prev={() => this._prev()}
+          topics={this.props.topics}
         />
         <Step3
           currentStep={state.currentStep}
@@ -61,12 +67,6 @@ export default class SignUpWizard extends Component {
           afterValid={this._next}
           prev={() => this._prev()}
         />
-        <button className="button" onClick={this._prev}>
-          Prev
-        </button>
-        <button className="button" onClick={this._next}>
-          Next
-        </button>
       </div>
     );
   }
