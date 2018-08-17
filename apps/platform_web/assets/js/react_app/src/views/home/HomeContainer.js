@@ -9,6 +9,7 @@ import PortfolioContainer from "../../components/portfolio/PortfolioContainer";
 import PrivacyComponent from "../PrivacyComponent";
 import BlogComponent from "../../components/blog/BlogComponent";
 import BlogListContainer from "../../components/blog/BlogListContainer";
+import ProviderComponent from "../../providers/ProviderComponent";
 
 export default class HomeContainer extends React.Component {
   render() {
