@@ -38,9 +38,30 @@ class Step1Unstyled extends Component {
     super(props);
     this._validate = this._validate.bind(this);
     // Bindings for form fields would go here,
+    this.state = {
+      topic_knowledge_ids: []
+    };
   }
   _validate() {
     this.props.afterValid(this.state);
+  }
+  collectTopicKnowledgeIds(id) {
+    console.log("collectTopicKnowledgeIds", id);
+    this.setState(
+      {
+        topic_knowledge_ids: [...this.state.topic_knowledge_ids, id]
+      },
+      console.log("step1state:", this.state)
+    );
+  }
+  removeTopicKnowledgeIds(id) {
+    console.log("filter", id);
+    let state = this.state;
+    let i = state.topic_knowledge_ids.indexOf(id);
+    console.log("post", i);
+    if (i != -1) {
+      state.topic_knowledge_ids.splice(i, 1);
+    }
   }
   render() {
     let props = this.props;
@@ -50,7 +71,15 @@ class Step1Unstyled extends Component {
     }
     let tiles = this.props.topics
       ? props.topics.map((data, i) => {
-          return <Tile title={data.name} key={i} />;
+          return (
+            <Tile
+              title={data.name}
+              key={data.id}
+              id={data.id}
+              removeTopicKnowledgeIds={id => this.removeTopicKnowledgeIds(id)}
+              collectTopicKnowledgeIds={id => this.collectTopicKnowledgeIds(id)}
+            />
+          );
         })
       : [];
     return (

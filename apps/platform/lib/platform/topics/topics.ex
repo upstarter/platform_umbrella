@@ -46,7 +46,7 @@ defmodule Platform.Topics do
       operating independently of a central bank.", long_desc: ""},
       %Topic{name: "Regulatory", id: 4, short_desc: "A rule or
       directive made and maintained by an authority.", long_desc: ""},
-      %Topic{name: "Compliance", id: 4, short_desc: "The act or
+      %Topic{name: "Compliance", id: 20, short_desc: "The act or
       process of complying to a desire, demand, proposal, or regimen or to
       coercion", long_desc: ""},
       %Topic{name: "CryptoCloud", id: 5, short_desc: "Crypto cloud

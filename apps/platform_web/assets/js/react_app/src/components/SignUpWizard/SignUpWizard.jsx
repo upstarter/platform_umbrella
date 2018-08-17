@@ -9,12 +9,18 @@ export default class SignUpWizard extends Component {
     super();
     this.state = {
       currentStep: 1,
-      topics: null
+      topics: null,
+      result: {
+        name: null,
+        email: null,
+        password: null,
+        topic_knowledge_ids: null,
+        topic_interest_ids: null
+      }
     };
     this._next = this._next.bind(this);
     this._prev = this._prev.bind(this);
   }
-
   _next() {
     let currentStep = this.state.currentStep;
     // Make sure currentStep is set to something reasonable
@@ -28,7 +34,6 @@ export default class SignUpWizard extends Component {
       currentStep: currentStep
     });
   }
-
   _prev() {
     let currentStep = this.state.currentStep;
     if (currentStep <= 1) {
