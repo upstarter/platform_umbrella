@@ -61,12 +61,12 @@ export default class SignUpWizard extends Component {
           afterValid={this._next}
           prev={() => this._prev()}
         />
-        {/* <button className="button" onClick={this._prev}>
+        <button className="button" onClick={this._prev}>
           Prev
         </button>
         <button className="button" onClick={this._next}>
           Next
-        </button> */}
+        </button>
       </div>
     );
   }
