@@ -1,25 +1,19 @@
 // - - - - - - - - - - - - - - - - - - -
 // - - modules
 // import new modules here
+@import 'social-buttons/social-buttons';
 @import 'nav/nav';
-
 // -- main screens
-
 // -- investors
 @import 'home/home';
 @import 'home/about';
 @import 'home/blog';
-
 // -- providers
 @import 'providers/contribute';
-
-
-
 // -- shared components
 @import 'shared/leadgen/email_leadgen';
 @import 'shared/spinner';
 @import 'shared/blockquote';
 @import 'shared/fancy_underline';
-
 // -- LRU least recently useds
 @import 'shared/privacy_policy';

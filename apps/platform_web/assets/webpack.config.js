@@ -55,7 +55,14 @@ module.exports = {
       {
         test: /\.(jsx?)/,
         exclude: ["/node_modules"],
-        loader: "babel-loader",
+        use: {
+          loader: "babel-loader",
+          options: {
+            babelrc: false,
+            presets: ['env', 'react'],
+            // plugins: [require('@babel/plugin-proposal-object-rest-spread')]
+          }
+        }
       },
       {
         test: /\.elm$/,
