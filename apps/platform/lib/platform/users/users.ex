@@ -1,6 +1,8 @@
 defmodule Platform.Users do
   @moduledoc """
-  The Users context.
+
+    The Users context.
+    
   """
 
   import Ecto.Query, warn: false

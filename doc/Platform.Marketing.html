@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.19.1">
+    <title>Platform.Marketing – CryptoWise Platform vdev</title>
+    <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
+    <script src="dist/sidebar_items-b2f8adc884.js"></script>
+    
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <div class="main">
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<button class="sidebar-button night-mode-toggle">
+  <span class="icon-theme" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Theme</span>
+</button>
+<section class="sidebar">
+
+  <a href="http://YOUR_PROJECT_HOMEPAGE" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+CryptoWise Platform      </h1>
+      <h2 class="sidebar-projectVersion">
+        vdev
+      </h2>
+    </div>
+      <img src="assets/logo.png" alt="CryptoWise Platform" class="sidebar-projectImage">
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+      <h1>
+        <small class="visible-xs">CryptoWise Platform vdev</small>
+Platform.Marketing        
+          <a href="https://github.com/USER/PROJECT/blob/master/apps/platform/lib/platform/marketing/marketing.ex#L1" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
+      </h1>
+
+
+        <section id="moduledoc">
+<p>  The Marketing context.</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+          
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#change_lead/1">change_lead(lead)</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns an <code class="inline">%Ecto.Changeset{}</code> for tracking lead changes</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#create_lead/1">create_lead(attrs \\ %{})</a>
+  </div>
+    <div class="summary-synopsis"><p>Creates a lead</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_lead/1">delete_lead(lead)</a>
+  </div>
+    <div class="summary-synopsis"><p>Deletes a Lead</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_lead!/1">get_lead!(id)</a>
+  </div>
+    <div class="summary-synopsis"><p>Gets a single lead</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#list_leads/0">list_leads()</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns the list of leads</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#update_lead/2">update_lead(lead, attrs)</a>
+  </div>
+    <div class="summary-synopsis"><p>Updates a lead</p>
+</div>
+</div>
+  </div>
+          
+        </section>
+
+
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Functions
+          </h1>
+<div class="detail" id="change_lead/1">
+    <div class="detail-header">
+    <a href="#change_lead/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">change_lead(lead)</span>
+      <a href="https://github.com/USER/PROJECT/blob/master/apps/platform/lib/platform/marketing/marketing.ex#L108" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+<p>Returns an <code class="inline">%Ecto.Changeset{}</code> for tracking lead changes.</p>
+<h2 id="change_lead/1-examples" class="section-heading">
+  <a href="#change_lead/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">change_lead</span><span class="p" data-group-id="1415546335-1">(</span><span class="n">lead</span><span class="p" data-group-id="1415546335-1">)</span><span class="w">
+</span><span class="p" data-group-id="1415546335-2">%</span><span class="nc" data-group-id="1415546335-2">Ecto.Changeset</span><span class="p" data-group-id="1415546335-2">{</span><span class="ss">source</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1415546335-3">%</span><span class="nc" data-group-id="1415546335-3">Lead</span><span class="p" data-group-id="1415546335-3">{</span><span class="p" data-group-id="1415546335-3">}</span><span class="p" data-group-id="1415546335-2">}</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="create_lead/1">
+  
+    <span id="create_lead/0"></span>
+  <div class="detail-header">
+    <a href="#create_lead/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">create_lead(attrs \\ %{})</span>
+      <a href="https://github.com/USER/PROJECT/blob/master/apps/platform/lib/platform/marketing/marketing.ex#L55" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+<p>Creates a lead.</p>
+<h2 id="create_lead/1-examples" class="section-heading">
+  <a href="#create_lead/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">create_lead</span><span class="p" data-group-id="5562086546-1">(</span><span class="p" data-group-id="5562086546-2">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">value</span><span class="p" data-group-id="5562086546-2">}</span><span class="p" data-group-id="5562086546-1">)</span><span class="w">
+</span><span class="p" data-group-id="5562086546-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5562086546-4">%</span><span class="nc" data-group-id="5562086546-4">Lead</span><span class="p" data-group-id="5562086546-4">{</span><span class="p" data-group-id="5562086546-4">}</span><span class="p" data-group-id="5562086546-3">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">create_lead</span><span class="p" data-group-id="5562086546-5">(</span><span class="p" data-group-id="5562086546-6">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">bad_value</span><span class="p" data-group-id="5562086546-6">}</span><span class="p" data-group-id="5562086546-5">)</span><span class="w">
+</span><span class="p" data-group-id="5562086546-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5562086546-8">%</span><span class="nc" data-group-id="5562086546-8">Ecto.Changeset</span><span class="p" data-group-id="5562086546-8">{</span><span class="p" data-group-id="5562086546-8">}</span><span class="p" data-group-id="5562086546-7">}</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="delete_lead/1">
+    <div class="detail-header">
+    <a href="#delete_lead/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">delete_lead(lead)</span>
+      <a href="https://github.com/USER/PROJECT/blob/master/apps/platform/lib/platform/marketing/marketing.ex#L95" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+<p>Deletes a Lead.</p>
+<h2 id="delete_lead/1-examples" class="section-heading">
+  <a href="#delete_lead/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">delete_lead</span><span class="p" data-group-id="5234873533-1">(</span><span class="n">lead</span><span class="p" data-group-id="5234873533-1">)</span><span class="w">
+</span><span class="p" data-group-id="5234873533-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5234873533-3">%</span><span class="nc" data-group-id="5234873533-3">Lead</span><span class="p" data-group-id="5234873533-3">{</span><span class="p" data-group-id="5234873533-3">}</span><span class="p" data-group-id="5234873533-2">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">delete_lead</span><span class="p" data-group-id="5234873533-4">(</span><span class="n">lead</span><span class="p" data-group-id="5234873533-4">)</span><span class="w">
+</span><span class="p" data-group-id="5234873533-5">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5234873533-6">%</span><span class="nc" data-group-id="5234873533-6">Ecto.Changeset</span><span class="p" data-group-id="5234873533-6">{</span><span class="p" data-group-id="5234873533-6">}</span><span class="p" data-group-id="5234873533-5">}</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="get_lead!/1">
+    <div class="detail-header">
+    <a href="#get_lead!/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">get_lead!(id)</span>
+      <a href="https://github.com/USER/PROJECT/blob/master/apps/platform/lib/platform/marketing/marketing.ex#L41" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+<p>Gets a single lead.</p>
+<p>Raises <a href="https://hexdocs.pm/ecto/2.2.10/Ecto.NoResultsError.html"><code class="inline">Ecto.NoResultsError</code></a> if the Lead does not exist.</p>
+<h2 id="get_lead!/1-examples" class="section-heading">
+  <a href="#get_lead!/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_lead!</span><span class="p" data-group-id="1807716380-1">(</span><span class="mi">123</span><span class="p" data-group-id="1807716380-1">)</span><span class="w">
+</span><span class="p" data-group-id="1807716380-2">%</span><span class="nc" data-group-id="1807716380-2">Lead</span><span class="p" data-group-id="1807716380-2">{</span><span class="p" data-group-id="1807716380-2">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">get_lead!</span><span class="p" data-group-id="1807716380-3">(</span><span class="mi">456</span><span class="p" data-group-id="1807716380-3">)</span><span class="w">
+</span><span class="gt">** (Ecto.NoResultsError)</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="list_leads/0">
+    <div class="detail-header">
+    <a href="#list_leads/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">list_leads()</span>
+      <a href="https://github.com/USER/PROJECT/blob/master/apps/platform/lib/platform/marketing/marketing.ex#L23" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+<p>Returns the list of leads.</p>
+<h2 id="list_leads/0-examples" class="section-heading">
+  <a href="#list_leads/0-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">list_leads</span><span class="p" data-group-id="2977350495-1">(</span><span class="p" data-group-id="2977350495-1">)</span><span class="w">
+</span><span class="p" data-group-id="2977350495-2">[</span><span class="p" data-group-id="2977350495-3">%</span><span class="nc" data-group-id="2977350495-3">Lead</span><span class="p" data-group-id="2977350495-3">{</span><span class="p" data-group-id="2977350495-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="2977350495-2">]</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="update_lead/2">
+    <div class="detail-header">
+    <a href="#update_lead/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">update_lead(lead, attrs)</span>
+      <a href="https://github.com/USER/PROJECT/blob/master/apps/platform/lib/platform/marketing/marketing.ex#L77" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+<p>Updates a lead.</p>
+<h2 id="update_lead/2-examples" class="section-heading">
+  <a href="#update_lead/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">update_lead</span><span class="p" data-group-id="9480250944-1">(</span><span class="n">lead</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9480250944-2">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">new_value</span><span class="p" data-group-id="9480250944-2">}</span><span class="p" data-group-id="9480250944-1">)</span><span class="w">
+</span><span class="p" data-group-id="9480250944-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9480250944-4">%</span><span class="nc" data-group-id="9480250944-4">Lead</span><span class="p" data-group-id="9480250944-4">{</span><span class="p" data-group-id="9480250944-4">}</span><span class="p" data-group-id="9480250944-3">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">update_lead</span><span class="p" data-group-id="9480250944-5">(</span><span class="n">lead</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9480250944-6">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">bad_value</span><span class="p" data-group-id="9480250944-6">}</span><span class="p" data-group-id="9480250944-5">)</span><span class="w">
+</span><span class="p" data-group-id="9480250944-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9480250944-8">%</span><span class="nc" data-group-id="9480250944-8">Ecto.Changeset</span><span class="p" data-group-id="9480250944-8">{</span><span class="p" data-group-id="9480250944-8">}</span><span class="p" data-group-id="9480250944-7">}</span></code></pre>
+  </section>
+</div>
+        </section>
+
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.1),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  <script src="dist/app-a0c90688fa.js"></script>
+  
+  </body>
+</html>
+

@@ -1,6 +1,8 @@
 defmodule Platform.Tokens do
   @moduledoc """
-  The Tokens context.
+
+    The Tokens context.
+    
   """
 
   import Ecto.Query, warn: false

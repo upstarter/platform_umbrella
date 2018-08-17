@@ -1,6 +1,8 @@
 defmodule Platform.Marketing do
   @moduledoc """
-  The Marketing context.
+
+    The Marketing context.
+
   """
 
   import Ecto.Query, warn: false
@@ -54,6 +56,7 @@ defmodule Platform.Marketing do
     case attrs["userType"] do
       "provider" ->
         %Provider{} |> Provider.changeset(attrs) |> Repo.insert()
+
       _ ->
         %Lead{} |> Lead.changeset(attrs) |> Repo.insert()
     end

@@ -7,13 +7,18 @@ defmodule Platform.Application do
   Exposes API to clients such as the `PlatformWeb` application
   for use in channels, controllers, and elsewhere.
   """
+
   use Application
 
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
 
-    Supervisor.start_link([
-      supervisor(Platform.Repo, []),
-    ], strategy: :one_for_one, name: Platform.Supervisor)
+    Supervisor.start_link(
+      [
+        supervisor(Platform.Repo, [])
+      ],
+      strategy: :one_for_one,
+      name: Platform.Supervisor
+    )
   end
 end

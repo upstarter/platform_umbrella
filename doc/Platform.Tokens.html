@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.19.1">
+    <title>Platform.Tokens – CryptoWise Platform vdev</title>
+    <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
+    <script src="dist/sidebar_items-b2f8adc884.js"></script>
+    
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <div class="main">
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<button class="sidebar-button night-mode-toggle">
+  <span class="icon-theme" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Theme</span>
+</button>
+<section class="sidebar">
+
+  <a href="http://YOUR_PROJECT_HOMEPAGE" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+CryptoWise Platform      </h1>
+      <h2 class="sidebar-projectVersion">
+        vdev
+      </h2>
+    </div>
+      <img src="assets/logo.png" alt="CryptoWise Platform" class="sidebar-projectImage">
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+      <h1>
+        <small class="visible-xs">CryptoWise Platform vdev</small>
+Platform.Tokens        
+          <a href="https://github.com/USER/PROJECT/blob/master/apps/platform/lib/platform/tokens/tokens.ex#L1" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
+      </h1>
+
+
+        <section id="moduledoc">
+<p>  The Tokens context.</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+          
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#change_token/1">change_token(token)</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns an <code class="inline">%Ecto.Changeset{}</code> for tracking token changes</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#create_token/1">create_token(attrs \\ %{})</a>
+  </div>
+    <div class="summary-synopsis"><p>Creates a token</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_token/1">delete_token(token)</a>
+  </div>
+    <div class="summary-synopsis"><p>Deletes a Token</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_token!/1">get_token!(id)</a>
+  </div>
+    <div class="summary-synopsis"><p>Gets a single token</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#list_tokens/0">list_tokens()</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns the list of tokens</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#update_token/2">update_token(token, attrs)</a>
+  </div>
+    <div class="summary-synopsis"><p>Updates a token</p>
+</div>
+</div>
+  </div>
+          
+        </section>
+
+
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Functions
+          </h1>
+<div class="detail" id="change_token/1">
+    <div class="detail-header">
+    <a href="#change_token/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">change_token(token)</span>
+      <a href="https://github.com/USER/PROJECT/blob/master/apps/platform/lib/platform/tokens/tokens.ex#L103" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+<p>Returns an <code class="inline">%Ecto.Changeset{}</code> for tracking token changes.</p>
+<h2 id="change_token/1-examples" class="section-heading">
+  <a href="#change_token/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">change_token</span><span class="p" data-group-id="7876992785-1">(</span><span class="n">token</span><span class="p" data-group-id="7876992785-1">)</span><span class="w">
+</span><span class="p" data-group-id="7876992785-2">%</span><span class="nc" data-group-id="7876992785-2">Ecto.Changeset</span><span class="p" data-group-id="7876992785-2">{</span><span class="ss">source</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7876992785-3">%</span><span class="nc" data-group-id="7876992785-3">Token</span><span class="p" data-group-id="7876992785-3">{</span><span class="p" data-group-id="7876992785-3">}</span><span class="p" data-group-id="7876992785-2">}</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="create_token/1">
+  
+    <span id="create_token/0"></span>
+  <div class="detail-header">
+    <a href="#create_token/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">create_token(attrs \\ %{})</span>
+      <a href="https://github.com/USER/PROJECT/blob/master/apps/platform/lib/platform/tokens/tokens.ex#L54" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+<p>Creates a token.</p>
+<h2 id="create_token/1-examples" class="section-heading">
+  <a href="#create_token/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">create_token</span><span class="p" data-group-id="4093293848-1">(</span><span class="p" data-group-id="4093293848-2">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">value</span><span class="p" data-group-id="4093293848-2">}</span><span class="p" data-group-id="4093293848-1">)</span><span class="w">
+</span><span class="p" data-group-id="4093293848-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4093293848-4">%</span><span class="nc" data-group-id="4093293848-4">Token</span><span class="p" data-group-id="4093293848-4">{</span><span class="p" data-group-id="4093293848-4">}</span><span class="p" data-group-id="4093293848-3">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">create_token</span><span class="p" data-group-id="4093293848-5">(</span><span class="p" data-group-id="4093293848-6">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">bad_value</span><span class="p" data-group-id="4093293848-6">}</span><span class="p" data-group-id="4093293848-5">)</span><span class="w">
+</span><span class="p" data-group-id="4093293848-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4093293848-8">%</span><span class="nc" data-group-id="4093293848-8">Ecto.Changeset</span><span class="p" data-group-id="4093293848-8">{</span><span class="p" data-group-id="4093293848-8">}</span><span class="p" data-group-id="4093293848-7">}</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="delete_token/1">
+    <div class="detail-header">
+    <a href="#delete_token/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">delete_token(token)</span>
+      <a href="https://github.com/USER/PROJECT/blob/master/apps/platform/lib/platform/tokens/tokens.ex#L90" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+<p>Deletes a Token.</p>
+<h2 id="delete_token/1-examples" class="section-heading">
+  <a href="#delete_token/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">delete_token</span><span class="p" data-group-id="2167145338-1">(</span><span class="n">token</span><span class="p" data-group-id="2167145338-1">)</span><span class="w">
+</span><span class="p" data-group-id="2167145338-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2167145338-3">%</span><span class="nc" data-group-id="2167145338-3">Token</span><span class="p" data-group-id="2167145338-3">{</span><span class="p" data-group-id="2167145338-3">}</span><span class="p" data-group-id="2167145338-2">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">delete_token</span><span class="p" data-group-id="2167145338-4">(</span><span class="n">token</span><span class="p" data-group-id="2167145338-4">)</span><span class="w">
+</span><span class="p" data-group-id="2167145338-5">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2167145338-6">%</span><span class="nc" data-group-id="2167145338-6">Ecto.Changeset</span><span class="p" data-group-id="2167145338-6">{</span><span class="p" data-group-id="2167145338-6">}</span><span class="p" data-group-id="2167145338-5">}</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="get_token!/1">
+    <div class="detail-header">
+    <a href="#get_token!/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">get_token!(id)</span>
+      <a href="https://github.com/USER/PROJECT/blob/master/apps/platform/lib/platform/tokens/tokens.ex#L40" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+<p>Gets a single token.</p>
+<p>Raises <a href="https://hexdocs.pm/ecto/2.2.10/Ecto.NoResultsError.html"><code class="inline">Ecto.NoResultsError</code></a> if the Token does not exist.</p>
+<h2 id="get_token!/1-examples" class="section-heading">
+  <a href="#get_token!/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_token!</span><span class="p" data-group-id="4791260507-1">(</span><span class="mi">123</span><span class="p" data-group-id="4791260507-1">)</span><span class="w">
+</span><span class="p" data-group-id="4791260507-2">%</span><span class="nc" data-group-id="4791260507-2">Token</span><span class="p" data-group-id="4791260507-2">{</span><span class="p" data-group-id="4791260507-2">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">get_token!</span><span class="p" data-group-id="4791260507-3">(</span><span class="mi">456</span><span class="p" data-group-id="4791260507-3">)</span><span class="w">
+</span><span class="gt">** (Ecto.NoResultsError)</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="list_tokens/0">
+    <div class="detail-header">
+    <a href="#list_tokens/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">list_tokens()</span>
+      <a href="https://github.com/USER/PROJECT/blob/master/apps/platform/lib/platform/tokens/tokens.ex#L22" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+<p>Returns the list of tokens.</p>
+<h2 id="list_tokens/0-examples" class="section-heading">
+  <a href="#list_tokens/0-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">list_tokens</span><span class="p" data-group-id="8960746912-1">(</span><span class="p" data-group-id="8960746912-1">)</span><span class="w">
+</span><span class="p" data-group-id="8960746912-2">[</span><span class="p" data-group-id="8960746912-3">%</span><span class="nc" data-group-id="8960746912-3">Token</span><span class="p" data-group-id="8960746912-3">{</span><span class="p" data-group-id="8960746912-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="8960746912-2">]</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="update_token/2">
+    <div class="detail-header">
+    <a href="#update_token/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">update_token(token, attrs)</span>
+      <a href="https://github.com/USER/PROJECT/blob/master/apps/platform/lib/platform/tokens/tokens.ex#L72" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+<p>Updates a token.</p>
+<h2 id="update_token/2-examples" class="section-heading">
+  <a href="#update_token/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">update_token</span><span class="p" data-group-id="0164613673-1">(</span><span class="n">token</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0164613673-2">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">new_value</span><span class="p" data-group-id="0164613673-2">}</span><span class="p" data-group-id="0164613673-1">)</span><span class="w">
+</span><span class="p" data-group-id="0164613673-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0164613673-4">%</span><span class="nc" data-group-id="0164613673-4">Token</span><span class="p" data-group-id="0164613673-4">{</span><span class="p" data-group-id="0164613673-4">}</span><span class="p" data-group-id="0164613673-3">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">update_token</span><span class="p" data-group-id="0164613673-5">(</span><span class="n">token</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0164613673-6">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">bad_value</span><span class="p" data-group-id="0164613673-6">}</span><span class="p" data-group-id="0164613673-5">)</span><span class="w">
+</span><span class="p" data-group-id="0164613673-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0164613673-8">%</span><span class="nc" data-group-id="0164613673-8">Ecto.Changeset</span><span class="p" data-group-id="0164613673-8">{</span><span class="p" data-group-id="0164613673-8">}</span><span class="p" data-group-id="0164613673-7">}</span></code></pre>
+  </section>
+</div>
+        </section>
+
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.1),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  <script src="dist/app-a0c90688fa.js"></script>
+  
+  </body>
+</html>
+

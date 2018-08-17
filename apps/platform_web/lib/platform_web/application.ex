@@ -1,4 +1,8 @@
 defmodule PlatformWeb.Application do
+  @moduledoc """
+  platform application
+  """
+
   use Application
 
   def start(_type, _args) do
@@ -11,12 +15,14 @@ defmodule PlatformWeb.Application do
       # Start your own worker by calling: PlatformWeb.Worker.start_link(arg1, arg2, arg3)
       # worker(PlatformWeb.Worker, [arg1, arg2, arg3]),
 
-      #TODO: REMOVE expire cache globally after 1 week
-      worker(ConCache, [[name: :wise_cache,
-                         ttl_check_interval: :timer.seconds(1),
-                         global_ttl: :timer.seconds(604800)]
-                       ]),
-
+      # TODO: REMOVE expire cache globally after 1 week
+      worker(ConCache, [
+        [
+          name: :wise_cache,
+          ttl_check_interval: :timer.seconds(1),
+          global_ttl: :timer.seconds(604_800)
+        ]
+      ])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

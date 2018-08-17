@@ -6,6 +6,7 @@ defmodule Auth.Guardian do
   Contexts are also responsible for managing your data, regardless
   if it comes from the database, an external API or others.
   """
+
   use Guardian, otp_app: :auth
 
   def subject_for_token(resource, _claims) do
@@ -17,6 +18,7 @@ defmodule Auth.Guardian do
     sub = to_string(resource.id)
     {:ok, sub}
   end
+
   def subject_for_token(_, _) do
     {:error, :reason_for_error}
   end
@@ -26,9 +28,12 @@ defmodule Auth.Guardian do
     # found in the `"sub"` key. In `above subject_for_token/2` we returned
     # the resource id so here we'll rely on that to look it up.
     id = claims["sub"]
-    resource = Auth.Account.get_resource_by_id(id)
-    {:ok,  resource}
+
+    resource = Platform.Repo.get!(Account, id)
+
+    {:ok, resource}
   end
+
   def resource_from_claims(_claims) do
     {:error, :reason_for_error}
   end

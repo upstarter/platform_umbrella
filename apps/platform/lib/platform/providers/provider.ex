@@ -1,12 +1,17 @@
 defmodule Platform.Providers.Provider do
+  @moduledoc """
+
+    providers of services on the platform
+
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
 
-
   schema "providers" do
-    field :desc, :string
-    field :name, :string
-    field :user_id, :integer
+    field(:desc, :string)
+    field(:name, :string)
+    field(:user_id, :integer)
 
     timestamps()
   end
