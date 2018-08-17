@@ -14,7 +14,7 @@ defmodule PlatformWeb.V1.Providers.ProviderController do
     with {:ok, %Provider{} = provider} <- Providers.create_provider(provider_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", provider_path(conn, :show, provider))
+      |> put_resp_header("location", Routes.provider_path(conn, :show, provider))
       |> render("show.json", provider: provider)
     end
   end
