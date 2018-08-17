@@ -33,6 +33,7 @@ defmodule PlatformWeb.V1.Topics.TopicController do
 
   def delete(conn, %{"id" => id}) do
     topic = Topics.get_topic!(id)
+
     with {:ok, %Topic{}} <- Topics.delete_topic(topic) do
       send_resp(conn, :no_content, "")
     end
