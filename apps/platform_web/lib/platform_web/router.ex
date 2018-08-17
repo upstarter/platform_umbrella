@@ -55,7 +55,7 @@ defmodule PlatformWeb.Router do
       end
 
       # TOPICS
-      scope "/topics", Topics do
+      scope "/", Topics do
         resources "/topics", TopicController, except: [:new, :edit]
       end
 
