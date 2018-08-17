@@ -1,5 +1,6 @@
 defmodule Auth.GuardedController do
   @moduledoc """
+
   Use this module in a controller to take the advantage of having
   the subject of authentication (eg.: an authenticated user) injected
   in the action as the third argument.
@@ -12,6 +13,7 @@ defmodule Auth.GuardedController do
       # ..code..
     end
   end
+
   """
 
   defmacro __using__(_opts \\ []) do

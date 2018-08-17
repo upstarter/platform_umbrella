@@ -1,7 +1,7 @@
 defmodule Platform.Topics do
   @moduledoc """
 
-  The Topics context.
+    The Topics context.
 
   """
 
@@ -65,7 +65,7 @@ defmodule Platform.Topics do
       },
       %Topic{
         name: "Security",
-        id: 6,
+        id: 20,
         short_desc:
           "How, where, when, and why to store your cryptoassets, and how to protect yourself
         from hackers.",
