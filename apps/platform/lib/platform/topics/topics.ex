@@ -40,38 +40,21 @@ defmodule Platform.Topics do
       have tokens to reward users for providing computing power.",
         long_desc: ""
       },
-      %Topic{
-        name: "Cryptocurrencies",
-        id: 3,
-        short_desc: "A digital currency in which encryption techniques are used to regulate the
-     generation of units of currency and verify the transfer of funds, operating
-     independently of a central bank.",
-        long_desc: ""
-      },
-      %Topic{
-        name: "Regulatory",
-        id: 4,
-        short_desc: "A rule or directive made and maintained by an authority.",
-        long_desc: ""
-      },
-      %Topic{
-        name: "Compliance",
-        id: 4,
-        short_desc:
-          "The act or process of complying to a desire, demand, proposal, or regimen or to
-      coercion",
-        long_desc: ""
-      },
-      %Topic{
-        name: "CryptoCloud",
-        id: 5,
-        short_desc:
-          "Crypto cloud computing is a secure cloud computing architecture. Cloud computing
-      is a large-scale distributed computing model that is driven by economies of
-      scale. It integrates a set of abstracted, virtualized, dynamically-scalable, and
-      managed resources, such as computing power, storage, platforms, and services.",
-        long_desc: ""
-      },
+      %Topic{name: "Cryptocurrencies", id: 3, short_desc: "A
+      digital currency in which encryption techniques are used to regulate the
+      generation of units of currency and verify the transfer of funds,
+      operating independently of a central bank.", long_desc: ""},
+      %Topic{name: "Regulatory", id: 4, short_desc: "A rule or
+      directive made and maintained by an authority.", long_desc: ""},
+      %Topic{name: "Compliance", id: 20, short_desc: "The act or
+      process of complying to a desire, demand, proposal, or regimen or to
+      coercion", long_desc: ""},
+      %Topic{name: "CryptoCloud", id: 5, short_desc: "Crypto cloud
+      computing is a secure cloud computing architecture. Cloud computing is a
+      large-scale distributed computing model that is driven by economies of
+      scale. It integrates a set of abstracted, virtualized,
+      dynamically-scalable, and managed resources, such as computing power,
+      storage, platforms, and services.", long_desc: ""},
       %Topic{
         name: "Sustainability",
         id: 6,

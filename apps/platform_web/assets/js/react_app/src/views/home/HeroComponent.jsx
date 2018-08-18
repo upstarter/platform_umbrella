@@ -2,7 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Button from "../../components/Button/Button";
 import Modal from "react-modal";
-import SignUpWizard from "../../components/signUpWizard/SignUpWizard";
+import SignUpWizard from "../SignUpWizard/SignUpWizard";
+import { url } from "../../utils/consts";
 
 export default class HeroComponent extends React.Component {
   constructor() {
@@ -20,7 +21,25 @@ export default class HeroComponent extends React.Component {
   }
 
   handleOpenModal() {
-    this.setState({ showModal: true });
+    this.setState({ showModal: true }, () => {
+      fetch(`${url}/api/v1/topics`)
+        .then(response => {
+          if (response.status !== 200) {
+            console.log(
+              "Looks like there was a problem. Status Code: " + response.status
+            );
+            return;
+          }
+
+          // Examine the text in the response
+          response.json().then(data => {
+            this.setState({ topics: data.data });
+          });
+        })
+        .catch(err => {
+          console.log("Fetch Error :-S", err);
+        });
+    });
   }
 
   handleCloseModal() {
@@ -40,7 +59,7 @@ export default class HeroComponent extends React.Component {
         >
           {/* <h2 ref={subtitle => (this.subtitle = subtitle)}>Hello</h2> */}
           {/* <button onClick={this.handleCloseModal}>close</button> */}
-          <SignUpWizard />
+          <SignUpWizard topics={this.state.topics} />
         </Modal>
         <div className="heero-body column">
           <div className="container">

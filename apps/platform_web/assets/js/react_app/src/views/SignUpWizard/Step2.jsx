@@ -33,16 +33,32 @@ const styles = {
   }
 };
 
-class Step2Unstyled extends Component {
+class step2Unstyled extends Component {
   constructor(props) {
     super(props);
     this._validate = this._validate.bind(this);
     // Bindings for form fields would go here,
-    // and state would keep track of field input
+    this.state = {
+      topic_knowledge_ids: []
+    };
   }
   _validate() {
-    // a sanitized version of state can be passed instead
+    if (this.state.topic_knowledge_ids.length >= 3) {
+      this.props.saveForm(this.state.topic_knowledge_ids);
+    }
     this.props.afterValid(this.state);
+  }
+  collectTopicKnowledgeIds(id) {
+    this.setState({
+      topic_knowledge_ids: [...this.state.topic_knowledge_ids, id]
+    });
+  }
+  removeTopicKnowledgeIds(id) {
+    let state = this.state;
+    let i = state.topic_knowledge_ids.indexOf(id);
+    if (i != -1) {
+      state.topic_knowledge_ids.splice(i, 1);
+    }
   }
   render() {
     let props = this.props;
@@ -50,10 +66,19 @@ class Step2Unstyled extends Component {
     if (props.currentStep !== 2) {
       return null;
     }
-    let Tiles = [];
-    for (let i = 0; i < 18; i++) {
-      Tiles.push(<Tile />);
-    }
+    let tiles = this.props.topics
+      ? props.topics.map((data, i) => {
+          return (
+            <Tile
+              title={data.name}
+              key={data.id}
+              id={data.id}
+              removeTopicKnowledgeIds={id => this.removeTopicKnowledgeIds(id)}
+              collectTopicKnowledgeIds={id => this.collectTopicKnowledgeIds(id)}
+            />
+          );
+        })
+      : [];
     return (
       <div className={classes.container}>
         <div className={classes.header}>
@@ -62,12 +87,13 @@ class Step2Unstyled extends Component {
           </h2>
         </div>
         <div className={classes.main}>
-          <div className={classes.tileGrid}>{Tiles}</div>
+          <div className={classes.tileGrid}>{tiles}</div>
         </div>
         <div className={classes.main}>
+          <p>choose at least 3</p>
           <button
             className="button is-primary is-rounded"
-            onClick={() => this.props.prev()}
+            onClick={props._prev}
           >
             Back
           </button>
@@ -83,5 +109,5 @@ class Step2Unstyled extends Component {
   }
 }
 
-const Step2 = injectSheet(styles)(Step2Unstyled);
-export default Step2;
+const step2 = injectSheet(styles)(step2Unstyled);
+export default step2;
