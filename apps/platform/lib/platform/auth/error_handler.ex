@@ -1,4 +1,10 @@
 defmodule Auth.ErrorHandler do
+  @moduledoc """
+
+    used by backoffice too
+
+  """
+
   import Plug.Conn
   use Phoenix.Controller, namespace: PlatformWeb
 

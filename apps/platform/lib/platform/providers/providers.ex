@@ -1,6 +1,8 @@
 defmodule Platform.Providers do
   @moduledoc """
-  The Providers context.
+
+    The Providers context.
+
   """
 
   import Ecto.Query, warn: false

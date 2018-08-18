@@ -1,4 +1,6 @@
 defmodule PlatformWeb.ErrorView do
+  @moduledoc false
+
   use PlatformWeb, :view
 
   import PlatformWeb.ErrorHelpers
@@ -19,5 +21,4 @@ defmodule PlatformWeb.ErrorView do
   def render("error.json", %{changeset: changeset}) do
     Ecto.Changeset.traverse_errors(changeset, &translate_error/1)
   end
-
 end

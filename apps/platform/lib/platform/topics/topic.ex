@@ -1,12 +1,17 @@
 defmodule Platform.Topics.Topic do
+  @moduledoc """
+
+    topics on the platform
+
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
 
-
   schema "topics" do
-    field :long_desc, :string
-    field :name, :string
-    field :short_desc, :string
+    field(:long_desc, :string)
+    field(:name, :string)
+    field(:short_desc, :string)
 
     timestamps()
   end
