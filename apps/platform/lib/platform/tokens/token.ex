@@ -1,14 +1,19 @@
 defmodule Platform.Tokens.Token do
+  @moduledoc """
+
+    tokens on the platform
+
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
 
-
   schema "tokens" do
-    field :img_url, :string
-    field :name, :string
-    field :short_desc, :string
-    field :site, :string
-    field :ticker, :string
+    field(:img_url, :string)
+    field(:name, :string)
+    field(:short_desc, :string)
+    field(:site, :string)
+    field(:ticker, :string)
 
     timestamps()
   end

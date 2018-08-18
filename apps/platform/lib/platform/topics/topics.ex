@@ -1,7 +1,7 @@
 defmodule Platform.Topics do
   @moduledoc """
 
-  The Topics context.
+    The Topics context.
 
   """
 
@@ -64,6 +64,14 @@ defmodule Platform.Topics do
         long_desc: ""
       },
       %Topic{
+        name: "Security",
+        id: 20,
+        short_desc:
+          "How, where, when, and why to store your cryptoassets, and how to protect yourself
+        from hackers.",
+        long_desc: ""
+      },
+      %Topic{
         name: "Network Ownership Effects",
         id: 7,
         short_desc: "A network ownership effect describes when the utility of the service and
@@ -71,41 +79,112 @@ defmodule Platform.Topics do
       new users join.",
         long_desc: ""
       },
-      %Topic{name: "Social Impact", id: 8, short_desc: "A
-      significant, positive change that addresses a pressing social challenge.", long_desc: ""},
-      %Topic{name: "ERC-XX", id: 9, short_desc: "ERC stands for
-      Ethereum Request for Comments, like the IETF's RFC
-      (https://www.ietf.org/rfc.html). An RFC is authored by engineers and
-      computer scientists in the form of a memorandum describing methods,
-      behaviors, research, or innovations applicable to the working of the
-      Internet and Internet-connected systems. It is submitted either for peer
-      review or to convey new concepts, information, or (occasionally)
-      engineering humor", long_desc: ""},
+      %Topic{
+        name: "Social Impact",
+        id: 8,
+        short_desc: "A significant, positive change that addresses a pressing social challenge.",
+        long_desc: ""
+      },
+      %Topic{
+        name: "ERC-XX",
+        id: 9,
+        short_desc: "ERC stands for Ethereum Request for Comments, like the IETF's RFC
+        (https://www.ietf.org/rfc.html). An RFC is authored by engineers and computer
+        scientists in the form of a memorandum describing methods, behaviors, research,
+        or innovations applicable to the working of the Internet and Internet-connected
+        systems. It is submitted either for peer review or to convey new concepts,
+        information, or (occasionally) engineering humor",
+        long_desc: ""
+      },
       %Topic{
         name: "Crypto Investment Strategy",
         id: 10,
-        short_desc: "",
+        short_desc: "A set of rules, behaviors or procedures, designed to guide an
+          investor's selection of an investment portfolio.",
         long_desc: ""
       },
       %Topic{
         name: "Global Tactical Asset Allocation",
         id: 11,
-        short_desc: "",
+        short_desc: "A top-down investment strategy that attempts to exploit short-term
+          mis-pricings among a global set of assets. The strategy focuses on
+          general movements in the market rather than on performance of
+          individual securities.",
         long_desc: ""
       },
       %Topic{
         name: "Trading Systems & Methods",
         id: 12,
-        short_desc: "",
+        short_desc: "A computer program that creates orders and automatically submits them
+          to a market center or exchange. The program will automatically
+          generate orders based on predefined set of rules using a trading
+          strategy which is often based on technical analysis but can also be
+          based on input from other electronic sources.",
         long_desc: ""
       },
-      %Topic{name: "Decentralized Exchanges", id: 13, short_desc: "", long_desc: ""},
-      %Topic{name: "Portfolio Optimization", id: 14, short_desc: "", long_desc: ""},
-      %Topic{name: "Game Theory", id: 15, short_desc: "", long_desc: ""},
-      %Topic{name: "Mechanism Design", id: 16, short_desc: "", long_desc: ""},
-      %Topic{name: "Artificial Intelligence", id: 17, short_desc: "", long_desc: ""},
-      %Topic{name: "Robotics", id: 18, short_desc: "", long_desc: ""},
-      %Topic{name: "Internet of Things", id: 19, short_desc: "", long_desc: ""}
+      %Topic{
+        name: "Decentralized Exchanges",
+        id: 13,
+        short_desc:
+          "Decentralized exchanges are the exchanges that do not require a third party to store your funds.",
+        long_desc: ""
+      },
+      %Topic{
+        name: "Portfolio Optimization",
+        id: 14,
+        short_desc: "The process of selecting the best portfolio (asset distribution), out
+          of the set of all portfolios being considered, according to some
+          objective.",
+        long_desc: ""
+      },
+      %Topic{
+        name: "Game Theory",
+        id: 15,
+        short_desc: "Simply put, game theory is the study of logical decision making made
+          by players within the defined parameters of a system (game, scenario,
+          etc). It uses mathematical models and can be applied to economics,
+          psychology, logic, computer science, distributed systems, and more.
+          Game theory can be seen as a microcosm of human behavior under set
+          circumstances wherein certain incentive structures and mechanisms can
+          lead to predictable and honest behavior by players.",
+        long_desc: ""
+      },
+      %Topic{
+        name: "Mechanism Design",
+        id: 16,
+        short_desc: "a field in economics and game theory that takes an engineering
+          approach to designing economic mechanisms or incentives, toward
+          desired objectives, in strategic settings, where players act
+          rationally.",
+        long_desc: ""
+      },
+      %Topic{
+        name: "Artificial Intelligence",
+        id: 17,
+        short_desc: "Intelligence demonstrated by machines, in contrast to the natural
+          intelligence displayed by humans and other animals.",
+        long_desc: ""
+      },
+      %Topic{
+        name: "Robotics",
+        id: 18,
+        short_desc: "An interdisciplinary branch of engineering and science that includes
+          mechanical engineering, electronics engineering, computer science, and
+          others.",
+        long_desc: ""
+      },
+      %Topic{
+        name: "Internet of Things",
+        id: 19,
+        short_desc: "The network of physical devices, vehicles, home appliances, and other
+          items embedded with electronics, software, sensors, actuators, and
+          connectivity which enables these things to connect and exchange
+          data, creating opportunities for more direct
+          integration of the physical world into computer-based systems,
+          resulting in efficiency improvements, economic benefits, and reduced
+          human exertions.",
+        long_desc: ""
+      }
     ]
 
     topics

@@ -4,8 +4,19 @@ defmodule Platform.Umbrella.Mixfile do
   def project do
     [
       apps_path: "apps",
-      start_permanent: Mix.env == :prod,
-      deps: deps()
+      start_permanent: Mix.env() == :prod,
+      deps: deps(),
+      # Docs
+      name: "CryptoWise Platform",
+      source_url: "https://github.com/USER/PROJECT",
+      homepage_url: "http://YOUR_PROJECT_HOMEPAGE",
+      # The main page in the docs
+      docs: [
+        main: "Platform",
+        logo: "apps/platform_web/assets/static/images/nav_logo.png",
+        extras: ["README.md"],
+        ignore_apps: [:platform_web]
+      ]
     ]
   end
 
@@ -29,6 +40,7 @@ defmodule Platform.Umbrella.Mixfile do
       {:distillery, "~> 1.5", runtime: false},
       {:credo, "~> 0.9.0-rc1", only: [:dev, :test], runtime: false},
       {:elixir_make, "~> 0.4", runtime: false},
+      {:ex_doc, "~> 0.19", only: :dev, runtime: false}
     ]
   end
 end

@@ -1,11 +1,14 @@
 defmodule PlatformWeb.ChangesetView do
+  @moduledoc false
+
   use PlatformWeb, :view
+  import PlatformWeb.ErrorHelpers
 
   @doc """
-  Traverses and translates changeset errors.
+    Traverses and translates changeset errors.
 
-  See `Ecto.Changeset.traverse_errors/2` and
-  `PlatformWeb.ErrorHelpers.translate_error/1` for more details.
+    See `Ecto.Changeset.traverse_errors/2` and
+    `PlatformWeb.ErrorHelpers.translate_error/1` for more details.
   """
   def translate_errors(changeset) do
     Ecto.Changeset.traverse_errors(changeset, &translate_error/1)
