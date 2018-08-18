@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 // import {Main} from '../../../elm/src/Main'
 import Button from "../components/Button/Button";
 import Modal from "react-modal";
-import SignUpWizard from "../components/signUpWizard/SignUpWizard";
+import SignUpWizard from "../views/SignUpWizard/SignUpWizard";
 
 export default class ProviderHeroComponent extends React.Component {
   constructor() {
@@ -98,7 +98,7 @@ const modalStyles = {
     width: "960px",
     height: "714px",
     margin: "auto auto",
-    padding: '0',
-    border: '0'
+    padding: "0",
+    border: "0"
   }
 };
