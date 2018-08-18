@@ -3,6 +3,8 @@ import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
 import Step4 from "./Step4";
+import axios from "axios";
+import { url } from "../../utils/consts";
 
 export default class SignUpWizard extends Component {
   constructor() {
@@ -32,11 +34,35 @@ export default class SignUpWizard extends Component {
     });
   }
   _saveUserInfo(data) {
-    this.setState({
-      name: data.name,
-      email: data.email,
-      password: data.password
-    });
+    this.setState(
+      {
+        name: data.name,
+        email: data.email,
+        password: data.password
+      },
+      () => {
+        let state = this.state;
+        if (
+          state.topic_knowledge_ids !== null &&
+          state._saveinterestIds !== null
+        ) {
+          axios
+            .post(`${url}/api/v1/topics`, {
+              name: state.name,
+              email: state.email,
+              password: state.password,
+              topic_knowledge_ids: state.topic_knowledge_ids,
+              topic_interest_ids: state.topic_interest_ids
+            })
+            .then(function(response) {
+              console.log(response);
+            })
+            .catch(function(error) {
+              console.log(error);
+            });
+        }
+      }
+    );
   }
   _next() {
     let currentStep = this.state.currentStep;
