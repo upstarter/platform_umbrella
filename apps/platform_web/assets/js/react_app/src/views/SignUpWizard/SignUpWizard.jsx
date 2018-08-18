@@ -19,6 +19,7 @@ export default class SignUpWizard extends Component {
     this._prev = this._prev.bind(this);
     this._saveKnowledgeIds = this._saveKnowledgeIds.bind(this);
     this._saveinterestIds = this._saveinterestIds.bind(this);
+    this._saveUserInfo = this._saveUserInfo.bind(this);
   }
   _saveKnowledgeIds(array) {
     this.setState({
@@ -30,11 +31,18 @@ export default class SignUpWizard extends Component {
       topic_interest_ids: array
     });
   }
+  _saveUserInfo(data) {
+    this.setState({
+      name: data.name,
+      email: data.email,
+      password: data.password
+    });
+  }
   _next() {
     let currentStep = this.state.currentStep;
     // Make sure currentStep is set to something reasonable
-    if (currentStep >= 3) {
-      currentStep = 4;
+    if (currentStep >= 2) {
+      currentStep = 3;
     } else {
       currentStep = currentStep + 1;
     }
@@ -77,11 +85,7 @@ export default class SignUpWizard extends Component {
           currentStep={state.currentStep}
           afterValid={this._next}
           prev={() => this._prev()}
-        />
-        <Step4
-          currentStep={state.currentStep}
-          afterValid={this._next}
-          prev={() => this._prev()}
+          saveForm={this._saveUserInfo}
         />
       </div>
     );

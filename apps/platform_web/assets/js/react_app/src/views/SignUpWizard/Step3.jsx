@@ -68,13 +68,36 @@ const styles = {
 class Step3Unstyled extends Component {
   constructor(props) {
     super(props);
-    this._validate = this._validate.bind(this);
+    // this._validate = this._validate.bind(this);
     // Bindings for form fields would go here,
     // and state would keep track of field input
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.state = {
+      email: null,
+      name: null,
+      password: null
+    };
   }
-  _validate() {
-    // a sanitized version of state can be passed instead
-    this.props.afterValid(this.state);
+  // _validate() {
+  //   // a sanitized version of state can be passed instead
+  //   this.props.afterValid(this.state);
+  // }
+  handleEmailChange(event) {
+    this.setState({ email: event.target.value });
+  }
+  handleNameChange(event) {
+    this.setState({ name: event.target.value });
+  }
+  handlePasswordChange(event) {
+    this.setState({ password: event.target.value });
+  }
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log(this.state);
+    this.props.saveForm(this.state)
   }
   render() {
     let props = this.props;
@@ -113,17 +136,41 @@ class Step3Unstyled extends Component {
           </div>
           <div className={classes.vl} />
           <div className={classes.loginForm}>
-            <form>
+            <form
+              onSubmit={e => {
+                this.handleSubmit(e);
+              }}
+            >
+              <div className="field">
+                <label htmlFor className="label">
+                  Name
+                </label>
+                <div className="control has-icons-left">
+                  <input
+                    value={this.state.name}
+                    type="fullname"
+                    placeholder="e.g. Bob Smith"
+                    className="input"
+                    required
+                    onChange={this.handleNameChange}
+                  />
+                  <span className="icon is-small is-left">
+                    <i className="fa fa-envelope" />
+                  </span>
+                </div>
+              </div>
               <div className="field">
                 <label htmlFor className="label">
                   Email
                 </label>
                 <div className="control has-icons-left">
                   <input
+                    value={this.state.email}
                     type="email"
                     placeholder="e.g. bobsmith@gmail.com"
                     className="input"
                     required
+                    onChange={this.handleEmailChange}
                   />
                   <span className="icon is-small is-left">
                     <i className="fa fa-envelope" />
@@ -136,10 +183,12 @@ class Step3Unstyled extends Component {
                 </label>
                 <div className="control has-icons-left">
                   <input
+                    value={this.state.password}
                     type="password"
                     placeholder="*******"
                     className="input"
                     required
+                    onChange={this.handlePasswordChange}
                   />
                   <span className="icon is-small is-left">
                     <i className="fa fa-lock" />
@@ -153,10 +202,19 @@ class Step3Unstyled extends Component {
                 </label>
               </div>
               <div className="field">
-                <button className="button is-success">Login</button>
-                <p onClick={this._validate}>
-                  click here to go to the next screen
-                </p>
+                <button
+                  onClick={this.props._prev}
+                  className="button is-primary"
+                >
+                  Back
+                </button>
+                <button
+                  onClick={this.submit}
+                  // type="submit"
+                  className="button is-success"
+                >
+                  Submit
+                </button>
               </div>
             </form>
           </div>

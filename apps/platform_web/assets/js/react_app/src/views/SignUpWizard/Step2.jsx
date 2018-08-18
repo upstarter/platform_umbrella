@@ -93,6 +93,12 @@ class step2Unstyled extends Component {
           <p>choose at least 3</p>
           <button
             className="button is-primary is-rounded"
+            onClick={props._prev}
+          >
+            Back
+          </button>
+          <button
+            className="button is-primary is-rounded"
             onClick={this._validate}
           >
             Next
