@@ -13,6 +13,7 @@ defmodule Platform.Topics.Topic do
     field(:name, :string)
     field(:short_desc, :string)
 
+    many_to_many(:providers, EctoAssoc.Provider, join_through: "providers_topics")
     timestamps()
   end
 
