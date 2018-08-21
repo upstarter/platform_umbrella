@@ -26,8 +26,8 @@ const styles = {
   },
   tileGrid: {
     display: "grid",
-    gridTemplateColumns: "repeat(6, 100px)",
-    gridTemplateRows: "repeat(3, 100px)",
+    gridTemplateColumns: "repeat(4, 1fr)",
+    gridTemplateRows: "repeat(3, auto)",
     gridColumnGap: "1em",
     gridRowGap: "1em"
   }
@@ -45,8 +45,8 @@ class Step1Unstyled extends Component {
   _validate() {
     if (this.state.topic_knowledge_ids.length >= 3) {
       this.props.saveForm(this.state.topic_knowledge_ids);
+      this.props.afterValid(this.state);
     }
-    this.props.afterValid(this.state);
   }
   collectTopicKnowledgeIds(id) {
     this.setState({
@@ -70,8 +70,8 @@ class Step1Unstyled extends Component {
       ? props.topics.map((data, i) => {
           return (
             <Tile
-              title={data.name}
-              key={data.id}
+              data={data}
+              key={i}
               id={data.id}
               removeTopicKnowledgeIds={id => this.removeTopicKnowledgeIds(id)}
               collectTopicKnowledgeIds={id => this.collectTopicKnowledgeIds(id)}
