@@ -109,10 +109,15 @@ const modalStyles = {
     backgroundColor: "rgba(0, 0, 0, 0.75)"
   },
   content: {
-    width: "960px",
-    height: "714px",
-    margin: "auto auto",
     padding: "0",
-    border: "0"
+    border: "0",
+    position: "absolute",
+    top: "80px",
+    left: "40px",
+    right: "40px",
+    bottom: "40px",
+    overflow: "auto",
+    WebkitOverflowScrolling: "touch",
+    borderRadius: "4px"
   }
 };
