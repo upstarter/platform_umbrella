@@ -7,13 +7,14 @@ defmodule Platform.Topics.Topic do
 
   use Ecto.Schema
   import Ecto.Changeset
+  alias Platform.Providers.Provider
 
   schema "topics" do
     field(:long_desc, :string)
     field(:name, :string)
     field(:short_desc, :string)
 
-    many_to_many(:providers, EctoAssoc.Provider, join_through: "providers_topics")
+    many_to_many(:providers, Provider, join_through: "providers_topics")
     timestamps()
   end
 
