@@ -1,7 +1,7 @@
 import React from 'react';
 import {AgGridReact} from 'ag-grid-react';
 import 'ag-grid/dist/styles/ag-grid.css';
-import 'ag-grid/dist/styles/ag-theme-balham.css';
+import 'ag-grid/dist/styles/ag-theme-balham-dark.css';
 import update from 'immutability-helper';
 
 
@@ -27,15 +27,27 @@ export default class PortfolioGrid extends React.Component {
 
 		this.state = {
 			columnDefs: [
-				{headerName: "Make", field: "make"},
-				{headerName: "Model", field: "model"},
-				{headerName: "Price", field: "price"}
-
+				{
+          headerName: "Hodling (Asset)",
+          field: "holding",
+          editable: true,
+          cellEditor: 'agSelectCellEditor',
+          singleClickEdit: true,
+          cellEditorParams: {
+            values: ['EOS', 'ETH', 'ADA', 'ZRX', 'BTC']
+          }
+        },
+				{
+          headerName: "Weight",
+          field: "weight",
+          editable: true,
+          singleClickEdit: true
+        }
 			],
 			rowData: [
-				{make: "Toyota", model: "Celica", price: 35000},
-				{make: "Ford", model: "Mondeo", price: 32000},
-				{make: "Porsche", model: "Boxter", price: 72000}
+				{holding: "ETH", weight: 50},
+				{holding: "EOS", weight: 25},
+				{holding: "ADA", weight: 25}
 			]
 		}
 	}
@@ -44,10 +56,10 @@ export default class PortfolioGrid extends React.Component {
 	render() {
 		return (
 			<div
-				className="ag-theme-balham"
+				className="ag-theme-balham-dark"
 				style={{
 					height: '500px',
-					width: '600px'
+					width: '300px'
 				}}
 			>
 				<AgGridReact
