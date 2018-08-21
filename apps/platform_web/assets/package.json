@@ -19,7 +19,10 @@
     "elm": "^0.18.0",
     "evergreen-ui": "^3.2.4",
     "font-awesome": "4",
+    "immutability-helper": "^2.7.1",
     "react": "^16.4.1",
+    "react-data-grid": "^4.0.7",
+    "react-data-grid-addons": "^4.0.8",
     "react-dom": "^16.4.1",
     "react-jss": "^8.6.1",
     "react-modal": "^3.5.1",
@@ -30,6 +33,7 @@
   },
   "devDependencies": {
     "autoprefixer": "~8.6.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "~0.28",

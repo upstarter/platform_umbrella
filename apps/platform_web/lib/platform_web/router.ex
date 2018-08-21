@@ -2,11 +2,11 @@ defmodule PlatformWeb.Router do
   use PlatformWeb, :router
 
   pipeline :browser do
-    plug :accepts, ["html"]
-    plug :fetch_session
-    plug :fetch_flash
-    plug :protect_from_forgery
-    plug :put_secure_browser_headers
+    plug(:accepts, ["html"])
+    plug(:fetch_session)
+    plug(:fetch_flash)
+    plug(:protect_from_forgery)
+    plug(:put_secure_browser_headers)
   end
 
   pipeline :guest do
@@ -20,21 +20,21 @@ defmodule PlatformWeb.Router do
     # plug Auth.CurrentUser
   end
 
-
   pipeline :api do
-    plug :accepts, ["json"]
+    plug(:accepts, ["json"])
   end
 
   scope "/", PlatformWeb do
-    pipe_through :browser # Use the default browser stack
+    # Use the default browser stack
+    pipe_through(:browser)
 
-    get "/", PageController, :home
+    get("/", PageController, :home)
 
-    get "/about", PageController, :home
-    get "/blog", PageController, :home
-    get "/contribute", PageController, :home
+    get("/about", PageController, :home)
+    get("/blog", PageController, :home)
+    get("/contribute", PageController, :home)
     get("/portfolio", PageController, :home)
-    get "/privacy_policy", PageController, :home
+    get("/privacy_policy", PageController, :home)
   end
 
   # Other scopes may use custom stacks.
@@ -50,30 +50,29 @@ defmodule PlatformWeb.Router do
       scope "/", Providers do
         resources "/providers", ProviderController, except: [:delete] do
           resources("/portfolios", PortfolioController)
-          resources "/topics", TopicController, except: [:new, :edit]
+          resources("/topics", TopicController, except: [:new, :edit])
         end
       end
 
       # TOPICS
       scope "/", Topics do
-        resources "/topics", TopicController, except: [:new, :edit]
+        resources("/topics", TopicController, except: [:new, :edit])
       end
 
       # USERS
       scope "/users", Users do
         scope "/" do
-          pipe_through :unauthorized
-          post "/create", UserController, :create
-          post "/sign-in", UserController, :sign_in
+          pipe_through(:unauthorized)
+          post("/create", UserController, :create)
+          post("/sign-in", UserController, :sign_in)
         end
 
         scope "/" do
-          pipe_through :authorized
-          get "/sign-out", UserController, :sign_out
-          get "/me", UserController, :show
+          pipe_through(:authorized)
+          get("/sign-out", UserController, :sign_out)
+          get("/me", UserController, :show)
         end
       end
-
     end
   end
 end

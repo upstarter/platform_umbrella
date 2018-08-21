@@ -1,7 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import {url} from '../../utils/consts'
-
+import PortfolioGrid from '../datagrid/PortfolioGrid'
 export default class PortfolioComponent extends React.Component {
 
 
@@ -54,7 +54,7 @@ export default class PortfolioComponent extends React.Component {
               Curated by the wisest minds in crypto. Enter your portfolio allocation
               and we will send you regular wisdom of the crowd updates.
             </p>
-            <h1>React Table Grid Goes Here</h1>
+            <PortfolioGrid/>
           </div>
         </section>
       </React.Fragment>
