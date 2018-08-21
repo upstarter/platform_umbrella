@@ -1,6 +1,8 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import {url} from '../../utils/consts'
+import PortfolioGrid from '../datagrid/PortfolioGrid'
+
 
 export default class PortfolioComponent extends React.Component {
 
@@ -17,7 +19,7 @@ export default class PortfolioComponent extends React.Component {
 
 
   componentDidMount() {
-    console.log(`${url}/api/v1/portfolio`);
+    console.log(`${url}/api/v1/portfolios/new`);
 
       this.setState({ isLoading: true });
 
@@ -41,20 +43,19 @@ export default class PortfolioComponent extends React.Component {
     return (
       <React.Fragment>
         <section id="portfolio" className="light-wrap">
-          <div className="scroll-to is-hidden-desktop">
-            <a className="icon">
-              <i className="fa fa-chevron-down"></i>
-            </a>
-          </div>
-           <div id="portfolio-text" className="content centered">
-            <h1 className="title portfolio-heading">
+
+           <div id="portfolio-text" className="content">
+            <h1 className="title portfolio-heading center">
               The CryptoWise Collaborative Portfolio (CCP)
             </h1>
-            <p>
+            <h5 className="content center">
               Curated by the wisest minds in crypto. Enter your portfolio allocation
               and we will send you regular wisdom of the crowd updates.
-            </p>
-            <h1>React Table Grid Goes Here</h1>
+            </h5>
+            <br />
+            <div className="portfolio-grid center">
+              <PortfolioGrid/>
+            </div>
           </div>
         </section>
       </React.Fragment>

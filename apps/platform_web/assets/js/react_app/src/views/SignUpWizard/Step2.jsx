@@ -33,7 +33,7 @@ const styles = {
   }
 };
 
-class Step2Unstyled extends Component {
+class step2Unstyled extends Component {
   constructor(props) {
     super(props);
     this._validate = this._validate.bind(this);
@@ -46,6 +46,18 @@ class Step2Unstyled extends Component {
     if (this.state.topic_knowledge_ids.length >= 3) {
       this.props.saveForm(this.state.topic_knowledge_ids);
       this.props.afterValid(this.state);
+    }
+  }
+  collectTopicKnowledgeIds(id) {
+    this.setState({
+      topic_knowledge_ids: [...this.state.topic_knowledge_ids, id]
+    });
+  }
+  removeTopicKnowledgeIds(id) {
+    let state = this.state;
+    let i = state.topic_knowledge_ids.indexOf(id);
+    if (i != -1) {
+      state.topic_knowledge_ids.splice(i, 1);
     }
   }
   collectTopicKnowledgeIds(id) {
@@ -107,5 +119,5 @@ class Step2Unstyled extends Component {
   }
 }
 
-const Step2 = injectSheet(styles)(Step2Unstyled);
-export default Step2;
+const step2 = injectSheet(styles)(step2Unstyled);
+export default step2;

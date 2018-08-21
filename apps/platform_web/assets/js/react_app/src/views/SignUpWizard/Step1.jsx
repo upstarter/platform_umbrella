@@ -60,6 +60,18 @@ class Step1Unstyled extends Component {
       state.topic_knowledge_ids.splice(i, 1);
     }
   }
+  collectTopicKnowledgeIds(id) {
+    this.setState({
+      topic_knowledge_ids: [...this.state.topic_knowledge_ids, id]
+    });
+  }
+  removeTopicKnowledgeIds(id) {
+    let state = this.state;
+    let i = state.topic_knowledge_ids.indexOf(id);
+    if (i != -1) {
+      state.topic_knowledge_ids.splice(i, 1);
+    }
+  }
   render() {
     let props = this.props;
     let classes = props.classes;

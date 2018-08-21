@@ -7,16 +7,21 @@ defmodule Platform.Providers.Provider do
 
   use Ecto.Schema
   import Ecto.Changeset
+  alias Platform.Users.User
+  alias Platform.Topics.Topic
+  alias Platform.Portfolios.Portfolio
 
   schema "providers" do
-    field(:desc, :string)
     field(:name, :string)
-    field(:user_id, :integer)
+    field(:email, :string)
+    field(:short_desc, :string)
+    belongs_to(:user, User)
+    many_to_many(:topics, Topic, join_through: "providers_topics")
+    many_to_many(:portfolios, Portfolio, join_through: "providers_portfolios")
 
     timestamps()
   end
 
-  @doc false
   def changeset(provider, attrs) do
     provider
     |> cast(attrs, [:user_id, :name, :desc])

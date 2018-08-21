@@ -14,8 +14,9 @@ defmodule Platform.Asset do
         ticker: "ETH",
         name: "Etherum",
         site: "ethereum.org",
-        desc:
-          "Ethereum is a decentralized platform for applications that run exactly as programmed without any chance of fraud, censorship or third-party interference."
+        desc: "Ethereum is a decentralized platform for applications that run
+          exactly as programmed without any chance of fraud, censorship or
+          third-party interference."
       },
       %Asset{
         ticker: "REP",
@@ -28,8 +29,9 @@ defmodule Platform.Asset do
         ticker: "STEEM",
         name: "Steemit",
         site: "steemit.com",
-        desc:
-          "Steemit has redefined social media by building a living, breathing, and growing social economy - a community where users are rewarded for sharing their voice. It's a new kind of attention economy."
+        desc: "Steemit has redefined social media by building a living, breathing,
+          and growing social economy - a community where users are rewarded for
+          sharing their voice. It's a new kind of attention economy."
       },
       %Asset{
         ticker: "BTC",
@@ -49,8 +51,10 @@ defmodule Platform.Asset do
         name: "Storj",
         img: "https://icowatchlist.com/logos/storj.png",
         site: "storj.io",
-        desc:
-          "Storj (pronounced: storage) aims to become a cloud storage platform that can’t be censored or monitored, or have downtime. It is the first decentralized, end-to-end encrypted cloud storage that uses blockchain technology and cryptography to secure your files."
+        desc: "Storj (pronounced: storage) aims to become a cloud storage platform
+          that can’t be censored or monitored, or have downtime. It is the first
+          decentralized, end-to-end encrypted cloud storage that uses blockchain
+          technology and cryptography to secure your files."
       },
       %Asset{
         ticker: "SC",
@@ -69,22 +73,24 @@ defmodule Platform.Asset do
         name: "DigixDAO",
         img: "https://icowatchlist.com/logos/digixdao.png",
         site: "digix.global",
-        desc:
-          "We create a world where the finest gold bars are made divisible and transferable on the blockchain."
+        desc: "We create a world where the finest gold bars are made divisible and
+          transferable on the blockchain."
       },
       %Asset{
         ticker: "AMP",
         name: "Synereo",
         site: "synereo.com",
-        desc:
-          "Synereo offers blockchain-enabled Attention Economy solutions, allowing direct and platform agnostic monetization of original content posted anywhere on the net."
+        desc: "Synereo offers blockchain-enabled Attention Economy solutions,
+          allowing direct and platform agnostic monetization of original content
+          posted anywhere on the net."
       },
       %Asset{
         ticker: "FCT",
         name: "Factom",
         site: "factom.com",
-        desc:
-          "We create products that transform the way organizations secure and share their data. Our products safeguard the most critical government, commercial, and non-profit systems."
+        desc: "We create products that transform the way organizations secure and
+          share their data. Our products safeguard the most critical government,
+          commercial, and non-profit systems."
       },
       %Asset{
         ticker: "ICN",
@@ -103,35 +109,39 @@ defmodule Platform.Asset do
         ticker: "SNGLS",
         name: "SingularDTV",
         site: "singulardtv.com",
-        desc:
-          "A Blockchain Entertainment Studio Empowering artists with applications to manage and create projects from development to distribution."
+        desc: "A Blockchain Entertainment Studio Empowering artists with
+          applications to manage and create projects from development to
+          distribution."
       },
       %Asset{
         ticker: "LBC",
         name: "LBRY",
         site: "lbry.io",
-        desc:
-          "A content sharing and publishing platform that is decentralized and owned by its users."
+        desc: "A content sharing and publishing platform that is decentralized and
+          owned by its users."
       },
       %Asset{
         ticker: "NXT",
         name: "Nxt",
         site: "nxtplatform.org",
-        desc:
-          "Nxt is a platform that allows you to create your applications directly on its blockchain."
+        desc: "Nxt is a platform that allows you to create your applications
+          directly on its blockchain."
       },
       %Asset{
         ticker: "BTS",
         name: "Bitshares",
         site: "bitshares.org",
-        desc: "A stack of financial services including exchange and banking on a blockchain."
+        desc: "A stack of financial services including exchange and banking on a
+        blockchain."
       },
       %Asset{
         ticker: "NMC",
         name: "Namecoin",
         site: "namecoin.org",
-        desc:
-          "An experimental open-source technology which improves decentralization, security, censorship resistance, privacy, and speed of certain components of the Internet infrastructure such as DNS and identities."
+        desc: "An experimental open-source technology which improves
+          decentralization, security, censorship resistance, privacy, and speed
+          of certain components of the Internet infrastructure such as DNS and
+          identities."
       }
     ]
   end
@@ -143,12 +153,12 @@ defmodule Platform.Asset do
         img: "https://icowatchlist.com/logos/eos.png",
         desc: "A powerful infrastructure for decentralized apps"
       },
-      %Asset{ticker: "IOTA"},
       %Asset{ticker: "ADA"},
+      %Asset{ticker: "ZRX"},
       %Asset{ticker: "LSK"},
       %Asset{ticker: "TRX"},
       %Asset{ticker: "ICN"},
-      %Asset{ticker: "ZRX"}
+      %Asset{ticker: "IOTA"}
     ]
   end
 
