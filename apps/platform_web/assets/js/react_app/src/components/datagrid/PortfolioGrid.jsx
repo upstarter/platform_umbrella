@@ -6,21 +6,26 @@ import update from 'immutability-helper';
 
 
 const tokens = [
-  { holding: 'ETH', weight: 0 },
-  { holding: 'REP', weight: 1 },
-  { holding: 'STEEM', weight: 2 },
-  { holding: 'BTC', weight: 3 },
-  { holding: 'GNT', weight: 4 },
-  { holding: 'SJCX', weight: 5 },
-  { holding: 'SC', weight: 6 },
-  { holding: 'XMR', weight: 7 },
-  { holding: 'DGD', weight: 8 },
-  { holding: 'AMP', weight: 9 },
-  { holding: 'FCT', weight: 10 },
+  { holding: 'ETH (Ethereum)', weight: 0 },
+  { holding: 'REP (Augur)', weight: 1 },
+  { holding: 'ICN (Iconomi)', weight: 6 },
+  { holding: 'STEEM (Steemit)', weight: 2 },
+  { holding: 'BTC (Bitcoin)', weight: 3 },
+  { holding: 'GNT (Golem)', weight: 4 },
+  { holding: 'SJCX (Storj)', weight: 5 },
+  { holding: 'SC (Sia)', weight: 6 },
+  { holding: 'XMR (Monero)', weight: 7 },
+  { holding: 'DGD (DigixDao)', weight: 8 },
+  { holding: 'AMP (Synerio)', weight: 9 },
+  { holding: 'FCT (Factom)', weight: 10 },
 ];
 
-const allocations = ['2.5%', '5%', '10%', '15%', '20%'];
-
+ const empties = [...Array(1)].map((_, i) => {
+   return {holding: 'Select an asset', weight: 'Weight: 1 to 100%' };f
+ });
+console.log(empties);
+const defaultTokens = [tokens[0]].concat(empties);
+console.log(defaultTokens);
 export default class PortfolioGrid extends React.Component {
 	constructor(props, context) {
 		super(props);
@@ -28,28 +33,23 @@ export default class PortfolioGrid extends React.Component {
 		this.state = {
 			columnDefs: [
 				{
-          headerName: "Hodling (Asset)",
+          headerName: "Hodling",
           field: "holding",
           editable: true,
           cellEditor: 'agSelectCellEditor',
           singleClickEdit: true,
           cellEditorParams: {
-            values: [
-              'ETH','REP','STEEM',
-              'BTC','GNT','SJCX',
-              'SC','XMR','DGD',
-              'AMP','FCT'
-            ]
+            values: tokens.map(t => t['holding'] )
           }
         },
 				{
-          headerName: "Weight",
+          headerName: "Allocation",
           field: "weight",
           editable: true,
           singleClickEdit: true
         }
 			],
-			rowData: tokens
+			rowData: defaultTokens
 		}
 	}
 

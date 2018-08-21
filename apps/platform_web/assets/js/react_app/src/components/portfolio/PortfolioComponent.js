@@ -48,10 +48,11 @@ export default class PortfolioComponent extends React.Component {
             <h1 className="title portfolio-heading center">
               The CryptoWise Collaborative Portfolio (CCP)
             </h1>
-            <p className="content center">
+            <h5 className="content center">
               Curated by the wisest minds in crypto. Enter your portfolio allocation
               and we will send you regular wisdom of the crowd updates.
-            </p>
+            </h5>
+            <br />
             <div className="portfolio-grid center">
               <PortfolioGrid/>
             </div>

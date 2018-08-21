@@ -7,6 +7,7 @@ defmodule Platform.Tokens.Token do
 
   use Ecto.Schema
   import Ecto.Changeset
+  alias Platform.Providers.Provider
 
   schema "tokens" do
     field(:img_url, :string)
@@ -14,6 +15,7 @@ defmodule Platform.Tokens.Token do
     field(:short_desc, :string)
     field(:site, :string)
     field(:ticker, :string)
+    many_to_many(:portfolios_tokens, Provider, join_through: "providers_topics")
 
     timestamps()
   end
