@@ -43,16 +43,12 @@ export default class PortfolioComponent extends React.Component {
     return (
       <React.Fragment>
         <section id="portfolio" className="light-wrap">
-          <div className="scroll-to is-hidden-desktop">
-            <a className="icon">
-              <i className="fa fa-chevron-down"></i>
-            </a>
-          </div>
-           <div id="portfolio-text" className="content centered">
-            <h1 className="title portfolio-heading">
+
+           <div id="portfolio-text" className="content">
+            <h1 className="title portfolio-heading center">
               The CryptoWise Collaborative Portfolio (CCP)
             </h1>
-            <p>
+            <p className="content center">
               Curated by the wisest minds in crypto. Enter your portfolio allocation
               and we will send you regular wisdom of the crowd updates.
             </p>
