@@ -59,6 +59,11 @@ defmodule PlatformWeb.Router do
         resources("/topics", TopicController, except: [:new, :edit])
       end
 
+      # PORTFOLIOS
+      scope "/", Portfolios do
+        resources("/portfolios", PortfolioController)
+      end
+
       # USERS
       scope "/users", Users do
         scope "/" do

@@ -19,7 +19,7 @@ export default class PortfolioComponent extends React.Component {
 
 
   componentDidMount() {
-    console.log(`${url}/api/v1/portfolio`);
+    console.log(`${url}/api/v1/portfolios/new`);
 
       this.setState({ isLoading: true });
 

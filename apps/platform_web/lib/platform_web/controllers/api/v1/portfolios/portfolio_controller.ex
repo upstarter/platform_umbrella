@@ -1,4 +1,4 @@
-defmodule PlatformWeb.Portfolios.PortfolioController do
+defmodule PlatformWeb.V1.Portfolios.PortfolioController do
   use PlatformWeb, :controller
 
   alias Platform.Portfolios
