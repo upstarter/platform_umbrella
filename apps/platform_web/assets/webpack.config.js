@@ -60,7 +60,7 @@ module.exports = {
           options: {
             babelrc: false,
             presets: ['env', 'react'],
-            // plugins: [require('@babel/plugin-proposal-object-rest-spread')]
+            plugins: ['transform-class-properties']
           }
         }
       },
