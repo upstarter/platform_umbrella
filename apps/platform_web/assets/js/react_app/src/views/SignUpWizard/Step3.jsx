@@ -203,7 +203,7 @@ class Step3Unstyled extends Component {
               </div>
               <div className="field">
                 <button
-                  onClick={this.props._prev}
+                  onClick={this.props.prev}
                   className="button is-primary"
                 >
                   Back

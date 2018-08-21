@@ -15,6 +15,12 @@ class TileUnstyled extends Component {
       selected: false
     };
   }
+  componentDidMount() {
+    if (this.props.selectedIds.includes(this.props.id)) {
+      this.setState({ selected: true });
+    }
+  }
+
   handleSelected(id) {
     let currentState = this.state.selected;
     this.setState({ selected: !currentState });

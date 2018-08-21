@@ -26,14 +26,14 @@ const styles = {
   },
   tileGrid: {
     display: "grid",
-    gridTemplateColumns: "repeat(6, 100px)",
-    gridTemplateRows: "repeat(3, 100px)",
+    gridTemplateColumns: "repeat(4, 1fr)",
+    gridTemplateRows: "repeat(3, auto)",
     gridColumnGap: "1em",
     gridRowGap: "1em"
   }
 };
 
-class step2Unstyled extends Component {
+class Step2Unstyled extends Component {
   constructor(props) {
     super(props);
     this._validate = this._validate.bind(this);
@@ -45,8 +45,8 @@ class step2Unstyled extends Component {
   _validate() {
     if (this.state.topic_knowledge_ids.length >= 3) {
       this.props.saveForm(this.state.topic_knowledge_ids);
+      this.props.afterValid(this.state);
     }
-    this.props.afterValid(this.state);
   }
   collectTopicKnowledgeIds(id) {
     this.setState({
@@ -70,11 +70,12 @@ class step2Unstyled extends Component {
       ? props.topics.map((data, i) => {
           return (
             <Tile
-              title={data.name}
-              key={data.id}
+              data={data}
+              key={i}
               id={data.id}
               removeTopicKnowledgeIds={id => this.removeTopicKnowledgeIds(id)}
               collectTopicKnowledgeIds={id => this.collectTopicKnowledgeIds(id)}
+              selectedIds={props.selectedIds}
             />
           );
         })
@@ -91,10 +92,7 @@ class step2Unstyled extends Component {
         </div>
         <div className={classes.main}>
           <p>choose at least 3</p>
-          <button
-            className="button is-primary is-rounded"
-            onClick={props._prev}
-          >
+          <button className="button is-primary is-rounded" onClick={props.prev}>
             Back
           </button>
           <button
@@ -109,5 +107,5 @@ class step2Unstyled extends Component {
   }
 }
 
-const step2 = injectSheet(styles)(step2Unstyled);
-export default step2;
+const Step2 = injectSheet(styles)(Step2Unstyled);
+export default Step2;

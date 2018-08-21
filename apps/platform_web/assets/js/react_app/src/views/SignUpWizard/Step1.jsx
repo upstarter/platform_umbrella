@@ -75,6 +75,7 @@ class Step1Unstyled extends Component {
               id={data.id}
               removeTopicKnowledgeIds={id => this.removeTopicKnowledgeIds(id)}
               collectTopicKnowledgeIds={id => this.collectTopicKnowledgeIds(id)}
+              selectedIds={props.selectedIds}
             />
           );
         })
