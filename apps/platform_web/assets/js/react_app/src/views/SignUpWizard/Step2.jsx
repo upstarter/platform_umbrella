@@ -4,7 +4,6 @@ import Tile from "../../components/Tile/Tile";
 
 const styles = {
   container: {
-    height: "100%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between"
@@ -27,9 +26,33 @@ const styles = {
   tileGrid: {
     display: "grid",
     gridTemplateColumns: "repeat(4, 1fr)",
-    gridTemplateRows: "repeat(3, auto)",
+    // gridTemplateRows: "repeat(3, auto)",
     gridColumnGap: "1em",
     gridRowGap: "1em"
+  },
+  "@media (max-width: 768px)": {
+    tileGrid: {
+      gridTemplateColumns: "1fr 1fr 1fr"
+    },
+    main: {
+      padding: "1em 1em"
+    }
+  },
+  "@media (max-width: 414px)": {
+    tileGrid: {
+      gridTemplateColumns: "1fr 1fr"
+    },
+    main: {
+      padding: "1em 1em"
+    },
+    header: {
+      padding: "2em 5em",
+      height: "110px",
+      lineHeight: "3em"
+    },
+    title: {
+      fontSize: "20px"
+    }
   }
 };
 

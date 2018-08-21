@@ -119,5 +119,17 @@ const modalStyles = {
     overflow: "auto",
     WebkitOverflowScrolling: "touch",
     borderRadius: "4px"
+  },
+  "@media (max-width: 768px)": {
+    content: {
+      top: "810px",
+      left: "410px",
+      right: "40px",
+      bottom: "40px",
+      overflow: "auto"
+    },
+    main: {
+      padding: "1em 1em"
+    }
   }
 };
