@@ -9,6 +9,8 @@
     "eslint": "node_modules/.bin/eslint -c ../.eslintrc.js js/"
   },
   "dependencies": {
+    "ag-grid": "^18.1.2",
+    "ag-grid-react": "^18.1.0",
     "axios": "^0.18.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
@@ -21,9 +23,8 @@
     "font-awesome": "4",
     "immutability-helper": "^2.7.1",
     "react": "^16.4.1",
-    "react-data-grid": "^4.0.7",
-    "react-data-grid-addons": "^4.0.8",
     "react-dom": "^16.4.1",
+    "react-dom-factories": "^1.0.2",
     "react-jss": "^8.6.1",
     "react-modal": "^3.5.1",
     "react-redux": "^5.0.7",

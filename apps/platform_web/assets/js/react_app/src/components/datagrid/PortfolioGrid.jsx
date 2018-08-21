@@ -1,8 +1,8 @@
 import React from 'react';
-import ReactDataGrid from 'react-data-grid';
-const { Editors, Toolbar, Formatters } = require('react-data-grid-addons');
+import {AgGridReact} from 'ag-grid-react';
+import 'ag-grid/dist/styles/ag-grid.css';
+import 'ag-grid/dist/styles/ag-theme-balham.css';
 import update from 'immutability-helper';
-const { AutoComplete: AutoCompleteEditor, DropDownEditor } = Editors;
 
 
 const tokens = [
@@ -22,111 +22,40 @@ const tokens = [
 const allocations = ['2.5%', '5%', '10%', '15%', '20%'];
 
 export default class PortfolioGrid extends React.Component {
-  constructor(props, context) {
-    super(props, context);
-    this._columns = [
-      {
-        key: 'id',
-        name: 'ID',
-        width: 80,
-      },
-      {
-        key: 'token',
-        name: 'Token',
-        editor: <AutoCompleteEditor options={tokens}/>,
-        width: 200
-      },
-      {
-        key: 'weight',
-        name: 'Weight',
-        editor: <DropDownEditor options={allocations}/>,
-        width: 200,
+	constructor(props, context) {
+		super(props);
 
-      },
-    ];
+		this.state = {
+			columnDefs: [
+				{headerName: "Make", field: "make"},
+				{headerName: "Model", field: "model"},
+				{headerName: "Price", field: "price"}
 
-    this.state = { rows: this.createRows(20) };
-  }
+			],
+			rowData: [
+				{make: "Toyota", model: "Celica", price: 35000},
+				{make: "Ford", model: "Mondeo", price: 32000},
+				{make: "Porsche", model: "Boxter", price: 72000}
+			]
+		}
+	}
 
-  createRows = (numberOfRows) => {
-    let rows = [];
-    for (let i = 0; i < numberOfRows; i++) {
-      rows[i] = this.createFakeRowObjectData(i);
-    }
-    return rows;
-  }
 
-  createFakeRowObjectData = (index) => {
-    return {
-      id: 'id_' + index,
-      token: 'ETH',
-      weight: '20%',
-    };
-  };
+	render() {
+		return (
+			<div
+				className="ag-theme-balham"
+				style={{
+					height: '500px',
+					width: '600px'
+				}}
+			>
+				<AgGridReact
+					columnDefs={this.state.columnDefs}
+					rowData={this.state.rowData}>
+				</AgGridReact>
+			</div>
+		);
+	}
 
-  getColumns = () => {
-    let clonedColumns = this._columns.slice();
-    clonedColumns[1].events = {
-      onClick: (ev, args) => {
-        const idx = args.idx;
-        const rowIdx = args.rowIdx;
-        this.grid.openCellEditor(rowIdx, idx);
-      }
-    };
-
-    return clonedColumns;
-  };
-
-  handleGridRowsUpdated = ({ fromRow, toRow, updated }) => {
-    let rows = this.state.rows.slice();
-
-    for (let i = fromRow; i <= toRow; i++) {
-      let rowToUpdate = rows[i];
-      let updatedRow = update(rowToUpdate, {$merge: updated});
-      rows[i] = updatedRow;
-    }
-
-    this.setState({ rows });
-  };
-
-  handleAddRow = ({ newRowIndex })  => {
-    const newRow = {
-      value: newRowIndex,
-      userStory: '',
-      developer: '',
-      epic: ''
-    };
-
-    let rows = this.state.rows.slice();
-    rows = update(rows, {$push: [newRow]});
-    this.setState({ rows });
-  };
-
-  getRowAt = (index) => {
-    if (index < 0 || index > this.getSize()) {
-      return undefined;
-    }
-
-    return this.state.rows[index];
-  };
-
-  getSize = (e) => {
-    return this.state.rows.length;
-  };
-
-  render() {
-    return (
-      <ReactDataGrid
-        ref={ node => this.grid = node }
-        enableCellSelect={true}
-        columns={this.getColumns()}
-        rowGetter={this.getRowAt}
-        rowsCount={this.getSize()}
-        onGridRowsUpdated={this.handleGridRowsUpdated}
-        toolbar={<Toolbar onAddRow={this.handleAddRow}/>}
-        enableRowSelect={true}
-        rowHeight={50}
-        minHeight={600}
-        rowScrollTimeout={200} />);
-  }
 }
