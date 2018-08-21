@@ -6,17 +6,17 @@ import update from 'immutability-helper';
 
 
 const tokens = [
-  { id: 0, title: 'ETH'},
-  { id: 1, title: 'REP'},
-  { id: 2, title: 'STEEM'},
-  { id: 3, title: 'BTC'},
-  { id: 4, title: 'GNT'},
-  { id: 5, title: 'SJCX'},
-  { id: 6, title: 'SC'},
-  { id: 7, title: 'XMR'},
-  { id: 8, title: 'DGD'},
-  { id: 9, title: 'AMP'},
-  { id: 10, title: 'FCT'},
+  { holding: 'ETH', weight: 0 },
+  { holding: 'REP', weight: 1 },
+  { holding: 'STEEM', weight: 2 },
+  { holding: 'BTC', weight: 3 },
+  { holding: 'GNT', weight: 4 },
+  { holding: 'SJCX', weight: 5 },
+  { holding: 'SC', weight: 6 },
+  { holding: 'XMR', weight: 7 },
+  { holding: 'DGD', weight: 8 },
+  { holding: 'AMP', weight: 9 },
+  { holding: 'FCT', weight: 10 },
 ];
 
 const allocations = ['2.5%', '5%', '10%', '15%', '20%'];
@@ -34,7 +34,12 @@ export default class PortfolioGrid extends React.Component {
           cellEditor: 'agSelectCellEditor',
           singleClickEdit: true,
           cellEditorParams: {
-            values: ['EOS', 'ETH', 'ADA', 'ZRX', 'BTC']
+            values: [
+              'ETH','REP','STEEM',
+              'BTC','GNT','SJCX',
+              'SC','XMR','DGD',
+              'AMP','FCT'
+            ]
           }
         },
 				{
@@ -44,11 +49,7 @@ export default class PortfolioGrid extends React.Component {
           singleClickEdit: true
         }
 			],
-			rowData: [
-				{holding: "ETH", weight: 50},
-				{holding: "EOS", weight: 25},
-				{holding: "ADA", weight: 25}
-			]
+			rowData: tokens
 		}
 	}
 
@@ -58,8 +59,8 @@ export default class PortfolioGrid extends React.Component {
 			<div
 				className="ag-theme-balham-dark"
 				style={{
-					height: '500px',
-					width: '300px'
+					height: '400px',
+					width: '402px'
 				}}
 			>
 				<AgGridReact
