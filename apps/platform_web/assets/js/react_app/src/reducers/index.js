@@ -1,8 +1,8 @@
-import { combineReducers } from 'redux';
-import BlogPostsReducer from './reducer_blog_posts'
+import { combineReducers } from "redux";
+import TokenReducer from "./reducer_tokens";
 
 const rootReducer = combineReducers({
-  blogPosts: BlogPostsReducer
+  tokens: TokenReducer
 });
 
 export default rootReducer;
