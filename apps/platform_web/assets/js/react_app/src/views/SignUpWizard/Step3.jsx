@@ -73,7 +73,9 @@ const styles = {
     vl: {
       borderTop: "1px solid black",
       width: "40em",
-      borderLeft: "0"
+      borderLeft: "0",
+      height: "0",
+      maxWidth: "100%"
     }
   },
   "@media (max-width: 414px)": {
