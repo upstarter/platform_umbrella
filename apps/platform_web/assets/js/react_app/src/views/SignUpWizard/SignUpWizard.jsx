@@ -14,8 +14,8 @@ export default class SignUpWizard extends Component {
       name: null,
       email: null,
       password: null,
-      topic_knowledge_ids: null,
-      topic_interest_ids: null
+      topic_knowledge_ids: [],
+      topic_interest_ids: []
     };
     this._next = this._next.bind(this);
     this._prev = this._prev.bind(this);
@@ -99,6 +99,7 @@ export default class SignUpWizard extends Component {
           afterValid={this._next}
           topics={this.props.topics}
           saveForm={this._saveKnowledgeIds}
+          selectedIds={state.topic_knowledge_ids}
         />
         <Step2
           currentStep={state.currentStep}
@@ -106,6 +107,7 @@ export default class SignUpWizard extends Component {
           prev={() => this._prev()}
           topics={this.props.topics}
           saveForm={this._saveinterestIds}
+          selectedIds={state.topic_interest_ids}
         />
         <Step3
           currentStep={state.currentStep}

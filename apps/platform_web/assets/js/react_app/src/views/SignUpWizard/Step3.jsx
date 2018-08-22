@@ -62,6 +62,40 @@ const styles = {
     "&:hover": {
       background: `rgb(220, 74, 61) url(${googleLogo}) no-repeat scroll 10px 0px / 30px 50px padding-box border-box`
     }
+  },
+  "@media (max-width: 768px)": {
+    main: {
+      display: "block"
+    },
+    socialButtons: {
+      maxWidth: "100%"
+    },
+    vl: {
+      borderTop: "1px solid black",
+      width: "40em",
+      borderLeft: "0",
+      height: "0",
+      maxWidth: "100%"
+    }
+  },
+  "@media (max-width: 414px)": {
+    tileGrid: {
+      gridTemplateColumns: "1fr 1fr"
+    },
+    main: {
+      padding: "1em 1em"
+    },
+    header: {
+      padding: "2em 5em",
+      height: "110px",
+      lineHeight: "3em"
+    },
+    title: {
+      fontSize: "20px"
+    },
+    loginForm: {
+      maxWidth: "100%"
+    }
   }
 };
 
@@ -97,7 +131,7 @@ class Step3Unstyled extends Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log(this.state);
-    this.props.saveForm(this.state)
+    this.props.saveForm(this.state);
   }
   render() {
     let props = this.props;
@@ -202,10 +236,7 @@ class Step3Unstyled extends Component {
                 </label>
               </div>
               <div className="field">
-                <button
-                  onClick={this.props._prev}
-                  className="button is-primary"
-                >
+                <button onClick={this.props.prev} className="button is-primary">
                   Back
                 </button>
                 <button

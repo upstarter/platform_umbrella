@@ -4,7 +4,6 @@ import Tile from "../../components/Tile/Tile";
 
 const styles = {
   container: {
-    height: "100%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between"
@@ -26,10 +25,34 @@ const styles = {
   },
   tileGrid: {
     display: "grid",
-    gridTemplateColumns: "repeat(6, 100px)",
-    gridTemplateRows: "repeat(3, 100px)",
+    gridTemplateColumns: "repeat(4, 1fr)",
+    // gridTemplateRows: "repeat(3, auto)",
     gridColumnGap: "1em",
     gridRowGap: "1em"
+  },
+  "@media (max-width: 768px)": {
+    tileGrid: {
+      gridTemplateColumns: "1fr 1fr 1fr"
+    },
+    main: {
+      padding: "1em 1em"
+    }
+  },
+  "@media (max-width: 414px)": {
+    tileGrid: {
+      gridTemplateColumns: "1fr 1fr"
+    },
+    main: {
+      padding: "1em 1em"
+    },
+    header: {
+      padding: "2em 5em",
+      height: "110px",
+      lineHeight: "3em"
+    },
+    title: {
+      fontSize: "20px"
+    }
   }
 };
 
@@ -45,8 +68,20 @@ class step2Unstyled extends Component {
   _validate() {
     if (this.state.topic_knowledge_ids.length >= 3) {
       this.props.saveForm(this.state.topic_knowledge_ids);
+      this.props.afterValid(this.state);
     }
-    this.props.afterValid(this.state);
+  }
+  collectTopicKnowledgeIds(id) {
+    this.setState({
+      topic_knowledge_ids: [...this.state.topic_knowledge_ids, id]
+    });
+  }
+  removeTopicKnowledgeIds(id) {
+    let state = this.state;
+    let i = state.topic_knowledge_ids.indexOf(id);
+    if (i != -1) {
+      state.topic_knowledge_ids.splice(i, 1);
+    }
   }
   collectTopicKnowledgeIds(id) {
     this.setState({
@@ -70,11 +105,12 @@ class step2Unstyled extends Component {
       ? props.topics.map((data, i) => {
           return (
             <Tile
-              title={data.name}
-              key={data.id}
+              data={data}
+              key={i}
               id={data.id}
               removeTopicKnowledgeIds={id => this.removeTopicKnowledgeIds(id)}
               collectTopicKnowledgeIds={id => this.collectTopicKnowledgeIds(id)}
+              selectedIds={props.selectedIds}
             />
           );
         })
@@ -91,10 +127,7 @@ class step2Unstyled extends Component {
         </div>
         <div className={classes.main}>
           <p>choose at least 3</p>
-          <button
-            className="button is-primary is-rounded"
-            onClick={props._prev}
-          >
+          <button className="button is-primary is-rounded" onClick={props.prev}>
             Back
           </button>
           <button
