@@ -36,9 +36,9 @@ class SearchBarContainer extends Component {
             onChange={this.onInputChange}
           />
           <div className="control">
-            <a className="button is-info">
+            <button type="submit" className="button is-info">
               Search
-            </a>
+            </button>
           </div>
         </form>
       </div>
