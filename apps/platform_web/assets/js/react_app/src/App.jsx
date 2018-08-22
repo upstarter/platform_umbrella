@@ -1,11 +1,14 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+import promiseMiddleware from 'redux-promise-middleware'
 import rootReducer from './reducers'
 import HomeContainer from "./views/home/home"
-const store = createStore(rootReducer);
 
+const middleware = applyMiddleware(promiseMiddleware)
+
+const store = createStore(rootReducer, undefined, middleware)
 
 export default class App extends React.Component {
 

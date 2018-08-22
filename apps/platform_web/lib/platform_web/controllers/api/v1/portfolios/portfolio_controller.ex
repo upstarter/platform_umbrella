@@ -9,6 +9,11 @@ defmodule PlatformWeb.V1.Portfolios.PortfolioController do
     render(conn, "index.json", portfolios: portfolios)
   end
 
+  def new(conn, _params) do
+    changeset = Portfolio.changeset(%Portfolio{}, _params)
+    render(conn, "new.html", changeset: changeset)
+  end
+
   def create(conn, %{"portfolio" => portfolio_params}) do
     with {:ok, %Portfolio{} = portfolio} <- Portfolios.create_portfolio(portfolio_params) do
       conn

@@ -3,7 +3,7 @@ defmodule Platform.Repo.Migrations.CreateProviders do
 
   def change do
     create table(:providers) do
-      add(:user_id, references(:user))
+      add(:user_id, references(:users))
       add(:name, :string)
       add(:email, :string)
       add(:short_desc, :string)

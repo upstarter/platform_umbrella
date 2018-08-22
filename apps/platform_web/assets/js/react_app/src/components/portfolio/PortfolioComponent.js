@@ -23,7 +23,7 @@ export default class PortfolioComponent extends React.Component {
 
       this.setState({ isLoading: true });
 
-      fetch(`${url}/api/v1/portfolio`)
+      fetch(`${url}/api/v1/portfolios/new`)
         .then(response => {
           if (response.ok) {
             return response.json();
