@@ -2,24 +2,25 @@ import React, { Component } from "react";
 import injectSheet from "react-jss";
 
 const styles = {
-  tile: {
-    width: "100%",
-    height: "100%",
-    backgroundColor: "red"
-  },
-  title: {
-    color: "white"
+  card: {
+    cursor: "pointer"
   }
 };
 
 class TileUnstyled extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.handleSelected = this.handleSelected.bind(this);
     this.state = {
       selected: false
     };
   }
+  componentDidMount() {
+    if (this.props.selectedIds.includes(this.props.id)) {
+      this.setState({ selected: true });
+    }
+  }
+
   handleSelected(id) {
     let currentState = this.state.selected;
     this.setState({ selected: !currentState });
@@ -31,28 +32,25 @@ class TileUnstyled extends Component {
   }
   render() {
     let props = this.props;
+    let data = props.data;
     let classes = props.classes;
     let state = this.state;
+    // console.log(data.id);
+    // console.log("ids", props.selectedIds);
+
     return (
       <div
-        className={classes.tile}
-        onClick={() => this.handleSelected(props.id)}
+        className={`card ${classes.card}`}
+        style={state.selected ? { background: "#3c9895" } : null}
+        onClick={id => this.handleSelected(data.id)}
       >
-        <input type="checkbox" id="check01" name="check" value="1" />
-        <label for="check01" className="radio" />
-        <div className="check-card-bg" />
-        <div className="check-card-body">
-          <div className="check-card-toggle">
-            <span />
-            <span />
-          </div>
-          <div className="check-card-body-in">
-            <h3 className="check-card-title">props.title</h3>
-            {/* <p className="check-card-description">Card item description</p> */}
-          </div>
-          {state.selected ? (
-            <div className="check-card-cancel">selected</div>
-          ) : null}
+        <div className="card-content">
+          <p
+            className="subtitle"
+            style={state.selected ? { color: "white" } : null}
+          >
+            {data.name}
+          </p>
         </div>
       </div>
     );
