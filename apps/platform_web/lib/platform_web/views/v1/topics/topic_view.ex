@@ -1,4 +1,4 @@
-defmodule PlatformWeb.V1.Topics.TopicView do
+defmodule PlatformWeb.V1.TopicView do
   use PlatformWeb, :view
   alias PlatformWeb.TopicView
 
@@ -11,8 +11,6 @@ defmodule PlatformWeb.V1.Topics.TopicView do
   end
 
   def render("topic.json", %{topic: topic}) do
-    %{
-      data: topic
-    }
+    %{id: topic.id, name: topic.name, short_desc: topic.short_desc, long_desc: topic.long_desc}
   end
 end

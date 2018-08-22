@@ -1,18 +1,25 @@
-defmodule PlatformWeb.V1.PortfolioView do
+defmodule PlatformWeb.V1.Portfolios.PortfolioView do
   use PlatformWeb, :view
+  alias PlatformWeb.PortfolioView
 
-  def render("index.json", %{tokens: tokens}) do
-    %{
-      tokens: Enum.map(tokens, &token_json/1)
-    }
+  def render("new.json", %{portfolio: portfolio}) do
+    %{data: render_one(portfolio, PortfolioView, "portfolio.json")}
   end
 
-  def token_json(token) do
+  def render("index.json", %{portfolios: portfolios}) do
+    %{data: render_many(portfolios, PortfolioView, "portfolio.json")}
+  end
+
+  def render("show.json", %{portfolio: portfolio}) do
+    %{data: render_one(portfolio, PortfolioView, "portfolio.json")}
+  end
+
+  def render("portfolio.json", %{portfolio: portfolio}) do
     %{
-      ticker: token.ticker,
-      name: token.name,
-      description: token.desc,
-      img: token.img
+      id: portfolio.id,
+      name: portfolio.name,
+      short_desc: portfolio.short_desc,
+      long_desc: portfolio.long_desc
     }
   end
 end
