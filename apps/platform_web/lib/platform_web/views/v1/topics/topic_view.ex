@@ -1,6 +1,6 @@
-defmodule PlatformWeb.V1.TopicView do
+defmodule PlatformWeb.V1.Topics.TopicView do
   use PlatformWeb, :view
-  alias PlatformWeb.TopicView
+  alias PlatformWeb.V1.Topics.TopicView
 
   def render("index.json", %{topics: topics}) do
     %{data: render_many(topics, TopicView, "topic.json")}

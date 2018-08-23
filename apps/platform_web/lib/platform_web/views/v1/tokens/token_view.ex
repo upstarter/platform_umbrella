@@ -1,6 +1,6 @@
-defmodule PlatformWeb.V1.TokenView do
+defmodule PlatformWeb.V1.Tokens.TokenView do
   use PlatformWeb, :view
-  alias PlatformWeb.TokenView
+  alias PlatformWeb.V1.Tokens.TokenView
 
   def render("index.json", %{tokens: tokens}) do
     %{data: render_many(tokens, TokenView, "token.json")}
@@ -11,6 +11,11 @@ defmodule PlatformWeb.V1.TokenView do
   end
 
   def render("token.json", %{token: token}) do
-    %{id: token.id, name: token.name, short_desc: token.short_desc, long_desc: token.long_desc}
+    %{
+      id: token.id,
+      name: token.name,
+      short_desc: token.short_desc,
+      ticker: token.ticker
+    }
   end
 end

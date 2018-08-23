@@ -2,13 +2,35 @@ defmodule Platform.Tokens do
   @moduledoc """
 
     The Tokens context.
-    
+
   """
 
   import Ecto.Query, warn: false
   alias Platform.Repo
 
   alias Platform.Tokens.Token
+  alias Platform.Tokens.Asset
+
+  @doc """
+  Returns the search of tokens.
+
+  ## Examples
+
+      iex> search_tokens()
+      [%Token{}, ...]
+
+  """
+  def search_tokens(q) do
+    # TODO
+    # query =
+    #   Token
+    #   |> where([t], like(t.name, ^"%#{String.replace(q, "%", "\\%")}%"))
+    #   |> order_by(desc: :inserted_at)
+    #
+    # Repo.all(query)
+
+    Enum.filter(Asset.portfolio(), fn x -> String.contains?(x.ticker, q) end)
+  end
 
   @doc """
   Returns the list of tokens.

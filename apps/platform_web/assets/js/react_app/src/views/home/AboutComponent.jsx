@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import NavContainer from "../../components/nav/nav";
+import SearchBarContainer from "../../components/search/SearchBarContainer";
+import TokenListContainer from "../../components/search/TokenListContainer";
 
 
 export default class AboutComponent extends React.Component {
@@ -10,6 +12,8 @@ export default class AboutComponent extends React.Component {
         <NavContainer />
         <section id="about" className="light-wrap">
           <div id="about-content" className="content">
+            <SearchBarContainer/>
+            <TokenListContainer/>
             <h1 className="title">About</h1>
             <h3 className="subtitle">
               CryptoWise is a collaborative investment ecosystem harnessing the

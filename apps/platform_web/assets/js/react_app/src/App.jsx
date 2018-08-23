@@ -1,10 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
-import promiseMiddleware from "redux-promise-middleware";
-import rootReducer from "./reducers";
-import HomeContainer from "./views/home/home";
+import React from "react"
+import ReactDOM from "react-dom"
+import { Provider } from "react-redux"
+import { createStore, applyMiddleware } from "redux"
+import promiseMiddleware from "redux-promise-middleware"
+import rootReducer from "./reducers"
+import HomeContainer from "./views/home/home"
 
 const middleware = applyMiddleware(promiseMiddleware);
 

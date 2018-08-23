@@ -47,14 +47,12 @@ class SearchBarContainer extends Component {
 }
 
 
-//anything returned from here will end up as props on BookListContainer
-//whenever selectPost is called the result should be passed to all reducers
-
+//anything returned from here will end up as props on SearchBarContainer
+//whenever fetchTokens is called the result should be passed to all reducers
 const mapDispatchToProps = (dispatch, ownProps) => {
   return bindActionCreators({fetchTokens: fetchTokens}, dispatch);
 }
 
 // connect takes a function and component and produces a container that is aware
-// of state contained by redux
-// promote BookList to Container
+// of state contained by redux (promote SearchBar to Container)
 export default connect(null, mapDispatchToProps)(SearchBarContainer);
