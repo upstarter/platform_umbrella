@@ -1,26 +1,34 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Chart from "../components/chart";
+import Chart from "../chart/chart";
 
-class TokenList extends Component {
+class TokenListContainer extends Component {
   renderToken(tokenData) {
-    const name = tokenData.name;
-    const prices = tokenData.list.map(token => token.prices);
-
+    console.log(tokenData);
+    const name = tokenData.ticker;
+    const storeOfValue = tokenData.list.map(token => token.storeOfValue);
+    const utility = tokenData.list.map(token => token.util);
+    const security = tokenData.list.map(token => token.security);
     return (
       <tr key={name}>
-        <td><Chart data={prices} color="black" units="%" /></td>
+        <td><Chart data={storeOfValue} color="green" units="%" /></td>
+        <td><Chart data={utility} color="silver" units="%" /></td>
+        <td><Chart data={security} color="blue" units="%" /></td>
       </tr>
     );
   }
 
   render() {
+    console.log(this);
+
     return (
       <table className="table table-hover">
         <thead>
           <tr>
-            <th>Hodling</th>
-            <th>Allocation (%)</th>
+            <th>Asset</th>
+            <th>Store of Value (%)</th>
+            <th>Utility (%)</th>
+            <th>Security (%)</th>
           </tr>
         </thead>
         <tbody>
@@ -31,8 +39,8 @@ class TokenList extends Component {
   }
 }
 
-function mapStateToProps({ weather }) {
-  return { weather };
+const mapStateToProps = ({ tokens }) => {
+  return { tokens: tokens };
 }
 
-export default connect(mapStateToProps)(TokenList);
+export default connect(mapStateToProps, null)(TokenListContainer);

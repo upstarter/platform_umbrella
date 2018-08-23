@@ -5,7 +5,8 @@ defmodule PlatformWeb.V1.Tokens.TokenController do
   alias Platform.Tokens.Token
 
   def search(conn, %{"q" => q}) do
-    render(conn, "index.json", q: q)
+    tokens = Tokens.search_tokens(q)
+    render(conn, "index.json", tokens: tokens)
   end
 
   def index(conn, _params) do

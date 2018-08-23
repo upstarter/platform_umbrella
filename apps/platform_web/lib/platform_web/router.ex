@@ -46,7 +46,6 @@ defmodule PlatformWeb.Router do
       # LEADS
       post("/leads", LeadController, :create)
       get("/blog_posts", BlogController, :blog_posts)
-      get("/search", TokenController, :search)
 
       # PROVIDERS
       scope "/", Providers do
@@ -54,6 +53,11 @@ defmodule PlatformWeb.Router do
           resources("/portfolios", PortfolioController)
           resources("/topics", TopicController, except: [:new, :edit])
         end
+      end
+
+      # TOKENS
+      scope "/", Tokens do
+        get("/search", TokenController, :search)
       end
 
       # TOPICS

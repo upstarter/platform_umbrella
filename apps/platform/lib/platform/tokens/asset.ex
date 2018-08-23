@@ -1,144 +1,167 @@
-defmodule Platform.Asset do
+defmodule Platform.Tokens.Asset do
   @moduledoc """
 
     correspondent with Platform.Token schema
 
   """
 
-  defstruct [:ticker, :name, :img, :site, :desc]
-  alias Platform.Asset
+  defstruct [:id, :ticker, :name, :img, :site, :short_desc]
+  alias Platform.Tokens.Asset
+
+  def random_string(length) do
+    :crypto.strong_rand_bytes(length) |> Base.url_encode64() |> binary_part(0, length)
+  end
 
   def portfolio do
     [
       %Asset{
+        id: random_string(64),
         ticker: "ETH",
         name: "Etherum",
         site: "ethereum.org",
-        desc: "Ethereum is a decentralized platform for applications that run
+        short_desc: "Ethereum is a decentralized platform for applications that run
           exactly as programmed without any chance of fraud, censorship or
           third-party interference."
       },
       %Asset{
+        id: random_string(64),
         ticker: "REP",
         name: "Augur",
         img: "https://icowatchlist.com/logos/augur.png",
         site: "augur.net",
-        desc: "A prediction market protocol owned and operated by the people that use it."
+        short_desc: "A prediction market protocol owned and operated by the people that use it."
       },
       %Asset{
+        id: random_string(64),
         ticker: "STEEM",
         name: "Steemit",
         site: "steemit.com",
-        desc: "Steemit has redefined social media by building a living, breathing,
+        short_desc: "Steemit has redefined social media by building a living, breathing,
           and growing social economy - a community where users are rewarded for
           sharing their voice. It's a new kind of attention economy."
       },
       %Asset{
+        id: random_string(64),
         ticker: "BTC",
         name: "Bitcoin",
         site: "bitcoin.org",
-        desc: "Bitcoin is an innovative payment network and a new kind of money."
+        short_desc: "Bitcoin is an innovative payment network and a new kind of money."
       },
       %Asset{
+        id: random_string(64),
         ticker: "GNT",
         name: "Golem Network",
         img: "https://icowatchlist.com/logos/golem.png",
         site: "golem.network",
-        desc: "Golem is the first truly decentralized, global market for computing power."
+        short_desc: "Golem is the first truly decentralized, global market for computing power."
       },
       %Asset{
+        id: random_string(64),
         ticker: "SJCX",
         name: "Storj",
         img: "https://icowatchlist.com/logos/storj.png",
         site: "storj.io",
-        desc: "Storj (pronounced: storage) aims to become a cloud storage platform
+        short_desc: "Storj (pronounced: storage) aims to become a cloud storage platform
           that can’t be censored or monitored, or have downtime. It is the first
           decentralized, end-to-end encrypted cloud storage that uses blockchain
           technology and cryptography to secure your files."
       },
       %Asset{
+        id: random_string(64),
         ticker: "SC",
         name: "Sia",
         site: "sia.tech",
-        desc: "Sia is a decentralized storage platform secured by blockchain technology."
+        short_desc: "Sia is a decentralized storage platform secured by blockchain technology."
       },
       %Asset{
+        id: random_string(64),
         ticker: "XMR",
         name: "Monero",
         site: "getmonero.org",
-        desc: "A digital currency that is secure, private, and untraceable"
+        short_desc: "A digital currency that is secure, private, and untraceable"
       },
       %Asset{
+        id: random_string(64),
         ticker: "DGD",
         name: "DigixDAO",
         img: "https://icowatchlist.com/logos/digixdao.png",
         site: "digix.global",
-        desc: "We create a world where the finest gold bars are made divisible and
+        short_desc: "We create a world where the finest gold bars are made divisible and
           transferable on the blockchain."
       },
       %Asset{
+        id: random_string(64),
         ticker: "AMP",
         name: "Synereo",
         site: "synereo.com",
-        desc: "Synereo offers blockchain-enabled Attention Economy solutions,
+        short_desc: "Synereo offers blockchain-enabled Attention Economy solutions,
           allowing direct and platform agnostic monetization of original content
           posted anywhere on the net."
       },
       %Asset{
+        id: random_string(64),
         ticker: "FCT",
         name: "Factom",
         site: "factom.com",
-        desc: "We create products that transform the way organizations secure and
+        short_desc: "We create products that transform the way organizations secure and
           share their data. Our products safeguard the most critical government,
           commercial, and non-profit systems."
       },
       %Asset{
+        id: random_string(64),
         ticker: "ICN",
         name: "ICONOMI",
         img: "https://icowatchlist.com/logos/iconomi.png",
         site: "iconomi.net",
-        desc: "DIGITAL ASSET MANAGEMENT PLATFORM"
+        short_desc: "DIGITAL ASSET MANAGEMENT PLATFORM"
       },
       %Asset{
+        id: random_string(64),
         ticker: "PLU",
         name: "Pluton",
         site: "plutus.it",
-        desc: "Decentralized Loyalty Rewards System: Earn rewards for spending your crypto tokens"
+        short_desc:
+          "Decentralized Loyalty Rewards System: Earn rewards for spending your crypto tokens"
       },
       %Asset{
+        id: random_string(64),
         ticker: "SNGLS",
         name: "SingularDTV",
         site: "singulardtv.com",
-        desc: "A Blockchain Entertainment Studio Empowering artists with
+        short_desc: "A Blockchain Entertainment Studio Empowering artists with
           applications to manage and create projects from development to
           distribution."
       },
       %Asset{
+        id: random_string(64),
         ticker: "LBC",
         name: "LBRY",
         site: "lbry.io",
-        desc: "A content sharing and publishing platform that is decentralized and
+        short_desc: "A content sharing and publishing platform that is decentralized and
           owned by its users."
       },
       %Asset{
+        id: random_string(64),
         ticker: "NXT",
         name: "Nxt",
         site: "nxtplatform.org",
-        desc: "Nxt is a platform that allows you to create your applications
+        short_desc: "Nxt is a platform that allows you to create your applications
           directly on its blockchain."
       },
       %Asset{
+        id: random_string(64),
         ticker: "BTS",
         name: "Bitshares",
         site: "bitshares.org",
-        desc: "A stack of financial services including exchange and banking on a
+        short_desc: "A stack of financial services including exchange and banking on a
         blockchain."
       },
       %Asset{
+        id: random_string(64),
         ticker: "NMC",
         name: "Namecoin",
         site: "namecoin.org",
-        desc: "An experimental open-source technology which improves
+        short_desc: "An experimental open-source technology which improves
           decentralization, security, censorship resistance, privacy, and speed
           of certain components of the Internet infrastructure such as DNS and
           identities."
@@ -151,7 +174,7 @@ defmodule Platform.Asset do
       %Asset{
         ticker: "EOS",
         img: "https://icowatchlist.com/logos/eos.png",
-        desc: "A powerful infrastructure for decentralized apps"
+        short_desc: "A powerful infrastructure for decentralized apps"
       },
       %Asset{ticker: "ADA"},
       %Asset{ticker: "ZRX"},
@@ -168,7 +191,7 @@ defmodule Platform.Asset do
         ticker: "BOTC",
         name: "BotChain",
         site: "https://botchain.talla.com/",
-        desc:
+        short_desc:
           "Infrastructure for Trust and Audit of AI Systems. It helps with increased adoption of AI",
         img: "https://icowatchlist.com/logos/botchain.png"
       },
@@ -176,7 +199,7 @@ defmodule Platform.Asset do
         ticker: "CND",
         name: "Cindicator",
         site: "https://cindicator.com/",
-        desc: "Hybrid Intelligence for effective asset management",
+        short_desc: "Hybrid Intelligence for effective asset management",
         img: ""
       }
     ]
