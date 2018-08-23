@@ -10,6 +10,7 @@ import PrivacyComponent from "../PrivacyComponent";
 import BlogComponent from "../../components/blog/BlogComponent";
 import BlogListContainer from "../../components/blog/BlogListContainer";
 import ProviderComponent from "../../providers/ProviderComponent";
+import NavContainer from "../../components/nav/NavContainer";
 
 export default class HomeContainer extends React.Component {
   render() {
@@ -17,6 +18,7 @@ export default class HomeContainer extends React.Component {
       <React.Fragment>
         <BrowserRouter>
           <section id="container">
+            <NavContainer />
             <Route exact path="/" component={HomeComponent} />
             <Route exact path="/about" component={AboutComponent} />
             <Route exact path="/portfolio" component={PortfolioContainer} />
