@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Chart from "../chart/chart";
+import Chart from "../charts/spark";
 
 class TokenListContainer extends Component {
   renderToken(tokenData) {
