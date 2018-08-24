@@ -1,4 +1,4 @@
-defmodule Platform.Repo.Migrations.CreateProviderTopics do
+defmodule Platform.Repo.Migrations.CreateProvidersTopics do
   use Ecto.Migration
 
   def change do
