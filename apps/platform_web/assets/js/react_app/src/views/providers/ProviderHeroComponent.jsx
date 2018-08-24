@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 // import Elm from 'react-elm-components'
 // import {Main} from '../../../elm/src/Main'
-import Button from "../components/Button/Button";
+import Button from "../../components/Button/Button";
 import Modal from "react-modal";
-import SignUpWizard from "../views/SignUpWizard/SignUpWizard";
+import SignUpWizard from "../SignUpWizard/SignUpWizard";
 
 export default class ProviderHeroComponent extends React.Component {
   constructor() {
