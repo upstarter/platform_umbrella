@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import SearchBarContainer from "../../components/search/SearchBarContainer";
-import TokenListContainer from "../../components/search/TokenListContainer";
+import BarChart from "../../components/charts/bar";
 
 
 export default class AboutComponent extends React.Component {
@@ -10,8 +9,7 @@ export default class AboutComponent extends React.Component {
       <React.Fragment>
         <section id="about" className="light-wrap">
           <div id="about-content" className="content">
-            <SearchBarContainer/>
-            <TokenListContainer/>
+            <BarChart/>
             <h1 className="title">About</h1>
             <h3 className="subtitle">
               CryptoWise is a collaborative investment ecosystem harnessing the
