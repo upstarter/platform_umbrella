@@ -14,6 +14,15 @@ const data = [
 ];
 
 export default class BarChart extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     applyNowButtonLoading: false,
+  //     showModal: false
+  //   };
+  //   this.handleOpenModal = this.handleOpenModal.bind(this);
+  //   this.handleCloseModal = this.handleCloseModal.bind(this);
+  // }
   render() {
     return (
       <VictoryChart
