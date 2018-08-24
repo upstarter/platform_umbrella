@@ -12,12 +12,12 @@ defmodule Platform.Users.User do
     field(:email, :string)
     field(:name, :string)
     field(:password, :string)
+    field(:password_hash, :string)
 
     timestamps()
   end
 
   defp put_password_hash(changeset) do
-    # require IEx; IEx.pry
     case changeset do
       %Ecto.Changeset{valid?: true, changes: %{password: pass}} ->
         put_change(changeset, :password_hash, Comeonin.Bcrypt.hashpwsalt(pass))

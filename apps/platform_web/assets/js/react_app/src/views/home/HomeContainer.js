@@ -2,15 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 
+import NavContainer from "../../components/nav/NavContainer";
 import HomeComponent from "./HomeComponent";
 import AboutComponent from "./AboutComponent";
-import ProviderContainer from "../../providers/ProviderContainer";
 import PortfolioContainer from "../../components/portfolio/PortfolioContainer";
 import PrivacyComponent from "../PrivacyComponent";
 import BlogComponent from "../../components/blog/BlogComponent";
 import BlogListContainer from "../../components/blog/BlogListContainer";
-import ProviderComponent from "../../providers/ProviderComponent";
-import NavContainer from "../../components/nav/NavContainer";
+import ProviderContainer from "../providers/ProviderContainer";
+import ProviderComponent from "../providers/ProviderComponent";
 
 export default class HomeContainer extends React.Component {
   render() {
