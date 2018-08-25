@@ -6,9 +6,9 @@ defmodule Platform.ProvidersTest do
   describe "providers" do
     alias Platform.Providers.Provider
 
-    @valid_attrs %{user_id: 42}
-    @update_attrs %{user_id: 43}
-    @invalid_attrs %{user_id: nil}
+    @valid_attrs %{auth_account_id: 42}
+    @update_attrs %{auth_account_id: 43}
+    @invalid_attrs %{auth_account_id: nil}
 
     def provider_fixture(attrs \\ %{}) do
       {:ok, provider} =
@@ -31,7 +31,7 @@ defmodule Platform.ProvidersTest do
 
     test "create_provider/1 with valid data creates a provider" do
       assert {:ok, %Provider{} = provider} = Providers.create_provider(@valid_attrs)
-      assert provider.user_id == 42
+      assert provider.auth_account_id == 42
     end
 
     test "create_provider/1 with invalid data returns error changeset" do
@@ -42,7 +42,7 @@ defmodule Platform.ProvidersTest do
       provider = provider_fixture()
       assert {:ok, provider} = Providers.update_provider(provider, @update_attrs)
       assert %Provider{} = provider
-      assert provider.user_id == 43
+      assert provider.auth_account_id == 43
     end
 
     test "update_provider/2 with invalid data returns error changeset" do
@@ -66,9 +66,9 @@ defmodule Platform.ProvidersTest do
   describe "providers" do
     alias Platform.Providers.Provider
 
-    @valid_attrs %{desc: "some desc", name: "some name", user_id: 42}
-    @update_attrs %{desc: "some updated desc", name: "some updated name", user_id: 43}
-    @invalid_attrs %{desc: nil, name: nil, user_id: nil}
+    @valid_attrs %{desc: "some desc", name: "some name", auth_account_id: 42}
+    @update_attrs %{desc: "some updated desc", name: "some updated name", auth_account_id: 43}
+    @invalid_attrs %{desc: nil, name: nil, auth_account_id: nil}
 
     def provider_fixture(attrs \\ %{}) do
       {:ok, provider} =
@@ -93,7 +93,7 @@ defmodule Platform.ProvidersTest do
       assert {:ok, %Provider{} = provider} = Providers.create_provider(@valid_attrs)
       assert provider.desc == "some desc"
       assert provider.name == "some name"
-      assert provider.user_id == 42
+      assert provider.auth_account_id == 42
     end
 
     test "create_provider/1 with invalid data returns error changeset" do
@@ -106,7 +106,7 @@ defmodule Platform.ProvidersTest do
       assert %Provider{} = provider
       assert provider.desc == "some updated desc"
       assert provider.name == "some updated name"
-      assert provider.user_id == 43
+      assert provider.auth_account_id == 43
     end
 
     test "update_provider/2 with invalid data returns error changeset" do

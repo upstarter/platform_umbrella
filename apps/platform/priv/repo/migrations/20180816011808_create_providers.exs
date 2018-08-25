@@ -3,7 +3,7 @@ defmodule Platform.Repo.Migrations.CreateProviders do
 
   def change do
     create table(:providers) do
-      add(:user_id, references(:users))
+      add(:auth_account_id, references(:auth_accounts))
       add(:name, :string)
       add(:email, :string)
       add(:short_desc, :string)
@@ -11,7 +11,7 @@ defmodule Platform.Repo.Migrations.CreateProviders do
       timestamps()
     end
 
-    create(unique_index(:providers, [:user_id, :name]))
+    create(unique_index(:providers, [:auth_account_id, :name]))
     create(unique_index(:providers, [:email]))
   end
 end

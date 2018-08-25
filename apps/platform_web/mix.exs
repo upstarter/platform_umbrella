@@ -10,9 +10,9 @@ defmodule PlatformWeb.Mixfile do
       deps_path: "../../deps",
       lockfile: "../../mix.lock",
       elixir: "~> 1.4",
-      elixirc_paths: elixirc_paths(Mix.env),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers,
-      start_permanent: Mix.env == :prod,
+      elixirc_paths: elixirc_paths(Mix.env()),
+      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
     ]
@@ -30,7 +30,7 @@ defmodule PlatformWeb.Mixfile do
 
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "test/support"]
-  defp elixirc_paths(_),     do: ["lib"]
+  defp elixirc_paths(_), do: ["lib"]
 
   # Specifies your project dependencies.
   #
@@ -46,11 +46,10 @@ defmodule PlatformWeb.Mixfile do
       {:bamboo, "~> 0.8"},
       # {:absinthe, "~> 1.4.0"},
       {:platform, in_umbrella: true},
-      # {:auth, in_umbrella: true},
-      # {:users, in_umbrella: true},
       {:get_medium, "~> 0.3.0"},
-      {:floki, "~> 0.20.0"}, # html parser
-      {:con_cache, "~> 0.13.0"},
+      # html parser
+      {:floki, "~> 0.20.0"},
+      {:con_cache, "~> 0.13.0"}
     ]
   end
 
@@ -59,6 +58,6 @@ defmodule PlatformWeb.Mixfile do
   #
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
-    ["test": ["ecto.create --quiet", "ecto.migrate", "test"]]
+    [test: ["ecto.create --quiet", "ecto.migrate", "test"]]
   end
 end

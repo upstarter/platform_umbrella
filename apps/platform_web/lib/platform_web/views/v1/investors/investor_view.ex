@@ -11,6 +11,11 @@ defmodule PlatformWeb.V1.Investors.InvestorView do
   end
 
   def render("investor.json", %{investor: investor}) do
-    %{id: investor.id, user_id: investor.user_id, name: investor.name, desc: investor.desc}
+    %{
+      id: investor.id,
+      auth_account_id: investor.auth_account_id,
+      name: investor.name,
+      desc: investor.desc
+    }
   end
 end

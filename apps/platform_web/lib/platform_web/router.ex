@@ -16,8 +16,8 @@ defmodule PlatformWeb.Router do
   end
 
   pipeline :authorized do
-    # plug Auth.Pipeline.Browser
-    # plug Auth.CurrentUser
+    plug(Platform.Auth.Pipeline.Browser)
+    plug(Platform.Auth.CurrentUser)
   end
 
   pipeline :api do
@@ -70,18 +70,18 @@ defmodule PlatformWeb.Router do
         resources("/portfolios", PortfolioController)
       end
 
-      # USERS
-      scope "/users", Users do
+      # AUTH
+      scope "/auth", Auth do
         scope "/" do
           pipe_through(:unauthorized)
-          post("/create", UserController, :create)
-          post("/sign-in", UserController, :sign_in)
+          post("/create", AuthController, :create)
+          post("/sign-in", AuthController, :sign_in)
         end
 
         scope "/" do
           pipe_through(:authorized)
-          get("/sign-out", UserController, :sign_out)
-          get("/me", UserController, :show)
+          get("/sign-out", AuthController, :sign_out)
+          get("/me", AuthController, :show)
         end
       end
     end

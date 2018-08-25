@@ -11,9 +11,11 @@ defmodule PlatformWeb.V1.Providers.ProviderView do
   end
 
   def render("provider.json", %{provider: provider}) do
-    %{id: provider.id,
-      user_id: provider.user_id,
+    %{
+      id: provider.id,
+      auth_account_id: provider.auth_account_id,
       name: provider.name,
-      desc: provider.desc}
+      desc: provider.desc
+    }
   end
 end
