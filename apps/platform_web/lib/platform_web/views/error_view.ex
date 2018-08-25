@@ -21,4 +21,8 @@ defmodule PlatformWeb.ErrorView do
   def render("error.json", %{changeset: changeset}) do
     Ecto.Changeset.traverse_errors(changeset, &translate_error/1)
   end
+
+  def render("error.json", %{status: status, message: message}) do
+    %{status: status, message: message}
+  end
 end

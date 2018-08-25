@@ -15,8 +15,8 @@ Auth.Accounts.Encrypt.html
 Auth.CurrentUser.html
 Auth.ErrorHandler.html
 Auth.GuardedController.html
-Auth.Guardian.html
-Auth.Guardian.Plug.html
+Auth.TokenSerializer.html
+Auth.TokenSerializer.Plug.html
 Auth.Pipeline.Browser.html
 Platform.html
 Platform.Application.html

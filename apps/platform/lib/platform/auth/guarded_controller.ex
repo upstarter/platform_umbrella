@@ -1,5 +1,5 @@
 defmodule Platform.Auth.GuardedController do
-  alias Platform.Auth.Guardian
+  alias Platform.Auth.TokenSerializer
 
   @moduledoc """
 
