@@ -1,4 +1,4 @@
-defmodule Platform.Auth.Pipeline.Browser do
+defmodule Platform.Auth.Pipeline do
   alias Platform.Auth.ErrorHandler
 
   @moduledoc """
@@ -10,16 +10,16 @@ defmodule Platform.Auth.Pipeline.Browser do
   use Guardian.Plug.Pipeline,
     otp_app: :platform,
     error_handler: ErrorHandler,
-    module: Guardian
+    module: Platform.Auth.TokenSerializer
 
   # If there is a session token, validate it
   plug(Guardian.Plug.VerifySession, claims: %{"typ" => "access"})
   # If there is an authorization header, validate it
-  plug(Guardian.Plug.VerifyHeader, claims: %{"typ" => "access"})
+  plug(Guardian.Plug.VerifyHeader, realm: :none, claims: %{"typ" => "access"})
   # Load the user if either of the verifications worked
-  plug(Guardian.Plug.LoadResource, ensure: true, allow_blank: true)
-  plug(Guardian.Plug.EnsureAuthenticated, claims: %{"typ" => "access"})
-  plug(Guardian.Plug.EnsureAuthenticated, key: :secret)
+  plug(Guardian.Plug.LoadResource)
+
+  plug(Guardian.Plug.EnsureAuthenticated)
 end
 
 # # encode a token for a resource

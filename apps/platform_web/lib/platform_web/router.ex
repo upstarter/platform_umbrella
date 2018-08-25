@@ -9,19 +9,17 @@ defmodule PlatformWeb.Router do
     plug(:put_secure_browser_headers)
   end
 
-  pipeline :guest do
+  pipeline :api do
+    plug(:accepts, ["json"])
+    plug(:fetch_session)
   end
 
   pipeline :unauthorized do
+    # plug(Platform.Auth.Pipeline)
   end
 
-  pipeline :authorized do
-    plug(Platform.Auth.Pipeline.Browser)
-    plug(Platform.Auth.CurrentUser)
-  end
-
-  pipeline :api do
-    plug(:accepts, ["json"])
+  pipeline :ensure_auth do
+    # plug(Guardian.Plug.EnsureAuthenticated)
   end
 
   scope "/", PlatformWeb do
@@ -73,14 +71,14 @@ defmodule PlatformWeb.Router do
       # AUTH
       scope "/auth", Auth do
         scope "/" do
-          pipe_through(:unauthorized)
+          pipe_through([:unauthorized])
           post("/create", AuthController, :create)
-          post("/sign-in", AuthController, :sign_in)
+          post("/sign_in", SessionController, :sign_in)
         end
 
         scope "/" do
-          pipe_through(:authorized)
-          get("/sign-out", AuthController, :sign_out)
+          pipe_through(:ensure_auth)
+          get("/sign_out", SessionController, :sign_out)
           get("/me", AuthController, :show)
         end
       end

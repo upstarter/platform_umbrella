@@ -2,8 +2,13 @@ use Mix.Config
 
 config :platform, ecto_repos: [Platform.Repo]
 
-config :platform, Platform.Auth.Guardian,
+config :platform, Platform.Auth.TokenSerializer,
   issuer: "platform",
-  secret_key: "2PZfkaxwq15SG4e5pz0/WughiYAp3h7wfytJyW4eK6//xx0Z5iPKJVfglr9Es0Y3"
+  secret_key: "g9JWqDeeXmQxrqqgxsjzW6Ekn7lba0ALVKJVirzk2alB1NhPhvBWOLNA7NCDUqk6",
+  ttl: {1, :days},
+  token_ttl: %{
+    "refresh" => {30, :days},
+    "access" => {1, :days}
+  }
 
 import_config "#{Mix.env()}.exs"

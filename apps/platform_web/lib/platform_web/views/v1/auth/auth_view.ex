@@ -11,6 +11,19 @@ defmodule PlatformWeb.V1.Auth.AuthView do
   end
 
   def render("auth.json", %{auth: auth}) do
-    %{id: auth.id, email: auth.email}
+    %{id: auth.id, email: auth.email, password: auth.password}
+  end
+
+  def render("sign_up.json", %{auth: auth}) do
+    %{
+      status: :ok,
+      message: "Now you can sign in using your email and password at `/api/v1/sign_in`.
+        You will receive JWT token.\nPlease put this token into Authorization header
+        for all authorized requests.\n"
+    }
+  end
+
+  def render("jwt.json", %{jwt: jwt}) do
+    %{jwt: jwt}
   end
 end

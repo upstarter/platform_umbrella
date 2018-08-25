@@ -5,7 +5,6 @@ defmodule Platform.Repo.Migrations.CreateAuthAccounts do
     create table(:auth_accounts) do
       add(:name, :string)
       add(:email, :string)
-      add(:password, :string, virtual: true)
       add(:password_hash, :string)
 
       timestamps()
