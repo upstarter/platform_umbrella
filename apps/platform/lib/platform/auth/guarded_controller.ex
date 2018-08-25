@@ -1,4 +1,6 @@
-defmodule Auth.GuardedController do
+defmodule Platform.Auth.GuardedController do
+  alias Platform.Auth.Guardian
+
   @moduledoc """
 
   Use this module in a controller to take the advantage of having

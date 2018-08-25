@@ -1,23 +1,22 @@
-defmodule PlatformWeb.V1.Users.UserController do
-  alias Platform.Auth
+defmodule PlatformWeb.V1.Auth.AuthController do
+  alias Platform.Auth.Account
   alias Platform.Auth.Guardian
   use PlatformWeb, :controller
-  alias Platform.Users.User
   alias Platform.Repo
 
-  plug(:scrub_params, "user" when action in [:create, :sign_in])
+  plug(:scrub_params, "auth" when action in [:create, :sign_in])
 
   def sign_in(conn, %{"password" => "password"}) do
-    user = %{id: "1"}
+    auth = %{id: "1"}
 
     conn
-    |> Guardian.Plug.sign_in(user)
+    |> Guardian.Plug.sign_in(auth)
     |> send_resp(204, "")
   end
 
-  #   case User.find_and_confirm_password(params) do
-  #   {:ok, user} ->
-  #      new_conn = Guardian.Plug.api_sign_in(conn, user)
+  #   case Auth.find_and_confirm_password(params) do
+  #   {:ok, auth} ->
+  #      new_conn = Guardian.Plug.api_sign_in(conn, auth)
   #      jwt = Guardian.Plug.current_token(new_conn)
   #      claims = Guardian.Plug.claims(new_conn)
   #      exp = Map.get(claims, "exp")
@@ -25,7 +24,7 @@ defmodule PlatformWeb.V1.Users.UserController do
   #      new_conn
   #      |> put_resp_header("authorization", "Bearer #{jwt}")
   #      |> put_resp_header("x-expires", exp)
-  #      |> render "login.json", user: user, jwt: jwt, exp: exp
+  #      |> render "login.json", auth: auth, jwt: jwt, exp: exp
   #   {:error, changeset} ->
   #     conn
   #     |> put_status(401)
@@ -43,31 +42,31 @@ defmodule PlatformWeb.V1.Users.UserController do
   end
 
   def new(conn, _params) do
-    changeset = User.changeset(%User{}, _params)
+    changeset = Account.changeset(%Account{}, _params)
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"user" => user_params}) do
-    changeset = %User{} |> User.registration_changeset(user_params)
+  def create(conn, %{"auth" => auth_params}) do
+    changeset = %Account{} |> Account.changeset(auth_params)
 
     case Repo.insert(changeset) do
-      {:ok, user} ->
+      {:ok, auth} ->
         conn
-        |> Guardian.Plug.sign_in(user, %{sub: user.id})
-        |> redirect(to: "/")
+        |> Guardian.Plug.sign_in(auth, %{sub: auth.id})
+        |> render("show.json", auth: auth)
 
       {:error, changeset} ->
-        render(conn, "show.html", changeset: changeset)
+        conn |> render(PlatformWeb.ChangesetView, "error.json", changeset: changeset)
     end
   end
 
   def index(conn, _params) do
-    users = Repo.all(User)
-    render(conn, "index.html", users: users)
+    auths = Repo.all(Account)
+    render(conn, "index.html", auths: auths)
   end
 
   def show(conn, %{"id" => id}) do
-    user = Repo.get!(User, id)
-    render(conn, "show.html", user: user)
+    auth = Repo.get!(Account, id)
+    render(conn, "show.html", auth: auth)
   end
 end

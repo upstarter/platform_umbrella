@@ -6,9 +6,9 @@ defmodule Platform.InvestorsTest do
   describe "investors" do
     alias Platform.Investors.Investor
 
-    @valid_attrs %{user_id: 42}
-    @update_attrs %{user_id: 43}
-    @invalid_attrs %{user_id: nil}
+    @valid_attrs %{auth_account_id: 42}
+    @update_attrs %{auth_account_id: 43}
+    @invalid_attrs %{auth_account_id: nil}
 
     def investor_fixture(attrs \\ %{}) do
       {:ok, investor} =
@@ -31,7 +31,7 @@ defmodule Platform.InvestorsTest do
 
     test "create_investor/1 with valid data creates a investor" do
       assert {:ok, %Investor{} = investor} = Investors.create_investor(@valid_attrs)
-      assert investor.user_id == 42
+      assert investor.auth_account_id == 42
     end
 
     test "create_investor/1 with invalid data returns error changeset" do
@@ -42,7 +42,7 @@ defmodule Platform.InvestorsTest do
       investor = investor_fixture()
       assert {:ok, investor} = Investors.update_investor(investor, @update_attrs)
       assert %Investor{} = investor
-      assert investor.user_id == 43
+      assert investor.auth_account_id == 43
     end
 
     test "update_investor/2 with invalid data returns error changeset" do
@@ -67,7 +67,11 @@ defmodule Platform.InvestorsTest do
     alias Platform.Investors.Investor
 
     @valid_attrs %{avatar_url: "some avatar_url", email: "some email", name: "some name"}
-    @update_attrs %{avatar_url: "some updated avatar_url", email: "some updated email", name: "some updated name"}
+    @update_attrs %{
+      avatar_url: "some updated avatar_url",
+      email: "some updated email",
+      name: "some updated name"
+    }
     @invalid_attrs %{avatar_url: nil, email: nil, name: nil}
 
     def investor_fixture(attrs \\ %{}) do

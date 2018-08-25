@@ -1,4 +1,4 @@
-defmodule Auth.Account do
+defmodule Platform.Auth.Account do
   @moduledoc """
 
     used by backoffice too
@@ -7,6 +7,7 @@ defmodule Auth.Account do
 
   use Ecto.Schema
   import Ecto.Changeset
+  alias Platform.Auth
 
   schema "auth_accounts" do
     field(:email, :string)

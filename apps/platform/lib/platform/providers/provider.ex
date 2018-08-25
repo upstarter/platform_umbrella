@@ -7,7 +7,7 @@ defmodule Platform.Providers.Provider do
 
   use Ecto.Schema
   import Ecto.Changeset
-  alias Platform.Users.User
+  alias Platform.Auth.Account
   alias Platform.Topics.Topic
   alias Platform.Portfolios.Portfolio
 
@@ -15,7 +15,7 @@ defmodule Platform.Providers.Provider do
     field(:name, :string)
     field(:email, :string)
     field(:short_desc, :string)
-    belongs_to(:user, User)
+    belongs_to(:auth_account, Account)
     many_to_many(:topics, Topic, join_through: "providers_topics")
     many_to_many(:portfolios, Portfolio, join_through: "providers_portfolios")
 
@@ -24,7 +24,7 @@ defmodule Platform.Providers.Provider do
 
   def changeset(provider, attrs) do
     provider
-    |> cast(attrs, [:user_id, :name, :desc])
-    |> validate_required([:user_id, :name, :desc])
+    |> cast(attrs, [:auth_account_id, :name, :desc])
+    |> validate_required([:auth_account_id, :name, :desc])
   end
 end

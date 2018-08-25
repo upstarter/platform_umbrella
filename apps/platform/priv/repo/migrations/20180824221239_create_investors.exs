@@ -3,12 +3,12 @@ defmodule Platform.Repo.Migrations.CreateInvestors do
 
   def change do
     create table(:investors) do
-      add :name, :string
-      add :email, :string
-      add :avatar_url, :string
+      add(:auth_account_id, references(:auth_accounts))
+      add(:name, :string)
+      add(:email, :string)
+      add(:avatar_url, :string)
 
       timestamps()
     end
-
   end
 end

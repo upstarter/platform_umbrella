@@ -1,4 +1,4 @@
-defmodule Auth.CurrentUser do
+defmodule Platform.Auth.CurrentUser do
   @moduledoc """
 
     used by backoffice too

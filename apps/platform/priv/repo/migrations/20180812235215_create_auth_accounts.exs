@@ -1,8 +1,8 @@
-defmodule Platform.Repo.Migrations.CreateUsers do
+defmodule Platform.Repo.Migrations.CreateAuthAccounts do
   use Ecto.Migration
 
   def change do
-    create table(:users) do
+    create table(:auth_accounts) do
       add(:name, :string)
       add(:email, :string)
       add(:password, :string, virtual: true)

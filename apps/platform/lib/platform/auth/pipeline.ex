@@ -1,4 +1,6 @@
-defmodule Auth.Pipeline.Browser do
+defmodule Platform.Auth.Pipeline.Browser do
+  alias Platform.Auth.ErrorHandler
+
   @moduledoc """
 
     used by backoffice too
@@ -6,9 +8,9 @@ defmodule Auth.Pipeline.Browser do
   """
 
   use Guardian.Plug.Pipeline,
-    otp_app: :designers,
-    error_handler: Auth.ErrorHandler,
-    module: Auth.Guardian
+    otp_app: :platform,
+    error_handler: ErrorHandler,
+    module: Guardian
 
   # If there is a session token, validate it
   plug(Guardian.Plug.VerifySession, claims: %{"typ" => "access"})
@@ -16,7 +18,8 @@ defmodule Auth.Pipeline.Browser do
   plug(Guardian.Plug.VerifyHeader, claims: %{"typ" => "access"})
   # Load the user if either of the verifications worked
   plug(Guardian.Plug.LoadResource, ensure: true, allow_blank: true)
-  plug(Guardian.Plug.EnsureAuthenticated)
+  plug(Guardian.Plug.EnsureAuthenticated, claims: %{"typ" => "access"})
+  plug(Guardian.Plug.EnsureAuthenticated, key: :secret)
 end
 
 # # encode a token for a resource

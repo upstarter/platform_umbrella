@@ -1,4 +1,4 @@
-defmodule Auth.ErrorHandler do
+defmodule Platform.Auth.ErrorHandler do
   @moduledoc """
 
     used by backoffice too
@@ -14,6 +14,6 @@ defmodule Auth.ErrorHandler do
     # send_resp(conn, 401, body)
     conn
     |> put_flash(:info, "  Please Sign In.")
-    |> redirect(to: "/users/new")
+    |> redirect(to: "/auth/new")
   end
 end
