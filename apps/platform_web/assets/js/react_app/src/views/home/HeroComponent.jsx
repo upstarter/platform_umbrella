@@ -4,6 +4,11 @@ import Button from "../../components/Button/Button";
 import Modal from "react-modal";
 import SignUpWizard from "../SignUpWizard/SignUpWizard";
 import { url } from "../../utils/consts";
+// quiz
+import Answer from "../../components/quiz/Answer";
+import Question from "../../components/quiz/Question";
+import Timer from "../../components/quiz/Timer";
+import ProgressBar from "../../components/quiz/ProgressBar";
 
 export default class HeroComponent extends React.Component {
   constructor() {
@@ -11,13 +16,18 @@ export default class HeroComponent extends React.Component {
     this.state = {
       subscribeButtonLoading: false,
       applyNowButtonLoading: false,
-      showModal: false
+      showModal: false,
+      showQuizModal: false
     };
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.handleOpenQuizModal = this.handleOpenQuizModal.bind(this);
   }
   componentWillMount() {
     Modal.setAppElement("body");
+  }
+  handleOpenQuizModal() {
+    this.setState({ showQuizModal: true });
   }
 
   handleOpenModal() {
@@ -43,6 +53,9 @@ export default class HeroComponent extends React.Component {
   }
 
   handleCloseModal() {
+    if (!this.state.showModal) {
+      this.setState({ showQuizModal: false });
+    }
     this.setState({ showModal: false });
   }
   render() {
@@ -60,6 +73,23 @@ export default class HeroComponent extends React.Component {
           {/* <h2 ref={subtitle => (this.subtitle = subtitle)}>Hello</h2> */}
           {/* <button onClick={this.handleCloseModal}>close</button> */}
           <SignUpWizard topics={this.state.topics} />
+        </Modal>
+        <Modal
+          isOpen={state.showQuizModal}
+          // onAfterOpen={this.afterOpenModal}
+          onRequestClose={this.handleCloseModal}
+          style={modalStyles}
+          contentLabel="Example Modal"
+        >
+          <Question question={"#2 + 2 ?"} />
+          <form>
+            {/* {answers.map(answer => ( */}
+            <Answer answer={["2", "4", "3", "5"]} />
+            {/* ))} */}
+          </form>
+          {/* <NextButton disabled={disabled} /> */}
+          <Timer countdown={20} />
+          <ProgressBar currentQuestion={1} questionCount={5} />
         </Modal>
         <div className="heero-body column">
           <div className="container">
@@ -91,6 +121,15 @@ export default class HeroComponent extends React.Component {
                   </div>
                 </div>
               </section>
+              <Button
+                className={`is-primary is-rounded ${
+                  state.subscribeButtonLoading ? "is-loading" : null
+                }`}
+                onClick={this.handleOpenQuizModal}
+              >
+                {" "}
+                Quiz{" "}
+              </Button>
             </div>
           </div>
         </div>
