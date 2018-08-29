@@ -3,7 +3,7 @@ import Answer from "./Answer";
 import Question from "./Question";
 import Timer from "./Timer";
 import ProgressBar from "./ProgressBar";
-import NextButton from "./NextButton";
+import Result from "./Result";
 
 export default class Quiz extends Component {
   constructor(props) {
@@ -23,10 +23,6 @@ export default class Quiz extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.parseCorrectAnswer();
   }
-  componentDidMount() {
-    console.log(this.props.quiz.questions[0]);
-  }
-
   parseCorrectAnswer() {
     const { correctAns, questions } = this.state;
     questions.map(question => {
@@ -64,15 +60,26 @@ export default class Quiz extends Component {
     return (
       <div>
         <Question currentQuestion={currentQuestion} />
-        <Answer
-          questionType={currentQuestion.questionType}
-          answers={currentQuestion.answers}
-          handleClick={this.handleClick}
-          renderInResult={false}
-        />
-        <NextButton disabled={true} onClick={this.handleClick} />
-        <Timer countdown={20} />
-        <ProgressBar currentQuestion={1} questionCount={5} />
+        {endQuiz === true ? (
+          <div>
+            <Answer
+              questionType={currentQuestion.questionType}
+              answers={currentQuestion.answers}
+              handleClick={this.handleClick}
+              renderInResult={false}
+            />
+            <Timer countdown={20} />
+            <ProgressBar currentQuestion={1} questionCount={5} />
+          </div>
+        ) : (
+          <div>
+            <Result
+              questions={questions}
+              answers={answers}
+              correctAns={correctAns}
+            />
+          </div>
+        )}
       </div>
     );
   }

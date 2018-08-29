@@ -9,7 +9,7 @@ export const quiz = {
         "A false wallet used in the Mt Gox scandal",
         "A way of making Bitcoin intangible"
       ],
-      "correctAnswer": "0"
+      "correctAnswer": "1"
     },
     {
       "question": "What are the accepted Bitcoin Tickers/currency codes?",
@@ -20,7 +20,7 @@ export const quiz = {
         "BCN or LTC",
         "BTC or XBT"
       ],
-      "correctAnswer": "0"
+      "correctAnswer": "1"
     },
     {
       "question": "Is Bitcoin Cryptocurrency?",
@@ -40,7 +40,7 @@ export const quiz = {
         "Javascript",
         "The Blockchain"
       ],
-      "correctAnswer": "3"
+      "correctAnswer": "4"
     },
     {
       "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit,",
