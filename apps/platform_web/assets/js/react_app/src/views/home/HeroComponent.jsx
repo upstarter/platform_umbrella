@@ -5,10 +5,8 @@ import Modal from "react-modal";
 import SignUpWizard from "../SignUpWizard/SignUpWizard";
 import { url } from "../../utils/consts";
 // quiz
-import Answer from "../../components/quiz/Answer";
-import Question from "../../components/quiz/Question";
-import Timer from "../../components/quiz/Timer";
-import ProgressBar from "../../components/quiz/ProgressBar";
+import Quiz from "../../components/quiz/Quiz";
+import { quiz } from "../../utils/quizData";
 
 export default class HeroComponent extends React.Component {
   constructor() {
@@ -81,15 +79,7 @@ export default class HeroComponent extends React.Component {
           style={modalStyles}
           contentLabel="Example Modal"
         >
-          <Question question={"#2 + 2 ?"} />
-          <form>
-            {/* {answers.map(answer => ( */}
-            <Answer answer={["2", "4", "3", "5"]} />
-            {/* ))} */}
-          </form>
-          {/* <NextButton disabled={disabled} /> */}
-          <Timer countdown={20} />
-          <ProgressBar currentQuestion={1} questionCount={5} />
+          <Quiz quiz={quiz} />
         </Modal>
         <div className="heero-body column">
           <div className="container">
