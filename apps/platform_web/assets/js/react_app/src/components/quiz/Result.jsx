@@ -29,24 +29,16 @@ class Result extends Component {
     const { questions, answers, correctAns } = this.props;
     const renderQuestion = questions.map((question, index) => {
       return (
-        <div className="result-question" key={index}>
-          <div className="row">
-            <div className="col-12 col">
-              <Question currentQuestion={question} />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-12 col">
-              <Answer
-                questionType={question.questionType}
-                answers={question.answers}
-                userAnswers={answers}
-                renderInResult={true}
-                correctAns={correctAns}
-                qIdx={index}
-              />
-            </div>
-          </div>
+        <div key={index}>
+          <Question currentQuestion={question} />
+          <Answer
+            questionType={question.questionType}
+            answers={question.answers}
+            userAnswers={answers}
+            renderInResult={true}
+            correctAns={correctAns}
+            qIdx={index}
+          />
         </div>
       );
     });
@@ -56,7 +48,7 @@ class Result extends Component {
         <h1>
           {" "}
           Your score:{" "}
-          <span class="badge secondary">
+          <span>
             {score}/{questions.length}
           </span>
         </h1>
@@ -64,7 +56,7 @@ class Result extends Component {
     );
 
     return (
-      <div className="result-container">
+      <div className="container">
         {renderResult}
         {renderQuestion}
       </div>

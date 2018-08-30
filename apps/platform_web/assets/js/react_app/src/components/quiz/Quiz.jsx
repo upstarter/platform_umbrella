@@ -59,9 +59,17 @@ export default class Quiz extends Component {
 
     return (
       <div>
-        <Question currentQuestion={currentQuestion} />
         {endQuiz === true ? (
           <div>
+            <Result
+              questions={questions}
+              answers={answers}
+              correctAns={correctAns}
+            />
+          </div>
+        ) : (
+          <div>
+            <Question currentQuestion={currentQuestion} />
             <Answer
               questionType={currentQuestion.questionType}
               answers={currentQuestion.answers}
@@ -70,14 +78,6 @@ export default class Quiz extends Component {
             />
             <Timer countdown={20} />
             <ProgressBar currentQuestion={1} questionCount={5} />
-          </div>
-        ) : (
-          <div>
-            <Result
-              questions={questions}
-              answers={answers}
-              correctAns={correctAns}
-            />
           </div>
         )}
       </div>

@@ -22,7 +22,7 @@ class Answer extends Component {
       return (
         (questionType == "text" && (
           <button
-            className="btn-large"
+            className="button"
             key={index}
             data-value={answer}
             onClick={() => this.props.handleClick(index)}
@@ -33,6 +33,7 @@ class Answer extends Component {
         (questionType == "photo" && (
           <button>
             <img
+              width="300"
               key={index}
               alt=""
               src={answer}
@@ -57,26 +58,22 @@ class Answer extends Component {
         let value = answerKey[index] + ". " + answer;
         return (
           (questionType == "text" && (
-            <button
-              className={`${c} btn-large`}
-              key={index}
-              data-value={answer}
-            >
+            <button className={`${c} button`} key={index} data-value={answer}>
               {value}
             </button>
           )) ||
           (questionType == "photo" && (
-            <button className={`${c} img-answer`}>
-              <img key={index} alt="" src={answer} />
+            <button className={`${c} img`}>
+              <img key={index} alt="" src={answer} width="300" />
             </button>
           ))
         );
       });
 
     return (
-      <div className="answer-container">
+      <div className="container">
         {renderInResult == true ? (
-          <div className="result-answer">{renderAnswerInResult}</div>
+          <div className="">{renderAnswerInResult}</div>
         ) : (
           <div>{renderAnswer}</div>
         )}
