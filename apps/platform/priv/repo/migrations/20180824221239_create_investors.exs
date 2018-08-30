@@ -10,5 +10,8 @@ defmodule Platform.Repo.Migrations.CreateInvestors do
 
       timestamps()
     end
+
+    create(unique_index(:investors, [:auth_account_id, :name]))
+    create(unique_index(:investors, [:email]))
   end
 end
