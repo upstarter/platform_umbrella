@@ -5,7 +5,18 @@ import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 const PrivateRoute = ({ component: Component, location, ...rest }) => (
   <Route
     {...rest}
-    render={props => (isLoggedIn ? <Component {...props} /> : <h1>hi</h1>)}
+    render={props =>
+      isLoggedIn ? (
+        <Component {...props} />
+      ) : (
+        <Redirect
+          to={{
+            pathname: "/login",
+            state: { from: props.location }
+          }}
+        />
+      )
+    }
   />
 );
 

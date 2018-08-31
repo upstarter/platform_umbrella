@@ -113,6 +113,9 @@ export default class NavContainer extends React.Component {
                 <Link to="/contribute" className="navbar-item">
                   Analysts
                 </Link>
+                <Link to="/login" className="navbar-item">
+                  Login
+                </Link>
               </div>
             </div>
           </div>
