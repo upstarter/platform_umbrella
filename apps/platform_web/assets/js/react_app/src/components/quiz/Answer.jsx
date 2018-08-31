@@ -35,6 +35,7 @@ class Answer extends Component {
         (questionType == "photo" && (
           <button>
             <img
+              style={{ cursor: "pointer" }}
               width="300"
               key={index}
               alt=""
