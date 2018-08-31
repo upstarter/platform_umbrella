@@ -21,14 +21,16 @@ class Answer extends Component {
       let value = answerKey[index] + ". " + answer;
       return (
         (questionType == "text" && (
-          <button
-            className="button"
-            key={index}
-            data-value={answer}
-            onClick={() => this.props.handleClick(index)}
-          >
-            {value}
-          </button>
+          <li style={{ margin: "2em 0" }}>
+            <button
+              className="button"
+              key={index}
+              data-value={answer}
+              onClick={() => this.props.handleClick(index)}
+            >
+              {value}
+            </button>
+          </li>
         )) ||
         (questionType == "photo" && (
           <button>
@@ -58,9 +60,11 @@ class Answer extends Component {
         let value = answerKey[index] + ". " + answer;
         return (
           (questionType == "text" && (
-            <button className={`${c} button`} key={index} data-value={answer}>
-              {value}
-            </button>
+            <li>
+              <button className={`${c} button`} key={index} data-value={answer}>
+                {value}
+              </button>
+            </li>
           )) ||
           (questionType == "photo" && (
             <button className={`${c} img`}>
@@ -75,7 +79,7 @@ class Answer extends Component {
         {renderInResult == true ? (
           <div className="">{renderAnswerInResult}</div>
         ) : (
-          <div>{renderAnswer}</div>
+          <ul>{renderAnswer}</ul>
         )}
       </div>
     );

@@ -5,6 +5,60 @@ import Timer from "./Timer";
 import ProgressBar from "./ProgressBar";
 import Result from "./Result";
 
+const styles = {
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between"
+  },
+  header: {
+    backgroundColor: "#373A40",
+    height: "220px",
+    width: "100%",
+    padding: "8.5em 15em 0 15em",
+    lineHeight: "4.5em"
+  },
+  title: {
+    fontSize: "32px",
+    color: "white",
+    textAlign: "center"
+  },
+  main: {
+    padding: "1em 15em"
+  },
+  tileGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(4, 1fr)",
+    // gridTemplateRows: "repeat(3, auto)",
+    gridColumnGap: "1em",
+    gridRowGap: "1em"
+  },
+  "@media (max-width: 768px)": {
+    tileGrid: {
+      gridTemplateColumns: "1fr 1fr 1fr"
+    },
+    main: {
+      padding: "1em 1em"
+    }
+  },
+  "@media (max-width: 414px)": {
+    tileGrid: {
+      gridTemplateColumns: "1fr 1fr"
+    },
+    main: {
+      padding: "1em 1em"
+    },
+    header: {
+      padding: "2em 5em",
+      height: "110px",
+      lineHeight: "3em"
+    },
+    title: {
+      fontSize: "20px"
+    }
+  }
+};
+
 export default class Quiz extends Component {
   constructor(props) {
     super(props);
@@ -68,16 +122,22 @@ export default class Quiz extends Component {
             />
           </div>
         ) : (
-          <div>
-            <Question currentQuestion={currentQuestion} />
-            <Answer
-              questionType={currentQuestion.questionType}
-              answers={currentQuestion.answers}
-              handleClick={this.handleClick}
-              renderInResult={false}
-            />
-            <Timer countdown={20} />
-            <ProgressBar currentQuestion={1} questionCount={5} />
+          <div style={styles.container}>
+            <div style={styles.header}>
+              <h2 style={styles.title}>
+                <Question currentQuestion={currentQuestion} />
+              </h2>
+            </div>
+            <div styles={styles.main}>
+              <Answer
+                questionType={currentQuestion.questionType}
+                answers={currentQuestion.answers}
+                handleClick={this.handleClick}
+                renderInResult={false}
+              />
+              <Timer countdown={20} />
+              <ProgressBar currentQuestion={1} questionCount={5} />
+            </div>
           </div>
         )}
       </div>
