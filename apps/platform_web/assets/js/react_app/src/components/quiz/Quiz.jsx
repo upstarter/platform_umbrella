@@ -9,7 +9,8 @@ const styles = {
   container: {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    height: "100%"
   },
   header: {
     backgroundColor: "#373A40",
@@ -72,7 +73,8 @@ export default class Quiz extends Component {
       correctAns: [],
       totalQuestions: quiz.questions.length,
       endQuiz: false,
-      showResult: false
+      showResult: false,
+      percent: 0
     };
     this.handleClick = this.handleClick.bind(this);
     this.parseCorrectAnswer();
@@ -90,14 +92,17 @@ export default class Quiz extends Component {
     let updatedStep = step;
 
     if (step < totalQuestions - 1) {
+      let percent = ((step + 1) / totalQuestions) * 100;
       updatedStep = step + 1;
       this.setState({
+        percent: percent,
         step: updatedStep,
         currentQuestion: questions[updatedStep]
       });
     } else {
       this.setState({
-        endQuiz: true
+        endQuiz: true,
+        percent: 100
       });
     }
   };
@@ -108,21 +113,20 @@ export default class Quiz extends Component {
       currentQuestion,
       answers,
       correctAns,
-      endQuiz
+      endQuiz,
+      percent
     } = this.state;
 
     return (
-      <div>
+      <div style={styles.container}>
         {endQuiz === true ? (
-          <div>
-            <Result
-              questions={questions}
-              answers={answers}
-              correctAns={correctAns}
-            />
-          </div>
+          <Result
+            questions={questions}
+            answers={answers}
+            correctAns={correctAns}
+          />
         ) : (
-          <div style={styles.container}>
+          <div>
             <div style={styles.header}>
               <h2 style={styles.title}>
                 <Question currentQuestion={currentQuestion} />
@@ -135,11 +139,10 @@ export default class Quiz extends Component {
                 handleClick={this.handleClick}
                 renderInResult={false}
               />
-              <Timer countdown={20} />
-              <ProgressBar currentQuestion={1} questionCount={5} />
             </div>
           </div>
         )}
+        <ProgressBar percent={percent} />
       </div>
     );
   }
