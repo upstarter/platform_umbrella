@@ -20,11 +20,17 @@
 
 // import socket from "./socket"
 
-// if('serviceWorker' in navigator) {
-//   navigator.serviceWorker.register('/sw.js')
-//            .then(function() { console.log("Service Worker Registered"); });
-// }
-import '../sw'
+if('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js')
+    .then(function() { console.log("Service Worker Registered"); })
+    .catch(function(err) {
+      //registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+    });
+} else {
+  console.log('No service-worker on this browser');
+};
+
 import './react_app/index'
 
 // import './vanilla_js/nav'

@@ -16,7 +16,6 @@
     %link{rel: "stylesheet", href: css_path}
     - favicon = static_path(@conn, "/images/favicon.png")
     %link{rel: "icon", type:"image/x-icon", href: favicon}
-    -# %script{src: "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" }
     - prod = Application.get_env(:platform_web, :env)
     - if prod == :prod do
 

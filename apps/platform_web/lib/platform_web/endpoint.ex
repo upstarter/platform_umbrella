@@ -11,7 +11,7 @@ defmodule PlatformWeb.Endpoint do
   plug(Plug.Static,
     at: "/",
     from: :platform_web,
-    gzip: false,
+    gzip: true,
     only: ~w(css fonts images js favicon.ico robots.txt sw.js cache_manifest.json)
   )
 
