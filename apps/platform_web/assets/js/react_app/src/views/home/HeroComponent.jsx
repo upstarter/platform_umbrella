@@ -6,7 +6,7 @@ import SignUpWizard from "../SignUpWizard/SignUpWizard";
 import { url } from "../../utils/consts";
 // quiz
 import Quiz from "../../components/quiz/Quiz";
-import { quiz } from "../../utils/quizData";
+import { quiz } from "../../data/analystQuizData";
 
 export default class HeroComponent extends React.Component {
   constructor() {

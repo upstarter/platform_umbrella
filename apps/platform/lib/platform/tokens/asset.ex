@@ -12,6 +12,27 @@ defmodule Platform.Tokens.Asset do
     :crypto.strong_rand_bytes(length) |> Base.url_encode64() |> binary_part(0, length)
   end
 
+  def cw_assets do
+    # multichain capital
+    # money-like functional utility tokens:
+    # 1. profit-share (burn-and-mint) equilibrium mechanic
+    # 2. work tokens (not payments, right to perform work in network)
+    #   • augur, keep
+    %{
+      governance: ["Aragon", "Colony", "Tezos"],
+      utility_tokens: [
+        work_tokens: ["civic", "0x", "Basic attention token", "golem"],
+        usage_tokens: []
+      ],
+      ai: ["botc", "OCN (ocean protocol)", "singularityNet"],
+      securitized_computing_resources: ["Filecoin", "Sia", "Storj", "Golem", "Orchid"],
+      reputation_mining: ["Rootcore", "Colony", "Numeraire", "Zeppelin", "OSCoin"],
+      advertising: ["Adchain"],
+      curation_markets: [],
+      bonding_curves: []
+    }
+  end
+
   def portfolio do
     [
       %Asset{
@@ -181,7 +202,8 @@ defmodule Platform.Tokens.Asset do
       %Asset{ticker: "LSK"},
       %Asset{ticker: "TRX"},
       %Asset{ticker: "ICN"},
-      %Asset{ticker: "IOTA"}
+      %Asset{ticker: "IOTA"},
+      %Asset{ticker: "DFINITY"}
     ]
   end
 
@@ -237,5 +259,9 @@ defmodule Platform.Tokens.Asset do
     "REQUEST NETWORK"
     "ICON"
     "TOKEN BOX"
+  end
+
+  def curiosities do
+    "FOAM (Proof of Location)"
   end
 end
