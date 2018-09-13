@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import img from "../../../../../static/images/nav_logo.svg";
 import { Link } from "react-router-dom";
+import { isLoggedIn } from "../../utils/auth";
 
 export default class NavContainer extends React.Component {
   constructor(props) {
@@ -113,9 +114,20 @@ export default class NavContainer extends React.Component {
                 <Link to="/contribute" className="navbar-item">
                   Analysts
                 </Link>
-                <Link to="/login" className="navbar-item">
-                  Login
-                </Link>
+
+                {isLoggedIn() ? (
+                  <div className="navbar-item has-dropdown is-hoverable">
+                    <a className="navbar-link">Account</a>
+                    <div className="navbar-dropdown is-right">
+                      <a style={{color: 'grey'}} className="navbar-item">Profile</a>
+                      <a style={{color: 'grey'}} className="navbar-item">Sign out</a>
+                    </div>
+                  </div>
+                ) : (
+                  <Link to="/login" className="navbar-item">
+                    Login
+                  </Link>
+                )}
               </div>
             </div>
           </div>

@@ -25,7 +25,7 @@ export default class HomeContainer extends React.Component {
             <NavContainer />
             <Route exact path="/" component={HomeComponent} />
             <Route exact path="/login" component={Login} />
-            <PrivateRoute path="/app" component={Protected} />
+            <PrivateRoute path="/profile" component={Protected} />
             <Route exact path="/about" component={AboutComponent} />
             <Route exact path="/portfolio" component={PortfolioContainer} />
             <Route exact path="/contribute" component={ProviderContainer} />
