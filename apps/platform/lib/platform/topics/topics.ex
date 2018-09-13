@@ -59,7 +59,7 @@ defmodule Platform.Topics do
         id: 5,
         short_desc:
           "The act or process of complying to a desire, demand, proposal, or regimen or to
-      coercion",
+      coercion.",
         long_desc: ""
       },
       %Topic{
@@ -142,8 +142,8 @@ defmodule Platform.Topics do
       %Topic{
         name: "Decentralized Exchanges",
         id: 15,
-        short_desc:
-          "Decentralized exchanges are the exchanges that do not require a third party to store your funds.",
+        short_desc: "Decentralized exchanges are the exchanges that do not require a third
+          party to store your funds.",
         long_desc: ""
       },
       %Topic{
@@ -169,7 +169,7 @@ defmodule Platform.Topics do
       %Topic{
         name: "Mechanism Design",
         id: 18,
-        short_desc: "a field in economics and game theory that takes an engineering
+        short_desc: "A field in economics and game theory that takes an engineering
           approach to designing economic mechanisms or incentives, toward
           desired objectives, in strategic settings, where players act
           rationally.",
@@ -193,13 +193,12 @@ defmodule Platform.Topics do
       %Topic{
         name: "Internet of Things",
         id: 21,
-        short_desc: "The network of physical devices, vehicles, home appliances, and other
-          items embedded with electronics, software, sensors, actuators, and
-          connectivity which enables these things to connect and exchange
-          data, creating opportunities for more direct
-          integration of the physical world into computer-based systems,
-          resulting in efficiency improvements, economic benefits, and reduced
-          human exertions.",
+        short_desc: "The network of physical devices, vehicles, home appliances, and other items
+          embedded with electronics, software, sensors, actuators, and connectivity which
+          enables these things to connect and exchange data, creating opportunities for
+          more direct integration of the physical world into computer-based systems,
+          resulting in efficiency improvements, economic benefits, and reduced human
+          exertions.",
         long_desc: ""
       }
     ]

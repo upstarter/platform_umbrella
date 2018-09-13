@@ -42,7 +42,7 @@ defmodule Platform.Mixfile do
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 1.0"},
       {:argon2_elixir, "~> 1.2"},
-      {:guardian, "~> 1.0", override: true}
+      {:guardian, "~> 1.1.1", override: true}
     ]
   end
 

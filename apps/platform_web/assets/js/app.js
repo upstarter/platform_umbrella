@@ -24,8 +24,8 @@
 //   navigator.serviceWorker.register('/sw.js')
 //            .then(function() { console.log("Service Worker Registered"); });
 // }
+import '../sw'
 import './react_app/index'
-
 
 // import './vanilla_js/nav'
 
