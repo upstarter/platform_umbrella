@@ -3,12 +3,12 @@ defmodule Platform.Repo.Migrations.CreateTopics do
 
   def change do
     create table(:topics) do
-      add :name, :string
-      add :short_desc, :string
-      add :long_desc, :text
+      add(:name, :string, null: false)
+      add(:short_desc, :string)
+      add(:long_desc, :text)
+      add(:path, {:array, :integer}, null: false)
 
       timestamps()
     end
-
   end
 end

@@ -39,6 +39,7 @@ defmodule Platform.Mixfile do
       {:poison, "~> 3.1", override: true},
       {:postgrex, "~> 0.13.5"},
       {:ecto, "~> 2.2.10"},
+      {:ecto_materialized_path, "~> 0.2.0"},
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 1.0"},
       {:argon2_elixir, "~> 1.2"},
