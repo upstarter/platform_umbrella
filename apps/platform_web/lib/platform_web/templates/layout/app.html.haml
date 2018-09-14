@@ -9,13 +9,33 @@
      Alt Coins, Trading, Cryptoassets, Cryptocurrency, Bitcoin, Bitcoin Trading,
      Blockchain, ICO, Initial Coin Offering" name="description"/>
     <meta content="CryptoWise" name="author"/>
+    <meta name="theme-color" content="#262b3c">
     %title CryptoWise
-    %script{src: "https://use.fontawesome.com/2aa13a4a25.js" }
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     - css_path = static_path(@conn, "/css/app.css")
     %link{rel: "stylesheet", href: css_path}
     - favicon = static_path(@conn, "/images/favicon.png")
     %link{rel: "icon", type:"image/x-icon", href: favicon}
+    %link{rel: "manifest", href: "/manifest.json"}
+
+  %body
+    #wrapper
+      = render(@view_module, @view_template, assigns)
+
+    / Load Facebook SDK for JavaScript
+    -# #fb-root
+    // :javascript
+    //   function(d, s, id) {
+    //     var js, fjs = d.getElementsByTagName(s)[0];
+    //     if (d.getElementById(id)) return;
+    //     js = d.createElement(s); js.id = id;
+    //     js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
+    //     fjs.parentNode.insertBefore(js, fjs);
+    //   }(document, 'script', 'facebook-jssdk');
+    / Your customer chat code
+    -# .fb-customerchat{:attribution => "setup_tool", :page_id => "1806273466097268", :theme_color => "#fa3c4c"}
+    %script{src: "https://use.fontawesome.com/2aa13a4a25.js" }
+    %script{src: "#{static_path(@conn, "/js/app.js")}" }
     - prod = Application.get_env(:platform_web, :env)
     - if prod == :prod do
 
@@ -37,23 +57,5 @@
         }}();
       </script>
 
-  %body
-    #wrapper
-      = render(@view_module, @view_template, assigns)
-
-    / Load Facebook SDK for JavaScript
-    -# #fb-root
-    // :javascript
-    //   function(d, s, id) {
-    //     var js, fjs = d.getElementsByTagName(s)[0];
-    //     if (d.getElementById(id)) return;
-    //     js = d.createElement(s); js.id = id;
-    //     js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
-    //     fjs.parentNode.insertBefore(js, fjs);
-    //   }(document, 'script', 'facebook-jssdk');
-    / Your customer chat code
-    -# .fb-customerchat{:attribution => "setup_tool", :page_id => "1806273466097268", :theme_color => "#fa3c4c"}
-
-    %script{src: "#{static_path(@conn, "/js/app.js")}" }
 
     -# %script{ src: "https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" }
