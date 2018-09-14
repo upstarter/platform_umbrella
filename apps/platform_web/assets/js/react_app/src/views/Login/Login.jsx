@@ -10,7 +10,7 @@ class Login extends React.Component {
     this.handleUpdate = this.handleUpdate.bind(this);
   }
   state = {
-    username: ``,
+    email: ``,
     password: ``
   };
 
@@ -22,46 +22,72 @@ class Login extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    handleLogin(this.state);
+    if (handleLogin(this.state)) {
+      this.props.history.push("/profile");
+    }
   }
 
   render() {
     if (isLoggedIn()) {
-      <Redirect
-        to={{
-          pathname: "/app",
-          state: { from: props.location }
-        }}
-      />;
+      return <Redirect to={{ pathname: "/profile" }} />;
     }
-
     return (
-      <div title="Log In">
-        <form
-          method="post"
-          onSubmit={event => {
-            handleSubmit(event);
-            window.location(`/app`);
-          }}
-        >
+      <div title="Log In" className="light-wrap container">
+        <div className="is-centered">
+          <article className="card is-rounded">
+            <form
+              onSubmit={event => {
+                this.handleSubmit(event);
+              }}
+            >
+              <div className="card-content">
+                <h1 className="title">
+                  <img
+                    src="https://placeholdit.imgix.net/~text?txtsize=13&txt=150%C3%9750&w=150&h=50"
+                    alt="logo"
+                    width={200}
+                  />
+                </h1>
+                <p className="control has-icon">
+                  <input
+                    className="input"
+                    type="email"
+                    placeholder="Email"
+                    name="email"
+                    onChange={this.handleUpdate}
+                  />
+                  <i className="fa fa-envelope" />
+                </p>
+                <p className="control has-icon">
+                  <input
+                    className="input"
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    onChange={this.handleUpdate}
+                  />
+                  <i className="fa fa-lock" />
+                </p>
+                <p className="control">
+                  <button
+                    type="submit"
+                    className="button is-primary is-medium is-fullwidth"
+                  >
+                    <i className="fa fa-user" />
+                    Login
+                  </button>
+                </p>
+              </div>
+            </form>
+          </article>
+        </div>
+        <div className="">
           <p>
-            For this demo, please log in with the username <code>gatsby</code>{" "}
-            and the password <code>demo</code>.
+            For this demo, please log in with the username{" "}
+            <code>cryptowise@gmail.com</code> and the password <code>demo</code>
+            .
           </p>
-          <label>
-            Username
-            <input type="text" name="username" onChange={this.handleUpdate} />
-          </label>
-          <label>
-            Password
-            <input
-              type="password"
-              name="password"
-              onChange={this.handleUpdate}
-            />
-          </label>
-          <input type="submit" value="Log In" />
-        </form>
+        </div>
       </div>
     );
   }
