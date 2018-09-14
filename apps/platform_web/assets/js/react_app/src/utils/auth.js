@@ -7,17 +7,17 @@ const getUser = () =>
 const setUser = user => (window.localStorage.cryptowiseUser = JSON.stringify(user))
 
 export const handleLogin = ({
-    username,
+    email,
     password
 }) => {
     if (!isBrowser) return false
 
-    if (username === `cryptowise` && password === `demo`) {
+    if (email === `cryptowise@gmail.com` && password === `demo`) {
         console.log(`Credentials match! Setting the active user.`)
         return setUser({
-            name: `Tugi`,
-            legalName: `Tuguldur Bayarnyam`,
-            email: `tuguscript@gmail.com`,
+            name: `demoUser`,
+            legalName: `DemoName`,
+            email,
         })
     }
 
