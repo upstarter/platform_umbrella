@@ -108,7 +108,7 @@ export default class NavContainer extends React.Component {
               </div>
 
               <div className="navbar-end">
-                <Link to="/" className="navbar-item">
+                <Link to="/investors" className="navbar-item">
                   Investors
                 </Link>
                 <Link to="/contribute" className="navbar-item">

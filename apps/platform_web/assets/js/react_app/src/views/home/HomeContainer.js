@@ -23,11 +23,11 @@ export default class HomeContainer extends React.Component {
         <BrowserRouter>
           <section id="container">
             <NavContainer />
-            <Route exact path="/" component={HomeComponent} />
+            <Route exact path="/" component={PortfolioContainer} />
+            <Route exact path="/investors" component={HomeComponent} />
             <Route exact path="/login" component={Login} />
             <PrivateRoute path="/profile" component={Protected} />
             <Route exact path="/about" component={AboutComponent} />
-            <Route exact path="/portfolio" component={PortfolioContainer} />
             <Route exact path="/contribute" component={ProviderContainer} />
             <Route exact path="/privacy_policy" component={PrivacyComponent} />
             <div id="footer">
