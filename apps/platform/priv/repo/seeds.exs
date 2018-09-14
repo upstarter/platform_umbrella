@@ -48,6 +48,8 @@ dApps, often layering their own unique services on top."
   %Topic{name: "Decentralized Exchange Platform", short_desc: "Decentralized exchange platforms
 allow the conversion of one cryptoasset to another without a middleman mediating
 the transaction."},
+  %Topic{name: "Derivatives (Options & Futures)", short_desc: "Options & Futures
+contracts allow one to buy or sell a given amount of securities based on future events."},
   %Topic{
     name: "Distributed Computation",
     short_desc: "Distributed computation assets create a market for CPU/GPU power distributed
@@ -63,6 +65,8 @@ traditional middleman."},
 to be confused with decentralized exchange platforms this sector refers to
 tokens that exist primarily on centralized exchanges for use on those
 exchanges."},
+  %Topic{name: "Exchange Traded Funds (ETF's)", short_desc: "An ETF is a basket of
+securities that you can buy or sell through a brokerage firm on an exchange"},
   %Topic{name: "Gambling Industry", short_desc: "Gaming/Gambling
 industry assets often use properties of blockchains to achieve provably-fair
 gambling; a property unique to blockchain-based gaming platforms."},
@@ -72,6 +76,10 @@ being used within, gaming platforms."},
 Platform", short_desc: "General purpose decentralized compute platforms operate
 as a global computer, capable of executing arbitrary code - called smart
 contracts or 'dapps'."},
+  %Topic{name: "Hedge Funds", short_desc: "A hedge fund is an actively managed
+basket of securities which are permitted to short sell securites and
+construct advanced models & systems including using derivatives(options, etc..)
+ to manage risk and return."},
   %Topic{name: "Identity", short_desc: "Decentralized
 identity systems use blockchain networks to create identity records that aren't
 controlled by any single entity or group."},

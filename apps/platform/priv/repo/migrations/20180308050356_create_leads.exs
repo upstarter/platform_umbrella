@@ -3,8 +3,8 @@ defmodule Platform.Repo.Migrations.CreateLeads do
 
   def change do
     create table(:leads) do
-      add :full_name, :string
-      add :email, :string
+      add(:full_name, :string)
+      add(:email, :string, null: false)
 
       timestamps()
     end
