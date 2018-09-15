@@ -9,8 +9,6 @@
     "eslint": "node_modules/.bin/eslint -c ../.eslintrc.js js/"
   },
   "dependencies": {
-    "ag-grid": "^18.1.2",
-    "ag-grid-react": "^18.1.0",
     "axios": "^0.18.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
