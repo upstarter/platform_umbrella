@@ -69,14 +69,6 @@ export default class PortfolioGrid extends React.Component {
     this.setState({ totalWeight: total });
   };
 
-  _handleAddRow = () => {
-    const { rowData } = this.state;
-
-    this.setState({
-      rowData: [...rowData, { holding: "Select an asset", weight: 0 }]
-    });
-  };
-
   _handleSubmit = () => {
     if (this.state.totalWeight === 100) {
       /* SUBMIT FORM */
@@ -147,9 +139,6 @@ export default class PortfolioGrid extends React.Component {
               ))}
             </tbody>
           </table>
-        </div>
-        <div onClick={this.handleAddRow} style={styles.addRowBtn}>
-          Add another asset
         </div>
         <div onClick={this.handleSubmit} style={styles.submitBtn}>
           Submit Portfolio
