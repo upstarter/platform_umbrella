@@ -45,7 +45,7 @@ export default class ProviderHeroComponent extends React.Component {
         </Modal>
         <div className="heero-body column">
           <div className="container">
-            <h1 className="title">
+            <h1 className="title2">
               <span className="fancy-underline">Monetize</span> your crypto
               capabilities.
             </h1>
