@@ -67,13 +67,13 @@ export const quiz = {
       "correctAnswer": "4"
     },
     {
-      "question": "Which most precisely describes a blockchain?",
+      "question": "Which is a description of a blockchain?",
       "questionType": "text",
       "answers": [
         "A distributed ledger",
         "A decentrally-governed, immutable, append-only ledger",
         "An incentivized network for accomplishing things",
-        ""
+        "All of the Above"
       ],
       "correctAnswer": "4"
     },
@@ -90,7 +90,7 @@ export const quiz = {
       "correctAnswer": "0"
     },
     {
-      "question": "Which valuation model is best fit for cryptoassets?",
+      "question": "Which valuation model is the best fit for cryptoassets?",
       "questionType": "text",
       "answers": [
         "Discounted Cash Flow (DCF)",
@@ -101,7 +101,7 @@ export const quiz = {
       "correctAnswer": "3"
     },
     {
-      "question": "Which has more characteristics of a store of value?",
+      "question": "Which token has more characteristics of a store of value?",
       "questionType": "text",
       "answers": [
         "Ethereum (ETH)",

@@ -31,6 +31,7 @@ defmodule PlatformWeb.Router do
     get("/about", PageController, :home)
     get("/blog", PageController, :home)
     get("/contribute", PageController, :home)
+    get("/investors", PageController, :home)
     get("/portfolio", PageController, :home)
     get("/search", PageController, :home)
     get("/privacy_policy", PageController, :home)

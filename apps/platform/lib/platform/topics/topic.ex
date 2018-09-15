@@ -9,10 +9,13 @@ defmodule Platform.Topics.Topic do
   import Ecto.Changeset
   alias Platform.Providers.Provider
 
+  use EctoMaterializedPath
+
   schema "topics" do
     field(:long_desc, :string)
     field(:name, :string)
     field(:short_desc, :string)
+    field(:path, EctoMaterializedPath.Path, default: [])
 
     many_to_many(:providers, Provider, join_through: "providers_topics")
     timestamps()

@@ -56,6 +56,8 @@ export default class HeroComponent extends React.Component {
     }
     this.setState({ showModal: false });
   }
+
+
   render() {
     var flags = { userType: "investor" };
     let state = this.state;
@@ -85,7 +87,13 @@ export default class HeroComponent extends React.Component {
           <div className="container">
             <h1 className="title">
               Become a <span className="fancy-underline">top 1%</span> crypto
-              investor.
+              <div className="slidingVertical">
+                <span>investor.</span>
+                <span>analyst.</span>
+                <span>developer.</span>
+                <span>founder.</span>
+                <span>trader.</span>
+              </div>
             </h1>
             <p className="subtitle-big">Receive free insights in your inbox.</p>
             <div id="subscribe-form" className="email-leadgen">
