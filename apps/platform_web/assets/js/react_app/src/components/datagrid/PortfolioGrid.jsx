@@ -17,10 +17,12 @@ export default class PortfolioGrid extends React.Component {
     this.validateInput = this._validateInput.bind(this);
     this.handleAddRow = this._handleAddRow.bind(this);
     this.handleSubmit = this._handleSubmit.bind(this);
-
+    this.handleChange = this.handleChange.bind(this);
+    this.myRef = React.createRef();
     this.state = {
-      tokens: tokens
-
+      tokens: tokens,
+      selectedHoldings: [],
+      rows: [0, 1]
       // columnDefs: [
       //   {
       //     headerName: "Holding",
@@ -86,12 +88,28 @@ export default class PortfolioGrid extends React.Component {
       }, 3000);
     }
   };
+  handleChange(event) {
+    this.setState(
+      {
+        ...this.state,
+        selectedHoldings: [{ name: event.target.value }]
+      },
+      () => {
+        var rows = this.state.rows;
+        rows.push("new row");
+        this.setState({ rows: rows });
+      }
+    );
+  }
+  deleteRow(i) {
+    let rows = this.state.rows;
+    rows.pop(i);
+    this.setState({ rows: rows });
+  }
 
   render() {
     let state = this.state;
-    let token = state.tokens.map((t, i) => (
-      <option value={1}>{t.holding}</option>
-    ));
+    let token = state.tokens.map((t, i) => <option>{t.holding}</option>);
     return (
       <div>
         <div>
@@ -107,22 +125,24 @@ export default class PortfolioGrid extends React.Component {
                 <th />
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td className="has-input">
-                  <div className="select is-small">
-                    <select>{token}</select>
-                  </div>
-                </td>
-                <td className="has-input">
-                  <input className="input is-small" type="text" />
-                </td>
+            <tbody ref={this.myRef}>
+              {state.rows.map((r, i) => (
+                <tr>
+                  <td>{i + 1}</td>
+                  <td className="has-input">
+                    <div className="select is-small">
+                      <select onChange={this.handleChange}>{token}</select>
+                    </div>
+                  </td>
+                  <td className="has-input">
+                    <input className="input is-small" type="text" />
+                  </td>
 
-                <td className="has-input">
-                  <button>del</button>
-                </td>
-              </tr>
+                  <td className="has-input">
+                    <button onClick={i => this.deleteRow(i)}>del</button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
