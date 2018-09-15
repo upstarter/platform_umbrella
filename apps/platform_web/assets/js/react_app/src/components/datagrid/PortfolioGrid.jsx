@@ -139,7 +139,9 @@ export default class PortfolioGrid extends React.Component {
                   </td>
 
                   <td className="has-input">
-                    <button onClick={i => this.deleteRow(i)}>del</button>
+                    <span class="icon" onClick={i => this.deleteRow(i)} style={{cursor: 'pointer'}}>
+                      <i class="fas fa-trash" />
+                    </span>
                   </td>
                 </tr>
               ))}
