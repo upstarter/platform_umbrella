@@ -1,4 +1,9 @@
 {
-    "presets": ["env", "react"],
-    "plugins": ["transform-class-properties"]
+    "presets": [
+        "es2015",
+        "react"
+    ],
+    "plugins": [
+        "react-loadable/babel"
+    ]
 }

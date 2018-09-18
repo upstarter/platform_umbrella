@@ -14,6 +14,15 @@ import BlogListContainer from "../../components/blog/BlogListContainer";
 import ProviderContainer from "../providers/ProviderContainer";
 import ProviderComponent from "../providers/ProviderComponent";
 
+// import Loadable from 'react-loadable';
+//
+// const AboutComponent = Loadable({
+//   loader: () => import('./AboutComponent'),
+//   loading() {
+//     return <div>Loading...</div>
+//   }
+// });
+
 const Protected = () => <h3>Protected</h3>;
 
 export default class HomeContainer extends React.Component {
@@ -26,7 +35,7 @@ export default class HomeContainer extends React.Component {
             <Route exact path="/" component={PortfolioContainer} />
             <Route exact path="/investors" component={HomeComponent} />
             <Route exact path="/login" component={Login} />
-            <PrivateRoute path="/profile" component={Protected} />
+            <PrivateRoute exact path="/profile" component={Protected} />
             <Route exact path="/about" component={AboutComponent} />
             <Route exact path="/contribute" component={ProviderContainer} />
             <Route exact path="/privacy_policy" component={PrivacyComponent} />

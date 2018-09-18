@@ -27,14 +27,6 @@ defmodule PlatformWeb.Router do
     pipe_through(:browser)
 
     get("/", PageController, :home)
-
-    get("/about", PageController, :home)
-    get("/blog", PageController, :home)
-    get("/contribute", PageController, :home)
-    get("/investors", PageController, :home)
-    get("/portfolio", PageController, :home)
-    get("/search", PageController, :home)
-    get("/privacy_policy", PageController, :home)
   end
 
   # Other scopes may use custom stacks.

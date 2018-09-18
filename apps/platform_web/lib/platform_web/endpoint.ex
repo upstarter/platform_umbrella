@@ -12,7 +12,8 @@ defmodule PlatformWeb.Endpoint do
     at: "/",
     from: :platform_web,
     gzip: true,
-    only: ~w(css fonts images js favicon.ico robots.txt sw.js cache_manifest.json manifest.json)
+    only:
+      ~w(css fonts images js favicon.ico robots.txt offline.html sw.js cache_manifest.json manifest.json)
   )
 
   # Code reloading can be explicitly enabled under the
