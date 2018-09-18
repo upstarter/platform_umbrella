@@ -9,7 +9,6 @@ export default class AboutComponent extends React.Component {
       <React.Fragment>
         <section id="about" className="light-wrap">
           <div id="about-content" className="content">
-            <BarChart/>
             <h1 className="title">About</h1>
             <h3 className="subtitle">
               CryptoWise is a collaborative investment ecosystem harnessing the

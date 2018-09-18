@@ -1,6 +1,7 @@
 const path = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 const env = process.env.MIX_ENV || "dev";
 const isProd = env === "prod";
@@ -22,9 +23,13 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "../priv/static/"),
+    chunkFilename: '[name].bundle.js',
     filename: "js/app.js"
   },
   devServer: {
+    historyApiFallback: {
+      index: '/'
+    },
     contentBase: path.resolve(__dirname, "../priv/static/")
   },
   resolve: {
@@ -64,18 +69,18 @@ module.exports = {
           }
         }
       },
-      {
-        test: /\.elm$/,
-        exclude: ["/elm-stuff/", "/node_modules"],
-        loader: "elm-webpack-loader",
-        options: {
-          pathToMake: elmMakePath,
-          maxInstances: 2,
-          debug: !isProd,
-          warn: true,
-          cwd: elmSource
-        }
-      },
+      // {
+      //   test: /\.elm$/,
+      //   exclude: ["/elm-stuff/", "/node_modules"],
+      //   loader: "elm-webpack-loader",
+      //   options: {
+      //     pathToMake: elmMakePath,
+      //     maxInstances: 2,
+      //     debug: !isProd,
+      //     warn: true,
+      //     cwd: elmSource
+      //   }
+      // },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         loader: "url-loader?name=/images/[name].[ext]",
@@ -88,10 +93,13 @@ module.exports = {
     noParse: [/\.elm$/]
   },
   plugins: [
-    new ExtractTextPlugin("css/app.css"),
+    new ExtractTextPlugin("./css/app.css"),
     new CopyWebpackPlugin([{
       from: "./static"
-    }])
+    }]),
+    // new BundleAnalyzerPlugin({
+    //     generateStatsFile: true
+    // })
   ]
 };
 

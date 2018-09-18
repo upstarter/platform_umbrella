@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
-import selectPost from "../../actions/index"
 import BlogListItem from './BlogListItem'
 
 
@@ -72,7 +71,7 @@ const mapStateToProps = (state, ownProps) => {
 //whenever selectPost is called the result should be passed to all reducers
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  return bindActionCreators({selectPost: selectPost}, dispatch);
+  return bindActionCreators({selectPost: null}, dispatch);
 }
 
 // connect takes a function and component and produces a container that is aware
