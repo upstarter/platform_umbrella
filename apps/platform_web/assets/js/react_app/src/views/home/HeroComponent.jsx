@@ -85,7 +85,7 @@ export default class HeroComponent extends React.Component {
         </Modal>
         <div className="heero-body column">
           <div className="container">
-            <h1 className="title">
+            <h1 className="title1">
               Become a <span className="fancy-underline">top 1%</span> crypto
               <div className="slidingVertical">
                 <span>investor.</span>
