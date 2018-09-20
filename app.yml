@@ -25,6 +25,7 @@ env_variables:
   ELM_BIN: apps/platform_web/assets/node_modules/elm/binwrappers
   ELM_OUTPUT_PATH: apps/platform_web/priv/static/js
   ELM_SRC_PATH: apps/platform_web/assets/js/elm/src
+  NODE_ENV: production
   MIX_ENV: prod
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: ZQLm3AsToWtXkyePALtGRhjs
