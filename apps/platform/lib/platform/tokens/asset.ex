@@ -47,7 +47,7 @@ defmodule Platform.Tokens.Asset do
       %Asset{
         id: random_string(64),
         ticker: "EOS",
-        name: "EOSIO"
+        name: "EOSIO",
         img: "https://icowatchlist.com/logos/eos.png",
         short_desc: "A powerful infrastructure for decentralized apps"
       },
