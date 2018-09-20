@@ -28,9 +28,9 @@ module.exports = {
     // `path` is the folder where Webpack will place your bundles
     path: path.resolve(__dirname, "../priv/static/"),
     // `filename` provides a template for naming your bundles (remember to use `[name]`)
-    filename: '[name].bundle.js',
+    filename: 'js/[name].bundle.js',
     // `chunkFilename` provides a template for naming code-split bundles (optional)
-    chunkFilename: '[name].bundle.js'
+    chunkFilename: 'js/[name].bundle.js'
   },
   devServer: {
     // webpack-dev-server defaults to localhost:8080
