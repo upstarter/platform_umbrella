@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import BarChart from "../../components/charts/bar";
+// import BarChart from "../../components/charts/bar";
 
 
 export default class AboutComponent extends React.Component {

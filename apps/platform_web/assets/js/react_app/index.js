@@ -8,10 +8,10 @@ import React from "react"
 import ReactDOM from "react-dom"
 import App from "./src/App"
 import "normalize.css"
-
+// import { getBundles } from 'react-loadable/webpack'
 
 ReactDOM.render(
-  <App/>
-  , document.getElementById("wrapper")
+  // <Loadable.Capture report={moduleName => modules.push(moduleName)}>
+    <App/>, document.getElementById("wrapper")
+  // </Loadable.Capture>
 )
-
