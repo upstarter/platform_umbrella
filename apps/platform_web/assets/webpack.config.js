@@ -25,9 +25,12 @@ module.exports = {
     ]
   },
   output: {
+    // `path` is the folder where Webpack will place your bundles
     path: path.resolve(__dirname, "../priv/static/"),
-    chunkFilename: '[name].bundle.js',
-    filename: "app.js",
+    // `filename` provides a template for naming your bundles (remember to use `[name]`)
+    filename: '[name].bundle.js',
+    // `chunkFilename` provides a template for naming code-split bundles (optional)
+    chunkFilename: '[name].bundle.js'
   },
   devServer: {
     // webpack-dev-server defaults to localhost:8080
@@ -47,6 +50,7 @@ module.exports = {
       "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
       "Access-Control-Allow-Headers": "*"
     },
+    watchOptions: {ignored: /node_modules/},
     contentBase: path.resolve(__dirname, "../priv/static/")
   },
   optimization: {
