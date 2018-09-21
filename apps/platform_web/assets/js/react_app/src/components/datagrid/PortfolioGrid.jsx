@@ -6,7 +6,8 @@ export default class PortfolioGrid extends React.Component {
   constructor() {
     super();
     this.state = {
-      holdings: [{ holding: "", allocation: null }]
+      holdings: [{ holding: "", allocation: null }],
+      noMoreRowInfo: false
     };
     this.addRow = this.addRow.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,6 +17,11 @@ export default class PortfolioGrid extends React.Component {
       this.setState(prevState => ({
         holdings: [...prevState.holdings, { holding: "", allocation: "" }]
       }));
+    } else {
+      this.setState({ noMoreRowInfo: true });
+      setTimeout(() => {
+        this.setState({ noMoreRowInfo: false });
+      }, 3000);
     }
   };
   handleSubmit = e => {
@@ -39,15 +45,20 @@ export default class PortfolioGrid extends React.Component {
     this.setState({ holdings });
   }
   render() {
-    let { holdings } = this.state;
+    let { holdings, noMoreRowInfo } = this.state;
     return (
       <div>
-        {/* <div class="notification is-info">
-          <button class="delete" />
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit euismod...
-          </p>
-        </div> */}
+        {noMoreRowInfo ? (
+          <div class="notification is-info">
+            <button
+              class="delete"
+              onClick={() => {
+                this.setState({ noMoreRowInfo: false });
+              }}
+            />
+            <p>Please choose less than 8.</p>
+          </div>
+        ) : null}
         <div>
           Total Weight: <strong>{`${this.state.totalWeight}%`}</strong>
         </div>
@@ -115,8 +126,19 @@ export default class PortfolioGrid extends React.Component {
                 })}
               </tbody>
             </table>
-            <a class="button is-fullwidth is-primary is-outlined" onClick={this.addRow} >Add asset</a>
-            <a class="button is-fullwidth is-link" onClick={this.handleSubmit} style={{marginTop: '10px'}}>Submit Portfolio</a>
+            <a
+              class="button is-fullwidth is-primary is-outlined"
+              onClick={this.addRow}
+            >
+              Add asset
+            </a>
+            <a
+              class="button is-fullwidth is-link"
+              onClick={this.handleSubmit}
+              style={{ marginTop: "10px" }}
+            >
+              Submit Portfolio
+            </a>
           </form>
         </div>
 
