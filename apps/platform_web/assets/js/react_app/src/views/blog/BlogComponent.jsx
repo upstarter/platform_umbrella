@@ -71,7 +71,7 @@ class BlogComponent extends React.Component {
           <div className={classes.blogPosts}>
             <Row type="flex" justify="space-between">
               {blogPosts.map(post =>
-                <Col xs={25} sm={25} md={7} lg={7} xl={7}>
+                <Col key={post.link} xs={25} sm={25} md={7} lg={7} xl={7}>
                   <div key={post.link} className={classes.card}>
                     <div className="card-content">
                       <p id="date" className="caption" dangerouslySetInnerHTML={{__html: post.date}}>

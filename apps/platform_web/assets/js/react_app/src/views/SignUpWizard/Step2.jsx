@@ -1,45 +1,47 @@
 import React, { Component } from "react";
 import injectSheet from "react-jss";
 import Tile from "../../components/Tile/Tile";
+import logo from "../../../../../static/images/white_nav_logo.svg";
+import fbsvg from "../../../../../static/images/facebook.svg";
+import fbWhite from "../../../../../static/images/facebook-white.svg";
+import googleLogo from "../../../../../static/images/google.svg";
+import googleLogoWhite from "../../../../../static/images/google-plus-white.png";
+import colors from "../../styles/colors"
 
-class step2Unstyled extends Component {
+
+class SignUpStep2 extends Component {
   constructor(props) {
     super(props);
-    this._validate = this._validate.bind(this);
+    // this._validate = this._validate.bind(this);
     // Bindings for form fields would go here,
+    // and state would keep track of field input
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.state = {
-      topic_knowledge_ids: []
+      email: '',
+      name: '',
+      password: ''
     };
   }
-  _validate() {
-    if (this.state.topic_knowledge_ids.length >= 3) {
-      this.props.saveForm(this.state.topic_knowledge_ids);
-      this.props.afterValid(this.state);
-    }
+  // _validate() {
+  //   // a sanitized version of state can be passed instead
+  //   this.props.afterValid(this.state);
+  // }
+  handleEmailChange(event) {
+    this.setState({ email: event.target.value });
   }
-  collectTopicKnowledgeIds(id) {
-    this.setState({
-      topic_knowledge_ids: [...this.state.topic_knowledge_ids, id]
-    });
+  handleNameChange(event) {
+    this.setState({ name: event.target.value });
   }
-  removeTopicKnowledgeIds(id) {
-    let state = this.state;
-    let i = state.topic_knowledge_ids.indexOf(id);
-    if (i != -1) {
-      state.topic_knowledge_ids.splice(i, 1);
-    }
+  handlePasswordChange(event) {
+    this.setState({ password: event.target.value });
   }
-  collectTopicKnowledgeIds(id) {
-    this.setState({
-      topic_knowledge_ids: [...this.state.topic_knowledge_ids, id]
-    });
-  }
-  removeTopicKnowledgeIds(id) {
-    let state = this.state;
-    let i = state.topic_knowledge_ids.indexOf(id);
-    if (i != -1) {
-      state.topic_knowledge_ids.splice(i, 1);
-    }
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log(this.state);
+    this.props.saveForm(this.state);
   }
   render() {
     let props = this.props;
@@ -47,101 +49,243 @@ class step2Unstyled extends Component {
     if (props.currentStep !== 2) {
       return null;
     }
-    let tiles = this.props.topics
-      ? props.topics.map((data, i) => {
-          return (
-            <Tile
-              data={data}
-              key={i}
-              id={data.id}
-              removeTopicKnowledgeIds={id => this.removeTopicKnowledgeIds(id)}
-              collectTopicKnowledgeIds={id => this.collectTopicKnowledgeIds(id)}
-              selectedIds={props.selectedIds}
-            />
-          );
-        })
-      : [];
+    let Tiles = [];
+    for (let i = 0; i < 18; i++) {
+      Tiles.push(<Tile />);
+    }
     return (
       <div className={classes.container}>
         <div className={classes.header}>
           <h2 className={classes.title}>
-            Which of these topics are you most interested in?
+            Monetize your crypto capabilities
           </h2>
         </div>
         <div className={classes.main}>
-          <div className={classes.tileGrid}>{tiles}</div>
-        </div>
-        <div className={classes.main}>
-          <p>choose at least 3</p>
-          <button className="button is-primary is-rounded" onClick={props.prev}>
-            Back
-          </button>
-          <button
-            className="button is-primary is-rounded"
-            onClick={this._validate}
-          >
-            Next
-          </button>
+          <div className={classes.socialButtons}>
+            <a
+              href="#"
+              className={"social-button " + classes.facebook_connect}
+              id="facebook-connect"
+            >
+              {" "}
+              <span>Connect with Facebook</span>
+            </a>
+            <a
+              href="#"
+              className={"social-button " + classes.google_connect}
+              id="google-connect"
+            >
+              {" "}
+              <span>Connect with Google</span>
+            </a>
+          </div>
+          <div className={classes.vl} />
+          <div className={classes.loginForm}>
+            <form
+              onSubmit={e => {
+                this.handleSubmit(e);
+              }}
+            >
+              <div className="field">
+                <label htmlFor="name" className="label">
+                  Name
+                </label>
+                <div className="control has-icons-left">
+                  <input
+                    id="name"
+                    value={this.state.name}
+                    type="fullname"
+                    placeholder="e.g. Bob Smith"
+                    className="input"
+                    required
+                    onChange={this.handleNameChange}
+                  />
+                  <span className="icon is-small is-left">
+                    <i className="fa fa-envelope" />
+                  </span>
+                </div>
+              </div>
+              <div className="field">
+                <label htmlFor="email" className="label">
+                  Email
+                </label>
+                <div className="control has-icons-left">
+                  <input
+                    id="email"
+                    value={this.state.email}
+                    type="email"
+                    placeholder="e.g. bobsmith@gmail.com"
+                    className="input"
+                    required
+                    onChange={this.handleEmailChange}
+                  />
+                  <span className="icon is-small is-left">
+                    <i className="fa fa-envelope" />
+                  </span>
+                </div>
+              </div>
+              <div className="field">
+                <label htmlFor="password" className="label">
+                  Password
+                </label>
+                <div className="control has-icons-left">
+                  <input
+                    id="password"
+                    value={this.state.password}
+                    type="password"
+                    placeholder="*******"
+                    className="input"
+                    required
+                    onChange={this.handlePasswordChange}
+                  />
+                  <span className="icon is-small is-left">
+                    <i className="fa fa-lock" />
+                  </span>
+                </div>
+              </div>
+              <div className="field">
+                <label htmlFor="remember" className="checkbox">
+                  <input id="remember" type="checkbox" />
+                  Remember me
+                </label>
+              </div>
+              <div className="field">
+                <button onClick={this.props.prev} className="button is-primary">
+                  Back
+                </button>
+                <button
+                  onClick={this.submit}
+                  // type="submit"
+                  className="button is-success"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     );
   }
 }
 
+
 const styles = {
   container: {
     display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between"
-  },
-  header: {
-    backgroundColor: "#373A40",
-    height: "220px",
-    width: "100%",
-    padding: "8.5em 15em 0 15em",
-    lineHeight: "4.5em"
-  },
-  title: {
-    fontSize: "32px",
-    color: "white",
-    textAlign: "center"
+    flexDirection: "row",
+    justifyContent: "center",
   },
   main: {
-    padding: "1em 15em"
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    margin: '5px auto',
+    width: '800px !important',
+    'overflow-y': 'none',
   },
-  tileGrid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(4, 1fr)",
-    // gridTemplateRows: "repeat(3, auto)",
-    gridColumnGap: "1em",
-    gridRowGap: "1em"
+  header: {
+    position: 'fixed',
+    width: '100%',
+    zIndex: 1,
+    background: `${colors.white}`,
   },
-  "@media (max-width: 768px)": {
+  title: {
+    padding: [10,20,20,25],
+    fontSize: "21px !important",
+    color: `${colors.black}`,
+  },
+  footer: {
+    position: 'fixed',
+    height: "80px",
+    width: '100vw',
+    bottom: 0,
+    right: 0,
+    fontSize: 22,
+    background: `${colors.white}`,
+    boxShadow: '8px 2px 4px 8px #f0f1f2',
+  },
+  button: {
+    float: 'right',
+    width: '75px',
+    margin: "30px 170px 0 0",
+  },
+  socialButtons: {
+    flex: "1",
+    maxWidth: "40%"
+  },
+  loginForm: {
+    flex: "1",
+    maxWidth: "40%"
+  },
+  vl: {
+    borderLeft: "1px solid black",
+    height: "20em"
+  },
+  facebook_connect: {
+    background: `rgb(255, 255, 255) url(${fbsvg}) no-repeat scroll 5px 0px / 30px 50px padding-box border-box`,
+    "&:hover": {
+      background: `rgb(60, 90, 154) url(${fbWhite}) no-repeat scroll 5px 0px / 30px 50px padding-box border-box`
+    }
+  },
+  google_connect: {
+    background: `rgb(255, 255, 255) url(${googleLogo}) no-repeat scroll 10px 0px / 30px 50px padding-box border-box`,
+    "&:hover": {
+      background: `rgb(220, 74, 61) url(${googleLogo}) no-repeat scroll 10px 0px / 30px 50px padding-box border-box`
+    }
+  },
+
+  "@media (min-width: 576px) (max-width: 992px)": {
+    header: {
+      height: "160px",
+      lineHeight: "2em",
+    },
+    title: {
+      width: '80vw',
+      margin: '1.7em auto',
+      fontSize: "21px"
+    },
     tileGrid: {
-      gridTemplateColumns: "1fr 1fr 1fr"
+      gridTemplateColumns: "1fr 1fr 1fr 1fr"
     },
     main: {
       padding: "1em 1em"
+    },
+    socialButtons: {
+      maxWidth: "100%"
+    },
+    vl: {
+      borderTop: "1px solid black",
+      width: "40em",
+      borderLeft: "0",
+      height: "0",
+      maxWidth: "100%"
     }
   },
-  "@media (max-width: 414px)": {
+  "@media (max-width: 800px)": {
+    header: {
+      height: "160px",
+      lineHeight: "2em",
+    },
+    title: {
+      width: '80vw',
+      margin: '1.7em auto',
+      fontSize: "16px"
+    },
+    steps: {
+      display: 'none !important',
+    },
     tileGrid: {
       gridTemplateColumns: "1fr 1fr"
     },
     main: {
-      padding: "1em 1em"
+      padding: "0 1em"
     },
-    header: {
-      padding: "2em 5em",
-      height: "110px",
-      lineHeight: "3em"
-    },
-    title: {
-      fontSize: "20px"
+    loginForm: {
+      maxWidth: "100%"
     }
   }
 };
 
-
-const step2 = injectSheet(styles)(step2Unstyled);
-export default step2;
+const Step2 = injectSheet(styles)(SignUpStep2);
+export default Step2;

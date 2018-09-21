@@ -20,4 +20,7 @@ File.cd!(root, fn ->
   System.cmd("mix", ["run", "priv/repo/seeds/ra_topic_seeds.exs"])
   System.cmd("mix", ["run", "priv/repo/seeds/sector_topic_seeds.exs"])
   System.cmd("mix", ["run", "priv/repo/seeds/general_topic_seeds.exs"])
+  System.cmd("mix", ["run", "priv/repo/seeds/analysis/analysis.exs"])
+  System.cmd("mix", ["run", "priv/repo/seeds/taxonomy/fungibles.exs"])
+  System.cmd("mix", ["run", "priv/repo/seeds/taxonomy/non_fungibles.exs"])
 end)

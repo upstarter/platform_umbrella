@@ -8,13 +8,20 @@ defmodule Platform.Tokens.Token do
   use Ecto.Schema
   import Ecto.Changeset
   alias Platform.Providers.Provider
+  alias Platform.Topics.Topic
 
   schema "tokens" do
-    field(:img_url, :string)
     field(:name, :string)
-    field(:short_desc, :string)
+    field(:symbol, :string)
+    field(:img_url, :string)
+    field(:description, :string)
     field(:site, :string)
-    field(:ticker, :string)
+    field(:available_supply, :decimal)
+    field(:btc_value, :decimal)
+    field(:last_updated, :utc_datetime)
+    field(:market_cap_usd, :decimal)
+    field(:usd_value, :decimal)
+    field(:volume_24h_usd, :decimal)
 
     many_to_many(:portfolios_tokens, Provider, join_through: "providers_topics")
     many_to_many(:topics, Topic, join_through: "topics_tokens")
@@ -25,7 +32,7 @@ defmodule Platform.Tokens.Token do
   @doc false
   def changeset(token, attrs) do
     token
-    |> cast(attrs, [:ticker, :name, :site, :short_desc, :img_url])
-    |> validate_required([:ticker, :name, :site, :short_desc, :img_url])
+    |> cast(attrs, [:ticker, :name, :site, :description, :img_url])
+    |> validate_required([:ticker, :name, :site, :description, :img_url])
   end
 end

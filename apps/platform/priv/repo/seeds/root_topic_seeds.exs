@@ -1,6 +1,6 @@
 alias Platform.Repo
 alias Platform.Topics.Topic
-
+# current id is 112
 # BASE TOPICS IN THE UNIVERSE OF DISCOURSE FOR CRYPTOWISE.AI
 root_topics = [
   %Topic{
@@ -26,9 +26,16 @@ root_topics = [
     path: []
   },
   %Topic{
+    name: "Behavioral Finance & Investing Psychology",
+    id: 111,
+    description:
+      "Psychological and Technosocial aspects of financial & capital market participation.",
+    path: []
+  },
+  %Topic{
     name: "Crypto Career Development",
     id: 4,
-    description: "The current and future professions
+    description: "The current and future titles and roles
       involving crypto technologies and business practices.",
     path: []
   }

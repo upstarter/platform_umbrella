@@ -30,7 +30,6 @@ class SiderMenu extends React.Component {
         breakpoint="sm"
         collapsedWidth="0"
         collapsible
-        style={{ marginTop: 40, overflow: 'visible', height: '100vh', position: 'fixed', zIndex: 1, left: 0 }}
         onBreakpoint={(broken) => { console.log(broken); }}
         onCollapse={
           (collapsed, type) =>
@@ -45,6 +44,12 @@ class SiderMenu extends React.Component {
 
 const siderMenuStyles = {
   sider: {
+    marginTop: 64,
+    overflow: 'visible',
+    height: '100vh',
+    position: 'fixed',
+    zIndex: 100,
+    left: 0 
   }
 }
 

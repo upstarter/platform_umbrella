@@ -2,14 +2,19 @@ import React, { Component } from "react";
 import injectSheet from "react-jss";
 import Tile from "../../components/Tile/Tile";
 import colors from "../../styles/colors"
+import { Button } from 'antd';
+import { Steps } from 'antd';
 
-class Step1Unstyled extends Component {
+const Step = Steps.Step;
+
+class SignUpStep1 extends Component {
   constructor(props) {
     super(props);
     this._validate = this._validate.bind(this);
     // Bindings for form fields would go here,
     this.state = {
-      topic_knowledge_ids: []
+      topic_knowledge_ids: [],
+      showFooter: false
     };
   }
   _validate() {
@@ -20,9 +25,19 @@ class Step1Unstyled extends Component {
     }
     alert("Choose at least 3.");
   }
+  _validateSelected() {
+    console.log(this.state.topic_knowledge_ids)
+    if (this.state.topic_knowledge_ids.length >= 3) {
+      this.setState({showFooter: true})
+    } else {
+      this.setState({showFooter: false})
+    }
+  }
   collectTopicKnowledgeIds(id) {
+    let ids = this.state.topic_knowledge_ids
+    ids.push(id)
     this.setState({
-      topic_knowledge_ids: [...this.state.topic_knowledge_ids, id]
+      topic_knowledge_ids: ids
     });
   }
   removeTopicKnowledgeIds(id) {
@@ -32,18 +47,7 @@ class Step1Unstyled extends Component {
       state.topic_knowledge_ids.splice(i, 1);
     }
   }
-  collectTopicKnowledgeIds(id) {
-    this.setState({
-      topic_knowledge_ids: [...this.state.topic_knowledge_ids, id]
-    });
-  }
-  removeTopicKnowledgeIds(id) {
-    let state = this.state;
-    let i = state.topic_knowledge_ids.indexOf(id);
-    if (i != -1) {
-      state.topic_knowledge_ids.splice(i, 1);
-    }
-  }
+
   render() {
     let props = this.props;
     let classes = props.classes;
@@ -60,6 +64,7 @@ class Step1Unstyled extends Component {
               removeTopicKnowledgeIds={id => this.removeTopicKnowledgeIds(id)}
               collectTopicKnowledgeIds={id => this.collectTopicKnowledgeIds(id)}
               selectedIds={props.selectedIds}
+              validateSelected={id => this._validateSelected(id)}
             />
           );
         })
@@ -68,21 +73,28 @@ class Step1Unstyled extends Component {
       <div className={classes.container}>
         <div className={classes.header}>
           <h2 className={classes.title}>
-            Which of these topics do you know the most about?
+            So we can provide you with relevant signals and content,
+            please choose <em>at least</em> 3 topics your most interested in.
           </h2>
         </div>
         <div className={classes.main}>
+
           <div className={classes.tileGrid}>{tiles}</div>
+            <div className={classes.footer}>
+              <Button
+                className={classes.button}
+                onClick={this._validate}
+                disabled={!this.state.showFooter}
+                style={
+                  this.state.showFooter ? {background: `${colors.antBlue}`,
+                                           color: `${colors.white}`} : {  }
+                }
+              >
+                Next ->
+              </Button>
+            </div>
         </div>
-        <div className={classes.main}>
-          <button
-            className="button is-primary is-rounded"
-            onClick={this._validate}
-            style={{ float: "right" }}
-          >
-            Next
-          </button>
-        </div>
+
       </div>
     );
   }
@@ -91,56 +103,92 @@ class Step1Unstyled extends Component {
 const styles = {
   container: {
     display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between"
-  },
-  header: {
-    backgroundColor: `${colors.primary}`,
-    height: "220px",
-    width: "100%",
-    padding: "4.8em 3rem",
-    lineHeight: "4.5em"
-  },
-  title: {
-    fontSize: "28px",
-    color: "white",
-    textAlign: "center"
+    flexDirection: "row",
+    justifyContent: "center",
   },
   main: {
-    padding: ".2rem .3rem"
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    margin: '5px auto',
+    width: '800px !important',
+    'overflow-y': 'none',
+  },
+  header: {
+    position: 'fixed',
+    width: '100%',
+    zIndex: 1,
+    background: `${colors.white}`,
+  },
+  title: {
+    padding: [10,20,20,25],
+    fontSize: "21px !important",
+    color: `${colors.black}`,
+    textAlign: 'center'
+
+  },
+  footer: {
+    position: 'fixed',
+    height: "80px",
+    width: '100vw',
+    bottom: 0,
+    right: 0,
+    fontSize: 22,
+    background: `${colors.white}`,
+    boxShadow: '8px 2px 4px 8px #f0f1f2',
+  },
+  button: {
+    float: 'right',
+    width: '75px',
+    margin: "30px 170px 0 0",
   },
   tileGrid: {
+    marginTop: '35px',
     display: "grid",
     gridTemplateColumns: "repeat(4, 1fr)",
     // gridTemplateRows: "repeat(3, auto)",
     gridColumnGap: ".2em",
     gridRowGap: ".2em"
   },
-  "@media (min-width: 647px) and (max-width: 992px)": {
+
+  "@media (min-width: 576px)": {
+    header: {
+      maxWidth: 800,
+      maxHeight: "90px",
+      lineHeight: "2em",
+    },
+    title: {
+      fontSize: "19px"
+    },
     tileGrid: {
       gridTemplateColumns: "1fr 1fr 1fr 1fr"
     },
     main: {
-      padding: "1em 1em"
+      marginTop: 60,
     }
   },
-  "@media (max-width: 647px)": {
+  "@media (max-width: 576px)": {
+    header: {
+      maxHeight: "145px",
+      lineHeight: ".1em",
+    },
+    title: {
+      fontSize: "14px",
+      width: '95vw',
+      textAlign: 'center'
+    },
+    steps: {
+      display: 'none !important',
+    },
     tileGrid: {
       gridTemplateColumns: "1fr 1fr"
     },
     main: {
-      padding: ".1em 1em"
+      marginTop: 60,
     },
-    header: {
-      padding: "2em 5em",
-      height: "110px",
-      lineHeight: "3em"
-    },
-    title: {
-      fontSize: "20px"
-    }
+
   }
 };
 
-const Step1 = injectSheet(styles)(Step1Unstyled);
+const Step1 = injectSheet(styles)(SignUpStep1);
 export default Step1;

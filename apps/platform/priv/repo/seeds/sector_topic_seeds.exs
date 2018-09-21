@@ -46,7 +46,7 @@ micropayment market between content-consumers and publishers.",
   },
   %Topic{
     id: 28,
-    name: "Crowdfunding Platform",
+    name: "Crowdfunding Platforms",
     description: "Crowdfunding platforms raise money via a native blockchain token
 and allocate to projects, often through community vote (either onchain or
 through a Foundation).",
@@ -61,16 +61,16 @@ tradable.",
   },
   %Topic{
     id: 30,
-    name: "Currency",
+    name: "Currencies",
     description: "Decentralized currencies operate as money and stores of value. They are
 globally accessible and controlled by no single entity or group.",
     path: [1, 5, 6]
   },
   %Topic{
     id: 31,
-    name: "dApp Network",
+    name: "dApp Networks",
     description: "Decentralized Application (dApp) networks provide access to many
-dApps, often layering their own unique services on top.",
+      dApps with unique services on top.",
     path: [1, 5, 6]
   },
   %Topic{
@@ -96,46 +96,47 @@ blocks for decentralized applications.",
   },
   %Topic{
     id: 35,
-    name: "Distributed Computation",
+    name: "Distributed Computation Markets",
     description: "Distributed computation assets create a market for CPU/GPU power distributed
 globally across participating computers.",
     path: [1, 5, 6]
   },
   %Topic{
     id: 36,
-    name: "Distributed Storage",
+    name: "Distributed Storage Markets",
     description: "Distributed storage assets create a market for storage space
 distributed globally across participating computers.",
     path: [1, 5, 6]
   },
   %Topic{
     id: 37,
-    name: "Energy Market",
-    description: "Energy market cryptoassets enable more efficient trading and allocation of
-energy-grid resources without reliance on a traditional middleman.",
+    name: "Energy Markets",
+    description: "Energy market cryptoassets enable more efficient trading and
+    allocation of energy-grid resources without reliance on a traditional
+    middleman.",
     path: [1, 5, 6]
   },
   %Topic{
     id: 38,
-    name: "Exchange Platform",
-    description: "Not to be confused with decentralized exchange platforms this sector refers to
-tokens that exist primarily on centralized exchanges for use on those
-exchanges.",
+    name: "Exchange Platforms",
+    description: "Not to be confused with decentralized exchange platforms this
+    sector refers to tokens that exist primarily on centralized exchanges for
+    use on those exchanges.",
     path: [1, 5, 6]
   },
   %Topic{
     id: 39,
     name: "Exchange Traded Funds (ETF's)",
-    description: "An ETF is a basket of
-securities that you can buy or sell through a brokerage firm on an exchange",
+    description: "An ETF is a basket of securities that you can buy or sell
+    through a brokerage firm on an exchange",
     path: [1, 5, 6]
   },
   %Topic{
     id: 40,
     name: "Gambling Industry",
-    description: "Gaming/Gambling industry assets often use properties of blockchains to achieve
- provably-fair gambling; a property unique to blockchain-based gaming
- platforms.",
+    description: "Gaming/Gambling industry assets often use properties of
+    blockchains to achieve provably-fair gambling; a property unique to
+    blockchain-based gaming platforms.",
     path: [1, 5, 6]
   },
   %Topic{
@@ -147,23 +148,26 @@ securities that you can buy or sell through a brokerage firm on an exchange",
   %Topic{
     id: 42,
     name: "General Purpose Platform",
-    description: "General purpose decentralized compute platforms operate as a global computer,
- capable of executing arbitrary code - called smart contracts or 'dapps'.",
+    description: "General purpose decentralized compute platforms operate as a
+    global computer, capable of executing arbitrary code - called smart
+    contracts or 'dapps'.",
     path: [1, 5, 6]
   },
   %Topic{
     id: 43,
     name: "Hedge Funds",
-    description: "A hedge fund is an actively managed basket of securities which are permitted
- to short sell securites and construct advanced models & systems including using
- derivatives(options, etc..) to manage risk and return.",
+    description: "A hedge fund is an actively managed basket of securities which
+    are permitted to short sell securites and construct advanced models &
+    systems including using derivatives(options, etc..) to manage risk and
+    return.",
     path: [1, 5, 6]
   },
   %Topic{
     id: 44,
-    name: "Identity",
-    description: "Decentralized identity systems use blockchain networks to create identity
-records that aren't controlled by any single entity or group.",
+    name: "Identity & Reputation",
+    description:
+      "Decentralized identity and reputation systems use blockchain
+    networks to create identity records that aren't controlled by any single entity or group with reputation mechanisms for quality assurance.",
     path: [1, 5, 6]
   },
   %Topic{

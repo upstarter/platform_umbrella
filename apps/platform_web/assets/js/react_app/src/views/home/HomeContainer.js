@@ -7,6 +7,7 @@ import MembershipComponent from "../../views/marketing/MembershipComponent";
 import DeveloperComponent from "../../views/developers/DeveloperComponent";
 import ProposalComponent from "../../views/proposals/ProposalComponent";
 import InsightComponent from "../../views/insights/InsightComponent";
+import SignUpContainer from "../../views/SignUpWizard/SignUpContainer";
 import Login from "../../views/auth/Login";
 import Logout from "../../views/auth/Logout";
 import Signup from "../../views/auth/Signup";
@@ -89,8 +90,8 @@ class HomeContainer extends React.Component {
               <p>Some contents...</p>
               <p>Some contents...</p>
             </Drawer>
-            <SiderMenu setContentMarginLeft={this.setContentMarginLeft}/>
             <AppHeader />
+            <SiderMenu setContentMarginLeft={this.setContentMarginLeft}/>
             <Layout className={classes.baseContent}>
               <Content
                 style={{
@@ -106,7 +107,7 @@ class HomeContainer extends React.Component {
                   <Route exact path="/portfolio" component={PortfolioComponent} />
                   <PrivateRoute exact path="/profile" component={Protected} />
                   <Route exact path="/about" component={AboutComponent} />
-                  <Route exact path="/signup" component={Signup} />
+                  <Route exact path="/signup" component={SignUpContainer} />
                   <Route exact path="/login" component={Login} />
                   <Route exact path="/logout" component={Logout} />
                   <Route
@@ -141,7 +142,7 @@ const appStyles = {
     justifyContent: "center"
   },
   baseContent: {
-    paddingTop: '80px',
+    marginTop: '64px',
     background: `${colors.grey}`,
   },
   content: {

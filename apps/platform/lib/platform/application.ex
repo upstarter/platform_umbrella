@@ -13,12 +13,43 @@ defmodule Platform.Application do
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
 
-    Supervisor.start_link(
-      [
-        supervisor(Platform.Repo, [])
-      ],
-      strategy: :one_for_one,
-      name: Platform.Supervisor
-    )
+    base_children = [
+      Platform.Repo,
+      Supervisor.child_spec({Task.Supervisor, name: Platform.MarketTaskSupervisor},
+        id: Platform.MarketTaskSupervisor
+      ),
+      Supervisor.child_spec({Task.Supervisor, name: Platform.TaskSupervisor},
+        id: Platform.TaskSupervisor
+      ),
+      {Registry, keys: :duplicate, name: Registry.MarketEvents, id: Registry.MarketEvents}
+    ]
+
+    children = base_children ++ configurable_children()
+
+    opts = [strategy: :one_for_one, name: Platform.Supervisor]
+
+    Supervisor.start_link(children, opts)
+  end
+
+  defp configurable_children do
+    [
+      configure(Platform.ExchangeRates),
+      configure(Platform.Market.History.Cataloger)
+    ]
+    |> List.flatten()
+  end
+
+  defp should_start?(process) do
+    :platform
+    |> Application.fetch_env!(process)
+    |> Keyword.fetch!(:enabled)
+  end
+
+  defp configure(process) do
+    if should_start?(process) do
+      process
+    else
+      []
+    end
   end
 end

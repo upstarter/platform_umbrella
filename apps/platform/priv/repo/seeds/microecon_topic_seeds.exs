@@ -6,7 +6,9 @@ cryptoecon_topics = [
   %Topic{
     name: "Micro Economy",
     id: 7,
-    description: ".",
+    description: "The 'Firm' or 'Entity' level analysis of crypto projects. Includes
+    strategic policies, protocols, crypto-economic primitives, governance models,
+    token/incentive engineering, token distribution models.",
     path: [1]
   },
   # children of microecon
@@ -17,7 +19,7 @@ cryptoecon_topics = [
       approach to designing economic mechanisms or incentives, toward
       desired objectives, in strategic settings, where players act
       rationally.",
-    path: [1]
+    path: [1, 7]
   },
   %Topic{
     id: 9,
@@ -26,7 +28,7 @@ cryptoecon_topics = [
       agreement on a single data value among distributed processes or systems.
       Consensus algorithms are designed to achieve reliability in a network involving
       multiple unreliable nodes.",
-    path: [1]
+    path: [1, 7]
   },
   %Topic{
     id: 10,
@@ -36,7 +38,7 @@ cryptoecon_topics = [
       allocation of capital to achieve a shared goal via the use of various economic
       and cryptographic mechanisms. Examples include curation markets, token curated registries,
       token bonding curves, etc..",
-    path: [1]
+    path: [1, 7]
   },
   %Topic{
     name: "Governance Models",
@@ -46,26 +48,32 @@ cryptoecon_topics = [
       integrity of the ecosystem. Because governance and social consensus takes time,
       is an emergent property, and creating a sound ecosystem that can interoperate
       well to perceive that emergent consensus & signaling is paramount.",
-    path: [1]
+    path: [1, 7]
   },
   %Topic{
     id: 12,
     name: "Smart Contracts",
     description: "Technology enabled legal agreements.",
-    path: [1]
+    path: [1, 7]
   },
   %Topic{
     id: 13,
     name: "Token Engineering",
-    description:
-      "Primitive building blocks and current best practices for designing and implementing crypto networks.",
-    path: [1]
+    description: "Primitive building blocks and current best practices for designing and
+      implementing crypto networks.",
+    path: [1, 7]
   },
   %Topic{
     id: 14,
     name: "Open Network Business Models",
     description: "Existing & Emerging business models enabled by crypto networks.",
-    path: [1]
+    path: [1, 7]
+  },
+  %Topic{
+    id: 112,
+    name: "Token Distribution Models",
+    description: "Existing & Emerging distribution models enabled by crypto networks.",
+    path: [1, 7]
   }
 ]
 

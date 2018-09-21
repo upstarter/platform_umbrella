@@ -8,11 +8,13 @@ import React from "react"
 import ReactDOM from "react-dom"
 import App from "./src/App"
 import "normalize.css"
+//import styles from "../../css/styles.scss"
+
 // import { getBundles } from 'react-loadable/webpack'
 
 ReactDOM.render(
   // <Loadable.Capture report={moduleName => modules.push(moduleName)}>
-  <App/>, document.getElementById("app")
+  <App />, document.getElementById("app")
     // , () => {
       // We don't need the static css any more once we have launched our application.
   //   const ssStyles = document.getElementById('server-side-styles')

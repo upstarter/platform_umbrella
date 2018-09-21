@@ -46,8 +46,8 @@ ra_topics = [
   },
   %Topic{
     id: 20,
-    name: "Crypto Asset Classes",
-    description: "Classification of Cryptoassets into coherently defined subsets
+    name: "Crypto Asset Taxonomy",
+    description: "Classification of cryptoassets into narrowly defined subsets
       for the purpose of analysis. For example, equity-like offerings, or
       fixed-income, derivatives, commodity-linked assets, currencies etc..",
     path: [2]
@@ -55,7 +55,7 @@ ra_topics = [
   %Topic{
     id: 21,
     name: "Valuation Frameworks",
-    description: "Emerging and Existing token valuation frameworks evaluated objectively.",
+    description: "Emerging and Existing token valuation frameworks.",
     path: [2]
   }
 ]

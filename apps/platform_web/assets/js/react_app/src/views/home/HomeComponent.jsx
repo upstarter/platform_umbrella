@@ -13,7 +13,7 @@ export default class HomeComponent extends React.Component {
     return (
       <React.Fragment>
         <ScrollToTopOnMount />
-        <HeroComponent />
+        <HeroComponent  {...this.props} />
         <FeaturesComponent />
         <BlogComponent />
       </React.Fragment>

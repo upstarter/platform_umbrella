@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
-import Step3 from "./Step3";
-import Step4 from "./Step4";
 import axios from "axios";
 import { url } from "../../utils/consts";
 
@@ -47,7 +45,7 @@ export default class SignUpWizard extends Component {
           state._saveinterestIds !== null
         ) {
           axios
-            .post(`${url}/api/v1/topics`, {
+            .post(`${url}/api/v1/auth`, {
               name: state.name,
               email: state.email,
               password: state.password,
@@ -93,7 +91,7 @@ export default class SignUpWizard extends Component {
   render() {
     let state = this.state;
     return (
-      <div style={{ height: "100%" }}>
+      <div style={{ height: "100%", fontFamily: "Avenir, Avenir-Light, Avenir-Book, Avenir-Roman, sans-serif" }}>
         <Step1
           currentStep={state.currentStep}
           afterValid={this._next}
@@ -102,14 +100,6 @@ export default class SignUpWizard extends Component {
           selectedIds={state.topic_knowledge_ids}
         />
         <Step2
-          currentStep={state.currentStep}
-          afterValid={this._next}
-          prev={() => this._prev()}
-          topics={this.props.topics}
-          saveForm={this._saveinterestIds}
-          selectedIds={state.topic_interest_ids}
-        />
-        <Step3
           currentStep={state.currentStep}
           afterValid={this._next}
           prev={() => this._prev()}

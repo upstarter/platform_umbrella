@@ -86,7 +86,6 @@ class AppHeader extends React.Component {
 const headerStyles = {
   header: {
     background: `${colors.primary}`,
-
     padding: 0,
     position: 'fixed',
     width: '100%',

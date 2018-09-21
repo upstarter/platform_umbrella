@@ -8,6 +8,7 @@
 // $green: rgb(30, 215, 96);
 const colors = {
   primary: '#001528',
+  antBlue: '#1990ff',
   primaryDark: 'rgb(24, 24, 24)',
   secondaryDark: 'rgb(40, 40, 40)',
   midTone: '#f6f6f6',
@@ -31,6 +32,7 @@ const colors = {
   lightBlack: '#5D626E',
   lightBlue: '#EEf4fb',
   lightPurple: '#783D6F',
+  OdarkPurple: 'rgba(83,40,85,.8)',
   silver: '#AEBED4',
   green: '#73b581', //#8de8c3
   smoke: '#D0E5FF',

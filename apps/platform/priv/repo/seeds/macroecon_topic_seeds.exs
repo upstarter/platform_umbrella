@@ -6,7 +6,8 @@ macroecon_topics = [
   %Topic{
     name: "Macro Economy",
     id: 5,
-    description: "The Crypto Economy. A.K.A 'The Cryptocosm'.",
+    description: "The Crypto Economy. A.K.A 'The Cryptocosm'. Includes crypto
+    economic sectors and their analysis.",
     path: [1]
   },
   # children
