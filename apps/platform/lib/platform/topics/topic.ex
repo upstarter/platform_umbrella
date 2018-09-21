@@ -18,6 +18,7 @@ defmodule Platform.Topics.Topic do
     field(:path, EctoMaterializedPath.Path, default: [])
 
     many_to_many(:providers, Provider, join_through: "providers_topics")
+    many_to_many(:tokens, Token, join_through: "topics_tokens")
     timestamps()
   end
 

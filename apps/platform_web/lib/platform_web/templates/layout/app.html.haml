@@ -12,8 +12,8 @@
     <meta name="theme-color" content="#262b3c">
     %title CryptoWise
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-    - css_path = static_path(@conn, "/css/app.css")
-    %link{rel: "stylesheet", href: css_path}
+    <!-- see LayoutView --/>
+    <%= {:safe, css_link_tag()} %>
     - favicon = static_path(@conn, "/images/favicon.png")
     %link{rel: "icon", type:"image/x-icon", href: favicon}
     %link{rel: "manifest", href: "/manifest.json"}
@@ -35,7 +35,8 @@
     / Your customer chat code
     -# .fb-customerchat{:attribution => "setup_tool", :page_id => "1806273466097268", :theme_color => "#fa3c4c"}
     %script{src: "https://use.fontawesome.com/2aa13a4a25.js" }
-    %script{src: "#{static_path(@conn, "/js/app.js")}" }
+    <!-- see LayoutView --/>
+    <%= {:safe, js_script_tag()} %>
     - prod = Application.get_env(:platform_web, :env)
     - if prod == :prod do
 

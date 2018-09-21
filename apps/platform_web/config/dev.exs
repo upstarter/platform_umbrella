@@ -13,13 +13,29 @@ config :platform_web, PlatformWeb.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: [yarn: ["run", "watch", cd: Path.expand("../assets", __DIR__)]],
+  watchers: [
+    node: [
+      "node_modules/.bin/webpack-dev-server",
+      "--inline",
+      "--hot",
+      "--stdin",
+      "--host",
+      "localhost",
+      "--port",
+      "8080",
+      "--public",
+      "localhost:8080",
+      "--config",
+      "webpack.config.js",
+      cd: Path.expand("../assets", __DIR__)
+    ]
+  ],
   pubsub: [adapter: Phoenix.PubSub.PG2, name: PlatformWeb.PubSub]
 
-  # It also supports custom adapter configuration:
-  #
-  # [name: :my_pubsub, adapter: Phoenix.PubSub.Redis,
-  #  host: "192.168.100.1"]
+# It also supports custom adapter configuration:
+#
+# [name: :my_pubsub, adapter: Phoenix.PubSub.Redis,
+#  host: "192.168.100.1"]
 
 # ## SSL Support
 #

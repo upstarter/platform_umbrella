@@ -1,7 +1,4 @@
 import React from "react";
-import { AgGridReact } from "ag-grid-react";
-import "ag-grid/dist/styles/ag-grid.css";
-import "ag-grid/dist/styles/ag-theme-balham-dark.css";
 import update from "immutability-helper";
 import SearchBarContainer from "../search/searchBarContainer";
 
