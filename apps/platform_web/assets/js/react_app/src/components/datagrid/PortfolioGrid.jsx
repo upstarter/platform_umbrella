@@ -128,32 +128,3 @@ export default class PortfolioGrid extends React.Component {
   }
 }
 
-const styles = {
-  addRowBtn: {
-    width: "100%",
-    fontSize: 16,
-    padding: "4px",
-    textAlign: "center",
-    color: "#222",
-    marginTop: 15,
-    border: "1px solid #783D6F",
-    borderRadius: 4,
-    cursor: "pointer"
-  },
-  submitBtn: {
-    width: "100%",
-    fontSize: 16,
-    padding: "4px",
-    textAlign: "center",
-    color: "#fff",
-    marginTop: 15,
-    backgroundColor: "#783D6F",
-    borderRadius: 4,
-    cursor: "pointer"
-  },
-  error: {
-    textAlign: "center",
-    marginTop: 8,
-    color: "red"
-  }
-};
