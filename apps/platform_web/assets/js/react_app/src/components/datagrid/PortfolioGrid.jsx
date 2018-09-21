@@ -1,6 +1,4 @@
 import React from "react";
-import update from "immutability-helper";
-import SearchBarContainer from "../search/searchBarContainer";
 
 import tokens from "./MockData";
 
