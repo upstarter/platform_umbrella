@@ -4,153 +4,126 @@ import SearchBarContainer from "../search/searchBarContainer";
 
 import tokens from "./MockData";
 
-const defaultTokens = [{ holding: "Select an asset", weight: 0 }];
-
 export default class PortfolioGrid extends React.Component {
-  constructor(props, context) {
-    super(props);
-
-    this.handleValueChange = this._handleValueChange.bind(this);
-    this.validateInput = this._validateInput.bind(this);
-    this.handleAddRow = this._handleAddRow.bind(this);
-    this.handleSubmit = this._handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.myRef = React.createRef();
+  constructor() {
+    super();
     this.state = {
-      tokens: tokens,
-      selectedHoldings: [],
-      rows: [0, 1]
-      // columnDefs: [
-      //   {
-      //     headerName: "Holding",
-      //     field: "holding",
-      //     editable: true,
-      //     cellEditor: "agSelectCellEditor",
-      //     singleClickEdit: true,
-      //     cellEditorParams: { values: tokens.map(t => t["holding"]) }
-      //   },
-      //   {
-      //     headerName: "Allocation",
-      //     field: "weight",
-      //     editable: true,
-      //     singleClickEdit: true,
-      //     onCellValueChanged: this.handleValueChange,
-      //     valueSetter: this.validateInput
-      //   }
-      // ],
-      // rowData: defaultTokens,
-      // totalWeight: 0
+      holdings: [{ holding: "", allocation: null }]
     };
+    this.addRow = this.addRow.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-  // The value setter function/method
-  _validateInput(params) {
-    // Value is legit - set it and signal the value has been changed/set
-    const valToNumber = +params.newValue;
-
-    if (!isNaN(valToNumber)) {
-      params.data[params.colDef.field] = params.newValue;
-      return true;
+  addRow = e => {
+    if (this.state.holdings.length < 7) {
+      this.setState(prevState => ({
+        holdings: [...prevState.holdings, { holding: "", allocation: "" }]
+      }));
     }
-    // Illegal value - signal no change
-    return false;
-  }
-
-  _handleValueChange = () => {
-    const { rowData } = this.state;
-
-    const total = rowData.reduce(
-      (prev, curr) => (prev += parseFloat(curr.weight)),
-      0
-    );
-    this.setState({ totalWeight: total });
   };
-
-  _handleAddRow = () => {
-    const { rowData } = this.state;
-
-    this.setState({
-      rowData: [...rowData, { holding: "Select an asset", weight: 0 }]
-    });
+  handleSubmit = e => {
+    e.preventDefault();
   };
-
-  _handleSubmit = () => {
-    if (this.state.totalWeight === 100) {
-      /* SUBMIT FORM */
+  handleChange = e => {
+    if (["holding", "allocation"].includes(e.target.className)) {
+      let holdings = [...this.state.holdings];
+      holdings[e.target.dataset.id][e.target.className] = e.target.value;
+      this.setState({ holdings }, () => console.log(this.state.holdings));
     } else {
-      this.setState({ error: "Your total weight must equal 100%" });
-
-      setTimeout(() => {
-        this.setState({ error: null });
-      }, 3000);
+      let holdings = [...this.state.holdings];
+      holdings[e.target.dataset.id][e.target.className] = e.target.value;
+      this.setState({ holdings });
     }
   };
-  handleChange(event) {
-    this.setState(
-      {
-        ...this.state,
-        selectedHoldings: [{ name: event.target.value }]
-      },
-      () => {
-        var rows = this.state.rows;
-        rows.push("new row");
-        this.setState({ rows: rows });
-      }
-    );
-  }
-  deleteRow(i) {
-    let rows = this.state.rows;
-    rows.pop(i);
-    this.setState({ rows: rows });
-  }
-
   render() {
-    let state = this.state;
-    let token = state.tokens.map((t, i) => <option>{t.holding}</option>);
+    let { holdings } = this.state;
     return (
       <div>
+        {/* <div class="notification is-info">
+          <button class="delete" />
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit euismod...
+          </p>
+        </div> */}
         <div>
           Total Weight: <strong>{`${this.state.totalWeight}%`}</strong>
         </div>
         <div className="">
-          <table className="table is-fullwidth is-bordered">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Holding</th>
-                <th>Allocation</th>
-                <th />
-              </tr>
-            </thead>
-            <tbody ref={this.myRef}>
-              {state.rows.map((r, i) => (
+          <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
+            <table className="table is-fullwidth is-bordered">
+              <thead>
                 <tr>
-                  <td>{i + 1}</td>
-                  <td className="has-input">
-                    <div className="select is-small">
-                      <select onChange={this.handleChange}>{token}</select>
-                    </div>
-                  </td>
-                  <td className="has-input">
-                    <input className="input is-small" type="text" />
-                  </td>
-
-                  <td className="has-input">
-                    <span class="icon" onClick={i => this.deleteRow(i)} style={{cursor: 'pointer'}}>
-                      <i class="fas fa-trash" />
-                    </span>
-                  </td>
+                  <th>#</th>
+                  <th>Holding</th>
+                  <th>Allocation</th>
+                  <th />
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {holdings.map((val, idx) => {
+                  let holdingId = `holding-${idx}`,
+                    allocationId = `allocation-${idx}`;
+                  return (
+                    <tr>
+                      <td>{idx + 1}</td>
+                      <td className="has-input">
+                        <div className="select is-small">
+                          <select
+                            className="holding"
+                            name={holdingId}
+                            id={holdingId}
+                            data-id={idx}
+                          >
+                            <option value="qwe">Choose</option>
+                            {tokens.map((token, i) => {
+                              return (
+                                <option value={token.holding}>
+                                  {token.holding}
+                                </option>
+                              );
+                            })}
+                          </select>
+                        </div>
+                      </td>
+                      <td className="has-input">
+                        <input
+                          className="allocation"
+                          type="text"
+                          name={allocationId}
+                          id={allocationId}
+                          data-id={idx}
+                          // onFocus={this.addRow}
+                          // value={this.state.holdings[idx].allocation}
+                        />
+                      </td>
+
+                      <td className="has-input">
+                        <span
+                          className="icon"
+                          // onClick={i => this.deleteRow(i)}
+                          style={{ cursor: "pointer" }}
+                        >
+                          <i className="fas fa-trash" />
+                        </span>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+            <button onClick={this.addRow} className="button is-primary">
+              Add another asset
+            </button>
+            <a className="button">
+  <span className="icon">
+    <i className="fas fa-heading fa-lg"></i>
+  </span>
+  </a>
+            <div onClick={this.handleSubmit} style={styles.submitBtn}>
+              Submit Portfolio
+            </div>
+          </form>
         </div>
-        <div onClick={this.handleAddRow} style={styles.addRowBtn}>
-          Add another asset
-        </div>
-        <div onClick={this.handleSubmit} style={styles.submitBtn}>
-          Submit Portfolio
-        </div>
+
         {this.state.error && <div style={styles.error}>{this.state.error}</div>}
       </div>
     );
