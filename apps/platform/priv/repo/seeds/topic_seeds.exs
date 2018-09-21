@@ -70,6 +70,11 @@ another without a middleman mediating the transaction."
 securities based on future events."
   },
   %Topic{
+    name: "Developer Tools",
+    short_desc: "Projects within this category are primarily used by developers as the building
+blocks for decentralized applications."
+  },
+  %Topic{
     name: "Distributed Computation",
     short_desc: "Distributed computation assets create a market for CPU/GPU power distributed
 globally across participating computers."
@@ -141,7 +146,9 @@ lending functions using blockchain networks."
   },
   %Topic{
     name: "Memes",
-    short_desc: "Meme tokens. Much wow."
+    short_desc: "Meme tokens. an element of a culture or system of behavior that may be
+considered to be passed from one individual to another by nongenetic means,
+especially imitation."
   },
   %Topic{
     name: "Misc",

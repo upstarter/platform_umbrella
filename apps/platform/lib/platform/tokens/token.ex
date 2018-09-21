@@ -15,7 +15,9 @@ defmodule Platform.Tokens.Token do
     field(:short_desc, :string)
     field(:site, :string)
     field(:ticker, :string)
+
     many_to_many(:portfolios_tokens, Provider, join_through: "providers_topics")
+    many_to_many(:topics, Topic, join_through: "topics_tokens")
 
     timestamps()
   end
