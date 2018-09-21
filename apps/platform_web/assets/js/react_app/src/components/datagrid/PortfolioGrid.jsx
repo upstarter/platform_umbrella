@@ -7,7 +7,9 @@ export default class PortfolioGrid extends React.Component {
     super();
     this.state = {
       holdings: [{ holding: "", allocation: null }],
-      noMoreRowInfo: false
+      noMoreRowInfo: false,
+      noMoreAllocationInfo: false,
+      totalWeight: 0
     };
     this.addRow = this.addRow.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,12 +28,21 @@ export default class PortfolioGrid extends React.Component {
   };
   handleSubmit = e => {
     e.preventDefault();
+    let totalWeight = [];
+    for (let i = 0; i < this.state.holdings.length; i++) {
+      totalWeight.push(this.state.holdings[i].allocation);
+    }
+    totalWeight = totalWeight.reduce((a, b) => parseInt(a) + parseInt(b), 0);
+    this.setState({ totalWeight });
+    if (totalWeight >= 100) {
+      this.setState({ noMoreAllocationInfo: true });
+    }
   };
   handleChange = e => {
     if (["holding", "allocation"].includes(e.target.className)) {
       let holdings = [...this.state.holdings];
       holdings[e.target.dataset.id][e.target.className] = e.target.value;
-      this.setState({ holdings }, () => console.log(this.state.holdings));
+      this.setState({ holdings });
     } else {
       let holdings = [...this.state.holdings];
       holdings[e.target.dataset.id][e.target.className] = e.target.value;
@@ -45,7 +56,7 @@ export default class PortfolioGrid extends React.Component {
     this.setState({ holdings });
   }
   render() {
-    let { holdings, noMoreRowInfo } = this.state;
+    let { holdings, noMoreRowInfo, noMoreAllocationInfo } = this.state;
     return (
       <div>
         {noMoreRowInfo ? (
@@ -57,6 +68,17 @@ export default class PortfolioGrid extends React.Component {
               }}
             />
             <p>Please choose less than 8.</p>
+          </div>
+        ) : null}
+        {noMoreAllocationInfo ? (
+          <div class="notification is-info">
+            <button
+              class="delete"
+              onClick={() => {
+                this.setState({ noMoreAllocationInfo: false });
+              }}
+            />
+            <p>Please choose 100% or less.</p>
           </div>
         ) : null}
         <div>
