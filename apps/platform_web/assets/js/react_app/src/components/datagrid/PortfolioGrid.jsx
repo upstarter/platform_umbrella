@@ -32,6 +32,12 @@ export default class PortfolioGrid extends React.Component {
       this.setState({ holdings });
     }
   };
+  deleteRow(idx) {
+    console.log(idx);
+    let holdings = [...this.state.holdings];
+    holdings.splice(idx, 1);
+    this.setState({ holdings });
+  }
   render() {
     let { holdings } = this.state;
     return (
@@ -70,6 +76,7 @@ export default class PortfolioGrid extends React.Component {
                             name={holdingId}
                             id={holdingId}
                             data-id={idx}
+                            value={this.state.holdings[idx].holding}
                           >
                             <option value="qwe">Choose</option>
                             {tokens.map((token, i) => {
@@ -90,17 +97,17 @@ export default class PortfolioGrid extends React.Component {
                           id={allocationId}
                           data-id={idx}
                           // onFocus={this.addRow}
-                          // value={this.state.holdings[idx].allocation}
+                          value={this.state.holdings[idx].allocation}
                         />
                       </td>
 
                       <td className="has-input">
                         <span
                           className="icon"
-                          // onClick={i => this.deleteRow(i)}
+                          onClick={i => this.deleteRow(idx)}
                           style={{ cursor: "pointer" }}
                         >
-                          <i className="fas fa-trash" />
+                          x<i className="fas fa-trash" />
                         </span>
                       </td>
                     </tr>
@@ -108,17 +115,8 @@ export default class PortfolioGrid extends React.Component {
                 })}
               </tbody>
             </table>
-            <button onClick={this.addRow} className="button is-primary">
-              Add another asset
-            </button>
-            <a className="button">
-  <span className="icon">
-    <i className="fas fa-heading fa-lg"></i>
-  </span>
-  </a>
-            <div onClick={this.handleSubmit} style={styles.submitBtn}>
-              Submit Portfolio
-            </div>
+            <a class="button is-fullwidth is-primary is-outlined" onClick={this.addRow} >Add asset</a>
+            <a class="button is-fullwidth is-link" onClick={this.handleSubmit} style={{marginTop: '10px'}}>Submit Portfolio</a>
           </form>
         </div>
 
@@ -127,4 +125,3 @@ export default class PortfolioGrid extends React.Component {
     );
   }
 }
-
