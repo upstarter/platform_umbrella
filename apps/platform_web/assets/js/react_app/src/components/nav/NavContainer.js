@@ -3,8 +3,10 @@ import ReactDOM from "react-dom";
 import img from "../../../../../static/images/nav_logo.svg";
 import { Link } from "react-router-dom";
 import { isLoggedIn, logout } from "../../utils/auth";
+import injectSheet, { jss } from "react-jss"
+import colors from '../../styles/colors'
 
-export default class NavContainer extends React.Component {
+class NavContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -71,11 +73,13 @@ export default class NavContainer extends React.Component {
 
   render() {
     let classHide = this.state.isHide ? "hide" : "";
+    const { classes } = this.props;
+
     return (
       <React.Fragment>
         <nav
           id="nav"
-          className={`navbar nav-down ${classHide}`}
+          className={classes.nav, 'nav-down', `${classHide}`}
           role="navigation"
           aria-label="main navigation"
           style={{
@@ -150,3 +154,93 @@ export default class NavContainer extends React.Component {
     );
   }
 }
+
+const navStyles = {
+  //  -- hide navbar on scroll foobar, see app.js
+  nav: {
+    backgroundColor: `${colors.darkBlue}`,
+    zIndex: '1',
+    height: '5rem',
+    position: 'fixed',
+    top: '0',
+    transition: 'top .2s ease-in-out',
+    width: '100%',
+    color: 'white',
+    '& a': { background: 'none !important' }
+  },
+
+  navUp: {
+    top: '-6rem !important',
+  },
+
+  navbarItem: {
+    minHeight: '5rem',
+    fontSize: '1.7rem',
+    img: {
+      width: '13rem',
+      maxHeight: '4rem',
+    }
+  },
+
+  navbarBurger: {
+    minHeight: '5rem',
+  },
+
+  '@media (min-width: 576px)': {
+    navbar: {
+      display: 'flex',
+      flexWrap: 'wrap',
+    },
+    navbarBrand: {
+      minWidth: '100%',
+    },
+    navbarMenu: {
+      marginLeft: 'auto',
+      minWidth: '50%',
+
+      navbarItem: {
+        minHeight: '5rem',
+        fontSize: '2rem',
+        img: {
+          width: '13rem',
+          maxHeight: '6rem',
+        }
+      }
+    }
+  },
+
+  '@keyframes moveUp': {
+    '0%': {
+      opacity: '1',
+      transform: 'translateY(0)'
+    },
+
+    '100%': {
+      opacity: '0',
+      transform: 'translateY(-6rem)',
+      top: '-6rem !important',
+    }
+  },
+
+  '@keyframes fadeIn': {
+    '0%': {
+      opacity: '0'
+    },
+
+    '100%': {
+      opacity: '1'
+    }
+  },
+
+  '@keyframes fadeOut': {
+    '0%': {
+      opacity: '1'
+    },
+
+    '100%': {
+      opacity: '0'
+    }
+  }
+}
+
+export default injectSheet(navStyles)(NavContainer)

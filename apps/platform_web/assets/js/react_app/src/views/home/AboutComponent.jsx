@@ -1,14 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-// import BarChart from "../../components/charts/bar";
+import injectSheet, { jss } from 'react-jss'
+// import colors from '../../styles/colors'
+// import BarChart from "../../components/charts/bar"
 
 
-export default class AboutComponent extends React.Component {
+class AboutComponent extends React.Component {
   render() {
+    const { classes } = this.props
     return (
       <React.Fragment>
         <section id="about" className="light-wrap">
-          <div id="about-content" className="content">
+          <div id="about-content" className={classes.aboutContent}>
             <h1 className="title">About</h1>
             <h3 className="subtitle">
               CryptoWise is a collaborative investment ecosystem harnessing the
@@ -86,19 +89,24 @@ export default class AboutComponent extends React.Component {
   }
 }
 
-// <p>
-//   When the crowd, not fund managers, banks or middlemen, decide on
-//   how fund's are constructed, managed, and optimized-- accurate and
-//   precise analysis, diversity of thought, and public discourse
-//   become key values.
-// </p>
-// <p>
-//   Our long term vision is aimed at providing an intelligent
-//   micro-investing platform where anyone can be a fund manager or
-//   participate in a fund. An investment platform with democratized
-//   crowd fund management capabilities and which relies on the wisdom
-//   of the crowd to make funding decisions, yet which also enables
-//   individual managers to sell tokens tied to their fund(s)
-//   performance, and the funds are surfaced on a variety of
-//   factors of interest to the ecosystem.
-// </p>
+const aboutStyles = {
+  aboutContent: {
+    padding: '2rem 0',
+    margin: '0 auto',
+    width: '60ch',
+
+   '@media (min-width: 576px)': {
+      maxWidth: '95vw',
+    },
+
+    '& .team-image': {
+      '& .image': {
+        border: 'double .4rem #AEBED4',
+        backgroundOrigin: 'border-box',
+        backgroundClip: 'content-box, border-box',
+      }
+    }
+  }
+}
+
+export default injectSheet(aboutStyles)(AboutComponent)

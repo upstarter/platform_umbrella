@@ -1,16 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import injectSheet, { jss } from "react-jss"
+import colors from '../../styles/colors'
 
-export default class FeaturesComponent extends React.Component {
+class FeaturesComponent extends React.Component {
   render() {
+    const {classes}= this.props;
     return (
       <React.Fragment>
-        <section id="features" className="dark-wrap features text">
+        <section id="features" className={classes.features, 'dark-wrap'}>
           <div className="section-heading">
             <h1>Features</h1>
           </div>
           <div className="features columns">
-            <div className="feature column">
+            <div className={classes.feature}>
               <div className="feature-icon">
                 <figure className="image">
                   <img alt="Crypto investing strategies" src="/images/icon1.svg"/>
@@ -23,7 +26,7 @@ export default class FeaturesComponent extends React.Component {
                 the complex bits.
               </p>
             </div>
-            <div className="feature column">
+            <div className={classes.feature}>
               <div className="feature-icon">
                 <figure className="image">
                   <img alt="Crypto Investing" src="/images/icon2.svg"/>
@@ -35,7 +38,7 @@ export default class FeaturesComponent extends React.Component {
                 by a passionate community of crypto and finance experts.
               </p>
             </div>
-            <div className="feature column">
+            <div className={classes.feature}>
               <div className="feature-icon">
                 <figure className="image">
                   <img alt="Crypto Trading, Crypto Investing" src="/images/icon3.svg"/>
@@ -53,3 +56,27 @@ export default class FeaturesComponent extends React.Component {
     )
   }
 }
+
+const featuresStyles = {
+  features: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  feature: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    textAlign: 'center',
+    '& .feature-icon': {
+      padding: '.7rem',
+      height: '55px',
+      width: '50px',
+    },
+    '& .subtitle-small': { maxWidth: '35rem' }
+  }
+}
+
+export default injectSheet(featuresStyles)(FeaturesComponent)

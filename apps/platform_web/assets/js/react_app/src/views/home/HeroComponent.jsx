@@ -7,8 +7,11 @@ import { url } from "../../utils/consts";
 // quiz
 import Quiz from "../../components/quiz/Quiz";
 import { quiz } from "../../data/analystQuizData";
+import injectSheet, { jss } from "react-jss";
+import nestedJSS from 'jss-nested'
+import heroStyles from '../../styles/heroStyles'
 
-export default class HeroComponent extends React.Component {
+class HeroComponent extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -61,8 +64,9 @@ export default class HeroComponent extends React.Component {
   render() {
     var flags = { userType: "investor" };
     let state = this.state;
+    const { classes } = this.props;
     return (
-      <section className="heero">
+      <section className={classes.heero}>
         <Modal
           isOpen={state.showModal}
           // onAfterOpen={this.afterOpenModal}
@@ -83,9 +87,9 @@ export default class HeroComponent extends React.Component {
         >
           <Quiz quiz={quiz} />
         </Modal>
-        <div className="heero-body column">
+        <div className='heero-body'>
           <div className="container">
-            <h1 className="title1">
+            <h1 className="title">
               Become a <span className="fancy-underline">top 1%</span> crypto
               <div className="slidingVertical">
                 <span>investor.</span>
@@ -136,37 +140,47 @@ export default class HeroComponent extends React.Component {
   }
 }
 
+//
+// jss.use(nestedJSS())
+// const sheet = jss.createStyleSheet(heeroStyles)
+//
+// // If you want to render on the client, insert it into DOM.
+// sheet.attach()
+
+// Compile styles, apply plugins.
+export default injectSheet(heroStyles)(HeroComponent)
+
 const modalStyles = {
   overlay: {
-    position: "fixed",
+    position: 'fixed',
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: "rgba(0, 0, 0, 0.75)"
+    backgroundColor: 'rgba(0, 0, 0, 0.75)'
   },
   content: {
-    padding: "0",
-    border: "0",
-    position: "absolute",
-    top: "80px",
-    left: "40px",
-    right: "40px",
-    bottom: "40px",
-    overflow: "auto",
-    WebkitOverflowScrolling: "touch",
-    borderRadius: "4px"
+    padding: '0',
+    border: '0',
+    position: 'absolute',
+    top: '80px',
+    left: '40px',
+    right: '40px',
+    bottom: '40px',
+    overflow: 'auto',
+    WebkitOverflowScrolling: 'touch',
+    borderRadius: '4px',
   },
-  "@media (max-width: 768px)": {
+  '@media (max-width: 768px)': {
     content: {
-      top: "810px",
-      left: "410px",
-      right: "40px",
-      bottom: "40px",
-      overflow: "auto"
+      top: '810px',
+      left: '410px',
+      right: '40px',
+      bottom: '40px',
+      overflow: 'auto'
     },
     main: {
-      padding: "1em 1em"
+      padding: '1em 1em'
     }
   }
 };

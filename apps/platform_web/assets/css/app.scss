@@ -1,3 +1,4 @@
+
 // - - css-burrito v1.6 | mit license | github.com/jasonreece/css-burrito
 // - - - - - - - - - - - - - - - - - - -
 // - - app.scss
@@ -8,36 +9,25 @@
 @charset "utf-8";
 // - - global/settings
 // sass variables and maps
-@import "global/settings";
+// @import "global/settings";
 // - - - - - - - - - - - - - - - - - - -
 // - - libs
 // add 3rd party libraries here.
 // be sure to load them after the variable overrides file
 // - - variable overrides for 3rd party libraries
-@import "libs/libs-variable-overrides";
+// @import "libs/libs-variable-overrides";
 // -- css framework 3rd party library
 @import "~bulma";
 // - - global/utilities
 // extends, functions, and mixins
-@import "global/utilities";
+// @import "global/utilities";
 // - - global/base
 // base-level tags (body, p, etc.)
 @import "global/base";
-// -- css grid
-@import "global/grid";
-// - - global/layout
-// margin, padding, sizing
-@import "global/layout";
-// - - global/skin
-// backgrounds, borders, box-shadow, etc
-@import "global/skin";
-// - - global/typography
-// fonts and colors
-@import "global/typography";
 // - - - - - - - - - - - - - - - - - - -
 // - - modules
 // add new modules to the components/_components.scss file and they"ll get pulled in here.
-@import "components/components";
+// @import "components/components";
 // @import "libs/bulma-material-design-form";
 // - - - - - - - - - - - - - - - - - - -
 // - - inbox

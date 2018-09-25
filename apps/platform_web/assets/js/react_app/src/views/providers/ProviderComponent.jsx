@@ -1,11 +1,14 @@
 import React from "react"
 import ReactDOM from "react-dom"
+import injectSheet, { jss } from 'react-jss'
+import colors from '../../styles/colors'
 
-export default class ProviderComponent extends React.Component {
+class ProviderComponent extends React.Component {
   render() {
+    const { classes } = this.props
     return (
       <React.Fragment>
-        <section id="provider" className="light-wrap">
+        <section id="provider" className={classes.provider}>
           <div className="scroll-to is-hidden-desktop">
             <a className="icon">
               <i className="fa fa-chevron-down"></i>
@@ -88,3 +91,36 @@ export default class ProviderComponent extends React.Component {
     )
   }
 }
+
+const providerStyles = {
+  provider: {
+    margin: '0 auto',
+    width: '95vw',
+
+    '@media (min-width: 992px)': {
+      maxWidth: '70ch',
+    },
+
+    '& #provider-text': {
+      justifyContent: 'center',
+      '& .provider-heading': {
+        marginBottom: '30px',
+      }
+    },
+
+    '& .list-heading': {
+      textAlign: 'center',
+    },
+
+    '& .topics': {
+      '& .topic': {
+        listStyleType: 'circle',
+
+        '& .feature-icon': { padding: '7px', },
+        '& p': { maxWidth: '300px', }
+      }
+    }
+  }
+}
+
+export default injectSheet(providerStyles)(ProviderComponent)
