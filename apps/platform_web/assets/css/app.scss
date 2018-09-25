@@ -14,21 +14,8 @@
     url("/fonts/avenir/Avenir-Roman.ttf") format("truetype")
 }
 
-// // font types
-// $avenir: "Avenir", sans-serif;
-// $avenir-light: "Avenir-Light", sans-serif;
-// $avenir-medium: "Avenir-Medium", sans-serif;
-// $avenir-book: "Avenir-Book", sans-serif;
-// $avenir-roman: "Avenir-Roman", sans-serif;
-//
-// // font weights
-// $light: 300;
-// $normal: 400;
-// $semibold: 500;
-// $bold: 700;
-
 html, body {
-  font-family: "Avenir, Avenir-Light";
+  font-family: Avenir, Avenir-Light, Avenir-Book, Avenir-Roman, sans-serif;
   font-weight: 400;
   font-size: 62.5%;
   line-height: 2.5rem;
@@ -36,7 +23,7 @@ html, body {
 }
 
 #wrapper {
-  font-family: "Avenir, Avenir, Helvetica";
+  font-family: Avenir, Avenir-Light, Avenir-Book, Avenir-Roman, sans-serif;
   font-weight: 400;
   font-size: 1.7rem;
   color: #000;
@@ -48,11 +35,6 @@ html, body {
   margin: 0;
   padding: 0;
   box-sizing: inherit;
-}
-
-html, body {
-  font-size: 62.5%;
-  line-height: 2.5rem;
 }
 
 body {
