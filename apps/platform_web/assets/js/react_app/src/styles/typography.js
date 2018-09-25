@@ -4,11 +4,11 @@
 import colors from './colors'
 
 // font types
-const avenir = "'Avenir', sansSerif"
-const avenirLight = "'Avenir-Light', sansSerif"
-const avenirMedium = "'Avenir-Medium', sansSerif"
-const avenirBook = "'Avenir-Book', sansSerif"
-const avenirRoman = "'Avenir-Roman', sansSerif"
+const avenir = '\"Avenir\", sansSerif'
+const avenirLight = '\"Avenir-Light\", sansSerif'
+const avenirMedium = '\"Avenir-Medium\", sansSerif'
+const avenirBook = '\"Avenir-Book\", sansSerif'
+const avenirRoman = '\"Avenir-Roman\", sansSerif'
 // font weights
 const light = '300'
 const normal = '400'
@@ -16,34 +16,9 @@ const semibold = '500'
 const bold = '700'
 
 const typography = {
+
   typography: {
-    // '@font-face': [
-    //   {
-    //     fontFamily: 'Avenir',
-    //     src: 'url(/fonts/avenir/AvenirLTStd-Book.otf) format(otf)'
-    //   },
-    //   {
-    //     fontFamily: 'Avenir-Light',
-    //     src: 'url(/fonts/avenir/AvenirLTStd-Light.otf) format(otf)'
-    //   },
-    //   {
-    //     fontFamily: 'Avenir-Roman',
-    //     src: 'url(/fonts/avenir/AvenirLTStd-Roman.otf) format(otf)'
-    //   },
-    //   {
-    //     fontFamily: 'Avenir-Book',
-    //     src: 'url(/fonts/avenir/Avenir-Book.ttf) format(truetype)'
-    //   },
-    //   {
-    //     fontFamily: 'Avenir-Light',
-    //     src: 'url(/fonts/avenir/Avenir-Light.ttf) format(truetype)'
-    //   },
-    //   {
-    //     fontFamily: 'Avenir-Roman',
-    //     src: 'url(/fonts/avenir/Avenir-Roman.ttf) format(truetype)'
-    //   }
-    // ],
-    fontFamily: `${avenirBook}`,
+    fontFamily: `"Avenir", sansSerif`,
     fontWeight: `${normal}`,
     fontSize: '1.5rem',
     color: '#000',
