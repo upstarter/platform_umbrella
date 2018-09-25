@@ -40,7 +40,7 @@ const heroStyles = {
         // background: 'transparent',
         fontawesomeize: '1.8rem !important',
       },
-  
+
       '& .button-control:hover': {
         transform: 'translateY(-.2rem)',
       },
