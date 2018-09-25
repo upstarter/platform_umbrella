@@ -12,6 +12,8 @@ import PrivacyComponent from "../PrivacyComponent";
 import BlogComponent from "../../components/blog/BlogComponent";
 // import BlogListContainer from "../../components/blog/BlogListContainer";
 import FooterComponent from "./FooterComponent";
+import { Layout, Menu, Icon } from 'antd';
+const { Header, Content, Footer, Sider } = Layout;
 import injectSheet, { jss } from "react-jss"
 import typography from '../../styles/typography'
 // import ProviderContainer from "../providers/ProviderContainer";
@@ -50,15 +52,26 @@ class HomeContainer extends React.Component {
       <React.Fragment>
         <BrowserRouter>
           <section id="wrapper" className={classes.wrapper}>
-            <NavContainer />
-            <Route exact path="/" component={PortfolioContainer} />
-            <Route exact path="/investors" component={HomeComponent} />
-            <Route exact path="/login" component={Login} />
-            <PrivateRoute exact path="/profile" component={Protected} />
-            <Route exact path="/about" component={AboutComponent} />
-            <Route exact path="/contribute" component={ProviderContainer} />
-            <Route exact path="/privacy_policy" component={PrivacyComponent} />
-            <FooterComponent />
+            <Layout>
+              <Header>
+                <NavContainer />
+              </Header>
+              <Layout>
+                <Sider>left sidebar</Sider>
+                <Content>
+                  <Route exact path="/" component={PortfolioContainer} />
+                  <Route exact path="/investors" component={HomeComponent} />
+                  <Route exact path="/login" component={Login} />
+                  <PrivateRoute exact path="/profile" component={Protected} />
+                  <Route exact path="/about" component={AboutComponent} />
+                  <Route exact path="/contribute" component={ProviderContainer} />
+                  <Route exact path="/privacy_policy" component={PrivacyComponent} />
+                </Content>
+              </Layout>
+              <Footer>
+                <FooterComponent />
+              </Footer>
+            </Layout>
           </section>
         </BrowserRouter>
       </React.Fragment>

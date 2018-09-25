@@ -1,38 +1,292 @@
-
-// - - css-burrito v1.6 | mit license | github.com/jasonreece/css-burrito
 // - - - - - - - - - - - - - - - - - - -
-// - - app.scss
-// contains an import section for libs, global, and modules, the inbox,
-// and a shame section for quick fixes and hacks.
-// - - - - - - - - - - - - - - - - - - -
-// - - global
+// - - base
+// project defaults for base elements - h1-h6, p, a, etc.
 @charset "utf-8";
-// - - global/settings
-// sass variables and maps
-// @import "global/settings";
-// - - - - - - - - - - - - - - - - - - -
-// - - libs
-// add 3rd party libraries here.
-// be sure to load them after the variable overrides file
-// - - variable overrides for 3rd party libraries
-// @import "libs/libs-variable-overrides";
-// -- css framework 3rd party library
-// @import "~bulma";
-// - - global/utilities
-// extends, functions, and mixins
-// @import "global/utilities";
-// - - global/base
-// base-level tags (body, p, etc.)
-@import "global/base";
-// - - - - - - - - - - - - - - - - - - -
-// - - modules
-// add new modules to the components/_components.scss file and they"ll get pulled in here.
-// @import "components/components";
-// @import "libs/bulma-material-design-form";
-// - - - - - - - - - - - - - - - - - - -
-// - - inbox
-// the inbox allows developers, and those not actively working on the project
-// to quickly add styles that are easily seen by the maintainer of the file.
-// - - - - - - - - - - - - - - - - - - -
-// - - shame
-// need to add a quick fix, hack, or questionable technique?  add it here, fix it later.
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html, body {
+  font-size: 62.5%;
+  line-height: 2.5rem;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+
+  // @media (min-width: 576px) {
+  //   overflow-y: hidden; // hide vertical scrollbar
+  //   overflow-x: hidden; // hide horizontal
+  //   ::-webkit-scrollbar {
+  //     display: none;
+  //   }
+  // }
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#wrapper {
+
+  h1 { padding-top: 2.5rem; }
+
+  .light-wrap {
+    padding: 6rem 3rem 13rem;
+    background: white;
+    display: flex;
+    justify-content: center;
+  }
+
+  .dark-wrap {
+    padding: 6rem 3rem 12rem;
+    background:  #191F2D;;
+    color: white;
+    a { background: none !important; }
+  }
+
+  .section-heading {
+    text-align: center;
+  }
+
+  .privacy-policy {
+    padding: 60px;
+    color: black;
+  }
+
+  h1, h2, h3, h4, ul { margin-top: 20px; }
+
+  /*Vertical Sliding*/
+  .slidingVertical{
+    display: inline;
+    text-indent: 8px;
+  }
+  .slidingVertical span{
+    animation: topToBottom 12.5s linear infinite 0s;
+    -ms-animation: topToBottom 12.5s linear infinite 0s;
+    -webkit-animation: topToBottom 12.5s linear infinite 0s;
+    color: #00abe9;
+    opacity: 0;
+    position: absolute;
+  }
+  .slidingVertical span:nth-child(2){
+    animation-delay: 2.5s;
+    -ms-animation-delay: 2.5s;
+    -webkit-animation-delay: 2.5s;
+  }
+  .slidingVertical span:nth-child(3){
+    animation-delay: 5s;
+    -ms-animation-delay: 5s;
+    -webkit-animation-delay: 5s;
+  }
+  .slidingVertical span:nth-child(4){
+    animation-delay: 7.5s;
+    -ms-animation-delay: 7.5s;
+    -webkit-animation-delay: 7.5s;
+  }
+  .slidingVertical span:nth-child(5){
+    animation-delay: 10s;
+    -ms-animation-delay: 10s;
+    -webkit-animation-delay: 10s;
+  }
+
+  /*topToBottom Animation*/
+  @-moz-keyframes topToBottom{
+    0% { opacity: 0; }
+    5% { opacity: 0; -moz-transform: translateY(-50px); }
+    10% { opacity: 1; -moz-transform: translateY(0px); }
+    25% { opacity: 1; -moz-transform: translateY(0px); }
+    30% { opacity: 0; -moz-transform: translateY(50px); }
+    80% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  @-webkit-keyframes topToBottom{
+    0% { opacity: 0; }
+    5% { opacity: 0; -webkit-transform: translateY(-50px); }
+    10% { opacity: 1; -webkit-transform: translateY(0px); }
+    25% { opacity: 1; -webkit-transform: translateY(0px); }
+    30% { opacity: 0; -webkit-transform: translateY(50px); }
+    80% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  @-ms-keyframes topToBottom{
+    0% { opacity: 0; }
+    5% { opacity: 0; -ms-transform: translateY(-50px); }
+    10% { opacity: 1; -ms-transform: translateY(0px); }
+    25% { opacity: 1; -ms-transform: translateY(0px); }
+    30% { opacity: 0; -ms-transform: translateY(50px); }
+    80% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+}
+
+blockquote{
+  font-size: 21px;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1em 10px;
+  padding: 0 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+  padding: 10px 10px;
+  line-height: 1.4;
+}
+
+blockquote:before {
+  content: open-quote;
+  display: inline;
+  height: 0;
+  line-height: 0;
+  left: -10px;
+  position: relative;
+  top: 25px;
+  color: #ccc;
+  font-size: 3em;
+}
+
+.fancy-underline {
+  padding-bottom: .5rem;
+  background: /* gradient can be an image */
+   linear-gradient(
+     to right,
+     rgba(167, 249, 205,0) 0%,
+     rgba(167, 249, 205,.35) 55%,
+     rgba(167, 249, 205,.50) 80%,
+     rgba(167, 249, 205,1) 100%
+   )
+   left
+   bottom
+   transparent
+   no-repeat;
+   background-size:100% .3rem ;/* if linear-gradient, we need to resize it */
+}
+
+// spinner.scss
+div {
+  &.is-loading {
+      position: relative;
+      pointer-events: none;
+      opacity: 0.5;
+      &:after {
+          // @include loader;
+          position: absolute;
+          top: calc(50% - 2.5em);
+          left: calc(50% - 2.5em);
+          width: 5em;
+          height: 5em;
+          border-width: 0.25em;
+      }
+  }
+}
+
+// social-buttons.scss
+.social-button {
+    background-position: 25px 0px;
+    box-sizing: border-box;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    text-align: left;
+    text-decoration: none;
+    text-transform: uppercase;
+    vertical-align: middle;
+    width: 100%;
+    border-radius: 3px;
+    margin: 10px auto;
+    outline: rgb(255, 255, 255) none 0px;
+    padding-left: 20%;
+    transition: all 0.2s cubic-bezier(0.72, 0.01, 0.56, 1) 0s;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+#facebook-connect {
+    // background: rgb(255, 255, 255) url('https://eswarasai.com/projects/social-login/img/facebook.svg') no-repeat scroll 5px 0px / 30px 50px padding-box border-box;
+    border: 1px solid rgb(60, 90, 154);
+}
+
+#facebook-connect:hover {
+    border-color: rgb(60, 90, 154);
+    // background: rgb(60, 90, 154) url('https://eswarasai.com/projects/social-login/img/facebook-white.svg') no-repeat scroll 5px 0px / 30px 50px padding-box border-box;
+    -webkit-transition: all .8s ease-out;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease-out;
+}
+
+#facebook-connect span {
+    box-sizing: border-box;
+    color: rgb(60, 90, 154);
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    border: 0px none rgb(255, 255, 255);
+    outline: rgb(255, 255, 255) none 0px;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+#facebook-connect:hover span {
+    color: #FFF;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+#google-connect {
+    // background: rgb(255, 255, 255) url('https://eswarasai.com/projects/social-login/img/google-plus.png') no-repeat scroll 5px 0px / 50px 50px padding-box border-box;
+    border: 1px solid rgb(220, 74, 61);
+}
+
+#google-connect:hover {
+    border-color: rgb(220, 74, 61);
+    // background: rgb(220, 74, 61) url('https://eswarasai.com/projects/social-login/img/google-plus-white.png') no-repeat scroll 5px 0px / 50px 50px padding-box border-box;
+    -webkit-transition: all .8s ease-out;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease-out;
+}
+
+#google-connect span {
+    box-sizing: border-box;
+    color: rgb(220, 74, 61);
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    border: 0px none rgb(220, 74, 61);
+    outline: rgb(255, 255, 255) none 0px;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+#google-connect:hover span {
+    color: #FFF;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}

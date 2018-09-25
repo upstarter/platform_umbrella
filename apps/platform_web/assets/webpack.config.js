@@ -75,7 +75,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(sa|sc|c)ss$/,
+        test: /\.(sa|sc|c|le)ss$/,
         include: /css/,
         use: [
           { loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader },
@@ -85,15 +85,26 @@ module.exports = {
               sourceComments: devMode,
               sourceMap: true
             }
-          }
+          },
+          { loader: 'less-loader', // compiles Less to CSS
+            options: {
+              modifyVars: {
+                'primary-color': '#1DA57A',
+                'link-color': '#1DA57A',
+                'border-radius-base': '2px',
+              },
+              javascriptEnabled: true,
+            }
+          },
        ],
       },
       {
         test: /\.(jsx?)/,
         exclude: ["/node_modules", "/js/elm"],
-        use: {
-          loader: "babel-loader?cacheDirectory=true",
-        }
+        use: [
+          { loader: "babel-loader?cacheDirectory=true",
+          }
+        ]
       },
       // {
       //   test: /\.elm$/,
