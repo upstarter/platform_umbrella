@@ -60,9 +60,9 @@ export default class PortfolioGrid extends React.Component {
     return (
       <div>
         {noMoreRowInfo ? (
-          <div class="notification is-info">
+          <div className="notification is-info">
             <button
-              class="delete"
+              className="delete"
               onClick={() => {
                 this.setState({ noMoreRowInfo: false });
               }}
@@ -71,7 +71,7 @@ export default class PortfolioGrid extends React.Component {
           </div>
         ) : null}
         {noMoreAllocationInfo ? (
-          <div class="notification is-info">
+          <div className="notification is-info">
             <button
               class="delete"
               onClick={() => {
@@ -149,13 +149,13 @@ export default class PortfolioGrid extends React.Component {
               </tbody>
             </table>
             <a
-              class="button is-fullwidth is-primary is-outlined"
+              className="button is-fullwidth is-primary is-outlined"
               onClick={this.addRow}
             >
               Add asset
             </a>
             <a
-              class="button is-fullwidth is-link"
+              className="button is-fullwidth is-link"
               onClick={this.handleSubmit}
               style={{ marginTop: "10px" }}
             >

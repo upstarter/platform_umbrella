@@ -26,11 +26,11 @@ const LinkMenu = withRouter(props => {
           </Link>
         </span>
       </Menu.Item>
-      <Menu.Item key="/Investors">
+      <Menu.Item key="/investors">
         <Icon type="user" />
         <span className="nav-text">
         <Link to="/investors">
-          Investors
+          Investment
         </Link>
         </span>
       </Menu.Item>

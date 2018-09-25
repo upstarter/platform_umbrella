@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
-import LinkMenu from "../../components/shared/LinkMenu"
+import LinkMenu from "../../components/SiderMenu/LinkMenu"
 import NavContainer from "../../components/nav/NavContainer";
 import Login from "../../views/Login/Login";
 import PrivateRoute from "../../components/PrivateRoute/PrivateRoute";
@@ -13,7 +13,8 @@ import BlogComponent from "../../components/blog/BlogComponent";
 // import BlogListContainer from "../../components/blog/BlogListContainer";
 import FooterComponent from "./FooterComponent";
 import { Layout } from 'antd';
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Footer } = Layout;
+import SiderMenu from "../../components/SiderMenu/SiderMenu"
 import injectSheet, { jss } from "react-jss"
 import typography from '../../styles/typography'
 // import ProviderContainer from "../providers/ProviderContainer";
@@ -56,22 +57,14 @@ class HomeContainer extends React.Component {
                 <NavContainer />
               </Header>
               <Layout>
-                <Sider
-                  breakpoint="lg"
-                  collapsedWidth="0"
-                  onBreakpoint={(broken) => { console.log(broken); }}
-                  onCollapse={(collapsed, type) => { console.log(collapsed, type); }}
-                >
-                <div className="logo" />
-                <LinkMenu />
-                </Sider>
+                <SiderMenu />
                 <Content>
+                  <Route exact path="/contribute" component={ProviderContainer} />
                   <Route exact path="/" component={PortfolioContainer} />
                   <Route exact path="/investors" component={HomeComponent} />
-                  <Route exact path="/login" component={Login} />
                   <PrivateRoute exact path="/profile" component={Protected} />
                   <Route exact path="/about" component={AboutComponent} />
-                  <Route exact path="/contribute" component={ProviderContainer} />
+                  <Route exact path="/login" component={Login} />
                   <Route exact path="/privacy_policy" component={PrivacyComponent} />
                 </Content>
               </Layout>
