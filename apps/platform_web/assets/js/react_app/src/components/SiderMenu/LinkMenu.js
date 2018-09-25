@@ -9,10 +9,10 @@ const LinkMenu = withRouter(props => {
   const { classes } = props;
   return (
     <Menu className={classes.menu} theme="dark" mode="inline" selectedKeys={[location.pathname]} defaultSelectedKeys={["/portfolio"]}>
-      <Menu.Item key="/portfolio">
+      <Menu.Item key="/">
         <Icon type="user" />
         <span className="nav-text">
-          <Link to="/portfolio">
+          <Link to="/">
             Porfolio
           </Link>
         </span>

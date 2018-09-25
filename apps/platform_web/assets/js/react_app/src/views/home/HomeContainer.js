@@ -12,7 +12,7 @@ import PrivacyComponent from "../PrivacyComponent";
 import BlogComponent from "../../components/blog/BlogComponent";
 // import BlogListContainer from "../../components/blog/BlogListContainer";
 import FooterComponent from "./FooterComponent";
-import { Layout } from 'antd';
+import { Layout, Breadcrumb } from 'antd';
 const { Header, Content, Footer } = Layout;
 import SiderMenu from "../../components/SiderMenu/SiderMenu"
 import injectSheet, { jss } from "react-jss"
@@ -53,12 +53,16 @@ class HomeContainer extends React.Component {
         <BrowserRouter>
           <section id="wrapper" className={classes.typography}>
             <Layout>
-              <Header>
-                <NavContainer />
+              <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
               </Header>
               <Layout>
-                <SiderMenu />
+                <SiderMenu/>
                 <Content>
+                  <Breadcrumb style={{ margin: '16px 0' }}>
+                    <Breadcrumb.Item>Home</Breadcrumb.Item>
+                    <Breadcrumb.Item>List</Breadcrumb.Item>
+                    <Breadcrumb.Item>App</Breadcrumb.Item>
+                  </Breadcrumb>
                   <Route exact path="/contribute" component={ProviderContainer} />
                   <Route exact path="/" component={PortfolioContainer} />
                   <Route exact path="/investors" component={HomeComponent} />

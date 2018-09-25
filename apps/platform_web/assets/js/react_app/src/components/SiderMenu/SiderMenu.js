@@ -10,6 +10,7 @@ const SiderMenu = withRouter(props => {
   const { classes } = props;
   return (
     <Sider
+      style={{ zIndex: 1, marginTop: 64 }}
       breakpoint="lg"
       collapsedWidth="0"
       onBreakpoint={(broken) => { console.log(broken); }}
@@ -22,6 +23,7 @@ const SiderMenu = withRouter(props => {
 
 const siderMenuStyles = {
   sider: {
+    display: 'none'
   }
 }
 
