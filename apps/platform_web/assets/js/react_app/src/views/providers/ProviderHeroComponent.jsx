@@ -5,8 +5,11 @@ import ReactDOM from "react-dom";
 import Button from "../../components/Button/Button";
 import Modal from "react-modal";
 import SignUpWizard from "../SignUpWizard/SignUpWizard";
+import injectSheet, { jss } from 'react-jss'
+import heroStyles from '../../styles/heroStyles'
 
-export default class ProviderHeroComponent extends React.Component {
+
+class ProviderHeroComponent extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -30,8 +33,9 @@ export default class ProviderHeroComponent extends React.Component {
   render() {
     var flags = { userType: "provider" };
     let state = this.state;
+    const { classes } = this.props
     return (
-      <section className="heero">
+      <section className={classes.heero}>
         <Modal
           isOpen={state.showModal}
           // onAfterOpen={this.afterOpenModal}
@@ -84,6 +88,8 @@ export default class ProviderHeroComponent extends React.Component {
     );
   }
 }
+
+export default injectSheet(heroStyles)(ProviderHeroComponent)
 
 const modalStyles = {
   overlay: {

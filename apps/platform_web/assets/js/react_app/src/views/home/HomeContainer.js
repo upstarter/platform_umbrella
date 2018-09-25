@@ -10,7 +10,10 @@ import PrivateRoute from "../../components/PrivateRoute/PrivateRoute";
 import PortfolioContainer from "../../components/portfolio/PortfolioContainer";
 import PrivacyComponent from "../PrivacyComponent";
 import BlogComponent from "../../components/blog/BlogComponent";
-import BlogListContainer from "../../components/blog/BlogListContainer";
+// import BlogListContainer from "../../components/blog/BlogListContainer";
+import FooterComponent from "./FooterComponent";
+import injectSheet, { jss } from "react-jss"
+import typography from '../../styles/typography'
 // import ProviderContainer from "../providers/ProviderContainer";
 // import ProviderComponent from "../providers/ProviderComponent";
 
@@ -37,26 +40,16 @@ const ProviderContainer = Loadable({
   }
 });
 
-// class AboutComponent extends React.Component {
-//   componentWillMount = () => {
-//     import('./AboutComponent').then(Component => {
-//       this.Component = Component
-//       this.forceUpdate()
-//     })
-//   }
-//   render = () => (
-//     this.Component ? <this.Component.default /> : null
-//   )
-// }
-
 const Protected = () => <h3>Protected</h3>;
 
-export default class HomeContainer extends React.Component {
+class HomeContainer extends React.Component {
   render() {
+    const { classes } = this.props
+
     return (
       <React.Fragment>
         <BrowserRouter>
-          <section id="container">
+          <section id="wrapper" className={classes.wrapper}>
             <NavContainer />
             <Route exact path="/" component={PortfolioContainer} />
             <Route exact path="/investors" component={HomeComponent} />
@@ -65,15 +58,11 @@ export default class HomeContainer extends React.Component {
             <Route exact path="/about" component={AboutComponent} />
             <Route exact path="/contribute" component={ProviderContainer} />
             <Route exact path="/privacy_policy" component={PrivacyComponent} />
-            <div id="footer">
-              <p className="copyright">Copyright ©2018, Aion Labs, Inc.</p>
-              <Link to="/privacy_policy" className="footer-link">
-                Privacy Policy
-              </Link>
-            </div>
+            <FooterComponent />
           </section>
         </BrowserRouter>
       </React.Fragment>
     );
   }
 }
+export default injectSheet(typography)(HomeContainer)
