@@ -3,6 +3,45 @@
 // project defaults for base elements - h1-h6, p, a, etc.
 @charset "utf-8";
 
+@font-face {
+  font-family: "Avenir";
+  src:
+    url("/fonts/avenir/AvenirLTStd-Book.otf") format("otf"),
+    url("/fonts/avenir/AvenirLTStd-Light.otf") format("otf"),
+    url("/fonts/avenir/AvenirLTStd-Roman.otf") format("otf"),
+    url("/fonts/avenir/Avenir-Book.ttf") format("truetype"),
+    url("/fonts/avenir/Avenir-Light.ttf") format("truetype"),
+    url("/fonts/avenir/Avenir-Roman.ttf") format("truetype")
+}
+
+// // font types
+// $avenir: "Avenir", sans-serif;
+// $avenir-light: "Avenir-Light", sans-serif;
+// $avenir-medium: "Avenir-Medium", sans-serif;
+// $avenir-book: "Avenir-Book", sans-serif;
+// $avenir-roman: "Avenir-Roman", sans-serif;
+//
+// // font weights
+// $light: 300;
+// $normal: 400;
+// $semibold: 500;
+// $bold: 700;
+
+html, body {
+  font-family: "Avenir, Avenir-Light";
+  font-weight: 400;
+  font-size: 62.5%;
+  line-height: 2.5rem;
+  color: #000;
+}
+
+#wrapper {
+  font-family: "Avenir, Avenir, Helvetica";
+  font-weight: 400;
+  font-size: 1.7rem;
+  color: #000;
+}
+
 *,
 *::after,
 *::before {
