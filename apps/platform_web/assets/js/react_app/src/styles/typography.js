@@ -16,7 +16,7 @@ const semibold = '500'
 const bold = '700'
 
 const typography = {
-  wrapper: {
+  typography: {
     // '@font-face': [
     //   {
     //     fontFamily: 'Avenir',

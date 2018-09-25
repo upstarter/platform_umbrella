@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
-
+import LinkMenu from "../../components/shared/LinkMenu"
 import NavContainer from "../../components/nav/NavContainer";
 import Login from "../../views/Login/Login";
 import PrivateRoute from "../../components/PrivateRoute/PrivateRoute";
@@ -12,7 +12,7 @@ import PrivacyComponent from "../PrivacyComponent";
 import BlogComponent from "../../components/blog/BlogComponent";
 // import BlogListContainer from "../../components/blog/BlogListContainer";
 import FooterComponent from "./FooterComponent";
-import { Layout, Menu, Icon } from 'antd';
+import { Layout } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 import injectSheet, { jss } from "react-jss"
 import typography from '../../styles/typography'
@@ -47,17 +47,24 @@ const Protected = () => <h3>Protected</h3>;
 class HomeContainer extends React.Component {
   render() {
     const { classes } = this.props
-
     return (
       <React.Fragment>
         <BrowserRouter>
-          <section id="wrapper" className={classes.wrapper}>
+          <section id="wrapper" className={classes.typography}>
             <Layout>
               <Header>
                 <NavContainer />
               </Header>
               <Layout>
-                <Sider>left sidebar</Sider>
+                <Sider
+                  breakpoint="lg"
+                  collapsedWidth="0"
+                  onBreakpoint={(broken) => { console.log(broken); }}
+                  onCollapse={(collapsed, type) => { console.log(collapsed, type); }}
+                >
+                <div className="logo" />
+                <LinkMenu />
+                </Sider>
                 <Content>
                   <Route exact path="/" component={PortfolioContainer} />
                   <Route exact path="/investors" component={HomeComponent} />
@@ -78,4 +85,9 @@ class HomeContainer extends React.Component {
     );
   }
 }
-export default injectSheet(typography)(HomeContainer)
+
+const appStyles = {
+  typography: `${typography}`
+}
+
+export default injectSheet(appStyles)(HomeContainer)
