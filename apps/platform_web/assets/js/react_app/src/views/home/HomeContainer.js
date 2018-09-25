@@ -5,20 +5,15 @@ import LinkMenu from "../../components/SiderMenu/LinkMenu"
 import NavContainer from "../../components/nav/NavContainer";
 import Login from "../../views/Login/Login";
 import PrivateRoute from "../../components/PrivateRoute/PrivateRoute";
-// import HomeComponent from "./HomeComponent";
-// import AboutComponent from "./AboutComponent";
 import PortfolioContainer from "../../components/portfolio/PortfolioContainer";
 import PrivacyComponent from "../PrivacyComponent";
 import BlogComponent from "../../components/blog/BlogComponent";
-// import BlogListContainer from "../../components/blog/BlogListContainer";
 import FooterComponent from "./FooterComponent";
 import { Layout, Breadcrumb } from 'antd';
 const { Header, Content, Footer } = Layout;
 import SiderMenu from "../../components/SiderMenu/SiderMenu"
 import injectSheet, { jss } from "react-jss"
 import typography from '../../styles/typography'
-// import ProviderContainer from "../providers/ProviderContainer";
-// import ProviderComponent from "../providers/ProviderComponent";
 
 import Loadable from 'react-loadable';
 
