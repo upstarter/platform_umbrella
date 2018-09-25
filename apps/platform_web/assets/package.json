@@ -8,8 +8,8 @@
     "eslint": "node_modules/.bin/eslint -c ../.eslintrc.js js/"
   },
   "dependencies": {
+    "antd": "^3.9.3",
     "axios": "^0.18.0",
-    "bulma": "^0.7.0",
     "font-awesome": "4",
     "immutability-helper": "^2.8.1",
     "lodash": "^4.17.11",
