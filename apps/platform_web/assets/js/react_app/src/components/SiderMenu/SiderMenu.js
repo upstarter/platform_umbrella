@@ -11,8 +11,9 @@ const SiderMenu = withRouter(props => {
   return (
     <Sider
       className={classes.sider}
-      breakpoint="sm"
+      breakpoint="md"
       collapsedWidth="0"
+      collapsible="true"
       onBreakpoint={(broken) => { console.log(broken); }}
       onCollapse={(collapsed, type) => { console.log(collapsed, type); }}
     >
