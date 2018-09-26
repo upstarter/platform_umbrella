@@ -22,7 +22,7 @@ class FooterComponent extends React.Component {
 
 const footerStyles = {
   footer: {
-    background: `${colors.darkBlue}`,
+    background: '#001528',
     fontSize: "1.4rem",
     textAlign: "center",
     padding: "2rem",

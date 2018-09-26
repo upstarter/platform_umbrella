@@ -21,7 +21,7 @@ const colors = {
   darkBlue: '#191F2D', // darkBlue
   lightDarkBlue: 'rgb(20,23,30)',
   lighterDarkBlue: 'rgb(23,26,33)',
-  darkerDarkBlue: 'rgb(17,20,27)',
+  darkerDarkBlue: '#001528',
   // black: '#000',
   // secondaryDark: 'rgb(22,27,37)',
 
