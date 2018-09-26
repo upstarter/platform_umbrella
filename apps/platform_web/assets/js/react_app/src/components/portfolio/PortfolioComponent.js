@@ -51,20 +51,20 @@ class PortfolioComponent extends React.Component {
       <React.Fragment>
         <section id="portfolio" className={classes.portfolio, "light-wrap"}>
           <div id="portfolio-text" className="content">
-            <h1 className="title portfolio-heading center">
-              The CryptoWise Collaborative Portfolio(CCP){" "}
-            </h1>{" "}
+            <h1 className="title center">
+              The CryptoWise Collaborative Portfolio(CCP)
+            </h1>
             <h5 className="content center">
-              Curated by the wisest minds in crypto.Enter your portfolio
+              Curated by the wisest minds in crypto. Enter your portfolio
               allocation and we will send you regular wisdom of the crowd
-              updates.{" "}
-            </h5>{" "}
+              updates.
+            </h5>
             <br />
             <div className="portfolio-grid center">
               <PortfolioGrid />
-            </div>{" "}
-          </div>{" "}
-        </section>{" "}
+            </div>
+          </div>
+        </section>
       </React.Fragment>
     );
   }
@@ -72,17 +72,19 @@ class PortfolioComponent extends React.Component {
 
 const portfolioStyles = {
   portfolio: {
+    color: 'red',
+    height: '100vh',
     padding: '2rem 0',
     margin: '0 auto',
     width: '95vw',
 
     '@media (min-width: 992px)': {
-      maxWidth: '70ch',
+      width: '70ch'
     },
 
    '@media (min-width: 576px)': {
-      maxWidth: '95vw',
+      width: '95vw'
     },
   }
 }
-export default injectSheet(portfolioStyles)(PortfolioComponent)
+export default injectSheet(portfolioStyles)(PortfolioComponent);

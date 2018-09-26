@@ -24,7 +24,7 @@ const SiderMenu = withRouter(props => {
 
 const siderMenuStyles = {
   sider: {
-    position: 'fixed',
+
     zIndex: 1,
     height: '100vh'
   }

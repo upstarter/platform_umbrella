@@ -5,12 +5,12 @@ import LinkMenu from "../../components/SiderMenu/LinkMenu"
 import NavContainer from "../../components/nav/NavContainer";
 import Login from "../../views/Login/Login";
 import PrivateRoute from "../../components/PrivateRoute/PrivateRoute";
-import PortfolioContainer from "../../components/portfolio/PortfolioContainer";
+import PortfolioComponent from "../../components/portfolio/PortfolioComponent";
 import PrivacyComponent from "../PrivacyComponent";
 import BlogComponent from "../../components/blog/BlogComponent";
 import FooterComponent from "./FooterComponent";
 import { Layout } from 'antd';
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 import SiderMenu from "../../components/SiderMenu/SiderMenu"
 import injectSheet, { jss } from "react-jss"
 import typography from '../../styles/typography'
@@ -46,13 +46,14 @@ class HomeContainer extends React.Component {
     return (
       <React.Fragment>
         <BrowserRouter>
-          <section id="wrapper" className={classes.typography}>
+          <section id="wrapper" className={classes.typography, { height: '100vh'}}>
             <Layout>
-              <Layout>
+              <Header>Header</Header>
+              <Layout style={{height: '100vh'}}>
                 <SiderMenu/>
                 <Content>
                   <Route exact path="/contribute" component={ProviderContainer} />
-                  <Route exact path="/" component={PortfolioContainer} />
+                  <Route exact path="/" component={PortfolioComponent} />
                   <Route exact path="/investors" component={HomeComponent} />
                   <PrivateRoute exact path="/profile" component={Protected} />
                   <Route exact path="/about" component={AboutComponent} />
@@ -60,9 +61,7 @@ class HomeContainer extends React.Component {
                   <Route exact path="/privacy_policy" component={PrivacyComponent} />
                 </Content>
               </Layout>
-              <Footer>
-                <FooterComponent />
-              </Footer>
+              <FooterComponent />
             </Layout>
           </section>
         </BrowserRouter>
