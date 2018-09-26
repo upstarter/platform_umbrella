@@ -10,8 +10,8 @@ class AboutComponent extends React.Component {
     const { classes } = this.props
     return (
       <React.Fragment>
-        <section id="about" className="light-wrap">
-          <div id="about-content" className={classes.aboutContent}>
+        <section id="about" className={classes.about}>
+          <div id="about-content" className="content">
             <h1 className="title">About</h1>
             <h3 className="subtitle">
               CryptoWise is a collaborative investment ecosystem harnessing the
@@ -54,13 +54,13 @@ class AboutComponent extends React.Component {
             <div className="team-image">
               <h1 className="title">Team</h1>
               <figure className="image">
-                <img alt="Placeholder image" src="/images/team.png"/>
+                <img alt="CryptoWise Team" src="/images/team.png" width='540px' height='380px'/>
               </figure>
             </div>
             <h1 className="title">Mission</h1>
             <p>
               To help forward-looking investors succeed through in-depth
-              community-driven research & analysis. We believe that everyone
+              community-driven research & analysis. We b15ieve that everyone
               should have the capabilities of a venture capitalist, and that
               fintech and crypto literacy are critical skills of the future.
               Becoming highly investing saavy will help americans through the
@@ -90,20 +90,32 @@ class AboutComponent extends React.Component {
 }
 
 const aboutStyles = {
-  aboutContent: {
-    padding: '2rem 0',
-    margin: '0 auto',
-    width: '60ch',
+  about: {
+    '& #about-content': {
+      padding: '2rem 1rem 1rem 1rem',
+      marginTop: '4rem',
+      margin: '0 auto',
+      maxWidth: '60ch',
 
-   '@media (min-width: 576px)': {
-      maxWidth: '95vw',
-    },
 
-    '& .team-image': {
-      '& .image': {
-        border: 'double .4rem #AEBED4',
-        backgroundOrigin: 'border-box',
-        backgroundClip: 'content-box, border-box',
+      '@media (min-width: 992px)': {
+        width: '60ch',
+      },
+
+      '@media (min-width: 576px and max-width: 992px)': {
+        width: '95vw',
+      },
+
+      '@media (min-width: 576px)': {
+        width: '95vw',
+      },
+
+      '& .team-image': {
+        '& .image': {
+          border: 'double .4rem #AEBED4',
+          backgroundOrigin: 'border-box',
+          backgroundClip: 'content-box, border-box',
+        }
       }
     }
   }
