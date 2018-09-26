@@ -2,8 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { url } from "../../utils/consts";
 import PortfolioGrid from "../datagrid/PortfolioGrid";
+import injectSheet, { jss } from "react-jss"
 
-export default class PortfolioComponent extends React.Component {
+class PortfolioComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -45,9 +46,10 @@ export default class PortfolioComponent extends React.Component {
   }
 
   render() {
+    const { classes } = this.props
     return (
       <React.Fragment>
-        <section id="portfolio" className="light-wrap">
+        <section id="portfolio" className={classes.portfolio, "light-wrap"}>
           <div id="portfolio-text" className="content">
             <h1 className="title portfolio-heading center">
               The CryptoWise Collaborative Portfolio(CCP){" "}
@@ -67,3 +69,20 @@ export default class PortfolioComponent extends React.Component {
     );
   }
 }
+
+const portfolioStyles = {
+  portfolio: {
+    padding: '2rem 0',
+    margin: '0 auto',
+    width: '95vw',
+
+    '@media (min-width: 992px)': {
+      maxWidth: '70ch',
+    },
+
+   '@media (min-width: 576px)': {
+      maxWidth: '95vw',
+    },
+  }
+}
+export default injectSheet(portfolioStyles)(PortfolioComponent)
