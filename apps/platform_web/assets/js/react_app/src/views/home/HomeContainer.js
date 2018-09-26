@@ -46,8 +46,8 @@ class HomeContainer extends React.Component {
     return (
       <React.Fragment>
         <BrowserRouter>
-          <section id="wrapper" className={classes.typography, { height: '100vh'}}>
-            <Layout>
+          <section id="wrapper" className={classes.typography}>
+            <Layout style={{height: '100vh', position: 'bottom'}}>
               <Header>Header</Header>
               <Layout style={{height: '100vh'}}>
                 <SiderMenu/>
