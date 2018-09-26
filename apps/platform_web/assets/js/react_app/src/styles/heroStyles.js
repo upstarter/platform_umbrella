@@ -1,5 +1,5 @@
 const heroStyles = {
-  heero: {
+  hero: {
     minHeight: '61.8vh',
     '-webkit-background-clip': 'padding-box', /* for Safari */
     backgroundClip: 'padding-box', /* for IE9+, Firefox 4+, Opera, Chrome */
@@ -10,7 +10,7 @@ const heroStyles = {
     color: 'white',
     '& .title': { color: 'white' },
 
-    '& .heero-body': {
+    '& .hero-body': {
       padding: '11rem 6rem 6rem',
       textAlign: 'center',
       '& .container': {
