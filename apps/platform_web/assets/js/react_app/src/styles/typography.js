@@ -101,13 +101,6 @@ const typography = {
       letterSpacing: '0.15ch',
     },
 
-    '& a': {
-      color: `${colors.green}`,
-      '&:hover': {
-        color: `${colors.lightBlue}`
-      }
-    },
-
     // -- font skintones
     '& .title': {
       fontFamily: `${avenirLight}`,

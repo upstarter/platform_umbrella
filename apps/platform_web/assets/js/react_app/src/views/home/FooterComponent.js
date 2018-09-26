@@ -2,27 +2,32 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
 import colors from '../../styles/colors'
+import injectSheet, { jss } from "react-jss"
+import { Layout } from 'antd';
+const { Footer } = Layout;
 
-export default class FooterComponent extends React.Component {
+class FooterComponent extends React.Component {
   render() {
+    const { classes } = this.props
     return (
-      <React.Fragment>
-        <div id="footer" style={footerStyles}>
-          <p className="copyright">Copyright ©2018, Aion Labs, Inc.</p>
-          <Link to="/privacy_policy" className="footer-link">
-            Privacy Policy
-          </Link>
-        </div>
-      </React.Fragment>
+      <Footer className={classes.footer}>
+        <p className="copyright">Copyright ©2018, Aion Labs, Inc.</p>
+        <Link to="/privacy_policy" className="footer-link">
+          Privacy Policy
+        </Link>
+      </Footer>
     );
   }
 }
 
 const footerStyles = {
-  background: `${colors.darkBlue}`,
-  fontSize: "1.2rem",
-  textAlign: "center",
-  padding: "2rem",
-  color: `${colors.white}`,
-  '& a': { background: 'none !important' }
+  footer: {
+    background: `${colors.darkBlue}`,
+    fontSize: "1.4rem",
+    textAlign: "center",
+    padding: "2rem",
+    color: `${colors.lightBlue}`,
+    '& a': { background: 'none !important' }
+  }
 }
+export default injectSheet(footerStyles)(FooterComponent)
