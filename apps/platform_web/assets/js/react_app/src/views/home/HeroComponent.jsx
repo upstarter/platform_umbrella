@@ -66,7 +66,7 @@ class HeroComponent extends React.Component {
     let state = this.state;
     const { classes } = this.props;
     return (
-      <section className={classes.heero}>
+      <section className={classes.hero}>
         <Modal
           isOpen={state.showModal}
           // onAfterOpen={this.afterOpenModal}
@@ -87,7 +87,7 @@ class HeroComponent extends React.Component {
         >
           <Quiz quiz={quiz} />
         </Modal>
-        <div className='heero-body'>
+        <div className='hero-body'>
           <div className="container">
             <h1 className="title">
               Become a <span className="fancy-underline">top 1%</span> crypto
