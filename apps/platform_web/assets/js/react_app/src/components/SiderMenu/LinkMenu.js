@@ -13,32 +13,48 @@ const LinkMenu = withRouter(props => {
         <Icon type="user" />
         <span className="nav-text">
           <Link to="/">
-            Porfolio
+            Submit Ballot
           </Link>
         </span>
-
       </Menu.Item>
       <Menu.Item key="/contribute">
-        <Icon type="user" />
+        <Icon type="form" />
         <span className="nav-text">
           <Link to="/contribute">
-            Analysis
+            Contribute
           </Link>
         </span>
       </Menu.Item>
+
       <Menu.Item key="/investors">
-        <Icon type="user" />
+        <Icon type="rise" />
         <span className="nav-text">
         <Link to="/investors">
-          Investment
+          Insight
+        </Link>
+        </span>
+      </Menu.Item>
+      <Menu.Item key="/proposals">
+        <Icon type="notification" />
+        <span className="nav-text">
+        <Link to="/proposals">
+          Make Proposal
         </Link>
         </span>
       </Menu.Item>
       <Menu.Item key="/about">
-        <Icon type="user" />
+        <Icon type="team" />
         <span className="nav-text">
         <Link to="/about">
           About
+        </Link>
+        </span>
+      </Menu.Item>
+      <Menu.Item key="/join">
+        <Icon type="usergroup-add" />
+        <span className="nav-text">
+        <Link to="/join">
+          Join
         </Link>
         </span>
       </Menu.Item>
@@ -55,4 +71,20 @@ const menuStyles = {
   }
 }
 
+// <Menu.Item key="/protocol">
+//   <Icon type="area-chart" />
+//   <span className="nav-text">
+//   <Link to="/protocol">
+//     Protocol
+//   </Link>
+//   </span>
+// </Menu.Item>
+// <Menu.Item key="/analysis">
+//   <Icon type="area-chart" />
+//   <span className="nav-text">
+//   <Link to="/analysis">
+//     Analysis
+//   </Link>
+//   </span>
+// </Menu.Item>
 export default injectSheet(menuStyles)(LinkMenu);

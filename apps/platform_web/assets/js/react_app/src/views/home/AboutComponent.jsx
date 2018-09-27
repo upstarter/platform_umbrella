@@ -60,7 +60,7 @@ class AboutComponent extends React.Component {
             <h1 className="title">Mission</h1>
             <p>
               To help forward-looking investors succeed through in-depth
-              community-driven research & analysis. We b15ieve that everyone
+              community-driven research & analysis. We believe that everyone
               should have the capabilities of a venture capitalist, and that
               fintech and crypto literacy are critical skills of the future.
               Becoming highly investing saavy will help americans through the

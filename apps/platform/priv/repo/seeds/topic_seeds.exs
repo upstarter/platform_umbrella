@@ -112,9 +112,8 @@ securities that you can buy or sell through a brokerage firm on an exchange"
   },
   %Topic{
     name: "General Purpose Platform",
-    short_desc: "General purpose decentralized compute platforms operate
-as a global computer, capable of executing arbitrary code - called smart
-contracts or 'dapps'."
+    short_desc: "General purpose decentralized compute platforms operate as a global computer,
+ capable of executing arbitrary code - called smart contracts or 'dapps'."
   },
   %Topic{
     name: "Hedge Funds",
@@ -128,8 +127,7 @@ contracts or 'dapps'."
 records that aren't controlled by any single entity or group."
   },
   %Topic{
-    name: "Internet of
-Things",
+    name: "Internet of Things",
     short_desc: "Internet-of-Things assets incentivize participation in IOT networks."
   },
   %Topic{
@@ -156,9 +154,9 @@ especially imitation."
   },
   %Topic{
     name: "Onchain Governance",
-    short_desc: "Onchain Governance assets
-incorporate the ability for various stakeholders to directly signal or vote for
-certain outcomes with respect to development of the protocol/asset itself."
+    short_desc: "Onchain Governance assets incorporate the ability for various stakeholders to
+directly signal or vote for certain outcomes with respect to development of the
+protocol/asset itself."
   },
   %Topic{
     name: "Payment Platform",
