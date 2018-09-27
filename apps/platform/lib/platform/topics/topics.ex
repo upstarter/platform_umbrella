@@ -200,6 +200,17 @@ defmodule Platform.Topics do
           resulting in efficiency improvements, economic benefits, and reduced human
           exertions.",
         long_desc: ""
+      },
+      %Topic{
+        name: "Governance",
+        id: 21,
+        short_desc: "The concerted efforts by which cooperation and decision-making can be
+achieved, collectively, and action can be taken accordingly when necessary to
+ensure the integrity of the ecosystem. Because governance and social consensus
+takes time, is an emergent property, and creating a sound
+ecosystem that can interoperate well to perceive that emergent consensus &
+signaling is paramount.",
+        long_desc: ""
       }
     ]
 
