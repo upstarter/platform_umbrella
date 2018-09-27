@@ -51,12 +51,6 @@ class AboutComponent extends React.Component {
               and trading opportunities for the next generation of investors to
               capitalize on.
             </p>
-            <div className="team-image">
-              <h1 className="title">Team</h1>
-              <figure className="image">
-                <img alt="CryptoWise Team" src="/images/team.png" width='540px' height='380px'/>
-              </figure>
-            </div>
             <h1 className="title">Mission</h1>
             <p>
               To help forward-looking investors succeed through in-depth

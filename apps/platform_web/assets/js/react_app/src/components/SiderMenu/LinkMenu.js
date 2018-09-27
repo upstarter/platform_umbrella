@@ -26,10 +26,10 @@ const LinkMenu = withRouter(props => {
         </span>
       </Menu.Item>
 
-      <Menu.Item key="/investors">
+      <Menu.Item key="/insight">
         <Icon type="rise" />
         <span className="nav-text">
-        <Link to="/investors">
+        <Link to="/insight">
           Insight
         </Link>
         </span>
@@ -50,10 +50,10 @@ const LinkMenu = withRouter(props => {
         </Link>
         </span>
       </Menu.Item>
-      <Menu.Item key="/join">
+      <Menu.Item key="/investors">
         <Icon type="usergroup-add" />
         <span className="nav-text">
-        <Link to="/join">
+        <Link to="/investors">
           Join
         </Link>
         </span>

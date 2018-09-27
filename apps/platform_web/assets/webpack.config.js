@@ -50,7 +50,7 @@ module.exports = {
       "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
       "Access-Control-Allow-Headers": "*"
     },
-    watchOptions: {ignored: /node_modules/},
+    watchOptions: {ignored: /node_modules/, include: /node_modules\/antd/},
     contentBase: path.resolve(__dirname, "../priv/static/")
   },
   optimization: {
@@ -67,7 +67,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: [".css", ".sass", ".scss", ".js", ".jsx"],
+    extensions: [".css", ".sass", ".scss", ".less", ".js", ".jsx"],
     alias: {
       phoenix: __dirname + "/deps/phoenix/assets/js/phoenix.js"
     }
@@ -76,7 +76,7 @@ module.exports = {
     rules: [
       {
         test: /\.(sa|sc|c|le)ss$/,
-        include: /css/,
+        exclude: ["/node_modules", "/js/elm"],
         use: [
           { loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader },
           { loader: 'css-loader' },
@@ -89,9 +89,10 @@ module.exports = {
           { loader: 'less-loader', // compiles Less to CSS
             options: {
               modifyVars: {
-                'primary-color': '#1DA57A',
+                'primary-color': '#000',
                 'link-color': '#1DA57A',
-                'border-radius-base': '2px',
+                'text-color': '#fff', // major text color
+                'text-color-secondary': '#000',
               },
               javascriptEnabled: true,
             }
