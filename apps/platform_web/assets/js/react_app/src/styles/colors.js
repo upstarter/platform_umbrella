@@ -17,12 +17,13 @@ const colors = {
   // blue: ''#4688d7';,
 
   blue: '#76c8e7',
+
   // cw colors
   darkBlue: '#191F2D', // darkBlue
   lightDarkBlue: 'rgb(20,23,30)',
   lighterDarkBlue: 'rgb(23,26,33)',
   darkerDarkBlue: '#001528',
-  // black: '#000',
+  black: '#000',
   // secondaryDark: 'rgb(22,27,37)',
 
   lightBlack: '#5D626E',

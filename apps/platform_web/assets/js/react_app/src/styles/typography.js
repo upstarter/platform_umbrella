@@ -4,11 +4,11 @@
 import colors from './colors'
 
 // font types
-const avenir = 'Avenir, sansSerif'
-const avenirLight = 'Avenir-Light, sansSerif'
-const avenirMedium = 'Avenir-Medium, sansSerif'
-const avenirBook = 'Avenir-Book, sansSerif'
-const avenirRoman = 'Avenir-Roman, sansSerif'
+const avenir = 'Avenir, sans-serif'
+const avenirLight = 'Avenir-Light, sans-serif'
+const avenirMedium = 'Avenir-Medium, sans-serif'
+const avenirBook = 'Avenir-Book, sans-serif'
+const avenirRoman = 'Avenir-Roman, sans-serif'
 // font weights
 const light = '300'
 const normal = '400'
@@ -18,32 +18,7 @@ const bold = '700'
 const typography = {
 
   typography: {
-    '@font-face': [
-      {
-        fontFamily: 'Avenir',
-        src: 'url(/fonts/avenir/AvenirLTStd-Book.otf) format(otf)'
-      },
-      {
-        fontFamily: 'Avenir-Light',
-        src: 'url(/fonts/avenir/AvenirLTStd-Light.otf) format(otf)'
-      },
-      {
-        fontFamily: 'Avenir-Roman',
-        src: 'url(/fonts/avenir/AvenirLTStd-Roman.otf) format(otf)'
-      },
-      {
-        fontFamily: 'Avenir-Book',
-        src: 'url(/fonts/avenir/Avenir-Book.ttf) format(truetype)'
-      },
-      {
-        fontFamily: 'Avenir-Light',
-        src: 'url(/fonts/avenir/Avenir-Light.ttf) format(truetype)'
-      },
-      {
-        fontFamily: 'Avenir-Roman',
-        src: 'url(/fonts/avenir/Avenir-Roman.ttf) format(truetype)'
-      }
-    ],
+
     fontFamily: 'Avenir, Avenir-Light, Avenir-Book, Avenir-Roman, Helvetica sans-serif',
     fontWeight: `${normal}`,
     fontSize: '1.5rem',
@@ -128,7 +103,7 @@ const typography = {
       fontWeight: `${light}`,
       lineHeight: '2rem',
       letterSpacing: '0.1ch',
-      fontSize: '1.4rem',
+      fontSize: '3.4rem',
       color: `${colors.smoke}`,
     },
 

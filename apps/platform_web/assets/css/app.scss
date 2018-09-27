@@ -2,7 +2,6 @@
 // - - base
 // project defaults for base elements - h1-h6, p, a, etc.
 @charset "utf-8";
-
 @font-face {
   font-family: "Avenir";
   src:
@@ -25,8 +24,113 @@ html, body {
 #wrapper {
   font-family: Avenir, Avenir-Light, Avenir-Book, Avenir-Roman, sans-serif;
   font-weight: 400;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   color: #000;
+
+  // -- font skintones
+  .light-wrap {
+    color: #000;
+    .title { color: #000; }
+    .subtitle-big { color: #000; }
+    .subtitle-small { color: #000; }
+    .list { color: #000; }
+  }
+
+  .dark-wrap {
+    color: #fff;
+    .title { color: #fff; }
+    .subtitle-big { color: '#AEBED4'; }
+    .subtitle-small { color: '#AEBED4'; }
+    .list { color: #fff; }
+  }
+
+  .heero {
+    color: #fff;
+    .title { color: #fff; }
+  }
+
+  .title {
+    font-family: "Avenir-Light", sans-serif;
+    font-weight: 300;
+    font-size: 3.4rem;
+    line-height: 4.9rem;
+    letter-spacing: -0.02ch;
+    @media (min-width: 992px) {
+      font-size: 5.6rem;
+      line-height: 6.5rem;
+    }
+  }
+
+  .subtitle-big {
+    font-family: "Avenir-Book", sans-serif;;
+    font-weight: 300;
+    line-height: 3rem;
+    letter-spacing: 0.05ch;
+    font-size: 1.7rem;
+    color: '#D0E5FF';
+  }
+
+  .subtitle-small {
+    font-family: "Avenir-Book", sans-serif;;
+    font-weight: 300;
+    line-height: 2rem;
+    letter-spacing: 0.1ch;
+    font-size: 1.4rem;
+    color: '#D0E5FF';
+  }
+
+  .list {
+    font-family: "Avenir-Book", sans-serif;
+    font-weight: 700;
+    line-height: 3rem;
+    letter-spacing: 0.05ch;
+    font-size: 1.7rem;
+  }
+
+  .caption {
+    font-family: "Avenir-Medium", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.2rem;
+    letter-spacing: .2ch;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-family: "Avenir-Light", sans-serif;
+    font-weight: 400;
+    line-height: 3.8rem;
+    letter-spacing: 0ch;
+    font-size: 3rem;
+
+    @media (min-width: 992px) {
+      font-size: 4.6rem;
+    }
+  }
+
+  h2 {
+    font-family: "Avenir-Light", sans-serif;
+    font-weight: 400;
+    font-size: 2.4rem;
+    line-height: 3.4rem;
+    letter-spacing: 0.15ch;
+  }
+
+  h3 {
+    font-family: "Avenir-Book", sans-serif;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 2.6rem;
+    letter-spacing: 0.15ch;
+  }
+
+  h4 {
+    font-family: "Avenir-Roman", sans-serif;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 2.6rem;
+    letter-spacing: 0.15ch;
+  }
 }
 
 *,
@@ -70,15 +174,16 @@ a {
 
   .light-wrap {
     padding: 6rem 3rem 13rem;
-    background: white;
+    background: #fff;
+    color: #000;
     display: flex;
     justify-content: center;
   }
 
   .dark-wrap {
     padding: 6rem 3rem 12rem;
-    background:  #191F2D;;
-    color: white;
+    background:  #191F2D;
+    color: #fff;
     a { background: none !important; }
   }
 
@@ -88,7 +193,7 @@ a {
 
   .privacy-policy {
     padding: 60px;
-    color: black;
+    color: #000;
   }
 
   h1, h2, h3, h4, ul { margin-top: 20px; }

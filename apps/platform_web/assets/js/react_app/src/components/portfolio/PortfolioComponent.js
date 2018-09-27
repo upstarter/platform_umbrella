@@ -46,18 +46,22 @@ class PortfolioComponent extends React.Component {
   }
 
   render() {
-    const { classes } = this.props
+    const { classes } = this.props;
     return (
       <React.Fragment>
         <section id="portfolio" className={classes.portfolio, "light-wrap"}>
-          <div id="portfolio-text" className="content">
-            <h1 className="title center">
-              The CryptoWise Collaborative Portfolio(CCP)
+          <div id="portfolio-text" className="content" style={{maxWidth: '500px', display: 'flex', flexDirection: 'column'}}>
+            <h1 className="title center" style={{textAlign: 'center'}}>
+              The CryptoWise Portfolio
             </h1>
-            <h5 className="content center">
-              Curated by the wisest minds in crypto. Enter your portfolio
-              allocation and we will send you regular wisdom of the crowd
-              updates.
+            <h5 className="center" style={{alignItems: 'center', maxWidth: '60ch', textAlign: 'center'}}>
+              Allocate a portfolio from our painstakingly and continuously re-constructed
+              synthesis of top cryptoasset selections of some of the
+              wisest financial analysts in the cryptosphere. Enter and update
+              your 'optimal' portfolio allocation to see how you compare to the
+              best performing portfolios over specified time periods. Top spots
+              on leaderboards will get preferred access on any future token
+              sale.
             </h5>
             <br />
             <div className="portfolio-grid center">
@@ -84,7 +88,7 @@ const portfolioStyles = {
 
    '@media (min-width: 576px)': {
       width: '95vw'
-    },
+    }
   }
 }
 export default injectSheet(portfolioStyles)(PortfolioComponent);
