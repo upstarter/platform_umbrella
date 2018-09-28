@@ -67,23 +67,10 @@ class HomeContainer extends React.Component {
               collapsed={this.state.collapsed}
               collapsedWidth="0"
             >
-              {true?<Drawer
-                title="StudentCon"
-                placement="left"
-                closable={true}
-                // onClose={() => toggleMobileMenuOpen()}
-                visible={true}
-              >
-                <div className={classes.logo}>
-                  <img src={nav_logo} />
-                </div>
-                <LinkMenu />
-              </Drawer>:
-                (<div className={classes.logo}>
-                  <img src={nav_logo} />
-                </div>
-                <LinkMenu />)
-              }
+              <div className={classes.logo}>
+                <img src={nav_logo} />
+              </div>
+              <LinkMenu />
             </Sider>
             <Layout style={{ height: "100vh" }}>
               <Header
@@ -128,16 +115,8 @@ class HomeContainer extends React.Component {
                   </Menu>
                 </div>
               </Header>
-              <Content
-                style={{
-                  margin: "24px 16px",
-                  padding: 24,
-                  background: "#fff",
-                  minHeight: 280
-                }}
-              >
-                <Route exact path="/contribute" component={ProviderContainer} />
                 <Route exact path="/" component={PortfolioComponent} />
+                <Route exact path="/contribute" component={ProviderContainer} />
                 <Route exact path="/investors" component={HomeComponent} />
                 <PrivateRoute exact path="/profile" component={Protected} />
                 <Route exact path="/about" component={AboutComponent} />
@@ -147,7 +126,6 @@ class HomeContainer extends React.Component {
                   path="/privacy_policy"
                   component={PrivacyComponent}
                 />
-              </Content>
             </Layout>
           </Layout>
         </BrowserRouter>
