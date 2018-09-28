@@ -73,7 +73,6 @@ class PortfolioComponent extends React.Component {
 }
 
 const portfolioStyles = {
-  portfolio: {
     height: '100vh',
     padding: '2rem 0',
     margin: '0 auto',
