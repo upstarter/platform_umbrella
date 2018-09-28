@@ -9,7 +9,7 @@ import PortfolioComponent from "../../components/portfolio/PortfolioComponent";
 import PrivacyComponent from "../PrivacyComponent";
 import BlogComponent from "../../components/blog/BlogComponent";
 import FooterComponent from "./FooterComponent";
-import { Layout, Menu, Icon } from "antd";
+import { Layout, Menu, Icon, Drawer } from "antd";
 const { Content, Sider, Header } = Layout;
 const { SubMenu } = Menu;
 import config from "../../utils/config";
@@ -19,7 +19,7 @@ import injectSheet, { jss } from "react-jss";
 import typography from "../../styles/typography";
 
 import Loadable from "react-loadable";
-import nav_logo from '../../../../../static/images/nav_logo.svg'
+import nav_logo from "../../../../../static/images/nav_logo.svg";
 
 const HomeComponent = Loadable({
   loader: () => import("./HomeComponent" /* webpackChunkName: "home" */),
@@ -67,11 +67,23 @@ class HomeContainer extends React.Component {
               collapsed={this.state.collapsed}
               collapsedWidth="0"
             >
-              <div className={classes.logo}>
-                <img src={nav_logo} />
-                <span>qwe</span>
-              </div>
-              <LinkMenu />
+              {true?<Drawer
+                title="StudentCon"
+                placement="left"
+                closable={true}
+                // onClose={() => toggleMobileMenuOpen()}
+                visible={true}
+              >
+                <div className={classes.logo}>
+                  <img src={nav_logo} />
+                </div>
+                <LinkMenu />
+              </Drawer>:
+                (<div className={classes.logo}>
+                  <img src={nav_logo} />
+                </div>
+                <LinkMenu />)
+              }
             </Sider>
             <Layout style={{ height: "100vh" }}>
               <Header
@@ -153,9 +165,9 @@ const appStyles = {
   },
   logo: {
     height: "64px",
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
   }
 };
 
