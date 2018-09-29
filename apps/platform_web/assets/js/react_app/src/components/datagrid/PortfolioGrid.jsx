@@ -1,6 +1,7 @@
 import React from "react";
-import { Table, Select, Input } from "antd";
+import { Table, Select, Input, Button } from "antd";
 import tokens from "./MockData";
+
 const Option = Select.Option;
 
 const columns = [
@@ -8,7 +9,7 @@ const columns = [
     title: "#",
     dataIndex: "key",
     key: "key",
-    render: (text, record,i) => <a>{i +1}</a>
+    render: (text, record, i) => <a>{i + 1}</a>
   },
   {
     title: "Holding",
@@ -47,12 +48,7 @@ const data = [
   },
   {
     key: "2",
-    holding: [tokens],
-    allocation: null
-  },
-  {
-    key: "3",
-    holding: [tokens],
+    holding: tokens,
     allocation: null
   }
 ];
@@ -222,7 +218,9 @@ export default class PortfolioGrid extends React.Component {
             </a>
           </form>
         </div>
-        <Table columns={columns} dataSource={data} />
+        <Table columns={columns} dataSource={data} pagination={false}/>
+        <Button type="secondary" onClick={this.addRow}>Add</Button>
+        <Button type="primary">Submit</Button>
         {this.state.error && <div style={styles.error}>{this.state.error}</div>}
       </div>
     );
