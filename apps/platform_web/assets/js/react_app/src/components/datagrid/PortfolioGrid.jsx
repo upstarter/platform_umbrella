@@ -1,6 +1,61 @@
 import React from "react";
-
+import { Table, Select, Input } from "antd";
 import tokens from "./MockData";
+const Option = Select.Option;
+
+const columns = [
+  {
+    title: "#",
+    dataIndex: "key",
+    key: "key",
+    render: (text, record,i) => <a>{i +1}</a>
+  },
+  {
+    title: "Holding",
+    dataIndex: "holding",
+    key: "holding",
+    render: (token, record) => (
+      <Select showSearch style={{ width: 200 }} placeholder="Select a Holding">
+        {token.map((token, i) => (
+          <Option value={token.holding}>{token.holding}</Option>
+        ))}
+      </Select>
+    )
+  },
+  {
+    title: "Allocation",
+    dataIndex: "allocation",
+    key: "allocation",
+    render: () => <Input placeholder="Must be under 100" />
+  },
+  {
+    title: "Action",
+    key: "action",
+    render: (text, record) => (
+      <span>
+        <a onClick={console.log(record)}>Delete</a>
+      </span>
+    )
+  }
+];
+
+const data = [
+  {
+    key: "1",
+    holding: tokens,
+    allocation: null
+  },
+  {
+    key: "2",
+    holding: [tokens],
+    allocation: null
+  },
+  {
+    key: "3",
+    holding: [tokens],
+    allocation: null
+  }
+];
 
 export default class PortfolioGrid extends React.Component {
   constructor() {
@@ -15,10 +70,14 @@ export default class PortfolioGrid extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   addRow = e => {
-    if (this.state.holdings.length < 7) {
+    if (data.length < 7) {
       this.setState(prevState => ({
         holdings: [...prevState.holdings, { holding: "", allocation: "" }]
       }));
+      data.push({
+        holding: tokens,
+        allocation: null
+      });
     } else {
       this.setState({ noMoreRowInfo: true });
       setTimeout(() => {
@@ -163,7 +222,7 @@ export default class PortfolioGrid extends React.Component {
             </a>
           </form>
         </div>
-
+        <Table columns={columns} dataSource={data} />
         {this.state.error && <div style={styles.error}>{this.state.error}</div>}
       </div>
     );
