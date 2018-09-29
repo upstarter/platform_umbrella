@@ -1,62 +1,55 @@
-import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { Menu, Icon } from 'antd';
-import injectSheet, { jss } from "react-jss"
-
+import React from "react";
+import { Link, withRouter } from "react-router-dom";
+import { Menu, Icon } from "antd";
+import injectSheet, { jss } from "react-jss";
 
 const LinkMenu = withRouter(props => {
   const { location } = props;
   const { classes } = props;
   return (
-    <Menu className={classes.menu} theme="dark" mode="inline" selectedKeys={[location.pathname]} defaultSelectedKeys={["/portfolio"]}>
+    <Menu
+      className={classes.menu}
+      theme="dark"
+      mode="inline"
+      selectedKeys={[location.pathname]}
+      defaultSelectedKeys={["/portfolio"]}
+    >
       <Menu.Item key="/">
-        <Icon type="user" />
-        <span className="nav-text">
-          <Link to="/">
-            Submit Ballot
-          </Link>
-        </span>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <Icon type="user" />
+          <span className="nav-text">Submit Ballot</span>
+        </Link>
       </Menu.Item>
       <Menu.Item key="/contribute">
-        <Icon type="form" />
-        <span className="nav-text">
-          <Link to="/contribute">
-            Contribute
-          </Link>
-        </span>
+        <Link to="/contribute" style={{ textDecoration: "none" }}>
+          <Icon type="form" />
+          <span className="nav-text">Contribute</span>
+        </Link>
       </Menu.Item>
 
       <Menu.Item key="/insight">
-        <Icon type="rise" />
-        <span className="nav-text">
-        <Link to="/insight">
-          Insight
+        <Link to="/insight" style={{ textDecoration: "none" }}>
+          <Icon type="rise" />
+          <span className="nav-text">Insight</span>
         </Link>
-        </span>
       </Menu.Item>
       <Menu.Item key="/proposals">
-        <Icon type="notification" />
-        <span className="nav-text">
-        <Link to="/proposals">
-          Make Proposal
+        <Link to="/proposals" style={{ textDecoration: "none" }}>
+          <Icon type="notification" />
+          <span className="nav-text">Make Proposal</span>
         </Link>
-        </span>
       </Menu.Item>
       <Menu.Item key="/about">
-        <Icon type="team" />
-        <span className="nav-text">
-        <Link to="/about">
-          About
+        <Link to="/about" style={{ textDecoration: "none" }}>
+          <Icon type="team" />
+          <span className="nav-text">About</span>
         </Link>
-        </span>
       </Menu.Item>
       <Menu.Item key="/investors">
-        <Icon type="usergroup-add" />
-        <span className="nav-text">
-        <Link to="/investors">
-          Join
+        <Link to="/investors" style={{ textDecoration: "none" }}>
+          <Icon type="usergroup-add" />
+          <span className="nav-text">Join</span>
         </Link>
-        </span>
       </Menu.Item>
     </Menu>
   );
@@ -64,12 +57,12 @@ const LinkMenu = withRouter(props => {
 
 const menuStyles = {
   menu: {
-    '& .nav-text a': {
-      textDecoration: 'none',
-      color: 'silver'
+    "& .nav-text a": {
+      textDecoration: "none",
+      color: "silver"
     }
   }
-}
+};
 
 // <Menu.Item key="/protocol">
 //   <Icon type="area-chart" />
