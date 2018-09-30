@@ -42,11 +42,11 @@ const LinkMenu = withRouter(props => {
         </Link>
         </span>
       </Menu.Item>
-      <Menu.Item key="/about">
+      <Menu.Item key="/developers">
         <Icon type="team" />
         <span className="nav-text">
-        <Link to="/about">
-          About
+        <Link to="/developers">
+          Developers
         </Link>
         </span>
       </Menu.Item>
