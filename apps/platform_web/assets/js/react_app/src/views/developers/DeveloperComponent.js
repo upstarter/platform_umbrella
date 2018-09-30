@@ -5,24 +5,27 @@ import injectSheet, { jss } from 'react-jss'
 // import BarChart from "../../components/charts/bar"
 
 
-class AboutComponent extends React.Component {
+class DeveloperComponent extends React.Component {
   render() {
     const { classes } = this.props
     return (
       <React.Fragment>
-        <section id="about" className={classes.about}>
+        <section id="about" className={classes.developers}>
           <div id="about-content" className="content">
-            <h1 className="title">About</h1>
+            <h1 className="title">CryptoWise for Developers</h1>
             <h3 className="subtitle">
-              CryptoWise is a collaborative investment ecosystem harnessing the
-              wisdom of the crowd and AI to optimize individual & collective
-              investment outcomes.
+              CryptoWise is empowering developers to form new knowledge markets
+              on the blockchain, which will allow knowledge and truth seekers to
+              connect, cooperate, and compete without requiring any trusted
+              intermediaries. Achieving this visionary goal requires
+              contributions from a growing community of developers; And we need
+              your help.
             </h3>
             <p className="paragraph">
               We are connecting investors with expert level cryptoasset
               financial analysis and next-generation cloud capabilities for
               automated, scalable data gathering, insight generation, and
-              decision-making. <i> We're harnessing the acquired wisdom and
+              decision-making. <i> Were harnessing the acquired wisdom and
               innate talent of those most passionate about the future of investing
               and capital formation. </i>
             </p>
@@ -53,7 +56,8 @@ class AboutComponent extends React.Component {
             </p>
             <h1 className="title">Mission</h1>
             <p>
-              CryptoWise is building the crypto capital markets of tomorrow.
+              CryptoWise is building the knowledge infrastructure necessary build
+              the marketplaces, platforms, and capital markets of tomorrow.
               Financial Analysts, Researchers, and Industry Experts will be
               intrinsically incentivized and devoid of rent-seeking middlemen.
               We believe in lowering transaction fees, promoting free and

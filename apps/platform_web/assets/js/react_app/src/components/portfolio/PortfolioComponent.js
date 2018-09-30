@@ -48,35 +48,32 @@ class PortfolioComponent extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <React.Fragment>
-        <section id="portfolio" className={classes.portfolio, "light-wrap"}>
-          <div id="portfolio-text" className="content" style={{maxWidth: '500px', display: 'flex', flexDirection: 'column'}}>
-            <h1 className="title center" style={{textAlign: 'center'}}>
-              The CryptoWise Portfolio
-            </h1>
-            <h5 className="center" style={{alignItems: 'center', maxWidth: '60ch', textAlign: 'center'}}>
-              Allocate a portfolio from our painstakingly and continuously re-constructed
-              synthesis of top cryptoasset selections of some of the
-              wisest financial analysts in the cryptosphere. Enter and update
-              your 'optimal' portfolio allocation to see how you compare to the
-              best performing portfolios over specified time periods. Top spots
-              on leaderboards will get preferred access on any future token
-              sale.
-            </h5>
-            <br />
-            <div className="portfolio-grid center">
-              <PortfolioGrid />
-            </div>
+      <section id="portfolio" className={ classes.portfolio}>
+        <div id="portfolio-text" className="content" style={{maxWidth: '500px', display: 'flex', flexDirection: 'column'}}>
+          <h1 className="title center" style={{textAlign: 'center'}}>
+            The CryptoWise Portfolio
+          </h1>
+          <h5 className="center" style={{alignItems: 'center', maxWidth: '60ch', textAlign: 'center'}}>
+            Allocate a portfolio from our painstakingly and continuously re-constructed
+            synthesis of top cryptoasset selections of some of the
+            wisest financial analysts in the cryptosphere. Enter and update
+            your 'optimal' portfolio allocation to see how you compare to the
+            best performing portfolios over specified time periods. Top spots
+            on leaderboards will get preferred access on any future token
+            sale.
+          </h5>
+          <br />
+          <div className="portfolio-grid center">
+            <PortfolioGrid />
           </div>
-        </section>
-      </React.Fragment>
+        </div>
+      </section>
     );
   }
 }
 
 const portfolioStyles = {
   portfolio: {
-    color: 'red',
     height: '100vh',
     padding: '2rem 0',
     margin: '0 auto',

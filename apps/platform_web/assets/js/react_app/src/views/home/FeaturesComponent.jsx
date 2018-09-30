@@ -10,18 +10,19 @@ class FeaturesComponent extends React.Component {
     const { classes } = this.props;
     return (
       <React.Fragment>
-        <section id='features' className={classes.features, "dark-wrap"}>
+        <section id='features' className={classes.features}>
           <div className="section-heading">
-            <h1 style={{color: '#fff'}}>Features</h1>
+            <h1>Features</h1>
           </div>
-          <Row>
+          <div className="container">
+          <Row type="flex" justify="center" className={classes.featuresRow}>
             <Col span={8} className={classes.feature}>
               <div className="feature-icon">
                 <figure className="image">
                   <img alt="Crypto investing strategies" src="/images/icon1.svg"/>
                 </figure>
               </div>
-              <h3 style={{color: '#fff'}}>Crypto Investing Strategy</h3>
+              <h3>Crypto Investing Strategy</h3>
               <p className="subtitle-small">
                 It takes sophisticated methods to construct, manage and
                 optimize a cryptoasset portfolio. Get help with
@@ -34,7 +35,7 @@ class FeaturesComponent extends React.Component {
                   <img alt="Crypto Investing" src="/images/icon2.svg"/>
                 </figure>
               </div>
-              <h3 style={{color: '#fff'}}>Crypto Financial Analysis</h3>
+              <h3>Crypto Financial Analysis</h3>
               <p className="subtitle-small">
                 Free access to cryptoasset market insights & financial analysis written
                 by a passionate community of crypto and finance experts.
@@ -46,13 +47,14 @@ class FeaturesComponent extends React.Component {
                   <img alt="Crypto Trading, Crypto Investing" src="/images/icon3.svg"/>
                 </figure>
               </div>
-              <h3 style={{color: '#fff'}}>Collaborative Investment Platform</h3>
+              <h3>Collaborative Investment Platform</h3>
               <p className="subtitle-small">
                 Intelligent Agents deliver novel personalized opportunites
                 and guidance based on preferences.
               </p>
             </Col>
           </Row>
+          </div>
         </section>
       </React.Fragment>
     )
@@ -61,14 +63,31 @@ class FeaturesComponent extends React.Component {
 
 const featuresStyles = {
   features: {
+    padding: '6rem 3rem 13rem',
+    background: '#191F2D',
     color: '#fff',
+    '& a': { background: 'none !important' },
+    '& h1': {
+      color: 'white'
+    },
+    '& h3': {
+      color: 'white'
+    }
+  },
+  featuresRow: {
+    display: 'flex',
+    flexFlow: 'column wrap',
+
+
+    '@media (min-width: 576px)': {
+      display: 'flex',
+      flexFlow: 'row wrap',
+     }
   },
   feature: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
     textAlign: 'center',
     '& .feature-icon': {
+      margin: '0 auto',
       padding: '.7rem',
       height: '55px',
       width: '50px',
