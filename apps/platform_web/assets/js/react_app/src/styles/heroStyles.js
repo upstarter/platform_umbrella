@@ -7,7 +7,7 @@ const heroStyles = {
     backgroundRepeat: 'no-repeat',
     position: 'relative',
     backgroundSize: '100% 100%',
-    color: 'white',
+    color: '#fff',
     '& .title': { color: 'white' },
 
     '& .hero-body': {
@@ -26,10 +26,6 @@ const heroStyles = {
       '& .title': {
         maxWidth: '90rem',
         marginLeft: '-10%',
-      },
-
-      '& .title2': {
-        maxWidth: '90rem',
       },
     },
 
