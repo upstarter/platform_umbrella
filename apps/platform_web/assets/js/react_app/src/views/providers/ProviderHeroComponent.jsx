@@ -35,7 +35,7 @@ class ProviderHeroComponent extends React.Component {
     let state = this.state;
     const { classes } = this.props
     return (
-      <section className={classes.hero}>
+      <section className={"dark-wrap", classes.hero}>
         <Modal
           isOpen={state.showModal}
           // onAfterOpen={this.afterOpenModal}
@@ -49,7 +49,7 @@ class ProviderHeroComponent extends React.Component {
         </Modal>
         <div className="hero-body column">
           <div className="container">
-            <h1 className="title2">
+            <h1 className="title">
               <span className="fancy-underline">Monetize</span> your crypto
               capabilities.
             </h1>
