@@ -26,26 +26,6 @@ const LinkMenu = withRouter(props => {
           <span className="nav-text">Contribute</span>
         </Link>
       </Menu.Item>
-
-      <Menu.Item key="/insight">
-        <Link to="/insight" style={{ textDecoration: "none" }}>
-          <Icon type="rise" />
-          <span className="nav-text">Insight</span>
-        </Link>
-      </Menu.Item>
-      <Menu.Item key="/proposals">
-        <Link to="/proposals" style={{ textDecoration: "none" }}>
-          <Icon type="notification" />
-          <span className="nav-text">Make Proposal</span>
-        </Link>
-      </Menu.Item>
-      <Menu.Item key="/developers">
-        <Icon type="team" />
-        <span className="nav-text">
-        <Link to="/developers">
-          Developers
-        </Link>
-      </Menu.Item>
       <Menu.Item key="/about">
         <Link to="/about" style={{ textDecoration: "none" }}>
           <Icon type="team" />
@@ -87,4 +67,25 @@ const menuStyles = {
 //   </Link>
 //   </span>
 // </Menu.Item>
+// <Menu.Item key="/developers">
+//   <Link to="/developers" style={{ textDecoration: "none" }}>
+//     <Icon type="team" />
+//     <span className="nav-text">Developers</span>
+//   </Link>
+// </Menu.Item>
+// <Menu.Item key="/insight">
+//   <Link to="/insight" style={{ textDecoration: "none" }}>
+//     <Icon type="rise" />
+//     <span className="nav-text">Insight</span>
+//   </Link>
+// </Menu.Item>
+// <Menu.Item key="/proposals">
+//   <Link to="/proposals" style={{ textDecoration: "none" }}>
+//     <Icon type="notification" />
+//     <span className="nav-text">Make Proposal</span>
+//   </Link>
+// </Menu.Item>
+//
+
+
 export default injectSheet(menuStyles)(LinkMenu);
