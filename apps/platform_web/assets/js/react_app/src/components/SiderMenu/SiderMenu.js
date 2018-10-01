@@ -4,6 +4,7 @@ import { Layout } from 'antd';
 const { Sider } = Layout;
 import LinkMenu from './LinkMenu'
 import injectSheet, { jss } from "react-jss"
+import nav_logo from "../../../../../static/images/nav_logo.svg";
 
 const SiderMenu = withRouter(props => {
   const { location } = props;
@@ -17,6 +18,9 @@ const SiderMenu = withRouter(props => {
       onBreakpoint={(broken) => { console.log(broken); }}
       onCollapse={(collapsed, type) => { console.log(collapsed, type); }}
     >
+      <div className={classes.logo}>
+        <img src={nav_logo} />
+      </div>
       <LinkMenu />
     </Sider>
   );

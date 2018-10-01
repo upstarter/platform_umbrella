@@ -19,7 +19,6 @@ import injectSheet, { jss } from "react-jss";
 import typography from "../../styles/typography";
 
 import Loadable from "react-loadable";
-import nav_logo from "../../../../../static/images/nav_logo.svg";
 
 const HomeComponent = Loadable({
   loader: () => import("./HomeComponent" /* webpackChunkName: "home" */),
@@ -60,32 +59,13 @@ class HomeContainer extends React.Component {
     return (
       <React.Fragment>
         <BrowserRouter>
-          <Layout style={{ height: "100vh", position: "bottom" }}>
-            <Sider
-              trigger={null}
-              collapsible
-              collapsed={this.state.collapsed}
-              collapsedWidth="0"
-            >
-              <div className={classes.logo}>
-                <img src={nav_logo} />
-              </div>
-              <LinkMenu />
-            </Sider>
+          <Layout id="wrapper" style={{ height: "100vh", position: "bottom" }}>
+            <SiderMenu />
             <Layout style={{ height: "100vh" }}>
               <Header
                 className={classes.header}
                 style={{ background: "#fff", padding: 0 }}
-                switchSider={() => this.switchSider()}
-                siderFold={this.state.collapsed}
               >
-                <div style={{ paddingLeft: 16 }}>
-                  <Icon
-                    className="trigger"
-                    type={this.state.collapsed ? "close" : "menu-fold"}
-                    onClick={() => this.switchSider()}
-                  />
-                </div>
                 <div style={{ display: "flex" }}>
                   <div className={null}>
                     <Icon type="mail" />
