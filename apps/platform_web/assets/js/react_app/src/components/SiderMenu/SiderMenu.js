@@ -12,15 +12,17 @@ const SiderMenu = withRouter(props => {
   return (
     <Sider
       className={classes.sider}
-      breakpoint="md"
+      breakpoint="sm"
       collapsedWidth="0"
       collapsible="true"
       onBreakpoint={(broken) => { console.log(broken); }}
       onCollapse={(collapsed, type) => { console.log(collapsed, type); }}
     >
-      <div className={classes.logo}>
-        <img src={nav_logo} />
-      </div>
+      <Link to="/">
+        <div className={classes.logo} style={{padding: '14px 14px 0 14px'}}>
+            <img src={nav_logo} />
+        </div>
+      </Link>
       <LinkMenu />
     </Sider>
   );
