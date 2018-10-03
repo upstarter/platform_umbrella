@@ -47,8 +47,8 @@ module.exports = {
     },
     headers: {
       "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-      "Access-Control-Allow-Headers": "*"
+      // "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      // "Access-Control-Allow-Headers": "*"
     },
     watchOptions: {ignored: /node_modules/, include: /node_modules\/antd/},
     contentBase: path.resolve(__dirname, "../priv/static/")
@@ -57,14 +57,26 @@ module.exports = {
     splitChunks: {
       chunks: 'all'
     },
-    minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-        // sourceMap: true // set to true if you want JS source maps
-      }),
-      new OptimizeCSSAssetsPlugin({})
-    ]
+    minimizer: !devMode ? [
+        new UglifyJsPlugin({
+          // sourceMap: true // set to true if you want JS source maps
+
+          cache: true,
+          parallel: true,
+          // Compression specific options
+          uglifyOptions: {
+              // Eliminate comments
+              comments: false,
+              compress: {
+                 // remove warnings
+                 warnings: false,
+                 // Drop console statements
+                 drop_console: true
+              },
+          }
+       }),
+       new OptimizeCSSAssetsPlugin({})
+     ] : []
   },
   resolve: {
     extensions: [".css", ".sass", ".scss", ".less", ".js", ".jsx"],

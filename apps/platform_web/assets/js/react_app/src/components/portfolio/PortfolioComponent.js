@@ -50,55 +50,26 @@ class PortfolioComponent extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className={classes.wrapper}>
-        <Content
-          style={{
-            margin: "24px 16px",
-            padding: 24,
-            background: "#fff",
-            minHeight: 280,
-            flex: 1
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              textAlign: "center"
-            }}
-          >
-            <Icon style={{ fontSize: "10em" }} type="profile" theme="twoTone" />
-            <h1 style={{ textAlign: "center" }}>The CryptoWise Portfolio</h1>
-            <p
-              style={{
-                alignItems: "center",
-                textAlign: "center"
-              }}
-            >
-              Allocate a portfolio from our painstakingly and continuously
-              re-constructed synthesis of top cryptoasset selections of some of
-              the wisest financial analysts in the cryptosphere. Enter and
-              update your 'optimal' portfolio allocation to see how you compare
-              to the best performing portfolios over specified time periods. Top
-              spots on leaderboards will get preferred access on any future
-              token sale.
-            </p>
-          </div>
-        </Content>
-        <Content
-          style={{
-            margin: "24px 16px",
-            padding: 24,
-            background: "#fff",
-            minHeight: 280,
-            flex: 2
-          }}
-        >
-          <div>
+      <section id="portfolio" className={ classes.portfolio}>
+        <div id="portfolio-text" className="content" style={{maxWidth: '500px', display: 'flex', flexDirection: 'column'}}>
+          <h1 className="title center" style={{textAlign: 'center'}}>
+            The CryptoWise Portfolio
+          </h1>
+          <h5 className="center" style={{alignItems: 'center', maxWidth: '60ch', textAlign: 'center'}}>
+            Allocate a portfolio from our painstakingly and continuously re-constructed
+            synthesis of top cryptoasset selections of some of the
+            wisest financial analysts in the cryptosphere. Enter and update
+            your 'optimal' portfolio allocation to see how you compare to the
+            best performing portfolios over specified time periods. Top spots
+            on leaderboards will get preferred access on any future token
+            sale.
+          </h5>
+          <br />
+          <div className="portfolio-grid center">
             <PortfolioGrid />
           </div>
-        </Content>
-      </div>
+        </div>
+      </section>
     );
   }
 }
@@ -108,11 +79,10 @@ const portfolioStyles = {
     display: "flex"
   },
   portfolio: {
-    color: "red",
-    height: "100vh",
-    padding: "2rem 0",
-    margin: "0 auto",
-    width: "95vw",
+    height: '100vh',
+    padding: '2rem 0',
+    margin: '0 auto',
+    width: '95vw',
 
     "@media (min-width: 992px)": {
       width: "70ch"
