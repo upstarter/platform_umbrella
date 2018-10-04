@@ -19,10 +19,28 @@ defmodule Platform.Tokens.Asset do
     # 2. work tokens (not payments, right to perform work in network)
     #   • augur, keep
     %{
+      consensus_algos: [
+        "Proof of Work": [],
+        "Proof of Stake": [],
+        "Hybrid Proof of Work/Stake": [],
+        "Proof of Coordination": ["Covee"]
+      ],
       governance: ["Aragon", "Colony", "Tezos"],
       utility_tokens: [
-        work_tokens: ["civic", "0x", "Basic attention token", "golem"],
-        usage_tokens: []
+        work_tokens: [
+          "rep",
+          "MKR",
+          "keep",
+          "civic",
+          "0x",
+          "BAT",
+          "golem",
+          "lpt",
+          "numeraire",
+          "ETH"
+        ],
+        usage_tokens: ["BTC", "BTCash", "LTC", "NEM", "IOTA", "MNR", "ETH", "BAT", "KIN"],
+        hybrid: ["FIL", "ETH (with Casper)"]
       ],
       ai: ["botc", "OCN (ocean protocol)", "singularityNet"],
       securitized_computing_resources: ["Filecoin", "Sia", "Storj", "Golem", "Orchid"],
