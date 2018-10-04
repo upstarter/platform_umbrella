@@ -8,17 +8,12 @@ export default class PortfolioGrid extends React.Component {
   constructor() {
     super();
     this.state = {
-      holdings: [{ holding: "", allocation: null }],
       noMoreRowInfo: false,
       noMoreAllocationInfo: false,
       totalWeight: 0,
       tableData: [
         {
-          holding: tokens,
-          allocation: null
-        },
-        {
-          holding: tokens,
+          holding: null,
           allocation: null
         }
       ],
@@ -53,39 +48,24 @@ export default class PortfolioGrid extends React.Component {
     // }
   };
   handleSubmit = e => {
-    // e.preventDefault();
-    // let totalWeight = [];
-    // for (let i = 0; i < this.state.holdings.length; i++) {
-    //   totalWeight.push(this.state.holdings[i].allocation);
-    // }
-    // totalWeight = totalWeight.reduce((a, b) => parseInt(a) + parseInt(b), 0);
-    // this.setState({ totalWeight });
-    // if (totalWeight >= 100) {
-    //   this.setState({ noMoreAllocationInfo: true });
-    // }
-    console.log(this.state.result);
+    e.preventDefault();
+    console.log(this.state.tableData);
   };
   handleChange = e => {
-    if (["holding", "allocation"].includes(e.target.className)) {
-      let holdings = [...this.state.holdings];
-      holdings[e.target.dataset.id][e.target.className] = e.target.value;
-      this.setState({ holdings });
+    if (["holding", "allocation"].includes(e.target.id)) {
+      let tableData = [...this.state.tableData];
+      tableData[e.target.dataset.id][e.target.id] = e.target.value;
+      this.setState({ tableData });
     } else {
-      let holdings = [...this.state.holdings];
-      holdings[e.target.dataset.id][e.target.className] = e.target.value;
-      this.setState({ holdings });
+      let tableData = [...this.state.tableData];
+      tableData[e.target.dataset.id][e.target.id] = e.target.value;
+      this.setState({ tableData });
     }
   };
   deleteRow(idx) {
     let data = [...this.state.tableData];
-
-    console.log(data.splice(idx, 1));
-    console.log(data);
+    data.splice(idx, 1);
     this.setState({ tableData: data });
-
-    // let holdings = [...this.state.holdings];
-    // holdings.splice(idx, 1);
-    // this.setState({ holdings });
   }
   render() {
     const columns = [
@@ -99,23 +79,32 @@ export default class PortfolioGrid extends React.Component {
         title: "Holding",
         dataIndex: "holding",
         key: "holding",
-        render: (token, record) => (
-          <Select
+        render: (token1, record, i) => (
+          <select
             showSearch
             style={{ width: 200 }}
             placeholder="Select a Holding"
+            id="holding"
+            data-id={i}
           >
-            {token.map((token, i) => (
-              <Option value={token.holding}>{token.holding}</Option>
+            {tokens.map((token, i) => (
+              <option value={token.holding}>{token.holding}</option>
             ))}
-          </Select>
+          </select>
         )
       },
       {
         title: "Allocation",
         dataIndex: "allocation",
         key: "allocation",
-        render: () => <Input placeholder="Must be under 100" />
+        render: (token, record, i) => (
+          <Input
+            id="allocation"
+            className="allocation"
+            placeholder="Must be under 100"
+            data-id={i}
+          />
+        )
       },
       {
         title: "Action",
@@ -138,17 +127,19 @@ export default class PortfolioGrid extends React.Component {
         <div>
           Total Weight: <strong>{`${this.state.totalWeight}%`}</strong>
         </div>
-        <Table
-          columns={columns}
-          dataSource={this.state.tableData}
-          pagination={false}
-        />
-        <Button type="secondary" onClick={this.addRow}>
-          Add
-        </Button>
-        <Button type="primary" onClick={this.addRow}>
-          Submit
-        </Button>
+        <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
+          <Table
+            columns={columns}
+            dataSource={this.state.tableData}
+            pagination={false}
+          />
+          <Button type="secondary" onClick={this.addRow}>
+            Add
+          </Button>
+          <Button type="primary" type="submit" onClick={this.addRow}>
+            Submit
+          </Button>
+        </form>
         {this.state.error && <div style={styles.error}>{this.state.error}</div>}
       </div>
     );
