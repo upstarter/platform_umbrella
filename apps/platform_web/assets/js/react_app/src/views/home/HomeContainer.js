@@ -66,16 +66,26 @@ class HomeContainer extends React.Component {
                 className={classes.header}
                 style={{ background: "#fff", padding: 0 }}
               >
+                <div>
+                  <Icon
+                    className="trigger"
+                    type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
+                    onClick={this.toggle}
+                    style={{ paddingLeft: 20 }}
+                  />
+                </div>
                 <div style={{ display: "flex" }}>
-                  <div className={null}>
-                    <Icon type="mail" />
-                  </div>
+                  <Icon type="mail" style={{ paddingRight: 20 }} />
                   <Menu
                     mode="horizontal"
                     onClick={
                       null
                       // handleClickMenu
                     }
+                    style={{
+                      borderBottom: "none",
+                      marginTop: 0
+                    }}
                   >
                     <SubMenu
                       style={{
