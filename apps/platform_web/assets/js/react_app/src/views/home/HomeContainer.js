@@ -95,17 +95,19 @@ class HomeContainer extends React.Component {
                   </Menu>
                 </div>
               </Header>
-              <Route exact path="/" component={PortfolioComponent} />
-              <Route exact path="/contribute" component={ProviderContainer} />
-              <Route exact path="/investors" component={HomeComponent} />
-              <PrivateRoute exact path="/profile" component={Protected} />
-              <Route exact path="/about" component={AboutComponent} />
-              <Route exact path="/login" component={Login} />
-              <Route
-                exact
-                path="/privacy_policy"
-                component={PrivacyComponent}
-              />
+              <Content style={{ padding: 24, background: "#fff" }}>
+                <Route exact path="/" component={PortfolioComponent} />
+                <Route exact path="/contribute" component={ProviderContainer} />
+                <Route exact path="/investors" component={HomeComponent} />
+                <PrivateRoute exact path="/profile" component={Protected} />
+                <Route exact path="/about" component={AboutComponent} />
+                <Route exact path="/login" component={Login} />
+                <Route
+                  exact
+                  path="/privacy_policy"
+                  component={PrivacyComponent}
+                />
+              </Content>
             </Layout>
           </Layout>
         </BrowserRouter>
