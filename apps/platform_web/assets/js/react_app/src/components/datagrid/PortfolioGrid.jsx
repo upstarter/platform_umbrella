@@ -19,7 +19,7 @@ export default class PortfolioGrid extends React.Component {
       totalWeight: 0,
       tableData: [
         {
-          holding: "",
+          holding: tokens[0].holding,
           allocation: 0
         }
       ],
@@ -42,7 +42,7 @@ export default class PortfolioGrid extends React.Component {
       tableData: [
         ...prevState.tableData,
         {
-          holding: tokens,
+          holding: tokens[0].holding,
           allocation: 0
         }
       ]
