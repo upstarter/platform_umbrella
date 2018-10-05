@@ -140,16 +140,24 @@ export default class PortfolioGrid extends React.Component {
             0
           )}
         </div>
+        <br />
         <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
           <Table
             columns={columns}
             dataSource={this.state.tableData}
             pagination={false}
           />
-          <Button type="secondary" onClick={this.addRow}>
+          <br />
+          <Button type="secondary" block onClick={this.addRow}>
             Add
           </Button>
-          <Button type="primary" type="submit" onClick={this.addRow}>
+
+          <Button
+            type="primary submit"
+            block
+            onClick={this.addRow}
+            style={{ marginTop: 10 }}
+          >
             Submit
           </Button>
         </form>
