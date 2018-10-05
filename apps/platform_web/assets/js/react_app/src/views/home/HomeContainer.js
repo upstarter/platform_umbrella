@@ -48,34 +48,67 @@ class HomeContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      collapsed: false
+      collapsed: false,
+      visible: false
     };
   }
   switchSider() {
     this.setState({ collapsed: !this.state.collapsed });
   }
+  showDrawer = () => {
+    this.setState({
+      visible: true
+    });
+  };
+
+  onClose = () => {
+    this.setState({
+      visible: false
+    });
+  };
   render() {
     const { classes } = this.props;
     return (
       <React.Fragment>
         <BrowserRouter>
           <Layout id="wrapper" style={{ height: "100vh", position: "bottom" }}>
+            <Drawer
+              title="Basic Drawer"
+              placement="left"
+              closable={true}
+              onClose={this.onClose}
+              visible={this.state.visible}
+            >
+              <p>Some contents...</p>
+              <p>Some contents...</p>
+              <p>Some contents...</p>
+            </Drawer>
             <SiderMenu />
             <Layout style={{ height: "100vh" }}>
               <Header
                 className={classes.header}
                 style={{ background: "#fff", padding: 0 }}
               >
+                <div>
+                  <Icon
+                    className="trigger"
+                    type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
+                    onClick={this.toggle}
+                    style={{ paddingLeft: 20 }}
+                  />
+                </div>
                 <div style={{ display: "flex" }}>
-                  <div className={null}>
-                    <Icon type="mail" />
-                  </div>
+                  <Icon type="mail" style={{ paddingRight: 20 }} />
                   <Menu
                     mode="horizontal"
                     onClick={
                       null
                       // handleClickMenu
                     }
+                    style={{
+                      borderBottom: "none",
+                      marginTop: 0
+                    }}
                   >
                     <SubMenu
                       style={{
@@ -95,6 +128,7 @@ class HomeContainer extends React.Component {
                   </Menu>
                 </div>
               </Header>
+              <Content style={{ padding: 24, background: "#fff" }}>
                 <Route exact path="/" component={PortfolioComponent} />
                 <Route exact path="/contribute" component={ProviderContainer} />
                 <Route exact path="/investors" component={HomeComponent} />
@@ -106,6 +140,7 @@ class HomeContainer extends React.Component {
                   path="/privacy_policy"
                   component={PrivacyComponent}
                 />
+              </Content>
             </Layout>
           </Layout>
         </BrowserRouter>

@@ -2,7 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { url } from "../../utils/consts";
 import PortfolioGrid from "../datagrid/PortfolioGrid";
-import injectSheet, { jss } from "react-jss"
+import injectSheet, { jss } from "react-jss";
+import { Layout, Icon } from "antd";
+const { Content } = Layout;
 
 class PortfolioComponent extends React.Component {
   constructor(props) {
@@ -48,44 +50,28 @@ class PortfolioComponent extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <section id="portfolio" className={ classes.portfolio}>
-        <div id="portfolio-text" className="content" style={{maxWidth: '500px', display: 'flex', flexDirection: 'column'}}>
-          <h1 className="title center" style={{textAlign: 'center'}}>
-            The CryptoWise Portfolio
-          </h1>
-          <h5 className="center" style={{alignItems: 'center', maxWidth: '60ch', textAlign: 'center'}}>
-            Allocate a portfolio from our painstakingly and continuously re-constructed
-            synthesis of top cryptoasset selections of some of the
-            wisest financial analysts in the cryptosphere. Enter and update
-            your 'optimal' portfolio allocation to see how you compare to the
-            best performing portfolios over specified time periods. Top spots
-            on leaderboards will get preferred access on any future token
-            sale.
-          </h5>
-          <br />
-          <div className="portfolio-grid center">
-            <PortfolioGrid />
-          </div>
-        </div>
-      </section>
+      <div
+        style={{
+          maxWidth: "600px",
+          textAlign: 'center',
+          margin: "0 auto"
+        }}
+      >
+        <h1>The CryptoWise Portfolio</h1>
+        <h5>
+          Allocate a portfolio from our painstakingly and continuously
+          re-constructed synthesis of top cryptoasset selections of some of the
+          wisest financial analysts in the cryptosphere. Enter and update your
+          'optimal' portfolio allocation to see how you compare to the best
+          performing portfolios over specified time periods. Top spots on
+          leaderboards will get preferred access on any future token sale.
+        </h5>
+        <br />
+          <PortfolioGrid />
+      </div>
     );
   }
 }
 
-const portfolioStyles = {
-  portfolio: {
-    height: '100vh',
-    padding: '2rem 0',
-    margin: '0 auto',
-    width: '95vw',
-
-    '@media (min-width: 992px)': {
-      width: '70ch'
-    },
-
-   '@media (min-width: 576px)': {
-      width: '95vw'
-    }
-  }
-}
+const portfolioStyles = {};
 export default injectSheet(portfolioStyles)(PortfolioComponent);

@@ -1,226 +1,167 @@
 import React from "react";
-import { Table, Select, Input, Button } from "antd";
+import { Table, Select, Input, Button, Icon, notification } from "antd";
 import tokens from "./MockData";
 
 const Option = Select.Option;
 
-const columns = [
-  {
-    title: "#",
-    dataIndex: "key",
-    key: "key",
-    render: (text, record, i) => <a>{i + 1}</a>
-  },
-  {
-    title: "Holding",
-    dataIndex: "holding",
-    key: "holding",
-    render: (token, record) => (
-      <Select showSearch style={{ width: 200 }} placeholder="Select a Holding">
-        {token.map((token, i) => (
-          <Option value={token.holding}>{token.holding}</Option>
-        ))}
-      </Select>
-    )
-  },
-  {
-    title: "Allocation",
-    dataIndex: "allocation",
-    key: "allocation",
-    render: () => <Input placeholder="Must be under 100" />
-  },
-  {
-    title: "Action",
-    key: "action",
-    render: (text, record) => (
-      <span>
-        <a onClick={console.log(record)}>Delete</a>
-      </span>
-    )
-  }
-];
-
-const data = [
-  {
-    key: "1",
-    holding: tokens,
-    allocation: null
-  },
-  {
-    key: "2",
-    holding: tokens,
-    allocation: null
-  }
-];
+const openNotificationWithIcon = (type, text, title) => {
+  notification[type]({
+    message: title,
+    description: text
+  });
+};
 
 export default class PortfolioGrid extends React.Component {
   constructor() {
     super();
     this.state = {
-      holdings: [{ holding: "", allocation: null }],
-      noMoreRowInfo: false,
       noMoreAllocationInfo: false,
-      totalWeight: 0
+      totalWeight: 0,
+      tableData: [
+        {
+          holding: tokens[0].holding,
+          allocation: 0
+        }
+      ],
+      result: {}
     };
     this.addRow = this.addRow.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   addRow = e => {
-    if (data.length < 7) {
-      this.setState(prevState => ({
-        holdings: [...prevState.holdings, { holding: "", allocation: "" }]
-      }));
-      data.push({
-        holding: tokens,
-        allocation: null
-      });
-    } else {
-      this.setState({ noMoreRowInfo: true });
-      setTimeout(() => {
-        this.setState({ noMoreRowInfo: false });
-      }, 3000);
+    if (this.state.tableData.length >= 7) {
+      openNotificationWithIcon(
+        "warning",
+        "",
+        "Please choose 7 holdings or less"
+      );
+      return;
     }
+    this.setState(prevState => ({
+      tableData: [
+        ...prevState.tableData,
+        {
+          holding: tokens[0].holding,
+          allocation: 0
+        }
+      ]
+    }));
   };
   handleSubmit = e => {
     e.preventDefault();
-    let totalWeight = [];
-    for (let i = 0; i < this.state.holdings.length; i++) {
-      totalWeight.push(this.state.holdings[i].allocation);
-    }
-    totalWeight = totalWeight.reduce((a, b) => parseInt(a) + parseInt(b), 0);
-    this.setState({ totalWeight });
-    if (totalWeight >= 100) {
-      this.setState({ noMoreAllocationInfo: true });
-    }
+    alert('see the result in a console "WIP"');
+    console.log(this.state.tableData);
   };
   handleChange = e => {
-    if (["holding", "allocation"].includes(e.target.className)) {
-      let holdings = [...this.state.holdings];
-      holdings[e.target.dataset.id][e.target.className] = e.target.value;
-      this.setState({ holdings });
+    if (["holding", "allocation"].includes(e.target.id)) {
+      let tableData = [...this.state.tableData];
+      tableData[e.target.dataset.id][e.target.id] = e.target.value;
+      this.setState({ tableData });
     } else {
-      let holdings = [...this.state.holdings];
-      holdings[e.target.dataset.id][e.target.className] = e.target.value;
-      this.setState({ holdings });
+      let tableData = [...this.state.tableData];
+      tableData[e.target.dataset.id][e.target.id] = e.target.value;
+      this.setState({ tableData });
     }
   };
   deleteRow(idx) {
-    console.log(idx);
-    let holdings = [...this.state.holdings];
-    holdings.splice(idx, 1);
-    this.setState({ holdings });
+    let data = [...this.state.tableData];
+    data.splice(idx, 1);
+    this.setState({ tableData: data });
   }
+
   render() {
-    let { holdings, noMoreRowInfo, noMoreAllocationInfo } = this.state;
+    const columns = [
+      {
+        title: "#",
+        dataIndex: "key",
+        key: "key",
+        render: (text, record, i) => <a>{i + 1}</a>
+      },
+      {
+        title: "Holding",
+        dataIndex: "holding",
+        key: "holding",
+        render: (token1, record, i) => (
+          <select
+            showSearch
+            style={{ width: "14vh" }}
+            placeholder="Select a Holding"
+            id="holding"
+            data-id={i}
+          >
+            {tokens.map((token, i) => (
+              <option value={token.holding}>{token.holding}</option>
+            ))}
+          </select>
+        )
+      },
+      {
+        title: "Allocation",
+        dataIndex: "allocation",
+        key: "allocation",
+        render: (token, record, i) => (
+          <Input
+            id="allocation"
+            className="allocation"
+            placeholder="Must be under 100"
+            data-id={i}
+          />
+        )
+      },
+      {
+        title: "Action",
+        key: "action",
+        render: (text, record, i) => (
+          <Icon
+            type="delete"
+            theme="twoTone"
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              this.deleteRow(i);
+            }}
+          />
+        )
+      }
+    ];
+    if (
+      this.state.tableData.reduce(
+        (sum, i) => (sum += parseInt(i.allocation)),
+        0
+      ) > 100
+    ) {
+      openNotificationWithIcon("error", "", "Allocation can't be over 100");
+    }
     return (
       <div>
-        {noMoreRowInfo ? (
-          <div className="notification is-info">
-            <button
-              className="delete"
-              onClick={() => {
-                this.setState({ noMoreRowInfo: false });
-              }}
-            />
-            <p>Please choose less than 8.</p>
-          </div>
-        ) : null}
-        {noMoreAllocationInfo ? (
-          <div className="notification is-info">
-            <button
-              class="delete"
-              onClick={() => {
-                this.setState({ noMoreAllocationInfo: false });
-              }}
-            />
-            <p>Please choose 100% or less.</p>
-          </div>
-        ) : null}
         <div>
-          Total Weight: <strong>{`${this.state.totalWeight}%`}</strong>
+          Total Weight:
+          {this.state.tableData.reduce(
+            (sum, i) => (sum += parseInt(i.allocation)),
+            0
+          )}
         </div>
-        <div className="">
-          <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
-            <table className="table is-fullwidth is-bordered">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Holding</th>
-                  <th>Allocation</th>
-                  <th />
-                </tr>
-              </thead>
-              <tbody>
-                {holdings.map((val, idx) => {
-                  let holdingId = `holding-${idx}`,
-                    allocationId = `allocation-${idx}`;
-                  return (
-                    <tr>
-                      <td>{idx + 1}</td>
-                      <td className="has-input">
-                        <div className="select is-small">
-                          <select
-                            className="holding"
-                            name={holdingId}
-                            id={holdingId}
-                            data-id={idx}
-                            value={this.state.holdings[idx].holding}
-                          >
-                            <option value="qwe">Choose</option>
-                            {tokens.map((token, i) => {
-                              return (
-                                <option value={token.holding}>
-                                  {token.holding}
-                                </option>
-                              );
-                            })}
-                          </select>
-                        </div>
-                      </td>
-                      <td className="has-input">
-                        <input
-                          className="allocation"
-                          type="text"
-                          name={allocationId}
-                          id={allocationId}
-                          data-id={idx}
-                          // onFocus={this.addRow}
-                          value={this.state.holdings[idx].allocation}
-                        />
-                      </td>
+        <br />
+        <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
+          <Table
+            columns={columns}
+            dataSource={this.state.tableData}
+            pagination={false}
+          />
+          <br />
+          <Button type="secondary" block onClick={this.addRow}>
+            Add
+          </Button>
 
-                      <td className="has-input">
-                        <span
-                          className="icon"
-                          onClick={i => this.deleteRow(idx)}
-                          style={{ cursor: "pointer" }}
-                        >
-                          x<i className="fas fa-trash" />
-                        </span>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-            <a
-              className="button is-fullwidth is-primary is-outlined"
-              onClick={this.addRow}
-            >
-              Add asset
-            </a>
-            <a
-              className="button is-fullwidth is-link"
-              onClick={this.handleSubmit}
-              style={{ marginTop: "10px" }}
-            >
-              Submit Portfolio
-            </a>
-          </form>
-        </div>
-        <Table columns={columns} dataSource={data} pagination={false}/>
-        <Button type="secondary" onClick={this.addRow}>Add</Button>
-        <Button type="primary">Submit</Button>
+          <Button
+            type="primary submit"
+            block
+            onClick={this.handleSubmit}
+            style={{ marginTop: 10 }}
+          >
+            Submit
+          </Button>
+        </form>
         {this.state.error && <div style={styles.error}>{this.state.error}</div>}
       </div>
     );
