@@ -50,6 +50,7 @@ export default class PortfolioGrid extends React.Component {
   };
   handleSubmit = e => {
     e.preventDefault();
+    alert('see the result in a console "WIP"');
     console.log(this.state.tableData);
   };
   handleChange = e => {
@@ -84,7 +85,7 @@ export default class PortfolioGrid extends React.Component {
         render: (token1, record, i) => (
           <select
             showSearch
-            style={{ width: 200 }}
+            style={{ width: "14vh" }}
             placeholder="Select a Holding"
             id="holding"
             data-id={i}
@@ -155,7 +156,7 @@ export default class PortfolioGrid extends React.Component {
           <Button
             type="primary submit"
             block
-            onClick={this.addRow}
+            onClick={this.handleSubmit}
             style={{ marginTop: 10 }}
           >
             Submit
