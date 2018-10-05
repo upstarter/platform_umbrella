@@ -1,20 +1,26 @@
 import React from "react";
-import { Table, Select, Input, Button, Icon } from "antd";
+import { Table, Select, Input, Button, Icon, notification } from "antd";
 import tokens from "./MockData";
 
 const Option = Select.Option;
+
+const openNotificationWithIcon = (type, text, title) => {
+  notification[type]({
+    message: title,
+    description: text
+  });
+};
 
 export default class PortfolioGrid extends React.Component {
   constructor() {
     super();
     this.state = {
-      noMoreRowInfo: false,
       noMoreAllocationInfo: false,
       totalWeight: 0,
       tableData: [
         {
-          holding: null,
-          allocation: null
+          holding: "",
+          allocation: 0
         }
       ],
       result: {}
@@ -24,28 +30,23 @@ export default class PortfolioGrid extends React.Component {
   }
 
   addRow = e => {
+    if (this.state.tableData.length >= 7) {
+      openNotificationWithIcon(
+        "warning",
+        "",
+        "Please choose 7 holdings or less"
+      );
+      return;
+    }
     this.setState(prevState => ({
       tableData: [
         ...prevState.tableData,
         {
           holding: tokens,
-          allocation: null
+          allocation: 0
         }
       ]
-      // holdings: [...prevState.holdings, { holding: "", allocation: "" }]
     }));
-    // if (data.length < 7) {
-
-    //   data.push({
-    //     holding: tokens,
-    //     allocation: null
-    //   });
-    // } else {
-    //   this.setState({ noMoreRowInfo: true });
-    //   setTimeout(() => {
-    //     this.setState({ noMoreRowInfo: false });
-    //   }, 3000);
-    // }
   };
   handleSubmit = e => {
     e.preventDefault();
@@ -67,6 +68,7 @@ export default class PortfolioGrid extends React.Component {
     data.splice(idx, 1);
     this.setState({ tableData: data });
   }
+
   render() {
     const columns = [
       {
@@ -121,11 +123,22 @@ export default class PortfolioGrid extends React.Component {
         )
       }
     ];
-    let { holdings, noMoreRowInfo, noMoreAllocationInfo } = this.state;
+    if (
+      this.state.tableData.reduce(
+        (sum, i) => (sum += parseInt(i.allocation)),
+        0
+      ) > 100
+    ) {
+      openNotificationWithIcon("error", "", "Allocation can't be over 100");
+    }
     return (
       <div>
         <div>
-          Total Weight: <strong>{`${this.state.totalWeight}%`}</strong>
+          Total Weight:
+          {this.state.tableData.reduce(
+            (sum, i) => (sum += parseInt(i.allocation)),
+            0
+          )}
         </div>
         <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
           <Table

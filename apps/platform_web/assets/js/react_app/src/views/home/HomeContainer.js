@@ -48,18 +48,41 @@ class HomeContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      collapsed: false
+      collapsed: false,
+      visible: false
     };
   }
   switchSider() {
     this.setState({ collapsed: !this.state.collapsed });
   }
+  showDrawer = () => {
+    this.setState({
+      visible: true
+    });
+  };
+
+  onClose = () => {
+    this.setState({
+      visible: false
+    });
+  };
   render() {
     const { classes } = this.props;
     return (
       <React.Fragment>
         <BrowserRouter>
           <Layout id="wrapper" style={{ height: "100vh", position: "bottom" }}>
+            <Drawer
+              title="Basic Drawer"
+              placement="left"
+              closable={true}
+              onClose={this.onClose}
+              visible={this.state.visible}
+            >
+              <p>Some contents...</p>
+              <p>Some contents...</p>
+              <p>Some contents...</p>
+            </Drawer>
             <SiderMenu />
             <Layout style={{ height: "100vh" }}>
               <Header
