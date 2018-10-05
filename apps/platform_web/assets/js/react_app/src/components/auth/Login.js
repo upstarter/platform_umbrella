@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import fakeAuth from './fakeAuth'
+import Auth from './Auth'
 import {
   Route,
   Redirect,
@@ -11,7 +11,7 @@ export default class Login extends Component {
   };
 
   login = () => {
-    fakeAuth.authenticate(() => {
+    Auth.authenticate(() => {
       this.setState({ redirectToReferrer: true });
     });
   };

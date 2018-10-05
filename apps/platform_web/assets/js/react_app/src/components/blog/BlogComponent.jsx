@@ -38,7 +38,7 @@ class BlogComponent extends React.Component {
           isLoading: false
         }))
         .catch(error => this.setState({ error, isLoading: false }));
-    }
+  }
 
   render() {
     const { blogPosts, isLoading, error } = this.state;
