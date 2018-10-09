@@ -20,9 +20,38 @@ defmodule Platform.Tokens.Asset do
     #   • augur, keep
     %{
       consensus_algos: [
-        "Proof of Work": [],
-        "Proof of Stake": [],
-        "Hybrid Proof of Work/Stake": [],
+        description:
+          "Tools for solving the double spend problem in the distributed ledger space.",
+        "Proof of Work": ["BTC", "ETH", "LTC", "DOGE"],
+        "Proof of Stake": ["Decred", "ETH", "Peercoin"],
+        "Delegated Proof of Stake (DPoS)": ["Steemit", "EOS", "Bitshares"],
+        "Proof of Authority": ["POA.Network", "Ethereum Kovan testnet", "Vechain"],
+        "Proof of Weight (PoWeight)": ["Algorand", "Filecoin", "Chia"],
+        "Byzantine Fault Tolerance (BFT)": [
+          "Sacrifices Decentralization for cheaper and faster transactions.
+          Centralized and closed membership. 1 recomended validator list chosen
+          by authority",
+          "Hyperledger",
+          "Stellar",
+          "Dispatch",
+          "Ripple"
+        ],
+        "Practical Byzantine Fault Tolerance (PBFT)": [
+          "Decentralized alternative to BFT",
+          "Hyperledger Fabric"
+        ],
+        "Federated Byzantine Agreement (FBA)": [
+          "No recommended validator, each validator chooses validators they
+          trust. Open membership network. Quorum slices allow for open membership decentralization.
+          Network allows growing decentralization.",
+          "Stellar",
+          "Ripple"
+        ],
+        "Directed Acyclic Graph (DAG)": ["Iota", "Hashgraph", "Raiblocks/Nano"],
+        "Hybrid Proof of Work/Stake": [
+          "PoW/PoS algorithms allow PoW minting to take place before switching to PoS",
+          "ETH (with Casper)"
+        ],
         "Proof of Coordination": ["Covee"]
       ],
       governance: ["Aragon", "Colony", "Tezos"],
@@ -42,12 +71,13 @@ defmodule Platform.Tokens.Asset do
         usage_tokens: ["BTC", "BTCash", "LTC", "NEM", "IOTA", "MNR", "ETH", "BAT", "KIN"],
         hybrid: ["FIL", "ETH (with Casper)"]
       ],
-      ai: ["botc", "OCN (ocean protocol)", "singularityNet"],
+      ai: ["BOTC (Botchain)", "OCN (ocean protocol)", "singularityNet"],
       securitized_computing_resources: ["Filecoin", "Sia", "Storj", "Golem", "Orchid"],
       reputation_mining: ["Rootcore", "Colony", "Numeraire", "Zeppelin", "OSCoin"],
       advertising: ["Adchain"],
-      curation_markets: [],
-      bonding_curves: []
+      curation_markets: ["OCN (Ocean Protocol)"],
+      bonding_curves: [],
+      projects: ["EOS", "Blockscout", "Elixium"]
     }
   end
 
@@ -228,7 +258,8 @@ defmodule Platform.Tokens.Asset do
       %Asset{ticker: "TRX"},
       %Asset{ticker: "ICN"},
       %Asset{ticker: "IOTA"},
-      %Asset{ticker: "DFINITY"}
+      %Asset{ticker: "DFINITY"},
+      %Asset{ticker: "WAVES"}
     ]
   end
 

@@ -8,13 +8,13 @@ defmodule Platform.Topics.Topic do
   use Ecto.Schema
   import Ecto.Changeset
   alias Platform.Providers.Provider
+  alias Platform.Tokens.Token
 
   use EctoMaterializedPath
 
   schema "topics" do
-    field(:long_desc, :string)
+    field(:description, :string)
     field(:name, :string)
-    field(:short_desc, :string)
     field(:path, EctoMaterializedPath.Path, default: [])
 
     many_to_many(:providers, Provider, join_through: "providers_topics")
