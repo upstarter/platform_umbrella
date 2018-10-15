@@ -3,6 +3,9 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import AppHeader from "../../views/header/AppHeader";
 import PortfolioComponent from "../../views/portfolio/PortfolioComponent";
+import DeveloperComponent from "../../views/developers/DeveloperComponent";
+import ProposalComponent from "../../views/proposals/ProposalComponent";
+import InsightComponent from "../../views/insights/InsightComponent";
 import Login from "../../views/auth/Login";
 import Logout from "../../views/auth/Logout";
 import Signup from "../../views/auth/Signup";
@@ -10,7 +13,7 @@ import PrivateRoute from "../../components/auth/PrivateRoute";
 import PrivacyComponent from "../PrivacyComponent";
 import FooterComponent from "./FooterComponent";
 import { Layout, Menu, Icon, Drawer } from "antd";
-const { Content, Sider } = Layout;
+const { Content, Sider, Footer } = Layout;
 const { SubMenu } = Menu;
 import config from "../../utils/config";
 
@@ -48,11 +51,12 @@ class HomeContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      visible: false
+      visible: true,
+      contentMarginLeft: '200px'
     };
   }
-  switchSider() {
-    this.setState({ collapsed: !this.state.collapsed });
+  setContentMarginLeft = (margin) => {
+    this.setState({contentMarginLeft: margin})
   }
   showDrawer = () => {
     this.setState({
@@ -65,12 +69,13 @@ class HomeContainer extends React.Component {
       visible: false
     });
   };
+
   render() {
     const { classes } = this.props;
     return (
       <React.Fragment>
         <BrowserRouter>
-          <Layout className={classes.typography} id="wrapper">
+          <Layout style={{minHeight: '100vh', background: '#fff'}} className={classes.typography} id="wrapper">
             <Drawer
               title="Basic Drawer"
               placement="right"
@@ -82,24 +87,32 @@ class HomeContainer extends React.Component {
               <p>Some contents...</p>
               <p>Some contents...</p>
             </Drawer>
-            <SiderMenu />
+            <SiderMenu setContentMarginLeft={this.setContentMarginLeft}/>
             <Layout>
               <AppHeader />
-              <Content style={{ background: "#fff" }}>
-                <Route exact path="/" component={PortfolioComponent} />
-                <Route exact path="/contribute" component={ProviderContainer} />
-                <Route exact path="/investors" component={HomeComponent} />
-                <PrivateRoute exact path="/profile" component={Protected} />
-                <Route exact path="/about" component={AboutComponent} />
-                <Route exact path="/signup" component={Signup} />
-                <Route exact path="/login" component={Login} />
-                <Route exact path="/logout" component={Logout} />
-                <Route
-                  exact
-                  path="/privacy_policy"
-                  component={PrivacyComponent}
-                />
+              <Content style={{ marginLeft: `${this.state.contentMarginLeft}`, padding: '60px 0', background: '#fff' }}>
+                <div className={classes.content} style={{ background: '#fff', textAlign: 'center' }}>
+                  <Route exact path="/" component={PortfolioComponent} />
+                  <Route exact path="/developers" component={DeveloperComponent} />
+                  <Route exact path="/contribute" component={ProviderContainer} />
+                  <Route exact path="/insights" component={InsightComponent} />
+                  <Route exact path="/proposals" component={ProposalComponent} />
+                  <Route exact path="/investors" component={HomeComponent} />
+                  <PrivateRoute exact path="/profile" component={Protected} />
+                  <Route exact path="/about" component={AboutComponent} />
+                  <Route exact path="/signup" component={Signup} />
+                  <Route exact path="/login" component={Login} />
+                  <Route exact path="/logout" component={Logout} />
+                  <Route
+                    exact
+                    path="/privacy_policy"
+                    component={PrivacyComponent}
+                  />
+                </div>
               </Content>
+              <Footer style={{ marginLeft: `${this.state.contentMarginLeft}`, textAlign: 'center' }}>
+                Aion Labs, Inc. ©2018
+              </Footer>
             </Layout>
           </Layout>
         </BrowserRouter>
@@ -110,11 +123,20 @@ class HomeContainer extends React.Component {
 
 const appStyles = {
   typography: `${typography}`,
+
   logo: {
     height: "64px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center"
+  },
+  content: {
+    '& p, & h3': {
+      textAlign: 'left'
+    },
+    '@media (max-width: 576px)': {
+      marginLeft: '0',
+    },
   }
 };
 

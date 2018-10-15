@@ -23,22 +23,22 @@ const Tokens = [{
   },
   {
     logo: CryptoLogos.peercoin,
-    holding: 'ICN (Peercoin)',
+    holding: 'EOS (EOS)',
     desc: `Peercoin, also known as PPCoin or PPC, is a peer-to-peer cryptocurrency utilizing both proof-of-stake and proof-of-work systems.`,
     weight: 6,
     id: 3
   },
   {
     logo: CryptoLogos.potcoin,
-    holding: 'STEEM (Potcoin)',
+    holding: 'STEEM (Steemit)',
     desc: `PotCoin is a peer-to-peer cryptocurrency which exists with the aim of becoming the standard form of payment for the legalized cannabis industry.`,
     weight: 2,
     id: 4
   },
   {
     logo: CryptoLogos.powerledger,
-    holding: 'POWR (Power Ledger)',
-    desc: `Power Ledger, a blockchain-based platform, plans to completely revolutionalize the worldwide energy industry by enabling local areas the ability to sell and distribute solar power to its neighbors without the need of a middleman.`,
+    holding: 'ZRX (0x)',
+    desc: `0x (zero x), is a blockchain-based platform, plans to completely revolutionalize the worldwide energy industry by enabling local areas the ability to sell and distribute solar power to its neighbors without the need of a middleman.`,
     weight: 4,
     id: 5
   },

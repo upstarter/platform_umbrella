@@ -17,25 +17,25 @@ const LinkMenu = withRouter(props => {
       <Menu.Item key="/">
         <Link to="/" style={{ textDecoration: "none" }}>
           <Icon type="user" />
-          <span className="nav-text">Submit Ballot</span>
+          <span className="nav-text">Portfolio</span>
         </Link>
       </Menu.Item>
-      <Menu.Item key="/contribute">
-        <Link to="/contribute" style={{ textDecoration: "none" }}>
-          <Icon type="form" />
-          <span className="nav-text">Contribute</span>
+      <Menu.Item key="/insights">
+        <Link to="/insights" style={{ textDecoration: "none" }}>
+          <Icon type="rise" />
+          <span className="nav-text">Insight</span>
         </Link>
       </Menu.Item>
-      <Menu.Item key="/about">
-        <Link to="/about" style={{ textDecoration: "none" }}>
+      <Menu.Item key="/proposals">
+        <Link to="/proposals" style={{ textDecoration: "none" }}>
+          <Icon type="notification" />
+          <span className="nav-text">Make Proposal</span>
+        </Link>
+      </Menu.Item>
+      <Menu.Item key="/developers">
+        <Link to="/developers" style={{ textDecoration: "none" }}>
           <Icon type="team" />
-          <span className="nav-text">About</span>
-        </Link>
-      </Menu.Item>
-      <Menu.Item key="/investors">
-        <Link to="/investors" style={{ textDecoration: "none" }}>
-          <Icon type="usergroup-add" />
-          <span className="nav-text">Join</span>
+          <span className="nav-text">Developers</span>
         </Link>
       </Menu.Item>
     </Menu>
@@ -50,6 +50,27 @@ const menuStyles = {
     }
   }
 };
+
+// <Menu.Item key="/about_tokens">
+//   <Link to="/about_tokens" style={{ textDecoration: "none" }}>
+//     <Icon type="form" />
+//     <span className="nav-text">Philosophy</span>
+//   </Link>
+// </Menu.Item>
+// <Menu.Item key="/contribute">
+//   <Link to="/contribute" style={{ textDecoration: "none" }}>
+//     <Icon type="form" />
+//     <span className="nav-text">Contribute</span>
+//   </Link>
+// </Menu.Item>
+//
+// <Menu.Item key="/investors">
+//   <Link to="/investors" style={{ textDecoration: "none" }}>
+//     <Icon type="usergroup-add" />
+//     <span className="nav-text">Investors</span>
+//   </Link>
+// </Menu.Item>
+//
 
 // <Menu.Item key="/protocol">
 //   <Icon type="area-chart" />
@@ -67,25 +88,15 @@ const menuStyles = {
 //   </Link>
 //   </span>
 // </Menu.Item>
-// <Menu.Item key="/developers">
-//   <Link to="/developers" style={{ textDecoration: "none" }}>
-//     <Icon type="team" />
-//     <span className="nav-text">Developers</span>
-//   </Link>
-// </Menu.Item>
-// <Menu.Item key="/insight">
-//   <Link to="/insight" style={{ textDecoration: "none" }}>
-//     <Icon type="rise" />
-//     <span className="nav-text">Insight</span>
-//   </Link>
-// </Menu.Item>
-// <Menu.Item key="/proposals">
-//   <Link to="/proposals" style={{ textDecoration: "none" }}>
-//     <Icon type="notification" />
-//     <span className="nav-text">Make Proposal</span>
-//   </Link>
-// </Menu.Item>
+
 //
+// <Menu.Item key="/about">
+//   <Link to="/about" style={{ textDecoration: "none" }}>
+//     <Icon type="team" />
+//     <span className="nav-text">About</span>
+//   </Link>
+// </Menu.Item>
+
 
 
 export default injectSheet(menuStyles)(LinkMenu);

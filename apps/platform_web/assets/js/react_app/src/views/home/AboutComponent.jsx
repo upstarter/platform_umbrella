@@ -10,7 +10,7 @@ class AboutComponent extends React.Component {
     const { classes } = this.props
     return (
       <React.Fragment>
-        <section id="about">
+        <section id="about" style={{width: '100%'}}>
           <div id="about-content" className={classes.about_content}>
             <h1 className="title">About</h1>
             <h3 className="subtitle">
@@ -83,8 +83,7 @@ class AboutComponent extends React.Component {
 
 const aboutStyles = {
   about_content: {
-    padding: '2rem 1rem 1rem 1rem',
-    marginTop: '4rem',
+    padding: '0rem 1rem 1rem 1rem',
     margin: '0 auto',
     maxWidth: '60ch',
 

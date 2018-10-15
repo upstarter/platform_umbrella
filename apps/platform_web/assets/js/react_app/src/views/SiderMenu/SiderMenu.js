@@ -9,18 +9,23 @@ import nav_logo from "../../../../../static/images/nav_logo.svg";
 const SiderMenu = withRouter(props => {
   const { location } = props;
   const { classes } = props;
+
   return (
     <Sider
       className={classes.sider}
       breakpoint="sm"
-      collapsedWidth="0"
-      collapsible="true"
+      collapsedWidth="80"
+      collapsible
+      style={{ overflow: 'visible', height: '100vh', position: 'fixed', zIndex: 2, left: 0 }}
       onBreakpoint={(broken) => { console.log(broken); }}
-      onCollapse={(collapsed, type) => { console.log(collapsed, type); }}
+      onCollapse={
+        (collapsed, type) =>
+          { collapsed ? props.setContentMarginLeft('0px') : props.setContentMarginLeft('200px') }
+      }
     >
       <Link to="/">
-        <div className={classes.logo} style={{padding: '14px 14px 0 14px'}}>
-            <img src={nav_logo} />
+        <div style={{padding: '14px 14px 0 14px'}}>
+            <img className={classes.logo} src={nav_logo} />
         </div>
       </Link>
       <LinkMenu />
@@ -31,7 +36,11 @@ const SiderMenu = withRouter(props => {
 const siderMenuStyles = {
   sider: {
 
-    zIndex: 1,
+  },
+  logo: {
+    '@media (max-width: 576px)': {
+      marginLeft: '32px',
+    },
   }
 }
 

@@ -1,4 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
+import {
+  withRouter
+} from "react-router-dom";
 import { Button, Icon, notification } from "antd";
 import injectSheet, { jss } from "react-jss";
 import { Layout, Menu } from "antd";
@@ -15,22 +19,30 @@ class AppHeader extends React.Component {
     };
   }
 
-  render() {
-    const { classes } = this.props;
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
+  };
 
+
+  toggle = () => {
+    this.setState({collapsed: !this.state.collapsed})
+  }
+
+  render() {
+    const { classes, match, location, history } = this.props;
     return (
       <Header
         className={classes.header}
-        style={{ background: "#fff", padding: 0 }}
       >
-
-        <div style={{ display: "flex" }}>
-          <Icon type="mail" style={{ paddingRight: 20 }} />
+        <div>
           <Menu
             mode="horizontal"
             onClick={
-              null
-              // handleClickMenu
+              ({ item, key, keyPath }) => {
+                history.push(key)
+              }
             }
             style={{
               borderBottom: "none",
@@ -39,28 +51,23 @@ class AppHeader extends React.Component {
           >
             <SubMenu
               style={{
-                float: "right",
-                padding: 8,
                 borderBottom: "none"
               }}
               title={
                 <span>
-                  <Icon type="user" />
-                  "user.username"
+                  <Icon
+                    className="trigger"
+                    type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
+                    onClick={this.toggle}
+                  />
                 </span>
               }
             >
-              <Menu.Item key="logout">Sign out</Menu.Item>
+              <Menu.Item key="/contact">Contact</Menu.Item>
+              <Menu.Item key="/about">About</Menu.Item>
+              <Menu.Item key="/logout">Sign out</Menu.Item>
             </SubMenu>
           </Menu>
-        </div>
-        <div>
-          <Icon
-            className="trigger"
-            type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
-            onClick={this.toggle}
-            style={{  paddingRight: 20 }}
-          />
         </div>
       </Header>
     )
@@ -69,9 +76,20 @@ class AppHeader extends React.Component {
 
 const headerStyles = {
   header: {
+    background: '#fff',
+    padding: 0,
+    height: 40,
+    position: 'fixed',
+    width: '100%',
+    right: 0,
+    zIndex: 1,
     display: "flex",
     justifyContent: 'flex-end',
-    fontSize: 15
+    fontSize: 15,
+    '@media (min-width: 576px)': {
+    },
   },
 }
-export default injectSheet(headerStyles)(AppHeader);
+const AppHeaderWithRouter = withRouter(AppHeader);
+
+export default injectSheet(headerStyles)(AppHeaderWithRouter);

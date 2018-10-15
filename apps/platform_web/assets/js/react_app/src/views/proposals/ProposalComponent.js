@@ -5,21 +5,20 @@ import injectSheet, { jss } from 'react-jss'
 // import BarChart from "../../components/charts/bar"
 
 
-class DeveloperComponent extends React.Component {
+class ProposalComponent extends React.Component {
   render() {
     const { classes } = this.props
     return (
       <React.Fragment>
-        <section id="developer" className={classes.developers}>
-          <div id="developer-content" className="content">
-            <h1 className="title">CryptoWise for Developers</h1>
+        <section id="proposal" className={classes.proposals}>
+          <div id="proposal-content" className="content">
+            <h1 className="title">Proposals</h1>
             <h3 className="subtitle">
-              CryptoWise is empowering developers to form new knowledge markets
+              CryptoWise is empowering proposals to form new knowledge markets
               on the blockchain, which will allow knowledge and truth seekers to
               connect, cooperate, and compete without requiring any trusted
               intermediaries. Achieving this visionary goal requires
-              contributions from a growing community of developers; And we need
-              your help.
+              contributions.
             </h3>
             <p className="paragraph">
 
@@ -51,9 +50,9 @@ class DeveloperComponent extends React.Component {
   }
 }
 
-const devStyles = {
-  developers: {
-    '& #developer-content': {
+const proposalStyles = {
+  proposals: {
+    '& #proposal-content': {
       padding: '0rem 1rem 1rem 1rem',
       margin: '0 auto',
       maxWidth: '60ch',
@@ -73,4 +72,4 @@ const devStyles = {
   }
 }
 
-export default injectSheet(devStyles)(DeveloperComponent)
+export default injectSheet(proposalStyles)(ProposalComponent)
