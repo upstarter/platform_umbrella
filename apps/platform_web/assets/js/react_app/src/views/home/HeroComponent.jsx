@@ -140,13 +140,6 @@ class HeroComponent extends React.Component {
   }
 }
 
-//
-// jss.use(nestedJSS())
-// const sheet = jss.createStyleSheet(heeroStyles)
-//
-// // If you want to render on the client, insert it into DOM.
-// sheet.attach()
-
 // Compile styles, apply plugins.
 export default injectSheet(heroStyles)(HeroComponent)
 

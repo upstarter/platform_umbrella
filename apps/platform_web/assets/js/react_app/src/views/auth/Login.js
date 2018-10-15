@@ -1,15 +1,16 @@
-import React from "react";
-import { Redirect } from "react-router-dom";
-import Form from "./Form";
-import { handleLogin, isLoggedIn } from "../../utils/auth";
+import React, { Component } from 'react';
+import Auth from '../../components/auth/Auth'
+import { Route, Redirect } from "react-router-dom";
 
-class Login extends React.Component {
+export default class Login extends Component {
+
   constructor() {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
   }
   state = {
+    redirectToReferrer: false,
     email: ``,
     password: ``
   };
@@ -22,15 +23,20 @@ class Login extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    if (handleLogin(this.state)) {
-      this.props.history.push("/profile");
+    if (Auth.authenticate(this.state)) {
+      this.setState({ redirectToReferrer: true });
+      // this.props.history.push("/profile");
     }
   }
 
   render() {
-    if (isLoggedIn()) {
-      return <Redirect to={{ pathname: "/profile" }} />;
+    const { from } = this.props.location.state || { from: { pathname: "/" } };
+    const { redirectToReferrer } = this.state;
+
+    if (redirectToReferrer) {
+      return <Redirect to={from} />;
     }
+
     return (
       <div title="Log In" className="light-wrap container">
         <div className="is-centered">
@@ -88,9 +94,8 @@ class Login extends React.Component {
             .
           </p>
         </div>
+        <Link to="/sign_up">Sign up</Link>
       </div>
     );
   }
 }
-
-export default Login;

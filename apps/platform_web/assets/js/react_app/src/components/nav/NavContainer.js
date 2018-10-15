@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import img from "../../../../../static/images/nav_logo.svg";
 import { Link } from "react-router-dom";
-import { isLoggedIn, logout } from "../../utils/auth";
+import { Auth } from "../auth/Auth";
 import injectSheet, { jss } from "react-jss"
 import colors from '../../styles/colors'
 
@@ -119,7 +119,7 @@ class NavContainer extends React.Component {
                   Analysts
                 </Link>
 
-                {isLoggedIn() ? (
+                {Auth.isAuthenticated ? (
                   <div className="navbar-item has-dropdown is-hoverable">
                     <a className="navbar-link">Account</a>
                     <div className="navbar-dropdown is-right">

@@ -65,7 +65,7 @@ class BlogComponent extends React.Component {
     return (
       <React.Fragment>
         <section id="blog" className={classes.blog, 'dark-wrap'}>
-          <div className="section-heading">
+          <div className={classes.heading}>
             <h1>Blog Posts</h1>
           </div>
           <div className={classes.blogPosts}>
@@ -74,7 +74,7 @@ class BlogComponent extends React.Component {
                   <div className="card-content">
                     <p id="date" className="caption" dangerouslySetInnerHTML={{__html: post.date}}>
                     </p>
-                    <div className="content" dangerouslySetInnerHTML={{__html: post.content}}>
+                    <div className={classes.card_content} dangerouslySetInnerHTML={{__html: post.content}}>
                     </div>
                     <a href={post.link} className="link">Read More</a>
                   </div>
@@ -88,7 +88,7 @@ class BlogComponent extends React.Component {
 }
 const blogStyles = {
   blog: {
-    padding: '6rem 3rem 12rem',
+    padding: '4rem 1rem 10rem',
     background: `${colors.darkBlue} !important`,
 
   },
@@ -102,15 +102,23 @@ const blogStyles = {
       margin: '0 auto',
     }
   },
+  heading: {
+    textAlign: 'center',
+    marginBottom: '50px',
+    '& h1': {
+      color: `${colors.white}`
+    }
+  },
   card: {
     width: '320px',
     margin: '20px,',
+    minHeight: '100%',
 
     '@media (min-width: 992px)': {
        maxWidth: '60ch'
     },
 
-    '& .is-loading': {
+    '.content .is-loading': {
       minHeight: '100vh',
 
       '&:after': {
@@ -123,16 +131,23 @@ const blogStyles = {
         borderWidth: '0.25em',
       }
     },
-    '& h1,& h2,& h3,& h4,& h5,& h6,& strong,& em': { color: 'white' },
-    minHeight: '100%',
-    '& a strong': { color: 'white' },
-    '& a strong em': { color: 'white' },
+  },
+  card_content: {
+    '& h1': {
+      fontFamily: 'Avenir-Medium',
+      fontWeight: 'normal',
+      fontSize: '2rem',
+      lineHeight: '2.6rem',
+      letterSpacing: '0.1ch',
+      color: `${colors.white}`,
+    },
     '& h2': {
       fontFamily: 'Avenir-Medium',
       fontWeight: 'normal',
       fontSize: '2rem',
       lineHeight: '2.6rem',
-      letterSpacing: '0.1ch'
+      letterSpacing: '0.1ch',
+      color: `${colors.white}`,
     },
     '& h3': {
       fontFamily: 'Avenir-Light',
@@ -158,6 +173,6 @@ const blogStyles = {
       fontSize: '1.4rem',
       color: `${colors.smoke}`,
     }
-  },
+  }
 }
 export default injectSheet(blogStyles)(BlogComponent)

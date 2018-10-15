@@ -1,20 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
-import LinkMenu from "../../components/SiderMenu/LinkMenu";
-import NavContainer from "../../components/nav/NavContainer";
-import Login from "../../views/Login/Login";
-import PrivateRoute from "../../components/PrivateRoute/PrivateRoute";
-import PortfolioComponent from "../../components/portfolio/PortfolioComponent";
+import AppHeader from "../../views/header/AppHeader";
+import PortfolioComponent from "../../views/portfolio/PortfolioComponent";
+import Login from "../../views/auth/Login";
+import Logout from "../../views/auth/Logout";
+import Signup from "../../views/auth/Signup";
+import PrivateRoute from "../../components/auth/PrivateRoute";
 import PrivacyComponent from "../PrivacyComponent";
-import BlogComponent from "../../components/blog/BlogComponent";
 import FooterComponent from "./FooterComponent";
 import { Layout, Menu, Icon, Drawer } from "antd";
-const { Content, Sider, Header } = Layout;
+const { Content, Sider } = Layout;
 const { SubMenu } = Menu;
 import config from "../../utils/config";
 
-import SiderMenu from "../../components/SiderMenu/SiderMenu";
+import SiderMenu from "../../views/SiderMenu/SiderMenu";
 import injectSheet, { jss } from "react-jss";
 import typography from "../../styles/typography";
 
@@ -48,7 +48,6 @@ class HomeContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      collapsed: false,
       visible: false
     };
   }
@@ -71,10 +70,10 @@ class HomeContainer extends React.Component {
     return (
       <React.Fragment>
         <BrowserRouter>
-          <Layout id="wrapper" style={{ height: "100vh", position: "bottom" }}>
+          <Layout className={classes.typography} id="wrapper">
             <Drawer
               title="Basic Drawer"
-              placement="left"
+              placement="right"
               closable={true}
               onClose={this.onClose}
               visible={this.state.visible}
@@ -84,57 +83,17 @@ class HomeContainer extends React.Component {
               <p>Some contents...</p>
             </Drawer>
             <SiderMenu />
-            <Layout style={{ height: "100vh" }}>
-              <Header
-                className={classes.header}
-                style={{ background: "#fff", padding: 0 }}
-              >
-                <div>
-                  <Icon
-                    className="trigger"
-                    type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
-                    onClick={this.toggle}
-                    style={{ paddingLeft: 20 }}
-                  />
-                </div>
-                <div style={{ display: "flex" }}>
-                  <Icon type="mail" style={{ paddingRight: 20 }} />
-                  <Menu
-                    mode="horizontal"
-                    onClick={
-                      null
-                      // handleClickMenu
-                    }
-                    style={{
-                      borderBottom: "none",
-                      marginTop: 0
-                    }}
-                  >
-                    <SubMenu
-                      style={{
-                        float: "right",
-                        padding: 8,
-                        borderBottom: "none"
-                      }}
-                      title={
-                        <span>
-                          <Icon type="user" />
-                          "user.username"
-                        </span>
-                      }
-                    >
-                      <Menu.Item key="logout">Sign out</Menu.Item>
-                    </SubMenu>
-                  </Menu>
-                </div>
-              </Header>
-              <Content style={{ padding: 24, background: "#fff" }}>
+            <Layout>
+              <AppHeader />
+              <Content style={{ background: "#fff" }}>
                 <Route exact path="/" component={PortfolioComponent} />
                 <Route exact path="/contribute" component={ProviderContainer} />
                 <Route exact path="/investors" component={HomeComponent} />
                 <PrivateRoute exact path="/profile" component={Protected} />
                 <Route exact path="/about" component={AboutComponent} />
+                <Route exact path="/signup" component={Signup} />
                 <Route exact path="/login" component={Login} />
+                <Route exact path="/logout" component={Logout} />
                 <Route
                   exact
                   path="/privacy_policy"
@@ -151,11 +110,6 @@ class HomeContainer extends React.Component {
 
 const appStyles = {
   typography: `${typography}`,
-  header: {
-    display: "flex",
-    justifyContent: "space-between",
-    fontSize: 15
-  },
   logo: {
     height: "64px",
     display: "flex",

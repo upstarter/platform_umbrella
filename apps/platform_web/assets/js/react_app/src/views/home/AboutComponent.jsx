@@ -10,8 +10,8 @@ class AboutComponent extends React.Component {
     const { classes } = this.props
     return (
       <React.Fragment>
-        <section id="about" className={classes.about}>
-          <div id="about-content" className="content">
+        <section id="about">
+          <div id="about-content" className={classes.about_content}>
             <h1 className="title">About</h1>
             <h3 className="subtitle">
               CryptoWise is a collaborative investment ecosystem harnessing the
@@ -82,32 +82,29 @@ class AboutComponent extends React.Component {
 }
 
 const aboutStyles = {
-  about: {
-    '& #about-content': {
-      padding: '2rem 1rem 1rem 1rem',
-      marginTop: '4rem',
-      margin: '0 auto',
-      maxWidth: '60ch',
+  about_content: {
+    padding: '2rem 1rem 1rem 1rem',
+    marginTop: '4rem',
+    margin: '0 auto',
+    maxWidth: '60ch',
 
+    '@media (min-width: 992px)': {
+      width: '60ch',
+    },
 
-      '@media (min-width: 992px)': {
-        width: '60ch',
-      },
+    '@media (min-width: 576px and max-width: 992px)': {
+      width: '95vw',
+    },
 
-      '@media (min-width: 576px and max-width: 992px)': {
-        width: '95vw',
-      },
+    '@media (min-width: 576px)': {
+      width: '95vw',
+    },
 
-      '@media (min-width: 576px)': {
-        width: '95vw',
-      },
-
-      '& .team-image': {
-        '& .image': {
-          border: 'double .4rem #AEBED4',
-          backgroundOrigin: 'border-box',
-          backgroundClip: 'content-box, border-box',
-        }
+    '& .team-image': {
+      '& .image': {
+        border: 'double .4rem #AEBED4',
+        backgroundOrigin: 'border-box',
+        backgroundClip: 'content-box, border-box',
       }
     }
   }

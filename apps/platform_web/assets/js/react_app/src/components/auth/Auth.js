@@ -1,12 +1,43 @@
-const Auth = {
-  isAuthenticated: false,
-  authenticate(cb) {
-    this.isAuthenticated = true;
-    setTimeout(cb, 100); // fake async
+// http://tech.tunecore.com/phoenix_react_jwt
+
+export const Auth = {
+  isAuthenticated() {  false },
+
+  isBrowser() { typeof window !== `undefined` },
+
+  getUser() {
+    window.localStorage.cryptowiseUser ? JSON.parse(window.localStorage.cryptowiseUser) : {}
   },
-  signout(cb) {
+
+  setUser(user) { (window.localStorage.cryptowiseUser = JSON.stringify(user)) },
+
+  handleLogin(email, password) {
+      if (!isBrowser) return false
+
+      if (email === `cryptowise@gmail.com` && password === `demo`) {
+          console.log(`Credentials match! Setting the active user.`)
+          return setUser({
+              name: `demoUser`,
+              email: 'demoEmail',
+          })
+      }
+
+      return false
+  },
+
+  currentUser() { isBrowser && getUser() },
+
+  authenticate(state, cb) {
+    handleLogin(state.email, state.password) ? (this.isAuthenticated = true) : false
+  },
+
+  logOut(state, cb) {
     this.isAuthenticated = false;
-    setTimeout(cb, 100);
+    if (!isBrowser) return
+
+    console.log(`Ensuring the \`cryptowiseUser\` property exists.`)
+    setUser({})
+    cb()
   }
 };
 export default Auth

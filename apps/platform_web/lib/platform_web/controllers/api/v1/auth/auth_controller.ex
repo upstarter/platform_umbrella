@@ -6,34 +6,18 @@ defmodule PlatformWeb.V1.Auth.AuthController do
   alias Platform.Auth.TokenSerializer
   alias Platform.Repo
 
-  # plug(:scrub_params, "auth" when action in [:create, :sign_in])
+  plug(Guardian.Plug.EnsureAuthenticated, handler: PlatformWeb.SessionsController)
 
-  # def create(conn, auth_params = %{"auth" => params}) do
-  #   with {:ok, %Account{} = auth} <- Auth.create_account(auth_params),
-  #        {:ok, token, _claims} <- Guardian.Plug.sign_in(conn, auth) do
-  #     conn |> render("jwt.json", jwt: token)
-  #   end
-  # end
+  plug(:scrub_params, "auth" when action in [:create])
 
-  def create(conn, %{"auth" => auth_params}) do
-    with {:ok, %Account{} = auth} <- Auth.create_account(auth_params) do
-      conn
-      |> put_status(:created)
-      |> render("sign_up.json", %{auth: auth})
+  def create(conn, auth_params = %{"auth" => params}) do
+    with {:ok, %Account{} = auth} <- Auth.create_account(auth_params),
+         {:ok, token, _claims} <- Guardian.Plug.sign_in(conn, auth) do
+      conn |> render("jwt.json", jwt: token)
     end
   end
 
-  def sign_in(conn, %{"auth" => %{"email" => email, "password" => password}}) do
-    case Auth.token_sign_in(conn, email, password) do
-      {:ok, token, _claims} ->
-        conn |> render("jwt.json", jwt: token)
-
-      _ ->
-        {:error, :unauthorized}
-    end
-  end
-
-  #   case Auth.find_and_confirm_password(params) do
+  # case Auth.find_and_confirm_password(params) do
   #   {:ok, auth} ->
   #      new_conn = Guardian.Plug.api_sign_in(conn, auth)
   #      jwt = Guardian.Plug.current_token(new_conn)
@@ -49,16 +33,6 @@ defmodule PlatformWeb.V1.Auth.AuthController do
   #     |> put_status(401)
   #     |> render "error.json", message: "Could not login"
   # end
-
-  def sign_in(conn, _params) do
-    send_resp(conn, 401, Poison.encode!(%{error: "Incorrect password"}))
-  end
-
-  def sign_out(conn, _params) do
-    conn
-    |> Guardian.Plug.sign_out()
-    |> send_resp(204, "")
-  end
 
   # def create(conn, %{"auth" => auth_params}) do
   #   changeset = %Account{} |> Account.changeset(auth_params)

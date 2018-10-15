@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { url } from "../../utils/consts";
-import PortfolioGrid from "../datagrid/PortfolioGrid";
+import PortfolioGrid from "../../components/datagrid/PortfolioGrid";
 import injectSheet, { jss } from "react-jss";
 import { Layout, Icon } from "antd";
 const { Content } = Layout;
@@ -54,7 +54,8 @@ class PortfolioComponent extends React.Component {
         style={{
           maxWidth: "600px",
           textAlign: 'center',
-          margin: "0 auto"
+          margin: "0 auto",
+          height: '100vh'
         }}
       >
         <h1>The CryptoWise Portfolio</h1>
