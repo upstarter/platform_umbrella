@@ -28,7 +28,7 @@ defmodule Platform.Auth.Account do
     cast(account, params, ~w(email password))
     |> validate_required([:email, :password])
     |> validate_format(:email, ~r/.*@.*/)
-    |> validate_length(:password, min: 8)
+    |> validate_length(:password, min: 6, max: 255)
     |> unique_constraint(:email)
     |> put_password_hash()
   end

@@ -57,7 +57,6 @@ defmodule Platform.Auth do
   end
 
   def create_account(attrs) do
-    IO.inspect(attrs)
     account = Account.build(attrs)
     act = Platform.Repo.insert!(account)
     {:ok, act}
