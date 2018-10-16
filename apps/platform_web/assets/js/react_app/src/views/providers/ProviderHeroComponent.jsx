@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 // import Elm from 'react-elm-components'
 // import {Main} from '../../../elm/src/Main'
-import Button from "../../components/Button/Button";
+import AppButton from "../../components/Button/AppButton";
 import Modal from "react-modal";
 import SignUpWizard from "../SignUpWizard/SignUpWizard";
 import injectSheet, { jss } from 'react-jss'
@@ -69,15 +69,15 @@ class ProviderHeroComponent extends React.Component {
                         required
                       />
                     </div>
-                    <Button
-                      className={`is-primary is-rounded ${
+                    <AppButton
+                      className={`${
                         state.applyNowButtonLoading ? "is-loading" : null
                       }`}
                       onClick={this.handleOpenModal}
                     >
                       {" "}
                       Apply Now{" "}
-                    </Button>
+                    </AppButton>
                   </div>
                 </div>
               </section>

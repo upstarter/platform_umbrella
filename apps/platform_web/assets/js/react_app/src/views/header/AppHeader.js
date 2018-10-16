@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {
+  Link,
   withRouter
 } from "react-router-dom";
 import { Button, Icon, notification } from "antd";
@@ -8,6 +9,9 @@ import injectSheet, { jss } from "react-jss";
 import { Layout, Menu } from "antd";
 const { SubMenu } = Menu;
 const { Header } = Layout;
+import colors from '../../styles/colors'
+import nav_logo from "../../../../../static/images/white_nav_logo.svg";
+
 
 
 class AppHeader extends React.Component {
@@ -36,9 +40,15 @@ class AppHeader extends React.Component {
       <Header
         className={classes.header}
       >
-        <div>
+        <Link to="/">
+          <div style={{flexDirection: 'flex-start', padding: '8px 14px 8px 14px', zIndex: 100}}>
+              <img className={classes.logo} src={nav_logo} />
+          </div>
+        </Link>
+        <div style={{marginTop: '-10px'}}>
           <Menu
             mode="horizontal"
+            className={classes.menu}
             onClick={
               ({ item, key, keyPath }) => {
                 history.push(key)
@@ -46,18 +56,17 @@ class AppHeader extends React.Component {
             }
             style={{
               borderBottom: "none",
-              marginTop: 0
             }}
           >
             <SubMenu
               style={{
-                borderBottom: "none"
+                borderBottom: "none",
               }}
               title={
                 <span>
                   <Icon
                     className="trigger"
-                    type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
+                    type='bars'
                     onClick={this.toggle}
                   />
                 </span>
@@ -76,19 +85,29 @@ class AppHeader extends React.Component {
 
 const headerStyles = {
   header: {
-    background: '#fff',
+    background: `${colors.primary}`,
+
     padding: 0,
-    height: 40,
     position: 'fixed',
     width: '100%',
     right: 0,
     zIndex: 1,
     display: "flex",
-    justifyContent: 'flex-end',
-    fontSize: 15,
+    justifyContent: 'space-between',
     '@media (min-width: 576px)': {
     },
   },
+  menu: {
+    background: `${colors.primary}`,
+    color: '#fff',
+    padding: 0,
+  },
+  logo: {
+    color: '#000',
+    '@media (max-width: 576px)': {
+      // marginLeft: '32px',
+    },
+  }
 }
 const AppHeaderWithRouter = withRouter(AppHeader);
 

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Button from "../../components/Button/Button";
+import AppButton from "../../components/Button/AppButton";
 import Modal from "react-modal";
 import SignUpWizard from "../SignUpWizard/SignUpWizard";
 import { url } from "../../utils/consts";
@@ -78,15 +78,6 @@ class HeroComponent extends React.Component {
           {/* <button onClick={this.handleCloseModal}>close</button> */}
           <SignUpWizard topics={this.state.topics} />
         </Modal>
-        <Modal
-          isOpen={state.showQuizModal}
-          // onAfterOpen={this.afterOpenModal}
-          onRequestClose={this.handleCloseModal}
-          style={modalStyles}
-          contentLabel="Example Modal"
-        >
-          <Quiz quiz={quiz} />
-        </Modal>
         <div className='hero-body'>
           <div className="container">
             <h1 className="title">
@@ -94,44 +85,30 @@ class HeroComponent extends React.Component {
               <div className="slidingVertical">
                 <span>investor.</span>
                 <span>analyst.</span>
-                <span>developer.</span>
+                <span>coder.</span>
                 <span>founder.</span>
                 <span>trader.</span>
               </div>
             </h1>
-            <p className="subtitle-big">Receive free insights in your inbox.</p>
             <div id="subscribe-form" className="email-leadgen">
               <section className="section">
                 <div className="container has-text-centered">
                   <div id="form-container">
-                    <div className="control has-text-centered">
-                      <input
-                        className="input"
-                        type="text"
-                        placeholder="Email Address"
-                      />
-                    </div>
-                    <Button
-                      className={`is-primary is-rounded ${
+
+                    <AppButton
+                      type="primary"
+                      className={`${
                         state.subscribeButtonLoading ? "is-loading" : null
                       }`}
                       onClick={this.handleOpenModal}
+                      size='large'
                     >
                       {" "}
-                      Subscribe{" "}
-                    </Button>
+                      Join Us{" "}
+                    </AppButton>
                   </div>
                 </div>
               </section>
-              <Button
-                className={`is-primary is-rounded ${
-                  state.subscribeButtonLoading ? "is-loading" : null
-                }`}
-                onClick={this.handleOpenQuizModal}
-              >
-                {" "}
-                Quiz{" "}
-              </Button>
             </div>
           </div>
         </div>
@@ -140,7 +117,6 @@ class HeroComponent extends React.Component {
   }
 }
 
-// Compile styles, apply plugins.
 export default injectSheet(heroStyles)(HeroComponent)
 
 const modalStyles = {
@@ -150,16 +126,17 @@ const modalStyles = {
     left: 0,
     right: 0,
     bottom: 0,
+    zIndex: 100,
     backgroundColor: 'rgba(0, 0, 0, 0.75)'
   },
   content: {
     padding: '0',
     border: '0',
     position: 'absolute',
-    top: '80px',
-    left: '40px',
-    right: '40px',
-    bottom: '40px',
+    top: '10px',
+    left: '10px',
+    right: '10px',
+    bottom: '10px',
     overflow: 'auto',
     WebkitOverflowScrolling: 'touch',
     borderRadius: '4px',
@@ -177,3 +154,35 @@ const modalStyles = {
     }
   }
 };
+
+
+// <p className="subtitle-big">Receive free insights in your inbox.</p>
+
+// <div className="control has-text-centered">
+//   <input
+//     className="input"
+//     type="text"
+//     placeholder="Email Address"
+//   />
+// </div>
+
+// <Modal
+//   isOpen={state.showQuizModal}
+//   // onAfterOpen={this.afterOpenModal}
+//   onRequestClose={this.handleCloseModal}
+//   style={modalStyles}
+//   contentLabel="Example Modal"
+// >
+//   <Quiz quiz={quiz} />
+// </Modal>
+
+// <Button
+//   className={`is-primary is-rounded ${
+//     state.subscribeButtonLoading ? "is-loading" : null
+//   }`}
+//   onClick={this.handleOpenQuizModal}
+// >
+//   {" "}
+//   Quiz{" "}
+// </Button>
+// Compile styles, apply plugins.

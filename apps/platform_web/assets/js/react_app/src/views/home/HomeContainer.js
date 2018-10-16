@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import AppHeader from "../../views/header/AppHeader";
 import PortfolioComponent from "../../views/portfolio/PortfolioComponent";
+import MembershipComponent from "../../views/marketing/MembershipComponent";
 import DeveloperComponent from "../../views/developers/DeveloperComponent";
 import ProposalComponent from "../../views/proposals/ProposalComponent";
 import InsightComponent from "../../views/insights/InsightComponent";
@@ -20,6 +21,7 @@ import config from "../../utils/config";
 import SiderMenu from "../../views/SiderMenu/SiderMenu";
 import injectSheet, { jss } from "react-jss";
 import typography from "../../styles/typography";
+import colors from "../../styles/colors";
 
 import Loadable from "react-loadable";
 
@@ -51,7 +53,7 @@ class HomeContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      visible: true,
+      visible: false,
       contentMarginLeft: '200px'
     };
   }
@@ -75,9 +77,9 @@ class HomeContainer extends React.Component {
     return (
       <React.Fragment>
         <BrowserRouter>
-          <Layout style={{minHeight: '100vh', background: '#fff'}} className={classes.typography} id="wrapper">
+          <Layout className={classes.typography, classes.baseLayout} id="wrapper">
             <Drawer
-              title="Basic Drawer"
+              title="CryptoWise"
               placement="right"
               closable={true}
               onClose={this.onClose}
@@ -88,11 +90,15 @@ class HomeContainer extends React.Component {
               <p>Some contents...</p>
             </Drawer>
             <SiderMenu setContentMarginLeft={this.setContentMarginLeft}/>
-            <Layout>
-              <AppHeader />
-              <Content style={{ marginLeft: `${this.state.contentMarginLeft}`, padding: '60px 0', background: '#fff' }}>
-                <div className={classes.content} style={{ background: '#fff', textAlign: 'center' }}>
+            <AppHeader />
+            <Layout className={classes.baseContent}>
+              <Content
+                style={{
+                  marginLeft: `${this.state.contentMarginLeft}`,
+                }}>
+                <div className={classes.content}>
                   <Route exact path="/" component={PortfolioComponent} />
+                  <Route exact path="/membership" component={MembershipComponent} />
                   <Route exact path="/developers" component={DeveloperComponent} />
                   <Route exact path="/contribute" component={ProviderContainer} />
                   <Route exact path="/insights" component={InsightComponent} />
@@ -110,7 +116,7 @@ class HomeContainer extends React.Component {
                   />
                 </div>
               </Content>
-              <Footer style={{ marginLeft: `${this.state.contentMarginLeft}`, textAlign: 'center' }}>
+              <Footer className={classes.footer} style={{marginLeft: `${this.state.contentMarginLeft}`}}>
                 Aion Labs, Inc. ©2018
               </Footer>
             </Layout>
@@ -123,20 +129,34 @@ class HomeContainer extends React.Component {
 
 const appStyles = {
   typography: `${typography}`,
-
+  baseLayout: {
+    minHeight: '100vh',
+    background: `${colors.midTone}`,
+    color: 'black'
+  },
   logo: {
     height: "64px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center"
   },
+  baseContent: {
+    paddingTop: '80px',
+    background: `${colors.grey}`,
+  },
   content: {
+    height: '100%',
     '& p, & h3': {
       textAlign: 'left'
     },
     '@media (max-width: 576px)': {
       marginLeft: '0',
     },
+  },
+  footer: {
+    background: `${colors.primary}`,
+    color: `${colors.green}`,
+    textAlign: 'center',
   }
 };
 

@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import injectSheet from "react-jss";
+import { Card } from 'antd';
 
 const styles = {
   card: {
+    fontSize: '12px',
+    maxWidth: '200px',
     cursor: "pointer"
   }
 };
@@ -37,22 +40,24 @@ class TileUnstyled extends Component {
     let state = this.state;
     // console.log(data.id);
     // console.log("ids", props.selectedIds);
-
     return (
-      <div
-        className={`card ${classes.card}`}
-        style={state.selected ? { background: "#3c9895" } : null}
-        onClick={id => this.handleSelected(data.id)}
-      >
-        <div className="card-content">
-          <p
-            className="subtitle"
-            style={state.selected ? { color: "white" } : null}
-          >
-            {data.name}
-          </p>
-        </div>
-      </div>
+       <Card
+         bordered={true}
+         className={`${classes.card}`}
+         style={state.selected ? { background: "#783D6F" } : null}
+         onClick={id => this.handleSelected(data.id)}
+        >
+          <div className="card-content">
+            <p
+              className="subtitle"
+              style={state.selected ? { color: "white" } : null}
+            >
+              {data.name}
+            </p>
+          </div>
+       </Card>
+
+
     );
   }
 }

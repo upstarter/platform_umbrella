@@ -11,7 +11,8 @@ const heroStyles = {
     '& .title': { color: 'white' },
 
     '& .hero-body': {
-      padding: '11rem 6rem 6rem',
+      marginTop: -20,
+      padding: '6rem 6rem 6rem',
       textAlign: 'center',
       '& .container': {
         display: 'flex',
@@ -25,7 +26,7 @@ const heroStyles = {
       },
       '& .title': {
         maxWidth: '90rem',
-        marginLeft: '-10%',
+        marginLeft: '-20%',
       },
     },
 

@@ -7,8 +7,10 @@
 // Spotify colors (https://codepen.io/alowenthal/pen/rxboRv)
 // $green: rgb(30, 215, 96);
 const colors = {
+  primary: '#001528',
   primaryDark: 'rgb(24, 24, 24)',
   secondaryDark: 'rgb(40, 40, 40)',
+  midTone: '#f6f6f6',
 
 
   // grey: ''rgb(170, 170, 170)';,

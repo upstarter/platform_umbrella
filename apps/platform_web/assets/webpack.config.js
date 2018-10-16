@@ -87,7 +87,35 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(sa|sc|c|le)ss$/,
+        test: /\.less$/,
+        exclude: ["/node_modules", "/js/elm"],
+        use: [
+          { loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader },
+          { loader: 'css-loader' },
+          { loader: 'less-loader', // compiles Less to CSS
+            options: {
+              sourceMap: true,
+              modifyVars: {
+                '@primary-color': '#783D6F',
+                '@btn-default-bg': '#783D6F',
+                '@btn-primary-bg': '#783D6F',
+                '@btn-primary-color': '#fff',
+                '@link-color': '#1DA57A',
+                '@text-color': '#fff', // major text color
+                '@text-color-secondary': '#fff',
+                '@layout-trigger-background': '#fff',
+                '@layout-trigger-background-light': '#fff',
+                '@layout-trigger-color': '#000',
+                '@layout-header-background': '#000',
+                '@layout-header-color': '#000',
+              },
+              javascriptEnabled: true,
+            }
+          },
+        ]
+      },
+      {
+        test: /\.(sa|sc|c)ss$/,
         exclude: ["/node_modules", "/js/elm"],
         use: [
           { loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader },
@@ -96,17 +124,6 @@ module.exports = {
             options: {
               sourceComments: devMode,
               sourceMap: true
-            }
-          },
-          { loader: 'less-loader', // compiles Less to CSS
-            options: {
-              modifyVars: {
-                'primary-color': '#000',
-                'link-color': '#1DA57A',
-                'text-color': '#fff', // major text color
-                'text-color-secondary': '#000',
-              },
-              javascriptEnabled: true,
             }
           },
        ],
@@ -155,8 +172,8 @@ module.exports = {
     new CopyWebpackPlugin([{
       from: "./static"
     }]),
-    new BundleAnalyzerPlugin({
-      generateStatsFile: true
-    })
+    // new BundleAnalyzerPlugin({
+    //   generateStatsFile: true
+    // })
   ]
 };

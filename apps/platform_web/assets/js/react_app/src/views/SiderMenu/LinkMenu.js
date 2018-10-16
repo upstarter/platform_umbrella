@@ -14,27 +14,27 @@ const LinkMenu = withRouter(props => {
       selectedKeys={[location.pathname]}
       defaultSelectedKeys={["/portfolio"]}
     >
+    <Menu.Item key="/investors">
+      <Link to="/investors" style={{ textDecoration: "none" }}>
+        <Icon type="team" />
+        <span className="nav-text">Join Us</span>
+      </Link>
+    </Menu.Item>
       <Menu.Item key="/">
         <Link to="/" style={{ textDecoration: "none" }}>
           <Icon type="user" />
-          <span className="nav-text">Portfolio</span>
-        </Link>
-      </Menu.Item>
-      <Menu.Item key="/insights">
-        <Link to="/insights" style={{ textDecoration: "none" }}>
-          <Icon type="rise" />
-          <span className="nav-text">Insight</span>
+          <span className="nav-text">Create Portfolio</span>
         </Link>
       </Menu.Item>
       <Menu.Item key="/proposals">
         <Link to="/proposals" style={{ textDecoration: "none" }}>
           <Icon type="notification" />
-          <span className="nav-text">Make Proposal</span>
+          <span className="nav-text">Feature Proposals</span>
         </Link>
       </Menu.Item>
       <Menu.Item key="/developers">
         <Link to="/developers" style={{ textDecoration: "none" }}>
-          <Icon type="team" />
+          <Icon type="code" />
           <span className="nav-text">Developers</span>
         </Link>
       </Menu.Item>
@@ -44,12 +44,20 @@ const LinkMenu = withRouter(props => {
 
 const menuStyles = {
   menu: {
+    height: '100vh',
     "& .nav-text a": {
       textDecoration: "none",
       color: "silver"
     }
   }
 };
+
+// <Menu.Item key="/insights">
+//   <Link to="/insights" style={{ textDecoration: "none" }}>
+//     <Icon type="rise" />
+//     <span className="nav-text">Market Insights</span>
+//   </Link>
+// </Menu.Item>
 
 // <Menu.Item key="/about_tokens">
 //   <Link to="/about_tokens" style={{ textDecoration: "none" }}>

@@ -15,8 +15,8 @@ class FeaturesComponent extends React.Component {
             <h1>Features</h1>
           </div>
           <div className="container">
-            <Row type="flex" justify="center">
-              <Col xs={25} sm={25} md={25} lg={8} xl={10} className={classes.feature}>
+            <Row type="flex" justify="space-around">
+              <Col xs={25} sm={25} md={7} lg={7} xl={7} className={classes.feature}>
                 <div className="feature-icon">
                   <figure className="image">
                     <img alt="Crypto investing strategies" src="/images/icon1.svg"/>
@@ -29,7 +29,7 @@ class FeaturesComponent extends React.Component {
                   the complex bits.
                 </p>
               </Col>
-              <Col xs={25} sm={25} md={25} lg={8} xl={10} className={classes.feature}>
+              <Col xs={25} sm={25} md={7} lg={7} xl={7} className={classes.feature}>
                 <div className="feature-icon">
                   <figure className="image">
                     <img alt="Crypto Investing" src="/images/icon2.svg"/>
@@ -41,7 +41,7 @@ class FeaturesComponent extends React.Component {
                   by a passionate community of crypto and finance experts.
                 </p>
               </Col>
-              <Col xs={25} sm={25} md={25} lg={8} xl={10} className={classes.feature}>
+              <Col xs={25} sm={25} md={7} lg={7} xl={7} className={classes.feature}>
                 <div className="feature-icon">
                   <figure className="image">
                     <img alt="Crypto Trading, Crypto Investing" src="/images/icon3.svg"/>
@@ -63,14 +63,17 @@ class FeaturesComponent extends React.Component {
 
 const featuresStyles = {
   features: {
-    padding: '6rem 3rem 13rem',
+    padding: '6rem 6rem',
+    margin: '0 auto',
+
     background: '#191F2D',
     color: '#fff',
     '& a': { background: 'none !important' },
     '& h1': {
       color: 'white'
     },
-    '& h3': {
+    '& h3, & p': {
+      textAlign: 'center',
       color: 'white'
     }
   },
@@ -80,7 +83,6 @@ const featuresStyles = {
   },
 
   feature: {
-    textAlign: 'center',
     '& .feature-icon': {
       margin: '0 auto',
       padding: '.7rem',

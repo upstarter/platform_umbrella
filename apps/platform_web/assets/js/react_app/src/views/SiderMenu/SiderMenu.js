@@ -1,46 +1,50 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { Layout } from 'antd';
 const { Sider } = Layout;
 import LinkMenu from './LinkMenu'
 import injectSheet, { jss } from "react-jss"
-import nav_logo from "../../../../../static/images/nav_logo.svg";
+import AppButton from "../../components/Button/AppButton";
+import { Button, Radio, Icon } from 'antd';
 
-const SiderMenu = withRouter(props => {
-  const { location } = props;
-  const { classes } = props;
 
-  return (
-    <Sider
-      className={classes.sider}
-      breakpoint="sm"
-      collapsedWidth="80"
-      collapsible
-      style={{ overflow: 'visible', height: '100vh', position: 'fixed', zIndex: 2, left: 0 }}
-      onBreakpoint={(broken) => { console.log(broken); }}
-      onCollapse={
-        (collapsed, type) =>
-          { collapsed ? props.setContentMarginLeft('0px') : props.setContentMarginLeft('200px') }
-      }
-    >
-      <Link to="/">
-        <div style={{padding: '14px 14px 0 14px'}}>
-            <img className={classes.logo} src={nav_logo} />
-        </div>
-      </Link>
-      <LinkMenu />
-    </Sider>
-  );
-});
+class SiderMenu extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      collapsed: false
+    };
+  }
+
+  toggle = () => {
+    this.setState({
+      collapsed: !(this.state.collapsed),
+    });
+  }
+  render() {
+    const { location } = this.props;
+    const { classes } = this.props;
+    return (
+      <Sider
+        className={classes.sider}
+        breakpoint="sm"
+        collapsedWidth="0"
+        collapsible
+        style={{ marginTop: 40, overflow: 'visible', height: '100vh', position: 'fixed', zIndex: 1, left: 0 }}
+        onBreakpoint={(broken) => { console.log(broken); }}
+        onCollapse={
+          (collapsed, type) =>
+            { collapsed ? this.props.setContentMarginLeft('0px') : this.props.setContentMarginLeft('200px') }
+        }
+      >
+        <LinkMenu />
+      </Sider>
+    )
+  }
+}
 
 const siderMenuStyles = {
   sider: {
-
-  },
-  logo: {
-    '@media (max-width: 576px)': {
-      marginLeft: '32px',
-    },
   }
 }
 

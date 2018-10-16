@@ -1,48 +1,38 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import injectSheet, { jss } from 'react-jss'
-// import colors from '../../styles/colors'
-// import BarChart from "../../components/charts/bar"
+import ScrollToTopOnMount from '../../utils/ScrollToTopOnMount'
+
+//import colors from '../../styles/colors'
 
 
 class ProposalComponent extends React.Component {
+
   render() {
     const { classes } = this.props
     return (
       <React.Fragment>
+        <ScrollToTopOnMount />
         <section id="proposal" className={classes.proposals}>
-          <div id="proposal-content" className="content">
-            <h1 className="title">Proposals</h1>
-            <h3 className="subtitle">
-              CryptoWise is empowering proposals to form new knowledge markets
-              on the blockchain, which will allow knowledge and truth seekers to
-              connect, cooperate, and compete without requiring any trusted
-              intermediaries. Achieving this visionary goal requires
-              contributions.
-            </h3>
-            <p className="paragraph">
+          <div id="proposal-blurb">
+            <h1>Proposals</h1>
+            <h5 className="subtitle-small">
+              Submit features here and we will keep an eye on this page to
+              see which features are most desired.
+            </h5>
 
-            </p>
-            <h1 className="title">Vision</h1>
-            <h3 className="subtitle">
-=
-            </h3>
-
-
-            <p className="">
-
-            </p>
-            <h1 className="title">Mission</h1>
-            <p>
-
-            </p>
-            <h1 className="title">Values</h1>
-            <p>
-
-            </p>
-            <h1 className="title">Pursuits</h1>
-            <p>
-            </p>
+          </div>
+          <div id="proposal-items" className={classes.proposalItems}>
+            <ul className="proposal-column">
+              <li>This is an item</li>
+              <li>This is an item</li>
+              <li>This is an item</li>
+              <li>This is an item</li>
+              <li>This is an item</li>
+              <li>This is an item</li>
+              <li>This is an item</li>
+              <li>This is an item</li>
+            </ul>
           </div>
         </section>
       </React.Fragment>
@@ -52,22 +42,41 @@ class ProposalComponent extends React.Component {
 
 const proposalStyles = {
   proposals: {
-    '& #proposal-content': {
-      padding: '0rem 1rem 1rem 1rem',
-      margin: '0 auto',
-      maxWidth: '60ch',
 
-      '@media (min-width: 992px)': {
-        width: '60ch',
-      },
+    display: 'grid',
+    gridTemplateColumns: '35vw 65vw',
+    gridTemplateAreas: '"sidebar content"',
 
-      '@media (min-width: 576px and max-width: 992px)': {
-        width: '95vw',
-      },
+    '@media (max-width: 576px)': {
+      gridTemplateColumns: '95vw 95vw',
+      gridTemplateAreas: '"sidebar" "content"'
+    },
 
-      '@media (min-width: 576px)': {
-        width: '95vw',
-      },
+    '@media (min-width: 576px and max-width: 992px)': {
+      gridTemplateColumns: '35vw 65vw',
+      gridTemplateAreas: '"sidebar content"'
+    },
+
+    '@media (min-width: 992px)': {
+      gridTemplateColumns: '35vw 65vw',
+      gridTemplateAreas: '"sidebar content"'
+    },
+
+    '& #proposal-blurb': {
+      gridArea: 'sidebar',
+      padding: '20px',
+      maxWidth: '60ch'
+    }
+  },
+  proposalItems: {
+    gridArea: 'content',
+    '& ul.proposal-column': {
+      '& li': {
+        width: '50%',
+        margin: 'auto 10%',
+        textAlign: 'center',
+        listStyleType: 'none'
+      }
     }
   }
 }

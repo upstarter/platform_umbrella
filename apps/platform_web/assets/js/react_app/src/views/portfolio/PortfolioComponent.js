@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { url } from "../../utils/consts";
 import PortfolioGrid from "../../components/datagrid/PortfolioGrid";
+import ScrollToTopOnMount from '../../utils/ScrollToTopOnMount'
 import injectSheet, { jss } from "react-jss";
 import { Layout, Icon } from "antd";
 const { Content } = Layout;
@@ -58,13 +59,14 @@ class PortfolioComponent extends React.Component {
           height: '100vh'
         }}
       >
+        <ScrollToTopOnMount />
+
         <h1>The CryptoWise Portfolio</h1>
-        <h5>
-          Allocate a portfolio from our painstakingly and continuously
-          re-constructed synthesis of top cryptoasset selections of some of the
-          wisest financial analysts in the cryptosphere. Enter and update your
-          'optimal' portfolio allocation to see how you compare to the best
-          performing portfolios over specified time periods. Top spots on
+        <h5 className='subtitle-small'>
+          We painstakingly research the best assets in the cryptocosm so you
+          don't have to. Allocate a portfolio from our continuously
+          re-constructed synthesis of top selections. Enter your 'optimal'
+          portfolio allocation to see how you compare over time. Top spots on
           leaderboards will get preferred access on any future token sale.
         </h5>
         <br />

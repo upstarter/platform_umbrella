@@ -1,60 +1,7 @@
 import React, { Component } from "react";
 import injectSheet from "react-jss";
 import Tile from "../../components/Tile/Tile";
-
-const styles = {
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between"
-  },
-  header: {
-    backgroundColor: "#373A40",
-    height: "220px",
-    width: "100%",
-    padding: "8.5em 15em 0 15em",
-    lineHeight: "4.5em"
-  },
-  title: {
-    fontSize: "32px",
-    color: "white",
-    textAlign: "center"
-  },
-  main: {
-    padding: "1em 15em"
-  },
-  tileGrid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(4, 1fr)",
-    // gridTemplateRows: "repeat(3, auto)",
-    gridColumnGap: "1em",
-    gridRowGap: "1em"
-  },
-  "@media (max-width: 768px)": {
-    tileGrid: {
-      gridTemplateColumns: "1fr 1fr 1fr"
-    },
-    main: {
-      padding: "1em 1em"
-    }
-  },
-  "@media (max-width: 414px)": {
-    tileGrid: {
-      gridTemplateColumns: "1fr 1fr"
-    },
-    main: {
-      padding: "1em 1em"
-    },
-    header: {
-      padding: "2em 5em",
-      height: "110px",
-      lineHeight: "3em"
-    },
-    title: {
-      fontSize: "20px"
-    }
-  }
-};
+import colors from "../../styles/colors"
 
 class Step1Unstyled extends Component {
   constructor(props) {
@@ -140,6 +87,60 @@ class Step1Unstyled extends Component {
     );
   }
 }
+
+const styles = {
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between"
+  },
+  header: {
+    backgroundColor: `${colors.primary}`,
+    height: "220px",
+    width: "100%",
+    padding: "4.8em 3rem",
+    lineHeight: "4.5em"
+  },
+  title: {
+    fontSize: "28px",
+    color: "white",
+    textAlign: "center"
+  },
+  main: {
+    padding: ".2rem .3rem"
+  },
+  tileGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(4, 1fr)",
+    // gridTemplateRows: "repeat(3, auto)",
+    gridColumnGap: ".2em",
+    gridRowGap: ".2em"
+  },
+  "@media (min-width: 647px) and (max-width: 992px)": {
+    tileGrid: {
+      gridTemplateColumns: "1fr 1fr 1fr 1fr"
+    },
+    main: {
+      padding: "1em 1em"
+    }
+  },
+  "@media (max-width: 647px)": {
+    tileGrid: {
+      gridTemplateColumns: "1fr 1fr"
+    },
+    main: {
+      padding: ".1em 1em"
+    },
+    header: {
+      padding: "2em 5em",
+      height: "110px",
+      lineHeight: "3em"
+    },
+    title: {
+      fontSize: "20px"
+    }
+  }
+};
 
 const Step1 = injectSheet(styles)(Step1Unstyled);
 export default Step1;

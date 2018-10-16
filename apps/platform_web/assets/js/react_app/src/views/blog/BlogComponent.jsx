@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import NavContainer from "../../components/nav/NavContainer"
 import { Link } from "react-router-dom"
 import {url} from '../../utils/consts'
 import injectSheet, { jss } from "react-jss"
@@ -96,7 +95,7 @@ const blogStyles = {
     display: 'flex',
     flexWrap: 'wrap',
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     '@media (min-width: 992px)': {
       width: '60vw',
       margin: '0 auto',

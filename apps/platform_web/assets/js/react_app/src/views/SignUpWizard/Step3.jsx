@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import injectSheet from "react-jss";
 import Tile from "../../components/Tile/Tile";
-import logo from "../../../../../static/images/nav_logo.svg";
+import logo from "../../../../../static/images/white_nav_logo.svg";
 import fbsvg from "../../../../../static/images/facebook.svg";
 import fbWhite from "../../../../../static/images/facebook-white.svg";
 import googleLogo from "../../../../../static/images/google.svg";
