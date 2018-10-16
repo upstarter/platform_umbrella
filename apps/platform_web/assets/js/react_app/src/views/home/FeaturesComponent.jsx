@@ -63,7 +63,7 @@ class FeaturesComponent extends React.Component {
 
 const featuresStyles = {
   features: {
-    padding: '6rem 6rem',
+    padding: '6rem',
     margin: '0 auto',
 
     background: '#191F2D',

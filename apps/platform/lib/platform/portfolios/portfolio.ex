@@ -6,8 +6,7 @@ defmodule Platform.Portfolios.Portfolio do
 
   schema "portfolios" do
     field(:name, :string)
-    field(:short_desc, :string)
-    field(:long_desc, :string)
+    field(:description, :string)
     many_to_many(:providers, Provider, join_through: "providers_portfolios")
     many_to_many(:tokens, Token, join_through: "portfolios_tokens")
 
@@ -17,7 +16,7 @@ defmodule Platform.Portfolios.Portfolio do
   @doc false
   def changeset(portfolio, attrs) do
     portfolio
-    |> cast(attrs, [:name, :short_desc, :long_desc])
-    |> validate_required([:name, :short_desc, :long_desc])
+    |> cast(attrs, [:name, :description])
+    |> validate_required([:name, :description])
   end
 end

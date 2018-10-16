@@ -20,6 +20,34 @@ class FooterComponent extends React.Component {
   }
 }
 
+
+// Resources
+//   Product Brief
+//   Whitepaper
+//   DApp
+//   Developers
+//   GitHub
+//   Docs
+// Community
+//  Telegram
+//  Discord
+//  Reddit
+//  WeChat
+//  Weibo
+//  KakaoTalk
+// Social
+//  Twitter
+//  Instagram
+//  Facebook
+//  Medium
+//  Youtube
+// Organization
+//   Team
+//   Presale
+//   Partners
+//   Meetups
+//   Jobs
+
 const footerStyles = {
   footer: {
     background: '#001528',

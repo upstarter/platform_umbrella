@@ -1,3 +1,4 @@
+alias Platform.Repo
 alias Platform.Topics.Topic
 
 # BASE TOPICS IN THE UNIVERSE OF DISCOURSE FOR CRYPTOWISE.AI
@@ -5,9 +6,9 @@ root_topics = [
   %Topic{
     name: "Crypto Economics",
     id: 1,
-    description: "Cryptoeconomics refers to the combinations of cryptography,
-    computer networks and game theory which provide secure systems exhibiting
-    some set of economic dis/incentives.",
+    description: "Cryptoeconomics refers to the combinations of cryptography, computer networks
+       and game theory which provide secure systems exhibiting some set of economic
+       dis/incentives.",
     path: []
   },
   %Topic{
@@ -27,11 +28,11 @@ root_topics = [
   %Topic{
     name: "Crypto Career Development",
     id: 4,
-    description: "Classification & Analysis of current and future professions
-      involving crypto technologies and business processes.",
+    description: "The current and future professions
+      involving crypto technologies and business practices.",
     path: []
   }
 ]
 
 root_topics
-|> Enum.map(&Platform.Repo.insert!(&1))
+|> Enum.map(&Repo.insert!(&1))

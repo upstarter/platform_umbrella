@@ -1,5 +1,9 @@
+alias Platform.Repo
+alias Platform.Topics.Topic
+
 ra_topics = [
   %Topic{
+    id: 15,
     name: "Factor Investing",
     description: "Factor investing is a strategy that chooses securities on
       attributes that are associated with higher returns. There are two main
@@ -8,6 +12,7 @@ ra_topics = [
     path: [2]
   },
   %Topic{
+    id: 16,
     name: "Portfolio Optimization",
     description: "The process of selecting the best portfolio (asset
       distribution), out of the set of all portfolios being considered, according
@@ -15,12 +20,14 @@ ra_topics = [
     path: [2]
   },
   %Topic{
+    id: 17,
     name: "Crypto Investment Strategy",
     description: "A set of rules, behaviors or procedures, designed to guide an
       investor's selection of an investment portfolio.",
     path: [2]
   },
   %Topic{
+    id: 18,
     name: "Global Tactical Asset Allocation",
     description: "A top-down investment strategy that attempts to exploit
       short-term mis-pricings among a global set of assets. The strategy focuses
@@ -28,6 +35,7 @@ ra_topics = [
     path: [2]
   },
   %Topic{
+    id: 19,
     name: "Trading Systems & Methods",
     description: "A computer program that creates orders and automatically
       submits them to a market center or exchange. The program will automatically
@@ -37,13 +45,15 @@ ra_topics = [
     path: [2]
   },
   %Topic{
-    name: "Cryptoasset Classes",
+    id: 20,
+    name: "Crypto Asset Classes",
     description: "Classification of Cryptoassets into coherently defined subsets
       for the purpose of analysis. For example, equity-like offerings, or
-      fixed-income, derivatives, commodity-linked assets, etc..",
+      fixed-income, derivatives, commodity-linked assets, currencies etc..",
     path: [2]
   },
   %Topic{
+    id: 21,
     name: "Valuation Frameworks",
     description: "Emerging and Existing token valuation frameworks evaluated objectively.",
     path: [2]
@@ -51,4 +61,4 @@ ra_topics = [
 ]
 
 ra_topics
-|> Enum.map(&Platform.Repo.insert!(&1))
+|> Enum.map(&Repo.insert!(&1))

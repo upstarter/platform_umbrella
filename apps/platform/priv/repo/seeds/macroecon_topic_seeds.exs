@@ -1,9 +1,12 @@
+alias Platform.Repo
+alias Platform.Topics.Topic
+
 macroecon_topics = [
   # parent
   %Topic{
     name: "Macro Economy",
     id: 5,
-    description: ".",
+    description: "The Crypto Economy. A.K.A 'The Cryptocosm'.",
     path: [1]
   },
   # children
@@ -12,15 +15,8 @@ macroecon_topics = [
     id: 6,
     description: "The sectors of the crypto economy.",
     path: [1, 5]
-  },
-  %Topic{
-    id: 7,
-    name: "Mechanism Design",
-    description: "A field in economics and game theory that takes an engineering
-      approach to designing economic mechanisms or incentives, toward
-      desired objectives, in strategic settings, where players act
-      rationally.",
-    path: [1, 5]
-  },
-  %Topic{}
+  }
 ]
+
+macroecon_topics
+|> Enum.map(&Repo.insert!(&1))

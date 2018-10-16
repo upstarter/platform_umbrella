@@ -1,15 +1,5 @@
-# Script for populating the database. You can run it as:
-#
-#     mix run priv/repo/seeds.exs
-#
-# Inside the script, you can read and write to any of your
-# repositories directly:
-#
-#     Platform.Repo.insert!(%Platform.SomeSchema{})
-#
-# We recommend using the bang functions (`insert!`, `update!`
-# and so on) as they will fail if something goes wrong.
-alias Platform.Topic
+alias Platform.Repo
+alias Platform.Topics.Topic
 
 [
   "discount tokens",
@@ -23,6 +13,7 @@ staking = []
 
 general_topics = [
   %Topic{
+    id: 58,
     name: "Decentralized Apps (Dapps)",
     description: "A decentralized application (Dapp, dApp or DApp) is an application that
       is run by many users on a decentralized network with trustless protocols.
@@ -31,6 +22,7 @@ general_topics = [
     path: []
   },
   %Topic{
+    id: 59,
     name: "Cryptocurrencies",
     description: "A digital currency in which encryption techniques are used
       to regulate the generation of units of currency and verify the transfer
@@ -38,17 +30,20 @@ general_topics = [
     path: []
   },
   %Topic{
+    id: 60,
     name: "Regulatory",
     description: "A rule or directive made and maintained by an authority.",
     path: []
   },
   %Topic{
+    id: 61,
     name: "Compliance",
     description: "The act or process of complying to a desire, demand, proposal, or regimen or to
   coercion.",
     path: []
   },
   %Topic{
+    id: 62,
     name: "CryptoCloud",
     description: "Crypto cloud computing is a secure cloud computing architecture. Cloud
       computing is a large-scale distributed computing model that is driven by
@@ -58,6 +53,7 @@ general_topics = [
     path: []
   },
   %Topic{
+    id: 63,
     name: "Sustainability",
     description: "Sustainable development is development that meets the needs of the
       present without compromising the ability of future generations to meet
@@ -65,6 +61,7 @@ general_topics = [
     path: []
   },
   %Topic{
+    id: 64,
     name: "Security",
     description:
       "How, where, when, and why to store your cryptoassets, and how to protect yourself
@@ -72,6 +69,7 @@ general_topics = [
     path: []
   },
   %Topic{
+    id: 65,
     name: "Network Ownership Effects",
     description: "A network ownership effect describes when the utility of the service and
       the value of ownership of the service increases for existing users when
@@ -79,11 +77,13 @@ general_topics = [
     path: []
   },
   %Topic{
+    id: 66,
     name: "Social Impact",
     description: "A significant, positive change that addresses a pressing social challenge.",
     path: []
   },
   %Topic{
+    id: 67,
     name: "ERC-XX",
     description: "ERC stands for Ethereum Request for Comments, like the IETF's RFC
     (https://www.ietf.org/rfc.html). An RFC is authored by engineers and computer
@@ -94,12 +94,14 @@ general_topics = [
     path: []
   },
   %Topic{
+    id: 68,
     name: "Decentralized Exchanges",
     description: "Decentralized exchanges are the exchanges that do not require a third
       party to store your funds.",
     path: []
   },
   %Topic{
+    id: 69,
     name: "Game Theory",
     description: "Simply put, game theory is the study of logical decision making made
       by players within the defined parameters of a system (game, scenario,
@@ -111,6 +113,7 @@ general_topics = [
     path: []
   },
   %Topic{
+    id: 70,
     name: "Robotics",
     description: "An interdisciplinary branch of engineering and science that includes
       mechanical engineering, electronics engineering, computer science, and
@@ -118,6 +121,7 @@ general_topics = [
     path: []
   },
   %Topic{
+    id: 71,
     name: "Internet of Things",
     description: "The network of physical devices, vehicles, home appliances, and other items
       embedded with electronics, software, sensors, actuators, and connectivity which
@@ -130,4 +134,4 @@ general_topics = [
 ]
 
 general_topics
-|> Enum.map(&Platform.Repo.insert!(&1))
+|> Enum.map(&Repo.insert!(&1))

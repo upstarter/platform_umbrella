@@ -6,7 +6,7 @@ defmodule Platform.Repo.Migrations.CreateTokens do
       add(:ticker, :string)
       add(:name, :string)
       add(:site, :string)
-      add(:short_desc, :string)
+      add(:description, :text)
       add(:img_url, :string)
 
       timestamps()

@@ -20,7 +20,12 @@ defmodule Platform.Topics do
   """
 
   def list_topics do
-    Repo.all(Topic)
+    one = [0, 1, 2, 3, 4, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22]
+    two = [25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 37, 39, 40, 44, 46, 47]
+    three = [54, 55, 59, 60, 63, 64, 65, 66, 67, 69, 70, 71]
+    include = one ++ two ++ three
+
+    Topic |> where([p], p.id in ^include) |> Repo.all()
   end
 
   @doc """

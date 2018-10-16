@@ -3,12 +3,10 @@ defmodule Platform.Repo.Migrations.CreatePortfolios do
 
   def change do
     create table(:portfolios) do
-      add :name, :string
-      add :short_desc, :string
-      add :long_desc, :text
+      add(:name, :string)
+      add(:description, :text)
 
       timestamps()
     end
-
   end
 end

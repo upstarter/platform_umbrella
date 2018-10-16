@@ -12,16 +12,16 @@ const LinkMenu = withRouter(props => {
       theme="dark"
       mode="inline"
       selectedKeys={[location.pathname]}
-      defaultSelectedKeys={["/portfolio"]}
+      defaultSelectedKeys={["/"]}
     >
-    <Menu.Item key="/investors">
-      <Link to="/investors" style={{ textDecoration: "none" }}>
+    <Menu.Item key="/">
+      <Link to="/" style={{ textDecoration: "none" }}>
         <Icon type="team" />
         <span className="nav-text">Join Us</span>
       </Link>
     </Menu.Item>
-      <Menu.Item key="/">
-        <Link to="/" style={{ textDecoration: "none" }}>
+      <Menu.Item key="/portfolio">
+        <Link to="/portfolio" style={{ textDecoration: "none" }}>
           <Icon type="user" />
           <span className="nav-text">Create Portfolio</span>
         </Link>

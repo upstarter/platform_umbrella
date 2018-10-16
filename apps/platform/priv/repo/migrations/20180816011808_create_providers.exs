@@ -6,7 +6,7 @@ defmodule Platform.Repo.Migrations.CreateProviders do
       add(:auth_account_id, references(:auth_accounts))
       add(:name, :string, null: false)
       add(:email, :string)
-      add(:short_desc, :string)
+      add(:description, :text)
 
       timestamps()
     end

@@ -25,7 +25,7 @@ defmodule Platform.Topics.Topic do
   @doc false
   def changeset(topic, attrs) do
     topic
-    |> cast(attrs, [:name, :short_desc, :long_desc])
-    |> validate_required([:name, :short_desc, :long_desc])
+    |> cast(attrs, [:name, :description])
+    |> validate_required([:name, :description])
   end
 end

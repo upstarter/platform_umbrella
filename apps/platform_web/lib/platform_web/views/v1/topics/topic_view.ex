@@ -11,6 +11,6 @@ defmodule PlatformWeb.V1.Topics.TopicView do
   end
 
   def render("topic.json", %{topic: topic}) do
-    %{id: topic.id, name: topic.name, short_desc: topic.short_desc, long_desc: topic.long_desc}
+    %{id: topic.id, name: topic.name, description: topic.description}
   end
 end

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { Link } from "react-router-dom"
 import {url} from '../../utils/consts'
 import injectSheet, { jss } from "react-jss"
+import { Row, Col } from 'antd'
 import colors from '../../styles/colors'
 
 class BlogComponent extends React.Component {
@@ -50,7 +51,7 @@ class BlogComponent extends React.Component {
     if (isLoading) {
       return (
         <React.Fragment>
-          <section id="blog" className={classes.blog}>
+          <section id="blog" className={classes.blog, 'dark-wrap'}>
             <div className={classes.card, "is-loading"}>
               <div className="card-content">
                 <div className="content"></div>
@@ -68,17 +69,21 @@ class BlogComponent extends React.Component {
             <h1>Blog Posts</h1>
           </div>
           <div className={classes.blogPosts}>
+            <Row type="flex" justify="space-between">
               {blogPosts.map(post =>
-                <div key={post.link} className={classes.card}>
-                  <div className="card-content">
-                    <p id="date" className="caption" dangerouslySetInnerHTML={{__html: post.date}}>
-                    </p>
-                    <div className={classes.card_content} dangerouslySetInnerHTML={{__html: post.content}}>
+                <Col xs={25} sm={25} md={7} lg={7} xl={7}>
+                  <div key={post.link} className={classes.card}>
+                    <div className="card-content">
+                      <p id="date" className="caption" dangerouslySetInnerHTML={{__html: post.date}}>
+                      </p>
+                      <div className={classes.card_content} dangerouslySetInnerHTML={{__html: post.content}}>
+                      </div>
+                      <a href={post.link} className="link">Read More</a>
                     </div>
-                    <a href={post.link} className="link">Read More</a>
                   </div>
-                </div>
+                </Col>
               )}
+            </Row>
           </div>
         </section>
       </React.Fragment>
@@ -87,15 +92,10 @@ class BlogComponent extends React.Component {
 }
 const blogStyles = {
   blog: {
-    padding: '4rem 1rem 10rem',
-    background: `${colors.darkBlue} !important`,
-
+    color: '#fff',
+    '& a': { background: 'none !important' }
   },
   blogPosts: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
     '@media (min-width: 992px)': {
       width: '60vw',
       margin: '0 auto',

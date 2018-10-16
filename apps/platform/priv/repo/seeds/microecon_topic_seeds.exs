@@ -1,14 +1,17 @@
+alias Platform.Repo
+alias Platform.Topics.Topic
+
 cryptoecon_topics = [
   # parent
   %Topic{
     name: "Micro Economy",
-    id: 8,
+    id: 7,
     description: ".",
     path: [1]
   },
   # children of microecon
   %Topic{
-    id: 9,
+    id: 8,
     name: "Mechanism Design",
     description: "A field in economics and game theory that takes an engineering
       approach to designing economic mechanisms or incentives, toward
@@ -17,7 +20,7 @@ cryptoecon_topics = [
     path: [1]
   },
   %Topic{
-    id: 10,
+    id: 9,
     name: "Consensus Protocols",
     description: "A consensus algorithm is a process in computer science used to achieve
       agreement on a single data value among distributed processes or systems.
@@ -26,7 +29,7 @@ cryptoecon_topics = [
     path: [1]
   },
   %Topic{
-    id: 11,
+    id: 10,
     name: "Crypto Economic Primitives",
     description: "Protocol based incentives systems that are uniquely enabled by tokens. Also
       referred to as “tokenized economic games”. They enable the coordination and
@@ -37,7 +40,7 @@ cryptoecon_topics = [
   },
   %Topic{
     name: "Governance Models",
-    id: 12,
+    id: 11,
     description: "The concerted efforts by which cooperation and decision-making can be achieved,
       collectively, and action can be taken accordingly when necessary to ensure the
       integrity of the ecosystem. Because governance and social consensus takes time,
@@ -46,20 +49,20 @@ cryptoecon_topics = [
     path: [1]
   },
   %Topic{
-    id: 13,
+    id: 12,
     name: "Smart Contracts",
     description: "Technology enabled legal agreements.",
     path: [1]
   },
   %Topic{
-    id: 14,
+    id: 13,
     name: "Token Engineering",
     description:
-      "Primitive building blocks and best practices for designing and implementing crypto networks.",
+      "Primitive building blocks and current best practices for designing and implementing crypto networks.",
     path: [1]
   },
   %Topic{
-    id: 15,
+    id: 14,
     name: "Open Network Business Models",
     description: "Existing & Emerging business models enabled by crypto networks.",
     path: [1]
@@ -67,4 +70,4 @@ cryptoecon_topics = [
 ]
 
 cryptoecon_topics
-|> Enum.map(&Platform.Repo.insert!(&1))
+|> Enum.map(&Repo.insert!(&1))

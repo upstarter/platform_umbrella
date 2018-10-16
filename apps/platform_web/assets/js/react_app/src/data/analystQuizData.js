@@ -239,8 +239,7 @@ export const quiz = {
       "correctAnswer": "1"
     },
     {
-      "question": "Dfinity has the potential to decentralize computation altogether, disrupting
-the multi-billion cloud computing space.",
+      "question": "Dfinity has the potential to decentralize computation altogether, disrupting the multi-billion cloud computing space.",
       "questionType": "text",
       "answers": [
         "True",
