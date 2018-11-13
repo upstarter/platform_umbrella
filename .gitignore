@@ -31,6 +31,9 @@ yarn-error.log*
 .env
 .env.*
 
+# gcloud config
+app.yml
+
 #Build generated
 dist/
 build/
