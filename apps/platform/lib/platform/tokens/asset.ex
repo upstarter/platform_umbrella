@@ -68,7 +68,7 @@ defmodule Platform.Tokens.Asset do
           "numeraire",
           "ETH"
         ],
-        usage_tokens: ["BTC", "BTCash", "LTC", "NEM", "IOTA", "MNR", "ETH", "BAT", "KIN"],
+        usage_tokens: ["BTC", "BTCash", "LTC", "NEM", "IOTA", "MNR", "ETH", "BAT", "KIN", "RNDR"],
         hybrid: ["FIL", "ETH (with Casper)"]
       ],
       ai: ["BOTC (Botchain)", "OCN (ocean protocol)", "singularityNet"],

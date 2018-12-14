@@ -20,7 +20,6 @@ class BlogComponent extends React.Component {
 
 
   componentDidMount() {
-    console.log(`${url}/api/v1/blog_posts`);
 
       this.setState({ isLoading: true });
 
