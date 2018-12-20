@@ -2,6 +2,8 @@ import React from 'react';
 import _ from "lodash";
 import './carrotsearch.foamtree';
 import { url } from "../../utils/consts";
+import { Redirect } from "react-router-dom";
+
 
 export default class Treemap extends React.Component {
   constructor(props) {
@@ -103,11 +105,18 @@ export default class Treemap extends React.Component {
         }
       },
       onGroupClick(event) {
-        preventDefault(event);
-        component.zoomOutDisabled = false;
-        this.zoom(event.group);
+        // preventDefault(event);
+        // component.zoomOutDisabled = true;
+        // this.zoom(event.group);
+        let rurl = `${url}/api/vi/topics/${event.group.id}`
+        console.log(rurl)
+        return <Redirect to={rurl} />;
+
       },
-      onGroupDoubleClick: preventDefault,
+      onGroupDoubleClick(event) {
+        // preventDefault(event);
+          // component.zoomOutDisabled = true;
+      },
       onGroupHover(event) {
         // Ignoring hovering on `FoamTree` branding group
         if (event.group && event.group.attribution) {
@@ -136,17 +145,17 @@ export default class Treemap extends React.Component {
     });
   }
 
-  zoomToGroup(group) {
-    this.zoomOutDisabled = false;
-
-    while (group && !this.treemap.get('state', group).revealed) {
-      group = this.treemap.get('hierarchy', group).parent;
-    }
-
-    if (group) {
-      this.treemap.zoom(group);
-    }
-  }
+  // zoomToGroup(group) {
+  //   this.zoomOutDisabled = false;
+  //
+  //   while (group && !this.treemap.get('state', group).revealed) {
+  //     group = this.treemap.get('hierarchy', group).parent;
+  //   }
+  //
+  //   if (group) {
+  //     this.treemap.zoom(group);
+  //   }
+  // }
 
   isGroupRendered(group) {
     const groupState = this.treemap.get('state', group);

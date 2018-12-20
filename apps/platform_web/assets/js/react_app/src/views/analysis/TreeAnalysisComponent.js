@@ -66,6 +66,7 @@ class TreeAnalysisComponent extends React.Component {
     let arrange = t => {
       return {
         id: t.id,
+        weight: t.id,
         label: t.name,
         description: t.description,
         url: `https://${url}/api/v1/topics/${t.id}`,
@@ -120,15 +121,6 @@ class TreeAnalysisComponent extends React.Component {
       this.setState({showTooltip: false});
     }
   }
-  //
-  // getTooltipContent(module) {
-  //   if (!module) return null;
-  //   return (
-  //     <div>
-  //       <div><strong>{module.description}</strong></div>
-  //     </div>
-  //   )
-  // }
 
   getTooltipContent(module) {
     if (!module) return null;

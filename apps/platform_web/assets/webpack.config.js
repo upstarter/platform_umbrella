@@ -171,8 +171,8 @@ module.exports = {
     },
     headers: {
       "Access-Control-Allow-Origin": "*",
-      // "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-      // "Access-Control-Allow-Headers": "*"
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers": "*"
     },
     watchOptions: {ignored: /node_modules/, include: /node_modules\/antd/},
     contentBase: path.resolve(__dirname, "../priv/static/")
