@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import AppHeader from "../../views/header/AppHeader";
+import AnalysisContainer from "../../views/analysis/AnalysisContainer"
 import PortfolioComponent from "../../views/portfolio/PortfolioComponent";
 import MembershipComponent from "../../views/marketing/MembershipComponent";
 import DeveloperComponent from "../../views/developers/DeveloperComponent";
@@ -104,6 +105,7 @@ class HomeContainer extends React.Component {
                   <Route exact path="/contribute" component={ProviderContainer} />
                   <Route exact path="/insights" component={InsightComponent} />
                   <Route exact path="/proposals" component={ProposalComponent} />
+                  <Route exact path="/analysis" component={AnalysisContainer} />
                   <Route exact path="/portfolio" component={PortfolioComponent} />
                   <PrivateRoute exact path="/profile" component={Protected} />
                   <Route exact path="/about" component={AboutComponent} />

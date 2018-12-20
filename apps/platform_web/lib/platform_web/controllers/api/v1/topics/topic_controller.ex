@@ -4,6 +4,11 @@ defmodule PlatformWeb.V1.Topics.TopicController do
   alias Platform.Topics
   alias Platform.Topics.Topic
 
+  def tree(conn, _params) do
+    topics = Topics.list_topics_tree()
+    render(conn, "tree.json", topics: topics)
+  end
+
   def index(conn, _params) do
     topics = Topics.list_topics()
     render(conn, "index.json", topics: topics)

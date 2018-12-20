@@ -11,7 +11,7 @@
 # and so on) as they will fail if something goes wrong.
 root = '../..'
 
-Code.eval_file("priv/seeds/root_topic_seeds.exs")
+# Code.eval_file("priv/seeds/root_topic_seeds.exs")
 
 File.cd!(root, fn ->
   System.cmd("mix", ["run", "priv/repo/seeds/root_topic_seeds.exs"])

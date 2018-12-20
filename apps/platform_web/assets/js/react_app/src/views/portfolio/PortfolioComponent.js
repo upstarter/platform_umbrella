@@ -19,33 +19,32 @@ class PortfolioComponent extends React.Component {
   }
 
   componentDidMount() {
-    console.log(`${url}/api/v1/portfolios/new`);
 
     this.setState({
       isLoading: true
     });
 
-    fetch(`${url}/api/v1/portfolios/new`)
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Something went wrong ...");
-        }
-      })
-      .then(data =>
-        this.setState({
-          blogPosts: data.portfolio,
-          selectedPost: data.portfolio[0],
-          isLoading: false
-        })
-      )
-      .catch(error =>
-        this.setState({
-          error,
-          isLoading: false
-        })
-      );
+    // fetch(`${url}/api/v1/portfolios/new`)
+    //   .then(response => {
+    //     if (response.ok) {
+    //       return response.json();
+    //     } else {
+    //       throw new Error("Something went wrong ...");
+    //     }
+    //   })
+    //   .then(data =>
+    //     this.setState({
+    //       blogPosts: data.portfolio,
+    //       selectedPost: data.portfolio[0],
+    //       isLoading: false
+    //     })
+    //   )
+    //   .catch(error =>
+    //     this.setState({
+    //       error,
+    //       isLoading: false
+    //     })
+    //   );
   }
 
   render() {

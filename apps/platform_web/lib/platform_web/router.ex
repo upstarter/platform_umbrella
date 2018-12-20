@@ -54,6 +54,7 @@ defmodule PlatformWeb.Router do
       # TOPICS
       scope "/", Topics do
         resources("/topics", TopicController, except: [:new, :edit])
+        get("/topics_tree", TopicController, :tree)
       end
 
       # PORTFOLIOS

@@ -58,7 +58,7 @@ cryptoecon_topics = [
   },
   %Topic{
     id: 13,
-    name: "Token Engineering",
+    name: "Incentive Engineering",
     description: "Primitive building blocks and current best practices for designing and
       implementing crypto networks.",
     path: [1, 7]

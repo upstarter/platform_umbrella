@@ -20,7 +20,15 @@ const LinkMenu = withRouter(props => {
         <span className="nav-text">Join Us</span>
       </Link>
     </Menu.Item>
-      <Menu.Item key="/portfolio">
+    <Menu.Item key="/analysis">
+      <Icon type="area-chart" />
+      <span className="nav-text">
+      <Link to="/analysis">
+        Analysis
+      </Link>
+      </span>
+    </Menu.Item>
+    <Menu.Item key="/portfolio">
         <Link to="/portfolio" style={{ textDecoration: "none" }}>
           <Icon type="user" />
           <span className="nav-text">Create Portfolio</span>
@@ -88,14 +96,7 @@ const menuStyles = {
 //   </Link>
 //   </span>
 // </Menu.Item>
-// <Menu.Item key="/analysis">
-//   <Icon type="area-chart" />
-//   <span className="nav-text">
-//   <Link to="/analysis">
-//     Analysis
-//   </Link>
-//   </span>
-// </Menu.Item>
+
 
 //
 // <Menu.Item key="/about">

@@ -34,7 +34,7 @@ class DeveloperComponent extends React.Component {
               software construction.
             </h5>
             <ul>
-              <li>Data engineers, open data library(messari), AI, Web Engineers</li>
+              <li>Data engineers, open data library, AI, Web Engineers</li>
               <li>Carefully select early contributors who have access to closed Beta, first, last, email, linkedin, twitter, resume</li>
               <li>Crowdsource token project details</li>
               <li>Share you expertise</li>

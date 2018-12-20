@@ -19,7 +19,7 @@ root_topics = [
     path: []
   },
   %Topic{
-    name: "Artificial Intelligence and Crypto",
+    name: "Artificial Intelligence",
     id: 3,
     description: "Categorical breakdown of the current crop of crypto AI use cases by
       startups and the socio-technical implications of future developments.",
