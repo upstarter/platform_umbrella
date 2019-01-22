@@ -31,14 +31,14 @@ analysis_topics = [
     id: 94,
     name: "Price Driven TA",
     description: "",
-    path: [2, 88]
+    path: [2, 91]
   },
   # https://www.quantshare.com/sa-446-different-types-of-trading-indicators-trend-momentum-volatility-and-volume
   %Topic{
     id: 95,
     name: "Indicator & Oscillator Driven TA",
     description: "",
-    path: [2, 88]
+    path: [2, 91]
   },
   %Topic{
     id: 96,
@@ -80,37 +80,37 @@ analysis_topics = [
     id: 102,
     name: "Sentiment",
     description: "",
-    path: [2, 88]
+    path: [2, 91]
   },
   %Topic{
     id: 103,
     name: "Elliot Wave",
     description: "",
-    path: [2, 88]
+    path: [2, 91]
   },
   %Topic{
     id: 104,
     name: "Charting",
     description: "",
-    path: [2, 88]
+    path: [2, 91]
   },
   %Topic{
     id: 105,
     name: "Breadth",
     description: "",
-    path: [2, 88]
+    path: [2, 91]
   },
   %Topic{
     id: 106,
-    name: "Neural Networks",
+    name: "AI & Machine Learning",
     description: "",
-    path: [2, 88]
+    path: [2, 91]
   },
   %Topic{
     id: 107,
     name: "Backtesting",
     description: "",
-    path: [2, 88]
+    path: [2, 91]
   }
 ]
 

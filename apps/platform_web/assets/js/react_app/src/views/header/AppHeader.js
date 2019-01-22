@@ -12,8 +12,6 @@ const { Header } = Layout;
 import colors from '../../styles/colors'
 import nav_logo from "../../../../../static/images/white_nav_logo.svg";
 
-
-
 class AppHeader extends React.Component {
   constructor() {
     super();
@@ -41,7 +39,7 @@ class AppHeader extends React.Component {
         className={classes.header}
       >
         <Link to="/">
-          <div style={{flexDirection: 'flex-start', padding: '8px 14px 8px 14px', zIndex: 100}}>
+          <div style={{flexDirection: 'flex-start', padding: '5px 13px', zIndex: 100}}>
               <img className={classes.logo} src={nav_logo} />
           </div>
         </Link>

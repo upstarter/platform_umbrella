@@ -29,7 +29,7 @@ class HeroComponent extends React.Component {
     return (
       <section className={classes.hero}>
         <div className='hero-body'>
-          <div className="container">
+          <div className="wrap">
             <h1 className="title">
               Become a <span className="fancy-underline">top 1%</span> crypto
               <div className="slidingVertical">
@@ -42,7 +42,7 @@ class HeroComponent extends React.Component {
             </h1>
             <div id="subscribe-form" className="email-leadgen">
               <section className="section">
-                <div className="container has-text-centered">
+                <div className="wrap has-text-centered">
                   <div id="form-container">
 
                     <AppButton

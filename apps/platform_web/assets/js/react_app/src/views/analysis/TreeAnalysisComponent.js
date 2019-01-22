@@ -10,8 +10,6 @@ import Tooltip from './Tooltip.js';
 
 const TYPE_SWITCH_ITEMS = [
   {label: 'Description', prop: 'description'},
-  // {label: 'Parsed', prop: 'parsedSize'},
-  // {label: 'Gzipped', prop: 'gzipSize'}
 ];
 
 const TREE_URL = `${url}/api/v1/topics_tree`;
@@ -90,8 +88,8 @@ class TreeAnalysisComponent extends React.Component {
           data={groups}
           // highlightGroups={this.highlightedModules}
           // weightProp={store.activeSize}
-          onGroupHover={this.handleTreemapGroupHover}
-          onMouseLeave={this.handleMouseLeaveTreemap}
+          // onGroupHover={this.handleTreemapGroupHover}
+          // onMouseLeave={this.handleMouseLeaveTreemap}
         />
         {/* <Tooltip visible={showTooltip}>
           {tooltipContent}
@@ -129,7 +127,7 @@ class TreeAnalysisComponent extends React.Component {
       <div>
         <div><strong>{module.label}</strong></div>
         <br/>
-      {/* {this.renderModuleComponent(module, 'description')} */}
+        {this.renderModuleComponent(module, 'description')}
         {module.url &&
           <div>URL: <a href={module.url} />{module.url}</div>
         }

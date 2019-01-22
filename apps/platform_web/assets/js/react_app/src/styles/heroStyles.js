@@ -14,7 +14,7 @@ const heroStyles = {
       marginTop: -20,
       padding: '6rem 6rem 6rem',
       textAlign: 'center',
-      '& .container': {
+      '& .wrap': {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',

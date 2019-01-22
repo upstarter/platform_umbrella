@@ -4,7 +4,6 @@ import './carrotsearch.foamtree';
 import { url } from "../../utils/consts";
 import { Redirect } from "react-router-dom";
 
-
 export default class Treemap extends React.Component {
   constructor(props) {
     super(props);
@@ -12,13 +11,13 @@ export default class Treemap extends React.Component {
       data: [],
     }
     this.treemap = null;
-    this.zoomOutDisabled = false;
+    this.zoomOutDisabled = true;
   }
 
 
   componentDidMount() {
     this.treemap = this.createTreemap();
-    window.addEventListener('resize', this.resize);
+    // window.addEventListener('resize', this.resize);
   }
 
 
@@ -26,7 +25,7 @@ export default class Treemap extends React.Component {
     let { data } = this.props.data;
     let elem = <div
           {...this.props}
-          style={{ width: '1000px', height: '700px'}}
+          style={{ width: '80vw', height: '650px'}}
           ref={this.saveNodeRef}/>
     console.dir(elem)
     return (
@@ -71,7 +70,7 @@ export default class Treemap extends React.Component {
 
     return new CarrotSearchFoamTree({
       element: this.node,
-      layout: 'squarified',
+      layout: 'relaxed',
       stacking: 'flattened',
       pixelRatio: window.devicePixelRatio || 1,
       maxGroups: Infinity,
@@ -84,6 +83,7 @@ export default class Treemap extends React.Component {
       pullbackDuration: 0,
       fadeDuration: 0,
       groupExposureZoomMargin: 0.2,
+      zoomMouseWheelFactor: 1,
       zoomMouseWheelDuration: 300,
       openCloseDuration: 200,
       dataObject: this.getTreemapDataObject(),

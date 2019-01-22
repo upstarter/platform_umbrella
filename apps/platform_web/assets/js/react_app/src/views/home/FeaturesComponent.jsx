@@ -14,7 +14,7 @@ class FeaturesComponent extends React.Component {
           <div className={classes.heading}>
             <h1>Features</h1>
           </div>
-          <div className="container">
+          <div className="wrap">
             <Row type="flex" justify="space-around">
               <Col xs={25} sm={25} md={7} lg={7} xl={7} className={classes.feature}>
                 <div className="feature-icon">
@@ -64,7 +64,7 @@ class FeaturesComponent extends React.Component {
 const featuresStyles = {
   features: {
     padding: '6rem',
-    margin: '0 auto',
+    margin: '-7 auto',
 
     background: '#191F2D',
     color: '#fff',
@@ -89,7 +89,10 @@ const featuresStyles = {
       height: '55px',
       width: '50px',
     },
-    '& .subtitle-small': { maxWidth: '35rem' }
+    '& .subtitle-small': {
+      margin: '0 auto',
+      maxWidth: '35rem'
+    }
   }
 }
 

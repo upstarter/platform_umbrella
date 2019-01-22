@@ -1,6 +1,6 @@
 alias Platform.Repo
 alias Platform.Topics.Topic
-# current id is 112
+# current id is 113
 # BASE TOPICS IN THE UNIVERSE OF DISCOURSE FOR CRYPTOWISE.AI
 root_topics = [
   %Topic{
