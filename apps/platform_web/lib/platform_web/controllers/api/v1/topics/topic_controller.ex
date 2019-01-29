@@ -9,6 +9,28 @@ defmodule PlatformWeb.V1.Topics.TopicController do
     render(conn, "tree.json", topics: topics)
   end
 
+  def analysis(conn, _params) do
+    require IEx
+    IEx.pry()
+    topics = Topics.analysis()
+    render(conn, "analysis.json", topics: topics)
+  end
+
+  def research(conn, _params) do
+    topics = Topics.research()
+    render(conn, "research.json", topics: topics)
+  end
+
+  def taxonomy(conn, _params) do
+    topics = Topics.taxonomy()
+    render(conn, "taxonomy.json", topics: topics)
+  end
+
+  def valuation(conn, _params) do
+    topics = Topics.valuation()
+    render(conn, "valuation.json", topics: topics)
+  end
+
   def index(conn, _params) do
     topics = Topics.list_topics()
     render(conn, "index.json", topics: topics)

@@ -24,7 +24,7 @@ defmodule PlatformWeb.Endpoint do
     plug(Phoenix.LiveReloader)
   end
 
-  plug(CORSPlug, origin: ["http://localhost:8080"])
+  plug(CORSPlug, origin: ["http://localhost:8080", "http://127.0.0.1:8080"])
   plug(Plug.Logger)
 
   plug(Plug.Parsers,
