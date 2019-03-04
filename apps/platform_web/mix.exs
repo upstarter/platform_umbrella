@@ -24,7 +24,7 @@ defmodule PlatformWeb.Mixfile do
   def application do
     [
       mod: {PlatformWeb.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :ueberauth]
     ]
   end
 
@@ -50,7 +50,8 @@ defmodule PlatformWeb.Mixfile do
       {:get_medium, "~> 0.3.0"},
       # html parser
       {:floki, "~> 0.20.0"},
-      {:con_cache, "~> 0.13.0"}
+      {:con_cache, "~> 0.13.0"},
+      {:ueberauth, "~> 0.5"}
     ]
   end
 

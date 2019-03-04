@@ -1,5 +1,6 @@
 defmodule PlatformWeb.V1.Auth.AuthController do
   use PlatformWeb, :controller
+  plug(Ueberauth)
 
   alias Platform.Auth
   alias Platform.Auth.Account
