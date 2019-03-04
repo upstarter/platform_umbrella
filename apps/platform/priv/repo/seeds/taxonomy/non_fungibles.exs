@@ -19,13 +19,13 @@ taxonomy_root_topics = [
     name: "Identity",
     id: 74,
     description: "Utility",
-    path: [2, 20, 73]
+    path: [2, 20, 72, 73]
   },
   %Topic{
     name: "Reputation",
     id: 75,
     description: "Utility",
-    path: [2, 20, 73]
+    path: [2, 20, 72, 73]
   },
   %Topic{
     name: "Non-Personal",
@@ -37,13 +37,13 @@ taxonomy_root_topics = [
     name: "Collectibles",
     id: 77,
     description: "Utility",
-    path: [2, 20, 74]
+    path: [2, 20, 72, 76]
   },
   %Topic{
     name: "Membership",
     id: 78,
     description: "",
-    path: [2, 20, 74]
+    path: [2, 20, 72, 76]
   }
 ]
 

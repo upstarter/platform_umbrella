@@ -6,7 +6,7 @@ ai = [
     id: 113,
     name: "Neural Networks",
     description: "",
-    path: [2, 91, 106]
+    path: [2, 17, 91, 106]
   }
 ]
 

@@ -9,7 +9,7 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
-root = '../..'
+root = './'
 
 # Code.eval_file("priv/seeds/root_topic_seeds.exs")
 
@@ -21,6 +21,8 @@ File.cd!(root, fn ->
   System.cmd("mix", ["run", "priv/repo/seeds/sector_topic_seeds.exs"])
   System.cmd("mix", ["run", "priv/repo/seeds/general_topic_seeds.exs"])
   System.cmd("mix", ["run", "priv/repo/seeds/analysis/analysis.exs"])
+  System.cmd("mix", ["run", "priv/repo/seeds/analysis/fundamental.exs"])
+  System.cmd("mix", ["run", "priv/repo/seeds/analysis/ai_ml.exs"])
   System.cmd("mix", ["run", "priv/repo/seeds/taxonomy/fungibles.exs"])
   System.cmd("mix", ["run", "priv/repo/seeds/taxonomy/non_fungibles.exs"])
 end)

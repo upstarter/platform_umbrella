@@ -9,8 +9,6 @@ alias Platform.Topics.Topic
   "governance tokens"
 ]
 
-staking = []
-
 general_topics = [
   %Topic{
     id: 58,

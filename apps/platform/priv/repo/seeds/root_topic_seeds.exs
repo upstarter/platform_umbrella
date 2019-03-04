@@ -1,6 +1,6 @@
 alias Platform.Repo
 alias Platform.Topics.Topic
-# current id is 113
+# current id is 122
 # BASE TOPICS IN THE UNIVERSE OF DISCOURSE FOR CRYPTOWISE.AI
 root_topics = [
   %Topic{
@@ -43,3 +43,9 @@ root_topics = [
 
 root_topics
 |> Enum.map(&Repo.insert!(&1))
+
+#
+# Enum.map(root_topics, fn topic ->
+#   changeset = Topic.changeset(%Topic{}, topic)
+#   Repo.insert(changeset)
+# end)

@@ -17,7 +17,14 @@ defmodule JSONMapBuilder do
 
   def do_to_map(key, value) do
     topic = Repo.get(Topic, key.id)
-    %{id: key.id, name: topic.name, description: topic.description, groups: to_map(value)}
+
+    %{
+      id: key.id,
+      slug: topic.slug,
+      name: topic.name,
+      description: topic.description,
+      groups: to_map(value)
+    }
   end
 
   def to_map(tuple) when is_tuple(tuple) do

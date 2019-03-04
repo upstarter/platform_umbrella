@@ -9,7 +9,7 @@ ra_topics = [
       attributes that are associated with higher returns. There are two main
       types of factors that have driven returns of stocks, bonds, and other
       factors; macroeconomic factors and style factors.",
-    path: [2]
+    path: [2, 17]
   },
   %Topic{
     id: 16,
@@ -17,13 +17,13 @@ ra_topics = [
     description: "The process of selecting the best portfolio (asset
       distribution), out of the set of all portfolios being considered, according
       to some objective.",
-    path: [2]
+    path: [2, 17]
   },
   %Topic{
     id: 17,
-    name: "Crypto Investment Strategy",
+    name: "Strategy & Systems",
     description: "A set of rules, behaviors or procedures, designed to guide an
-      investor's selection of an investment portfolio.",
+      investor's selection of an investment portfolio or trading system.",
     path: [2]
   },
   %Topic{
@@ -32,7 +32,7 @@ ra_topics = [
     description: "A top-down investment strategy that attempts to exploit
       short-term mis-pricings among a global set of assets. The strategy focuses
       on general movements in the market rather than on performance of individual securities.",
-    path: [2]
+    path: [2, 17]
   },
   %Topic{
     id: 19,
@@ -42,7 +42,7 @@ ra_topics = [
       generate orders based on predefined set of rules using a trading strategy
       which is often based on technical analysis but can also be based on input
       from other electronic sources.",
-    path: [2]
+    path: [2, 17]
   },
   %Topic{
     id: 20,
@@ -56,7 +56,7 @@ ra_topics = [
     id: 21,
     name: "Valuation Frameworks",
     description: "Emerging and Existing token valuation frameworks.",
-    path: [2]
+    path: [2, 17, 90]
   }
 ]
 
