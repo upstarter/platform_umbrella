@@ -6,9 +6,13 @@ defmodule Platform.GroupsTest do
   describe "groups" do
     alias Platform.Groups.Group
 
-    @valid_attrs %{name: "some name", short_desc: "some short_desc"}
-    @update_attrs %{name: "some updated name", short_desc: "some updated short_desc"}
-    @invalid_attrs %{name: nil, short_desc: nil}
+    @valid_attrs %{name: "some name", short_desc: "some short_desc", type: "some type"}
+    @update_attrs %{
+      name: "some updated name",
+      short_desc: "some updated short_desc",
+      type: "some updated type"
+    }
+    @invalid_attrs %{name: nil, short_desc: nil, type: nil}
 
     def group_fixture(attrs \\ %{}) do
       {:ok, group} =
@@ -33,6 +37,7 @@ defmodule Platform.GroupsTest do
       assert {:ok, %Group{} = group} = Groups.create_group(@valid_attrs)
       assert group.name == "some name"
       assert group.short_desc == "some short_desc"
+      assert group.type == "some type"
     end
 
     test "create_group/1 with invalid data returns error changeset" do
@@ -45,6 +50,7 @@ defmodule Platform.GroupsTest do
       assert %Group{} = group
       assert group.name == "some updated name"
       assert group.short_desc == "some updated short_desc"
+      assert group.type == "some updated type"
     end
 
     test "update_group/2 with invalid data returns error changeset" do
