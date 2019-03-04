@@ -11,6 +11,7 @@ defmodule Platform.Repo.Migrations.CreateDailyMarketHistory do
       add(:low, :decimal)
       add(:volumefrom, :decimal)
       add(:volumeto, :decimal)
+      timestamps()
     end
 
     create(unique_index(:daily_market_history, [:symbol, :date]))

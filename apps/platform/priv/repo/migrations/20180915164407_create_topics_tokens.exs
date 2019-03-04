@@ -5,6 +5,7 @@ defmodule Platform.Repo.Migrations.CreateTopicsTokens do
     create table(:topics_tokens) do
       add(:topic_id, references(:topics))
       add(:token_id, references(:tokens))
+      timestamps()
     end
 
     create(unique_index(:topics_tokens, [:topic_id, :token_id]))

@@ -5,6 +5,8 @@ defmodule Platform.Repo.Migrations.CreateProvidersTopics do
     create table(:providers_topics) do
       add(:topic_id, references(:topics))
       add(:provider_id, references(:providers))
+
+      timestamps()
     end
 
     create(unique_index(:providers_topics, [:topic_id, :provider_id]))
