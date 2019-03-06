@@ -40,6 +40,7 @@ defmodule Platform.Mixfile do
       {:poison, "~> 3.1", override: true},
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
+      {:timex, "~> 3.0"},
       {:arbor, "~> 1.1.0"},
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 1.0"},

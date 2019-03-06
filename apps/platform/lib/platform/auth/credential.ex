@@ -8,7 +8,7 @@ defmodule Platform.Credential do
 
     field(:password, :string, virtual: true)
 
-    belongs_to(:user, {Platform.User, "users"})
+    # belongs_to(:user, {Platform.User, "users"})
     timestamps()
   end
 

@@ -15,7 +15,7 @@ defmodule Platform.Providers.Provider do
     field(:name, :string)
     field(:email, :string)
     field(:description, :string)
-    belongs_to(:auth_account, Account)
+    # belongs_to(:auth_account, Account)
     many_to_many(:topics, Topic, join_through: "providers_topics")
     many_to_many(:portfolios, Portfolio, join_through: "providers_portfolios")
 

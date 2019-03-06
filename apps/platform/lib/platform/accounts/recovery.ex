@@ -5,7 +5,7 @@ defmodule Platform.Accounts.Recovery do
   schema "users" do
     field(:email, :string)
     field(:reset_password_token, :string)
-    field(:reset_password_sent_at, Timex.Ecto.DateTime)
+    field(:reset_password_sent_at, :utc_datetime)
 
     timestamps()
   end

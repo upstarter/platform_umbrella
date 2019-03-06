@@ -4,9 +4,9 @@ defmodule Platform.Accounts.Confirmation do
 
   schema "users" do
     field(:email, :string)
-    field(:confirmation_sent_at, Timex.Ecto.DateTime)
+    field(:confirmation_sent_at, :utc_datetime)
     field(:confirmation_token, :string)
-    field(:confirmed_at, Timex.Ecto.DateTime)
+    field(:confirmed_at, :utc_datetime)
 
     timestamps()
   end
