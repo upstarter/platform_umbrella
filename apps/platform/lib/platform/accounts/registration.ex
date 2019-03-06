@@ -13,6 +13,40 @@ defmodule Platform.Accounts.Registration do
     field(:accept_terms, :boolean, default: false)
   end
 
+  # validate and insert
+  def create(%Ecto.Multi{} = multi, params) do
+    multi
+    |> Ecto.Multi.run(:registration, __MODULE__, :validate_registration, [params])
+    |> Ecto.Multi.run(:user, __MODULE__, :insert_user, [params])
+    |> Ecto.Multi.run(:credential, __MODULE__, :insert_credential, [params])
+  end
+
+  def insert_user(_changes, params) do
+    # struct?
+    %Platform.User{}
+    |> Platform.User.changeset(params)
+    |> Platform.Repo.insert()
+  end
+
+  # if either step in insertion fails, this never runs
+  def insert_credential(%{user: user}, params) do
+    user
+    |> Ecto.build_assoc(:credential)
+    |> Platform.Accounts.Credential.changeset(params)
+    # ok or error tuple instructs Ecto.Multi how to proceed
+    |> Platform.Repo.insert()
+  end
+
+  def validate_registration(_changes, params) do
+    changeset = changeset(%__MODULE__{}, params)
+
+    if changeset.valid? do
+      {:ok, changeset}
+    else
+      {:error, apply_action(changeset, :insert)}
+    end
+  end
+
   @doc false
   def changeset(registration, params \\ %{}) do
     registration

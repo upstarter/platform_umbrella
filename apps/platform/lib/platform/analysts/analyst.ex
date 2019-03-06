@@ -2,11 +2,10 @@ defmodule Platform.Analysts.Analyst do
   use Ecto.Schema
   import Ecto.Changeset
 
-
   schema "analysts" do
-    field :avatar_url, :string
-    field :email, :string
-    field :name, :string
+    field(:avatar_url, :string)
+    field(:email, :string)
+    field(:name, :string)
 
     timestamps()
   end
