@@ -57,6 +57,7 @@ defmodule PlatformWeb.Router do
         get("/topics_tree", TopicController, :tree)
         get("/analysis", TopicController, :analysis)
         get("/research", TopicController, :research)
+        get("/strategy", TopicController, :strategy)
         get("/taxonomy", TopicController, :taxonomy)
         get("/valuation", TopicController, :valuation)
       end

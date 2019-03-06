@@ -17,7 +17,7 @@ general_topics = [
       is run by many users on a decentralized network with trustless protocols.
       They are designed to avoid any single point of failure. They typically
       have tokens to reward users for providing computing power.",
-    path: []
+    parent_id: 7
   },
   %Topic{
     id: 59,
@@ -25,20 +25,20 @@ general_topics = [
     description: "A digital currency in which encryption techniques are used
       to regulate the generation of units of currency and verify the transfer
       of funds, operating independently of a central bank.",
-    path: []
+    parent_id: 5
   },
   %Topic{
     id: 60,
     name: "Regulatory",
     description: "A rule or directive made and maintained by an authority.",
-    path: []
+    parent_id: 5
   },
   %Topic{
     id: 61,
     name: "Compliance",
     description: "The act or process of complying to a desire, demand, proposal, or regimen or to
   coercion.",
-    path: []
+    parent_id: 7
   },
   %Topic{
     id: 62,
@@ -48,7 +48,7 @@ general_topics = [
       economies of scale. It integrates a set of abstracted, virtualized,
       dynamically-scalable, and managed resources, such as computing power, storage,
       platforms, and services.",
-    path: []
+    parent_id: 123
   },
   %Topic{
     id: 63,
@@ -56,7 +56,7 @@ general_topics = [
     description: "Sustainable development is development that meets the needs of the
       present without compromising the ability of future generations to meet
       their own needs.",
-    path: []
+    parent_id: 5
   },
   %Topic{
     id: 64,
@@ -64,7 +64,7 @@ general_topics = [
     description:
       "How, where, when, and why to store your cryptoassets, and how to protect yourself
       from hackers.",
-    path: []
+    parent_id: 7
   },
   %Topic{
     id: 65,
@@ -72,13 +72,13 @@ general_topics = [
     description: "A network ownership effect describes when the utility of the service and
       the value of ownership of the service increases for existing users when
       new users join.",
-    path: []
+    parent_id: 7
   },
   %Topic{
     id: 66,
     name: "Social Impact",
     description: "A significant, positive change that addresses a pressing social challenge.",
-    path: []
+    parent_id: 5
   },
   %Topic{
     id: 67,
@@ -89,14 +89,14 @@ general_topics = [
     or innovations applicable to the working of the Internet and Internet-connected
     systems. It is submitted either for peer review or to convey new concepts,
     information, or (occasionally) engineering humor",
-    path: []
+    parent_id: 7
   },
   %Topic{
     id: 68,
-    name: "Decentralized Exchanges",
+    name: "Decentralized Exchange",
     description: "Decentralized exchanges are the exchanges that do not require a third
       party to store your funds.",
-    path: []
+    parent_id: 7
   },
   %Topic{
     id: 69,
@@ -108,7 +108,7 @@ general_topics = [
       Game theory can be seen as a microcosm of human behavior under set
       circumstances wherein certain incentive structures and mechanisms can
       lead to predictable and honest behavior by players.",
-    path: []
+    parent_id: 5
   },
   %Topic{
     id: 70,
@@ -116,7 +116,7 @@ general_topics = [
     description: "An interdisciplinary branch of engineering and science that includes
       mechanical engineering, electronics engineering, computer science, and
       others.",
-    path: []
+    parent_id: 7
   },
   %Topic{
     id: 71,
@@ -127,7 +127,7 @@ general_topics = [
       more direct integration of the physical world into computer-based systems,
       resulting in efficiency improvements, economic benefits, and reduced human
       exertions.",
-    path: []
+    parent_id: 7
   }
 ]
 

@@ -27,6 +27,12 @@ defmodule PlatformWeb.V1.Topics.TopicView do
     %{data: topics}
   end
 
+  def render("strategy.json", %{topics: topics}) do
+    IO.inspect(topics)
+
+    %{data: topics}
+  end
+
   def render("index.json", %{topics: topics}) do
     %{data: render_many(topics, TopicView, "topic.json")}
   end

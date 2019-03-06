@@ -38,13 +38,13 @@ defmodule Platform.Mixfile do
     [
       {:jason, "~> 1.1", override: true},
       {:poison, "~> 3.1", override: true},
-      {:postgrex, "~> 0.13.5"},
-      {:ecto, "~> 2.2.10"},
-      {:ecto_materialized_path, "~> 0.2.0"},
+      {:ecto_sql, "~> 3.0"},
+      {:postgrex, ">= 0.0.0"},
+      {:arbor, "~> 1.1.0"},
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 1.0"},
       {:argon2_elixir, "~> 1.2"},
-      {:guardian, "~> 1.1.1", override: true},
+      {:guardian, "~> 1.2.1", override: true},
       {:ecto_autoslug_field, "~> 1.0"}
     ]
   end

@@ -21,6 +21,11 @@ defmodule PlatformWeb.V1.Topics.TopicController do
     render(conn, "research.json", topics: topics)
   end
 
+  def strategy(conn, _params) do
+    topics = Topics.strategy()
+    render(conn, "strategy.json", topics: topics)
+  end
+
   def taxonomy(conn, _params) do
     topics = Topics.taxonomy()
     render(conn, "taxonomy.json", topics: topics)

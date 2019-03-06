@@ -7,7 +7,7 @@ defmodule Platform.Repo.Migrations.CreateTopics do
       add(:description, :text, null: false)
       add(:slug, :string)
       add(:weight, :integer, null: false, default: 100)
-      add(:path, {:array, :integer}, null: false)
+      add(:parent_id, :integer)
 
       timestamps()
     end

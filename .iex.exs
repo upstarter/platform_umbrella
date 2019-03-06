@@ -1,4 +1,4 @@
-File.exists?(Path.expand("~/.nix/.iex.exs")) && import_file("~/.nix/.iex.exs")
+File.exists?("~/.nix/local/config/.iex.exs") && import_file("~/.nix/local/config/.iex.exs")
 
 import Ecto.Query
 alias Platform.Repo

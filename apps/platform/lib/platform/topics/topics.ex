@@ -24,73 +24,51 @@ defmodule Platform.Topics do
     |> Repo.all()
   end
 
+  def arrange(topic) do
+    children = topic |> Topic.children() |> Repo.all()
+    {topic, Enum.map(children, &arrange/1)}
+  end
+
   def list_topics_tree do
-    t = Repo.get!(Platform.Topics.Topic, 1)
-    tree = Repo.all(Topic.descendants(t))
-    require IEx
-    IEx.pry()
-    nlist = Topic.arrange(tree)
-    JSONMapBuilder.to_map(nlist)
-  end
-
-  def analysis do
-    t = Repo.get!(Platform.Topics.Topic, 2)
-    tree = Repo.all(Topic.descendants(t))
-    nlist = Topic.arrange(tree)
-    JSONMapBuilder.to_map(nlist)
-  end
-
-  def valuation do
-    t = Repo.get!(Platform.Topics.Topic, 21)
-    tree = Repo.all(Topic.descendants(t))
-    nlist = Topic.arrange(tree)
+    root = Repo.get!(Platform.Topics.Topic, 1)
+    nlist = [arrange(root)]
     JSONMapBuilder.to_map(nlist)
   end
 
   def taxonomy do
-    t = Repo.get!(Platform.Topics.Topic, 20)
-    tree = Repo.all(Topic.descendants(t))
-    nlist = Topic.arrange(tree)
+    root = Repo.get!(Platform.Topics.Topic, 20)
+    nlist = [arrange(root)]
+    JSONMapBuilder.to_map(nlist)
+  end
+
+  def valuation do
+    root = Repo.get!(Platform.Topics.Topic, 21)
+    nlist = [arrange(root)]
+    JSONMapBuilder.to_map(nlist)
+  end
+
+  def strategy do
+    root = Repo.get!(Platform.Topics.Topic, 17)
+    nlist = [arrange(root)]
+    JSONMapBuilder.to_map(nlist)
+  end
+
+  def analysis do
+    root = Repo.get!(Platform.Topics.Topic, 2)
+    nlist = [arrange(root)]
     JSONMapBuilder.to_map(nlist)
   end
 
   def research do
-    research_list = research_tree()
-    nlist = Topic.arrange(research_list)
+    root = Repo.get!(Platform.Topics.Topic, 14)
+    nlist = [arrange(root)]
     JSONMapBuilder.to_map(nlist)
   end
 
   def research_tree do
-    t1 = %Topic{id: 14, path: [2]}
-
-    t2 = %Topic{id: 60, path: [2]}
-    t3 = %Topic{id: 61, path: [2]}
-    t4 = %Topic{id: 62, path: [2]}
-    t5 = %Topic{id: 63, path: [2]}
-    t6 = %Topic{id: 64, path: [2]}
-    t7 = %Topic{id: 65, path: [2]}
-    t8 = %Topic{id: 66, path: [2]}
-    t9 = %Topic{id: 67, path: [2]}
-    t10 = %Topic{id: 68, path: [2]}
-    t11 = %Topic{id: 69, path: [2]}
-    t12 = %Topic{id: 70, path: [2]}
-    t13 = %Topic{id: 71, path: [2]}
-
-    list = [
-      t1,
-      t2,
-      t3,
-      t4,
-      t5,
-      t6,
-      t7,
-      t8,
-      t9,
-      t10,
-      t11,
-      t12,
-      t13
-    ]
+    root = Repo.get!(Platform.Topics.Topic, 123)
+    nlist = [arrange(root)]
+    JSONMapBuilder.to_map(nlist)
   end
 
   @doc """

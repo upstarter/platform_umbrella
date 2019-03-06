@@ -7,43 +7,43 @@ taxonomy_root_topics = [
     name: "Non-Fungibles",
     id: 72,
     description: "",
-    path: [2, 20]
+    parent_id: 20
   },
   %Topic{
     name: "Personal",
     id: 73,
     description: "Utility",
-    path: [2, 20, 72]
+    parent_id: 72
   },
   %Topic{
     name: "Identity",
     id: 74,
     description: "Utility",
-    path: [2, 20, 72, 73]
+    parent_id: 73
   },
   %Topic{
     name: "Reputation",
     id: 75,
     description: "Utility",
-    path: [2, 20, 72, 73]
+    parent_id: 73
   },
   %Topic{
     name: "Non-Personal",
     id: 76,
     description: "",
-    path: [2, 20, 72]
+    parent_id: 72
   },
   %Topic{
     name: "Collectibles",
     id: 77,
     description: "Utility",
-    path: [2, 20, 72, 76]
+    parent_id: 76
   },
   %Topic{
     name: "Membership",
     id: 78,
     description: "",
-    path: [2, 20, 72, 76]
+    parent_id: 76
   }
 ]
 
