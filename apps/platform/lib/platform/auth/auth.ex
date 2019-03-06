@@ -1,7 +1,7 @@
 defmodule Platform.Auth do
-  alias Platform.Auth.Account
+  alias Platform.Accounts.Account
   alias Platform.Repo
-  alias Platform.Auth.TokenSerializer
+  # alias Platform.Auth.TokenSerializer
 
   import Comeonin.Argon2, only: [checkpw: 2, dummy_checkpw: 0]
 

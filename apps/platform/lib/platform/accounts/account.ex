@@ -1,11 +1,14 @@
-defmodule Platform.Account do
+defmodule Platform.Accounts.Account do
   @moduledoc """
 
     used by backoffice too
 
   """
 
-  alias Platform.Account
+  import Ecto.Schema
+  defstruct []
+
+  alias Platform.Accounts.Account
 
   def register(params) do
     Ecto.Multi.new()

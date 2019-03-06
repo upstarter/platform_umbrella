@@ -1,7 +1,7 @@
 defmodule Platform.Accounts.Registration do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Platform.Registration
+  alias Platform.Accounts.Registration
 
   # duplication from other models, but registrar's needs this
   # reflect fields on the form

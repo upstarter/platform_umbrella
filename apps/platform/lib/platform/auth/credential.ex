@@ -1,6 +1,8 @@
-defmodule Platform.Credential do
+defmodule Platform.Auth.Credential do
   use Ecto.Schema
   import Ecto.Changeset
+
+  alias Platform.Auth.Credential
 
   schema "credentials" do
     field(:source, :string)
@@ -17,7 +19,8 @@ defmodule Platform.Credential do
     |> cast(params, [:password])
     |> validate()
     |> unique_constraint([:user_id, :source])
-    |> encrypt_password()
+
+    # |> encrypt_password()
   end
 
   def validate(%Ecto.Changeset{data: %{source: "password"}} = changeset) do
