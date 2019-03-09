@@ -47,7 +47,6 @@ defmodule Platform.Mixfile do
       {:argon2_elixir, "~> 1.2"},
       {:guardian, "~> 1.2.1", override: true},
       {:ecto_autoslug_field, "~> 1.0"}
-      # {:httpoison, "~> 1.4"}
     ]
   end
 

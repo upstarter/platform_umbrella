@@ -35,6 +35,7 @@ defmodule Platform.Umbrella.Mixfile do
   defp deps do
     [
       {:poison, "~> 3.1", override: true},
+      {:httpoison, "~> 1.4"},
       {:hackney, "~> 1.6", override: true},
       {:gettext, "~> 0.13.0", override: true},
       {:distillery, "~> 1.5", runtime: false},

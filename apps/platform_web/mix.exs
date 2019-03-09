@@ -34,7 +34,6 @@ defmodule PlatformWeb.Mixfile do
 
   # Specifies your project dependencies.
   #
-  # Type `mix help deps` for examples and options.
   defp deps do
     [
       {:phoenix, "~> 1.3.1"},
@@ -48,7 +47,7 @@ defmodule PlatformWeb.Mixfile do
       {:bamboo, "~> 0.8"},
       # {:absinthe, "~> 1.4.0"},
       {:platform, in_umbrella: true},
-      {:get_medium, "~> 0.3.0"},
+      # {:get_medium, "~> 0.3.0"},
       # html parser
       {:floki, "~> 0.20.0"},
       {:con_cache, "~> 0.13.0"},
