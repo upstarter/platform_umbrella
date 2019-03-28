@@ -8,7 +8,7 @@ defmodule Platform.Repo.Migrations.CreateStrategies do
       add(:long_desc, :text)
       add(:type, :string)
       add(:tagging_id, references(:taggings))
-      add(:rating_id, references(:rating))
+      add(:rating_id, :integer)
 
       timestamps()
     end
