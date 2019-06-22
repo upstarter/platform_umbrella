@@ -3,10 +3,12 @@ defmodule Platform.Investors.Investor do
   import Ecto.Changeset
 
   schema "investors" do
-    field(:avatar_url, :string)
-    field(:email, :string)
     field(:first_name, :string)
     field(:last_name, :string)
+    field(:email, :string)
+    field(:phone, :string)
+    field(:avatar_url, :string)
+    field(:auth_account_id, :integer)
 
     timestamps()
   end

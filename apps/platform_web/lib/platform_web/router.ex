@@ -69,6 +69,9 @@ defmodule PlatformWeb.Router do
 
       # AUTH
       scope "/auth", Auth do
+        get("/:provider", AuthController, :request)
+        get("/:provider/callback", AuthController, :callback)
+
         scope "/" do
           pipe_through([:unauthorized])
           post("/create", AuthController, :create)

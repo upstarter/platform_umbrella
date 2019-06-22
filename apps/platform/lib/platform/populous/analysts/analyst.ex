@@ -3,9 +3,12 @@ defmodule Platform.Analysts.Analyst do
   import Ecto.Changeset
 
   schema "analysts" do
-    field(:avatar_url, :string)
+    field(:first_name, :string)
+    field(:last_name, :string)
     field(:email, :string)
-    field(:name, :string)
+    field(:phone, :string)
+    field(:avatar_url, :string)
+    field(:auth_account_id, :integer)
 
     timestamps()
   end

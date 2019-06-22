@@ -12,10 +12,13 @@ defmodule Platform.Providers.Provider do
   alias Platform.Portfolios.Portfolio
 
   schema "providers" do
-    field(:name, :string)
+    field(:first_name, :string)
+    field(:last_name, :string)
     field(:email, :string)
-    field(:description, :string)
-    # belongs_to(:auth_account, Account)
+    field(:phone, :string)
+    field(:avatar_url, :string)
+    field(:auth_account_id, :integer)
+    # field(:description, :string) # provider profile
     many_to_many(:topics, Topic, join_through: "providers_topics")
     many_to_many(:portfolios, Portfolio, join_through: "providers_portfolios")
 

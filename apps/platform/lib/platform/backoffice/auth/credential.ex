@@ -4,14 +4,16 @@ defmodule Platform.Auth.Credential do
 
   alias Platform.Auth.Credential
 
-  # In practical terms, it may be helpful to have an internal global identifier for every user and link their profile and authentication identity via that ID as opposed to piling it all in a single record.
+  # In practical terms, it may be helpful to have an internal global identifier
+  # for every user and link their profile and authentication identity via that
+  # ID as opposed to piling it all in a single record.
   schema "credentials" do
     field(:source, :string)
     field(:token, :string)
 
     field(:password, :string, virtual: true)
 
-    # belongs_to(:user, {Platform.User, "users"})
+    belongs_to(:user, Platform.User)
     timestamps()
   end
 

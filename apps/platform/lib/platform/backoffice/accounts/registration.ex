@@ -3,18 +3,21 @@ defmodule Platform.Accounts.Registration do
   import Ecto.Changeset
   alias Platform.Accounts.Registration
 
-  # duplication from other models, but registrar's needs this
+  # duplication from other models, but registrar's need this
   # reflect fields on the form
   embedded_schema do
     field(:email, :string)
     field(:first_name, :string)
     field(:last_name, :string)
     field(:password, :string)
-    field(:accept_terms, :boolean, default: false)
+    field(:terms_accepted, :boolean, default: false)
   end
 
   # validate and insert
   def create(%Ecto.Multi{} = multi, params) do
+    require IEx
+    IEx.pry()
+
     multi
     |> Ecto.Multi.run(:registration, __MODULE__, :validate_registration, [params])
     |> Ecto.Multi.run(:user, __MODULE__, :insert_user, [params])
@@ -32,12 +35,12 @@ defmodule Platform.Accounts.Registration do
   def insert_credential(%{user: user}, params) do
     user
     |> Ecto.build_assoc(:credential)
-    |> Platform.Accounts.Credential.changeset(params)
+    |> Platform.Auth.Credential.changeset(params)
     # ok or error tuple instructs Ecto.Multi how to proceed
     |> Platform.Repo.insert()
   end
 
-  def validate_registration(_changes, params) do
+  def validate_registration(multi, _changes, params) do
     changeset = changeset(%__MODULE__{}, params)
 
     if changeset.valid? do
@@ -52,7 +55,7 @@ defmodule Platform.Accounts.Registration do
     registration
     |> cast(params, [:first_name, :last_name, :email, :password, :accept_terms])
     |> Platform.User.validate()
-    |> Platform.Accounts.Credential.validate()
+    |> Platform.Auth.Credential.validate()
     |> validate_acceptance(:accept_terms)
   end
 end

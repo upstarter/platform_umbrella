@@ -5,6 +5,15 @@ defmodule Platform.Auth do
 
   import Comeonin.Argon2, only: [checkpw: 2, dummy_checkpw: 0]
 
+  def create_account(attrs) do
+    account = Account.register(attrs)
+    # act = Platform.Repo.insert!(account)
+    {:ok, account}
+  end
+
+  def signin(conn, attrs) do
+  end
+
   def token_sign_in(conn, email, password) do
     IO.inspect(email)
 
@@ -54,11 +63,5 @@ defmodule Platform.Auth do
           {:error, :login_failed}
         end
     end
-  end
-
-  def create_account(attrs) do
-    account = Account.build(attrs)
-    act = Platform.Repo.insert!(account)
-    {:ok, act}
   end
 end

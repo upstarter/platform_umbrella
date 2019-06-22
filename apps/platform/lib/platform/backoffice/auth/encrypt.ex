@@ -1,7 +1,7 @@
 defmodule Platform.Auth.Accounts.Encrypt do
   @moduledoc """
 
-    used by backoffice too
+    used by backoffice
 
   """
 

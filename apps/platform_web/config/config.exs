@@ -13,8 +13,13 @@ config :platform_web,
 config :ueberauth, Ueberauth,
   providers: [
     linkedin: {Ueberauth.Strategy.Linkedin, [opt1: "value", opts2: "value"]},
-    github: {Ueberauth.Strategy.Github, [opt1: "value", opts2: "value"]}
+    github: {Ueberauth.Strategy.Github, [opt1: "value", opts2: "value"]},
+    google: {Ueberauth.Strategy.Google, [default_scope: "email profile plus.me"]}
   ]
+
+config :ueberauth, Ueberauth.Strategy.Google.OAuth,
+  client_id: System.get_env("GOOGLE_CLIENT_ID"),
+  client_secret: System.get_env("GOOGLE_CLIENT_SECRET")
 
 # Configures Elixir's Logger
 config :logger, :console,
