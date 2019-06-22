@@ -15,7 +15,7 @@ defmodule PlatformWeb.V1.Tokens.TokenController do
   end
 
   def create(conn, %{"token" => token_params}) do
-    with {:ok, %Token{} = token} <- Tokens.create_token(token_params) do
+    with {:ok, Token = token} <- Tokens.create_token(token_params) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.token_path(conn, :show, token))
@@ -31,7 +31,7 @@ defmodule PlatformWeb.V1.Tokens.TokenController do
   def update(conn, %{"id" => id, "token" => token_params}) do
     token = Tokens.get_token!(id)
 
-    with {:ok, %Token{} = token} <- Tokens.update_token(token, token_params) do
+    with {:ok, Token = token} <- Tokens.update_token(token, token_params) do
       render(conn, "show.json", token: token)
     end
   end
@@ -39,7 +39,7 @@ defmodule PlatformWeb.V1.Tokens.TokenController do
   def delete(conn, %{"id" => id}) do
     token = Tokens.get_token!(id)
 
-    with {:ok, %Token{}} <- Tokens.delete_token(token) do
+    with {:ok, Token} <- Tokens.delete_token(token) do
       send_resp(conn, :no_content, "")
     end
   end

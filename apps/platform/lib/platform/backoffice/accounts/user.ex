@@ -3,7 +3,7 @@ defmodule Platform.User do
   import Ecto.Changeset
 
   schema "users" do
-    field(:auth_account_id, :integer)
+    field(:auth_id, :integer)
     field(:email, :string)
 
     has_many(:credentials, Platform.Auth.Credential)
