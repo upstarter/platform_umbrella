@@ -1,7 +1,7 @@
 # User Defined Type Safety On Demand (Types of Corruption)
 # Each and Every Corrupted other be warned, for here there be's dragons
 # Maps -> Structs -> Schemas -> Changesets -> Structs/Maps
-defmodule Aion.AntiCorruptionLayer do
+defmodule Platform.Meta.AntiCorruptionLayer do
   defmacro __using__(_opts) do
     quote do
       use Ecto.Schema
