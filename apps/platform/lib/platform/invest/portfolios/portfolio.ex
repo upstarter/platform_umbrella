@@ -1,6 +1,7 @@
 defmodule Platform.Portfolios.Portfolio do
   use Ecto.Schema
   import Ecto.Changeset
+  import Ecto.Query
   alias Platform.Providers.Provider
   alias Platform.Tokens.Token
 

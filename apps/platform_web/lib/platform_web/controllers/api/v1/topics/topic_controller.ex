@@ -42,7 +42,7 @@ defmodule PlatformWeb.V1.Topics.TopicController do
   end
 
   def create(conn, %{"topic" => topic_params}) do
-    with {:ok, %Topic{} = topic} <- Topics.create_topic(topic_params) do
+    with {:ok, Topic = topic} <- Topics.create_topic(topic_params) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.topic_path(conn, :show, topic))
@@ -58,7 +58,7 @@ defmodule PlatformWeb.V1.Topics.TopicController do
   def update(conn, %{"id" => id, "topic" => topic_params}) do
     topic = Topics.get_topic!(id)
 
-    with {:ok, %Topic{} = topic} <- Topics.update_topic(topic, topic_params) do
+    with {:ok, Topic = topic} <- Topics.update_topic(topic, topic_params) do
       render(conn, "show.json", topic: topic)
     end
   end
@@ -66,7 +66,7 @@ defmodule PlatformWeb.V1.Topics.TopicController do
   def delete(conn, %{"id" => id}) do
     topic = Topics.get_topic!(id)
 
-    with {:ok, %Topic{}} <- Topics.delete_topic(topic) do
+    with {:ok, Topic} <- Topics.delete_topic(topic) do
       send_resp(conn, :no_content, "")
     end
   end
