@@ -2,10 +2,9 @@ defmodule Platform.User do
   use Ecto.Schema
   import Ecto.Changeset
 
-
   schema "users" do
-    field :auth_id, :integer
-    field :email, :string
+    field(:auth_id, :integer)
+    field(:email, :string)
 
     timestamps()
   end
