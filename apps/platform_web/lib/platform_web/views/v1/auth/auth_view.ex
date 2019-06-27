@@ -22,6 +22,10 @@ defmodule PlatformWeb.V1.Auth.AuthView do
     %{access_token: auth.params["access_token"]}
   end
 
+  def render("error.json", _) do
+    %{error: "Invalid email or password"}
+  end
+
   def render("auth.json", %{auth: auth}) do
     %{id: auth.id, email: auth.email, password: auth.password}
   end

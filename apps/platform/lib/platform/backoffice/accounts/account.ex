@@ -44,8 +44,8 @@ defmodule Platform.Accounts.Account do
     end
   end
 
-  def validate(%Ecto.Changeset{} = changeset, params \\ %{}) do
-    changeset
+  def changeset(account, params) do
+    account
     |> cast(params, [:user_id])
     |> validate_required([:user_id])
   end

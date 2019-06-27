@@ -57,13 +57,12 @@ defmodule Platform.Accounts.Registration do
     end
   end
 
-  @doc false
+  @doc "Reg Validation level 1 - basic"
   def changeset(registration, params \\ %{}) do
     registration
     |> cast(params, [:source, :first_name, :last_name, :email, :password, :token, :terms_accepted])
     |> Platform.User.validate()
     |> Platform.Auth.Credential.validate()
-    |> Platform.Accounts.Account.validate()
 
     # |> validate_acceptance(:terms_accepted)
   end

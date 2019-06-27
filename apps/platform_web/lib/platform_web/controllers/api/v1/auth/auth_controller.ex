@@ -17,6 +17,11 @@ defmodule PlatformWeb.V1.Auth.AuthController do
     with {:ok, %Account{} = auth} <- Auth.create_account(auth_params),
          {:ok, token, _claims} <- Guardian.Plug.sign_in(conn, auth) do
       conn |> render("jwt.json", jwt: token)
+    else
+      _ ->
+        conn
+        |> put_status(:unprocessable_entity)
+        |> render("error.json")
     end
   end
 
