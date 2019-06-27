@@ -6,6 +6,8 @@ defmodule Platform.Repo.Migrations.CreateUsers do
       add(:email, :string, null: false)
       add(:first_name, :string)
       add(:last_name, :string)
+      add(:phone, :string)
+      add(:avatar_url, :string)
 
       add(:terms_accepted, :boolean)
       add(:confirmation_token, :string)

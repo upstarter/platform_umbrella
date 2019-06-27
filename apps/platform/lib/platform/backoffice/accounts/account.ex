@@ -10,10 +10,10 @@ defmodule Platform.Accounts.Account do
   alias Platform.Accounts.Account
 
   schema "accounts" do
-    field(:user_id, :integer, null: false)
     field(:active, :boolean, default: false)
     field(:status, :string)
 
+    belongs_to(:user, Platform.Users.User)
     timestamps()
   end
 
@@ -23,7 +23,8 @@ defmodule Platform.Accounts.Account do
     |> Platform.Repo.transaction()
     |> case do
       {:ok, %{user: user}} ->
-        {:ok, user}
+        user = user |> Platform.Repo.preload(:accounts)
+        {:ok, List.last(user.accounts)}
 
       # matches when reg validation fails
       {:error, :registration, changeset, _changes_so_far} ->

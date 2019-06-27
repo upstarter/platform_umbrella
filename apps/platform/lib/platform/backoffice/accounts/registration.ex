@@ -2,7 +2,7 @@ defmodule Platform.Accounts.Registration do
   use Ecto.Schema
   import Ecto.Changeset
   alias Platform.Accounts.Registration
-
+  alias Platform.Users.User
   # duplication from other models, but registrar's need this
   # reflect fields on the form
   embedded_schema do
@@ -25,8 +25,8 @@ defmodule Platform.Accounts.Registration do
   end
 
   def insert_user(Platform.Repo, _changes, params) do
-    %Platform.User{}
-    |> Platform.User.changeset(params)
+    %User{}
+    |> User.changeset(params)
     |> Platform.Repo.insert()
   end
 
@@ -61,7 +61,7 @@ defmodule Platform.Accounts.Registration do
   def changeset(registration, params \\ %{}) do
     registration
     |> cast(params, [:source, :first_name, :last_name, :email, :password, :token, :terms_accepted])
-    |> Platform.User.validate()
+    |> User.validate()
     |> Platform.Auth.Credential.validate()
 
     # |> validate_acceptance(:terms_accepted)

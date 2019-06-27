@@ -38,6 +38,7 @@ defmodule PlatformWeb.Mixfile do
     [
       {:phoenix, "~> 1.3.4"},
       {:plug_cowboy, "~> 1.0"},
+      {:guardian, "~> 1.2.1", override: true},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_haml, "~> 0.2", override: true},
       {:phoenix_live_reload, "~> 1.0", only: :dev},

@@ -1,33 +1,34 @@
 defmodule Platform.Users.User do
-  @moduledoc """
-
-    providers of services on the platform
-
-  """
-
   use Ecto.Schema
   import Ecto.Changeset
-  alias Platform.Auth.Account
   alias Platform.Topics.Topic
   alias Platform.Portfolios.Portfolio
 
   schema "users" do
-    field(:first_name, :string)
-    field(:last_name, :string)
     field(:email, :string)
-    field(:phone, :string)
-    field(:avatar_url, :string)
-    field(:auth_account_id, :integer)
-    # field(:description, :string) # provider profile
+    field(:terms_accepted, :boolean)
+
+    has_many(:credentials, Platform.Auth.Credential, on_delete: :delete_all)
+    has_many(:accounts, Platform.Accounts.Account, on_delete: :delete_all)
+    has_many(:groupings, Platform.Groupings.Grouping, on_delete: :delete_all)
+    has_many(:groups, through: [:groupings, :group])
     many_to_many(:topics, Topic, join_through: "users_topics")
     many_to_many(:portfolios, Portfolio, join_through: "users_portfolios")
 
     timestamps()
   end
 
-  def changeset(provider, attrs) do
-    provider
-    |> cast(attrs, [:account_id, :name, :desc])
-    |> validate_required([:account_id, :name, :desc])
+  def validate(%Ecto.Changeset{} = changeset) do
+    changeset
+    |> validate_required([:email])
+    |> validate_length(:email, min: 1, max: 30)
+  end
+
+  @doc false
+  def changeset(user, attrs) do
+    user
+    |> cast(attrs, [:email])
+    |> validate_format(:email, ~r/@/)
+    |> validate_required([:email])
   end
 end

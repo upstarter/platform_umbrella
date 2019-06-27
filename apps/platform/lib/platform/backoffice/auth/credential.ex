@@ -9,7 +9,7 @@ defmodule Platform.Auth.Credential do
     field(:token, :string)
     field(:password, :string, virtual: true)
 
-    belongs_to(:user, Platform.User)
+    belongs_to(:user, Platform.Users.User)
     timestamps()
   end
 

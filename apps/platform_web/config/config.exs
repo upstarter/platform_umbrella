@@ -10,6 +10,15 @@ config :platform_web,
   namespace: PlatformWeb,
   ecto_repos: [Platform.Repo]
 
+config :platform_web, PlatformWeb.Guardian,
+  issuer: "platform",
+  secret_key: "g9JWqDeeXmQxrqqgxsjzW6Ekn7lba0ALVKJVirzk2alB1NhPhvBWOLNA7NCDUqk6",
+  ttl: {1, :days},
+  token_ttl: %{
+    "refresh" => {30, :days},
+    "access" => {1, :days}
+  }
+
 config :ueberauth, Ueberauth,
   providers: [
     linkedin: {Ueberauth.Strategy.Linkedin, [opt1: "value", opts2: "value"]},

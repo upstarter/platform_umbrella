@@ -1,21 +1,22 @@
-defmodule PlatformWeb.V1.Auth.AuthController do
+defmodule PlatformWeb.V1.Auth.RegistrationController do
   use PlatformWeb, :controller
   plug(Ueberauth)
   alias Ueberauth.Strategy.Helpers
 
   alias Platform.Auth
   alias Platform.User
-  alias Platform.Accounts.Account
-  alias Platform.Auth.TokenSerializer
+  alias Platform.Auth.Credential
   alias Platform.Repo
 
+  alias PlatformWeb.Guardian
   # plug(Guardian.Plug.EnsureAuthenticated, handler: PlatformWeb.SessionsController)
-
   plug(:scrub_params, "auth" when action in [:create])
 
-  def create(conn, auth_params = %{"auth" => params}) do
-    with {:ok, %Account{} = auth} <- Auth.create_account(auth_params),
-         {:ok, token, _claims} <- Guardian.Plug.sign_in(conn, auth) do
+  def create(conn, _auth_params = %{"auth" => params}) do
+    with {:ok, %Credential{} = cred} <- Auth.create_account(params),
+         {:ok, token, _claims} <- Guardian.encode_and_sign(cred) do
+      require IEx
+      IEx.pry()
       conn |> render("jwt.json", jwt: token)
     else
       _ ->
@@ -66,7 +67,7 @@ defmodule PlatformWeb.V1.Auth.AuthController do
   # end
 
   def show(conn, %{"id" => id}) do
-    auth = Repo.get!(Account, id)
+    auth = Repo.get!(Credential, id)
     IO.puts("##**********************")
     IO.inspect(auth)
     render(conn, "show.html", auth: auth)

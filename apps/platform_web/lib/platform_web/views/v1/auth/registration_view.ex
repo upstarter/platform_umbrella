@@ -1,21 +1,21 @@
-defmodule PlatformWeb.V1.Auth.AuthView do
+defmodule PlatformWeb.V1.Auth.RegistrationView do
   use PlatformWeb, :view
-  alias PlatformWeb.V1.Auth.AuthView
+  alias PlatformWeb.V1.Auth.RegistrationView
 
   def render("request.json", %{auth: auth}) do
-    %{data: render_one(auth, AuthView, "req.json")}
+    %{data: render_one(auth, RegistrationView, "req.json")}
   end
 
   def render("index.json", %{auths: auths}) do
-    %{data: render_many(auths, AuthView, "auth.json")}
+    %{data: render_many(auths, RegistrationView, "auth.json")}
   end
 
   def render("create.json", %{auths: auths}) do
-    %{data: render_many(auths, AuthView, "auth.json")}
+    %{data: render_many(auths, RegistrationView, "auth.json")}
   end
 
   def render("show.json", %{auth: auth}) do
-    %{data: render_one(auth, AuthView, "auth.json")}
+    %{data: render_one(auth, RegistrationView, "auth.json")}
   end
 
   def render("req.json", %{auth: auth}) do

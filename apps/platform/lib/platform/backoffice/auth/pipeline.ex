@@ -17,9 +17,9 @@ defmodule Platform.Auth.Pipeline do
   # If there is an authorization header, validate it
   plug(Guardian.Plug.VerifyHeader, realm: :none, claims: %{"typ" => "access"})
   # Load the user if either of the verifications worked
-  plug(Guardian.Plug.LoadResource)
+  # plug(Guardian.Plug.LoadResource)
 
-  plug(Guardian.Plug.EnsureAuthenticated)
+  # plug(Guardian.Plug.EnsureAuthenticated)
 end
 
 # # encode a token for a resource

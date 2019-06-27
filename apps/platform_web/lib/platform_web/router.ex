@@ -15,7 +15,7 @@ defmodule PlatformWeb.Router do
   end
 
   pipeline :unauthorized do
-    # plug(Platform.Auth.Pipeline)
+    plug(Platform.Auth.Pipeline)
   end
 
   pipeline :ensure_auth do
@@ -73,8 +73,7 @@ defmodule PlatformWeb.Router do
         get("/:provider/callback", AuthController, :callback)
 
         scope "/" do
-          pipe_through([:unauthorized])
-          post("/create", AuthController, :create)
+          post("/create", RegistrationController, :create)
           post("/sign_in", SessionController, :sign_in)
         end
 
