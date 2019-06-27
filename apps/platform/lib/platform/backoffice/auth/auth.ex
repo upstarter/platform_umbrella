@@ -5,13 +5,16 @@ defmodule Platform.Auth do
 
   import Comeonin.Argon2, only: [checkpw: 2, dummy_checkpw: 0]
 
-  def create_account(attrs) do
-    account = Account.register(attrs)
+  def create_account(params) do
+    converted_params = convert_params(params["auth"])
+    IO.inspect(['converted_params', converted_params])
+    account = Account.register(converted_params)
     # act = Platform.Repo.insert!(account)
     {:ok, account}
   end
 
-  def signin(conn, attrs) do
+  def convert_params(params) do
+    for {key, val} <- params, into: %{source: "password"}, do: {String.to_atom(key), val}
   end
 
   def token_sign_in(conn, email, password) do

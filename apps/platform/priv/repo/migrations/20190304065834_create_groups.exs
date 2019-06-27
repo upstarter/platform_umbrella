@@ -3,12 +3,11 @@ defmodule Platform.Repo.Migrations.CreateGroups do
 
   def change do
     create table(:groups) do
-      add :name, :string
-      add :short_desc, :string
-      add :type, :string
+      add(:name, :string, null: false)
+      add(:short_desc, :string, null: false)
+      add(:type, :string)
 
       timestamps()
     end
-
   end
 end

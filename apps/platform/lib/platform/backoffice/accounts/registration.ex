@@ -6,36 +6,43 @@ defmodule Platform.Accounts.Registration do
   # duplication from other models, but registrar's need this
   # reflect fields on the form
   embedded_schema do
+    field(:source, :string)
     field(:email, :string)
     field(:first_name, :string)
     field(:last_name, :string)
     field(:password, :string)
+    field(:token, :string)
     field(:terms_accepted, :boolean, default: false)
   end
 
   # validate and insert
   def create(%Ecto.Multi{} = multi, params) do
-    require IEx
-    IEx.pry()
-
     multi
     |> Ecto.Multi.run(:registration, __MODULE__, :validate_registration, [params])
     |> Ecto.Multi.run(:user, __MODULE__, :insert_user, [params])
     |> Ecto.Multi.run(:credential, __MODULE__, :insert_credential, [params])
+    |> Ecto.Multi.run(:account, __MODULE__, :insert_account, [params])
   end
 
-  def insert_user(_changes, params) do
-    # struct?
+  def insert_user(Platform.Repo, _changes, params) do
     %Platform.User{}
     |> Platform.User.changeset(params)
     |> Platform.Repo.insert()
   end
 
-  # if either step in insertion fails, this never runs
-  def insert_credential(%{user: user}, params) do
+  def insert_credential(Platform.Repo, %{user: user}, params) do
     user
-    |> Ecto.build_assoc(:credential)
+    |> Ecto.build_assoc(:credentials, source: params[:source])
     |> Platform.Auth.Credential.changeset(params)
+    # ok or error tuple instructs Ecto.Multi how to proceed
+    |> Platform.Repo.insert()
+  end
+
+  # if either earlier step in insertion fails, this never runs
+  def insert_account(Platform.Repo, %{user: user}, params) do
+    user
+    |> Ecto.build_assoc(:accounts, source: params[:source])
+    |> Platform.Accounts.Account.changeset(params)
     # ok or error tuple instructs Ecto.Multi how to proceed
     |> Platform.Repo.insert()
   end
@@ -53,9 +60,11 @@ defmodule Platform.Accounts.Registration do
   @doc false
   def changeset(registration, params \\ %{}) do
     registration
-    |> cast(params, [:first_name, :last_name, :email, :password, :accept_terms])
+    |> cast(params, [:source, :first_name, :last_name, :email, :password, :token, :terms_accepted])
     |> Platform.User.validate()
     |> Platform.Auth.Credential.validate()
-    |> validate_acceptance(:accept_terms)
+    |> Platform.Accounts.Account.validate()
+
+    # |> validate_acceptance(:terms_accepted)
   end
 end

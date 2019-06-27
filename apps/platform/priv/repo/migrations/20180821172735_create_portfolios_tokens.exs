@@ -3,8 +3,8 @@ defmodule Platform.Repo.Migrations.CreatePortfoliosTokens do
 
   def change do
     create table(:portfolios_tokens) do
-      add(:portfolio_id, references(:portfolios))
-      add(:token_id, references(:tokens))
+      add(:portfolio_id, references(:portfolios), null: false)
+      add(:token_id, references(:tokens), null: false)
       add(:weight, :integer, default: 0)
       timestamps()
     end

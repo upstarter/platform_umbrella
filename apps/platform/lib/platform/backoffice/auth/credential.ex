@@ -4,37 +4,45 @@ defmodule Platform.Auth.Credential do
 
   alias Platform.Auth.Credential
 
-  # In practical terms, it may be helpful to have an internal global identifier
-  # for every user and link their profile and authentication identity via that
-  # ID as opposed to piling it all in a single record.
   schema "credentials" do
     field(:source, :string)
     field(:token, :string)
-
     field(:password, :string, virtual: true)
 
     belongs_to(:user, Platform.User)
     timestamps()
   end
 
-  def changeset(%Credential{} = credential, params \\ %{}) do
-    credential
-    |> cast(params, [:password])
-    |> validate()
-    |> unique_constraint([:user_id, :source])
-
-    # |> encrypt_password()
-  end
-
-  def validate(%Ecto.Changeset{data: %{source: "password"}} = changeset) do
+  def validate(%Ecto.Changeset{changes: %{password: _pwd}} = changeset) do
     validate_password(changeset)
   end
 
   def validate_password(%Ecto.Changeset{} = changeset) do
     changeset
     |> validate_required([:password])
-    |> validate_confirmation(:password, message: "does not match password", required: true)
     |> validate_length(:password, min: 8, max: 40)
+  end
+
+  def encrypt_password(changeset) do
+    # require IEx
+    # IEx.pry()
+
+    case changeset do
+      %Ecto.Changeset{valid?: true, changes: %{password: pass}} ->
+        put_change(changeset, :token, Comeonin.Bcrypt.hashpwsalt(pass))
+
+      _ ->
+        changeset
+    end
+  end
+
+  def changeset(%Credential{} = credential, params \\ %{}) do
+    credential
+    |> cast(params, [:password])
+    |> validate()
+    |> encrypt_password()
+    |> validate_required([:source, :token, :user_id])
+    |> unique_constraint(:credentials, ["source", "token", "user_id"])
   end
 
   @doc false

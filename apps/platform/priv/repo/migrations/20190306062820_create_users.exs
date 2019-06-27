@@ -5,10 +5,10 @@ defmodule Platform.Repo.Migrations.CreateUsers do
     create table(:users) do
       add(:first_name, :string)
       add(:last_name, :string)
-      add(:email, :string)
+      add(:email, :string, null: false)
       add(:phone, :string)
       add(:avatar_url, :string)
-      add(:auth_account_id, :integer)
+      add(:account_id, :integer, null: false)
 
       add(:terms_accepted, :boolean)
       add(:confirmation_token, :string)

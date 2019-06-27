@@ -3,17 +3,24 @@ defmodule Platform.User do
   import Ecto.Changeset
 
   schema "users" do
-    field(:auth_id, :integer)
     field(:email, :string)
+    field(:terms_accepted, :boolean)
 
     has_many(:credentials, Platform.Auth.Credential)
     timestamps()
   end
 
+  def validate(%Ecto.Changeset{} = changeset) do
+    changeset
+    |> validate_required([:email])
+    |> validate_length(:email, min: 1, max: 30)
+  end
+
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:email, :auth_account_id])
-    |> validate_required([:email, :auth_account_id])
+    |> cast(attrs, [:email])
+    |> validate_format(:email, ~r/@/)
+    |> validate_required([:email])
   end
 end

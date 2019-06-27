@@ -3,8 +3,8 @@ defmodule Platform.Repo.Migrations.CreateTopicsTokens do
 
   def change do
     create table(:topics_tokens) do
-      add(:topic_id, references(:topics))
-      add(:token_id, references(:tokens))
+      add(:topic_id, references(:topics), null: false)
+      add(:token_id, references(:tokens), null: false)
       timestamps()
     end
 

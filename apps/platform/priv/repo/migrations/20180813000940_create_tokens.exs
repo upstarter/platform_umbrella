@@ -3,7 +3,7 @@ defmodule Platform.Repo.Migrations.CreateTokens do
 
   def change do
     create table(:tokens) do
-      add(:symbol, :string)
+      add(:symbol, :string, null: false)
       add(:name, :string)
       add(:site, :string)
       add(:description, :text)

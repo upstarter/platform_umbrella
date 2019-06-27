@@ -10,6 +10,10 @@ defmodule PlatformWeb.V1.Auth.AuthView do
     %{data: render_many(auths, AuthView, "auth.json")}
   end
 
+  def render("create.json", %{auths: auths}) do
+    %{data: render_many(auths, AuthView, "auth.json")}
+  end
+
   def render("show.json", %{auth: auth}) do
     %{data: render_one(auth, AuthView, "auth.json")}
   end

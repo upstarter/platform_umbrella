@@ -60,21 +60,6 @@ defmodule PlatformWeb.V1.Auth.AuthController do
   #   signin(conn, changeset)
   # end
 
-  # defp signin(conn, changeset) do
-  #   case insert_or_update_user(changeset) do
-  #     {:ok, user} ->
-  #       conn
-  #       |> put_flash(:info, "Welcome back")
-  #       |> put_session(:user_id, user.id)
-  #       |> redirect(to: developer_path(conn, :index))
-  #
-  #     {:error, _reason} ->
-  #       conn
-  #       |> put_flash(:error, "error signing in")
-  #       |> redirect(to: developer_path(conn, :index))
-  #   end
-  # end
-
   def show(conn, %{"id" => id}) do
     auth = Repo.get!(Account, id)
     IO.puts("##**********************")

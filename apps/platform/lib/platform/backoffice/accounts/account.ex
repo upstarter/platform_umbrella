@@ -1,14 +1,20 @@
 defmodule Platform.Accounts.Account do
   @moduledoc """
 
-    used by backoffice too
+    User's can have many accounts
 
   """
 
-  import Ecto.Schema
-  defstruct []
-
+  use Ecto.Schema
+  import Ecto.Changeset
   alias Platform.Accounts.Account
+
+  schema "accounts" do
+    field(:status, :string)
+    field(:active, :boolean)
+
+    timestamps()
+  end
 
   def register(params) do
     Ecto.Multi.new()
@@ -35,5 +41,10 @@ defmodule Platform.Accounts.Account do
 
         {:error, registration_changeset}
     end
+  end
+
+  def validate(%Ecto.Changeset{} = changeset) do
+    changeset
+    |> validate_required([:status])
   end
 end

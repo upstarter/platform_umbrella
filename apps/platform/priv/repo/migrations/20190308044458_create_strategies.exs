@@ -3,10 +3,10 @@ defmodule Platform.Repo.Migrations.CreateStrategies do
 
   def change do
     create table(:strategies) do
-      add(:name, :string)
-      add(:short_desc, :string)
+      add(:name, :string, null: false)
+      add(:short_desc, :string, null: false)
       add(:long_desc, :text)
-      add(:type, :string)
+      add(:type, :string, null: false)
       add(:tagging_id, references(:taggings))
 
       timestamps()
