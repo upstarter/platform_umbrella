@@ -1,4 +1,4 @@
-defmodule PlatformWeb.Guardian do
+defmodule PlatformWeb.Auth.Guardian do
   use Guardian, otp_app: :platform_web
   alias Platform.Auth.Credential
 

@@ -1,5 +1,5 @@
-defmodule Platform.Auth.Pipeline do
-  alias Platform.Auth.ErrorHandler
+defmodule PlatformWeb.Auth.Pipeline do
+  alias PlatformWeb.ErrorHandler
 
   @moduledoc """
 
@@ -10,7 +10,7 @@ defmodule Platform.Auth.Pipeline do
   use Guardian.Plug.Pipeline,
     otp_app: :platform,
     error_handler: ErrorHandler,
-    module: Platform.Auth.TokenSerializer
+    module: PlatformWeb.Auth.Guardian
 
   # If there is a session token, validate it
   plug(Guardian.Plug.VerifySession, claims: %{"typ" => "access"})

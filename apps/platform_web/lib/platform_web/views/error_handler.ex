@@ -1,4 +1,4 @@
-defmodule Platform.Auth.ErrorHandler do
+defmodule PlatformWeb.ErrorHandler do
   @moduledoc """
 
     used by backoffice too

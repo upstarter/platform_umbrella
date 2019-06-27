@@ -10,7 +10,7 @@ config :platform_web,
   namespace: PlatformWeb,
   ecto_repos: [Platform.Repo]
 
-config :platform_web, PlatformWeb.Guardian,
+config :platform_web, PlatformWeb.Auth.Guardian,
   issuer: "platform",
   secret_key: "g9JWqDeeXmQxrqqgxsjzW6Ekn7lba0ALVKJVirzk2alB1NhPhvBWOLNA7NCDUqk6",
   ttl: {1, :days},

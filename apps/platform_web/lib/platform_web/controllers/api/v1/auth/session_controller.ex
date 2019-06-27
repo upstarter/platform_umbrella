@@ -4,7 +4,7 @@ defmodule PlatformWeb.V1.Auth.SessionController do
   alias Platform.Auth
   alias Platform.Auth.Credential
   alias Platform.Repo
-  alias PlatformWeb.Guardian
+  alias PlatformWeb.Auth.Guardian
 
   plug(:scrub_params, "auth" when action in [:sign_in])
 
@@ -22,7 +22,7 @@ defmodule PlatformWeb.V1.Auth.SessionController do
   end
 
   def create(conn, %{"session" => session_params}) do
-    case PhoenixPair.Session.authenticate(session_params) do
+    case PlatformWeb.Auth.Session.authenticate(session_params) do
       {:ok, user} ->
         {:ok, jwt, _full_claims} =
           user

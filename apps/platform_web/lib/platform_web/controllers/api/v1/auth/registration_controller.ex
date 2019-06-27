@@ -8,7 +8,7 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
   alias Platform.Auth.Credential
   alias Platform.Repo
 
-  alias PlatformWeb.Guardian
+  alias PlatformWeb.Auth.Guardian
   # plug(Guardian.Plug.EnsureAuthenticated, handler: PlatformWeb.SessionsController)
   plug(:scrub_params, "auth" when action in [:create])
 

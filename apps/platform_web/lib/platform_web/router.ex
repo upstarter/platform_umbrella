@@ -15,7 +15,7 @@ defmodule PlatformWeb.Router do
   end
 
   pipeline :unauthorized do
-    plug(Platform.Auth.Pipeline)
+    plug(PlatformWeb.Auth.Pipeline)
   end
 
   pipeline :ensure_auth do
