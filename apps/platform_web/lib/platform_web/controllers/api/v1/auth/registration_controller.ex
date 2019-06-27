@@ -15,8 +15,6 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
   def create(conn, _auth_params = %{"auth" => params}) do
     with {:ok, %Credential{} = cred} <- Auth.create_account(params),
          {:ok, token, _claims} <- Guardian.encode_and_sign(cred) do
-      require IEx
-      IEx.pry()
       conn |> render("jwt.json", jwt: token)
     else
       _ ->

@@ -2,22 +2,22 @@ defmodule PlatformWeb.V1.Auth.SessionController do
   use PlatformWeb, :controller
 
   alias Platform.Auth
-  alias Platform.Auth.Account
-  alias Platform.Auth.TokenSerializer
+  alias Platform.Auth.Credential
   alias Platform.Repo
+  alias PlatformWeb.Guardian
 
   plug(:scrub_params, "auth" when action in [:sign_in])
 
   def sign_in(conn, %{"auth" => %{"email" => email, "password" => pass}}) do
     with {:ok, auth} <- Auth.find_and_confirm_password(email, pass),
          {:ok, jwt, _full_claims} <-
-           TokenSerializer.encode_and_sign(auth, %{}, token_type: "access"),
+           Guardian.encode_and_sign(auth, %{}, token_type: "access"),
          do: render(conn, "sign_in.json", auth: auth, jwt: jwt)
   end
 
   def sign_out(conn, _params) do
     with token <- Guardian.Plug.current_token(),
-         {:ok, _claims} <- TokenSerializer.revoke(token),
+         {:ok, _claims} <- Guardian.revoke(token),
          do: render(conn, "sign_out.json", [])
   end
 
