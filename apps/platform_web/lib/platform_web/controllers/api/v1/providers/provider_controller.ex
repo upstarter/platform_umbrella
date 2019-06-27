@@ -1,40 +1,40 @@
 defmodule PlatformWeb.V1.Providers.ProviderController do
   use PlatformWeb, :controller
 
-  alias Platform.Providers
-  alias Platform.Providers.Provider
-
+  alias Platform.Users
+  alias Platform.Users.User
 
   def index(conn, _params) do
-    providers = Providers.list_providers()
-    render(conn, "index.json", providers: providers)
+    users = Users.list_users()
+    render(conn, "index.json", users: users)
   end
 
-  def create(conn, %{"provider" => provider_params}) do
-    with {:ok, %Provider{} = provider} <- Providers.create_provider(provider_params) do
+  def create(conn, %{"user" => user_params}) do
+    with {:ok, %User{} = user} <- Users.create_user(user_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", Routes.provider_path(conn, :show, provider))
-      |> render("show.json", provider: provider)
+      |> put_resp_header("location", Routes.user_path(conn, :show, user))
+      |> render("show.json", user: user)
     end
   end
 
   def show(conn, %{"id" => id}) do
-    provider = Providers.get_provider!(id)
-    render(conn, "show.json", provider: provider)
+    user = Users.get_user!(id)
+    render(conn, "show.json", user: user)
   end
 
-  def update(conn, %{"id" => id, "provider" => provider_params}) do
-    provider = Providers.get_provider!(id)
+  def update(conn, %{"id" => id, "user" => user_params}) do
+    user = Users.get_user!(id)
 
-    with {:ok, %Provider{} = provider} <- Providers.update_provider(provider, provider_params) do
-      render(conn, "show.json", provider: provider)
+    with {:ok, %User{} = user} <- Users.update_user(user, user_params) do
+      render(conn, "show.json", user: user)
     end
   end
 
   def delete(conn, %{"id" => id}) do
-    provider = Providers.get_provider!(id)
-    with {:ok, %Provider{}} <- Providers.delete_provider(provider) do
+    user = Users.get_user!(id)
+
+    with {:ok, %User{}} <- Users.delete_user(user) do
       send_resp(conn, :no_content, "")
     end
   end

@@ -9,7 +9,7 @@ defmodule Platform.Marketing do
   alias Platform.Repo
 
   alias Platform.Marketing.Lead
-  alias Platform.Providers.Provider
+  alias Platform.Users.User
 
   @doc """
   Returns the list of leads.
@@ -55,7 +55,10 @@ defmodule Platform.Marketing do
   def create_lead(attrs \\ %{}) do
     case attrs["userType"] do
       "provider" ->
-        %Provider{} |> Provider.changeset(attrs) |> Repo.insert()
+        %User{}
+        |> Ecto.build_assoc(:groupings, member_type: 'User', group_type: 'Provider')
+        |> User.changeset(attrs)
+        |> Repo.insert()
 
       _ ->
         %Lead{} |> Lead.changeset(attrs) |> Repo.insert()

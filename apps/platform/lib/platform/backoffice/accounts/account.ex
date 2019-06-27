@@ -10,8 +10,9 @@ defmodule Platform.Accounts.Account do
   alias Platform.Accounts.Account
 
   schema "accounts" do
+    field(:user_id, :integer, null: false)
+    field(:active, :boolean, default: false)
     field(:status, :string)
-    field(:active, :boolean)
 
     timestamps()
   end
@@ -43,8 +44,9 @@ defmodule Platform.Accounts.Account do
     end
   end
 
-  def validate(%Ecto.Changeset{} = changeset) do
+  def validate(%Ecto.Changeset{} = changeset, params \\ %{}) do
     changeset
-    |> validate_required([:status])
+    |> cast(params, [:user_id])
+    |> validate_required([:user_id])
   end
 end

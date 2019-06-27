@@ -3,12 +3,9 @@ defmodule Platform.Repo.Migrations.CreateUsers do
 
   def change do
     create table(:users) do
+      add(:email, :string, null: false)
       add(:first_name, :string)
       add(:last_name, :string)
-      add(:email, :string, null: false)
-      add(:phone, :string)
-      add(:avatar_url, :string)
-      add(:account_id, :integer, null: false)
 
       add(:terms_accepted, :boolean)
       add(:confirmation_token, :string)

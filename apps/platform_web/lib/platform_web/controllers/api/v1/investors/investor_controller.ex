@@ -1,40 +1,40 @@
 defmodule PlatformWeb.V1.Investors.InvestorController do
   use PlatformWeb, :controller
 
-  alias Platform.Investors
-  alias Platform.Investors.Investor
+  alias Platform.Users
+  alias Platform.Users.User
 
   def index(conn, _params) do
-    investors = Investors.list_investors()
-    render(conn, "index.json", investors: investors)
+    users = Users.list_users()
+    render(conn, "index.json", users: users)
   end
 
-  def create(conn, %{"investor" => investor_params}) do
-    with {:ok, %Investor{} = investor} <- Investors.create_investor(investor_params) do
+  def create(conn, %{"user" => user_params}) do
+    with {:ok, %User{} = user} <- Users.create_user(user_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", Routes.investor_path(conn, :show, investor))
-      |> render("show.json", investor: investor)
+      |> put_resp_header("location", Routes.user_path(conn, :show, user))
+      |> render("show.json", user: user)
     end
   end
 
   def show(conn, %{"id" => id}) do
-    investor = Investors.get_investor!(id)
-    render(conn, "show.json", investor: investor)
+    user = Users.get_user!(id)
+    render(conn, "show.json", user: user)
   end
 
-  def update(conn, %{"id" => id, "investor" => investor_params}) do
-    investor = Investors.get_investor!(id)
+  def update(conn, %{"id" => id, "user" => user_params}) do
+    user = Users.get_user!(id)
 
-    with {:ok, %Investor{} = investor} <- Investors.update_investor(investor, investor_params) do
-      render(conn, "show.json", investor: investor)
+    with {:ok, %User{} = user} <- Users.update_user(user, user_params) do
+      render(conn, "show.json", user: user)
     end
   end
 
   def delete(conn, %{"id" => id}) do
-    investor = Investors.get_investor!(id)
+    user = Users.get_user!(id)
 
-    with {:ok, %Investor{}} <- Investors.delete_investor(investor) do
+    with {:ok, %User{}} <- Users.delete_user(user) do
       send_resp(conn, :no_content, "")
     end
   end

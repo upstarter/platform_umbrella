@@ -12,7 +12,7 @@ defmodule Platform.Topics.Topic do
 
   import Ecto.Changeset
 
-  alias Platform.Providers.Provider
+  alias Platform.Users.User
   alias Platform.Tokens.Token
   alias Platform.Topics.Topic
   alias Topic.TitleSlug
@@ -25,7 +25,7 @@ defmodule Platform.Topics.Topic do
     field(:slug, TitleSlug.Type)
 
     belongs_to(:parent, Topic)
-    many_to_many(:users, Provider, join_through: "users_topics")
+    many_to_many(:users, User, join_through: "users_topics")
     many_to_many(:tokens, Token, join_through: "topics_tokens")
     timestamps()
   end

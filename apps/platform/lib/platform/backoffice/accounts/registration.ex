@@ -41,7 +41,7 @@ defmodule Platform.Accounts.Registration do
   # if either earlier step in insertion fails, this never runs
   def insert_account(Platform.Repo, %{user: user}, params) do
     user
-    |> Ecto.build_assoc(:accounts, source: params[:source])
+    |> Ecto.build_assoc(:accounts)
     |> Platform.Accounts.Account.changeset(params)
     # ok or error tuple instructs Ecto.Multi how to proceed
     |> Platform.Repo.insert()

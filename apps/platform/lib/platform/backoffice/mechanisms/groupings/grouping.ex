@@ -2,13 +2,12 @@ defmodule Platform.Groupings.Grouping do
   use Ecto.Schema
   import Ecto.Changeset
 
-
   schema "groupings" do
-    field :group_id, :integer
-    field :group_type, :string
-    field :member_id, :integer
-    field :member_type, :string
+    field(:group_type, :string)
+    field(:member_type, :string)
 
+    belongs_to(:group, Platform.Groupings.Group)
+    belongs_to(:member, Platform.Users.User)
     timestamps()
   end
 

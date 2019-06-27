@@ -3,13 +3,12 @@ defmodule Platform.Repo.Migrations.CreateGroupings do
 
   def change do
     create table(:groupings) do
-      add :member_id, :integer
-      add :member_type, :string
-      add :group_id, :integer
-      add :group_type, :string
+      add(:member_id, :integer, null: false)
+      add(:member_type, :string, null: false)
+      add(:group_id, :integer, null: false)
+      add(:group_type, :string, null: false)
 
       timestamps()
     end
-
   end
 end

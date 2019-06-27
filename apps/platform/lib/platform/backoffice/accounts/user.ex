@@ -6,7 +6,11 @@ defmodule Platform.User do
     field(:email, :string)
     field(:terms_accepted, :boolean)
 
-    has_many(:credentials, Platform.Auth.Credential)
+    has_many(:credentials, Platform.Auth.Credential, on_delete: :delete_all)
+    has_many(:accounts, Platform.Accounts.Account, on_delete: :delete_all)
+    has_many(:groupings, Platform.Groupings.Grouping, on_delete: :delete_all)
+    has_many(:groups, through: [:groupings, :group])
+
     timestamps()
   end
 
