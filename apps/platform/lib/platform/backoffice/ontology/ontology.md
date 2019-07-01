@@ -47,13 +47,13 @@ Benefits:
 
   Goal:
     Capture and usage of engineers and experts know-how
-    Desicision Support for choosing right solution
+    Decision Support for choosing right solution
     Increase Customer Satisfaction
     Dessimate Knowledge
 
   Solution:
     Build models for various aspects of business
-      Each maching, components, attributes
+      Each machine, components, attributes
       Process pathways
       Products
 
