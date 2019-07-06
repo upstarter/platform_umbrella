@@ -36,17 +36,18 @@ defmodule Platform.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:arbor, "~> 1.1.0"},
+      {:argon2_elixir, "~> 1.2"},
+      {:bcrypt_elixir, "~> 1.0"},
+      {:comeonin, "~> 4.0"},
+      {:ecto_sql, "~> 3.0"},
+      {:ecto_autoslug_field, "~> 1.0"},
+      {:guardian, "~> 1.2.1", override: true},
       {:jason, "~> 1.1", override: true},
       {:poison, "~> 3.1", override: true},
-      {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
-      {:timex, "~> 3.0"},
-      {:arbor, "~> 1.1.0"},
-      {:comeonin, "~> 4.0"},
-      {:bcrypt_elixir, "~> 1.0"},
-      {:argon2_elixir, "~> 1.2"},
-      {:guardian, "~> 1.2.1", override: true},
-      {:ecto_autoslug_field, "~> 1.0"}
+      {:timex, "~> 3.0"}
+      # {:votex, "~> 0.3.0"}
     ]
   end
 
