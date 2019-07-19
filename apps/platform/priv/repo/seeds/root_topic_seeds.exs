@@ -28,8 +28,7 @@ root_topics = [
   %Topic{
     name: "Behavioral Finance & Investing Psychology",
     id: 111,
-    description:
-      "Psychological and Technosocial aspects of financial & capital market participation.",
+    description: "Psychological and Technosocial aspects of financial & capital markets.",
     parent_id: nil
   },
   %Topic{

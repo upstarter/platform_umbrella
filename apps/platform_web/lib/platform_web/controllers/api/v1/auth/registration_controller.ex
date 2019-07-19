@@ -4,7 +4,7 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
   alias Ueberauth.Strategy.Helpers
 
   alias Platform.Auth
-  alias Platform.User
+  alias Platform.Users.User
   alias Platform.Auth.Credential
   alias Platform.Repo
 
@@ -13,11 +13,12 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
   plug(:scrub_params, "auth" when action in [:create])
 
   def create(conn, _auth_params = %{"auth" => params}) do
-    with {:ok, %Credential{} = cred} <- Auth.create_account(params),
-         {:ok, token, _claims} <- Guardian.encode_and_sign(cred) do
-      conn |> render("jwt.json", jwt: token)
+    with {:ok, %{} = user_info} <- Auth.create_account(params),
+         {:ok, token, _claims} <- Guardian.encode_and_sign(List.last(user_info.credentials)) do
+      conn |> render("jwt.json", jwt: token, user_info: Map.delete(user_info, :credentials))
     else
       _ ->
+        # IO.puts(["$$$$$$$$$$$$$$$$", conn])
         conn
         |> put_status(:unprocessable_entity)
         |> render("error.json")

@@ -8,14 +8,22 @@ defmodule Platform.Auth do
 
   def create_account(params) do
     converted_params = convert_params(params)
-    IO.inspect(['converted_params', converted_params])
 
-    # returns {:ok, account} or {:error }
+    # returns {:ok, account} or {:error, changeset }
     {:ok, acct} = Account.register(converted_params)
     acct = acct |> Repo.preload(:user)
-    user = acct.user |> Repo.preload(:credentials)
-    cred = List.last(user.credentials)
-    {:ok, cred}
+    user = acct.user |> Repo.preload([:credentials, :topics, :groups])
+    u = Map.from_struct(user)
+    filters = [:id, :email, :topics, :groups, :credentials]
+
+    user_info =
+      Enum.filter(u, fn {k, _} ->
+        Enum.member?(filters, k)
+      end)
+      |> Enum.into(%{})
+
+    IO.inspect(['^^^^^^^^^^^^^^', user_info])
+    {:ok, user_info}
   end
 
   def token_sign_in(conn, email, password) do

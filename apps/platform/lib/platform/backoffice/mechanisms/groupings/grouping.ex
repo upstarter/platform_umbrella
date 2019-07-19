@@ -6,7 +6,7 @@ defmodule Platform.Groupings.Grouping do
     field(:group_type, :string)
     field(:member_type, :string)
 
-    belongs_to(:group, Platform.Groupings.Group)
+    belongs_to(:group, Platform.Groups.Group)
     belongs_to(:member, Platform.Users.User)
     timestamps()
   end

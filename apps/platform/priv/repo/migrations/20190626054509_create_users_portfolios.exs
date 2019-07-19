@@ -3,8 +3,8 @@ defmodule Platform.Repo.Migrations.CreateUserPortfolios do
 
   def change do
     create table(:user_portfolios) do
-      add(:portfolio_id, references(:portfolios), null: false)
-      add(:user_id, references(:users), null: false)
+      add(:portfolio_id, references(:portfolios, on_delete: :delete_all), null: false)
+      add(:user_id, references(:users, on_delete: :delete_all), null: false)
 
       timestamps()
     end

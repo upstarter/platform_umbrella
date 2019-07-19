@@ -19,7 +19,7 @@ defmodule PlatformWeb.Router do
   end
 
   pipeline :ensure_auth do
-    # plug(Guardian.Plug.EnsureAuthenticated)
+    plug(Guardian.Plug.EnsureAuthenticated)
   end
 
   scope "/", PlatformWeb do

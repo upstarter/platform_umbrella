@@ -22,9 +22,9 @@ defmodule Platform.Topics.Topic do
     field(:description, :string)
     field(:name, :string)
     field(:weight, :integer)
+    field(:parent_id, :integer)
     field(:slug, TitleSlug.Type)
 
-    belongs_to(:parent, Topic)
     many_to_many(:users, User, join_through: "users_topics")
     many_to_many(:tokens, Token, join_through: "topics_tokens")
     timestamps()

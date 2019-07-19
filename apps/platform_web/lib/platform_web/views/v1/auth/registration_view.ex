@@ -39,7 +39,7 @@ defmodule PlatformWeb.V1.Auth.RegistrationView do
     }
   end
 
-  def render("jwt.json", %{jwt: jwt}) do
-    %{jwt: jwt}
+  def render("jwt.json", %{jwt: jwt, user_info: user_info}) do
+    %{jwt: jwt, user_info: user_info}
   end
 end
