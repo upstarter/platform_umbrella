@@ -14,7 +14,7 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
 
   def create(conn, _auth_params = %{"auth" => params}) do
     with {:ok, %{} = user_info} <- Auth.create_account(params),
-         {:ok, token, _claims} <- Guardian.encode_and_sign(List.last(user_info.credentials)) do
+         {:ok, token, _claims} <- unpack_user_info(user_info, conn) do
       conn |> render("jwt.json", jwt: token, user_info: Map.delete(user_info, :credentials))
     else
       _ ->
@@ -23,6 +23,24 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
         |> put_status(:unprocessable_entity)
         |> render("error.json")
     end
+  end
+
+  def unpack_user_info(user_info, conn) do
+    cred = List.last(user_info.credentials)
+    {:ok, token, claims} = Guardian.encode_and_sign(cred)
+    conn = Guardian.Plug.sign_in(conn, cred)
+    user = Repo.get_by(User, id: cred.user_id)
+    conn = assign(conn, :current_user, user)
+
+    IO.inspect([
+      'gardian',
+      token,
+      Guardian.Plug.current_resource(conn),
+      conn.assigns,
+      user
+    ])
+
+    {:ok, token, claims}
   end
 
   def request(conn, _params) do

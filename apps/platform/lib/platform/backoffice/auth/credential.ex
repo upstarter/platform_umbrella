@@ -14,22 +14,20 @@ defmodule Platform.Auth.Credential do
   end
 
   def validate(%Ecto.Changeset{changes: %{password: _pwd}} = changeset) do
-    validate_password(changeset)
+    Credential.validate_password(changeset)
   end
 
   def validate_password(%Ecto.Changeset{} = changeset) do
     changeset
     |> validate_required([:password])
     |> validate_length(:password, min: 8, max: 40)
+    |> Credential.encrypt_password()
   end
 
   def encrypt_password(changeset) do
-    # require IEx
-    # IEx.pry()
-
     case changeset do
       %Ecto.Changeset{valid?: true, changes: %{password: pass}} ->
-        put_change(changeset, :token, Comeonin.Bcrypt.hashpwsalt(pass))
+        put_change(changeset, :token, Comeonin.Argon2.hashpwsalt(pass))
 
       _ ->
         changeset
@@ -38,17 +36,9 @@ defmodule Platform.Auth.Credential do
 
   def changeset(%Credential{} = credential, params \\ %{}) do
     credential
-    |> cast(params, [:password])
-    |> validate()
-    |> encrypt_password()
+    |> cast(params, [:password, :token, :user_id])
+    |> Credential.validate()
     |> validate_required([:source, :token, :user_id])
-    |> unique_constraint(:credentials, ["source", "token", "user_id"])
-  end
-
-  @doc false
-  def changeset(credential, attrs) do
-    credential
-    |> cast(attrs, [:source, :token, :user_id])
-    |> validate_required([:source, :token, :user_id])
+    |> unique_constraint(:credentials, ["source", "user_id"])
   end
 end

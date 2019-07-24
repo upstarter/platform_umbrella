@@ -38,6 +38,7 @@ defmodule Platform.Users.User do
     |> cast(params, [:email])
     |> validate_format(:email, ~r/@/)
     |> validate_required([:email, :topics])
+    |> unique_constraint(:email)
   end
 
   @doc false

@@ -13,6 +13,7 @@ config :platform_web, PlatformWeb.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
+  secret_key_base: "9Fr9IyYiWFpb9p8eP54ev2V/sd2TOhmGpzzkxjqLO+JNQrZ/nAqyyDwya37YH9aW",
   pubsub: [adapter: Phoenix.PubSub.PG2, name: PlatformWeb.PubSub]
 
 # It also supports custom adapter configuration:

@@ -6,9 +6,11 @@ defmodule PlatformWeb.V1.Auth.SessionController do
   alias Platform.Repo
   alias PlatformWeb.Auth.Guardian
 
-  plug(:scrub_params, "auth" when action in [:sign_in])
+  plug(:scrub_params, "session" when action in [:sign_in])
 
-  def sign_in(conn, %{"auth" => %{"email" => email, "password" => pass}}) do
+  def sign_in(conn, %{
+        "session" => %{"username" => email, "password" => pass, "remember" => remember}
+      }) do
     with {:ok, auth} <- Auth.find_and_confirm_password(email, pass),
          {:ok, jwt, _full_claims} <-
            Guardian.encode_and_sign(auth, %{}, token_type: "access"),
