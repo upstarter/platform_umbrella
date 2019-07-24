@@ -2,17 +2,36 @@ defmodule PlatformWeb.V1.Auth.SessionController do
   use PlatformWeb, :controller
 
   alias Platform.Auth
-  alias Platform.Auth.Credential
+  alias Platform.Users.User
   alias Platform.Repo
   alias PlatformWeb.Auth.Guardian
 
-  plug(:scrub_params, "auth" when action in [:sign_in])
+  plug(:scrub_params, "session" when action in [:sign_in])
 
-  def sign_in(conn, %{"auth" => %{"email" => email, "password" => pass}}) do
-    with {:ok, auth} <- Auth.find_and_confirm_password(email, pass),
-         {:ok, jwt, _full_claims} <-
-           Guardian.encode_and_sign(auth, %{}, token_type: "access"),
-         do: render(conn, "sign_in.json", auth: auth, jwt: jwt)
+  def sign_in(conn, %{
+        "session" => %{"username" => email, "password" => pass, "remember" => remember}
+      }) do
+    with {:ok, cred} <- Auth.find_and_confirm_password(email, pass),
+         {:ok, jwt, _full_claims, _user, conn} <- authenticate(conn, cred) do
+      render(conn, "sign_in.json", jwt: jwt)
+    else
+      _ ->
+        # IO.puts(["$$$$$$$$$$$$$$$$", conn])
+        conn
+        |> put_status(:unprocessable_entity)
+        |> render("error.json")
+    end
+  end
+
+  def authenticate(conn, cred) do
+    {:ok, jwt, _full_claims} = Guardian.encode_and_sign(cred, %{}, token_type: "access")
+
+    conn = Guardian.Plug.sign_in(conn, cred)
+    user = Repo.get_by(User, id: cred.user_id)
+
+    conn = assign(conn, :current_user, user)
+
+    {:ok, jwt, _full_claims, user, conn}
   end
 
   def sign_out(conn, _params) do

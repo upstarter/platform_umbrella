@@ -32,7 +32,7 @@ defmodule Platform.Accounts.Account do
         {:error, changeset}
 
       # shared schema magic
-      # matches when user or credential failed op
+      # matches when user, user_topics or credential failed op
       # registration_changeset = successful changes so far
       {:error, _failed_op, changeset, %{registration: registration_changeset}} ->
         registration_changeset = %{

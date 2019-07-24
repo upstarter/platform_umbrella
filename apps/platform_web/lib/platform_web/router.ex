@@ -14,12 +14,8 @@ defmodule PlatformWeb.Router do
     plug(:fetch_session)
   end
 
-  pipeline :unauthorized do
-    plug(PlatformWeb.Auth.Pipeline)
-  end
-
   pipeline :ensure_auth do
-    plug(Guardian.Plug.EnsureAuthenticated)
+    plug(PlatformWeb.Auth.Pipeline)
   end
 
   scope "/", PlatformWeb do
@@ -37,6 +33,11 @@ defmodule PlatformWeb.Router do
       # LEADS
       post("/leads", LeadController, :create)
       get("/blog_posts", BlogController, :blog_posts)
+
+      scope "/" do
+        pipe_through(:ensure_auth)
+        post("/proposals", Users.ProposalsController, :create)
+      end
 
       # PROVIDERS
       scope "/", Providers do

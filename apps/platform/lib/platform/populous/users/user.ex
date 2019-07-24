@@ -5,6 +5,17 @@ defmodule Platform.Users.User do
   alias Platform.Topics.Topic
   alias Platform.Portfolios.Portfolio
 
+  # @type t :: %__MODULE__{
+  #         id: integer,
+  #         email: String.t(),
+  #         password_hash: String.t(),
+  #         confirmed_at: DateTime.t() | nil,
+  #         reset_sent_at: DateTime.t() | nil,
+  #         sessions: [Session.t()] | %Ecto.Association.NotLoaded{},
+  #         inserted_at: DateTime.t(),
+  #         updated_at: DateTime.t()
+  #       }
+
   schema "users" do
     field(:email, :string)
     field(:terms_accepted, :boolean)
@@ -38,6 +49,7 @@ defmodule Platform.Users.User do
     |> cast(params, [:email])
     |> validate_format(:email, ~r/@/)
     |> validate_required([:email, :topics])
+    |> unique_constraint(:email)
   end
 
   @doc false

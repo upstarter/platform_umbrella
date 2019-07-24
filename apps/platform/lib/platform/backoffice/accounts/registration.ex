@@ -26,8 +26,6 @@ defmodule Platform.Accounts.Registration do
   end
 
   def insert_user(Platform.Repo, _changes, params) do
-    # require IEx
-    # IEx.pry()
     %User{}
     |> User.registration_changeset(params)
     |> Platform.Repo.insert()

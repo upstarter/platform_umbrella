@@ -1,6 +1,7 @@
 defmodule Platform.Auth do
   alias Platform.Auth.Credential
   alias Platform.Accounts.Account
+  alias Platform.Users.User
   alias Platform.Repo
   # alias Platform.Auth.TokenSerializer
 
@@ -51,7 +52,7 @@ defmodule Platform.Auth do
   end
 
   defp get_by_email(email) when is_binary(email) do
-    case Repo.get_by(User, email: email) |> Repo.preload([:credential]) do
+    case get_credential(email) do
       nil ->
         dummy_checkpw()
         {:error, "Login error."}
@@ -62,16 +63,36 @@ defmodule Platform.Auth do
   end
 
   def find_and_confirm_password(email, password) do
-    case Repo.get_by(User, email: email) |> Repo.preload([:credential]) do
+    case get_credential(email) do
       nil ->
         {:error, :login_not_found}
 
       cred ->
-        if Comeonin.Argon2.checkpw(password, cred.token) do
+        if Argon2.check_pass(password, cred.token) do
           {:ok, cred}
         else
           {:error, :login_failed}
         end
+    end
+  end
+
+  def get_credential(email, password \\ nil) do
+    case Repo.get_by(User, email: email) do
+      nil ->
+        nil
+
+      user ->
+        user = user |> Repo.preload([:credentials])
+        pwd_cred = for c <- user.credentials, is_pwd_cred?(c), do: c
+        List.last(pwd_cred) || nil
+    end
+  end
+
+  def is_pwd_cred?(c) do
+    if c.source == "password" do
+      true
+    else
+      false
     end
   end
 
