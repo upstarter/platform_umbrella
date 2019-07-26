@@ -11,13 +11,16 @@ config :platform_web,
   ecto_repos: [Platform.Repo]
 
 config :platform_web, PlatformWeb.Auth.Guardian,
-  issuer: "platform",
+  issuer: "PlatformWeb",
   secret_key: "g9JWqDeeXmQxrqqgxsjzW6Ekn7lba0ALVKJVirzk2alB1NhPhvBWOLNA7NCDUqk6",
-  ttl: {1, :days},
+  allowed_drift: 2000,
+  verify_issuer: true,
   token_ttl: %{
     "refresh" => {30, :days},
     "access" => {1, :days}
-  }
+  },
+  serializer: PlatformWeb.Auth.GuardianSerializer,
+  error_handler: PlatformWeb.Auth.HttpAuthErrorHandler
 
 config :ueberauth, Ueberauth,
   providers: [

@@ -3,6 +3,7 @@ defmodule PlatformWeb.AuthControllerTest do
 
   alias Platform.Auth
   alias Platform.Auth.Account
+  import PlatformWeb.Guardian
 
   @create_attrs %{email: "fred@cryptowise.ai", password: "password"}
   @update_attrs %{
@@ -39,6 +40,20 @@ defmodule PlatformWeb.AuthControllerTest do
       conn = post(conn, auth_path(conn, :create), auth: @invalid_attrs)
       assert json_response(conn, 422)["errors"] != %{}
     end
+  end
+
+  test "GET /auth/sign_in", %{conn: conn} do
+    # See https://github.com/thoughtbot/ex_machina
+    user = insert(:user)
+
+    {:ok, token, _} = encode_and_sign(user, %{}, token_type: :access)
+
+    conn =
+      conn
+      |> put_req_header("authorization", "bearer: " <> token)
+      |> get(auth_path(conn, :me))
+
+    # Assert things here
   end
 
   defp create_auth(_) do
