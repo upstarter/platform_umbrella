@@ -10,8 +10,8 @@ defmodule PlatformWeb.V1.Auth.RegistrationView do
     %{data: render_many(auths, RegistrationView, "auth.json")}
   end
 
-  def render("create.json", %{auths: auths}) do
-    %{data: render_many(auths, RegistrationView, "auth.json")}
+  def render("create.json", %{jwt: jwt, csrf: token}) do
+    %{jwt: jwt, csrf: token}
   end
 
   def render("show.json", %{auth: auth}) do
@@ -41,5 +41,9 @@ defmodule PlatformWeb.V1.Auth.RegistrationView do
 
   def render("jwt.json", %{jwt: jwt, user_info: user_info}) do
     %{jwt: jwt, user_info: user_info}
+  end
+
+  def render("jwt.json", %{jwt: jwt}) do
+    %{jwt: jwt}
   end
 end

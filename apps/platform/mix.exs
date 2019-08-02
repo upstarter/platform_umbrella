@@ -38,15 +38,16 @@ defmodule Platform.Mixfile do
     [
       {:arbor, "~> 1.1.0"},
       {:argon2_elixir, "~> 2.0"},
-      {:bcrypt_elixir, "~> 1.0"},
       {:comeonin, "~> 5.1.1"},
       {:ecto_sql, "~> 3.0"},
       {:ecto_autoslug_field, "~> 1.0"},
       {:guardian, "~> 1.2.1", override: true},
       {:jason, "~> 1.1", override: true},
       {:poison, "~> 3.1", override: true},
+      {:httpoison, "~> 1.5", override: true},
       {:postgrex, ">= 0.0.0"},
-      {:timex, "~> 3.0"}
+      {:ex_machina, "~> 2.3", only: :test}
+
       # {:votex, "~> 0.3.0"}
     ]
   end

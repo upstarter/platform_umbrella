@@ -10,14 +10,16 @@ defmodule PlatformWeb.Auth.Pipeline do
   plug(Guardian.Plug.VerifySession, claims: %{"typ" => "access"})
   # If there is an authorization header, validate it
   plug(Guardian.Plug.VerifyHeader, realm: "Bearer", claims: %{"typ" => "access"})
-  # Load the user if either of the verifications worked
+  plug(Guardian.Plug.VerifyCookie)
+
   plug(Guardian.Plug.EnsureAuthenticated, %{
     "typ" => "access",
-    handler: PlatformWeb.HttpErrorHandler
+    handler: PlatformWeb.Auth.HttpErrorHandler
   })
 
+  # Load the user if either of the verifications worked
   plug(Guardian.Plug.LoadResource)
-  plug(PlatformWeb.Plug.RememberMe)
+  # plug(PlatformWeb.Plug.RememberMe)
 end
 
 # Another argument that came up a lot, was that using JWT for sessions is still

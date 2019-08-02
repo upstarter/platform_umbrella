@@ -5,7 +5,7 @@ defmodule PlatformWeb.Router do
     plug(:accepts, ["html"])
     plug(:fetch_session)
     plug(:fetch_flash)
-    plug(:protect_from_forgery)
+    # plug(:protect_from_forgery)
     plug(:put_secure_browser_headers)
   end
 
@@ -27,7 +27,7 @@ defmodule PlatformWeb.Router do
 
   # Other scopes may use custom stacks.
   scope "/api", PlatformWeb do
-    pipe_through(:api)
+    pipe_through(:browser)
 
     scope "/v1", V1 do
       # LEADS
@@ -70,19 +70,19 @@ defmodule PlatformWeb.Router do
 
       # AUTH
       scope "/auth", Auth do
-        get("/:provider", AuthController, :request)
-        get("/:provider/callback", AuthController, :callback)
-
         scope "/" do
           post("/create", RegistrationController, :create)
           post("/sign_in", SessionController, :sign_in)
         end
 
         scope "/" do
-          pipe_through(:ensure_auth)
+          # pipe_through(:ensure_auth)
           get("/sign_out", SessionController, :sign_out)
-          get("/me", AuthController, :show)
+          get("/me", RegistrationController, :show)
         end
+
+        get("/:provider", RegistrationController, :request)
+        get("/:provider/callback", RegistrationController, :callback)
       end
     end
   end

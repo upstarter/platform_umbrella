@@ -17,7 +17,7 @@ config :platform_web, PlatformWeb.Auth.Guardian,
   verify_issuer: true,
   token_ttl: %{
     "refresh" => {30, :days},
-    "access" => {1, :days}
+    "access" => {7, :days}
   },
   serializer: PlatformWeb.Auth.GuardianSerializer,
   error_handler: PlatformWeb.Auth.HttpAuthErrorHandler

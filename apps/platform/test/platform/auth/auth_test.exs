@@ -7,7 +7,11 @@ defmodule Platform.AuthTest do
     alias Platform.Users.User
 
     @valid_attrs %{email: "some email", name: "some name", password: "some password"}
-    @update_attrs %{email: "some updated email", name: "some updated name", password: "some updated password"}
+    @update_attrs %{
+      email: "some updated email",
+      name: "some updated name",
+      password: "some updated password"
+    }
     @invalid_attrs %{email: nil, name: nil, password: nil}
 
     def user_fixture(attrs \\ %{}) do
@@ -31,18 +35,19 @@ defmodule Platform.AuthTest do
 
     test "create_user/1 with valid data creates a user" do
       # ...added
-      assert Bcrypt.verify_pass("some password", user.password_hash)
+      assert Argon2.verify_pass("some password", user.password_hash)
     end
+
     # ...
     test "update_user/2 with valid data updates the user" do
       # ...added
-      assert Bcrypt.verify_pass("some updated password", user.password_hash)
+      assert Argon2.verify_pass("some updated password", user.password_hash)
     end
 
     test "update_user/2 with invalid data returns error changeset" do
       # ...changed and added
       assert %User{user | password: nil} == Auth.get_user!(user.id)
-      assert Bcrypt.verify_pass("some password", user.password_hash)
+      assert Argon2.verify_pass("some password", user.password_hash)
     end
   end
 end

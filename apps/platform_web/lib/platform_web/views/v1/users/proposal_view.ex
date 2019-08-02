@@ -1,6 +1,6 @@
-defmodule PlatformWeb.V1.Users.ProposalsView do
+defmodule PlatformWeb.V1.Users.ProposalView do
   use PlatformWeb, :view
-  alias PlatformWeb.ProposalView
+  alias PlatformWeb.V1.Users.ProposalView
 
   def render("create_for_user.json", %{proposal: proposal}) do
     %{data: render_one(proposal, ProposalView, "proposal.json")}

@@ -41,7 +41,9 @@ defmodule Platform.Umbrella.Mixfile do
       {:distillery, "~> 1.5", runtime: false},
       {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false},
       {:elixir_make, "~> 0.4", runtime: false},
-      {:ex_doc, "~> 0.19", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.19", only: :dev, runtime: false},
+      {:policy_wonk, "~> 1.0.0"},
+      {:timex, "~> 3.0"}
     ]
   end
 end

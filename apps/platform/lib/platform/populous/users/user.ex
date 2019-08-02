@@ -17,6 +17,8 @@ defmodule Platform.Users.User do
   #       }
 
   schema "users" do
+    field(:first_name, :string)
+    field(:last_name, :string)
     field(:email, :string)
     field(:terms_accepted, :boolean)
 
@@ -31,7 +33,7 @@ defmodule Platform.Users.User do
 
     has_many(:groups, through: [:groupings, :group])
 
-    many_to_many(:topics, Topic, join_through: "users_topics")
+    many_to_many(:topics, Topic, join_through: Platform.Users.UsersTopics)
     many_to_many(:portfolios, Portfolio, join_through: "users_portfolios")
 
     timestamps()

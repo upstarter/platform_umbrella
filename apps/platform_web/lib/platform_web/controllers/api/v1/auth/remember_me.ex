@@ -1,4 +1,4 @@
-defmodule MyApp.Plug.RememberMe do
+defmodule PlatformWeb.Plug.RememberMe do
   import Plug.Conn
   import Guardian.Plug
 

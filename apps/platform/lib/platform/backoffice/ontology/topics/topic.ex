@@ -25,7 +25,7 @@ defmodule Platform.Topics.Topic do
     field(:parent_id, :integer)
     field(:slug, TitleSlug.Type)
 
-    many_to_many(:users, User, join_through: "users_topics")
+    many_to_many(:users, User, join_through: Platform.Users.UsersTopics)
     many_to_many(:tokens, Token, join_through: "topics_tokens")
     timestamps()
   end

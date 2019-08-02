@@ -14,11 +14,12 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
 
   def create(conn, _auth_params = %{"auth" => params}) do
     with {:ok, %{} = user_info} <- Auth.create_account(params),
-         {:ok, token, _claims} <- unpack_user_info(user_info, conn) do
-      conn |> render("jwt.json", jwt: token, user_info: Map.delete(user_info, :credentials))
+         {:ok, conn, jwt} <- unpack_user_info(user_info, conn) do
+      conn
+      |> put_status(201)
+      |> render("create.json", jwt: jwt, csrf: get_csrf_token())
     else
       _ ->
-        # IO.puts(["$$$$$$$$$$$$$$$$", conn])
         conn
         |> put_status(:unprocessable_entity)
         |> render("error.json")
@@ -27,20 +28,26 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
 
   def unpack_user_info(user_info, conn) do
     cred = List.last(user_info.credentials)
-    {:ok, token, claims} = Guardian.encode_and_sign(cred)
-    conn = Guardian.Plug.sign_in(conn, cred)
     user = Repo.get_by(User, id: cred.user_id)
-    conn = assign(conn, :current_user, user)
+
+    conn =
+      conn
+      |> Guardian.Plug.sign_in(user)
+      |> put_session(:current_user, user)
+      |> assign(:current_user, user)
+
+    # |> Guardian.Plug.remember_me(user)
+
+    token = Guardian.Plug.current_token(conn)
 
     IO.inspect([
-      'gardian',
-      token,
+      'guardian',
       Guardian.Plug.current_resource(conn),
-      conn.assigns,
-      user
+      token,
+      conn
     ])
 
-    {:ok, token, claims}
+    {:ok, conn, token}
   end
 
   def request(conn, _params) do
@@ -83,10 +90,8 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
   #   signin(conn, changeset)
   # end
 
-  def show(conn, %{"id" => id}) do
-    auth = Repo.get!(Credential, id)
-    IO.puts("##**********************")
-    IO.inspect(auth)
-    render(conn, "show.html", auth: auth)
+  def show(conn, %{"jwt" => jwt}) do
+    auth = Repo.get_by(Credential, token: jwt)
+    render(conn, "jwt.json", jwt: jwt)
   end
 end

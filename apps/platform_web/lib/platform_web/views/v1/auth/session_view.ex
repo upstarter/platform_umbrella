@@ -3,7 +3,7 @@ defmodule PlatformWeb.V1.Auth.SessionView do
   alias PlatformWeb.V1.Auth.SessionView
 
   def render("sign_in.json", %{conn: conn}) do
-    %{jwt: conn.assigns.jwt, cw_user: conn.assigns.current_user}
+    %{ok: "Signed In"}
   end
 
   def render("error.json", _) do

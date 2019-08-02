@@ -3,7 +3,8 @@ defmodule PlatformWeb.AuthControllerTest do
 
   alias Platform.Auth
   alias Platform.Auth.Account
-  import PlatformWeb.Guardian
+  import PlatformWeb.Auth.Guardian
+  import Platform.Factory
 
   @create_attrs %{email: "fred@cryptowise.ai", password: "password"}
   @update_attrs %{
@@ -21,28 +22,21 @@ defmodule PlatformWeb.AuthControllerTest do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
   end
 
-  describe "create auth" do
-    test "renders auth when data is valid", %{conn: conn} do
-      conn = post(conn, auth_path(conn, :create), auth: @create_attrs)
-      assert %{"id" => id} = json_response(conn, 201)["data"]
+  test "GET /auth/login", %{conn: conn} do
+    # See https://github.com/thoughtbot/ex_machina
+    user = insert(:user)
 
-      IO.inspect(json_response(conn, 201)["data"])
+    {:ok, token, _} = encode_and_sign(user, %{}, token_type: :access)
 
-      conn = get(conn, auth_path(conn, :show, %{"id" => id}))
+    conn =
+      conn
+      |> put_req_header("authorization", "bearer: " <> token)
+      |> get(auth_path(conn, :me))
 
-      assert json_response(conn, 200)["data"] == %{
-               "id" => id,
-               "email" => "fred@cryptowise.ai"
-             }
-    end
-
-    test "renders errors when data is invalid", %{conn: conn} do
-      conn = post(conn, auth_path(conn, :create), auth: @invalid_attrs)
-      assert json_response(conn, 422)["errors"] != %{}
-    end
+    # Assert things here
   end
 
-  test "GET /auth/sign_in", %{conn: conn} do
+  test "GET /auth/logout", %{conn: conn} do
     # See https://github.com/thoughtbot/ex_machina
     user = insert(:user)
 

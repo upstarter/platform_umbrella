@@ -59,8 +59,8 @@ defmodule PlatformWeb.V1.Auth.SessionController do
         }
       ) do
     with {:ok, cred} <- Auth.new_session(session),
-         {:ok, jwt, _full_claims, _user, conn} <- authenticate(conn, cred) do
-      render(conn, "sign_in.json", jwt: jwt)
+         {:ok, conn} <- authenticate(conn, cred) do
+      render(conn, "sign_in.json")
     else
       _ ->
         conn
@@ -70,19 +70,41 @@ defmodule PlatformWeb.V1.Auth.SessionController do
   end
 
   def authenticate(conn, cred) do
-    {:ok, jwt, _full_claims} = Guardian.encode_and_sign(cred, %{}, token_type: "access")
+    # {:ok, jwt, claims} = Guardian.encode_and_sign(cred, %{}, token_type: "access", ttl: {1, :day})
 
-    conn = Guardian.Plug.sign_in(conn, cred)
+    # claims = Guardian.Claims.app_claims() |> Guardian.Claims.ttl({30, :days})
+    #
+    # {:ok, token, full_claims} = Guardian.encode_and_sign(user, :remember, claims)
+    #
+    # thirty_days = 86400 * 30
+    # conn = put_resp_cookie(conn, "remember_me", token, max_age: thirty_days)
     user = Repo.get_by(User, id: cred.user_id)
+
+    # sets cookie
+    conn = Guardian.Plug.sign_in(conn, user, %{some: "claim"})
+
+    # # Set a "refresh" token directly on a cookie.
+    # # Can be used in conjunction with `Guardian.Plug.VerifyCookie`
+    # conn = Guardian.Plug.remember_me(conn, user)
 
     conn = assign(conn, :current_user, user)
 
-    {:ok, jwt, _full_claims, user, conn}
+    token = Guardian.Plug.current_token(conn)
+    claims = Guardian.Plug.current_claims(conn)
+
+    IO.inspect([
+      'sign in session',
+      token,
+      claims
+    ])
+
+    {:ok, conn}
   end
 
   def sign_out(conn, _params) do
     with token <- Guardian.Plug.current_token(),
          {:ok, _claims} <- Guardian.revoke(token),
+         conn = MyApp.Guardian.Plug.sign_out(conn),
          do: render(conn, "sign_out.json", [])
   end
 

@@ -1,4 +1,4 @@
-defmodule PlatformWeb.Auth.HttpAuthErrorHandler do
+defmodule PlatformWeb.Auth.HttpErrorHandler do
   import Plug.Conn
 
   @behaviour Guardian.Plug.ErrorHandler

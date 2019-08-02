@@ -33,7 +33,13 @@ defmodule Platform.Accounts.Registration do
 
   def insert_user_topics(Platform.Repo, %{user: user}, params) do
     user_topics =
-      for topic_id <- params.topic_knowledge_ids, do: %{topic_id: topic_id, user_id: user.id}
+      for topic_id <- params.topic_knowledge_ids,
+          do: %{
+            topic_id: topic_id,
+            user_id: user.id,
+            inserted_at: Timex.now(),
+            updated_at: Timex.now()
+          }
 
     {num_topics, u_topics} = Platform.Repo.insert_all("users_topics", user_topics)
 
