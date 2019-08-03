@@ -5,7 +5,7 @@ ai = [
   %Topic{
     id: 113,
     name: "Neural Networks",
-    description: "",
+    description: "Algorithms which mimic human brain activity",
     parent_id: 106
   }
 ]

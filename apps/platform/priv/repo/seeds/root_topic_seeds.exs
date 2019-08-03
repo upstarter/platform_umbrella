@@ -39,9 +39,9 @@ root_topics = [
     parent_id: nil
   },
   %Topic{
-    name: "Research",
+    name: "Crypto Research",
     id: 123,
-    description: "The frontiers of the CryptoCosm",
+    description: "The research driving future directions.  The frontiers of the CryptoCosm.",
     parent_id: nil
   }
 ]
