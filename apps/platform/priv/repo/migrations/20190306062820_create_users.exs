@@ -16,6 +16,12 @@ defmodule Platform.Repo.Migrations.CreateUsers do
       add(:reset_password_token, :string)
       add(:reset_password_sent_at, :naive_datetime)
 
+      add(:sign_in_count, :integer, default: 0)
+      add(:last_sign_in_ip, :string)
+      add(:last_sign_in_at, :utc_datetime)
+      add(:current_sign_in_ip, :string)
+      add(:current_sign_in_at, :utc_datetime)
+
       timestamps()
     end
 

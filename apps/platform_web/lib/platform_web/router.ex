@@ -55,6 +55,8 @@ defmodule PlatformWeb.Router do
       # TOPICS
       scope "/", Topics do
         resources("/topics", TopicController, except: [:new, :edit])
+        # options("/topics", TopicController, :options)
+
         get("/topics_tree", TopicController, :tree)
         get("/analysis", TopicController, :analysis)
         get("/research", TopicController, :research)
@@ -72,11 +74,11 @@ defmodule PlatformWeb.Router do
       scope "/auth", Auth do
         scope "/" do
           post("/create", RegistrationController, :create)
+          options("/create", RegistrationController, :options)
           post("/sign_in", SessionController, :sign_in)
         end
 
         scope "/" do
-          # pipe_through(:ensure_auth)
           get("/sign_out", SessionController, :sign_out)
           get("/me", RegistrationController, :show)
         end

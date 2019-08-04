@@ -14,7 +14,7 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
 
   def create(conn, _auth_params = %{"auth" => params}) do
     with {:ok, %{} = user_info} <- Auth.create_account(params),
-         {:ok, conn, jwt} <- unpack_user_info(user_info, conn) do
+         {:ok, conn, jwt} <- authenticate(user_info, conn) do
       conn
       |> put_status(201)
       |> render("create.json", jwt: jwt, csrf: get_csrf_token())
@@ -26,28 +26,46 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
     end
   end
 
-  def unpack_user_info(user_info, conn) do
+  def authenticate(user_info, conn) do
     cred = List.last(user_info.credentials)
     user = Repo.get_by(User, id: cred.user_id)
 
     conn =
-      conn
-      |> Guardian.Plug.sign_in(user)
-      |> put_session(:current_user, user)
-      |> assign(:current_user, user)
+      Guardian.Plug.sign_in(
+        conn,
+        user,
+        %{roles: [:user, :analyst]},
+        token_type: "refresh",
+        http_only: false,
+        secure: false
+      )
 
-    # |> Guardian.Plug.remember_me(user)
+    # conn = Guardian.Plug.remember_me(conn, user)
 
-    token = Guardian.Plug.current_token(conn)
+    jwt_refresh = Guardian.Plug.current_token(conn)
+
+    {:ok, _old_stuff, {jwt, %{"exp" => _exp} = _new_claims}} =
+      Guardian.exchange(jwt_refresh, "refresh", "access")
+
+    thirty_days = 86400 * 30
+
+    conn =
+      put_resp_cookie(conn, "remember_me", jwt_refresh,
+        max_age: thirty_days,
+        http_only: false,
+        secure: false
+      )
 
     IO.inspect([
-      'guardian',
-      Guardian.Plug.current_resource(conn),
-      token,
-      conn
+      'reg guardian',
+      conn,
+      jwt_refresh,
+      jwt,
+      conn.resp_cookies,
+      conn.resp_headers
     ])
 
-    {:ok, conn, token}
+    {:ok, conn, jwt}
   end
 
   def request(conn, _params) do

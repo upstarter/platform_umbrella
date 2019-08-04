@@ -24,7 +24,10 @@ defmodule PlatformWeb.Endpoint do
     plug(Phoenix.LiveReloader)
   end
 
-  plug(CORSPlug, origin: ["http://localhost:8081", "http://127.0.0.1:8081"])
+  plug(CORSPlug,
+    origin: ["http://localhost:8081", "http://127.0.0.1:8081"]
+  )
+
   plug(Plug.Logger)
 
   plug(Plug.Parsers,
@@ -42,7 +45,12 @@ defmodule PlatformWeb.Endpoint do
   plug(Plug.Session,
     store: :cookie,
     key: "_platform_web_key",
-    signing_salt: "0QCm9hTQ"
+    http_only: true,
+    # keep false in dev mode since no https in dev mode
+    secure: true,
+    signing_salt: "0QCm9hTQ",
+    # number of seconds in 4 weeks
+    max_age: 4 * 7 * 24 * 60 * 60
   )
 
   plug(PlatformWeb.Router)

@@ -1,5 +1,6 @@
 defmodule Platform.Users.User do
   use Ecto.Schema
+  use GuardianTrackable.Schema
   import Ecto.Changeset
   alias Platform.Repo
   alias Platform.Topics.Topic
@@ -21,6 +22,7 @@ defmodule Platform.Users.User do
     field(:last_name, :string)
     field(:email, :string)
     field(:terms_accepted, :boolean)
+    guardian_trackable()
 
     has_many(:credentials, Platform.Auth.Credential, on_delete: :delete_all)
     has_many(:accounts, Platform.Accounts.Account, on_delete: :delete_all)

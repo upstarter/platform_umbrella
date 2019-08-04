@@ -16,8 +16,10 @@ config :platform_web, PlatformWeb.Auth.Guardian,
   allowed_drift: 2000,
   verify_issuer: true,
   token_ttl: %{
+    # refresh should be long-lived, revokable
     "refresh" => {30, :days},
-    "access" => {7, :days}
+    # access should be shortlived depending on sensitivity of resource
+    "access" => {30, :days}
   },
   serializer: PlatformWeb.Auth.GuardianSerializer,
   error_handler: PlatformWeb.Auth.HttpAuthErrorHandler

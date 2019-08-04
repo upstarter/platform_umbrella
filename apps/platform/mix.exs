@@ -42,6 +42,7 @@ defmodule Platform.Mixfile do
       {:ecto_sql, "~> 3.0"},
       {:ecto_autoslug_field, "~> 1.0"},
       {:guardian, "~> 1.2.1", override: true},
+      {:guardian_trackable, "~> 0.2.0"},
       {:jason, "~> 1.1", override: true},
       {:poison, "~> 3.1", override: true},
       {:httpoison, "~> 1.5", override: true},

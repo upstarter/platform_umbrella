@@ -25,4 +25,10 @@ defmodule PlatformWeb.Auth.Guardian do
   def resource_from_claims(_claims) do
     {:error, :reason_for_error}
   end
+
+  @impl true
+  def after_sign_in(conn, resource, _token, _claims, _opts) do
+    GuardianTrackable.track!(Platform.Repo, resource, conn.remote_ip)
+    {:ok, conn}
+  end
 end
