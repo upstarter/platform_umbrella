@@ -40,8 +40,6 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
         secure: false
       )
 
-    # conn = Guardian.Plug.remember_me(conn, user)
-
     jwt_refresh = Guardian.Plug.current_token(conn)
 
     {:ok, _old_stuff, {jwt, %{"exp" => _exp} = _new_claims}} =
@@ -50,7 +48,7 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
     thirty_days = 86400 * 30
 
     conn =
-      put_resp_cookie(conn, "remember_me", jwt_refresh,
+      put_resp_cookie(conn, "_cw_rem", jwt_refresh,
         max_age: thirty_days,
         http_only: false,
         secure: false

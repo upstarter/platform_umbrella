@@ -35,7 +35,7 @@ defmodule PlatformWeb.V1.Auth.SessionController do
   # new_conn =
   #   MyProj.Guardian.Plug.sign_in(
   #     conn,
-  #     credentials,
+  #     user,
   #     %{},
   #     token_type: "refresh"
   #   )
@@ -48,14 +48,14 @@ defmodule PlatformWeb.V1.Auth.SessionController do
   #
   # In the refresh endpoint i respond with the new access token ...
 
-  # long lived localStorage refresh token used when short-lived access token expires
+  # long lived cookie refresh token used when short-lived access token expires
   # to avoid user having to login, when access token expires, client calls here
   # for new access token, and then can access resource
   def refresh(conn, %{"jwt_refresh" => jwt_refresh}) do
     case Guardian.exchange(jwt_refresh, "refresh", "access") do
-      {:ok, _old_stuff, {jwt, %{"exp" => exp} = _new_claims}} ->
+      {:ok, _old_stuff, {jwt, %{"exp" => _exp} = _new_claims}} ->
         conn
-        |> put_session("cwtoken", jwt)
+        |> put_session("_cw_rem", jwt)
         |> render("refresh.json", %{jwt: jwt})
 
       {:error, _reason} ->
@@ -83,14 +83,6 @@ defmodule PlatformWeb.V1.Auth.SessionController do
   end
 
   def authenticate(conn, cred) do
-    # {:ok, jwt, claims} = Guardian.encode_and_sign(cred, %{}, token_type: "access", ttl: {1, :day})
-
-    # claims = Guardian.Claims.app_claims() |> Guardian.Claims.ttl({30, :days})
-    #
-    # {:ok, token, full_claims} = Guardian.encode_and_sign(user, :remember, claims)
-    #
-    # thirty_days = 86400 * 30
-    # conn = put_resp_cookie(conn, "remember_me", token, max_age: thirty_days)
     user = Repo.get_by(User, id: cred.user_id)
 
     conn =
@@ -100,24 +92,27 @@ defmodule PlatformWeb.V1.Auth.SessionController do
         %{roles: [:user, :analyst]},
         token_type: "refresh",
         http_only: false,
-        secure: true
+        secure: false
       )
 
     jwt_refresh = Guardian.Plug.current_token(conn)
 
-    {:ok, _old_stuff, {jwt, %{"exp" => exp} = _new_claims}} =
+    {:ok, _old_stuff, {jwt, %{"exp" => _exp} = _new_claims}} =
       Guardian.exchange(jwt_refresh, "refresh", "access")
 
-    # |> Guardian.Plug.remember_me(user)
+    thirty_days = 86400 * 30
 
-    token = Guardian.Plug.current_token(conn)
-    claims = Guardian.Plug.current_claims(conn)
+    conn =
+      put_resp_cookie(conn, "_cw_rem", jwt,
+        max_age: thirty_days,
+        http_only: false,
+        secure: false
+      )
 
     IO.inspect([
       'sign in session',
-      token,
-      claims,
-      conn
+      conn,
+      jwt_refresh
     ])
 
     {:ok, conn}
@@ -126,7 +121,7 @@ defmodule PlatformWeb.V1.Auth.SessionController do
   def sign_out(conn, _params) do
     with token <- Guardian.Plug.current_token(),
          {:ok, _claims} <- Guardian.revoke(token),
-         conn = MyApp.Guardian.Plug.sign_out(conn),
+         conn = Guardian.Plug.sign_out(conn),
          do: render(conn, "sign_out.json", [])
   end
 
