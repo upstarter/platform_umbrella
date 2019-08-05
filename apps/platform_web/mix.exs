@@ -36,24 +36,24 @@ defmodule PlatformWeb.Mixfile do
   #
   defp deps do
     [
-      {:phoenix, "~> 1.3.4"},
-      {:plug_cowboy, "~> 1.0"},
+      {:phoenix, "~> 1.4.9"},
+      {:plug_cowboy, "~> 2.1"},
       {:guardian, "~> 1.2.1", override: true},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_haml, "~> 0.2", override: true},
-      {:phoenix_live_reload, "~> 1.0", only: :dev},
-      {:gettext, "~> 0.11"},
-      {:cors_plug, "~> 1.5"},
-      {:cowboy, "~> 1.0"},
-      {:bamboo, "~> 0.8"},
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:gettext, "~> 0.17"},
+      {:cors_plug, "~> 2.0"},
+      {:cowboy, "~> 2.6.3"},
+      {:bamboo, "~> 1.3.0"},
       # {:absinthe, "~> 1.4.0"},
       {:platform, in_umbrella: true},
       # {:get_medium, "~> 0.3.0"},
       # html parser
-      {:floki, "~> 0.20.0"},
-      {:con_cache, "~> 0.13.0"},
-      {:ueberauth, "~> 0.5"},
-      {:ueberauth_google, "~> 0.7"}
+      {:floki, "~> 0.21.0"},
+      {:con_cache, "~> 0.13.1"},
+      {:ueberauth, "~> 0.6"},
+      {:ueberauth_google, "~> 0.8"}
     ]
   end
 
