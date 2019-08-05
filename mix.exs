@@ -38,7 +38,7 @@ defmodule Platform.Umbrella.Mixfile do
       {:httpoison, "~> 1.4"},
       {:hackney, "~> 1.6", override: true},
       {:gettext, "~> 0.13.0", override: true},
-      {:distillery, "~> 1.5", runtime: false},
+      {:distillery, "~> 2.1", runtime: false},
       {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false},
       {:elixir_make, "~> 0.4", runtime: false},
       {:ex_doc, "~> 0.19", only: :dev, runtime: false},

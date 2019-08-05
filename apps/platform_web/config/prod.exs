@@ -29,9 +29,7 @@ config :platform_web, PlatformWeb.Endpoint,
   root: ".",
   cache_static_manifest: "priv/static/cache_manifest.json",
   render_errors: [view: PlatformWeb.ErrorView, accepts: ~w(html haml json)],
-  pubsub: [name: PlatformWeb.PubSub,
-           adapter: Phoenix.PubSub.PG2]
-
+  pubsub: [name: PlatformWeb.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # ## SSL Support
 #

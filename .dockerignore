@@ -8,4 +8,15 @@
 _build
 deps
 test
-apps/platform_web/node_modules
+/_build/
+/deps/
+/doc/
+/priv/static/
+/test/
+/tmp/
+
+apps/platform/_build/
+apps/platform/deps/
+
+apps/platform_web/_build/
+apps/platform_web/deps/

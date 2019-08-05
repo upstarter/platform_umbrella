@@ -1,6 +1,6 @@
 # Alias this container as builder:
 FROM frolvlad/alpine-glibc
-ARG APP_NAME=<%= @project_name %>
+ARG APP_NAME=platform_umbrella
 ENV MIX_ENV=prod REPLACE_OS_VARS=true TERM=xterm
 WORKDIR /opt/app
 
