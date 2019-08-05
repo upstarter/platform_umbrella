@@ -16,6 +16,12 @@ defmodule Platform.Umbrella.Mixfile do
         logo: "apps/platform_web/assets/static/images/nav_logo.png",
         extras: ["README.md"],
         ignore_apps: [:platform_web]
+      ],
+      releases: [
+        default: [
+          version: "0.0.1",
+          applications: [platform_web: :permanent, platform: :permanent]
+        ]
       ]
     ]
   end
