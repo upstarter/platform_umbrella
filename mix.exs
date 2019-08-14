@@ -40,10 +40,11 @@ defmodule Platform.Umbrella.Mixfile do
   # and cannot be accessed from applications inside the apps folder
   defp deps do
     [
+      {:jason, "~> 1.0"},
       {:poison, "~> 4.0", override: true},
       {:httpoison, "~> 1.4"},
       {:hackney, "~> 1.6", override: true},
-      {:gettext, "~> 0.13.0", override: true},
+      {:gettext, "~> 0.17.0", override: true},
       {:distillery, "~> 2.1", runtime: false},
       {:credo, "~> 1.1.0", only: [:dev, :test], runtime: false},
       {:elixir_make, "~> 0.6", runtime: false},

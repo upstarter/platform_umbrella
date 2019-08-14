@@ -11,6 +11,8 @@ RUN apt-get update -y \
     && mix local.hex --force
 COPY . .
 RUN mix do deps.get, compile
-RUN mix phx.digest
+RUN cd ${phoenix_subdir} \
+    && mix phx.digest \
+    && cd ..
 RUN mix distillery.release --env=${build_env} --executable --verbose \
     && mv _build/${build_env}/rel/${app_name}/bin/${app_name}.run start_release

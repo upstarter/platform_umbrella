@@ -34,30 +34,30 @@ an issuer or an asset which grants explicit governance rights to a token holder.
 
 utility_topics = [
   %Topic{
-    name: "Platform",
+    name: "Platform Tokens",
     id: 83,
     description: "These are tokens that are used to gain access to
-general purpose decentralised networks for a wide range of possible
+general purpose decentralized networks for a wide range of possible
 applications. As such, these platform utility tokens exhibit considerably
 less centrality. ETH, EOS are examples.",
     parent_id: 80
   },
   %Topic{
-    name: "Non-Platform",
+    name: "Non-Platform Tokens",
     id: 84,
     description:
       "These tokens are open networks designed for a specific application or use case.
-Decentralised exchange tokens are an example. Represents the majority of current assets in the ecosystem.",
+Decentralized exchange tokens are an example. Represents the majority of current assets in the ecosystem.",
     parent_id: 80
   },
   %Topic{
-    name: "General",
+    name: "General Network Tokens",
     id: 85,
     description: "Open Networks designed for a specific application or use case.",
     parent_id: 84
   },
   %Topic{
-    name: "Defined",
+    name: "Defined Non-Platform Tokens",
     id: 86,
     description: "Defined Non-platform based utility tokens
     are similar to a consumer token as the intended use is to provide access to a
@@ -72,8 +72,8 @@ asset_security_topics = [
   %Topic{
     name: "Collateralized Tokens",
     id: 87,
-    description: "Tokens that are collateralised by fiat (e.g. TrueUSD collateralised by USD)
-or non-fiat assets (e.g. Digix collateralised by gold).",
+    description: "Tokens that are collateralized by fiat (e.g. TrueUSD collateralized by USD)
+or non-fiat assets (e.g. Digix collateralized by gold).",
     parent_id: 82
   },
   %Topic{
@@ -86,7 +86,7 @@ Traditional legal frameworks and pricing methodologies exist for these assets.",
   %Topic{
     name: "Share-like Tokens",
     id: 89,
-    description: "Tokens that offer the rights to specific cash-flows (e.g. from centralised
+    description: "Tokens that offer the rights to specific cash-flows (e.g. from centralized
 exchanges).",
     parent_id: 82
   }
