@@ -20,8 +20,7 @@ defmodule Platform.Topics do
   """
 
   def list_topics do
-    Topic
-    |> Repo.all()
+    Enum.shuffle(Topic |> Repo.all())
   end
 
   def arrange(topic) do

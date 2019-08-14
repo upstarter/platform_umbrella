@@ -85,7 +85,7 @@ general_topics = [
     name: "ERC-XX",
     description: "ERC stands for Ethereum Request for Comments, like the IETF's RFC
     (https://www.ietf.org/rfc.html). An RFC is authored by engineers and computer
-    scientists in the form of a memorandum desribing methods, behaviors, research,
+    scientists in the form of a memorandum describing methods, behaviors, research,
     or innovations applicable to the working of the Internet and Internet-connected
     systems. It is submitted either for peer review or to convey new concepts,
     information, or (occasionally) engineering humor",
