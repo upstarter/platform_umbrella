@@ -89,10 +89,9 @@ defmodule PlatformWeb.V1.Auth.SessionController do
       Guardian.Plug.sign_in(
         conn,
         user,
-        %{roles: [:user, :analyst]},
         token_type: "refresh",
-        http_only: false,
-        secure: false
+        http_only: true,
+        secure: true
       )
 
     jwt_refresh = Guardian.Plug.current_token(conn)
@@ -103,7 +102,7 @@ defmodule PlatformWeb.V1.Auth.SessionController do
     thirty_days = 86400 * 30
 
     conn =
-      put_resp_cookie(conn, "_cw_rem", jwt,
+      put_resp_cookie(conn, "_cw_acc", jwt,
         max_age: thirty_days,
         http_only: false,
         secure: false
@@ -112,7 +111,8 @@ defmodule PlatformWeb.V1.Auth.SessionController do
     IO.inspect([
       'sign in session',
       conn,
-      jwt_refresh
+      jwt_refresh,
+      jwt
     ])
 
     {:ok, conn}

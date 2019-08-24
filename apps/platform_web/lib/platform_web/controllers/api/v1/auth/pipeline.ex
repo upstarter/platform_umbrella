@@ -9,13 +9,16 @@ defmodule PlatformWeb.Auth.Pipeline do
   # If there is a session token, validate it
   plug(Guardian.Plug.VerifySession, claims: %{"typ" => "access"})
   # If there is an authorization header, validate it
-  # plug(Guardian.Plug.VerifyHeader, realm: "Bearer", claims: %{"typ" => "access"})
+  plug(Guardian.Plug.VerifyHeader, realm: "Bearer", claims: %{"typ" => "access"})
   plug(Guardian.Plug.VerifyCookie)
 
-  plug(Guardian.Plug.EnsureAuthenticated, %{
-    "typ" => "access",
-    handler: PlatformWeb.Auth.HttpErrorHandler
-  })
+  plug(Guardian.Plug.EnsureAuthenticated,
+    key: :default,
+    claims: %{
+      "typ" => "access",
+      handler: PlatformWeb.Auth.HttpErrorHandler
+    }
+  )
 
   # Load the user if either of the verifications worked
   plug(Guardian.Plug.LoadResource)
