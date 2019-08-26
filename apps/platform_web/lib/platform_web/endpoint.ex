@@ -25,7 +25,8 @@ defmodule PlatformWeb.Endpoint do
   end
 
   plug(CORSPlug,
-    origin: ["http://localhost:8081", "http://127.0.0.1:8081"]
+    origin: ["http://localhost:8081", "http://127.0.0.1:8081"],
+    supports_credentials: true
   )
 
   plug(Plug.Logger)
@@ -44,10 +45,10 @@ defmodule PlatformWeb.Endpoint do
   # Set :encryption_salt if you would also like to encrypt it.
   plug(Plug.Session,
     store: :cookie,
-    key: "_platform_web_key",
-    http_only: true,
+    key: "_cw_skey",
+    http_only: false,
     # keep false in dev mode since no https in dev mode
-    secure: true,
+    secure: false,
     signing_salt: "0QCm9hTQ",
     # number of seconds in 4 weeks
     max_age: 4 * 7 * 24 * 60 * 60

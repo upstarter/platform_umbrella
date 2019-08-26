@@ -17,7 +17,7 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
          {:ok, conn, jwt} <- authenticate(user_info, conn) do
       conn
       |> put_status(201)
-      |> render("create.json", jwt: jwt, csrf: get_csrf_token())
+      |> render("create.json", csrf: get_csrf_token())
     else
       _ ->
         conn
@@ -26,51 +26,87 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
     end
   end
 
+  # I'd like to secure my SPA private routes with JWT authentication. To make
+  # everything as much secure as it's possible, I wanted to use httpOnly cookie to
+  # store my access_token on the client-side.
+  #
+  # Using httpOnly cookies protect me a lot from XSS attacks, but unfortunately
+  # this approach does not allow me to check if the cookie actually exists in the
+  # browser.
+  #
+  # In this case - how can I implement some logic to prevent unlogged users to
+  # visit private, secure routes of my SPA?
+
+  #  Am I forced to use non-httpOnly cookies or localStorage for this?
+  #
+  #  No. Keep your access_token in a cookie with the httpOnly flag, and (if
+  #  possible) with the secure flag. Let's call this cookie session_cookie.
+  #
+  #  When a user does a successful login you could return 2 cookies: the
+  #  session_cookie and another one which informs to JS the user has been
+  #  authenticated (let's call as SPA cookie).
+  #
+  #  Your session_cookie is not accessible by JS so it's not vulnerable to XSS.
+  #  This cookie is sent on each request to the server, which checks is a valid
+  #  token, otherwise an unauthorized error is returned.
+  #
+  #  Your SPA cookie has no httpOnly flag so it's accessible by JS but the server
+  #  doesn't use it to authenticate the user, so fake this cookie is useless.
+  #
+  #  Whenever you receive an unauthorized error on your SPA you can remove the SPA cookie.
+
   def authenticate(user_info, conn) do
     cred = List.last(user_info.credentials)
     user = Repo.get_by(User, id: cred.user_id)
+
+    # {:ok, jwt_refresh, _full_claims} =
+    #   Guardian.encode_and_sign(
+    #     user,
+    #     token_type: "refresh"
+    #   )
 
     conn =
       Guardian.Plug.sign_in(
         conn,
         user,
-        %{roles: [:user, :analyst]},
-        token_type: "refresh",
-        http_only: true,
-        secure: true
+        %{},
+        token_type: "refresh"
       )
 
-    jwt_refresh = Guardian.Plug.current_token(conn)
-
-    {:ok, _old_stuff, {jwt, %{"exp" => _exp} = _new_claims}} =
-      Guardian.exchange(jwt_refresh, "refresh", "access")
+    {:ok, jwt, _full_claims} =
+      Guardian.encode_and_sign(
+        user,
+        %{},
+        token_type: "access"
+      )
 
     thirty_days = 86400 * 30
 
     conn =
       conn
-      |> put_resp_cookie("_cw_rem", jwt_refresh,
-        max_age: thirty_days,
-        http_only: true,
-        # make true in prod, use _cw_acc for protected resources
-        secure: false
-      )
       |> put_resp_cookie("_cw_acc", jwt,
         max_age: thirty_days,
         http_only: false,
         secure: false
       )
 
+    #   |> put_resp_cookie("_cw_rem", jwt,
+    #     max_age: thirty_days,
+    #     http_only: true,
+    #     # make true in prod, use _cw_acc for protected resources
+    #     secure: false
+    #   )
+
     IO.inspect([
       'reg guardian',
       conn,
-      jwt_refresh,
-      jwt,
+      # jwt_refresh,
+      # jwt,
       conn.resp_cookies,
       conn.resp_headers
     ])
 
-    {:ok, conn, jwt}
+    {:ok, conn, nil}
   end
 
   def request(conn, _params) do

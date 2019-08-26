@@ -36,7 +36,8 @@ defmodule PlatformWeb.Router do
 
       scope "/" do
         pipe_through(:ensure_auth)
-        post("/proposals", Users.ProposalsController, :create)
+
+        resources("/proposals", Users.ProposalsController, except: [:delete, :edit, :new, :update])
       end
 
       # PROVIDERS

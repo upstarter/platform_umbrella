@@ -88,31 +88,28 @@ defmodule PlatformWeb.V1.Auth.SessionController do
     conn =
       Guardian.Plug.sign_in(
         conn,
-        user,
-        token_type: "refresh",
-        http_only: true,
-        secure: true
+        user
       )
 
-    jwt_refresh = Guardian.Plug.current_token(conn)
-
-    {:ok, _old_stuff, {jwt, %{"exp" => _exp} = _new_claims}} =
-      Guardian.exchange(jwt_refresh, "refresh", "access")
-
-    thirty_days = 86400 * 30
-
-    conn =
-      put_resp_cookie(conn, "_cw_acc", jwt,
-        max_age: thirty_days,
-        http_only: false,
-        secure: false
-      )
+    # jwt_refresh = Guardian.Plug.current_token(conn)
+    #
+    # {:ok, _old_stuff, {jwt, %{"exp" => _exp} = _new_claims}} =
+    #   Guardian.exchange(jwt_refresh, "refresh", "access")
+    #
+    # thirty_days = 86400 * 30
+    #
+    # conn =
+    #   put_resp_cookie(conn, "_cw_acc", jwt,
+    #     max_age: thirty_days,
+    #     http_only: false,
+    #     secure: false
+    #   )
 
     IO.inspect([
       'sign in session',
-      conn,
-      jwt_refresh,
-      jwt
+      conn
+      # jwt_refresh,
+      # jwt
     ])
 
     {:ok, conn}

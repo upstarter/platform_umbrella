@@ -10,7 +10,12 @@ defmodule Platform.Auth do
   def create_account(params) do
     converted_params = convert_params(params)
 
+    # with Account.register(converted_params) do
+    #   {:ok, acct} -> this
+    #   {:error, changeset } -> that
+    # end
     # returns {:ok, account} or {:error, changeset }
+
     {:ok, acct} = Account.register(converted_params)
     acct = acct |> Repo.preload(:user)
     user = acct.user |> Repo.preload([:credentials, :topics, :groups])

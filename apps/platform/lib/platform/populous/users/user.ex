@@ -20,9 +20,9 @@ defmodule Platform.Users.User do
   schema "users" do
     field(:first_name, :string)
     field(:last_name, :string)
+    field(:nickname, :string)
     field(:email, :string)
     field(:terms_accepted, :boolean)
-    guardian_trackable()
 
     has_many(:credentials, Platform.Auth.Credential, on_delete: :delete_all)
     has_many(:accounts, Platform.Accounts.Account, on_delete: :delete_all)
@@ -38,6 +38,7 @@ defmodule Platform.Users.User do
     many_to_many(:topics, Topic, join_through: Platform.Users.UsersTopics)
     many_to_many(:portfolios, Portfolio, join_through: "users_portfolios")
 
+    guardian_trackable()
     timestamps()
   end
 
@@ -50,7 +51,7 @@ defmodule Platform.Users.User do
   @doc false
   def registration_changeset(user, params) do
     user
-    |> cast(params, [:email])
+    |> cast(params, [:email, :nickname])
     |> validate_format(:email, ~r/@/)
     |> validate_required([:email, :topics])
     |> unique_constraint(:email)
@@ -59,7 +60,7 @@ defmodule Platform.Users.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:email])
+    |> cast(attrs, [:email, :nickname])
     |> validate_format(:email, ~r/@/)
     |> validate_required([:email])
   end

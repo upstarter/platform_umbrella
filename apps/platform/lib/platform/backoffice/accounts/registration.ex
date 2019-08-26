@@ -8,6 +8,7 @@ defmodule Platform.Accounts.Registration do
   embedded_schema do
     field(:source, :string)
     field(:email, :string)
+    field(:nickname, :string)
     field(:first_name, :string)
     field(:last_name, :string)
     field(:password, :string)
@@ -82,6 +83,7 @@ defmodule Platform.Accounts.Registration do
     registration
     |> cast(params, [
       :source,
+      :nickname,
       :first_name,
       :last_name,
       :email,

@@ -6,6 +6,7 @@ defmodule Platform.Repo.Migrations.CreateUsers do
       add(:email, :string, null: false)
       add(:first_name, :string)
       add(:last_name, :string)
+      add(:nickname, :string)
       add(:phone, :string)
       add(:avatar_url, :string)
 
@@ -26,5 +27,7 @@ defmodule Platform.Repo.Migrations.CreateUsers do
     end
 
     create(unique_index(:users, [:email]))
+    create(unique_index(:users, [:last_name]))
+    create(unique_index(:users, [:nickname]))
   end
 end
