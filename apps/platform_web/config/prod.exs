@@ -21,9 +21,9 @@ config :platform_web, PlatformWeb.Endpoint,
   url: [scheme: :https, host: "cryptowise.ai", port: {:system, "PORT"}],
   https: [
     port: 443,
-    otp_app: :platform_web
-    # keyfile: System.get_env("PLATFORM_WEB_SSL_KEY_PATH"),
-    # certfile: System.get_env("PLATFORM_WEB_SSL_CERT_PATH")
+    otp_app: :platform_web,
+    keyfile: System.get_env("CW_KEYFILE_PATH"),
+    certfile: System.get_env("CW_CERTFILE_PATH")
     # OPTIONAL Key for intermediate certificates
     # cacertfile: System.get_env("INTERMEDIATE_CERTFILE_PATH")
   ],
@@ -40,7 +40,7 @@ config :platform_web, PlatformWeb.Endpoint,
   pubsub: [name: PlatformWeb.PubSub, adapter: Phoenix.PubSub.PG2]
 
 config :cors_plug,
-  origin: ["http://admin.cryptowise.ai"],
+  origin: ["https://admin.cryptowise.ai"],
   supports_credentials: true
 
 # ## SSL Support

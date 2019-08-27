@@ -44,3 +44,6 @@ firewall:
 
 list_instances:
 	gcloud compute instances list
+
+# ON PRODUCTION:
+# docker run -it gcr.io/eternal-sunset-206422/cw-proxy-image /bin/bash
