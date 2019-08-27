@@ -39,6 +39,10 @@ config :platform_web, PlatformWeb.Endpoint,
   render_errors: [view: PlatformWeb.ErrorView, accepts: ~w(html haml json)],
   pubsub: [name: PlatformWeb.PubSub, adapter: Phoenix.PubSub.PG2]
 
+config :cors_plug,
+  origin: ["http://admin.cryptowise.ai"],
+  supports_credentials: true
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key

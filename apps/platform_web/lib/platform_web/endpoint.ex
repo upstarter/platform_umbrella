@@ -24,17 +24,12 @@ defmodule PlatformWeb.Endpoint do
     plug(Phoenix.LiveReloader)
   end
 
-  plug(CORSPlug,
-    origin: ["http://localhost:8081", "http://127.0.0.1:8081"],
-    supports_credentials: true
-  )
-
   plug(Plug.Logger)
 
   plug(Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
     pass: ["*/*"],
-    json_decoder: Poison
+    json_decoder: Jason
   )
 
   plug(Plug.MethodOverride)
@@ -53,6 +48,8 @@ defmodule PlatformWeb.Endpoint do
     # number of seconds in 4 weeks
     max_age: 4 * 7 * 24 * 60 * 60
   )
+
+  plug(CORSPlug)
 
   plug(PlatformWeb.Router)
 
