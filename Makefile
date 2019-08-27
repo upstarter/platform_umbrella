@@ -14,7 +14,6 @@ build:
 	docker tag cw-proxy-image gcr.io/eternal-sunset-206422/cw-proxy-image
 	docker push gcr.io/eternal-sunset-206422/cw-proxy-image
 
-
 # BACKEND
 create:
 	gcloud compute instances create-with-container cw-proxy-instance \
@@ -22,9 +21,9 @@ create:
 		--machine-type f1-micro \
     # --machine-type g1-small \
 		--scopes "userinfo-email,cloud-platform" \
-		--metadata-from-file startup-script=instance-startup.sh \
+		--metadata-from-file startup-script=bootstart.sh \
 		--metadata release-url=gs://${BUCKET_NAME}/cw-proxy-release \
-		--zone us-central1-f \
+		--zone us-central1-c \
  	 	--tags proxy-server \
 		--container-stdin \
 		--container-tty
@@ -45,5 +44,5 @@ firewall:
 list_instances:
 	gcloud compute instances list
 
-# ON PRODUCTION:
+# RUN PRODUCTION CONTAINER:
 # docker run -it gcr.io/eternal-sunset-206422/cw-proxy-image /bin/bash

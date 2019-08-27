@@ -49,7 +49,7 @@ defmodule Platform.Umbrella.Mixfile do
       {:credo, "~> 1.1.0", only: [:dev, :test], runtime: false},
       {:elixir_make, "~> 0.6", runtime: false},
       {:ex_doc, "~> 0.21", only: :dev, runtime: false},
-      {:policy_wonk, "~> 1.0.0"},
+      # {:policy_wonk, "~> 1.0.0"},
       {:timex, "~> 3.6"}
     ]
   end
