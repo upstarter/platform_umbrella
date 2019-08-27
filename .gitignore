@@ -7,6 +7,7 @@ erl_crash.dump
 *.ez
 /mydoc
 start_release
+bootstart.sh
 
 ### Node ###
 
