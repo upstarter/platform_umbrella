@@ -2,21 +2,28 @@
 # perform a production build as described in this subsection. You do not need to
 # modify the Dockerfile.
 
-# docker build -t cw-image .
-# container_id=$(docker create cw-image) docker cp
-# ${container_id}:/app/start_release start_release docker rm ${container_id}
-# gsutil cp start_release gs://${BUCKET_NAME}/platform-umbrella-release
+deploy:
+	$(MAKE) build && $(MAKE) create
+
+build:
+	docker build -t cw-proxy-image .
+	container_id=$(docker create cw-proxy-image)
+	docker cp ${container_id}:/app/start_release start_release
+	docker rm ${container_id}
+	gsutil cp start_release gs://${BUCKET_NAME}/cw-proxy-release
+	docker tag cw-proxy-image gcr.io/eternal-sunset-206422/cw-proxy-image
+	docker push gcr.io/eternal-sunset-206422/cw-proxy-image
+
 
 # BACKEND
 create:
 	gcloud compute instances create-with-container cw-proxy-instance \
 		--container-image gcr.io/eternal-sunset-206422/cw-proxy-image \
-		--image-family debian-9 \
-		--image-project debian-cloud \
 		--machine-type f1-micro \
+    # --machine-type g1-small \
 		--scopes "userinfo-email,cloud-platform" \
 		--metadata-from-file startup-script=instance-startup.sh \
-		--metadata release-url=gs://${BUCKET_NAME}/cw-proxy-release-1 \
+		--metadata release-url=gs://${BUCKET_NAME}/cw-proxy-release \
 		--zone us-central1-f \
  	 	--tags proxy-server \
 		--container-stdin \
