@@ -16,4 +16,4 @@ PROJECT_ID=$(curl \
     -s "http://metadata.google.internal/computeMetadata/v1/project/project-id" \
     -H "Metadata-Flavor: Google")
 ./cloud_sql_proxy -projects=${PROJECT_ID} -dir=/tmp/cloudsql &
-./cw-proxy-release start
+PORT=8080 ./cw-proxy-release start

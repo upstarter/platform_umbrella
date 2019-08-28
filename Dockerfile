@@ -30,7 +30,6 @@ RUN cd ${phoenix_subdir} \
 RUN mix distillery.release --env=${build_env} --executable --verbose \
     && mv _build/${build_env}/rel/${app_name}/bin/${app_name}.run start_release
 
-# for development, from dynamic script for instance creation
-# COPY ./bootstart.sh /
-# RUN chmod +x /bootstart.sh
-# ENTRYPOINT ["/bootstart.sh"]
+COPY ./container-bootstart.sh /
+RUN chmod +x /container-bootstart.sh
+ENTRYPOINT ["/container-bootstart.sh"]

@@ -1,0 +1,28 @@
+#cloud-configs
+
+users:
+- name: cw_proxy
+  uid: 2000
+
+write_files:
+- path: /etc/systemd/system/cw_proxy.service
+  permissions: 0644
+  owner: root
+  content: |
+    [Unit]
+    Description=Start a cw_proxy docker container
+    Wants=gcr-online.target
+    After=gcr-online.target
+
+    [Service]
+    Environment="HOME=/home/cw_proxy"
+    ExecStartPre=/usr/bin/docker-credential-gcr configure-docker
+    ExecStart=/usr/bin/docker run --rm -u 2000 --name=cw_proxy gcr.io/eternal-sunset-206422/cw-proxy-image ./start_release start
+    ExecStop=/usr/bin/docker stop cw_proxy
+    ExecStopPost=/usr/bin/docker rm cw_proxy
+
+runcmd:
+- toolbox apt-get install -y lsof
+- systemctl daemon-reload
+- systemctl start cw_proxy.service
+# - docker-credential-gcr configure-docker
