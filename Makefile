@@ -5,14 +5,16 @@
 deploy:
 	$(MAKE) build && $(MAKE) create
 
+container_id := $(shell docker create cw-proxy-image)
 build:
 	docker build -t cw-proxy-image .
-	container_id=$(docker create cw-proxy-image)
+	container_id=${container_id}
 	docker cp ${container_id}:/app/start_release start_release
 	docker rm ${container_id}
 	gsutil cp start_release gs://${BUCKET_NAME}/cw-proxy-release
 	docker tag cw-proxy-image gcr.io/eternal-sunset-206422/cw-proxy-image
 	docker push gcr.io/eternal-sunset-206422/cw-proxy-image
+
 
 # BACKEND
 create:

@@ -16,4 +16,4 @@ config :platform, Platform.Repo,
   password: System.get_env("POSTGRES_PASSWORD"),
   database: "platform_prod",
   socket_dir: System.get_env("POSTGRES_SOCKET_PATH"),
-  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "25")
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "15")

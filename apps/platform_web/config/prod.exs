@@ -19,7 +19,7 @@ config :platform_web, PlatformWeb.Endpoint,
   env: :prod,
   load_from_system_env: true,
   http: [port: {:system, "PORT"}],
-  url: [host: "cryptowise.ai"],
+  url: [host: "cryptowise.ai", port: "443"],
   https: [
     port: 443,
     otp_app: :platform_web,
