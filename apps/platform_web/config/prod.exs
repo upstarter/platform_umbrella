@@ -18,15 +18,10 @@ config :platform_web, :env, :prod
 config :platform_web, PlatformWeb.Endpoint,
   env: :prod,
   load_from_system_env: true,
-  http: [port: {:system, "PORT"}],
-  url: [host: "cryptowise.ai", port: "443"],
+  url: [host: "cryptowise.ai"],
   https: [
     port: 443,
-    otp_app: :platform_web,
-    keyfile: System.get_env("CW_KEYFILE_PATH"),
-    certfile: System.get_env("CW_CERTFILE_PATH")
-    # OPTIONAL Key for intermediate certificates
-    # cacertfile: System.get_env("INTERMEDIATE_CERTFILE_PATH")
+    otp_app: :platform_web
   ],
   force_ssl: [
     host: nil,

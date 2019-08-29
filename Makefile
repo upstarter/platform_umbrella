@@ -6,6 +6,7 @@ deploy:
 	$(MAKE) build && $(MAKE) create
 
 container_id := $(shell docker create cw-proxy)
+
 build:
 	docker build -t cw-proxy .
 	container_id=${container_id}
@@ -37,7 +38,8 @@ create:
 		--scopes "userinfo-email,cloud-platform,storage-ro" \
 		--metadata release-url=gs://${BUCKET_NAME}/cw-proxy-release \
 		--zone us-central1-f \
- 	 	--tags proxy-server
+ 	 	--tags proxy-server \
+		--tags http-server
 
 
 # set_accounts:

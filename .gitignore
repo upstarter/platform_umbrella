@@ -6,9 +6,9 @@
 erl_crash.dump
 *.ez
 /mydoc
-/start_release
-./instance-bootstart.sh
-/container-bootstart.sh
+start_release
+instance-bootstart.sh
+container-bootstart.sh
 
 ### Node ###
 

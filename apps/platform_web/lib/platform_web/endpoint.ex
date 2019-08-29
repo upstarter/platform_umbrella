@@ -62,9 +62,38 @@ defmodule PlatformWeb.Endpoint do
   def init(_key, config) do
     if config[:load_from_system_env] do
       port = System.get_env("PORT") || raise "expected the PORT environment variable to be set"
+
+      # OPTIONAL Key for intermediate certificates
+      # ca_file = System.get_env("INTERMEDIATE_CERTFILE")
+      # cacertfile: Path.join(cert_dir, "ca.pem"),
+      cert_dir = Application.app_dir(:platform_web, "priv/cert")
+
+      # require IEx
+      # IEx.pry()
+
+      ssl_opts = [
+        https: [
+          certfile: Path.join(cert_dir, System.get_env("CW_CERTFILE")),
+          keyfile: Path.join(cert_dir, System.get_env("CW_KEYFILE"))
+        ]
+      ]
+
+      config = Mix.Config.merge(config, ssl_opts)
       {:ok, Keyword.put(config, :http, [:inet6, port: port])}
     else
       {:ok, config}
     end
   end
 end
+
+# config
+# [
+#   otp_app: :platform_web,
+#   http: false,
+#   env: :prod,
+#   load_from_system_env: true,
+#   url: [path: "/", host: "cryptowise.ai"],
+#   https: [port: 443, otp_app: :platform_web],
+#   force_ssl: [host: nil, rewrite_on: [:x_forwarded_proto]],
+#   pubsub: [pool_size: 1, name: PlatformWeb.PubSub, adapter: Phoenix.PubSub.PG2]
+# ]
