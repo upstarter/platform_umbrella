@@ -70,16 +70,18 @@ defmodule PlatformWeb.Endpoint do
 
       # require IEx
       # IEx.pry()
+      # "/app/tmp/platform_umbrella/lib/platform_web-0.0.1/priv/cert/platform-web.ai.pem"
+      # url: [port: port],
 
-      ssl_opts = [
+      opts = [
         https: [
+          port: 443,
           certfile: Path.join(cert_dir, System.get_env("CW_CERTFILE")),
           keyfile: Path.join(cert_dir, System.get_env("CW_KEYFILE"))
         ]
       ]
 
-      config = Mix.Config.merge(config, ssl_opts)
-      {:ok, Keyword.put(config, :http, [:inet6, port: port])}
+      {:ok, Mix.Config.merge(config, opts)}
     else
       {:ok, config}
     end
@@ -97,3 +99,5 @@ end
 #   force_ssl: [host: nil, rewrite_on: [:x_forwarded_proto]],
 #   pubsub: [pool_size: 1, name: PlatformWeb.PubSub, adapter: Phoenix.PubSub.PG2]
 # ]
+
+# curl --insecure -v https://localhost:8080

@@ -8,7 +8,6 @@ ENV CW_CERTFILE=platform-web.ai.pem
 ENV PORT=8080
 EXPOSE 8080
 EXPOSE 443
-
 WORKDIR /app
 RUN apt-get update -y \
     # && curl -sL https://deb.nodesource.com/setup_10.x | bash - \

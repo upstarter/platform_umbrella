@@ -20,7 +20,7 @@ analysis_topics = [
   },
   %Topic{
     id: 92,
-    name: "Hybrid Analysis",
+    name: "Hybrid Analysis (Tech/Fundamental)",
     description:
       "A combination of technical and fundamental analysis, usually in some interesting combination.",
     parent_id: 17

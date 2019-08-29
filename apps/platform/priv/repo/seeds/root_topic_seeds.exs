@@ -1,6 +1,6 @@
 alias Platform.Repo
 alias Platform.Topics.Topic
-# current available id is 124
+# current available id is 128
 # BASE TOPICS IN THE UNIVERSE OF DISCOURSE FOR CRYPTOWISE.AI
 root_topics = [
   %Topic{
@@ -42,6 +42,30 @@ root_topics = [
     name: "Crypto Research",
     id: 123,
     description: "The research driving future directions.  The frontiers of the CryptoCosm.",
+    parent_id: nil
+  },
+  %Topic{
+    name: "Quantum Computing",
+    id: 124,
+    description: "The research driving future directions in Quantum Computing.",
+    parent_id: nil
+  },
+  %Topic{
+    name: "CRISPR",
+    id: 125,
+    description: "The research driving future directions in CRISPR.",
+    parent_id: nil
+  },
+  %Topic{
+    name: "Mixed Reality",
+    id: 126,
+    description: "The research driving future directions in Virtual and Augmented Reality.",
+    parent_id: nil
+  },
+  %Topic{
+    name: "GoTo Market",
+    id: 127,
+    description: "Go to Market for crypto entities.",
     parent_id: nil
   }
 ]

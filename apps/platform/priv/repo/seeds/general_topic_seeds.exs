@@ -82,7 +82,7 @@ general_topics = [
   },
   %Topic{
     id: 67,
-    name: "ERC-XX",
+    name: "ERC-XXX (Ethereum Request for Comments)",
     description: "ERC stands for Ethereum Request for Comments, like the IETF's RFC
     (https://www.ietf.org/rfc.html). An RFC is authored by engineers and computer
     scientists in the form of a memorandum describing methods, behaviors, research,
@@ -93,7 +93,7 @@ general_topics = [
   },
   %Topic{
     id: 68,
-    name: "Decentralized Exchange",
+    name: "Decentralized Exchanges",
     description: "Decentralized exchanges are the exchanges that do not require a third
       party to store your funds.",
     parent_id: 7

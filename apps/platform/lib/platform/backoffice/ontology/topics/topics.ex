@@ -20,7 +20,23 @@ defmodule Platform.Topics do
   """
 
   def list_topics do
-    Enum.shuffle(Topic |> Repo.all())
+    roots = Topic.roots() |> Repo.all()
+    topics = arrange_roots(roots)
+    Enum.shuffle(topics)
+  end
+
+  def arrange_roots(roots) do
+    subtopics =
+      for root_topic <- roots do
+        root_topic |> Topic.children() |> Repo.all()
+      end
+
+    subsubtopics =
+      for subtopic <- List.flatten(subtopics) do
+        subtopic |> Topic.children() |> Repo.all()
+      end
+
+    List.flatten(roots ++ subtopics ++ subsubtopics)
   end
 
   def arrange(topic) do

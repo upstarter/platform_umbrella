@@ -1,26 +1,38 @@
 # Whenever you want to do a new build, you only need to repeat the steps to
 # perform a production build as described in this subsection. You do not need to
 # modify the Dockerfile.
+zone := us-central1-f
+container_id := $(shell docker create cw-proxy)
 
 deploy:
 	$(MAKE) build && $(MAKE) create
 
-container_id := $(shell docker create cw-proxy)
-
-build:
-	docker build -t cw-proxy .
-	container_id=${container_id}
+build: build_container
+	@container_id=${container_id}
 	docker cp ${container_id}:/app/start_release start_release
 	docker rm ${container_id}
 	gsutil cp start_release gs://${BUCKET_NAME}/cw-proxy-release
 	docker tag cw-proxy gcr.io/eternal-sunset-206422/cw-proxy
-	docker push gcr.io/eternal-sunset-206422/cw-proxy
+	# docker push gcr.io/eternal-sunset-206422/cw-proxy
+
+build_container:
+	@docker build -t cw-proxy .
 
 # BACKEND
 update:
 	gcloud compute instances update-container cw-proxy-instance \
-		--container-command='toolbox' \
-		--zone us-central1-a
+		--zone ${zone}
+
+add_tags:
+	gcloud compute instances add-tags cw-proxy-instance \
+		--tags https-server \
+		--zone ${zone}
+
+# make TAGS="http-server" remote_tags
+remove_tags:
+	gcloud compute instances remove-tags cw-proxy-instance \
+		--tags ${TAGS} \
+		--zone ${zone}
 
 # --machine-type g1-small
 # --service-account db-access@eternal-sunset-206422.iam.gserviceaccount.com \
@@ -37,9 +49,8 @@ create:
 		--service-account db-access@eternal-sunset-206422.iam.gserviceaccount.com \
 		--scopes "userinfo-email,cloud-platform,storage-ro" \
 		--metadata release-url=gs://${BUCKET_NAME}/cw-proxy-release \
-		--zone us-central1-f \
- 	 	--tags proxy-server \
-		--tags http-server
+		--zone ${zone} \
+		--tags "proxy-server,https-server,http-server"
 
 
 # set_accounts:
@@ -50,7 +61,7 @@ create:
 # check progress of instance creation
 instances:
 	gcloud compute instances get-serial-port-output cw-proxy-instance \
-	    --zone us-central1-f
+	    --zone ${zone}
 
 firewall:
 	gcloud compute firewall-rules create default-allow-http-8080 \
@@ -63,7 +74,8 @@ list_instances:
 	gcloud compute instances list
 
 describe:
-	gcloud compute instances describe cw-proxy-instance
+	gcloud compute instances describe cw-proxy-instance \
+		--zone ${zone}
 
 # HANDY DANDIES:
 # docker run -it gcr.io/eternal-sunset-206422/cw-proxy /bin/bash
