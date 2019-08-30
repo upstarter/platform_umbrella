@@ -12,13 +12,6 @@ use Mix.Config
 # Configure your database
 config :platform, Platform.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: System.get_env("POSTGRES_USER"),
-  password: System.get_env("POSTGRES_PASSWORD"),
   database: "platform_prod",
-  socket_dir: System.get_env("POSTGRES_SOCKET_PATH"),
-  ssl: true,
-  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "15"),
-  ssl_opts: [
-    cacertfile:
-      Path.join(Application.app_dir(:platform_web, "priv/cert"), System.get_env("CA_CERTFILE"))
-  ]
+  # ssl: true,
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "15")

@@ -11,7 +11,34 @@ defmodule Platform.Repo do
   """
 
   def init(_, opts) do
-    {:ok, Keyword.put(opts, :url, System.get_env("DATABASE_URL"))}
+    # certdir = Application.app_dir(:platform, "priv/cert")
+
+    # ssl_opts: [
+    #   cacertfile:
+    #     Path.join(
+    #       certdir,
+    #       System.get_env("DB_CA_CERTFILE")
+    #     ),
+    #   certfile:
+    #     Path.join(
+    #       certdir,
+    #       System.get_env("DB_CERTFILE")
+    #     ),
+    #   keyfile:
+    #     Path.join(
+    #       certdir,
+    #       System.get_env("DB_KEYFILE")
+    #     )
+    # ]
+    sysopts = [
+      username: System.get_env("POSTGRES_USER"),
+      password: System.get_env("POSTGRES_PASSWORD"),
+      socket_dir: System.get_env("DATABASE_URL")
+    ]
+
+    opts = Mix.Config.merge(opts, sysopts)
+    # if url, do: {:ok, opts}, else: {:ok, opts}
+    {:ok, opts}
   end
 
   @doc """

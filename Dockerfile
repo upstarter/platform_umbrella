@@ -1,9 +1,14 @@
 FROM elixir:latest
 ARG app_name=platform_umbrella
 ARG phoenix_subdir=apps/platform_web
+ARG platform_subdir=apps/platform
 ARG build_env=prod
 ENV MIX_ENV=${build_env} TERM=xterm
-ENV POSTGRES_SOCKET_PATH=eternal-sunset-206422:us-central1:umbrella-db
+ENV DATABASE_URL=/tmp/cloudsql/eternal-sunset-206422:us-central1:umbrella-db
+# ENV DATABASE_URL=/tmp/cloudsql/eternal-sunset-206422:us-central1:umbrella-db=tcp:3306
+ENV DB_CA_CERTFILE=server-ca.pem
+ENV DB_KEYFILE=client-key.pem
+ENV DB_CERTFILE=client-cert.pem
 ENV PORT=8080
 EXPOSE 8080
 EXPOSE 443
@@ -11,12 +16,12 @@ WORKDIR /app
 RUN apt-get update -y \
     # && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     # && apt-get install -y -q --no-install-recommends nodejs \
-    && apt-get install -y postgresql-client \
     && mix local.rebar --force \
     && mix local.hex --force
 COPY . .
 
 RUN chmod 777 -R ${phoenix_subdir}/priv/cert
+RUN chmod 777 -R ${platform_subdir}/priv/cert
 RUN mix do deps.get, compile
 RUN cd ${phoenix_subdir} \
     && mix phx.digest \
