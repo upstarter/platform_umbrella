@@ -3,8 +3,6 @@ ARG app_name=platform_umbrella
 ARG phoenix_subdir=apps/platform_web
 ARG build_env=prod
 ENV MIX_ENV=${build_env} TERM=xterm
-ENV CW_KEYFILE=platform-web.ai.key
-ENV CW_CERTFILE=platform-web.ai.pem
 ENV PORT=8080
 EXPOSE 8080
 EXPOSE 443
@@ -16,9 +14,8 @@ RUN apt-get update -y \
     && mix local.rebar --force \
     && mix local.hex --force
 COPY . .
-# ENV POSTGRES_SOCKET_PATH=/tmp/cloudsql/eternal-sunset-206422:us-central1:umbrella-db/.s.PGSQL.5432
 
-# RUN chmod 777 -R ${phoenix_subdir}/priv/cert
+RUN chmod 777 -R ${phoenix_subdir}/priv/cert
 RUN mix do deps.get, compile
 RUN cd ${phoenix_subdir} \
     && mix phx.digest \

@@ -7,12 +7,17 @@ container_id := $(shell docker create cw-proxy)
 deploy:
 	$(MAKE) build && $(MAKE) create
 
-build: build_container
+add_keys:
+
+
+build:
+	$(MAKE) build_container
 	@container_id=${container_id}
 	docker cp ${container_id}:/app/start_release start_release
 	docker rm ${container_id}
 	gsutil cp start_release gs://${BUCKET_NAME}/cw-proxy-release
-	docker tag cw-proxy gcr.io/eternal-sunset-206422/cw-proxy
+	# for create-with-container:
+	# docker tag cw-proxy gcr.io/eternal-sunset-206422/cw-proxy
 	# docker push gcr.io/eternal-sunset-206422/cw-proxy
 
 build_container:
@@ -41,7 +46,7 @@ remove_tags:
 # --container-stdin \
 # --container-tty
 create:
-	gcloud compute instances create cw-proxy-instance \
+	gcloud compute instances create cw-proxy-instance1 \
 		--image-family debian-9 \
 		--image-project debian-cloud \
 		--metadata-from-file startup-script=instance-bootstart.sh  \
