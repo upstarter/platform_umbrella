@@ -33,7 +33,7 @@ defmodule PlatformWeb.V1.Auth.RegistrationView do
   def render("sign_up.json", %{auth: auth}) do
     %{
       status: :ok,
-      message: "Now you can sign in using your email and password at `/api/v1/sign_in`.
+      message: "Now you can sign in using your email and password at `/v1/sign_in`.
         You will receive JWT token.\nPlease put this token into Authorization header
         for all authorized requests.\n"
     }

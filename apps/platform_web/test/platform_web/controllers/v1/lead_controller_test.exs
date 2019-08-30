@@ -1,7 +1,7 @@
 defmodule PlatformWeb.V1.LeadControllerTest do
   use PlatformWeb.ConnCase
 
-  describe "POST /api/v1/leads" do
+  describe "POST /v1/leads" do
     test "returns error response with invalid parms", %{conn: conn} do
       conn = post(conn, lead_path(conn, :create), %{"lead" => %{}})
 
