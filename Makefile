@@ -1,17 +1,14 @@
 # Whenever you want to do a new build, you only need to repeat the steps to
 # perform a production build as described in this subsection. You do not need to
 # modify the Dockerfile.
+# BACKEND
 zone := us-central1-f
 container_id := $(shell docker create cw-proxy)
-
 deploy:
 	$(MAKE) build && $(MAKE) create
 
-add_keys:
-
-
 build:
-	$(MAKE) build_container
+	@$(MAKE) build_container
 	@container_id=${container_id}
 	docker cp ${container_id}:/app/start_release start_release
 	docker rm ${container_id}
@@ -23,22 +20,6 @@ build:
 build_container:
 	@docker build -t cw-proxy .
 
-# BACKEND
-update:
-	gcloud compute instances update-container cw-proxy-instance \
-		--zone ${zone}
-
-add_tags:
-	gcloud compute instances add-tags cw-proxy-instance \
-		--tags https-server \
-		--zone ${zone}
-
-# make TAGS="http-server" remote_tags
-remove_tags:
-	gcloud compute instances remove-tags cw-proxy-instance \
-		--tags ${TAGS} \
-		--zone ${zone}
-
 # --machine-type g1-small
 # --service-account db-access@eternal-sunset-206422.iam.gserviceaccount.com \
 # --metadata-from-file user-data=cloud-config
@@ -46,7 +27,7 @@ remove_tags:
 # --container-stdin \
 # --container-tty
 create:
-	gcloud compute instances create cw-proxy-instance1 \
+	gcloud compute instances create cw-proxy-instance${N} \
 		--image-family debian-9 \
 		--image-project debian-cloud \
 		--metadata-from-file startup-script=instance-bootstart.sh  \
@@ -56,8 +37,21 @@ create:
 		--metadata release-url=gs://${BUCKET_NAME}/cw-proxy-release \
 		--zone ${zone} \
 		--tags "proxy-server,https-server,http-server"
-
-
+#
+update:
+	gcloud compute instances update-container cw-proxy-instance5 \
+		--zone ${zone}
+#
+# add_tags:
+# 	gcloud compute instances add-tags cw-proxy-instance \
+# 		--tags https-server \
+# 		--zone ${zone}
+#
+# # make TAGS="http-server" remote_tags
+# remove_tags:
+# 	gcloud compute instances remove-tags cw-proxy-instance \
+# 		--tags ${TAGS} \
+# 		--zone ${zone}
 # set_accounts:
 # 	gcloud compute instances set-service-account cw-proxy-instance \
 #    --service-account db-access@eternal-sunset-206422.iam.gserviceaccount.com \

@@ -3,6 +3,7 @@ ARG app_name=platform_umbrella
 ARG phoenix_subdir=apps/platform_web
 ARG build_env=prod
 ENV MIX_ENV=${build_env} TERM=xterm
+ENV POSTGRES_SOCKET_PATH=eternal-sunset-206422:us-central1:umbrella-db
 ENV PORT=8080
 EXPOSE 8080
 EXPOSE 443

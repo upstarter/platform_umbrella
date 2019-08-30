@@ -68,11 +68,6 @@ defmodule PlatformWeb.Endpoint do
       # cacertfile: Path.join(cert_dir, "ca.pem"),
       cert_dir = Application.app_dir(:platform_web, "priv/cert")
 
-      # require IEx
-      # IEx.pry()
-      # "/app/tmp/platform_umbrella/lib/platform_web-0.0.1/priv/cert/platform-web.ai.pem"
-      # url: [port: port],
-
       opts = [
         https: [
           port: 443,
@@ -87,17 +82,3 @@ defmodule PlatformWeb.Endpoint do
     end
   end
 end
-
-# config
-# [
-#   otp_app: :platform_web,
-#   http: false,
-#   env: :prod,
-#   load_from_system_env: true,
-#   url: [path: "/", host: "cryptowise.ai"],
-#   https: [port: 443, otp_app: :platform_web],
-#   force_ssl: [host: nil, rewrite_on: [:x_forwarded_proto]],
-#   pubsub: [pool_size: 1, name: PlatformWeb.PubSub, adapter: Phoenix.PubSub.PG2]
-# ]
-
-# curl --insecure -v https://localhost:8080
