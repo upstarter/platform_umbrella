@@ -22,13 +22,13 @@ root_topics = [
     name: "Artificial Intelligence",
     id: 3,
     description: "Categorical breakdown of the current crop of crypto AI use cases by
-      startups and the socio-technical implications of future developments.",
+      startups and the socio-technological implications of future developments.",
     parent_id: nil
   },
   %Topic{
     name: "Behavioral Finance & Investing Psychology",
     id: 111,
-    description: "Psychological and Technosocial aspects of financial & capital markets.",
+    description: "Psychological and Socio-technological aspects of financial & capital markets.",
     parent_id: nil
   },
   %Topic{
@@ -41,7 +41,7 @@ root_topics = [
   %Topic{
     name: "Crypto Research",
     id: 123,
-    description: "The research driving future directions.  The frontiers of the CryptoCosm.",
+    description: "The research driving future directions. The frontiers of the CryptoCosm.",
     parent_id: nil
   },
   %Topic{
@@ -63,9 +63,9 @@ root_topics = [
     parent_id: nil
   },
   %Topic{
-    name: "GoTo Market",
+    name: "Go To Market Strategy",
     id: 127,
-    description: "Go to Market for crypto entities.",
+    description: "Go to Market Strategies & Tactics for crypto networking entities.",
     parent_id: nil
   }
 ]

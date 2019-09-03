@@ -44,9 +44,6 @@ defmodule Platform.Mixfile do
       {:ecto_autoslug_field, "~> 2.0"},
       {:guardian, "~> 2.0", override: true},
       {:guardian_trackable, "~> 0.2.0"},
-      {:jason, "~> 1.1", override: true},
-      {:poison, "~> 4.0", override: true},
-      {:httpoison, "~> 1.5", override: true},
       {:ex_machina, "~> 2.3", only: :test}
       # {:votex, "~> 0.3.0"}
     ]

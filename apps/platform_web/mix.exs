@@ -37,6 +37,7 @@ defmodule PlatformWeb.Mixfile do
   defp deps do
     [
       {:phoenix, "~> 1.4.9"},
+      {:platform, in_umbrella: true},
       {:plug_cowboy, "~> 2.1"},
       {:guardian, "~> 2.0", override: true},
       {:phoenix_html, "~> 2.11"},
@@ -47,8 +48,7 @@ defmodule PlatformWeb.Mixfile do
       {:cowboy, "~> 2.6.3"},
       {:bamboo, "~> 1.3.0"},
       # {:absinthe, "~> 1.4.0"},
-      {:platform, in_umbrella: true},
-      # {:get_medium, "~> 0.3.0"},
+      {:get_medium, "~> 0.3.0", override: true},
       # html parser
       {:floki, "~> 0.21.0"},
       {:con_cache, "~> 0.13.1"},

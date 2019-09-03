@@ -132,7 +132,7 @@ analysis_topics = [
   },
   %Topic{
     id: 120,
-    name: "Analytical Tools",
+    name: "Analytical Software Tools",
     description:
       "The models, programs, frameworks, and products used to optimize a program of trading or investing.",
     parent_id: 2
