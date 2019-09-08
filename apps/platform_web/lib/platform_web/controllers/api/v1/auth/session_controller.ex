@@ -88,38 +88,37 @@ defmodule PlatformWeb.V1.Auth.SessionController do
     conn =
       Guardian.Plug.sign_in(
         conn,
-        user
+        user,
+        %{},
+        token_type: "refresh"
       )
 
-    # jwt_refresh = Guardian.Plug.current_token(conn)
-    #
-    # {:ok, _old_stuff, {jwt, %{"exp" => _exp} = _new_claims}} =
-    #   Guardian.exchange(jwt_refresh, "refresh", "access")
-    #
-    # thirty_days = 86400 * 30
-    #
-    # conn =
-    #   put_resp_cookie(conn, "_cw_acc", jwt,
-    #     max_age: thirty_days,
-    #     http_only: false,
-    #     secure: false
-    #   )
+    {:ok, jwt, _full_claims} =
+      Guardian.encode_and_sign(
+        user,
+        %{},
+        token_type: "access"
+      )
 
-    IO.inspect([
-      'sign in session',
+    thirty_days = 4 * 7 * 24 * 60 * 60
+
+    conn =
       conn
-      # jwt_refresh,
-      # jwt
-    ])
+      |> put_resp_cookie("_cw_acc", jwt,
+        max_age: thirty_days,
+        http_only: false,
+        secure: false
+      )
 
     {:ok, conn}
   end
 
   def sign_out(conn, _params) do
-    with token <- Guardian.Plug.current_token(),
+    with token <- Guardian.Plug.current_token(conn),
          {:ok, _claims} <- Guardian.revoke(token),
-         conn = Guardian.Plug.sign_out(conn),
-         do: render(conn, "sign_out.json", [])
+         conn <- Guardian.Plug.sign_out(conn) do
+      render(conn, "sign_out.json")
+    end
   end
 
   def create(conn, %{"session" => session_params}) do

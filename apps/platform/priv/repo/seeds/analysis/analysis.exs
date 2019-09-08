@@ -112,7 +112,7 @@ analysis_topics = [
   },
   %Topic{
     id: 106,
-    name: "AI & Machine Learning",
+    name: "AI & Machine Learning (Technical Analysis)",
     description: "The analysis of markets using models and algorithms based on brain functions.",
     parent_id: 91
   },

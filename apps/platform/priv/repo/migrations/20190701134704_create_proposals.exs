@@ -8,6 +8,7 @@ defmodule Platform.Repo.Migrations.CreateProposals do
       add(:description, :string)
       add(:active, :boolean, default: false, null: false)
       add(:is_public, :boolean, default: false, null: false)
+      add(:station, :string, null: false)
       add(:status, :string)
       add(:user_id, :integer, null: false)
       add(:cached_votes_for_total, :integer)

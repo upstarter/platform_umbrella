@@ -29,13 +29,13 @@ general_topics = [
   },
   %Topic{
     id: 60,
-    name: "Regulatory",
+    name: "Crypto Regulation",
     description: "A rule or directive made and maintained by an authority.",
     parent_id: 5
   },
   %Topic{
     id: 61,
-    name: "Compliance",
+    name: "Crypto Compliance",
     description: "The act or process of complying to a desire, demand, proposal, or regimen or to
   coercion.",
     parent_id: 7

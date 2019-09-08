@@ -13,6 +13,15 @@ defmodule PlatformWeb.V1.SessionView do
     }
   end
 
+  # def render("sign_out.json", _) do
+  #   %{
+  #     status: :ok,
+  #     data: %{token: nil},
+  #     message:
+  #       "You have successfully signed out! You will need to signin again to enjoy using the service."
+  #   }
+  # end
+
   def render("show.json", %{jwt: jwt, user: user}) do
     %{
       jwt: jwt,

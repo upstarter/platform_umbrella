@@ -267,7 +267,7 @@ content existed at a certain time.",
   },
   %Topic{
     id: 57,
-    name: "Virtual & Augmented Reality",
+    name: "Mixed, Virtual & Augmented Reality",
     description: "Assets focusing on enabling, or being used within, virtual reality or augmented
 reality platforms.",
     parent_id: 6

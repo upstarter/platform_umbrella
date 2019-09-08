@@ -8,7 +8,7 @@ defmodule PlatformWeb.V1.Users.ProposalsController do
   end
 
   def create(conn, _proposal_params = %{"proposal" => params}) do
-    with {:ok, %{} = proposal} <-
+    with {:ok, proposal} <-
            Proposal.create_for_user(
              Map.merge(
                %{

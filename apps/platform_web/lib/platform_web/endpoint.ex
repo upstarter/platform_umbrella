@@ -41,9 +41,9 @@ defmodule PlatformWeb.Endpoint do
   plug(Plug.Session,
     store: :cookie,
     key: "_cw_skey",
-    http_only: false,
+    http_only: true,
     # keep false in dev mode since no https in dev mode
-    secure: false,
+    secure: true,
     signing_salt: "0QCm9hTQ",
     # number of seconds in 4 weeks
     max_age: 4 * 7 * 24 * 60 * 60

@@ -80,7 +80,8 @@ defmodule PlatformWeb.Router do
         end
 
         scope "/" do
-          get("/sign_out", SessionController, :sign_out)
+          pipe_through(:ensure_auth)
+          post("/sign_out", SessionController, :sign_out)
           get("/me", RegistrationController, :show)
         end
 

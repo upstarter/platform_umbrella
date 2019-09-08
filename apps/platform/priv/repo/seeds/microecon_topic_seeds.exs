@@ -4,7 +4,7 @@ alias Platform.Topics.Topic
 cryptoecon_topics = [
   # parent
   %Topic{
-    name: "Micro Economy",
+    name: "Crypto Micro Economy",
     id: 7,
     description: "The 'Firm' or 'Entity' level analysis of crypto projects. Includes
     strategic policies, protocols, crypto-economic primitives, governance models,
@@ -41,12 +41,12 @@ cryptoecon_topics = [
     parent_id: 7
   },
   %Topic{
-    name: "Governance Models",
+    name: "Crypto Governance Models",
     id: 11,
     description: "The concerted efforts by which cooperation and decision-making can be achieved,
       collectively, and action can be taken accordingly when necessary to ensure the
       integrity of the ecosystem. Because governance and social consensus takes time,
-      is an emergent property, and creating a sound ecosystem that can interoperate
+      and is an emergent property, creating a sound ecosystem that can interoperate
       well to perceive that emergent consensus & signaling is paramount.",
     parent_id: 7
   },
@@ -73,6 +73,18 @@ cryptoecon_topics = [
     id: 112,
     name: "Token Distribution Models",
     description: "Existing & Emerging distribution models enabled by crypto networks.",
+    parent_id: 7
+  },
+  %Topic{
+    name: "Competitive Strategy",
+    id: 128,
+    description: "Frameworks which descend from Michael Porter's Five Forces, etc..",
+    parent_id: 7
+  },
+  %Topic{
+    name: "Go To Market Strategy",
+    id: 127,
+    description: "Go to Market Strategies & Tactics for crypto networking entities.",
     parent_id: 7
   }
 ]

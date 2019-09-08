@@ -21,7 +21,14 @@ ra_topics = [
   },
   %Topic{
     id: 17,
-    name: "Strategy & Systems",
+    name: "Investing Strategy",
+    description: "A set of rules, behaviors or procedures, designed to guide an
+      investor's selection of an investment portfolio or trading system.",
+    parent_id: 2
+  },
+  %Topic{
+    id: 129,
+    name: "Trading Strategy",
     description: "A set of rules, behaviors or procedures, designed to guide an
       investor's selection of an investment portfolio or trading system.",
     parent_id: 2
@@ -54,7 +61,7 @@ ra_topics = [
   },
   %Topic{
     id: 21,
-    name: "Valuation Frameworks",
+    name: "Token Valuation Frameworks",
     description: "Emerging and Existing token valuation frameworks.",
     parent_id: 90
   }

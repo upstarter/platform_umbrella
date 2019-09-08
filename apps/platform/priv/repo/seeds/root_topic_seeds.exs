@@ -1,6 +1,6 @@
 alias Platform.Repo
 alias Platform.Topics.Topic
-# current available id is 128
+# current available id is 132
 # BASE TOPICS IN THE UNIVERSE OF DISCOURSE FOR CRYPTOWISE.AI
 root_topics = [
   %Topic{
@@ -12,7 +12,7 @@ root_topics = [
     parent_id: nil
   },
   %Topic{
-    name: "Cryptoasset Analysis",
+    name: "Cryptoasset Fundamental & Technical Analysis",
     id: 2,
     description:
       "Fundamental, Technical, and Sociotechnical analysis of crypto systems, networks, and assets.",
@@ -21,7 +21,7 @@ root_topics = [
   %Topic{
     name: "Artificial Intelligence",
     id: 3,
-    description: "Categorical breakdown of the current crop of crypto AI use cases by
+    description: "Categorical breakdown of the current crop of key AI use cases by
       startups and the socio-technological implications of future developments.",
     parent_id: nil
   },
@@ -41,19 +41,20 @@ root_topics = [
   %Topic{
     name: "Crypto Research",
     id: 123,
-    description: "The research driving future directions. The frontiers of the CryptoCosm.",
+    description: "The companies & research driving the frontiers of the CryptoCosm.",
     parent_id: nil
   },
   %Topic{
     name: "Quantum Computing",
     id: 124,
-    description: "The research driving future directions in Quantum Computing.",
+    description: "The companies & research driving future directions in Quantum Computing.",
     parent_id: nil
   },
   %Topic{
     name: "CRISPR",
     id: 125,
-    description: "The research driving future directions in CRISPR.",
+    description:
+      "The companies & research driving future directions in CRISPR gene editing technology.",
     parent_id: nil
   },
   %Topic{
@@ -63,9 +64,15 @@ root_topics = [
     parent_id: nil
   },
   %Topic{
-    name: "Go To Market Strategy",
-    id: 127,
-    description: "Go to Market Strategies & Tactics for crypto networking entities.",
+    name: "Data Protocols & MarketPlaces",
+    id: 130,
+    description: "Data Protocols and MarketPlaces in the Crypto Ecosystem.",
+    parent_id: nil
+  },
+  %Topic{
+    name: "General Crypto Platforms, Frameworks, API's, Products",
+    id: 131,
+    description: "Platforms, Frameworks, and API's offered by the Crypto Ecosystem.",
     parent_id: nil
   }
 ]

@@ -11,6 +11,7 @@ defmodule Platform.Users.Proposal do
     field(:active, :boolean, default: false)
     field(:status, :string)
     field(:type, :string)
+    field(:station, :string)
     field(:is_public, :boolean, default: false)
     field(:cached_votes_for_total, :integer)
 
@@ -32,16 +33,29 @@ defmodule Platform.Users.Proposal do
     |> Repo.preload(:user)
   end
 
-  @fields ~w(title description type status active user_id is_public)a
-  @required_fields ~w(title type status active user_id is_public)a
+  @fields ~w(title description type status station active user_id is_public)a
+  @required_fields ~w(title type status station active user_id is_public)a
 
   def create_for_user(attrs) do
-    attrs = Map.merge(attrs, %{"type" => "Genesis", "status" => "initial", "is_public" => true})
+    attrs =
+      Map.merge(attrs, %{
+        "type" => "Genesis",
+        "station" => "Strategist",
+        "status" => "initial",
+        "is_public" => true
+      })
+
     changeset = Proposal.changeset(%Proposal{}, attrs)
     IO.inspect(['create for user', attrs, changeset])
 
-    changeset
-    |> Repo.insert()
+    {:ok, prop} =
+      changeset
+      |> Repo.insert()
+
+    prop = Platform.Repo.preload(prop, :user)
+
+    IO.inspect([prop])
+    {:ok, prop}
   end
 
   def validate(%Ecto.Changeset{} = changeset) do

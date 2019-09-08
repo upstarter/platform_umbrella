@@ -4,7 +4,7 @@ alias Platform.Topics.Topic
 macroecon_topics = [
   # parent
   %Topic{
-    name: "Macro Economy",
+    name: "Crypto Macro Economy",
     id: 5,
     description: "The Crypto Economy. A.K.A 'The Cryptocosm'. Includes crypto
     economic sectors and their analysis.",
