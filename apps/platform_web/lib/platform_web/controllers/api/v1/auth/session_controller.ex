@@ -100,7 +100,8 @@ defmodule PlatformWeb.V1.Auth.SessionController do
         token_type: "access"
       )
 
-    thirty_days = 4 * 7 * 24 * 60 * 60
+    # 4 * 7 * 24 * 60 * 60
+    thirty_days = 60 * 25
 
     conn =
       conn

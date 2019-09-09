@@ -40,7 +40,7 @@ defmodule Platform.Users.Proposal do
     attrs =
       Map.merge(attrs, %{
         "type" => "Genesis",
-        "station" => "Strategist",
+        "station" => "Generalist",
         "status" => "initial",
         "is_public" => true
       })

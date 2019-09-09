@@ -9,9 +9,10 @@ defmodule PlatformWeb.Auth.Pipeline do
   # If there is an authorization header, validate it
   plug(Guardian.Plug.VerifyHeader, realm: "Bearer", claims: %{"typ" => "access"})
 
-  plug(Guardian.Plug.VerifyCookie, key: :_cw_skey)
+  plug(Guardian.Plug.VerifyCookie)
   # # If there is a session token, validate it
-  plug(Guardian.Plug.VerifySession, claims: %{"typ" => "refresh"})
+  # plug(Guardian.Plug.VerifySession)
+  # plug(Guardian.Plug.VerifySession, claims: %{"typ" => "access"})
   plug(Guardian.Plug.EnsureAuthenticated)
 
   # # Load the user if either of the verifications worked
