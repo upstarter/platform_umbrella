@@ -8,7 +8,7 @@ deploy:
 	$(MAKE) release && $(MAKE) create
 
 release:
-	# @$(MAKE) image
+	@$(MAKE) image
 	container_id=${container_id}
 	docker cp ${container_id}:/app/start_release start_release
 	docker rm ${container_id}
@@ -39,7 +39,7 @@ create:
 		--tags "proxy-server,https-server,http-server"
 #
 update:
-	gcloud compute instances update-container cw-proxy-instance5 \
+	gcloud compute instances update-container cw-proxy-instance${N} \
 		--zone ${zone}
 #
 # add_tags:
@@ -59,7 +59,7 @@ update:
 
 # check progress of instance creation
 instances:
-	gcloud compute instances get-serial-port-output cw-proxy-instance \
+	gcloud compute instances get-serial-port-output cw-proxy-instance${N} \
 	    --zone ${zone}
 
 firewall:
@@ -76,12 +76,16 @@ describe:
 	gcloud compute instances describe cw-proxy-instance \
 		--zone ${zone}
 
+# Docker logs are in /var/log/journal. Also can run on coreos:
+log:
+	sudo journalctl -u google-startup-scripts.service
+
 # HANDY DANDIES:
+# create certs:  openssl req -nodes -new -x509 -keyout cryptowise-ai.key -out cryptowise-ai.crt -days 365 -subj '/CN=cryptowise.ai/O=Aion Labs, Inc./C=US';
+# view certs from public site: echo | openssl s_client -showcerts -servername gnupg.org -connect gnupg.org:443 2>/dev/null | openssl x509 -inform pem -noout -text
+
+
 # docker run -it gcr.io/eternal-sunset-206422/cw-proxy /bin/bash
 # psql -h /tmp/cloudsql/eternal-sunset-206422:us-central1:umbrella-db -U postgres
 
 # sudo google_metadata_script_runner --script-type startup --debug
-#
-# Container-Optimized OS uses the systemd-journald service.
-# Docker logs are in /var/log/journal. Also can run on coreos:
-# sudo journalctl -u google-startup-scripts.service

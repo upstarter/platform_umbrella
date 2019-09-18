@@ -4,18 +4,25 @@ ARG phoenix_subdir=apps/platform_web
 ARG platform_subdir=apps/platform
 ARG build_env=prod
 ENV MIX_ENV=${build_env} TERM=xterm
+
+# DB
 ENV DATABASE_URL=/tmp/cloudsql/eternal-sunset-206422:us-central1:umbrella-db
-# ENV DATABASE_URL=/tmp/cloudsql/eternal-sunset-206422:us-central1:umbrella-db=tcp:3306
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=ZQLm3AsToWtXkyePALtGRhjs
+
+ENV CW_KEYFILE=platform-web.ai.key
+ENV CW_CERTFILE=platform-web.ai.pem
 ENV DB_CA_CERTFILE=server-ca.pem
 ENV DB_KEYFILE=client-key.pem
 ENV DB_CERTFILE=client-cert.pem
-ENV PORT=8080
-EXPOSE 8080
+ENV PORT=443
+EXPOSE 80
 EXPOSE 443
 WORKDIR /app
 RUN apt-get update -y \
     # && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     # && apt-get install -y -q --no-install-recommends nodejs \
+    && apt-get install -y postgresql-client \
     && mix local.rebar --force \
     && mix local.hex --force
 COPY . .
@@ -25,10 +32,19 @@ RUN chmod 777 -R ${platform_subdir}/priv/cert
 RUN mix do deps.get, compile
 RUN cd ${phoenix_subdir} \
     && mix phx.digest \
-    && cd ..
-RUN mix distillery.release --env=${build_env} --executable --verbose \
-    && mv _build/${build_env}/rel/${app_name}/bin/${app_name}.run start_release
+    && cd ../..
 
-COPY ./container-bootstart.sh /
-RUN chmod +x /container-bootstart.sh
-ENTRYPOINT ["/container-bootstart.sh"]
+RUN wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 \
+    -O cloud_sql_proxy
+RUN chmod +x cloud_sql_proxy
+RUN mkdir /tmp/cloudsql
+RUN ./cloud_sql_proxy -projects=eternal-sunset-206422 -dir=/tmp/cloudsql &
+
+RUN mix distillery.release --env=${build_env} --executable --verbose
+RUN mv _build/${build_env}/rel/${app_name}/bin/${app_name}.run start_release
+ENTRYPOINT ["./start_release"]
+CMD ["foreground"]
+
+# COPY ./container-bootstart.sh /
+# RUN chmod +x /container-bootstart.sh
+# ENTRYPOINT ["/container-bootstart.sh"]

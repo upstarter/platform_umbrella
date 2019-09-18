@@ -53,7 +53,7 @@ cryptoecon_topics = [
   %Topic{
     id: 12,
     name: "Smart Contracts",
-    description: "Technology enabled legal agreements.",
+    description: "Systems which move digital assets according to arbitrary pre-specified rules.",
     parent_id: 7
   },
   %Topic{

@@ -74,6 +74,13 @@ root_topics = [
     id: 131,
     description: "Platforms, Frameworks, and API's offered by the Crypto Ecosystem.",
     parent_id: nil
+  },
+  %Topic{
+    id: 57,
+    name: "Mixed, Virtual & Augmented Reality",
+    description: "Assets focusing on enabling, or being used within, virtual reality or augmented
+reality platforms.",
+    parent_id: 6
   }
 ]
 
