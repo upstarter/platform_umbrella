@@ -18,7 +18,7 @@ config :platform_web, :env, :prod
 config :platform_web, PlatformWeb.Endpoint,
   env: :prod,
   load_from_system_env: true,
-  url: [host: "cryptowise.ai", port: 443],
+  url: [host: "api.cryptowise.ai", port: 443],
   https: [
     otp_app: :platform_web
   ],
@@ -35,7 +35,7 @@ config :platform_web, PlatformWeb.Endpoint,
   pubsub: [name: PlatformWeb.PubSub, adapter: Phoenix.PubSub.PG2]
 
 config :cors_plug,
-  origin: ["https://admin.cryptowise.ai"],
+  origin: ["https://www.cryptowise.ai", "https://cryptowise.ai", "https://test.cryptowise.ai"],
   supports_credentials: true
 
 # ## SSL Support
