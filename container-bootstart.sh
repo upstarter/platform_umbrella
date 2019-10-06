@@ -1,7 +1,6 @@
 #!/bin/sh
 set -ex
-export CW_KEYFILE=platform-web.ai.key
-export CW_CERTFILE=platform-web.ai.pem
+cloud_sql_proxy -projects=eternal-sunset-206422 -dir=/tmp/cloudsql &
 
 # DB
 # export DATABASE_URL=/tmp/cloudsql/eternal-sunset-206422:us-central1:umbrella-db
@@ -28,4 +27,3 @@ export CW_CERTFILE=platform-web.ai.pem
 #     -s "http://metadata.google.internal/computeMetadata/v1/project/project-id" \
 #     -H "Metadata-Flavor: Google")
 # ./cloud_sql_proxy -projects=${PROJECT_ID} -dir=/tmp/cloudsql &
-start_release start
