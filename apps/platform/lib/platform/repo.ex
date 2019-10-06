@@ -33,7 +33,7 @@ defmodule Platform.Repo do
     sysopts = [
       username: System.get_env("POSTGRES_USER"),
       password: System.get_env("POSTGRES_PASSWORD"),
-      socket: System.get_env("DATABASE_URL")
+      socket_dir: System.get_env("DATABASE_URL")
     ]
 
     opts = Mix.Config.merge(opts, sysopts)
