@@ -18,14 +18,14 @@ config :platform_web, :env, :prod
 config :platform_web, PlatformWeb.Endpoint,
   env: :prod,
   load_from_system_env: true,
-  url: [host: "test.cryptowise.ai", port: 443],
-  https: [
-    otp_app: :platform_web
-  ],
-  force_ssl: [
-    host: nil,
-    rewrite_on: [:x_forwarded_proto]
-  ],
+  url: [host: "test.cryptowise.ai", port: 80],
+  # https: [
+  #   otp_app: :platform_web
+  # ],
+  # force_ssl: [
+  #   host: nil,
+  #   rewrite_on: [:x_forwarded_proto]
+  # ],
   secret_key_base: "zSs42WIom2Vw/5MxHUfi+lqgOBFp0D1n4fJeHxaZ9yYAb9EzzoepurcxCXq3IBha",
   check_origin: false,
   server: true,
@@ -35,7 +35,12 @@ config :platform_web, PlatformWeb.Endpoint,
   pubsub: [name: PlatformWeb.PubSub, adapter: Phoenix.PubSub.PG2]
 
 config :cors_plug,
-  origin: ["https://www.cryptowise.ai", "https://cryptowise.ai", "https://test.cryptowise.ai"],
+  origin: [
+    "http://www.cryptowise.ai",
+    "http://cryptowise.ai",
+    "http://test.cryptowise.ai",
+    "http://team.cryptowise.ai"
+  ],
   supports_credentials: true
 
 # ## SSL Support
