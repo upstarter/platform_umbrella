@@ -37,6 +37,7 @@ defmodule PlatformWeb.Mixfile do
   defp deps do
     [
       {:httpoison, "~> 1.5.1", override: true},
+      {:jason, "~> 1.0", override: true},
       {:phoenix, "~> 1.4.9"},
       {:platform, in_umbrella: true},
       {:plug_cowboy, "~> 2.1"},
