@@ -53,7 +53,7 @@ COPY --from=build-stage /app/start_release start_release
 
 RUN apt update -y \
     && apt upgrade -y \
-    && apt install -y wget
+    && apt install -y wget erlang-crypto
 
 RUN wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 \
     -O cloud_sql_proxy
