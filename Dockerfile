@@ -42,9 +42,7 @@ RUN cloud_sql_proxy -projects=eternal-sunset-206422 -dir=/tmp/cloudsql &
 
 RUN mix distillery.release --env=${build_env} --executable --verbose
 RUN mv _build/${build_env}/rel/${app_name}/bin/${app_name}.run start_release
-ENTRYPOINT ["./start_release"]
-CMD ["foreground"]
 
-# COPY ./container-bootstart.sh /
-# RUN chmod +x /container-bootstart.sh
-# ENTRYPOINT ["/container-bootstart.sh"]
+COPY ./container-bootstart.sh /usr/local/bin
+RUN chmod +x /usr/local/bin/container-bootstart.sh
+ENTRYPOINT ["/usr/local/bin/container-bootstart.sh"]
