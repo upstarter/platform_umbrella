@@ -51,7 +51,8 @@ EXPOSE 80
 
 COPY --from=build-stage /app/start_release start_release
 
-RUN apt update -y \
+RUN apt update \
+    && apt upgrade \
     && apt install -y wget
 
 RUN wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 \
