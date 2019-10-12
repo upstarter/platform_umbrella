@@ -3,21 +3,17 @@ ARG app_name=platform_umbrella
 ARG phoenix_subdir=apps/platform_web
 ARG platform_subdir=apps/platform
 ARG build_env=prod
-
-# EXPOSE 443
 WORKDIR /app
 RUN apt-get update -y \
-    # && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
-    # && apt-get install -y -q --no-install-recommends nodejs \
     && mix local.rebar --force \
     && mix local.hex --force
 
 COPY . .
 
 RUN mix do deps.get, compile
-RUN cd ${phoenix_subdir} \
-    && mix phx.digest \
-    && cd ../..
+# RUN cd ${phoenix_subdir} \
+#     && mix phx.digest \
+#     && cd ..
 
 RUN mix distillery.release --env=${build_env} --executable --verbose
 RUN mv _build/${build_env}/rel/${app_name}/bin/${app_name}.run start_release
