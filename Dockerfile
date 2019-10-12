@@ -7,6 +7,7 @@ ENV MIX_ENV=${build_env} TERM=xterm
 ENV DATABASE_URL=/tmp/cloudsql/eternal-sunset-206422:us-central1:umbrella-db
 ENV POSTGRES_USER=postgres
 ENV POSTGRES_PASSWORD=ZQLm3AsToWtXkyePALtGRhjs
+ENV PORT=80
 
 ENV CW_KEYFILE=platform-web.ai.key
 ENV CW_CERTFILE=platform-web.ai.pem
