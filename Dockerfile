@@ -43,7 +43,14 @@ ENV CW_CERTFILE=platform-web.ai.pem
 ENV DB_CA_CERTFILE=server-ca.pem
 ENV DB_KEYFILE=client-key.pem
 ENV DB_CERTFILE=client-cert.pem
-
+ENV LANG="en_US.UTF-8"
+ENV LC_COLLATE="en_US.UTF-8"
+ENV LC_CTYPE="en_US.UTF-8"
+ENV LC_MESSAGES="en_US.UTF-8"
+ENV LC_MONETARY="en_US.UTF-8"
+ENV LC_NUMERIC="en_US.UTF-8"
+ENV LC_TIME="en_US.UTF-8"
+ENV LC_ALL="en_US.UTF-8"
 ENV PORT=80
 EXPOSE 80
 # RUN chmod 777 -R ${phoenix_subdir}/priv/cert
