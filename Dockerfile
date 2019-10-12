@@ -3,6 +3,17 @@ ARG app_name=platform_umbrella
 ARG phoenix_subdir=apps/platform_web
 ARG platform_subdir=apps/platform
 ARG build_env=prod
+ENV MIX_ENV=${build_env} TERM=xterm
+ENV DATABASE_URL=/tmp/cloudsql/eternal-sunset-206422:us-central1:umbrella-db
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=ZQLm3AsToWtXkyePALtGRhjs
+
+ENV CW_KEYFILE=platform-web.ai.key
+ENV CW_CERTFILE=platform-web.ai.pem
+ENV DB_CA_CERTFILE=server-ca.pem
+ENV DB_KEYFILE=client-key.pem
+ENV DB_CERTFILE=client-cert.pem
+
 WORKDIR /app
 RUN apt-get update -y \
     && mix local.rebar --force \
