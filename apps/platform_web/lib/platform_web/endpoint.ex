@@ -70,7 +70,7 @@ defmodule PlatformWeb.Endpoint do
 
       opts = [
         http: [
-          port: port
+          port: 8080
         ]
       ]
 
