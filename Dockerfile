@@ -22,7 +22,7 @@ ENV DB_KEYFILE=client-key.pem
 ENV DB_CERTFILE=client-cert.pem
 ENV PORT=8080
 EXPOSE 8080
-# EXPOSE 443
+EXPOSE 80
 WORKDIR /app
 RUN apt-get update -y \
     # && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
