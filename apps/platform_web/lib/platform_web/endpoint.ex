@@ -68,7 +68,12 @@ defmodule PlatformWeb.Endpoint do
       # cacertfile: Path.join(cert_dir, "ca.pem"),
       cert_dir = Application.app_dir(:platform_web, "priv/cert")
 
-      opts = []
+      opts = [
+        http: [
+          port: port
+        ]
+      ]
+
       #   https: [
       #     port: 443,
       #     certfile: Path.join(cert_dir, System.get_env("CW_CERTFILE")),
