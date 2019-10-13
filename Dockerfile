@@ -1,7 +1,5 @@
 FROM envoyproxy/envoy:latest as build-stage
 
-
-
 FROM elixir:latest as production-build
 COPY --from=build-stage /etc/envoy /etc/envoy/
 COPY --from=build-stage /usr/local/bin/envoy /usr/local/bin
