@@ -21,7 +21,7 @@ ENV DB_CA_CERTFILE=server-ca.pem
 ENV DB_KEYFILE=client-key.pem
 ENV DB_CERTFILE=client-cert.pem
 ENV PORT=80
-EXPOSE 80
+# EXPOSE 80
 # EXPOSE 443
 WORKDIR /app
 RUN apt-get update -y \
