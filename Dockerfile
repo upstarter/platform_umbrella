@@ -1,4 +1,4 @@
-FROM envoy:latest as build-stage
+FROM envoyproxy/envoy:latest as build-stage
 
 
 
