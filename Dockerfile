@@ -43,7 +43,6 @@ RUN wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 \
     -O cloud_sql_proxy
 RUN chmod +x cloud_sql_proxy
 RUN mkdir /tmp/cloudsql
-# RUN cloud_sql_proxy -projects=eternal-sunset-206422 -dir=/tmp/cloudsql &
 
 RUN mix distillery.release --env=${build_env} --executable --verbose
 RUN mv _build/${build_env}/rel/${app_name}/bin/${app_name}.run start_release
