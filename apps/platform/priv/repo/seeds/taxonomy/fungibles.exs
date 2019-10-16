@@ -37,17 +37,18 @@ utility_topics = [
     name: "Platform Tokens",
     id: 83,
     description: "These are tokens that are used to gain access to
-general purpose decentralized networks for a wide range of possible
-applications. As such, these platform utility tokens exhibit considerably
-less centrality. ETH, EOS are examples.",
+      general purpose decentralized networks for a wide range of possible
+      applications. As such, these platform utility tokens exhibit considerably
+      less centrality. Work Tokens include REP, MKR, KEEP, CIVIC, 0X, BAT, GOLEM, LPT, NUMERAIRE, ETH, EOS.
+      Usage Tokens include BTC, BTCash, LTC, NEM, IOTA, MNR, ETH, BAT, KIN, RNDR.",
     parent_id: 80
   },
   %Topic{
     name: "Non-Platform Tokens",
     id: 84,
-    description:
-      "These tokens are open networks designed for a specific application or use case.
-Decentralized exchange tokens are an example. Represents the majority of current assets in the ecosystem.",
+    description: "These tokens are open networks designed for a specific application or use
+      case. Decentralized exchange tokens are an example. Represents the
+      majority of current assets in the ecosystem.",
     parent_id: 80
   },
   %Topic{
@@ -59,11 +60,10 @@ Decentralized exchange tokens are an example. Represents the majority of current
   %Topic{
     name: "Defined Non-Platform Tokens",
     id: 86,
-    description: "Defined Non-platform based utility tokens
-    are similar to a consumer token as the intended use is to provide access to a
-    particular (defined) set of goods or a service. The tokens here are used on the network of
-    a single project. However, they can become more “general”
-    over time.",
+    description: "Defined Non-platform based utility tokens are similar to a
+    consumer token as the intended use is to provide access to a particular
+    (defined) set of goods or a service. The tokens here are used on the network
+    of a single project. However, they can become more “general” over time.",
     parent_id: 84
   }
 ]

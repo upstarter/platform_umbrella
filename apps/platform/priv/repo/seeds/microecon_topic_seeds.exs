@@ -24,10 +24,11 @@ cryptoecon_topics = [
   %Topic{
     id: 9,
     name: "Consensus Protocols",
-    description: "A consensus algorithm is a process in computer science used to achieve
+    description:
+      "A consensus algorithm is a process in computer science used to achieve
       agreement on a single data value among distributed processes or systems.
       Consensus algorithms are designed to achieve reliability in a network involving
-      multiple unreliable nodes.",
+      multiple unreliable nodes. Essentially, tools for solving the double spend problem in the distributed ledger space.",
     parent_id: 7
   },
   %Topic{
@@ -86,6 +87,24 @@ cryptoecon_topics = [
     id: 127,
     description: "Go to Market Strategies & Tactics for crypto networking entities.",
     parent_id: 7
+  },
+  %Topic{
+    name: "Aragon",
+    id: 144,
+    description: "",
+    parent_id: 11
+  },
+  %Topic{
+    name: "Colony",
+    id: 145,
+    description: "",
+    parent_id: 11
+  },
+  %Topic{
+    name: "Tezos",
+    id: 146,
+    description: "",
+    parent_id: 11
   }
 ]
 
