@@ -1,6 +1,6 @@
 alias Platform.Repo
 alias Platform.Topics.Topic
-# current available id is 132
+# current available id is 150
 # BASE TOPICS IN THE UNIVERSE OF DISCOURSE FOR CRYPTOWISE.AI
 root_topics = [
   %Topic{
@@ -58,9 +58,12 @@ root_topics = [
     parent_id: nil
   },
   %Topic{
-    name: "Mixed Reality",
+    name: "Service Mesh",
     id: 126,
-    description: "The research driving future directions in Virtual and Augmented Reality.",
+    description: "A service mesh is a configurable, low‑latency infrastructure layer
+      designed to handle a high volume of network‑based interprocess communication
+      among application infrastructure services using application programming
+      interfaces (APIs).",
     parent_id: nil
   },
   %Topic{
@@ -76,11 +79,36 @@ root_topics = [
     parent_id: nil
   },
   %Topic{
-    id: 57,
-    name: "Mixed, Virtual & Augmented Reality",
+    id: 149,
+    name: "Mixed Reality",
     description: "Assets focusing on enabling, or being used within, virtual reality or augmented
 reality platforms.",
-    parent_id: 6
+    parent_id: nil
+  },
+  %Topic{
+    id: 132,
+    name: "Distributed & Decentralized Systems Engineering",
+    description: "Emerging best practices, products, open source tooling for building next-gen
+    internet systems and institutions.",
+    parent_id: nil
+  },
+  %Topic{
+    id: 147,
+    name: "Edge Computing",
+    description: "Edge computing is a distributed computing paradigm which brings
+`    computation and data storage closer to the location where it is needed, to
+    improve response times and save bandwidth. On the Edge, device and sensor endpoints are where most of the
+    computation takes place, whereas in Fog computing, the bulk of computation takes place in LAN proxies/gateways nearby the
+     edge devices for which the computation is being performed.",
+    parent_id: 132
+  },
+  %Topic{
+    id: 148,
+    name: "Fog Computing",
+    description: "Edge computing is a distributed computing paradigm which brings
+computation and data storage closer to the location where it is needed, to
+improve response times and save bandwidth.",
+    parent_id: 132
   }
 ]
 
