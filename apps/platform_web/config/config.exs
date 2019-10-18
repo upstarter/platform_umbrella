@@ -40,7 +40,7 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-config :phoenix, :filter_parameters, ["password", "secret"]
+# config :phoenix, :filter_parameters, ["password", "secret"]
 
 config :platform_web, :generators, context_app: :platform
 
