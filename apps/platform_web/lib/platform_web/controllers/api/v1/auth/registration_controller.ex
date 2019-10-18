@@ -62,12 +62,11 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
 
     IO.inspect([
       'reg user',
-      cred,
       user
     ])
 
-    Logger.info(cred)
-    Logger.debug(user)
+    # Logger.info(cred)
+    # Logger.debug(user)
     # {:ok, jwt_refresh, _full_claims} =
     #   Guardian.encode_and_sign(
     #     user,
