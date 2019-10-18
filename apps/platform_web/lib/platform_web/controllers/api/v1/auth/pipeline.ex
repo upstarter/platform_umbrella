@@ -11,7 +11,7 @@ defmodule PlatformWeb.Auth.Pipeline do
 
   plug(Guardian.Plug.VerifyCookie)
   # # If there is a session token, validate it
-  # plug(Guardian.Plug.VerifySession)
+  plug(Guardian.Plug.VerifySession)
   # plug(Guardian.Plug.VerifySession, claims: %{"typ" => "access"})
   plug(Guardian.Plug.EnsureAuthenticated)
 
