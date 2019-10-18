@@ -9,7 +9,7 @@ defmodule Platform.Marketing.Lead do
   import Ecto.Changeset
   alias Platform.Marketing.Lead
 
-  # @derive {Jason.Encoder, only: [:email]}
+  @derive {Jason.Encoder, only: [:email]}
 
   schema "leads" do
     field(:email, :string)

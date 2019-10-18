@@ -17,7 +17,7 @@ defmodule Platform.Topics.Topic do
   alias Platform.Topics.Topic
   alias Topic.TitleSlug
 
-  @derive {Poison.Encoder, only: [:id, :name, :description, :url, :groups, :weight, :slug]}
+  @derive {Jason.Encoder, only: [:id, :name, :description, :url, :groups, :weight, :slug]}
   schema "topics" do
     field(:description, :string)
     field(:name, :string)
