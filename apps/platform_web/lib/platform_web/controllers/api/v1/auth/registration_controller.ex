@@ -59,6 +59,12 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
     cred = List.last(user_info.credentials)
     user = Repo.get_by(User, id: cred.user_id)
 
+    IO.inspect([
+      'reg user',
+      cred,
+      user
+    ])
+
     # {:ok, jwt_refresh, _full_claims} =
     #   Guardian.encode_and_sign(
     #     user,
