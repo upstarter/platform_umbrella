@@ -44,7 +44,7 @@ defmodule Platform.Mixfile do
       {:jason, "~> 1.0"},
       {:postgrex, ">= 0.0.0"},
       {:ecto_autoslug_field, "~> 2.0"},
-      {:guardian, "~> 2.0", override: true},
+      # {:guardian, "~> 2.0", override: true},
       {:guardian_trackable, "~> 0.2.0"},
       {:ex_machina, "~> 2.3", only: :test}
       # {:votex, "~> 0.3.0"}
