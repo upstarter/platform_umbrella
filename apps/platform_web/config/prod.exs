@@ -28,7 +28,7 @@ config :platform_web, PlatformWeb.Endpoint,
   #   rewrite_on: [:x_forwarded_proto]
   # ],
   secret_key_base: "zSs42WIom2Vw/5MxHUfi+lqgOBFp0D1n4fJeHxaZ9yYAb9EzzoepurcxCXq3IBha",
-  check_origin: false,
+  check_origin: ["https://www.cryptowise.ai"],
   server: true,
   root: ".",
   cache_static_manifest: "priv/static/cache_manifest.json",
@@ -40,10 +40,10 @@ config :cors_plug,
     "https://www.cryptowise.ai",
     "https://cryptowise.ai",
     "http://www.cryptowise.ai",
-    "http://cryptowise.ai"
-  ],
-  expose: ['*'],
-  supports_credentials: true
+    "http://cryptowise.ai",
+    "https://api.cryptowise.ai",
+    "http://api.cryptowise.ai"
+  ]
 
 # ## SSL Support
 #
