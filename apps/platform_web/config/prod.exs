@@ -37,10 +37,10 @@ config :platform_web, PlatformWeb.Endpoint,
 
 config :cors_plug,
   origin: [
+    "https://www.cryptowise.ai",
+    "https://cryptowise.ai",
     "http://www.cryptowise.ai",
-    "http://cryptowise.ai",
-    "http://test.cryptowise.ai",
-    "http://team.cryptowise.ai"
+    "http://cryptowise.ai"
   ],
   supports_credentials: true
 
