@@ -42,6 +42,7 @@ config :cors_plug,
     "http://www.cryptowise.ai",
     "http://cryptowise.ai"
   ],
+  expose: ['Authorization'],
   supports_credentials: true
 
 # ## SSL Support
