@@ -9,6 +9,7 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
   alias Platform.Repo
 
   alias PlatformWeb.Auth.Guardian
+  require Logger
   # plug(Guardian.Plug.EnsureAuthenticated, handler: PlatformWeb.SessionsController)
   plug(:scrub_params, "auth" when action in [:create])
 
@@ -65,6 +66,8 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
       user
     ])
 
+    Logger.info(cred)
+    Logger.debug(user)
     # {:ok, jwt_refresh, _full_claims} =
     #   Guardian.encode_and_sign(
     #     user,
