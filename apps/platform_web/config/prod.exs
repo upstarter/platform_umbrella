@@ -40,9 +40,9 @@ config :cors_plug,
     "https://www.cryptowise.ai",
     "https://cryptowise.ai",
     "http://www.cryptowise.ai",
-    "http://cryptowise.ai"
-    # "https://api.cryptowise.ai",
-    # "http://api.cryptowise.ai"
+    "http://cryptowise.ai",
+    "https://api.cryptowise.ai",
+    "http://api.cryptowise.ai"
   ]
 
 # ## SSL Support
