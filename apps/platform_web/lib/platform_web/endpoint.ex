@@ -49,7 +49,7 @@ defmodule PlatformWeb.Endpoint do
     max_age: 4 * 7 * 24 * 60 * 60
   )
 
-  plug(CORSPlug)
+  # plug(CORSPlug)
 
   plug(PlatformWeb.Router)
 
