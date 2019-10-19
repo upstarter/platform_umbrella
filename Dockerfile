@@ -33,7 +33,7 @@ RUN apt-get update -y \
 # caches unchanged dependencies
 COPY ${phoenix_subdir}/mix.exs .
 COPY ${platform_subdir}/mix.exs .
-COPY mix.exs mix.lock .
+COPY mix.exs mix.lock ./
 RUN mix do deps.get, deps.compile
 
 COPY . .
