@@ -46,7 +46,21 @@ config :cors_plug,
     "http://api.cryptowise.ai"
   ],
   credentials: true,
-  headers: ["*", "Cookie", "Set-Cookie", "Bearer", "Authorization", "X-CSRF-TOKEN"],
+  headers: [
+    "Accept",
+    "Authorization",
+    "Cache-Control",
+    "Content-Type",
+    "DNT",
+    "If-Modified-Since",
+    "Keep-Alive",
+    "Origin",
+    "User-Agent",
+    "X-Requested-With",
+    "Cookie",
+    "X-PINGOTHER",
+    "X-CSRF-TOKEN"
+  ],
   expose: ["Set-Cookie", "Authorization"]
 
 # ## SSL Support
