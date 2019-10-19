@@ -57,11 +57,8 @@ config :cors_plug,
     "Origin",
     "User-Agent",
     "X-Requested-With",
-    "Cookie",
-    "X-PINGOTHER",
     "X-CSRF-TOKEN"
-  ],
-  expose: ["Set-Cookie", "Authorization"]
+  ]
 
 # ## SSL Support
 #
