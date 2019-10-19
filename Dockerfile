@@ -30,15 +30,15 @@ RUN apt-get update -y \
     && mix local.rebar --force \
     && mix local.hex --force
 
-
-
 COPY mix.exs mix.lock ./
 RUN mix do deps.get, compile
-RUN cd ${phoenix_subdir} \
-    && mix phx.digest \
-    && cd ../..
 
 COPY . .
+
+# RUN cd ${phoenix_subdir} \
+#     && mix phx.digest \
+#     && cd ../..
+
 
 # RUN chmod 777 -R ${phoenix_subdir}/priv/cert
 # RUN chmod 777 -R ${platform_subdir}/priv/cert
