@@ -1,6 +1,6 @@
 defmodule Platform.Users.User do
   use Ecto.Schema
-  use GuardianTrackable.Schema
+  # use GuardianTrackable.Schema
   import Ecto.Changeset
   alias Platform.Repo
   alias Platform.Topics.Topic
@@ -38,7 +38,7 @@ defmodule Platform.Users.User do
     many_to_many(:topics, Topic, join_through: Platform.Users.UsersTopics)
     many_to_many(:portfolios, Portfolio, join_through: "users_portfolios")
 
-    guardian_trackable()
+    # guardian_trackable()
     timestamps()
   end
 
