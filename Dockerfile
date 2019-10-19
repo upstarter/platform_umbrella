@@ -30,9 +30,9 @@ RUN apt-get update -y \
     && mix local.rebar --force \
     && mix local.hex --force
 
-
-COPY ${phoenix_subdir}/mix.exs ${phoenix_subdir}/mix.lock .
-COPY ${platform_subdir}/mix.exs ${platform_subdir}/mix.lock .
+# caches unchanged dependencies
+COPY ${phoenix_subdir}/mix.exs .
+COPY ${platform_subdir}/mix.exs .
 COPY mix.exs mix.lock .
 RUN mix do deps.get, deps.compile
 
