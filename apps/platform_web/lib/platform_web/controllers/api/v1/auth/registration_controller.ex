@@ -18,7 +18,7 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
          {:ok, conn, jwt} <- authenticate(user_info, conn) do
       conn
       |> put_status(201)
-      |> render("create.json", csrf: get_csrf_token())
+      |> render("create.json", user: user_info)
     else
       _ ->
         conn
@@ -95,7 +95,8 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
       |> put_resp_cookie("_cw_acc", jwt,
         max_age: thirty_days,
         http_only: false,
-        secure: false
+        secure: false,
+        domain: '.cryptowise.ai'
       )
 
     #   |> put_resp_cookie("_cw_rem", jwt,
