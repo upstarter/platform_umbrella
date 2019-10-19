@@ -30,14 +30,18 @@ RUN apt-get update -y \
     && mix local.rebar --force \
     && mix local.hex --force
 
-COPY . .
 
-RUN chmod 777 -R ${phoenix_subdir}/priv/cert
-RUN chmod 777 -R ${platform_subdir}/priv/cert
+
+COPY mix.exs mix.lock ./
 RUN mix do deps.get, compile
 RUN cd ${phoenix_subdir} \
     && mix phx.digest \
     && cd ../..
+
+COPY . .
+
+# RUN chmod 777 -R ${phoenix_subdir}/priv/cert
+# RUN chmod 777 -R ${platform_subdir}/priv/cert
 
 RUN wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 \
     -O cloud_sql_proxy
