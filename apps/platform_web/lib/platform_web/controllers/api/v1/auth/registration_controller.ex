@@ -95,7 +95,7 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
       |> put_resp_cookie("_cw_acc", jwt,
         max_age: thirty_days,
         http_only: false,
-        secure: true
+        secure: false
       )
 
     #   |> put_resp_cookie("_cw_rem", jwt,
