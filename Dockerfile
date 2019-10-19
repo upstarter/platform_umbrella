@@ -30,7 +30,7 @@ RUN apt-get update -y \
     && mix local.rebar --force \
     && mix local.hex --force
 
-COPY mix.exs mix.lock ./
+COPY mix.exs mix.lock .
 RUN mix do deps.get, compile
 
 COPY . .
