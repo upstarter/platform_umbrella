@@ -18,7 +18,7 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
          {:ok, conn, jwt} <- authenticate(user_info, conn) do
       conn
       |> put_status(201)
-      |> render("create.json", user: user_info)
+      |> render("create.json", user: 'worked')
     else
       _ ->
         conn
