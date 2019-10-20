@@ -53,6 +53,7 @@ RUN mkdir /tmp/cloudsql
 RUN mix distillery.release --env=${build_env} --executable --verbose
 RUN mv _build/${build_env}/rel/${app_name}/bin/${app_name}.run start_release
 
+COPY .iex.exs /root
 COPY ./container-bootstart.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/container-bootstart.sh
 ENTRYPOINT ["/usr/local/bin/container-bootstart.sh"]
