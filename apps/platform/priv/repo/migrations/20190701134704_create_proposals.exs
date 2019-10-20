@@ -10,7 +10,7 @@ defmodule Platform.Repo.Migrations.CreateProposals do
       add(:is_public, :boolean, default: false, null: false)
       add(:station, :string, null: false)
       add(:status, :string)
-      add(:user_id, references(:users), null: false, on_delete: :delete_all)
+      add(:user_id, references(:users, on_delete: :delete_all), null: false)
       add(:cached_votes_for_total, :integer)
 
       timestamps()
