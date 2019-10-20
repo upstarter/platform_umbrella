@@ -10,6 +10,9 @@ alias Platform.Accounts.Account
 alias Platform.Tokens.Token
 alias Platform.Users.Proposal
 
+IO.puts("Users:")
+IO.puts(Enum.count(Repo.all(User)))
+
 IEx.configure(
   colors: [
     syntax_colors: [
