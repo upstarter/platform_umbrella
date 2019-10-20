@@ -35,8 +35,8 @@ defmodule Platform.Users.User do
 
     has_many(:groups, through: [:groupings, :group])
 
-    many_to_many(:topics, Topic, join_through: Platform.Users.UsersTopics)
-    many_to_many(:portfolios, Portfolio, join_through: "users_portfolios")
+    many_to_many(:topics, Topic, join_through: Platform.Users.UsersTopics, on_delete: :delete_all)
+    many_to_many(:portfolios, Portfolio, join_through: "users_portfolios", on_delete: :delete_all)
 
     # guardian_trackable()
     timestamps()
