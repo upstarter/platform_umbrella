@@ -5,13 +5,19 @@ alias Platform.Repo
 alias Platform.Marketing.Lead
 alias Platform.Topics.Topic
 alias Platform.Auth.Credential
-alias Platform.Users.User
 alias Platform.Accounts.Account
 alias Platform.Tokens.Token
+alias Platform.Users.User
 alias Platform.Users.Proposal
+alias Platform.Users.UsersTopics
 
 IO.puts("Users:")
 IO.puts(Enum.count(Repo.all(User)))
+
+def delete_users do
+  u = from(u in User, where: u.id < 20)
+  Repo.delete_all(u)
+end
 
 IEx.configure(
   colors: [
