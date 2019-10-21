@@ -41,7 +41,6 @@ defmodule Platform.Umbrella.Mixfile do
   defp deps do
     [
       {:jason, "~> 1.0", override: true},
-      # {:poison, "~> 4.0.1", override: true},
       {:httpoison, "~> 1.5.1", override: true},
       {:hackney, "~> 1.6", override: true},
       {:gettext, "~> 0.17.0", override: true},
