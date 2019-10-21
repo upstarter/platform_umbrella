@@ -14,10 +14,16 @@ alias Platform.Users.UsersTopics
 IO.puts("Users:")
 IO.puts(Enum.count(Repo.all(User)))
 
-# def delete_users do
-#   u = from(u in User, where: u.id < 20)
-#   Repo.delete_all(u)
-# end
+defmodule Fix do
+  def delete_users do
+    u = from(u in User, where: u.id < 20)
+    Repo.delete_all(u)
+  end
+
+  def users do
+    from(u in User, where: u.id < 20)
+  end
+end
 
 IEx.configure(
   colors: [
