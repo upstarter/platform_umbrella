@@ -44,7 +44,7 @@ defmodule PlatformWeb.Mixfile do
       {:guardian, "~> 2.0"},
       # {:guardian_trackable, "~> 0.2.0"},
       {:phoenix_html, "~> 2.11"},
-      {:phoenix_haml, "~> 0.2", override: true},
+      # {:phoenix_haml, "~> 0.2", override: true},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.17"},
       {:cors_plug, "~> 2.0"},

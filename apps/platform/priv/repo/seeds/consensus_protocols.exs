@@ -37,7 +37,8 @@ cp_topics = [
     name: "Byzantine Fault Tolerance (BFT)",
     description: "Sacrifices Decentralization for cheaper and faster transactions.
     Centralized and closed membership. 1 recomended validator list chosen
-    by authority. Hyperledger, Stellar, Dispatch, Ripple"
+    by authority. Hyperledger, Stellar, Dispatch, Ripple",
+    parent_id: 9
   },
   %Topic{
     id: 139,
