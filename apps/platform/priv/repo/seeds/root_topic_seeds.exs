@@ -96,7 +96,7 @@ reality platforms.",
     id: 147,
     name: "Edge Computing",
     description: "Edge computing is a distributed computing paradigm which brings
-`    computation and data storage closer to the location where it is needed, to
+    computation and data storage closer to the location where it is needed, to
     improve response times and save bandwidth. On the Edge, device and sensor endpoints are where most of the
     computation takes place, whereas in Fog computing, the bulk of computation takes place in LAN proxies/gateways nearby the
      edge devices for which the computation is being performed.",
