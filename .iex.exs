@@ -15,6 +15,16 @@ IO.puts("Users:")
 IO.puts(Enum.count(Repo.all(User)))
 
 defmodule Fix do
+  def add_topic(name, description, parent) do
+    topic = %Topic{
+      name: name,
+      description: description,
+      parent_id: parent
+    }
+
+    Repo.insert!(topics)
+  end
+
   def delete_users do
     u = from(u in User, where: u.id < 20)
     Repo.delete_all(u)
