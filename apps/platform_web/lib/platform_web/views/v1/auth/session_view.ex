@@ -7,7 +7,7 @@ defmodule PlatformWeb.V1.Auth.SessionView do
   end
 
   def render("sign_out.json", %{conn: conn}) do
-    %{ok: "Signed Out"}
+    %{ok: conn.cookies}
   end
 
   def render("error.json", _) do
