@@ -10,6 +10,9 @@ alias Platform.Tokens.Token
 alias Platform.Users.User
 alias Platform.Users.Proposal
 alias Platform.Users.UsersTopics
+# alias Platform.Groups.Group
+# alias Platform.Market.DailyMarketHistory
+# alias Platform.Market.History
 
 IO.puts("Users:")
 IO.puts(Enum.count(Repo.all(User)))

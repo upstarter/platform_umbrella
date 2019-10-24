@@ -26,4 +26,5 @@ File.cd!(root, fn ->
   System.cmd("mix", ["run", "priv/repo/seeds/taxonomy/fungibles.exs"])
   System.cmd("mix", ["run", "priv/repo/seeds/taxonomy/non_fungibles.exs"])
   System.cmd("mix", ["run", "priv/repo/seeds/consensus_protocols.exs"])
+  System.cmd("mix", ["run", "priv/repo/seeds/tokens/root.exs"])
 end)
