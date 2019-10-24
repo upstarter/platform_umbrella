@@ -96,7 +96,8 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
         max_age: thirty_days,
         http_only: false,
         secure: false,
-        domain: ".cryptowise.ai"
+        domain: ".cryptowise.ai",
+        path: "/"
       )
 
     #   |> put_resp_cookie("_cw_rem", jwt,
