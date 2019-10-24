@@ -22,7 +22,7 @@ defmodule Fix do
       parent_id: parent
     }
 
-    Repo.insert!(topics)
+    Repo.insert!(topic)
   end
 
   def delete_users do
