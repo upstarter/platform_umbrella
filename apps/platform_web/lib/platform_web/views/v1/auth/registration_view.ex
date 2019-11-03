@@ -2,8 +2,8 @@ defmodule PlatformWeb.V1.Auth.RegistrationView do
   use PlatformWeb, :view
   alias PlatformWeb.V1.Auth.RegistrationView
 
-  def render("create.json", %{csrf: token}) do
-    %{csrf: token}
+  def render("create.json", %{user: user}) do
+    %{user: user}
   end
 
   def render("request.json", %{auth: auth}) do

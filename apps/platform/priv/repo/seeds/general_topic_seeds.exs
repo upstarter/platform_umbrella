@@ -93,10 +93,13 @@ general_topics = [
   },
   %Topic{
     id: 68,
-    name: "Decentralized Exchanges",
-    description: "Decentralized exchanges are the exchanges that do not require a third
-      party to store your funds.",
-    parent_id: 7
+    name: "DeFi (Decentralized Finance)",
+    description: "Decentralized finance is driving a more open economy.
+      One in which the people in a democracy can take control of their financial system
+      by building and using the tools to take control of their assets out of the hands of rent seeking
+      intermediaries and into their own, so they can make better decisions about them. It keeps
+      risk at the edge and not at the center of the financial system.",
+    parent_id: nil
   },
   %Topic{
     id: 69,

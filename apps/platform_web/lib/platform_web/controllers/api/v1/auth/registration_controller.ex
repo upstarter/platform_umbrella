@@ -9,6 +9,7 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
   alias Platform.Repo
 
   alias PlatformWeb.Auth.Guardian
+  require Logger
   # plug(Guardian.Plug.EnsureAuthenticated, handler: PlatformWeb.SessionsController)
   plug(:scrub_params, "auth" when action in [:create])
 
@@ -17,7 +18,7 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
          {:ok, conn, jwt} <- authenticate(user_info, conn) do
       conn
       |> put_status(201)
-      |> render("create.json", csrf: get_csrf_token())
+      |> render("create.json", user: "worked")
     else
       _ ->
         conn
@@ -59,6 +60,13 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
     cred = List.last(user_info.credentials)
     user = Repo.get_by(User, id: cred.user_id)
 
+    IO.inspect([
+      'reg user',
+      user
+    ])
+
+    # Logger.info(cred)
+    # Logger.debug(user)
     # {:ok, jwt_refresh, _full_claims} =
     #   Guardian.encode_and_sign(
     #     user,
@@ -87,7 +95,9 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
       |> put_resp_cookie("_cw_acc", jwt,
         max_age: thirty_days,
         http_only: false,
-        secure: false
+        secure: false,
+        domain: ".cryptowise.ai",
+        path: "/"
       )
 
     #   |> put_resp_cookie("_cw_rem", jwt,

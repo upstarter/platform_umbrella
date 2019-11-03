@@ -1,7 +1,8 @@
 defmodule Platform.Accounts.Account do
   @moduledoc """
 
-    User's can have many accounts
+  User's can have many accounts of differing types ["basic", "magi", "wizard", "sage", "king"]
+  User's can have many accounts in different statuses ["initial", "pending_xyz"]
 
   """
 
@@ -10,6 +11,7 @@ defmodule Platform.Accounts.Account do
   alias Platform.Accounts.Account
 
   schema "accounts" do
+    field(:type, :string)
     field(:active, :boolean, default: false)
     field(:status, :string)
 

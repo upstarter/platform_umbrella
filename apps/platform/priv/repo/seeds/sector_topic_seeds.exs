@@ -77,7 +77,8 @@ globally accessible and controlled by no single entity or group.",
     id: 32,
     name: "Decentralized Exchanges",
     description: "Decentralized exchange platforms allow the conversion of one cryptoasset to
-another without a middleman mediating the transaction.",
+another without a middleman mediating the transaction. They do not require a third
+  party to store your funds, thus reducing intermediary risk signicantly",
     parent_id: 6
   },
   %Topic{
