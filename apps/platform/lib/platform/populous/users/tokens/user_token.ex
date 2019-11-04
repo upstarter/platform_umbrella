@@ -1,10 +1,10 @@
-defmodule Platform.UsersTokens.UserToken do
+defmodule Platform.Users.Tokens.UserToken do
   use Ecto.Schema
   import Ecto.Changeset
 
   schema "users_tokens" do
-    field :token_id, :integer
-    field :user_id, :integer
+    field(:token_id, :integer)
+    field(:user_id, :integer)
 
     timestamps()
   end

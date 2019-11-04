@@ -1,4 +1,4 @@
-defmodule Platform.UsersTokens do
+defmodule Platform.Users.Tokens do
   @moduledoc """
   The UsersTokens context.
   """
@@ -6,7 +6,7 @@ defmodule Platform.UsersTokens do
   import Ecto.Query, warn: false
   alias Platform.Repo
 
-  alias Platform.UsersTokens.UserToken
+  alias Platform.Users.Tokens.UserToken
 
   @doc """
   Returns the list of users_tokens.

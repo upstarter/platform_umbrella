@@ -4,6 +4,9 @@ defmodule Platform.Users.User do
   import Ecto.Changeset
   alias Platform.Repo
   alias Platform.Topics.Topic
+  alias Platform.Users.UsersTopics
+  alias Platform.Tokens.Token
+  alias Platform.Users.Tokens.UserToken
   alias Platform.Portfolios.Portfolio
 
   # @type t :: %__MODULE__{
@@ -35,8 +38,13 @@ defmodule Platform.Users.User do
 
     has_many(:groups, through: [:groupings, :group])
 
-    many_to_many(:topics, Topic, join_through: Platform.Users.UsersTopics, on_delete: :delete_all)
+    many_to_many(:topics, Topic, join_through: UsersTopics, on_delete: :delete_all)
     many_to_many(:portfolios, Portfolio, join_through: "user_portfolios", on_delete: :delete_all)
+
+    many_to_many(:tokens, Token,
+      join_through: UserToken,
+      on_delete: :delete_all
+    )
 
     # guardian_trackable()
     timestamps()
