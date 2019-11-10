@@ -3,8 +3,8 @@ defmodule Platform.Users.Tokens.UserToken do
   import Ecto.Changeset
 
   schema "users_tokens" do
-    field(:token_id, :integer)
-    field(:user_id, :integer)
+    belongs_to(:user, Platform.Users.User)
+    belongs_to(:token, Platform.Tokens.Token)
 
     timestamps()
   end

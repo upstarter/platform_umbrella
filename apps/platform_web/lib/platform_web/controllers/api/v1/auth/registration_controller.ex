@@ -1,6 +1,6 @@
 defmodule PlatformWeb.V1.Auth.RegistrationController do
   use PlatformWeb, :controller
-  plug(Ueberauth)
+  # plug(Ueberauth)
   alias Ueberauth.Strategy.Helpers
 
   alias Platform.Auth

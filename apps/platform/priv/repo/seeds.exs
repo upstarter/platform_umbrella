@@ -14,6 +14,7 @@ root = './'
 # Code.eval_file("priv/seeds/root_topic_seeds.exs")
 
 File.cd!(root, fn ->
+  # have been run - DO NOT RUN ON PROD
   System.cmd("mix", ["run", "priv/repo/seeds/root_topic_seeds.exs"])
   System.cmd("mix", ["run", "priv/repo/seeds/macroecon_topic_seeds.exs"])
   System.cmd("mix", ["run", "priv/repo/seeds/microecon_topic_seeds.exs"])
@@ -26,5 +27,7 @@ File.cd!(root, fn ->
   System.cmd("mix", ["run", "priv/repo/seeds/taxonomy/fungibles.exs"])
   System.cmd("mix", ["run", "priv/repo/seeds/taxonomy/non_fungibles.exs"])
   System.cmd("mix", ["run", "priv/repo/seeds/consensus_protocols.exs"])
+  # need to be run
   System.cmd("mix", ["run", "priv/repo/seeds/tokens/root.exs"])
+  System.cmd("mix", ["run", "priv/repo/seeds/tokens/portfolios.exs"])
 end)

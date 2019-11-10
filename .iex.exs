@@ -10,6 +10,9 @@ alias Platform.Tokens.Token
 alias Platform.Users.User
 alias Platform.Users.Proposal
 alias Platform.Users.UsersTopics
+alias Platform.Portfolios.Portfolio
+alias Platform.Users.Portfolios.PortfolioToken
+alias Platform.Users.Portfolios.UserPortfolio
 # alias Platform.Groups.Group
 # alias Platform.Market.DailyMarketHistory
 # alias Platform.Market.History

@@ -2,12 +2,21 @@ defmodule Platform.Users.User do
   use Ecto.Schema
   # use GuardianTrackable.Schema
   import Ecto.Changeset
+  import Ecto.Query
   alias Platform.Repo
+  alias Platform.Users.User
   alias Platform.Topics.Topic
   alias Platform.Users.UsersTopics
   alias Platform.Tokens.Token
   alias Platform.Users.Tokens.UserToken
   alias Platform.Portfolios.Portfolio
+  alias Platform.Users.Portfolios.UserPortfolio
+  alias Platform.Users.Portfolios.PortfolioToken
+  alias Platform.Users.Profiles.UserProfile
+  alias Platform.Auth.Credential
+  alias Platform.Accounts.Account
+  alias Platform.Users.Proposal
+  alias Platform.Users.Groups.UserGroup
 
   # @type t :: %__MODULE__{
   #         id: integer,
@@ -27,28 +36,74 @@ defmodule Platform.Users.User do
     field(:email, :string)
     field(:terms_accepted, :boolean)
 
-    has_many(:credentials, Platform.Auth.Credential, on_delete: :delete_all)
-    has_many(:accounts, Platform.Accounts.Account, on_delete: :delete_all)
-    has_many(:proposals, Platform.Users.Proposal)
+    has_one(:user_profile, UserProfile)
+    has_many(:credentials, Credential, on_delete: :delete_all)
+    has_many(:accounts, Account, on_delete: :delete_all)
+    has_many(:proposals, Proposal)
 
-    has_many(:groupings, Platform.Groupings.Grouping,
+    has_many(:user_groups, UserGroup,
       foreign_key: :member_id,
       on_delete: :delete_all
     )
 
-    has_many(:groups, through: [:groupings, :group])
+    has_many(:groups, through: [:user_groups, :group])
 
     many_to_many(:topics, Topic, join_through: UsersTopics, on_delete: :delete_all)
-    many_to_many(:portfolios, Portfolio, join_through: "user_portfolios", on_delete: :delete_all)
 
-    many_to_many(:tokens, Token,
-      join_through: UserToken,
-      on_delete: :delete_all
-    )
+    # many_to_many(:portfolios, Portfolio,
+    #   join_through: UserPortfolio,
+    #   on_delete: :delete_all
+    # )
+
+    has_many(:user_portfolios, UserPortfolio, on_delete: :delete_all)
+
+    has_many(:portfolio_tokens, PortfolioToken, on_delete: :delete_all)
+
+    # many_to_many(:tokens, Token, join_through: PortfolioToken, on_delete: :delete_all)
+
+    # many_to_many(:tokens, Token,
+    #   join_through: PortfolioToken,
+    #   on_delete: :delete_all
+    # )
+
+    # many_to_many(:tokens, Token,
+    #   join_through: UserPortfolio,
+    #   on_delete: :delete_all
+    # )
 
     # guardian_trackable()
     timestamps()
   end
+
+  defdelegate roles, to: UserProfile
+
+  def assets(user_id) do
+    # query =
+    #   from(u in User,
+    #     where: u.id == ^user_id,
+    #     left_join: user_portfolios in assoc(u, :user_portfolios),
+    #     left_join: portfolio_tokens in assoc(user_portfolios, :portfolio_tokens),
+    #     preload: :portfolio_tokens
+    #   )
+
+    query =
+      from(u in User,
+        where: u.id == ^user_id,
+        left_join: user_portfolios in assoc(u, :user_portfolios),
+        left_join: portfolio_tokens in assoc(u, :portfolio_tokens),
+        preload: [user_portfolios: [:portfolio_tokens, :tokens]],
+        preload: [:portfolio_tokens]
+        # preload: [user_portfolios: :tokens]
+      )
+
+    user = Repo.all(query)
+  end
+
+  defp has_role?(nil, _roles), do: false
+  defp has_role?(user, roles) when is_list(roles), do: Enum.any?(roles, &has_role?(user, &1))
+  defp has_role?(user, role) when is_atom(role), do: has_role?(user, Atom.to_string(role))
+  defp has_role?(%{role: role}, role), do: true
+  defp has_role?(_user, _role), do: false
 
   def validate(%Ecto.Changeset{} = changeset) do
     changeset

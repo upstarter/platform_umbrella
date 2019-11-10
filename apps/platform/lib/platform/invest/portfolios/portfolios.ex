@@ -50,9 +50,22 @@ defmodule Platform.Portfolios do
 
   """
   def create_portfolio(attrs \\ %{}) do
-    %Portfolio{}
-    |> Portfolio.changeset(attrs)
-    |> Repo.insert()
+    with {:ok, %{} = portfolio} <- Repo.get!(Portfolio, 1) do
+      with {:ok, portfolio} <- portfolio |> Portfolio.changeset(attrs) |> Repo.update() do
+        {:ok, portfolio}
+      else
+        _ ->
+          {:error, "Update Error"}
+      end
+    else
+      _ ->
+        with {:ok, %{} = portfolio} <- Portfolio.create(attrs) do
+          {:ok, portfolio}
+        else
+          _ ->
+            {:error, "Create Error"}
+        end
+    end
   end
 
   @doc """

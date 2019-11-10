@@ -7,7 +7,8 @@ defmodule Platform.Tokens.Token do
 
   use Ecto.Schema
   import Ecto.Changeset
-  # alias Platform.Providers.Provider
+
+  alias Platform.Users.User
   alias Platform.Topics.Topic
 
   schema "tokens" do
@@ -23,7 +24,7 @@ defmodule Platform.Tokens.Token do
     field(:usd_value, :decimal)
     field(:volume_24h_usd, :decimal)
 
-    many_to_many(:users_tokens, Provider, join_through: "users_tokens")
+    many_to_many(:users_tokens, User, join_through: "users_tokens")
     many_to_many(:topics, Topic, join_through: "topics_tokens")
 
     timestamps()

@@ -1,6 +1,6 @@
 defmodule PlatformWeb.V1.Portfolios.PortfolioView do
   use PlatformWeb, :view
-  alias PlatformWeb.PortfolioView
+  alias PlatformWeb.V1.Portfolios.PortfolioView
 
   def render("new.json", %{portfolio: portfolio}) do
     %{data: render_one(portfolio, PortfolioView, "portfolio.json")}
@@ -16,10 +16,11 @@ defmodule PlatformWeb.V1.Portfolios.PortfolioView do
 
   def render("portfolio.json", %{portfolio: portfolio}) do
     %{
-      id: portfolio.id,
-      name: portfolio.name,
-      short_desc: portfolio.short_desc,
-      long_desc: portfolio.long_desc
+      portfolio: portfolio.id
     }
+  end
+
+  def render("error.json", %{portfolio: portfolio}) do
+    %{error: portfolio}
   end
 end

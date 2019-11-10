@@ -38,6 +38,8 @@ defmodule PlatformWeb.Router do
         pipe_through(:ensure_auth)
 
         resources("/proposals", Users.ProposalsController, except: [:delete, :edit, :new, :update])
+
+        post("/user_profiles", Users.UserProfileController, :update)
       end
 
       # PROVIDERS
@@ -68,7 +70,7 @@ defmodule PlatformWeb.Router do
 
       # PORTFOLIOS
       scope "/", Portfolios do
-        resources("/portfolios", PortfolioController)
+        resources("/portfolios", PortfolioController, only: [:create, :show])
       end
 
       # AUTH
