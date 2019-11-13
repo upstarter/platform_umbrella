@@ -20,10 +20,9 @@ defmodule Platform.Users.Portfolios.PortfolioToken do
   def changeset(portfolio_token, attrs) do
     portfolio_token
     |> cast(attrs, [:portfolio_id, :token_id, :user_id])
-    |> cast_assoc(:user_portfolio, required: true)
-    # |> foreign_key_constraint(:portfolios_tokens, name: :portfolios_tokens_portfolio_id_fkey)
+    |> foreign_key_constraint(:portfolio_id)
     |> validate_required([:portfolio_id, :token_id, :user_id])
-    |> foreign_key_constraint(:user, name: :user_id)
+    |> cast_assoc(:user_portfolio, required: true)
     |> unique_constraint(:portfolios_tokens, [:user_id, :portfolio_id, :token_id])
   end
 end

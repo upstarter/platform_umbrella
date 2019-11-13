@@ -69,8 +69,8 @@ defmodule PlatformWeb.Router do
       end
 
       # PORTFOLIOS
-      scope "/", Portfolios do
-        resources("/portfolios", PortfolioController, only: [:create, :show])
+      scope "/", Users do
+        resources("/portfolios", UserPortfolioController, only: [:create, :show])
       end
 
       # AUTH

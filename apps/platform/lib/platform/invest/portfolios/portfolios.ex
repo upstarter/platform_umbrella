@@ -50,8 +50,8 @@ defmodule Platform.Portfolios do
 
   """
   def create_portfolio(attrs \\ %{}) do
-    with {:ok, %{} = portfolio} <- Repo.get!(Portfolio, 1) do
-      with {:ok, portfolio} <- portfolio |> Portfolio.changeset(attrs) |> Repo.update() do
+    with {:ok, %{} = portfolio} <- Repo.get!(UserPortfolio, 1) do
+      with {:ok, portfolio} <- portfolio |> UserPortfolio.changeset(attrs) |> Repo.update() do
         {:ok, portfolio}
       else
         _ ->
@@ -59,7 +59,7 @@ defmodule Platform.Portfolios do
       end
     else
       _ ->
-        with {:ok, %{} = portfolio} <- Portfolio.create(attrs) do
+        with {:ok, %{} = portfolio} <- UserPortfolio.create(attrs) do
           {:ok, portfolio}
         else
           _ ->

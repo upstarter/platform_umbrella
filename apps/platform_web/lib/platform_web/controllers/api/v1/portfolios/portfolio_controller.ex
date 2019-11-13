@@ -18,7 +18,7 @@ defmodule PlatformWeb.V1.Portfolios.PortfolioController do
   end
 
   def create(conn, portfolio_params) do
-    with {:ok, %{} = portfolio} <- Portfolios.create_portfolio(portfolio_params) do
+    with {:ok, %{} = portfolio} <- Portfolio.create_portfolio(portfolio_params) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.portfolio_path(conn, :show, portfolio))

@@ -50,14 +50,17 @@ defmodule Platform.Users.User do
 
     many_to_many(:topics, Topic, join_through: UsersTopics, on_delete: :delete_all)
 
-    # many_to_many(:portfolios, Portfolio,
-    #   join_through: UserPortfolio,
-    #   on_delete: :delete_all
-    # )
+    many_to_many(:portfolios, Portfolio,
+      join_through: UserPortfolio,
+      on_delete: :delete_all
+    )
 
     has_many(:user_portfolios, UserPortfolio, on_delete: :delete_all)
 
-    has_many(:portfolio_tokens, PortfolioToken, on_delete: :delete_all)
+    has_many(:portfolio_tokens,
+      through: [:user_portfolios, :portfolio_tokens],
+      on_delete: :delete_all
+    )
 
     # many_to_many(:tokens, Token, join_through: PortfolioToken, on_delete: :delete_all)
 
