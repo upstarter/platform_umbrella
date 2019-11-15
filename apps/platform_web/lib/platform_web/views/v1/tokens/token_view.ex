@@ -14,8 +14,8 @@ defmodule PlatformWeb.V1.Tokens.TokenView do
     %{
       id: token.id,
       name: token.name,
-      short_desc: token.short_desc,
-      ticker: token.ticker
+      symbol: token.symbol,
+      description: token.description
     }
   end
 end

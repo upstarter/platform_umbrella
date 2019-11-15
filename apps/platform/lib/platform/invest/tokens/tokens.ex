@@ -41,8 +41,16 @@ defmodule Platform.Tokens do
       [%Token{}, ...]
 
   """
-  def list_tokens do
-    Repo.all(Token)
+  def list_tokens(params) do
+    page = String.to_integer(params["page"])
+    per_page = String.to_integer(params["per_page"])
+
+    offset = if page > 1, do: (page - 1) * per_page, else: 0
+
+    q = from(p in Token, limit: ^per_page, offset: ^offset)
+
+    q
+    |> Repo.all()
   end
 
   @doc """

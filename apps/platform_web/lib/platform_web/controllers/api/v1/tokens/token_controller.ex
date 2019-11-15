@@ -9,8 +9,8 @@ defmodule PlatformWeb.V1.Tokens.TokenController do
     render(conn, "index.json", tokens: tokens)
   end
 
-  def index(conn, _params) do
-    tokens = Tokens.list_tokens()
+  def index(conn, params) do
+    tokens = Tokens.list_tokens(params)
     render(conn, "index.json", tokens: tokens)
   end
 

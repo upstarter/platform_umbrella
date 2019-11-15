@@ -51,8 +51,7 @@ defmodule Platform.Users.Portfolios.UserPortfolios do
 
   """
   def create_user_portfolio(attrs \\ %{}) do
-    with {:ok, user_portfolio} <-
-           UserPortfolio.changeset(%UserPortfolio{}, attrs) |> Repo.update() do
+    with {:ok, user_portfolio} <- UserPortfolio.update(attrs) do
       {:ok, user_portfolio}
     else
       _ ->

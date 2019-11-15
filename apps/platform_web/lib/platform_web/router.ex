@@ -53,6 +53,7 @@ defmodule PlatformWeb.Router do
       # TOKENS
       scope "/", Tokens do
         get("/search", TokenController, :search)
+        get("/tokens", TokenController, :index)
       end
 
       # TOPICS

@@ -24,7 +24,7 @@ root_tokens = [
     symbol: "OCN",
     site: "https://oceanprotocol.com",
     description:
-      "OCEAN iA Decentralized Data Exchange Protocol to Unlock Data for AI
+      "OCEAN is a Decentralized Data Exchange Protocol to Unlock Data for AI.
 Ocean Protocol is kickstarting a Data Economy by breaking down data silos and equalizing access to data for all."
   },
   %Token{
@@ -63,14 +63,16 @@ have never existed before."
     symbol: "BTC",
     site: "https://www.bitcoincash.org",
     description:
-      "Bitcoin is a cryptocurrency, a form of electronic cash. It is a decentralized digital currency without a central bank or single administrator."
+      "Bitcoin is a cryptocurrency, a form of electronic cash. It is a decentralized digital currency without a central bank or single administrator. Bitcoin is often call \"Digital Gold\" due to the core teams focus on the properties of
+      decentralized systems that support a cryptocurrency being classifed as a 'Store of Value'"
   },
   %Token{
     name: "BITCOIN CASH (BCH)",
     symbol: "BCH",
     site: "",
     description:
-      "In mid-2017, a group of developers wanting to increase bitcoin's block size limit prepared a code change. The change, called a hard fork, took effect on 1 August 2017."
+      "In mid-2017, a group of developers wanting to increase bitcoin's block size limit prepared a code change. The change, called a hard fork, took effect on 1 August 2017.
+      BCH is aiming to be the fork of bitcoin that is most cash like for use in payments systems."
   },
   %Token{
     name: "EOSIO (EOS)",

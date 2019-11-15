@@ -17,38 +17,38 @@ defmodule Platform.Users.Portfolios.UserPortfolio do
     timestamps()
   end
 
-  def create(params) do
-    Ecto.Multi.new()
-    |> Ecto.Multi.run(:user_portfolio, __MODULE__, :insert_user_portfolio, [params])
-    |> Platform.Repo.transaction()
-    |> case do
-      {:ok, %{user_portfolio: user_portfolio}} ->
-        user_portfolio = user_portfolio |> Platform.Repo.preload(:user)
-        {:ok, user_portfolio}
-
-      # matches when insert_portfolio_tokens fails
-      {:error, :portfolio, changeset, _changes_so_far} ->
-        # to be used on form again
-        {:error, changeset}
-
-      # shared schema magic
-      # matches when user, user_topics or credential failed op
-      # registration_changeset = successful changes so far
-      {:error, _failed_op, changeset, %{portfolio: portfolio_changeset}} ->
-        portfolio_changeset = %{
-          portfolio_changeset
-          | errors: changeset.errors,
-            action: changeset.action
-        }
-
-        {:error, portfolio_changeset}
-    end
-  end
-
-  # def create(params) do
-  #   insert_user_portfolio(params)
-  #   insert_portfolio_tokens(params)
+  # def load_portfolio_tokens(params) do
+  #   case params[""] || [] do
+  #     [] -> []
+  #     ids -> Repo.all(from(r in PortfolioToken, where: r.id in ^ids))
+  #   end
   # end
+
+  def update(portfolio_params) do
+    user_id = String.to_integer(portfolio_params["portfolio"]["user_id"])
+    portfolio = Map.drop(portfolio_params["portfolio"], ["user_id", "name"]) |> Map.values()
+    dt = NaiveDateTime.truncate(NaiveDateTime.utc_now(), :second)
+
+    folio = Repo.get!(Portfolio, 1)
+
+    user_portfolio = Ecto.Changeset.get!(UserPortfolio, 1) |> Repo.preload(:portfolio_tokens)
+
+    pt =
+      for holding <- portfolio do
+        tok =
+          Ecto.put_assoc(user_portfolio, :portfolio_tokens, %{
+            portfolio_id: user_portfolio.id,
+            token_id: holding["id"],
+            user_id: user_id,
+            weight: holding["weight"],
+            inserted_at: dt,
+            updated_at: dt
+          })
+
+        Repo.update(tok)
+        Map.from_struct(tok)
+      end
+  end
 
   def insert_user_portfolio(Platform.Repo, _changes, portfolio_params) do
     user_id = String.to_integer(portfolio_params["portfolio"]["user_id"])
@@ -72,9 +72,6 @@ defmodule Platform.Users.Portfolios.UserPortfolio do
 
     pt =
       for holding <- portfolio do
-        require IEx
-        IEx.pry()
-
         tok =
           Ecto.build_assoc(up, :portfolio_tokens, %{
             portfolio_id: up.id,
@@ -104,6 +101,34 @@ defmodule Platform.Users.Portfolios.UserPortfolio do
       {:ok, p}
     else
       {:error, "user portfolio not inserted"}
+    end
+  end
+
+  def create(params) do
+    Ecto.Multi.new()
+    |> Ecto.Multi.run(:user_portfolio, __MODULE__, :insert_user_portfolio, [params])
+    |> Platform.Repo.transaction()
+    |> case do
+      {:ok, %{user_portfolio: user_portfolio}} ->
+        user_portfolio = user_portfolio |> Platform.Repo.preload(:user)
+        {:ok, user_portfolio}
+
+      # matches when insert_portfolio_tokens fails
+      {:error, :portfolio, changeset, _changes_so_far} ->
+        # to be used on form again
+        {:error, changeset}
+
+      # shared schema magic
+      # matches when user, user_topics or credential failed op
+      # registration_changeset = successful changes so far
+      {:error, _failed_op, changeset, %{portfolio: portfolio_changeset}} ->
+        portfolio_changeset = %{
+          portfolio_changeset
+          | errors: changeset.errors,
+            action: changeset.action
+        }
+
+        {:error, portfolio_changeset}
     end
   end
 
