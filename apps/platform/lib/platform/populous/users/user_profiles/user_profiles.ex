@@ -1,11 +1,11 @@
-defmodule Platform.Users.Profiles do
+defmodule Platform.Users.Profiles.UserProfiles do
   @moduledoc """
   The UserProfiles context.
   """
 
   import Ecto.Query, warn: false
   alias Platform.Repo
-
+  alias Platform.Users.Profiles.UserRole
   alias Platform.Users.Profiles.UserProfile
 
   @doc """
@@ -34,7 +34,7 @@ defmodule Platform.Users.Profiles do
       ** (Ecto.NoResultsError)
 
   """
-  def get_user_profile!(id), do: Repo.get!(UserProfile, id)
+  def get_user_profile!(id), do: Repo.get!(UserProfile, user_id: id)
 
   @doc """
   Creates a user_profile.
@@ -66,7 +66,7 @@ defmodule Platform.Users.Profiles do
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_user_profile(%UserProfile{} = user_profile, attrs) do
+  def update_user_profile(%{} = user_profile, attrs) do
     user_profile
     |> UserProfile.changeset(attrs)
     |> Repo.update()

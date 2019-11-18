@@ -1,8 +1,10 @@
 defmodule PlatformWeb.V1.Users.UserProfileController do
   use PlatformWeb, :controller
+  alias Platform.Repo
 
-  alias Platform.Users.Profiles
-  alias Platform.Users.Profiles.UserProfile
+  alias Platform.Users.{User, Profiles}
+  alias Profiles.UserProfile
+  alias Profiles.UserProfiles
 
   # action_fallback(PlatformWeb.FallbackController)
 
@@ -26,8 +28,9 @@ defmodule PlatformWeb.V1.Users.UserProfileController do
     render(conn, "show.json", user_profile: user_profile)
   end
 
-  def update(conn, %{"id" => id, "user_profile" => user_profile_params}) do
-    user_profile = UserProfiles.get_user_profile!(id)
+  def update(conn, %{"user_profile" => user_profile_params}) do
+    user = Repo.get!(User, user_profile_params["id"]) |> Repo.preload(:user_profile)
+    user_profile = user.user_profile
 
     with {:ok, %UserProfile{} = user_profile} <-
            UserProfiles.update_user_profile(user_profile, user_profile_params) do

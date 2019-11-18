@@ -1,8 +1,27 @@
-defmodule Role do
-  use Ecto.Schema
+defmodule Platform.Users.Profiles.Role do
+  @moduledoc """
+    roles on the platform
+  """
 
-  embedded_schema do
-    field(:title)
-    field(:active)
+  use Ecto.Schema
+  import Ecto.Changeset
+
+  alias Platform.Users.User
+  alias Platform.Users.UserRole
+
+  schema "roles" do
+    field(:title, :string)
+
+    many_to_many(:users, User, join_through: UserRole)
+    many_to_many(:roles, Role, join_through: UserRole)
+    timestamps()
+  end
+
+  @doc false
+  def changeset(topic, attrs) do
+    topic
+    |> cast(attrs, [:title])
+    |> validate_required([:title])
+    |> unique_constraint(:title, name: :role_title_index)
   end
 end

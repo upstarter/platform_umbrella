@@ -3,6 +3,7 @@ defmodule Platform.Accounts.Registration do
   import Ecto.Changeset
   alias Platform.Accounts.Registration
   alias Platform.Users.User
+  alias Platform.Users.Profiles.UserProfile
   # duplication from other models, but registrar's need this
   # reflect fields on the form
   embedded_schema do
@@ -27,7 +28,7 @@ defmodule Platform.Accounts.Registration do
   end
 
   def insert_user(Platform.Repo, _changes, params) do
-    %User{}
+    %User{user_profile: %UserProfile{}}
     |> User.registration_changeset(params)
     |> Platform.Repo.insert()
   end

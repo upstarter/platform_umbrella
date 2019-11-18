@@ -4,19 +4,24 @@ defmodule Platform.Users.User do
   import Ecto.Changeset
   import Ecto.Query
   alias Platform.Repo
-  alias Platform.Users.User
-  alias Platform.Topics.Topic
-  alias Platform.Users.UsersTopics
-  alias Platform.Tokens.Token
-  alias Platform.Users.Tokens.UserToken
-  alias Platform.Portfolios.Portfolio
-  alias Platform.Users.Portfolios.UserPortfolio
-  alias Platform.Users.Portfolios.PortfolioToken
-  alias Platform.Users.Profiles.UserProfile
   alias Platform.Auth.Credential
   alias Platform.Accounts.Account
-  alias Platform.Users.Proposal
-  alias Platform.Users.Groups.UserGroup
+  alias Platform.Topics.Topic
+  alias Platform.Tokens.Token
+  alias Platform.Portfolios.Portfolio
+
+  alias Platform.Users.{
+    User,
+    UsersTopics,
+    Tokens.UserToken,
+    Portfolios.UserPortfolio,
+    Portfolios.PortfolioToken,
+    Profiles.UserProfile,
+    Profiles.UserRole,
+    Profiles.Role,
+    Groups.UserGroup,
+    Proposal
+  }
 
   # @type t :: %__MODULE__{
   #         id: integer,
@@ -37,6 +42,10 @@ defmodule Platform.Users.User do
     field(:terms_accepted, :boolean)
 
     has_one(:user_profile, UserProfile)
+
+    many_to_many(:users_roles, UserRole, join_through: UserRole, on_delete: :delete_all)
+    many_to_many(:roles, Role, join_through: UserRole, on_delete: :delete_all)
+
     has_many(:credentials, Credential, on_delete: :delete_all)
     has_many(:accounts, Account, on_delete: :delete_all)
     has_many(:proposals, Proposal)
@@ -50,12 +59,12 @@ defmodule Platform.Users.User do
 
     many_to_many(:topics, Topic, join_through: UsersTopics, on_delete: :delete_all)
 
+    has_many(:user_portfolios, UserPortfolio, on_delete: :delete_all)
+
     many_to_many(:portfolios, Portfolio,
       join_through: UserPortfolio,
       on_delete: :delete_all
     )
-
-    has_many(:user_portfolios, UserPortfolio, on_delete: :delete_all)
 
     has_many(:portfolio_tokens,
       through: [:user_portfolios, :portfolio_tokens],

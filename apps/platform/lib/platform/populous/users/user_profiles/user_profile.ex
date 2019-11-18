@@ -2,21 +2,27 @@ defmodule Platform.Users.Profiles.UserProfile do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias Platform.Users.Profiles.Role
+  alias __MODULE__
+  alias Platform.Users.Profiles.{Role, UserRole}
+  alias Platform.Users.User
 
   schema "user_profiles" do
-    embeds_many(:roles, Role)
+    belongs_to(:user, User)
+    many_to_many(:roles, Role, join_through: UserRole)
 
     timestamps()
   end
 
-  def validate_roles(changeset, attrs, options \\ []) do
-    validate_change(changeset, attrs, fn _ ->
-      case Repo.get() do
-        "curator" -> []
-        _ -> [{attrs, options[:message] || "Unexpected Role"}]
-      end
-    end)
+  def add_roles(changeset, attrs, options \\ []) do
+    user_profile = Repo.get!(User, attrs["user_id"])
+    role = %Role{title: attrs["role"]}
+
+    user_roles = [%UserRole{role_id: role.id, user_id: user_profile.user_id}]
+
+    # changeset =
+    #   user_profile
+    #   |> Ecto.Changeset.change()
+    #   |> Ecto.Changeset.put_change(:roles, roles)
   end
 
   @doc false
@@ -24,7 +30,6 @@ defmodule Platform.Users.Profiles.UserProfile do
     user_profile
     |> cast(attrs, [:roles])
     |> validate_required([:roles])
-    |> validate_roles(attrs)
     |> Changeset.validate_inclusion(:roles, @roles)
   end
 end
