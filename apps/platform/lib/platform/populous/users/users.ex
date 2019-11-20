@@ -9,6 +9,8 @@ defmodule Platform.Users do
   alias Platform.Repo
 
   alias Platform.Users.User
+  alias Platform.Users.Profiles.Role
+  alias Platform.Users.Profiles.UserRole
 
   @doc """
   Returns the list of users.
@@ -73,6 +75,20 @@ defmodule Platform.Users do
     user
     |> User.changeset(attrs)
     |> Repo.update()
+  end
+
+  def update_role(user, role, is_role) do
+    role = Repo.get_by!(Role, title: role)
+    user = user |> Repo.preload(:user_profile)
+
+    user_role = %UserRole{
+      user: user,
+      role: role,
+      user_profile: user.user_profile,
+      active: is_role
+    }
+
+    Repo.insert!(user_role)
   end
 
   @doc """

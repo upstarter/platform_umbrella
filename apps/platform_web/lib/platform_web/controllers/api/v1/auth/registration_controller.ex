@@ -14,8 +14,8 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
   plug(:scrub_params, "auth" when action in [:create])
 
   def create(conn, _auth_params = %{"auth" => params}) do
-    require IEx
-    IEx.pry()
+    # require IEx
+    # IEx.pry()
 
     with {:ok, %{} = user_info} <- Auth.create_account(params),
          {:ok, conn, jwt} <- authenticate(user_info, conn) do

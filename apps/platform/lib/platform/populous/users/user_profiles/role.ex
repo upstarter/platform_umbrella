@@ -6,6 +6,7 @@ defmodule Platform.Users.Profiles.Role do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias __MODULE__
   alias Platform.Users.User
   alias Platform.Users.UserRole
 
@@ -17,11 +18,14 @@ defmodule Platform.Users.Profiles.Role do
     timestamps()
   end
 
+  @roles ~w(admin user curator strategist engineer analyst tpm)
+
   @doc false
   def changeset(topic, attrs) do
     topic
     |> cast(attrs, [:title])
     |> validate_required([:title])
     |> unique_constraint(:title, name: :role_title_index)
+    |> validate_inclusion(:title, @roles, message: "should be one of: [#{Enum.join(@roles, " ")}]")
   end
 end

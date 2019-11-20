@@ -39,7 +39,7 @@ defmodule PlatformWeb.Router do
 
         resources("/proposals", Users.ProposalsController, except: [:delete, :edit, :new, :update])
 
-        post("/user_profiles", Users.UserProfileController, :update)
+        put("/update_role", Users.UsersController, :update_role)
       end
 
       # PROVIDERS
