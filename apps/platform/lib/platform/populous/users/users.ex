@@ -6,6 +6,7 @@ defmodule Platform.Users do
   """
 
   import Ecto.Query, warn: false
+  import Ecto.Changeset
   alias Platform.Repo
 
   alias Platform.Users.User
@@ -81,14 +82,66 @@ defmodule Platform.Users do
     role = Repo.get_by!(Role, title: role)
     user = user |> Repo.preload(:user_profile)
 
-    user_role = %UserRole{
-      user: user,
-      role: role,
-      user_profile: user.user_profile,
+    user_role =
+      Repo.get_by(UserRole,
+        user_id: user.id,
+        role_id: role.id,
+        user_profile_id: user.user_profile.id
+      )
+      |> Repo.preload([:user, :role, :user_profile])
+
+    attrs = %{
+      user_id: user.id,
+      role_id: role.id,
+      user_profile_id: user.user_profile.id,
       active: is_role
     }
 
-    Repo.insert!(user_role)
+    # require IEx
+    # IEx.pry()
+
+    user_role =
+      if user_role do
+        user_role
+        |> UserRole.changeset(attrs)
+        |> Repo.update!()
+      else
+        %UserRole{}
+        |> UserRole.changeset(attrs)
+        |> Repo.insert!()
+      end
+
+    user =
+      Repo.one(
+        from(u in User,
+          where: u.id == ^user.id,
+          join: ur in UserRole,
+          on: u.id == ur.user_id,
+          where: ur.active == true,
+          join: r in Role,
+          on: r.id == ur.role_id,
+          preload: [roles: r]
+        )
+      )
+
+    require IEx
+    IEx.pry()
+
+    {:ok, user}
+  end
+
+  def roles(user) do
+    Repo.one(
+      from(u in User,
+        where: u.id == ^user.id,
+        join: ur in UserRole,
+        on: u.id == ur.user_id,
+        where: ur.active == true,
+        join: r in Role,
+        on: r.id == ur.role_id,
+        preload: [roles: r]
+      )
+    )
   end
 
   @doc """

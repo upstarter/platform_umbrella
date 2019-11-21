@@ -21,26 +21,26 @@ alias Platform.Users.Portfolios.UserPortfolio
 IO.puts("Users:")
 IO.puts(Enum.count(Repo.all(User)))
 
-defmodule Fix do
-  def add_topic(name, description, parent) do
-    topic = %Topic{
-      name: name,
-      description: description,
-      parent_id: parent
-    }
-
-    Repo.insert!(topic)
-  end
-
-  def delete_users do
-    u = from(u in User, where: u.id < 20)
-    Repo.delete_all(u)
-  end
-
-  def users do
-    from(u in User, where: u.id < 20)
-  end
-end
+# defmodule Fix do
+#   def add_topic(name, description, parent) do
+#     topic = %Topic{
+#       name: name,
+#       description: description,
+#       parent_id: parent
+#     }
+#
+#     Repo.insert!(topic)
+#   end
+#
+#   def delete_users do
+#     u = from(u in User, where: u.id < 20)
+#     Repo.delete_all(u)
+#   end
+#
+#   def users do
+#     from(u in User, where: u.id < 20)
+#   end
+# end
 
 IEx.configure(
   colors: [

@@ -42,10 +42,15 @@ defmodule PlatformWeb.V1.Users.UsersController do
       }) do
     user = Repo.get_by!(User, id: user_id) |> Repo.preload(:roles)
 
-    with {:ok, %User{} = user} <-
-           Users.update_role(user, role, is_role) do
-      render(conn, "show.json", user: user)
+    with {:ok, %User{} = user} <- Users.update_role(user, role, is_role) do
+      render(conn, "roles.json", user: user)
     end
+  end
+
+  def roles(conn, _params) do
+    user = Users.roles(conn.assigns.current_user)
+
+    render(conn, "roles.json", user: user)
   end
 
   def delete(conn, %{"id" => id}) do

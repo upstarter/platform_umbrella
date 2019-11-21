@@ -111,18 +111,6 @@ defmodule Platform.Users.User do
     user = Repo.all(query)
   end
 
-  def add_roles(changeset, attrs, options \\ []) do
-    user_profile = Repo.get!(User, attrs["user_id"])
-    role = %Role{title: attrs["role"]}
-
-    user_roles = [%UserRole{role_id: role.id, user_id: user_profile.user_id}]
-
-    # changeset =
-    #   user_profile
-    #   |> Ecto.Changeset.change()
-    #   |> Ecto.Changeset.put_change(:roles, roles)
-  end
-
   defp has_role?(nil, _roles), do: false
   defp has_role?(user, roles) when is_list(roles), do: Enum.any?(roles, &has_role?(user, &1))
   defp has_role?(user, role) when is_atom(role), do: has_role?(user, Atom.to_string(role))

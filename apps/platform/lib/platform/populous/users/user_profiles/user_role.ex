@@ -1,5 +1,6 @@
 defmodule Platform.Users.Profiles.UserRole do
   use Ecto.Schema
+  import Ecto.Changeset
 
   alias Platform.Users.User
   alias Platform.Users.Profiles
@@ -22,4 +23,13 @@ defmodule Platform.Users.Profiles.UserRole do
   #     where: active == true
   #   )
   # end
+
+  @doc false
+  def changeset(user_role, attrs) do
+    user_role
+    |> cast(attrs, [:user_id, :user_profile_id, :role_id, :active])
+    |> validate_required([:user_id, :user_profile_id, :role_id, :active])
+
+    # |> unique_constraint(:users_roles, [:user_id, :user_profile_id, :role_id])
+  end
 end
