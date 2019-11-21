@@ -28,7 +28,7 @@ defmodule Platform.Accounts.Registration do
   end
 
   def insert_user(Platform.Repo, _changes, params) do
-    %User{user_profile: %UserProfile{}}
+    %User{user_profile: %UserProfile{}, terms_accepted: params["terms_accepted"]}
     |> User.registration_changeset(params)
     |> Platform.Repo.insert()
   end

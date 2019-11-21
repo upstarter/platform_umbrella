@@ -126,9 +126,9 @@ defmodule Platform.Users.User do
   @doc false
   def registration_changeset(user, params) do
     user
-    |> cast(params, [:email, :nickname])
+    |> cast(params, [:email, :nickname, :terms_accepted])
     |> validate_format(:email, ~r/@/)
-    |> validate_required([:email, :topics])
+    |> validate_required([:email, :topics, :terms_accepted])
     |> unique_constraint(:email)
   end
 
