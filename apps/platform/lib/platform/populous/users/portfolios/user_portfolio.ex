@@ -11,7 +11,7 @@ defmodule Platform.Users.Portfolios.UserPortfolio do
   schema "user_portfolios" do
     belongs_to(:portfolio, Portfolio)
     belongs_to(:user, User)
-    has_many(:portfolio_tokens, PortfolioToken, foreign_key: :portfolio_id)
+    has_many(:portfolio_tokens, PortfolioToken, foreign_key: :portfolio_id, on_replace: :nilify)
     has_many(:tokens, through: [:portfolio_tokens, :token])
 
     timestamps()
@@ -24,19 +24,37 @@ defmodule Platform.Users.Portfolios.UserPortfolio do
   #   end
   # end
 
-  def update(portfolio_params) do
+  def old_update(portfolio_params) do
     user_id = String.to_integer(portfolio_params["portfolio"]["user_id"])
     portfolio = Map.drop(portfolio_params["portfolio"], ["user_id", "name"]) |> Map.values()
     dt = NaiveDateTime.truncate(NaiveDateTime.utc_now(), :second)
 
     folio = Repo.get!(Portfolio, 1)
 
-    user_portfolio = Ecto.Changeset.get!(UserPortfolio, 1) |> Repo.preload(:portfolio_tokens)
+    user_portfolio = Repo.get(UserPortfolio, 1)
+
+    attrs = %{
+      user_id: user_id,
+      portfolio_id: folio.id
+    }
+
+    user_portfolio =
+      if user_portfolio do
+        user_portfolio
+        |> UserPortfolio.changeset(attrs)
+        |> Repo.update!()
+      else
+        %UserPortfolio{}
+        |> UserPortfolio.changeset(attrs)
+        |> Repo.insert!()
+      end
+
+    user_portfolio = user_portfolio |> Repo.preload(:portfolio_tokens)
 
     pt =
       for holding <- portfolio do
         tok =
-          Ecto.put_assoc(user_portfolio, :portfolio_tokens, %{
+          Ecto.build_assoc(user_portfolio, :portfolio_tokens, %{
             portfolio_id: user_portfolio.id,
             token_id: holding["id"],
             user_id: user_id,
@@ -48,6 +66,75 @@ defmodule Platform.Users.Portfolios.UserPortfolio do
         Repo.update(tok)
         Map.from_struct(tok)
       end
+  end
+
+  def update(portfolio_params) do
+    user_id = String.to_integer(portfolio_params["portfolio"]["user_id"])
+    portfolio = Map.drop(portfolio_params["portfolio"], ["user_id", "name"]) |> Map.values()
+    dt = NaiveDateTime.truncate(NaiveDateTime.utc_now(), :second)
+
+    folio = Repo.get!(Portfolio, 1)
+
+    user_portfolio =
+      Repo.get_by(UserPortfolio,
+        user_id: user_id,
+        portfolio_id: folio.id
+      )
+      |> Repo.preload([:portfolio_tokens])
+
+    # require IEx
+    # IEx.pry()
+
+    attrs = %{
+      user_id: user_id,
+      portfolio_id: folio.id
+    }
+
+    user_portfolio =
+      if user_portfolio do
+        user_portfolio
+        |> UserPortfolio.changeset(attrs)
+        |> Repo.update!()
+      else
+        %UserPortfolio{}
+        |> UserPortfolio.changeset(attrs)
+        |> Repo.insert!()
+      end
+
+    pt =
+      for holding <- portfolio do
+        portfolio_token =
+          Repo.get_by(PortfolioToken,
+            user_id: user_id,
+            portfolio_id: folio.id,
+            token_id: holding["id"]
+          )
+
+        portfolio_token =
+          if portfolio_token do
+            portfolio_token
+            |> PortfolioToken.changeset(attrs)
+            |> Repo.update!()
+          else
+            portfolio_token =
+              %PortfolioToken{
+                portfolio_id: folio.id,
+                token_id: holding["id"],
+                user_id: user_id,
+                weight: holding["weight"],
+                inserted_at: dt,
+                updated_at: dt
+              }
+              |> PortfolioToken.changeset(attrs)
+              |> Repo.insert!()
+          end
+
+        up_changeset = Ecto.Changeset.change(user_portfolio)
+        p = Ecto.Changeset.put_assoc(up_changeset, :portfolio_tokens, [portfolio_token])
+        Repo.update!(p)
+      end
+
+    {:ok, user_portfolio}
   end
 
   def insert_user_portfolio(Platform.Repo, _changes, portfolio_params) do

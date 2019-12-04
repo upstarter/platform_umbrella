@@ -13,6 +13,8 @@ defmodule Platform.Market.DailyMarketHistory do
     field(:low, :decimal)
     field(:volumefrom, :decimal)
     field(:volumeto, :decimal)
+
+    timestamps()
   end
 
   @typedoc """

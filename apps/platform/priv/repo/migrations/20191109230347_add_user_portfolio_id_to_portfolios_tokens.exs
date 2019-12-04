@@ -17,6 +17,6 @@ defmodule Platform.Repo.Migrations.AddUserPortfolioIdToPortfoliosTokens do
       remove(:portfolio_id, references(:user_portfolios), null: false)
     end
 
-    # drop(unique_index(:portfolios_tokens, [:user_id, :portfolio_id, :token_id]))
+    drop(unique_index(:portfolios_tokens, [:user_id, :portfolio_id, :token_id]))
   end
 end

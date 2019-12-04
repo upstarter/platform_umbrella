@@ -7,7 +7,7 @@ defmodule Platform.Users.Portfolios.PortfolioToken do
   alias Platform.Users.User
 
   schema "portfolios_tokens" do
-    belongs_to(:user_portfolio, UserPortfolio, foreign_key: :portfolio_id)
+    belongs_to(:user_portfolio, UserPortfolio, foreign_key: :portfolio_id, on_replace: :nilify)
     belongs_to(:user, User)
     belongs_to(:token, Token)
 
@@ -22,7 +22,6 @@ defmodule Platform.Users.Portfolios.PortfolioToken do
     |> cast(attrs, [:portfolio_id, :token_id, :user_id])
     |> foreign_key_constraint(:portfolio_id)
     |> validate_required([:portfolio_id, :token_id, :user_id])
-    |> cast_assoc(:user_portfolio, required: true)
     |> unique_constraint(:portfolios_tokens, [:user_id, :portfolio_id, :token_id])
   end
 end

@@ -9,7 +9,7 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
-root = './'
+root = File.cwd!()
 
 # Code.eval_file("priv/seeds/root_topic_seeds.exs")
 

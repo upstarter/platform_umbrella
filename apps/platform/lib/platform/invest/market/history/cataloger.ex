@@ -2,8 +2,8 @@ defmodule Platform.Market.History.Cataloger do
   @moduledoc """
   Fetches the daily market history.
 
-  Market grabs the last <day_count> day's worth of market history for the configured
-  coin in the platform. Once that data is fetched, current day's values are
+  Market grabs the last <day_count> day's worth of market history for the passed in
+  coin. Once that data is fetched, current day's values are
   checked every 60 minutes. Additionally, failed requests to the history
   source will follow exponential backoff `100ms * 2^(n+1)` where `n` is the
   number of failed requests.
@@ -20,19 +20,20 @@ defmodule Platform.Market.History.Cataloger do
 
   """
 
+  import Ecto.Query
+
   use GenServer
 
   require Logger
 
+  alias Platform.Repo
   alias Platform.Market
+  alias Platform.Tokens.Token
 
   @typep milliseconds :: non_neg_integer()
 
   @impl GenServer
   def init(:ok) do
-    # uncomment to autorun on app start when Cataloger enabled
-    # send(self(), {:fetch_history, 365})
-
     {:ok, %{}}
   end
 
@@ -58,7 +59,9 @@ defmodule Platform.Market.History.Cataloger do
   # Failed to get records. Try again.
   @impl GenServer
   def handle_info({_ref, {symbol, day_count, failed_attempts, :error}}, state) do
-    Logger.warn(fn -> "Failed to fetch market history. Trying again." end)
+    Logger.warn(fn ->
+      "Failed to fetch market history for #{symbol}. #{failed_attempts} failed attempts. Trying again."
+    end)
 
     fetch_history(symbol, day_count, failed_attempts + 1)
 

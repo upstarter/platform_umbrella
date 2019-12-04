@@ -34,7 +34,7 @@ defmodule Platform.Auth do
 
   def new_session(
         session = %{
-          "session" => %{"username" => email, "password" => pass, "remember" => _remember}
+          "session" => %{"email" => email, "password" => pass, "remember" => _remember}
         }
       ) do
     email_password_auth(email, pass)

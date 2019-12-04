@@ -68,7 +68,7 @@ defmodule PlatformWeb.V1.Auth.SessionController do
   def sign_in(
         conn,
         session = %{
-          "session" => %{"username" => _email, "password" => _pass, "remember" => _remember}
+          "session" => %{"email" => _email, "password" => _pass, "remember" => _remember}
         }
       ) do
     with {:ok, cred} <- Auth.new_session(session),

@@ -124,8 +124,8 @@ defmodule Platform.Users do
         )
       )
 
-    require IEx
-    IEx.pry()
+    # require IEx
+    # IEx.pry()
 
     {:ok, user}
   end

@@ -47,13 +47,13 @@ defmodule Platform.Market.History.Source.CryptoCompare do
     for item <- json["Data"] do
       %{
         symbol: symbol,
-        close: Decimal.new(item["close"]),
+        close: Decimal.cast(item["close"]),
         date: date(item["time"]),
-        open: Decimal.new(item["open"]),
-        high: Decimal.new(item["high"]),
-        low: Decimal.new(item["low"]),
-        volumefrom: Decimal.new(item["volumefrom"]),
-        volumeto: Decimal.new(item["volumeto"])
+        open: Decimal.cast(item["open"]),
+        high: Decimal.cast(item["high"]),
+        low: Decimal.cast(item["low"]),
+        volumefrom: Decimal.cast(item["volumefrom"]),
+        volumeto: Decimal.cast(item["volumeto"])
       }
     end
   end

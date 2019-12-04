@@ -6,7 +6,7 @@ defmodule Platform.ExchangeRates.Source do
   alias Platform.ExchangeRates.Token
 
   @doc """
-  Callback for fetching an exchange rates for currencies/tokens.
+  Callback for fetching an exchange rate for currencies/tokens.
   """
   @callback fetch_exchange_rates :: {:ok, [Token.t()]} | {:error, any}
 end
