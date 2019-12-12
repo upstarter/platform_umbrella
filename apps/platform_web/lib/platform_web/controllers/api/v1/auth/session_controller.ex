@@ -100,13 +100,19 @@ defmodule PlatformWeb.V1.Auth.SessionController do
         token_type: "access"
       )
 
+    # thirty days
     # 4 * 7 * 24 * 60 * 60
-    thirty_days = 60 * 25
+    max_age = 60 * 25
 
     conn =
       conn
+      |> put_resp_cookie("_cw_csrf",
+        max_age: max_age,
+        http_only: false,
+        secure: false
+      )
       |> put_resp_cookie("_cw_acc", jwt,
-        max_age: thirty_days,
+        max_age: max_age,
         http_only: false,
         secure: false
       )
