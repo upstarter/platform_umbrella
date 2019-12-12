@@ -91,12 +91,19 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
         token_type: "access"
       )
 
-    thirty_days = 86400 * 30
+    # thirty days
+    max_age = 86400 * 30
 
     conn =
       conn
+      |> put_resp_cookie("_cw_csrf", get_csrf_token(),
+        max_age: max_age,
+        http_only: false,
+        secure: false,
+        same_site: :strict
+      )
       |> put_resp_cookie("_cw_acc", jwt,
-        max_age: thirty_days,
+        max_age: max_age,
         http_only: false,
         secure: false,
         domain: ".cryptowise.ai",
@@ -104,7 +111,7 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
       )
 
     #   |> put_resp_cookie("_cw_rem", jwt,
-    #     max_age: thirty_days,
+    #     max_age: max_age,
     #     http_only: true,
     #     # make true in prod, use _cw_acc for protected resources
     #     secure: false

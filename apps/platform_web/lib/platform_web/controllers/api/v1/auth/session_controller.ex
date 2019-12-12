@@ -106,7 +106,7 @@ defmodule PlatformWeb.V1.Auth.SessionController do
 
     conn =
       conn
-      |> put_resp_cookie("_cw_csrf",
+      |> put_resp_cookie("_cw_csrf", get_csrf_token(),
         max_age: max_age,
         http_only: false,
         secure: false,
