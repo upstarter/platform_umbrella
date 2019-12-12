@@ -100,7 +100,7 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
         max_age: max_age,
         http_only: false,
         secure: false,
-        same_site: :strict
+        extra: "SameSite=Strict"
       )
       |> put_resp_cookie("_cw_acc", jwt,
         max_age: max_age,
