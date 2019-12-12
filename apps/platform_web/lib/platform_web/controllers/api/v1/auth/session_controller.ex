@@ -109,7 +109,8 @@ defmodule PlatformWeb.V1.Auth.SessionController do
       |> put_resp_cookie("_cw_csrf",
         max_age: max_age,
         http_only: false,
-        secure: false
+        secure: false,
+        same_site: :strict
       )
       |> put_resp_cookie("_cw_acc", jwt,
         max_age: max_age,
