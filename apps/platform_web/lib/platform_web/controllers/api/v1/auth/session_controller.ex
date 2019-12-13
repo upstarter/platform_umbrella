@@ -115,6 +115,7 @@ defmodule PlatformWeb.V1.Auth.SessionController do
       |> put_resp_cookie("_cw_acc", jwt,
         max_age: max_age,
         http_only: false,
+        domain: ".cryptowise.ai",
         secure: false
       )
 
