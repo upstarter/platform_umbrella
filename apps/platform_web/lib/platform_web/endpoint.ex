@@ -46,7 +46,8 @@ defmodule PlatformWeb.Endpoint do
     secure: true,
     signing_salt: "0QCm9hTQ",
     # number of seconds in 4 weeks
-    max_age: 4 * 7 * 24 * 60 * 60
+    # 4 * 7 * 24 * 60 * 60
+    max_age: 60 * 60
   )
 
   plug(CORSPlug)

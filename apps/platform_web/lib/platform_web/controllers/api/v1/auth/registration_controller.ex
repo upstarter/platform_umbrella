@@ -91,8 +91,8 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
         token_type: "access"
       )
 
-    # thirty days
-    max_age = 86400 * 30
+    # sixty minutes
+    max_age = 60 * 60
 
     conn =
       conn

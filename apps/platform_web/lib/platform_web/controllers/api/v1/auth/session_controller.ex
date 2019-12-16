@@ -102,7 +102,7 @@ defmodule PlatformWeb.V1.Auth.SessionController do
 
     # thirty days
     # 4 * 7 * 24 * 60 * 60
-    max_age = 86400 * 30
+    max_age = 60 * 60
 
     conn =
       conn
