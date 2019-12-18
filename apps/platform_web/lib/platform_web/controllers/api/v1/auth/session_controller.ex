@@ -85,41 +85,39 @@ defmodule PlatformWeb.V1.Auth.SessionController do
   def authenticate(conn, cred) do
     user = Repo.get_by(User, id: cred.user_id)
 
-    if user do
-      conn =
-        Guardian.Plug.sign_in(
-          conn,
-          user,
-          %{},
-          token_type: "refresh"
-        )
+    conn =
+      Guardian.Plug.sign_in(
+        conn,
+        user,
+        %{},
+        token_type: "refresh"
+      )
 
-      {:ok, jwt, _full_claims} =
-        Guardian.encode_and_sign(
-          user,
-          %{},
-          token_type: "access"
-        )
+    {:ok, jwt, _full_claims} =
+      Guardian.encode_and_sign(
+        user,
+        %{},
+        token_type: "access"
+      )
 
-      # thirty days
-      # 4 * 7 * 24 * 60 * 60
-      max_age = 60 * 60
+    # thirty days
+    # 4 * 7 * 24 * 60 * 60
+    max_age = 60 * 60
 
-      conn =
-        conn
-        |> put_resp_cookie("_cw_csrf", get_csrf_token(),
-          max_age: max_age,
-          http_only: false,
-          secure: false,
-          extra: "SameSite=Strict"
-        )
-        |> put_resp_cookie("_cw_acc", jwt,
-          max_age: max_age,
-          http_only: false,
-          domain: ".cryptowise.ai",
-          secure: false
-        )
-    end
+    conn =
+      conn
+      |> put_resp_cookie("_cw_csrf", get_csrf_token(),
+        max_age: max_age,
+        http_only: false,
+        secure: false,
+        extra: "SameSite=Strict"
+      )
+      |> put_resp_cookie("_cw_acc", jwt,
+        max_age: max_age,
+        http_only: false,
+        domain: ".cryptowise.ai",
+        secure: false
+      )
 
     {:ok, conn}
   end
