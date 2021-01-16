@@ -1,3 +1,7 @@
+
+# secrets
+apps/platform/priv/cert
+
 /_build
 /cover
 /deps
