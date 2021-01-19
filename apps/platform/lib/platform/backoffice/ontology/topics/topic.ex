@@ -23,7 +23,8 @@ defmodule Platform.Topics.Topic do
     field(:name, :string)
     field(:weight, :integer)
     field(:parent_id, :integer)
-    field(:slug, TitleSlug.Type)
+    # field(:slug, TitleSlug.Type)
+    field(:slug, :string)
 
     many_to_many(:users, User, join_through: Platform.Users.UsersTopics)
     many_to_many(:tokens, Token, join_through: "topics_tokens")

@@ -31,6 +31,9 @@ defmodule Platform.Ontologies.Ontology do
     field(:class_id, :integer)
     field(:class_type, :string)
     field(:subject, :string)
+    # enum :properties
+    # enum :features
+    # enum :propositions
 
     timestamps()
   end

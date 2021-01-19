@@ -1,4 +1,4 @@
-FROM envoyproxy/envoy:latest as build-stage
+FROM envoyproxy/envoy:v1.17.0 as build-stage
 
 FROM elixir:latest as production-build
 COPY --from=build-stage /etc/envoy /etc/envoy/
