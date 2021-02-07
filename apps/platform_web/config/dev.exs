@@ -11,6 +11,7 @@ config :platform_web, :env, :dev
 config :platform_web, PlatformWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
+  compilers: [:phoenix] ++ Mix.compilers(),
   code_reloader: true,
   check_origin: false,
   secret_key_base: "9Fr9IyYiWFpb9p8eP54ev2V/sd2TOhmGpzzkxjqLO+JNQrZ/nAqyyDwya37YH9aW",
@@ -48,6 +49,7 @@ config :platform_web, PlatformWeb.Endpoint,
       ~r{priv/static/.*(js|css|scss|sass|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
       ~r{lib/platform_web/views/.*(ex)$},
-      ~r{lib/platform_web/templates/.*(eex|haml)$}
+      ~r{lib/platform_web/templates/.*(eex|haml)$},
+      ~r{lib/platform_web/controllers/.*(ex)$}
     ]
   ]

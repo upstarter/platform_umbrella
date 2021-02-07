@@ -34,12 +34,14 @@ defmodule PlatformWeb.Router do
       post("/leads", LeadController, :create)
       get("/blog_posts", BlogController, :blog_posts)
 
+      scope "/discuss" do
+        resources("/topics", Users.DiscussionsController, except: [:delete, :edit])
+      end
+
       scope "/" do
         pipe_through(:ensure_auth)
 
         resources("/proposals", Users.ProposalsController, except: [:delete, :edit, :new, :update])
-
-        resources("/discussions", Users.DiscussionsController, except: [:delete, :edit])
 
         put("/user/update_role", Users.UsersController, :update_role)
         get("/user/roles", Users.UsersController, :roles)
@@ -62,6 +64,7 @@ defmodule PlatformWeb.Router do
       # TOPICS
       scope "/", Topics do
         resources("/topics", TopicController, except: [:new, :edit])
+
         get("/signup_topics", TopicController, :signup_topics)
         # options("/topics", TopicController, :options)
 
