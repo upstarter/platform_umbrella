@@ -5,13 +5,16 @@ defmodule PlatformWeb.V1.Topics.TopicController do
   alias Platform.Topics.Topic
 
   def tree(conn, _params) do
-    topics = Topics.list_topics_tree()
+    topics = Topics.list_topics()
     render(conn, "tree.json", topics: topics)
   end
 
+  def economics(conn, _params) do
+    topics = Topics.economics()
+    render(conn, "economics.json", topics: topics)
+  end
+
   def analysis(conn, _params) do
-    require IEx
-    IEx.pry()
     topics = Topics.analysis()
     render(conn, "analysis.json", topics: topics)
   end
@@ -26,7 +29,7 @@ defmodule PlatformWeb.V1.Topics.TopicController do
     render(conn, "strategy.json", topics: topics)
   end
 
-  def taxonomy(conn, _params) do
+  def taxonomy(conn, params) do
     topics = Topics.taxonomy()
     render(conn, "taxonomy.json", topics: topics)
   end
@@ -36,8 +39,8 @@ defmodule PlatformWeb.V1.Topics.TopicController do
     render(conn, "valuation.json", topics: topics)
   end
 
-  def index(conn, _params) do
-    topics = Topics.list_topics()
+  def index(conn, params) do
+    topics = Topics.taxonomy()
     render(conn, "index.json", topics: topics)
   end
 
@@ -51,8 +54,8 @@ defmodule PlatformWeb.V1.Topics.TopicController do
   end
 
   def show(conn, %{"id" => id}) do
-    topic = Topics.get_topic!(id)
-    render(conn, "show.json", topic: topic)
+    topics = Topics.get_topic!(id) |> Topics.arrange_topic()
+    render(conn, "taxonomy.json", topics: topics)
   end
 
   def update(conn, %{"id" => id, "topic" => topic_params}) do

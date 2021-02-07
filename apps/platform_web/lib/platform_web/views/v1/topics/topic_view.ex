@@ -12,6 +12,11 @@ defmodule PlatformWeb.V1.Topics.TopicView do
     %{data: topics}
   end
 
+  def render("economics.json", %{topics: topics}) do
+    IO.inspect(topics)
+    %{data: topics}
+  end
+
   def render("research.json", %{topics: topics}) do
     IO.inspect(topics)
     %{data: topics}
@@ -34,7 +39,7 @@ defmodule PlatformWeb.V1.Topics.TopicView do
   end
 
   def render("index.json", %{topics: topics}) do
-    %{data: render_many(topics, TopicView, "topic.json")}
+    %{data: render_many(topics, __MODULE__, "topic.json", as: :topic)}
   end
 
   def render("show.json", %{topic: topic}) do
@@ -42,6 +47,6 @@ defmodule PlatformWeb.V1.Topics.TopicView do
   end
 
   def render("topic.json", %{topic: topic}) do
-    %{id: topic.id, name: topic.name, description: topic.description}
+    %{data: topic}
   end
 end

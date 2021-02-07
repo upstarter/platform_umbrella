@@ -28,8 +28,9 @@ analysis_topics = [
   %Topic{
     id: 93,
     name: "Trend Following",
-    description:
-      "An investment approach in which the central tendency of the movement in a financial asset is the principal factor.",
+    description: "As the adage goes, \"The trend is your friend\".
+        A trading approach where direction of movement of a financial asset is
+        the 1st and principal factor in trading decisions",
     parent_id: 91
   },
   %Topic{

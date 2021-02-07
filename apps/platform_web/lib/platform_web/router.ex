@@ -39,6 +39,8 @@ defmodule PlatformWeb.Router do
 
         resources("/proposals", Users.ProposalsController, except: [:delete, :edit, :new, :update])
 
+        resources("/discussions", Users.DiscussionsController, except: [:delete, :edit])
+
         put("/user/update_role", Users.UsersController, :update_role)
         get("/user/roles", Users.UsersController, :roles)
       end
@@ -47,7 +49,7 @@ defmodule PlatformWeb.Router do
       scope "/", Providers do
         resources "/providers", ProviderController, except: [:delete] do
           resources("/portfolios", PortfolioController)
-          resources("/topics", TopicController, except: [:new, :edit])
+          resources("/topics", TopicController, except: [:new, :edit, :create])
         end
       end
 
@@ -62,11 +64,12 @@ defmodule PlatformWeb.Router do
         resources("/topics", TopicController, except: [:new, :edit])
         # options("/topics", TopicController, :options)
 
-        get("/topics_tree", TopicController, :tree)
+        get("/taxonomy", TopicController, :taxonomy)
         get("/analysis", TopicController, :analysis)
         get("/research", TopicController, :research)
         get("/strategy", TopicController, :strategy)
         get("/taxonomy", TopicController, :taxonomy)
+        get("/economics", TopicController, :economics)
         get("/valuation", TopicController, :valuation)
       end
 

@@ -11,13 +11,15 @@ defmodule Platform.Topics.Topic do
   use Arbor.Tree, foreign_key_type: :integer
 
   import Ecto.Changeset
+  import Ecto.Query
+  alias Platform.Repo
 
   alias Platform.Users.User
   alias Platform.Tokens.Token
   alias Platform.Topics.Topic
   alias Topic.TitleSlug
 
-  @derive {Jason.Encoder, only: [:id, :name, :description, :url, :groups, :weight, :slug]}
+  @derive {Jason.Encoder, only: [:id, :name, :description, :weight, :parent_id, :slug]}
   schema "topics" do
     field(:description, :string)
     field(:name, :string)
@@ -29,6 +31,20 @@ defmodule Platform.Topics.Topic do
     many_to_many(:users, User, join_through: Platform.Users.UsersTopics)
     many_to_many(:tokens, Token, join_through: "topics_tokens")
     timestamps()
+  end
+
+  def list_topics(params) do
+    IO.inspect(['parms page', params])
+
+    page = String.to_integer(params["page"])
+    per_page = String.to_integer(params["per_page"])
+
+    offset = if page > 1, do: (page - 1) * per_page, else: 0
+
+    q = from(p in Topic, limit: ^per_page, offset: ^offset)
+
+    q
+    |> Repo.all()
   end
 
   @doc false
