@@ -9,6 +9,11 @@ defmodule PlatformWeb.V1.Topics.TopicController do
     render(conn, "tree.json", topics: topics)
   end
 
+  def signup_topics(conn, _params) do
+    topics = Topics.list_topics()
+    render(conn, "tree.json", topics: topics)
+  end
+
   def economics(conn, _params) do
     topics = Topics.economics()
     render(conn, "economics.json", topics: topics)

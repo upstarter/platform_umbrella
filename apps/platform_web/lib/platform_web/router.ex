@@ -62,6 +62,7 @@ defmodule PlatformWeb.Router do
       # TOPICS
       scope "/", Topics do
         resources("/topics", TopicController, except: [:new, :edit])
+        get("/signup_topics", TopicController, :signup_topics)
         # options("/topics", TopicController, :options)
 
         get("/taxonomy", TopicController, :taxonomy)

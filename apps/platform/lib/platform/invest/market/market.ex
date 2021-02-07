@@ -6,11 +6,12 @@ defmodule Platform.Market do
   import Ecto.Query
 
   alias Platform.{ExchangeRates, Repo}
-  alias Platform.ExchangeRates.Token
+  alias Platform.Tokens.Token
   alias Platform.Market.DailyMarketHistory
 
   def init() do
     tokens = Repo.all(from(t in Token, limit: 20))
+    IO.inspect(['fetchtokens', tokens])
 
     Enum.each(tokens, fn t ->
       send(Platform.Market.History.Cataloger, {:fetch_history, t.symbol, 365})
@@ -27,7 +28,7 @@ defmodule Platform.Market do
   @doc """
   Get most recent exchange rate for the given symbol.
   """
-  @spec get_exchange_rate(String.t()) :: Token.t() | nil
+  @spec get_exchange_rate(String.t()) :: ExchangeRates.Token.t() | nil
   def get_exchange_rate(symbol) do
     ExchangeRates.lookup(symbol)
   end
