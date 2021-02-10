@@ -5,22 +5,24 @@ defmodule PlatformWeb.V1.Users.DiscussionsController do
   alias Platform.Users.Discussions.Thread
   alias Platform.Topics.Topic
 
-  def index(conn, params) do
+  def show(conn, params) do
     threads = Thread.list_threads(params)
     render(conn, "index.json", threads: threads)
   end
 
-  def show(conn, %{"id" => id, "topic_id" => topic_id}) do
-    thread = Repo.get!(Thread, 1) |> Repo.preload([:topic])
-    render(conn, "show.json", thread: thread)
+  def index(conn, params) do
+    thread = Repo.get!(Thread, 1) |> Repo.preload([:posts, :user, :topic])
+    render(conn, "thread.json", thread: thread)
   end
 
-  def create(conn, _thread_params = %{"thread" => params}) do
+  def create(conn, params) do
+    IO.inspect(['thread', params])
+
     with {:ok, thread} <-
            Thread.create_for_user(
              Map.merge(
                %{
-                 "user_id" => conn.assigns.current_user.id
+                 "user_id" => params["user_id"]
                },
                params
              )

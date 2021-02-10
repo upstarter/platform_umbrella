@@ -21,7 +21,7 @@ defmodule Platform.Users.Discussions.Thread do
 
     belongs_to(:user, User)
     belongs_to(:topic, Topic)
-    has_many(:discussion_posts, Post)
+    has_many(:posts, Post)
     timestamps()
   end
 
@@ -32,19 +32,43 @@ defmodule Platform.Users.Discussions.Thread do
 
     offset = if page > 1, do: (page - 1) * per_page, else: 0
 
-    q = from(p in __MODULE__, limit: ^per_page, offset: ^offset)
+    # REALLY? this is how to eager load?
+    # thread_ids = [1, 2]
+    #
+    # query =
+    #   from(thread in __MODULE__,
+    #     inner_lateral_join:
+    #       t in fragment(
+    #         "SELECT * FROM posts WHERE thread_id = ? ORDER BY inserted_at DESC LIMIT 3",
+    #         thread.id
+    #       ),
+    #     where: thread.id in ^thread_ids,
+    #     order_by: [asc: thread.id],
+    #     select: %Post{
+    #       id: t.id,
+    #       title: t.title,
+    #       thread_id: t.thread_id,
+    #       inserted_at: type(t.inserted_at, :naive_datetime),
+    #       updated_at: type(t.updated_at, :naive_datetime)
+    #     }
+    #   )
 
-    q
+    posts_query = from(p in Post, order_by: [desc: :inserted_at], select: [:id, :title, :body])
+
+    from(t in __MODULE__, limit: ^per_page, offset: ^offset, preload: [posts: ^posts_query])
     |> Repo.all()
-    |> Repo.preload(:user)
+    |> Repo.preload([:user, :topic])
   end
 
   @fields ~w(title description type status active user_id topic_id is_public)a
   @required_fields ~w(title type status active user_id is_public)a
-
+  @derive {Jason.Encoder, only: [:posts]}
   def create_for_user(attrs) do
+    IO.inspect(['create', attrs])
+
     attrs =
       Map.merge(attrs, %{
+        "title" => attrs["reply"],
         "type" => "Users.Discussions.Thread",
         "status" => "initial",
         "active" => true,
@@ -58,7 +82,7 @@ defmodule Platform.Users.Discussions.Thread do
       changeset
       |> Repo.insert()
 
-    prop = Platform.Repo.preload(prop, :user)
+    prop |> Platform.Repo.preload([:topic, :user, :post])
 
     IO.inspect([prop])
     {:ok, prop}

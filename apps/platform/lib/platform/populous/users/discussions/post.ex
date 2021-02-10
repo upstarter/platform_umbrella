@@ -4,7 +4,8 @@ defmodule Platform.Users.Discussions.Post do
 
   import Ecto.Query
   import Ecto.Changeset
-  alias Platform.Users.Thread
+  alias Platform.Repo
+  alias Platform.Users.Discussions.Thread
   alias Platform.Users.User
 
   schema "posts" do
@@ -36,8 +37,9 @@ defmodule Platform.Users.Discussions.Post do
     |> Repo.preload(:user)
   end
 
-  @fields ~w(title description type status active user_id thread_id is_public)a
+  @fields ~w(title description type status active user_id thread_id parent_id is_public)a
   @required_fields ~w(title type status active user_id thread_id parent_id is_public)a
+  @derive {Jason.Encoder, only: [:title, :description, :body, :user_id]}
 
   def create_for_user(attrs) do
     attrs =
@@ -72,12 +74,5 @@ defmodule Platform.Users.Discussions.Post do
     |> cast(attrs, @fields)
     |> validate_required(@required_fields)
     |> validate_length(:title, min: 1, max: 255)
-  end
-
-  @doc false
-  def changeset(post, attrs) do
-    post
-    |> cast(attrs, [:user_id, :thread_id])
-    |> validate_required(@required_fields)
   end
 end

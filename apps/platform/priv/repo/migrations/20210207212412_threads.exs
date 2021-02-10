@@ -17,6 +17,7 @@ defmodule Platform.Repo.Migrations.Threads do
       timestamps()
     end
 
-    create(index(:threads, [:topic_id, :user_id]))
+    create(index(:threads, :topic_id))
+    create(index(:threads, :user_id))
   end
 end

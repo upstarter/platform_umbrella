@@ -1,9 +1,16 @@
 defmodule PlatformWeb.V1.Users.DiscussionsView do
   use PlatformWeb, :view
   alias PlatformWeb.V1.Users.DiscussionsView
+  alias PlatformWeb.V1.Users.PostsView
 
   def render("create_for_user.json", %{thread: thread}) do
     %{data: render_one(thread, __MODULE__, "thread.json")}
+  end
+
+  def render("thread_with_posts.json", %{thread: thread}) do
+    %{
+      thread: render_one(thread, __MODULE__, 'thread.json')
+    }
   end
 
   def render("index.json", %{threads: threads}) do
@@ -20,9 +27,11 @@ defmodule PlatformWeb.V1.Users.DiscussionsView do
 
   def render("thread.json", %{thread: thread}) do
     %{
+      id: thread.id,
       title: thread.title,
       description: thread.description,
       public: thread.is_public,
+      posts: render_many(thread.posts, PostsView, "post.json", as: :post),
       type: thread.type,
       topic: thread.topic
     }
