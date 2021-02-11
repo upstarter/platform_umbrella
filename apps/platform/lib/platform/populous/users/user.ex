@@ -89,6 +89,10 @@ defmodule Platform.Users.User do
 
   defdelegate roles, to: UserProfile
 
+  def full_name(user) do
+    "#{user.first_name} #{user.last_name}"
+  end
+
   def assets(user_id) do
     # query =
     #   from(u in User,

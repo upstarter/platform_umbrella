@@ -19,13 +19,19 @@ defmodule PlatformWeb.V1.Users.PostsView do
     %{error: "There was a problem creating the post"}
   end
 
+  def render("user.json", %{user: user}) do
+    user.nickname
+  end
+
   def render("post.json", %{post: post}) do
     %{
       id: post.id,
       title: post.title,
+      body: post.body,
       description: post.description,
       public: post.is_public,
-      type: post.type
+      type: post.type,
+      user: render_one(post.user, __MODULE__, "user.json", as: :user)
     }
   end
 end

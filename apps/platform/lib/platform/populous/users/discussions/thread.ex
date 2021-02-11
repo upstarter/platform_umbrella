@@ -53,7 +53,7 @@ defmodule Platform.Users.Discussions.Thread do
     #     }
     #   )
 
-    posts_query = from(p in Post, order_by: [desc: :inserted_at], select: [:id, :title, :body])
+    posts_query = from(p in Post, order_by: [desc: :inserted_at], preload: [:user])
 
     from(t in __MODULE__, limit: ^per_page, offset: ^offset, preload: [posts: ^posts_query])
     |> Repo.all()

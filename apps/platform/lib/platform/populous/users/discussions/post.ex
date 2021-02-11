@@ -23,6 +23,10 @@ defmodule Platform.Users.Discussions.Post do
     timestamps()
   end
 
+  def user_name(user) do
+    user.nickname
+  end
+
   def list_posts(params) do
     IO.inspect(['parms page', params])
     page = String.to_integer(params["page"])
