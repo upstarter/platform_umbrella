@@ -3,8 +3,8 @@ defmodule Platform.Repo.Migrations.Threads do
 
   def change do
     create table(:threads) do
-      add(:type, :string)
-      add(:title, :string, null: false)
+      add(:type, :string, null: false)
+      add(:title, :string)
       add(:description, :text)
       add(:body, :text)
       add(:active, :boolean, default: false, null: false)
@@ -19,5 +19,8 @@ defmodule Platform.Repo.Migrations.Threads do
 
     create(index(:threads, :topic_id))
     create(index(:threads, :user_id))
+    create(index(:threads, :active))
+    create(index(:threads, :is_public))
+    create(index(:threads, :type))
   end
 end

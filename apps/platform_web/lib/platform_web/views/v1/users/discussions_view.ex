@@ -25,12 +25,17 @@ defmodule PlatformWeb.V1.Users.DiscussionsView do
     %{error: "There was a problem creating the thread"}
   end
 
+  def render("user.json", %{user: user}) do
+    user.nickname
+  end
+
   def render("thread.json", %{thread: thread}) do
     %{
       id: thread.id,
       title: thread.title,
       description: thread.description,
       public: thread.is_public,
+      user: render_one(thread.user, __MODULE__, "user.json", as: :user),
       posts: render_many(thread.posts, PostsView, "post.json", as: :post),
       type: thread.type,
       topic: thread.topic

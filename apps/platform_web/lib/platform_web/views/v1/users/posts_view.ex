@@ -30,6 +30,7 @@ defmodule PlatformWeb.V1.Users.PostsView do
       body: post.body,
       description: post.description,
       public: post.is_public,
+      since_posted: post.inserted_at,
       type: post.type,
       user: render_one(post.user, __MODULE__, "user.json", as: :user)
     }

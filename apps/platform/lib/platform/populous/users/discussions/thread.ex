@@ -55,20 +55,24 @@ defmodule Platform.Users.Discussions.Thread do
 
     posts_query = from(p in Post, order_by: [desc: :inserted_at], preload: [:user])
 
-    from(t in __MODULE__, limit: ^per_page, offset: ^offset, preload: [posts: ^posts_query])
+    from(t in __MODULE__,
+      limit: ^per_page,
+      offset: ^offset,
+      order_by: [desc: :inserted_at],
+      preload: [posts: ^posts_query]
+    )
     |> Repo.all()
     |> Repo.preload([:user, :topic])
   end
 
-  @fields ~w(title description type status active user_id topic_id is_public)a
-  @required_fields ~w(title type status active user_id is_public)a
+  @fields ~w(title description body type status active user_id topic_id is_public)a
+  @required_fields ~w(title description type status active user_id is_public)a
   @derive {Jason.Encoder, only: [:posts]}
   def create_for_user(attrs) do
     IO.inspect(['create', attrs])
 
     attrs =
       Map.merge(attrs, %{
-        "title" => attrs["reply"],
         "type" => "Users.Discussions.Thread",
         "status" => "initial",
         "active" => true,
@@ -82,7 +86,7 @@ defmodule Platform.Users.Discussions.Thread do
       changeset
       |> Repo.insert()
 
-    prop |> Platform.Repo.preload([:topic, :user, :post])
+    prop = prop |> Platform.Repo.preload([:topic, :user, :posts])
 
     IO.inspect([prop])
     {:ok, prop}

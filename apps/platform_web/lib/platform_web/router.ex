@@ -35,8 +35,8 @@ defmodule PlatformWeb.Router do
       get("/blog_posts", BlogController, :blog_posts)
 
       scope "/discuss" do
-        post("/threads", Users.DiscussionsController, :create)
-        post("/posts", Users.DiscussionsController, :create)
+        resources("/threads", Users.DiscussionsController)
+        resources("/posts", Users.PostsController)
         get("/topics/:id", Users.DiscussionsController, :show)
       end
 

@@ -17,7 +17,7 @@ defmodule Platform.Users.Discussions.Post do
     field(:status, :string)
     field(:is_public, :boolean, default: false)
     field(:cached_votes_for_total, :integer)
-    belongs_to(:thread, Thread)
+    belongs_to(:thread, Thread, foreign_key: :thread_id, on_replace: :nilify)
     belongs_to(:user, User)
     belongs_to(:parent, __MODULE__)
     timestamps()
@@ -41,11 +41,13 @@ defmodule Platform.Users.Discussions.Post do
     |> Repo.preload(:user)
   end
 
-  @fields ~w(title description type status active user_id thread_id parent_id is_public)a
-  @required_fields ~w(title type status active user_id thread_id parent_id is_public)a
+  @fields ~w(title description body type status active user_id thread_id parent_id is_public)a
+  @required_fields ~w(body type status active user_id thread_id parent_id is_public)a
   @derive {Jason.Encoder, only: [:title, :description, :body, :user_id]}
 
   def create_for_user(attrs) do
+    IO.inspect(['create post', attrs])
+
     attrs =
       Map.merge(attrs, %{
         "type" => "Users.Discussions.Post",
@@ -77,6 +79,7 @@ defmodule Platform.Users.Discussions.Post do
     post
     |> cast(attrs, @fields)
     |> validate_required(@required_fields)
+    |> foreign_key_constraint(:thread_id)
     |> validate_length(:title, min: 1, max: 255)
   end
 end
