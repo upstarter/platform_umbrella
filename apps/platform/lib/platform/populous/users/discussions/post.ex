@@ -7,6 +7,7 @@ defmodule Platform.Users.Discussions.Post do
   alias Platform.Repo
   alias Platform.Users.Discussions.Thread
   alias Platform.Users.User
+  @timestamps_opts [type: :utc_datetime]
 
   schema "posts" do
     field(:type, :string)
@@ -43,7 +44,7 @@ defmodule Platform.Users.Discussions.Post do
 
   @fields ~w(title description body type status active user_id thread_id parent_id is_public)a
   @required_fields ~w(body type status active user_id thread_id parent_id is_public)a
-  @derive {Jason.Encoder, only: [:title, :description, :body, :user_id]}
+  @derive {Jason.Encoder, only: [:title, :description, :body, :user_id, :thread_id, :parent_id]}
 
   def create_for_user(attrs) do
     IO.inspect(['create post', attrs])

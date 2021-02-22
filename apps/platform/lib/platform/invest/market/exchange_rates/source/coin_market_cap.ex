@@ -1,4 +1,4 @@
-defmodule Platform.Tokens.CoinMarketCap do
+defmodule Platform.ExchangeRates.Source.CoinMarketCap do
   @moduledoc """
   Adapter for fetching exchange rates from https://coinmarketcap.com.
   """

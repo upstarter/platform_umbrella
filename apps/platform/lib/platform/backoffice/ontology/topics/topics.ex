@@ -68,6 +68,12 @@ defmodule Platform.Topics do
     JSONBuilder.to_list(nlist)
   end
 
+  def assets do
+    root = Repo.get!(Topic, 193)
+    nlist = arrange_topic(root)
+    JSONBuilder.to_list(nlist)
+  end
+
   def analysis do
     root = Repo.get!(Topic, 2)
     IO.inspect(['AAASnal', root])

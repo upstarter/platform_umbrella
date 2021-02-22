@@ -28,7 +28,7 @@ defmodule Platform.Auth do
       end)
       |> Enum.into(%{})
 
-    IO.inspect(['^^^^^^^^^^^^^^', user_info])
+    # IO.inspect(['^^^^^^^^^^^^^^', user_info])
     {:ok, user_info}
   end
 

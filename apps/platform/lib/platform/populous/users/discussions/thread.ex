@@ -86,7 +86,7 @@ defmodule Platform.Users.Discussions.Thread do
       changeset
       |> Repo.insert()
 
-    prop = prop |> Platform.Repo.preload([:topic, :user, :posts])
+    prop = prop |> Platform.Repo.preload([:posts, :topic, :user])
 
     IO.inspect([prop])
     {:ok, prop}

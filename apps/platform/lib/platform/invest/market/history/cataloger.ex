@@ -34,7 +34,20 @@ defmodule Platform.Market.History.Cataloger do
 
   @impl GenServer
   def init(:ok) do
+    send(self(), :init_fetch_history)
     {:ok, %{}}
+  end
+
+  @impl GenServer
+  def handle_info(:init_fetch_history, state) do
+    # TODO: check how recent, only pull if out of date
+    tokens = Repo.all(from(t in Token, limit: 2))
+
+    Enum.each(tokens, fn t ->
+      send(__MODULE__, {:fetch_history, t.symbol, 365})
+    end)
+
+    {:noreply, state}
   end
 
   @impl GenServer

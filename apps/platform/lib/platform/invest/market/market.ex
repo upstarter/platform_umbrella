@@ -10,12 +10,7 @@ defmodule Platform.Market do
   alias Platform.Market.DailyMarketHistory
 
   def init() do
-    tokens = Repo.all(from(t in Token, limit: 20))
-    IO.inspect(['fetchtokens', tokens])
-
-    Enum.each(tokens, fn t ->
-      send(Platform.Market.History.Cataloger, {:fetch_history, t.symbol, 365})
-    end)
+    {:ok, %{}}
   end
 
   @doc """

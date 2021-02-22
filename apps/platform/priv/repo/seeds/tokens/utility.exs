@@ -4,7 +4,7 @@ alias Platform.Topics.Topic
 # util_topics = [
 #   # parent
 #   %Topic{
-#     name: "U",
+#     name: "Utility Tokens",
 #     id: 7,
 #     description: "The 'Firm' or 'Entity' level analysis of crypto projects. Includes
 #     strategic policies, protocols, crypto-economic primitives, governance models,
@@ -27,3 +27,6 @@ alias Platform.Topics.Topic
 #   usage_tokens: ["BTC", "BTCash", "LTC", "NEM", "IOTA", "MNR", "ETH", "BAT", "KIN", "RNDR"],
 #   hybrid: ["FIL", "ETH (with Casper)"]
 # ],
+
+# util_topics
+# |> Enum.map(&Repo.insert!(&1))

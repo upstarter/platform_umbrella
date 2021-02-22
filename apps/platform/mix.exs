@@ -39,12 +39,14 @@ defmodule Platform.Mixfile do
       {:arbor, "~> 1.1.0"},
       {:argon2_elixir, "~> 2.0"},
       {:comeonin, "~> 5.1.1"},
-      {:ecto_sql, "~> 3.0"},
+      {:ecto_sql, "~> 3.5.0"},
+      {:postgrex, ">= 0.0.0"},
       {:httpoison, "~> 1.5.1"},
       {:jason, "~> 1.0"},
-      {:postgrex, ">= 0.0.0"},
-      {:ecto_autoslug_field, "~> 2.0"},
-      {:ex_machina, "~> 2.3", only: :test}
+      # {:ecto_autoslug_field, "~> 2.0"},
+      # {:ex_machina, "~> 2.3", only: :test},
+      {:timex, "~> 3.0"}
+      # {:timex_ecto, "~> 3.0"}
       # {:votex, "~> 0.3.0"}
     ]
   end
