@@ -37,7 +37,7 @@ defmodule PlatformWeb.Router do
       scope "/discuss" do
         resources("/threads", Users.DiscussionsController)
         resources("/posts", Users.PostsController)
-        get("/topics/:id", Users.DiscussionsController, :show)
+        get("/topics/:id", Users.DiscussionsController, :by_topic)
       end
 
       scope "/" do
@@ -77,6 +77,7 @@ defmodule PlatformWeb.Router do
         get("/taxonomy", TopicController, :taxonomy)
         get("/economics", TopicController, :economics)
         get("/valuation", TopicController, :valuation)
+        get("/assets", TopicController, :assets)
       end
 
       # PORTFOLIOS

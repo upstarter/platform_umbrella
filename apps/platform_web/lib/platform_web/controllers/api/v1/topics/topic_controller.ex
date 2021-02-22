@@ -44,6 +44,11 @@ defmodule PlatformWeb.V1.Topics.TopicController do
     render(conn, "valuation.json", topics: topics)
   end
 
+  def assets(conn, _params) do
+    topics = Topics.assets()
+    render(conn, "assets.json", topics: topics)
+  end
+
   def index(conn, params) do
     topics = Topics.taxonomy()
     render(conn, "index.json", topics: topics)

@@ -1,7 +1,7 @@
 defmodule PlatformWeb.V1.Users.DiscussionsController do
   use PlatformWeb, :controller
   alias Platform.Repo
-
+  import Ecto.Query
   alias Platform.Users.Discussions.Thread
   alias Platform.Topics.Topic
   alias PlatformWeb.V1.Users.DiscussionsView
@@ -13,16 +13,30 @@ defmodule PlatformWeb.V1.Users.DiscussionsController do
 
   def by_topic(conn, params) do
     # TODO: filter by topic
-    thread =
-      Repo.get_by!(Thread, topic_id: params["topic_id"]) |> Repo.preload([:posts, :user, :topic])
+    topic =
+      Repo.get_by!(Topic, id: params["id"])
+      |> Repo.preload(:tokens)
 
-    render(conn, "thread.json", thread: thread)
+    threads =
+      Repo.all(from(t in Thread, where: t.topic_id == ^params["id"]))
+      |> Repo.preload([[posts: :user], :user, [topic: :tokens]])
+
+    render(conn, "index.json", data: %{topic: topic, threads: threads})
   end
 
+  # def show(conn, params) do
+  #   topic = Repo.get!(Topic, params["id"]) |> Repo.preload([[threads: [:user, :posts]]])
+  #   IO.inspect(['topic', topic])
+  #   render(conn, "index.json", data: %{topic: topic, threads: topic.threads})
+  # end
+
   def show(conn, params) do
-    thread = Repo.get!(Thread, 1) |> Repo.preload([[posts: :user], :user, :topic])
-    IO.inspect(['thread9s', thread])
-    render(conn, "thread.json", thread: thread)
+    thread =
+      Repo.get_by!(Thread, id: params["id"])
+      |> Repo.preload([[posts: :user], :user, :topic])
+
+    IO.inspect(['show', params, thread])
+    render(conn, "index.json", data: %{thread: thread, topic: thread.topic, posts: thread.posts})
   end
 
   def create(conn, params) do

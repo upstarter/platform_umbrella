@@ -24,6 +24,8 @@ defmodule PlatformWeb.V1.Users.PostsView do
   end
 
   def render("post.json", %{post: post}) do
+    IO.inspect(['time', post.inserted_at])
+
     %{
       id: post.id,
       title: post.title,
