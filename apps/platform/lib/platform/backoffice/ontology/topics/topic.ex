@@ -21,7 +21,7 @@ defmodule Platform.Topics.Topic do
   # alias Topic.TitleSlug
 
   # @timestamps_opts [type: Timex.Ecto.DateTime]
-  @primary_key {:id, :binary_id, autogenerate: true, read_after_write: true}
+  # @primary_key {:id, :binary_id, autogenerate: true, read_after_write: true}
 
   @derive {Jason.Encoder, only: [:id, :name, :description, :weight, :parent_id, :slug]}
   schema "topics" do

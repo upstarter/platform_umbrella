@@ -63,10 +63,10 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
     cred = List.last(user_info.credentials)
     user = Repo.get_by(User, id: cred.user_id)
 
-    IO.inspect([
-      'reg user',
-      user
-    ])
+    # IO.inspect([
+    #   'reg user',
+    #   user
+    # ])
 
     # Logger.info(cred)
     # Logger.debug(user)
@@ -91,8 +91,8 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
         token_type: "access"
       )
 
-    # sixty minutes
-    max_age = 60 * 60
+    # sixty minutes * 24 hours * 90 days
+    max_age = 60 * 60 * 24 * 90
 
     conn =
       conn
@@ -117,14 +117,14 @@ defmodule PlatformWeb.V1.Auth.RegistrationController do
     #     secure: false
     #   )
 
-    IO.inspect([
-      'reg guardian',
-      conn,
-      # jwt_refresh,
-      # jwt,
-      conn.resp_cookies,
-      conn.resp_headers
-    ])
+    # IO.inspect([
+    #   'reg guardian',
+    #   conn,
+    #   # jwt_refresh,
+    #   # jwt,
+    #   conn.resp_cookies,
+    #   conn.resp_headers
+    # ])
 
     {:ok, conn, nil}
   end

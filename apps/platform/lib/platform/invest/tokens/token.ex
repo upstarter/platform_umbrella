@@ -11,7 +11,7 @@ defmodule Platform.Tokens.Token do
   alias Platform.Users.User
   alias Platform.Topics.Topic
 
-  @derive {Jason.Encoder, only: [:id, :name, :description]}
+  @derive {Jason.Encoder, only: [:id, :name, :description, :symbol]}
   schema "tokens" do
     field(:name, :string)
     field(:symbol, :string)

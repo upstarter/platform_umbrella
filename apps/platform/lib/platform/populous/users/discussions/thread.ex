@@ -67,7 +67,7 @@ defmodule Platform.Users.Discussions.Thread do
 
   @fields ~w(title description body type status active user_id topic_id is_public)a
   @required_fields ~w(title description type status active user_id is_public)a
-  @derive {Jason.Encoder, only: [:posts]}
+  @derive {Jason.Encoder, only: [:posts, :topic]}
   def create_for_user(attrs) do
     IO.inspect(['create', attrs])
 
@@ -86,7 +86,7 @@ defmodule Platform.Users.Discussions.Thread do
       changeset
       |> Repo.insert()
 
-    prop = prop |> Platform.Repo.preload([:posts, :topic, :user])
+    prop = prop |> Platform.Repo.preload([:posts, [topic: :tokens], :user])
 
     IO.inspect([prop])
     {:ok, prop}

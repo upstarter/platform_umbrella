@@ -7,10 +7,14 @@ defmodule PlatformWeb.V1.Auth.SessionView do
   end
 
   def render("sign_out.json", %{conn: conn}) do
-    %{ok: conn.cookies}
+    %{ok: "Signed Out"}
   end
 
-  def render("error.json", _) do
-    %{error: "Invalid email or password"}
+  def render("not_found.json", %{conn: conn}) do
+    %{error: "Token Not Found"}
+  end
+
+  def render("error.json", %{conn: conn}) do
+    %{error: conn.cookies}
   end
 end

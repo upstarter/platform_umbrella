@@ -71,6 +71,8 @@ defmodule PlatformWeb.V1.Auth.SessionController do
           "session" => %{"email" => _email, "password" => _pass, "remember" => _remember}
         }
       ) do
+    IO.inspect(['login', session])
+
     with {:ok, cred} <- Auth.new_session(session),
          {:ok, conn} <- authenticate(conn, cred) do
       render(conn, "sign_in.json")
@@ -100,9 +102,8 @@ defmodule PlatformWeb.V1.Auth.SessionController do
         token_type: "access"
       )
 
-    # thirty days
-    # 4 * 7 * 24 * 60 * 60
-    max_age = 60 * 60
+    # ninety days
+    max_age = 60 * 60 * 24 * 90
 
     conn =
       conn
@@ -123,10 +124,18 @@ defmodule PlatformWeb.V1.Auth.SessionController do
   end
 
   def sign_out(conn, _params) do
-    with token <- Guardian.Plug.current_token(conn),
-         {:ok, _claims} <- Guardian.revoke(token),
-         conn <- Guardian.Plug.sign_out(conn) do
+    with conn <- Guardian.Plug.sign_out(conn) do
       render(conn, "sign_out.json")
+    else
+      {:error, :not_found} ->
+        conn
+        |> put_status(:unprocessable_entity)
+        |> render("not_found.json")
+
+      _ ->
+        conn
+        |> put_status(:unprocessable_entity)
+        |> render("error.json")
     end
   end
 

@@ -66,6 +66,7 @@ defmodule PlatformWeb.V1.Users.DiscussionsView do
     %{
       id: thread.id,
       title: thread.title,
+      since_posted: thread.inserted_at,
       description: thread.description,
       public: thread.is_public,
       user: render_one(thread.user, __MODULE__, "user.json", as: :user),
