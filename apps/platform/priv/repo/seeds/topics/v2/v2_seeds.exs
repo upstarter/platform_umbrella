@@ -306,5 +306,4 @@ v2_topics
 |> Enum.map(&Repo.insert!(&1))
 
 tokens = Repo.all(Token)
-IO.inspect(tokens)
 Topic.insert_topics_tokens(193, tokens)
