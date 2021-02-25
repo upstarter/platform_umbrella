@@ -41,34 +41,31 @@ defmodule Platform.Topics.Topic do
   def insert_topics_tokens(topic_id, tokens) do
     # token_ids = Enum.map(tokens, fn token -> token.id end)
 
-    topic_tokens = []
-    topics = []
+    topics =
+      for token <- Enum.zip(tokens, 194..(194 + Enum.count(tokens))) do
+        {token, num} = token
 
-    for token <- Enum.zip(tokens, 194..(194 + Enum.count(tokens))) do
-      {token, num} = token
+        %{
+          id: num,
+          name: token.name,
+          description: token.description,
+          parent_id: topic_id,
+          inserted_at: Timex.now(),
+          updated_at: Timex.now()
+        }
+      end
 
-      topics = [
-        topics
-        | %{
-            id: num,
-            name: token.name,
-            description: token.description,
-            parent_id: topic_id,
-            inserted_at: Timex.now(),
-            updated_at: Timex.now()
-          }
-      ]
+    topic_tokens =
+      for token <- Enum.zip(tokens, 194..(194 + Enum.count(tokens))) do
+        {token, num} = token
 
-      topic_tokens = [
-        topic_tokens
-        | %{
-            topic_id: topic_id,
-            token_id: token.id,
-            inserted_at: Timex.now(),
-            updated_at: Timex.now()
-          }
-      ]
-    end
+        %{
+          topic_id: topic_id,
+          token_id: token.id,
+          inserted_at: Timex.now(),
+          updated_at: Timex.now()
+        }
+      end
 
     {num_topics, topics} = Platform.Repo.insert_all("topics", topics)
 
