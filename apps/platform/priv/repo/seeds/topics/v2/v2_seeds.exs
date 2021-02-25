@@ -294,7 +294,7 @@ v2_topics = [
       "Backpropagation-free form of architecture search for evolving generations of feed-forward neural networks",
     parent_id: 106
   },
-  %{
+  %Topic{
     id: 193,
     parent_id: nil,
     name: "Global CryptoAssets",
