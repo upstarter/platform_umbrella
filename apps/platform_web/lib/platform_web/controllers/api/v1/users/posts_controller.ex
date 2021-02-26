@@ -17,8 +17,6 @@ defmodule PlatformWeb.V1.Users.PostsController do
   end
 
   def create(conn, params) do
-    IO.inspect(['post', params])
-
     with {:ok, post} <-
            Post.create_for_user(
              Map.merge(

@@ -31,8 +31,6 @@ defmodule PlatformWeb.RegistrationControllerTest do
 
       assert %{"jwt" => jwt} = json_response(conn, 201)
 
-      IO.inspect(json_response(conn, 201))
-
       conn = get(conn, registration_path(conn, :show, %{"jwt" => jwt}))
 
       assert json_response(conn, 200) == %{

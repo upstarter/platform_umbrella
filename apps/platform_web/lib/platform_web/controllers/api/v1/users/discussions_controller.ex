@@ -27,12 +27,6 @@ defmodule PlatformWeb.V1.Users.DiscussionsController do
     render(conn, "index.json", data: %{topic: topic, threads: threads})
   end
 
-  # def show(conn, params) do
-  #   topic = Repo.get!(Topic, params["id"]) |> Repo.preload([[threads: [:user, :posts]]])
-  #   IO.inspect(['topic', topic])
-  #   render(conn, "index.json", data: %{topic: topic, threads: topic.threads})
-  # end
-
   def show(conn, params) do
     thread =
       from(t in Thread,
@@ -44,8 +38,6 @@ defmodule PlatformWeb.V1.Users.DiscussionsController do
         ]
       )
       |> Repo.one!()
-
-    IO.inspect(['thre', thread])
 
     thread =
       thread

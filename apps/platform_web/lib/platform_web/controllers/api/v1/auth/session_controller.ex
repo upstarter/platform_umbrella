@@ -71,8 +71,6 @@ defmodule PlatformWeb.V1.Auth.SessionController do
           "session" => %{"email" => _email, "password" => _pass, "remember" => _remember}
         }
       ) do
-    IO.inspect(['login', session])
-
     with {:ok, cred} <- Auth.new_session(session),
          {:ok, conn} <- authenticate(conn, cred) do
       render(conn, "sign_in.json")

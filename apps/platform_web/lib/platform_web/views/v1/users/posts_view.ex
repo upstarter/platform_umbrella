@@ -6,8 +6,6 @@ defmodule PlatformWeb.V1.Users.PostsView do
   end
 
   def render("index.json", %{posts: posts}) do
-    IO.inspect(['posts', posts])
-
     %{data: render_many(posts, __MODULE__, "post.json", as: :post)}
   end
 
@@ -24,8 +22,6 @@ defmodule PlatformWeb.V1.Users.PostsView do
   end
 
   def render("post.json", %{post: post}) do
-    IO.inspect(['time', post.inserted_at])
-
     %{
       id: post.id,
       title: post.title,
