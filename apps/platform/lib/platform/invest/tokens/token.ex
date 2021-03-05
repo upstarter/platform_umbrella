@@ -10,7 +10,7 @@ defmodule Platform.Tokens.Token do
 
   alias Platform.Users.User
   alias Platform.Topics.Topic
-
+  alias Platform.Market.DailyMarketHistory
   @derive {Jason.Encoder, only: [:id, :name, :description, :symbol]}
   schema "tokens" do
     field(:name, :string)
@@ -27,14 +27,14 @@ defmodule Platform.Tokens.Token do
 
     many_to_many(:users_tokens, User, join_through: "users_tokens")
     many_to_many(:topics, Topic, join_through: "topics_tokens")
-
+    has_many(:daily_market_history, DailyMarketHistory)
     timestamps()
   end
 
   @doc false
   def changeset(token, attrs) do
     token
-    |> cast(attrs, [:ticker, :name, :site, :description, :img_url])
-    |> validate_required([:ticker, :name, :site, :description, :img_url])
+    |> cast(attrs, [:symbol, :name, :site, :description])
+    |> validate_required([:symbol, :name, :site, :description])
   end
 end

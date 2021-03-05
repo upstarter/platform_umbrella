@@ -10,6 +10,7 @@ defmodule Platform.Tokens do
 
   alias Platform.Tokens.Token
   alias Platform.Tokens.Asset
+  alias Platform.Market.DailyMarketHistory
 
   @doc """
   Returns the search of tokens.
@@ -47,10 +48,14 @@ defmodule Platform.Tokens do
 
     offset = if page > 1, do: (page - 1) * per_page, else: 0
 
-    q = from(p in Token, limit: ^per_page, offset: ^offset)
+    q = from(t in Token, limit: ^per_page, offset: ^offset)
 
-    q
-    |> Repo.all()
+    Repo.preload(Repo.all(q),
+      daily_market_history:
+        from(daily_market_history in DailyMarketHistory,
+          order_by: [desc: daily_market_history.updated_at]
+        )
+    )
   end
 
   @doc """
