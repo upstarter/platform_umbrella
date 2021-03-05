@@ -3,24 +3,34 @@
 import Ecto.Query
 alias Platform.Repo
 alias Platform.Marketing.Lead
-alias Platform.Topics.Topic
-alias Platform.Auth.Credential
-alias Platform.Accounts.Account
-alias Platform.Tokens.Token
+alias Platform.Topics.Topic, as: TO
+alias Platform.Auth.Credential, as: CD
+alias Platform.Accounts.Account, as: A
+alias Platform.Tokens.Token, as: TK
+alias Platform.Tokens
 alias Platform.Users.User
 alias Platform.Users.Proposal
-alias Platform.Users.UsersTopics
-alias Platform.Users.Profiles.UserProfile
-alias Platform.Portfolios.Portfolio
-alias Platform.Users.Portfolios.PortfolioToken
-alias Platform.Users.Portfolios.UserPortfolio
+alias Platform.Users.UsersTopics, as: UT
+alias Platform.Users.Profiles.UserProfile, as: UP
+alias Platform.Portfolios.Portfolio, as: P
+alias Platform.Users.Portfolios.PortfolioToken, as: PT
+alias Platform.Users.Portfolios.UserPortfolio, UPF
+alias Platform.Market.DailyMarketHistory, as: MH
+alias Platform.Users.Discussions.Thread
+alias Platform.Users.Discussions.Post
 # alias Platform.Groups.Group
-# alias Platform.Market.DailyMarketHistory
-# alias Platform.Market.History
 
 IO.puts("Users:")
 IO.puts(Enum.count(Repo.all(User)))
 
+IO.puts("DMH's:")
+IO.puts(Enum.count(Repo.all(DMH)))
+
+IO.puts("Thread's:")
+IO.puts(Enum.count(Repo.all(Thread)))
+
+IO.puts("Post's:")
+IO.puts(Enum.count(Repo.all(Post)))
 # defmodule Fix do
 #   def add_topic(name, description, parent) do
 #     topic = %Topic{

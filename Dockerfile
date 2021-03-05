@@ -9,6 +9,8 @@ ARG phoenix_subdir=apps/platform_web
 ARG platform_subdir=apps/platform
 ARG build_env=prod
 ENV MIX_ENV=${build_env} TERM=xterm
+CMC_API_KEY=108d9086-dbf4-49f7-a388-ed6c69c19b87
+
 
 # DB
 ENV DATABASE_URL=/tmp/cloudsql/eternal-sunset-206422:us-central1:umbrella-db

@@ -86,7 +86,7 @@ defmodule Platform.Topics.Topic do
 
     offset = if page > 1, do: (page - 1) * per_page, else: 0
 
-    q = from(p in Topic, limit: ^per_page, offset: ^offset)
+    q = from(t in Topic, limit: ^per_page, offset: ^offset, order_by: [desc: t.inserted_at])
 
     q
     |> Repo.all()
