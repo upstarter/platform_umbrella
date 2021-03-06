@@ -11,7 +11,7 @@ defmodule Platform.ExchangeRates do
 
   alias Platform.ExchangeRates.Token
 
-  @interval :timer.minutes(5)
+  @interval :timer.minutes(30)
   @table_name :exchange_rates
 
   @impl GenServer

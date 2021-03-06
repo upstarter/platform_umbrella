@@ -14,13 +14,13 @@ defmodule Platform.Market.History.Source.CryptoCompare do
   @typep unix_timestamp :: non_neg_integer()
 
   @impl Source
-  def fetch_history(symbol, previous_days) do
-    url = history_url(symbol, previous_days)
+  def fetch_history(token, previous_days) do
+    url = history_url(token.symbol, previous_days)
     headers = [{"Content-Type", "application/json"}]
 
     case HTTPoison.get(url, headers) do
       {:ok, %Response{body: body, status_code: 200}} ->
-        {:ok, format_data(symbol, body)}
+        {:ok, format_data(token, body)}
 
       _ ->
         :error
@@ -41,19 +41,20 @@ defmodule Platform.Market.History.Source.CryptoCompare do
   end
 
   @spec format_data(String.t(), String.t()) :: [Source.record()]
-  defp format_data(symbol, data) do
+  defp format_data(token, data) do
     json = Jason.decode!(data)
 
     for item <- json["Data"] do
       %{
-        symbol: symbol,
-        close: Decimal.cast(item["close"]),
+        symbol: token.symbol,
+        token_id: token.id,
+        close: elem(Decimal.cast(item["close"]), 1),
         date: date(item["time"]),
-        open: Decimal.cast(item["open"]),
-        high: Decimal.cast(item["high"]),
-        low: Decimal.cast(item["low"]),
-        volumefrom: Decimal.cast(item["volumefrom"]),
-        volumeto: Decimal.cast(item["volumeto"])
+        open: elem(Decimal.cast(item["open"]), 1),
+        high: elem(Decimal.cast(item["high"]), 1),
+        low: elem(Decimal.cast(item["low"]), 1),
+        volumefrom: elem(Decimal.cast(item["volumefrom"]), 1),
+        volumeto: elem(Decimal.cast(item["volumeto"]), 1)
       }
     end
   end

@@ -16,8 +16,8 @@ defmodule Platform.Market do
   @doc """
   Fetch the most recent <days> worth of daily data
   """
-  def fetch_daily_history(symbol, day_count) do
-    send(Platform.Market.History.Cataloger, {:fetch_history, symbol, day_count})
+  def fetch_daily_history(token, day_count) do
+    send(Platform.Market.History.Cataloger, {:fetch_history, token, day_count})
   end
 
   @doc """

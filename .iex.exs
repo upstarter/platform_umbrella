@@ -14,7 +14,7 @@ alias Platform.Users.UsersTopics, as: UT
 alias Platform.Users.Profiles.UserProfile, as: UP
 alias Platform.Portfolios.Portfolio, as: P
 alias Platform.Users.Portfolios.PortfolioToken, as: PT
-alias Platform.Users.Portfolios.UserPortfolio, UPF
+alias Platform.Users.Portfolios.UserPortfolio, as: UPF
 alias Platform.Market.DailyMarketHistory, as: MH
 alias Platform.Users.Discussions.Thread
 alias Platform.Users.Discussions.Post
@@ -24,7 +24,7 @@ IO.puts("Users:")
 IO.puts(Enum.count(Repo.all(User)))
 
 IO.puts("DMH's:")
-IO.puts(Enum.count(Repo.all(DMH)))
+IO.puts(Enum.count(Repo.all(MH)))
 
 IO.puts("Thread's:")
 IO.puts(Enum.count(Repo.all(Thread)))

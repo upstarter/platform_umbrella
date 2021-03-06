@@ -3,6 +3,7 @@ defmodule Platform.Market.DailyMarketHistory do
   Represents daily market history of selected coin to USD.
   """
   use Ecto.Schema
+  alias Platform.Tokens.Token
 
   schema "daily_market_history" do
     field(:symbol, :string)
@@ -14,6 +15,7 @@ defmodule Platform.Market.DailyMarketHistory do
     field(:volumefrom, :decimal)
     field(:volumeto, :decimal)
 
+    belongs_to(:token, Token)
     timestamps()
   end
 

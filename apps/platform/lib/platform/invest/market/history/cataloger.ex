@@ -41,42 +41,42 @@ defmodule Platform.Market.History.Cataloger do
   @impl GenServer
   def handle_info(:init_fetch_history, state) do
     # TODO: check how recent, only pull if out of date
-    tokens = Repo.all(from(t in Token, limit: 2))
+    tokens = Repo.all(from(t in Token))
 
     Enum.each(tokens, fn t ->
-      send(__MODULE__, {:fetch_history, t.symbol, 365})
+      send(__MODULE__, {:fetch_history, t, 365})
     end)
 
     {:noreply, state}
   end
 
   @impl GenServer
-  def handle_info({:fetch_history, symbol, day_count}, state) do
-    fetch_history(symbol, day_count)
+  def handle_info({:fetch_history, token, day_count}, state) do
+    fetch_history(token, day_count)
 
     {:noreply, state}
   end
 
   @impl GenServer
   # Record fetch successful.
-  def handle_info({_ref, {symbol, _, _, {:ok, records}}}, state) do
+  def handle_info({_ref, {token, _, _, {:ok, records}}}, state) do
     Market.bulk_insert_history(records)
 
     # Schedule next check for history
     fetch_after = config_or_default(:history_fetch_interval, :timer.minutes(60))
-    Process.send_after(self(), {:fetch_history, symbol, 1}, fetch_after)
+    Process.send_after(self(), {:fetch_history, token, 1}, fetch_after)
 
     {:noreply, state}
   end
 
   # Failed to get records. Try again.
   @impl GenServer
-  def handle_info({_ref, {symbol, day_count, failed_attempts, :error}}, state) do
+  def handle_info({_ref, {token, day_count, failed_attempts, :error}}, state) do
     Logger.warn(fn ->
-      "Failed to fetch market history for #{symbol}. #{failed_attempts} failed attempts. Trying again."
+      "Failed to fetch market history for #{token.symbol}. #{failed_attempts} failed attempts. Trying again."
     end)
 
-    fetch_history(symbol, day_count, failed_attempts + 1)
+    fetch_history(token, day_count, failed_attempts + 1)
 
     {:noreply, state}
   end
@@ -111,10 +111,10 @@ defmodule Platform.Market.History.Cataloger do
   end
 
   @spec fetch_history(bitstring(), non_neg_integer(), non_neg_integer()) :: Task.t()
-  defp fetch_history(symbol, day_count, failed_attempts \\ 0) do
+  defp fetch_history(token, day_count, failed_attempts \\ 0) do
     Task.Supervisor.async_nolink(Platform.MarketTaskSupervisor, fn ->
       Process.sleep(delay(failed_attempts))
-      {symbol, day_count, failed_attempts, source().fetch_history(symbol, day_count)}
+      {token, day_count, failed_attempts, source().fetch_history(token, day_count)}
     end)
   end
 
