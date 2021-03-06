@@ -11,7 +11,20 @@ defmodule Platform.Tokens.Token do
   alias Platform.Users.User
   alias Platform.Topics.Topic
   alias Platform.Market.DailyMarketHistory
-  @derive {Jason.Encoder, only: [:id, :name, :description, :symbol]}
+
+  @derive {Jason.Encoder,
+           only: [
+             :id,
+             :name,
+             :description,
+             :symbol,
+             :market_cap_usd,
+             :percent_change_1h,
+             :percent_change_24h,
+             :percent_change_7d,
+             :percent_change_30d
+           ]}
+
   schema "tokens" do
     field(:name, :string)
     field(:symbol, :string)
@@ -47,7 +60,27 @@ defmodule Platform.Tokens.Token do
   @doc false
   def changeset(token, attrs) do
     token
-    |> cast(attrs, [:symbol, :name, :site, :description])
-    |> validate_required([:symbol, :name, :site, :description])
+    |> cast(attrs, [
+      :id,
+      :name,
+      :description,
+      :symbol,
+      :market_cap_usd,
+      :percent_change_1h,
+      :percent_change_24h,
+      :percent_change_7d,
+      :percent_change_30d
+    ])
+    |> validate_required([
+      :id,
+      :name,
+      :description,
+      :symbol,
+      :market_cap_usd,
+      :percent_change_1h,
+      :percent_change_24h,
+      :percent_change_7d,
+      :percent_change_30d
+    ])
   end
 end
