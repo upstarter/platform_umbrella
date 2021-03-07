@@ -16,9 +16,9 @@ defmodule Platform.ExchangeRates.Token do
    * `:volume_24h_usd` - The volume from the last 24 hours in USD
   """
   @type t :: %__MODULE__{
-          btc_price: Decimal.t(),
-          usd_price: Decimal.t(),
-          id: String.t(),
+          id: Integer.t(),
+          btc_value: Decimal.t(),
+          usd_value: Decimal.t(),
           name: String.t(),
           symbol: Strint.t(),
           last_updated: DateTime.t(),
@@ -39,7 +39,8 @@ defmodule Platform.ExchangeRates.Token do
           volume_30d: Decimal.t()
         }
 
-  defstruct ~w(btc_price
+  defstruct ~w(btc_value
+  usd_value
   circulating_supply
   total_supply
   max_supply
@@ -59,8 +60,7 @@ defmodule Platform.ExchangeRates.Token do
   last_updated
   market_cap_usd
   market_cap_btc
-  usd_price
-  btc_price)a
+  )a
 
   def null, do: %__MODULE__{}
 end

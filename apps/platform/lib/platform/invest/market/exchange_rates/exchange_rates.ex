@@ -13,6 +13,7 @@ defmodule Platform.ExchangeRates do
 
   @interval :timer.minutes(30)
   @table_name :exchange_rates
+  @typep milliseconds :: non_neg_integer()
 
   @impl GenServer
   def handle_info(:update, state) do
@@ -25,7 +26,7 @@ defmodule Platform.ExchangeRates do
 
   # Callback for successful fetch
   @impl GenServer
-  def handle_info({_ref, {:ok, tokens}}, state) do
+  def handle_info({_ref, {_, {:ok, tokens}}}, state) do
     records =
       for %Token{symbol: symbol} = token <- tokens do
         {symbol, token}
@@ -42,10 +43,9 @@ defmodule Platform.ExchangeRates do
 
   # Callback for errored fetch
   @impl GenServer
-  def handle_info({_ref, {:error, reason}}, state) do
+  def handle_info({_ref, {failed_attempts, {:error, reason}}}, state) do
     Logger.warn(fn -> "Failed to get exchange rates with reason '#{reason}'." end)
-
-    fetch_rates()
+    # fetch_rates(failed_attempts + 1)
 
     {:noreply, state}
   end
@@ -119,16 +119,37 @@ defmodule Platform.ExchangeRates do
     Application.get_env(:platform, __MODULE__, [])[key]
   end
 
+  @spec config_or_default(string(), term()) :: term()
+  defp config_or_default(key, default) do
+    Application.get_env(:platform, __MODULE__, [])[key] || default
+  end
+
   @spec exchange_rates_source() :: module()
   defp exchange_rates_source do
     config(:source) || Platform.ExchangeRates.Source.CoinMarketCap
   end
 
   @spec fetch_rates :: Task.t()
-  defp fetch_rates do
+  defp fetch_rates(failed_attempts \\ 0) do
     Task.Supervisor.async_nolink(Platform.MarketTaskSupervisor, fn ->
-      exchange_rates_source().fetch_exchange_rates()
+      Process.sleep(delay(failed_attempts))
+      {failed_attempts, exchange_rates_source().fetch_exchange_rates()}
     end)
+  end
+
+  @spec delay(non_neg_integer()) :: milliseconds()
+  defp delay(0), do: 0
+  defp delay(1), do: base_backoff()
+
+  defp delay(failed_attempts) do
+    # Simulates 2^n
+    multiplier = Enum.reduce(2..failed_attempts, 1, fn _, acc -> 2 * acc end)
+    multiplier * base_backoff()
+  end
+
+  @spec base_backoff :: milliseconds()
+  defp base_backoff do
+    config_or_default(:base_backoff, 100)
   end
 
   defp list_from_store(:ets) do

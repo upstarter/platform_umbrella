@@ -3,7 +3,7 @@ defmodule Platform.ExchangeRates.Source.CoinMarketCap do
   Adapter for fetching exchange rates from https://coinmarketcap.com.
   """
   import Ecto.Query
-  alias Platform.Tokens.Token
+  alias Platform.ExchangeRates.Token
   alias HTTPoison.{Error, Response}
   alias Platform.Repo
 
@@ -16,7 +16,6 @@ defmodule Platform.ExchangeRates.Source.CoinMarketCap do
         {:ok, format_data(body)}
 
       {:ok, %Response{body: body, status_code: status_code}} when status_code in 400..499 ->
-        IO.inspect(['RRRRRRRR', body, status_code])
         {:error, body}
 
       {:error, %Error{reason: reason}} ->
@@ -32,31 +31,30 @@ defmodule Platform.ExchangeRates.Source.CoinMarketCap do
   @doc false
   def format_data(data) do
     for item <- decode_json(data), not is_nil(item["last_updated"]) do
+      IO.inspect(['item', item])
       {last_updated_as_unix, _} = Integer.parse(item["last_updated"])
       last_updated = DateTime.from_unix!(last_updated_as_unix)
 
       %Token{
-        cmc_id: item["id"],
+        id: item["id"],
         name: item["name"],
         symbol: item["symbol"],
-        platform_id: to_decimal(item["platform"]["id"]),
-        platform_name: to_decimal(item["platform"]["name"]),
-        usd_price: to_decimal(item["quote"]["USD"]["price"]),
-        btc_price: to_decimal(item["quote"]["BTC"]["price"]),
-        market_cap_usd: to_decimal(item["quote"]["USD"]["market_cap"]),
-        market_cap_btc: to_decimal(item["quote"]["BTC"]["market_cap"]),
-        percent_change_1h: to_decimal(item["quote"]["percent_change_1h"]),
-        percent_change_24h: to_decimal(item["quote"]["percent_change_24h"]),
-        percent_change_7d: to_decimal(item["quote"]["percent_change_7d"]),
-        percent_change_30d: to_decimal(item["quote"]["percent_change_30d"]),
-        volume_1h: to_decimal(item["quote"]["volume_1h"]),
-        volume_24h: to_decimal(item["quote"]["volume_24h"]),
-        volume_7d: to_decimal(item["quote"]["volume_7d"]),
-        volume_30d: to_decimal(item["quote"]["volume_30d"]),
         total_supply: to_decimal(item["total_supply"]),
         max_supply: to_decimal(item["max_supply"]),
         circulating_supply: to_decimal(item["circulating_supply"]),
-        last_updated: last_updated
+        last_updated: last_updated,
+        platform_id: to_decimal(item["platform"]["id"]),
+        platform_name: to_decimal(item["platform"]["name"]),
+        usd_value: Decimal.from_float(item["quote"]["2781"]["price"]),
+        btc_value: to_decimal(item["quote"]["1"]["price"]),
+        market_cap_usd: Decimal.from_float(item["quote"]["2781"]["market_cap"]),
+        market_cap_btc: to_decimal(item["quote"]["1"]["market_cap"]),
+        percent_change_24h: Decimal.from_float(item["quote"]["2781"]["percent_change_24h"]),
+        percent_change_7d: Decimal.from_float(item["quote"]["2781"]["percent_change_7d"]),
+        percent_change_30d: Decimal.from_float(item["quote"]["2781"]["percent_change_30d"]),
+        volume_24h: Decimal.from_float(item["quote"]["2781"]["volume_24h"]),
+        volume_7d: Decimal.from_float(item["quote"]["2781"]["volume_7d"]),
+        volume_30d: Decimal.from_float(item["quote"]["2781"]["volume_30d"])
       }
     end
   end
@@ -67,7 +65,7 @@ defmodule Platform.ExchangeRates.Source.CoinMarketCap do
   end
 
   defp decode_json(data) do
-    Jason.decode!(data)
+    [Jason.decode!(data)["data"]["1"]]
   end
 
   defp to_decimal(nil), do: nil
@@ -77,29 +75,38 @@ defmodule Platform.ExchangeRates.Source.CoinMarketCap do
   end
 
   defp source_url do
-    aux = "quote,market_cap_by_total_supply,cmc_rank,tags,
-      last_updated,platform,max_supply,circulating_supply,
-      total_supply,is_active,is_fiat"
+    aux = ~w(
+        tags
+        platform
+        max_supply
+        circulating_supply
+        total_supply
+        market_cap_by_total_supply
+        volume_7d
+        volume_30d
+        is_active
+        is_fiat)
 
     q =
       from(
-        t in Token,
-        select: [:cmc_id],
+        t in Platform.Tokens.Token,
         limit: 1
       )
 
-    cmc_ids =
+    id_params =
       Repo.all(q)
       |> Enum.map(fn t -> t.cmc_id end)
       |> Enum.filter(&(!is_nil(&1)))
       |> Enum.join(",")
 
-    convert = [1, 2781] |> Enum.join(",")
+    convert_params = "convert_id=2781&"
 
-    URI.encode(
-      "#{base_url()}/v1/cryptocurrency/listings/latest?aux=#{aux}&id=#{cmc_ids}&convert_id=#{
-        convert
-      }}"
-    )
+    aux_params = aux |> Enum.map(fn a -> "#{a}" end) |> Enum.join(",")
+
+    query = "id=" <> id_params <> "&" <> convert_params <> "aux=#{aux_params}"
+    url = URI.encode("#{base_url()}/v1/cryptocurrency/quotes/latest?#{query}")
+
+    IO.inspect(['CCCC', query, url])
+    url
   end
 end
