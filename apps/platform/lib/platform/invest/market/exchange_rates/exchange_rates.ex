@@ -114,11 +114,6 @@ defmodule Platform.ExchangeRates do
     end)
   end
 
-  @spec config(atom()) :: term
-  defp config(key) do
-    Application.get_env(:platform, __MODULE__, [])[key]
-  end
-
   @spec config_or_default(string(), term()) :: term()
   defp config_or_default(key, default) do
     Application.get_env(:platform, __MODULE__, [])[key] || default
@@ -126,7 +121,7 @@ defmodule Platform.ExchangeRates do
 
   @spec exchange_rates_source() :: module()
   defp exchange_rates_source do
-    config(:source) || Platform.ExchangeRates.Source.CoinMarketCap
+    config_or_default(:source) || Platform.ExchangeRates.Source.CoinMarketCap
   end
 
   @spec fetch_rates :: Task.t()
@@ -162,6 +157,6 @@ defmodule Platform.ExchangeRates do
   defp list_from_store(_), do: []
 
   defp store do
-    config(:store) || :ets
+    config_or_default(:store, :ets)
   end
 end

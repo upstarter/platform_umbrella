@@ -60,8 +60,10 @@ defmodule Platform.Market do
         |> Map.put(:updated_at, now)
       end)
 
+    IO.inspect(['BBBBBBBB', records])
+
     Repo.insert_all(DailyMarketHistory, records,
-      on_conflict: :replace_all,
+      on_conflict: {:replace_all_except, [:id]},
       conflict_target: [:symbol, :date]
     )
   end
