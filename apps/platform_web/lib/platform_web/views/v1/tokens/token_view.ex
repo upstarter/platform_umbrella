@@ -17,31 +17,37 @@ defmodule PlatformWeb.V1.Tokens.TokenView do
       name: token.name,
       symbol: token.symbol,
       description: token.description,
-      btc_price: token.btc_price,
-      usd_price: token.usd_price,
-      cmc_id: token.cmc_id,
-      market_cap_usd: token.market_cap_usd,
-      market_cap_btc: token.market_cap_btc,
-      circulating_supply: token.circulating_supply,
-      total_supply: token.total_supply,
-      max_supply: token.max_supply,
-      platform_id: token.platform_id,
-      platform_name: token.platform_name,
-      percent_change_1h: token.percent_change_1h,
-      percent_change_24h: token.percent_change_24h,
-      percent_change_7d: token.percent_change_7d,
-      percent_change_30d: token.percent_change_30d,
-      percent_change_60d: token.percent_change_60d,
-      percent_change_90d: token.percent_change_90d,
-      volume_24h: token.volume_24h,
-      volume_7d: token.volume_7d,
-      volume_30d: token.volume_30d,
+      token_info: render_one(token.token_info, TokenView, "token_info.json"),
       daily_market_history:
         render_many(
           token.daily_market_history,
           DailyMarketHistoryView,
           "daily_market_history.json"
         )
+    }
+  end
+
+  def render("token_info.json", %{token_info: token_info}) do
+    %{
+      btc_price: token_info.btc_price,
+      usd_price: token_info.usd_price,
+      cmc_id: token_info.cmc_id,
+      market_cap_usd: token_info.market_cap_usd,
+      market_cap_btc: token_info.market_cap_btc,
+      circulating_supply: token_info.circulating_supply,
+      total_supply: token_info.total_supply,
+      max_supply: token_info.max_supply,
+      platform_id: token_info.platform_id,
+      platform_name: token_info.platform_name,
+      percent_change_1h: token_info.percent_change_1h,
+      percent_change_24h: token_info.percent_change_24h,
+      percent_change_7d: token_info.percent_change_7d,
+      percent_change_30d: token_info.percent_change_30d,
+      percent_change_60d: token_info.percent_change_60d,
+      percent_change_90d: token_info.percent_change_90d,
+      volume_24h: token_info.volume_24h,
+      volume_7d: token_info.volume_7d,
+      volume_30d: token_info.volume_30d
     }
   end
 end

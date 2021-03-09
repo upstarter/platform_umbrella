@@ -7,7 +7,7 @@ config :platform,
 
 config :platform, Platform.Integrations.EctoLogger, query_time_ms_threshold: 2_000
 
-config :platform, Platform.ExchangeRates,
+config :platform, Platform.Market.TokenData,
   enabled: true,
   api_key: System.get_env("CMC_PRO_API_KEY")
 

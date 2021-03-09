@@ -33,7 +33,7 @@ defmodule Platform.Application do
 
   defp configurable_children do
     [
-      configure(Platform.ExchangeRates),
+      configure(Platform.Market.TokenData),
       configure(Platform.Market.History.Cataloger)
     ]
     |> List.flatten()

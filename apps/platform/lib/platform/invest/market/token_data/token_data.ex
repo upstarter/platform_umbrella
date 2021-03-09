@@ -1,6 +1,6 @@
-defmodule Platform.ExchangeRates do
+defmodule Platform.Market.TokenData do
   @moduledoc """
-  Local cache for token exchange rates.
+  Local cache for token token data.
 
   Exchange rate data is updated every 5 minutes.
   """
@@ -9,15 +9,15 @@ defmodule Platform.ExchangeRates do
 
   require Logger
 
-  alias Platform.ExchangeRates.Token
+  alias Platform.Market.TokenData.Token
 
   @interval :timer.minutes(30)
-  @table_name :exchange_rates
+  @table_name :token_data
   @typep milliseconds :: non_neg_integer()
 
   @impl GenServer
   def handle_info(:update, state) do
-    Logger.debug(fn -> "Updating cached exchange rates" end)
+    Logger.debug(fn -> "Updating cached token data" end)
 
     fetch_rates()
 
@@ -44,7 +44,7 @@ defmodule Platform.ExchangeRates do
   # Callback for errored fetch
   @impl GenServer
   def handle_info({_ref, {failed_attempts, {:error, reason}}}, state) do
-    Logger.warn(fn -> "Failed to get exchange rates with reason '#{reason}'." end)
+    Logger.warn(fn -> "Failed to get token data with reason '#{reason}'." end)
     # fetch_rates(failed_attempts + 1)
 
     {:noreply, state}
@@ -81,7 +81,7 @@ defmodule Platform.ExchangeRates do
   end
 
   @doc """
-  Lists exchange rates for the tracked tickers.
+  Lists token data for the tracked tickers.
   """
   @spec list :: [Token.t()]
   def list do
@@ -89,7 +89,7 @@ defmodule Platform.ExchangeRates do
   end
 
   @doc """
-  Returns a specific rate from the tracked tickers by symbol
+  Returns a specific token data from the tracked tickers by symbol
   """
   @spec lookup(String.t()) :: Token.t() | nil
   def lookup(symbol) do
@@ -119,16 +119,16 @@ defmodule Platform.ExchangeRates do
     Application.get_env(:platform, __MODULE__, [])[key] || default
   end
 
-  @spec exchange_rates_source() :: module()
-  defp exchange_rates_source do
-    config_or_default(:source, Platform.ExchangeRates.Source.CoinMarketCap)
+  @spec token_data_source() :: module()
+  defp token_data_source do
+    config_or_default(:source, Platform.Market.TokenData.Source.CoinMarketCap)
   end
 
   @spec fetch_rates :: Task.t()
   defp fetch_rates(failed_attempts \\ 0) do
     Task.Supervisor.async_nolink(Platform.MarketTaskSupervisor, fn ->
       Process.sleep(delay(failed_attempts))
-      {failed_attempts, exchange_rates_source().fetch_exchange_rates()}
+      {failed_attempts, token_data_source().fetch_token_data()}
     end)
   end
 

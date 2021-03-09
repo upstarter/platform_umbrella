@@ -29,7 +29,6 @@ defmodule Platform.Tokens.Token do
     field(:img_url, :string)
     field(:description, :string)
     field(:site, :string)
-    field(:cmc_id, :integer)
 
     has_one(:token_info, TokenInfo)
     many_to_many(:users_tokens, User, join_through: "users_tokens")

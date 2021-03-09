@@ -1,17 +1,17 @@
-defmodule Platform.ExchangeRates.Source.CoinMarketCap do
+defmodule Platform.Market.TokenData.Source.CoinMarketCap do
   @moduledoc """
-  Adapter for fetching exchange rates from https://coinmarketcap.com.
+  Adapter for fetching token data from https://coinmarketcap.com.
   """
   import Ecto.Query
-  alias Platform.ExchangeRates.Token
+  alias Platform.Market.TokenData.Token
   alias HTTPoison.{Error, Response}
   alias Platform.Repo
-  alias Platform.ExchangeRates.Source
+  alias Platform.Market.TokenData.Source
 
   @behaviour Source
 
   @impl Source
-  def fetch_exchange_rates() do
+  def fetch_token_data() do
     case HTTPoison.get(source_url(), headers()) do
       {:ok, %Response{body: body, status_code: 200}} ->
         {:ok, handle_response(body)}
@@ -25,7 +25,7 @@ defmodule Platform.ExchangeRates.Source.CoinMarketCap do
   end
 
   defp headers() do
-    api_key = Application.get_env(:platform, Platform.ExchangeRates, [])[:api_key]
+    api_key = Application.get_env(:platform, Platform.Market.TokenData, [])[:api_key]
     [{"Content-Type", "application/json"}, {"X-CMC_PRO_API_KEY", api_key}]
   end
 

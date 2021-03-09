@@ -92,7 +92,7 @@ v2_topics = [
     name: "Currency Risk",
     id: 162,
     description:
-      "Currency risk is the risk that foreign exchange rates or the implied volatility will change, which affects, for example, the value of an asset held in that currency",
+      "Currency risk is the risk that foreign token data or the implied volatility will change, which affects, for example, the value of an asset held in that currency",
     parent_id: 158
   },
   %Topic{
