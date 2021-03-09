@@ -10,6 +10,7 @@ defmodule Platform.Tokens.Token do
 
   alias Platform.Users.User
   alias Platform.Topics.Topic
+  alias Platform.Tokens.TokenInfo
   alias Platform.Market.DailyMarketHistory
 
   @derive {Jason.Encoder,
@@ -29,9 +30,8 @@ defmodule Platform.Tokens.Token do
     field(:description, :string)
     field(:site, :string)
     field(:cmc_id, :integer)
-    field(:platform_id, :integer)
-    field(:platform_name, :string)
 
+    has_one(:token_info, TokenInfo)
     many_to_many(:users_tokens, User, join_through: "users_tokens")
     many_to_many(:topics, Topic, join_through: "topics_tokens")
     has_many(:daily_market_history, DailyMarketHistory)

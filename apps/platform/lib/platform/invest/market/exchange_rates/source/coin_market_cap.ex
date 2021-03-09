@@ -115,7 +115,7 @@ defmodule Platform.ExchangeRates.Source.CoinMarketCap do
 
     convert_params = "convert_id=2781&"
 
-    aux_params = aux |> Enum.map(fn a -> "#{a}" end) |> Enum.join(",")
+    aux_params = aux |> Enum.join(",")
 
     query = "symbol=" <> id_params <> "&" <> convert_params <> "aux=#{aux_params}"
     URI.encode("#{base_url()}/v1/cryptocurrency/quotes/latest?#{query}")
