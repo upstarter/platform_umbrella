@@ -17,7 +17,7 @@ defmodule PlatformWeb.V1.Tokens.TokenView do
       name: token.name,
       symbol: token.symbol,
       description: token.description,
-      token_info: render_one(token.token_info, TokenView, "token_info.json"),
+      token_info: token.token_info,
       daily_market_history:
         render_many(
           token.daily_market_history,

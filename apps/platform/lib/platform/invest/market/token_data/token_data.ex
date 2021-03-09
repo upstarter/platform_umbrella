@@ -2,7 +2,7 @@ defmodule Platform.Market.TokenData do
   @moduledoc """
   Local cache for token token data.
 
-  Exchange rate data is updated every 5 minutes.
+  Token data is updated every 5 minutes.
   """
 
   use GenServer
@@ -11,7 +11,7 @@ defmodule Platform.Market.TokenData do
 
   alias Platform.Market.TokenData.Token
 
-  @interval :timer.minutes(30)
+  @interval :timer.minutes(5)
   @table_name :token_data
   @typep milliseconds :: non_neg_integer()
 

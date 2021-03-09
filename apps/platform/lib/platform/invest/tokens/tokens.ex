@@ -50,12 +50,39 @@ defmodule Platform.Tokens do
 
     q = from(t in Token, limit: ^per_page, offset: ^offset)
 
-    Repo.preload(Repo.all(q),
-      daily_market_history:
-        from(daily_market_history in DailyMarketHistory,
-          order_by: [desc: daily_market_history.updated_at]
-        )
-    )
+    tokens =
+      Repo.preload(Repo.all(q),
+        daily_market_history:
+          from(daily_market_history in DailyMarketHistory,
+            order_by: [desc: daily_market_history.updated_at]
+          )
+      )
+
+    # update latest
+
+    tokens =
+      tokens
+      |> Enum.map(fn t ->
+        case token_data = Platform.Market.TokenData.lookup(t.symbol) do
+          %Platform.Market.TokenData.Token{} ->
+            token_data =
+              token_info_changeset =
+              token_data
+              |> Ecto.Changeset.change()
+
+            changeset =
+              t
+              |> Ecto.Changeset.change()
+              |> Ecto.Changeset.put_embed(:token_info, token_info_changeset)
+
+            Repo.update!(changeset)
+
+          _ ->
+            t
+        end
+      end)
+
+    tokens
   end
 
   @doc """

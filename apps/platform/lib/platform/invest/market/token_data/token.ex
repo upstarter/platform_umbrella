@@ -15,6 +15,34 @@ defmodule Platform.Market.TokenData.Token do
    * `:usd_price` - The USD value of the currency
    * `:volume_24h_usd` - The volume from the last 24 hours in USD
   """
+
+  use Ecto.Schema
+  @derive Jason.Encoder
+  @primary_key {:id, :integer, autogenerate: false}
+  embedded_schema do
+    field(:btc_price, :decimal)
+    field(:usd_price, :decimal)
+    field(:name, :string)
+    field(:symbol, :string)
+    field(:last_updated, :utc_datetime)
+    field(:market_cap_usd, :decimal)
+    field(:market_cap_btc, :decimal)
+    field(:circulating_supply, :decimal)
+    field(:total_supply, :decimal)
+    field(:max_supply, :decimal)
+    field(:platform_id, :string)
+    field(:platform_name, :string)
+    field(:percent_change_1h, :decimal)
+    field(:percent_change_24h, :decimal)
+    field(:percent_change_7d, :decimal)
+    field(:percent_change_30d, :decimal)
+    field(:percent_change_60d, :decimal)
+    field(:percent_change_90d, :decimal)
+    field(:volume_24h, :decimal)
+    field(:volume_7d, :decimal)
+    field(:volume_30d, :decimal)
+  end
+
   @type t :: %__MODULE__{
           id: Integer.t(),
           btc_price: Decimal.t(),
@@ -39,30 +67,4 @@ defmodule Platform.Market.TokenData.Token do
           volume_7d: Decimal.t(),
           volume_30d: Decimal.t()
         }
-
-  defstruct ~w(btc_price
-  usd_price
-  circulating_supply
-  total_supply
-  max_supply
-  platform_id
-  platform_name
-  percent_change_1h
-  percent_change_24h
-  percent_change_7d
-  percent_change_30d
-  percent_change_60d
-  percent_change_90d
-  volume_24h
-  volume_7d
-  volume_30d
-  id
-  name
-  symbol
-  last_updated
-  market_cap_usd
-  market_cap_btc
-  )a
-
-  def null, do: %__MODULE__{}
 end

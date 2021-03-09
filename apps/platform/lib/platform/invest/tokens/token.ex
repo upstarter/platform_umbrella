@@ -6,11 +6,12 @@ defmodule Platform.Tokens.Token do
   """
 
   use Ecto.Schema
+
   import Ecto.Changeset
 
   alias Platform.Users.User
   alias Platform.Topics.Topic
-  alias Platform.Tokens.TokenInfo
+  alias Platform.Market.TokenData.Token
   alias Platform.Market.DailyMarketHistory
 
   @derive {Jason.Encoder,
@@ -30,7 +31,7 @@ defmodule Platform.Tokens.Token do
     field(:description, :string)
     field(:site, :string)
 
-    has_one(:token_info, TokenInfo)
+    embeds_one(:token_info, Token, on_replace: :delete)
     many_to_many(:users_tokens, User, join_through: "users_tokens")
     many_to_many(:topics, Topic, join_through: "topics_tokens")
     has_many(:daily_market_history, DailyMarketHistory)
@@ -49,6 +50,7 @@ defmodule Platform.Tokens.Token do
       :symbol,
       :tags
     ])
+    |> cast_embed(:token_info)
     |> validate_required([
       :id,
       :name,

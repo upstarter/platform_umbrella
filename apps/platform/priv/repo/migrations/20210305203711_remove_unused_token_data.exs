@@ -3,6 +3,8 @@ defmodule Platform.Repo.Migrations.RemoveUnusedTokenData do
 
   def up do
     alter table(:tokens) do
+      add(:token_info, :map)
+
       remove_if_exists(:available_supply, :decimal)
       remove_if_exists(:volume_24h_usd, :decimal)
       remove_if_exists(:btc_value, :decimal)
@@ -14,6 +16,8 @@ defmodule Platform.Repo.Migrations.RemoveUnusedTokenData do
 
   def down do
     alter table(:tokens) do
+      remove_if_exists(:token_info, :map)
+
       add(:available_supply, :decimal)
       add(:volume_24h_usd, :decimal)
       add(:btc_value, :decimal)
