@@ -3,7 +3,7 @@ defmodule Platform.Repo.Migrations.AddTokenIdToDmh do
 
   def up do
     alter table(:daily_market_history) do
-      add(:token_id, references(:tokens, on_delete: :delete_all))
+      add(:token_id, references(:tokens, on_delete: :nothing))
       remove_if_exists(:token_id, :integer)
     end
 
@@ -12,7 +12,7 @@ defmodule Platform.Repo.Migrations.AddTokenIdToDmh do
 
   def down do
     alter table(:daily_market_history) do
-      remove(:token_id, references(:tokens, on_delete: :delete_all))
+      remove(:token_id, references(:tokens, on_delete: :nothing))
     end
 
     drop(index(:daily_market_history, [:token_id]))

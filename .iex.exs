@@ -16,6 +16,7 @@ alias Platform.Portfolios.Portfolio, as: P
 alias Platform.Users.Portfolios.PortfolioToken, as: PT
 alias Platform.Users.Portfolios.UserPortfolio, as: UPF
 alias Platform.Market.DailyMarketHistory, as: MH
+alias Platform.ExchangeRates, as: EX
 alias Platform.Users.Discussions.Thread
 alias Platform.Users.Discussions.Post
 # alias Platform.Groups.Group

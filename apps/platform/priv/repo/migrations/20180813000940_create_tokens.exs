@@ -9,10 +9,10 @@ defmodule Platform.Repo.Migrations.CreateTokens do
       add(:description, :text)
       add(:img_url, :string)
       add(:available_supply, :decimal)
-      add(:btc_value, :decimal)
+      add(:btc_price, :decimal)
       add(:last_updated, :utc_datetime)
       add(:market_cap_usd, :decimal)
-      add(:usd_value, :decimal)
+      add(:usd_price, :decimal)
       add(:volume_24h_usd, :decimal)
 
       timestamps()

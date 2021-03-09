@@ -121,7 +121,7 @@ defmodule Platform.ExchangeRates do
 
   @spec exchange_rates_source() :: module()
   defp exchange_rates_source do
-    config_or_default(:source) || Platform.ExchangeRates.Source.CoinMarketCap
+    config_or_default(:source, Platform.ExchangeRates.Source.CoinMarketCap)
   end
 
   @spec fetch_rates :: Task.t()

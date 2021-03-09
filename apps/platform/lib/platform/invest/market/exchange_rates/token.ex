@@ -17,8 +17,8 @@ defmodule Platform.ExchangeRates.Token do
   """
   @type t :: %__MODULE__{
           id: Integer.t(),
-          btc_value: Decimal.t(),
-          usd_value: Decimal.t(),
+          btc_price: Decimal.t(),
+          usd_price: Decimal.t(),
           name: String.t(),
           symbol: Strint.t(),
           last_updated: DateTime.t(),
@@ -33,14 +33,15 @@ defmodule Platform.ExchangeRates.Token do
           percent_change_24h: Decimal.t(),
           percent_change_7d: Decimal.t(),
           percent_change_30d: Decimal.t(),
-          volume_1h: Decimal.t(),
+          percent_change_60d: Decimal.t(),
+          percent_change_90d: Decimal.t(),
           volume_24h: Decimal.t(),
           volume_7d: Decimal.t(),
           volume_30d: Decimal.t()
         }
 
-  defstruct ~w(btc_value
-  usd_value
+  defstruct ~w(btc_price
+  usd_price
   circulating_supply
   total_supply
   max_supply
@@ -50,7 +51,8 @@ defmodule Platform.ExchangeRates.Token do
   percent_change_24h
   percent_change_7d
   percent_change_30d
-  volume_1h
+  percent_change_60d
+  percent_change_90d
   volume_24h
   volume_7d
   volume_30d
