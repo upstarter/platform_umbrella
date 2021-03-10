@@ -1,4 +1,4 @@
-defmodule Platform.Market.TokenData.Token do
+defmodule Platform.Market.TokenCache.Token do
   @moduledoc """
   Data container for modeling an exchange rate for a currency/token.
   """
@@ -17,6 +17,8 @@ defmodule Platform.Market.TokenData.Token do
   """
 
   use Ecto.Schema
+  import Ecto.Changeset
+
   @derive Jason.Encoder
   @primary_key {:id, :integer, autogenerate: false}
   embedded_schema do
@@ -24,6 +26,7 @@ defmodule Platform.Market.TokenData.Token do
     field(:usd_price, :decimal)
     field(:name, :string)
     field(:symbol, :string)
+    field(:tags, {:array, :string})
     field(:last_updated, :utc_datetime)
     field(:market_cap_usd, :decimal)
     field(:market_cap_btc, :decimal)
@@ -43,28 +46,81 @@ defmodule Platform.Market.TokenData.Token do
     field(:volume_30d, :decimal)
   end
 
-  @type t :: %__MODULE__{
-          id: Integer.t(),
-          btc_price: Decimal.t(),
-          usd_price: Decimal.t(),
-          name: String.t(),
-          symbol: Strint.t(),
-          last_updated: DateTime.t(),
-          market_cap_usd: Decimal.t(),
-          market_cap_btc: Decimal.t(),
-          circulating_supply: Decimal.t(),
-          total_supply: Decimal.t(),
-          max_supply: Decimal.t(),
-          platform_id: String.t(),
-          platform_name: String.t(),
-          percent_change_1h: Decimal.t(),
-          percent_change_24h: Decimal.t(),
-          percent_change_7d: Decimal.t(),
-          percent_change_30d: Decimal.t(),
-          percent_change_60d: Decimal.t(),
-          percent_change_90d: Decimal.t(),
-          volume_24h: Decimal.t(),
-          volume_7d: Decimal.t(),
-          volume_30d: Decimal.t()
-        }
+  @doc false
+  def changeset(token_data, attrs) do
+    token_data
+    |> cast(attrs, [
+      :btc_price,
+      :usd_price,
+      :name,
+      :symbol,
+      :tags,
+      :last_updated,
+      :market_cap_usd,
+      :market_cap_btc,
+      :circulating_supply,
+      :total_supply,
+      :max_supply,
+      :platform_id,
+      :platform_name,
+      :percent_change_1h,
+      :percent_change_24h,
+      :percent_change_7d,
+      :percent_change_30d,
+      :percent_change_60d,
+      :percent_change_90d,
+      :volume_24h,
+      :volume_7d,
+      :volume_30d
+    ])
+    |> validate_required([
+      :btc_price,
+      :usd_price,
+      :name,
+      :symbol,
+      :tags,
+      :last_updated,
+      :market_cap_usd,
+      :market_cap_btc,
+      :circulating_supply,
+      :total_supply,
+      :max_supply,
+      :platform_id,
+      :platform_name,
+      :percent_change_1h,
+      :percent_change_24h,
+      :percent_change_7d,
+      :percent_change_30d,
+      :percent_change_60d,
+      :percent_change_90d,
+      :volume_24h,
+      :volume_7d,
+      :volume_30d
+    ])
+  end
+
+  # @type t :: %__MODULE__{
+  #         id: Integer.t(),
+  #         btc_price: Decimal.t(),
+  #         usd_price: Decimal.t(),
+  #         name: String.t(),
+  #         symbol: String.t(),
+  #         last_updated: DateTime.t(),
+  #         market_cap_usd: Decimal.t(),
+  #         market_cap_btc: Decimal.t(),
+  #         circulating_supply: Decimal.t(),
+  #         total_supply: Decimal.t(),
+  #         max_supply: Decimal.t(),
+  #         platform_id: String.t(),
+  #         platform_name: String.t(),
+  #         percent_change_1h: Decimal.t(),
+  #         percent_change_24h: Decimal.t(),
+  #         percent_change_7d: Decimal.t(),
+  #         percent_change_30d: Decimal.t(),
+  #         percent_change_60d: Decimal.t(),
+  #         percent_change_90d: Decimal.t(),
+  #         volume_24h: Decimal.t(),
+  #         volume_7d: Decimal.t(),
+  #         volume_30d: Decimal.t()
+  #       }
 end

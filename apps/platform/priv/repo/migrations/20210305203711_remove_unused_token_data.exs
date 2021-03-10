@@ -1,4 +1,4 @@
-defmodule Platform.Repo.Migrations.RemoveUnusedTokenData do
+defmodule Platform.Repo.Migrations.RemoveUnusedTokenCache do
   use Ecto.Migration
 
   def up do

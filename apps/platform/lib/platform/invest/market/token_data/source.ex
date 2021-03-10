@@ -1,9 +1,9 @@
-defmodule Platform.Market.TokenData.Source do
+defmodule Platform.Market.TokenCache.Source do
   @moduledoc """
   Behaviour for fetching token data from external sources.
   """
 
-  alias Platform.Market.TokenData.Token
+  alias Platform.Market.TokenCache.Token
 
   @doc """
   Callback for fetching an exchange rate for currencies/tokens.

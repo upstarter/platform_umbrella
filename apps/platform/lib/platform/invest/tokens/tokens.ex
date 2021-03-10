@@ -63,19 +63,24 @@ defmodule Platform.Tokens do
     tokens =
       tokens
       |> Enum.map(fn t ->
-        case token_data = Platform.Market.TokenData.lookup(t.symbol) do
-          %Platform.Market.TokenData.Token{} ->
-            token_data =
-              token_info_changeset =
+        token_data = Platform.Market.TokenCache.lookup(t.symbol)
+
+        case token_data do
+          %Platform.Market.TokenCache.Token{} ->
+            token_info_changeset =
               token_data
               |> Ecto.Changeset.change()
+
+            IO.inspect(["TD", token_data, token_info_changeset])
 
             changeset =
               t
               |> Ecto.Changeset.change()
               |> Ecto.Changeset.put_embed(:token_info, token_info_changeset)
 
-            Repo.update!(changeset)
+            tok = Repo.update!(changeset)
+            IO.inspect(["TT", tok])
+            tok
 
           _ ->
             t

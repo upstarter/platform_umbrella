@@ -1,4 +1,4 @@
-defmodule Platform.Market.TokenData do
+defmodule Platform.Market.TokenCache do
   @moduledoc """
   Local cache for token token data.
 
@@ -9,9 +9,9 @@ defmodule Platform.Market.TokenData do
 
   require Logger
 
-  alias Platform.Market.TokenData.Token
+  alias Platform.Market.TokenCache.Token
 
-  @interval :timer.minutes(5)
+  @interval :timer.minutes(60)
   @table_name :token_data
   @typep milliseconds :: non_neg_integer()
 
@@ -121,7 +121,7 @@ defmodule Platform.Market.TokenData do
 
   @spec token_data_source() :: module()
   defp token_data_source do
-    config_or_default(:source, Platform.Market.TokenData.Source.CoinMarketCap)
+    config_or_default(:source, Platform.Market.TokenCache.Source.CoinMarketCap)
   end
 
   @spec fetch_rates :: Task.t()

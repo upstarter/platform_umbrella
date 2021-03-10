@@ -1,12 +1,12 @@
-defmodule Platform.Market.TokenData.Source.CoinMarketCap do
+defmodule Platform.Market.TokenCache.Source.CoinMarketCap do
   @moduledoc """
   Adapter for fetching token data from https://coinmarketcap.com.
   """
   import Ecto.Query
-  alias Platform.Market.TokenData.Token
+  alias Platform.Market.TokenCache.Token
   alias HTTPoison.{Error, Response}
   alias Platform.Repo
-  alias Platform.Market.TokenData.Source
+  alias Platform.Market.TokenCache.Source
 
   @behaviour Source
 
@@ -25,7 +25,7 @@ defmodule Platform.Market.TokenData.Source.CoinMarketCap do
   end
 
   defp headers() do
-    api_key = Application.get_env(:platform, Platform.Market.TokenData, [])[:api_key]
+    api_key = Application.get_env(:platform, Platform.Market.TokenCache, [])[:api_key]
     [{"Content-Type", "application/json"}, {"X-CMC_PRO_API_KEY", api_key}]
   end
 
@@ -38,7 +38,6 @@ defmodule Platform.Market.TokenData.Source.CoinMarketCap do
   @doc false
   def format_data(body) do
     for {_id, item} <- decode_json(body), not is_nil(item["last_updated"]) do
-      IO.inspect(['item', item])
       {last_updated_as_unix, _} = Integer.parse(item["last_updated"])
       last_updated = DateTime.from_unix!(last_updated_as_unix)
 
@@ -53,6 +52,7 @@ defmodule Platform.Market.TokenData.Source.CoinMarketCap do
         id: item["id"],
         name: item["name"],
         symbol: item["symbol"],
+        tags: item["tags"],
         total_supply: item["total_supply"] && Decimal.from_float(item["total_supply"] / 1),
         max_supply: item["max_supply"] && Decimal.from_float(item["max_supply"] / 1),
         circulating_supply:
