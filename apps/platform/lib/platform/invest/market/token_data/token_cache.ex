@@ -19,7 +19,7 @@ defmodule Platform.Market.TokenCache do
   def handle_info(:update, state) do
     Logger.debug(fn -> "Updating cached token data" end)
 
-    fetch_rates()
+    # fetch_rates()
 
     {:noreply, state}
   end
@@ -28,7 +28,7 @@ defmodule Platform.Market.TokenCache do
   @impl GenServer
   def handle_info({_ref, {_, {:ok, tokens}}}, state) do
     records =
-      for %Token{symbol: symbol} = token <- tokens do
+      for %CacheToken{symbol: symbol} = token <- tokens do
         {symbol, token}
       end
 
@@ -151,7 +151,7 @@ defmodule Platform.Market.TokenCache do
     table_name()
     |> :ets.tab2list()
     |> Enum.map(fn {_, rate} -> rate end)
-    |> Enum.sort_by(fn %Token{symbol: symbol} -> symbol end)
+    |> Enum.sort_by(fn %CacheToken{symbol: symbol} -> symbol end)
   end
 
   defp list_from_store(_), do: []

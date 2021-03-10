@@ -31,7 +31,7 @@ defmodule Platform.Tokens.Token do
     field(:description, :string)
     field(:site, :string)
 
-    embeds_one(:token_info, Token, on_replace: :delete)
+    embeds_one(:token_info, CacheToken, on_replace: :delete)
     many_to_many(:users_tokens, User, join_through: "users_tokens")
     many_to_many(:topics, Topic, join_through: "topics_tokens")
     has_many(:daily_market_history, DailyMarketHistory)

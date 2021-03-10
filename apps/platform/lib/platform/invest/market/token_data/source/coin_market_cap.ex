@@ -48,7 +48,7 @@ defmodule Platform.Market.TokenCache.Source.CoinMarketCap do
         item["quote"]["1"]["market_cap"] &&
           Decimal.from_float(item["quote"]["1"]["market_cap"] / 1)
 
-      %Token{
+      %CacheToken{
         id: item["id"],
         name: item["name"],
         symbol: item["symbol"],

@@ -13,7 +13,7 @@ defmodule Platform.Market.TokenCache.CacheToken do
    * `:name` - Human-readable name of a ticker
    * `:symbol` - Trading symbol used to represent a currency
    * `:usd_price` - The USD value of the currency
-   * `:volume_24h_usd` - The volume from the last 24 hours in USD
+   * `:volume_24h` - The volume from the last 24 hours in USD
   """
 
   use Ecto.Schema
