@@ -11,7 +11,7 @@ defmodule Platform.Tokens.Token do
 
   alias Platform.Users.User
   alias Platform.Topics.Topic
-  alias Platform.Market.TokenCache.Token
+  alias Platform.Market.TokenCache.CacheToken
   alias Platform.Market.DailyMarketHistory
 
   @derive {Jason.Encoder,

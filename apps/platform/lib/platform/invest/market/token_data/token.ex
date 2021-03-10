@@ -1,4 +1,4 @@
-defmodule Platform.Market.TokenCache.Token do
+defmodule Platform.Market.TokenCache.CacheToken do
   @moduledoc """
   Data container for modeling an exchange rate for a currency/token.
   """

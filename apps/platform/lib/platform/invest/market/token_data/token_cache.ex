@@ -9,7 +9,7 @@ defmodule Platform.Market.TokenCache do
 
   require Logger
 
-  alias Platform.Market.TokenCache.Token
+  alias Platform.Market.TokenCache.CacheToken
 
   @interval :timer.minutes(60)
   @table_name :token_data

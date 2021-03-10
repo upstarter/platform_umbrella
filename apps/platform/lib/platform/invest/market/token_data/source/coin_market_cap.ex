@@ -3,7 +3,7 @@ defmodule Platform.Market.TokenCache.Source.CoinMarketCap do
   Adapter for fetching token data from https://coinmarketcap.com.
   """
   import Ecto.Query
-  alias Platform.Market.TokenCache.Token
+  alias Platform.Market.TokenCache.CacheToken
   alias HTTPoison.{Error, Response}
   alias Platform.Repo
   alias Platform.Market.TokenCache.Source

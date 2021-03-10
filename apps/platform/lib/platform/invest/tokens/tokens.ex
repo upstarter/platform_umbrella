@@ -66,7 +66,7 @@ defmodule Platform.Tokens do
         token_data = Platform.Market.TokenCache.lookup(t.symbol)
 
         case token_data do
-          %Platform.Market.TokenCache.Token{} ->
+          %Platform.Market.TokenCache.CacheToken{} ->
             token_info_changeset =
               token_data
               |> Ecto.Changeset.change()
