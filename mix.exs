@@ -49,7 +49,8 @@ defmodule Platform.Umbrella.Mixfile do
       {:elixir_make, "~> 0.6", runtime: false},
       {:ex_doc, "~> 0.21", only: :dev, runtime: false},
       # {:policy_wonk, "~> 1.0.0"},
-      {:timex, "~> 3.6", override: true}
+      {:timex, "~> 3.6", override: true},
+      {:number, "~> 1.0.1", override: true}
     ]
   end
 end

@@ -42,34 +42,44 @@ defmodule Platform.Market.TokenCache.Source.CoinMarketCap do
       last_updated = DateTime.from_unix!(last_updated_as_unix)
 
       btc_price =
-        item["quote"]["1"]["price"] && Decimal.from_float(item["quote"]["1"]["price"] / 1)
+        item["quote"]["1"]["price"] &&
+          Decimal.from_float(item["quote"]["1"]["price"] / 1) |> Decimal.round(2)
 
       market_cap_btc =
         item["quote"]["1"]["market_cap"] &&
-          Decimal.from_float(item["quote"]["1"]["market_cap"] / 1)
+          Decimal.from_float(item["quote"]["1"]["market_cap"] / 1) |> Decimal.round(2)
 
       %CacheToken{
         id: item["id"],
         name: item["name"],
         symbol: item["symbol"],
         tags: item["tags"],
-        total_supply: item["total_supply"] && Decimal.from_float(item["total_supply"] / 1),
-        max_supply: item["max_supply"] && Decimal.from_float(item["max_supply"] / 1),
+        total_supply:
+          item["total_supply"] && Decimal.from_float(item["total_supply"] / 1) |> Decimal.round(2),
+        max_supply:
+          item["max_supply"] && Decimal.from_float(item["max_supply"] / 1) |> Decimal.round(2),
         circulating_supply:
-          item["circulating_supply"] && Decimal.from_float(item["circulating_supply"] / 1),
+          item["circulating_supply"] &&
+            Decimal.from_float(item["circulating_supply"] / 1) |> Decimal.round(2),
         last_updated: last_updated,
         platform_id: to_decimal(item["platform"]["id"]),
         platform_name: to_string(item["platform"]["name"]),
-        usd_price: Decimal.from_float(item["quote"]["2781"]["price"]),
+        usd_price: Decimal.from_float(item["quote"]["2781"]["price"]) |> Decimal.round(2),
         btc_price: btc_price,
-        market_cap_usd: Decimal.from_float(item["quote"]["2781"]["market_cap"] / 1),
+        market_cap_usd:
+          Decimal.from_float(item["quote"]["2781"]["market_cap"] / 1) |> Decimal.round(2),
         market_cap_btc: market_cap_btc,
-        percent_change_24h: Decimal.from_float(item["quote"]["2781"]["percent_change_24h"] / 1),
-        percent_change_7d: Decimal.from_float(item["quote"]["2781"]["percent_change_7d"] / 1),
-        percent_change_30d: Decimal.from_float(item["quote"]["2781"]["percent_change_30d"] / 1),
-        volume_24h: Decimal.from_float(item["quote"]["2781"]["volume_24h"] / 1),
-        volume_7d: Decimal.from_float(item["quote"]["2781"]["volume_7d"] / 1),
-        volume_30d: Decimal.from_float(item["quote"]["2781"]["volume_30d"] / 1)
+        percent_change_24h:
+          Decimal.from_float(item["quote"]["2781"]["percent_change_24h"] / 1) |> Decimal.round(2),
+        percent_change_7d:
+          Decimal.from_float(item["quote"]["2781"]["percent_change_7d"] / 1) |> Decimal.round(2),
+        percent_change_30d:
+          Decimal.from_float(item["quote"]["2781"]["percent_change_30d"] / 1) |> Decimal.round(2),
+        volume_24h:
+          Decimal.from_float(item["quote"]["2781"]["volume_24h"] / 1) |> Decimal.round(2),
+        volume_7d: Decimal.from_float(item["quote"]["2781"]["volume_7d"] / 1) |> Decimal.round(2),
+        volume_30d:
+          Decimal.from_float(item["quote"]["2781"]["volume_30d"] / 1) |> Decimal.round(2)
       }
     end
   end
