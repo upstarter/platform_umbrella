@@ -1,5 +1,6 @@
 defmodule PlatformWeb.V1.Tokens.TokenView do
   use PlatformWeb, :view
+  use Number
   alias PlatformWeb.V1.Tokens.TokenView
   alias PlatformWeb.V1.DailyMarketHistory.DailyMarketHistoryView
 
@@ -12,12 +13,44 @@ defmodule PlatformWeb.V1.Tokens.TokenView do
   end
 
   def render("token.json", %{token: token}) do
+    isDecimal? = fn {k, v} ->
+      case v do
+        %Decimal{} = v ->
+          true
+
+        v when is_binary(v) ->
+          true
+
+        _ ->
+          false
+      end
+    end
+
+    round = fn {k, v} ->
+      case v do
+        %Decimal{} = v ->
+          {k, Decimal.round(v, 2)}
+
+        _ ->
+          {k, v}
+      end
+    end
+
+    ti =
+      Map.from_struct(token.token_info)
+      |> Enum.reduce([], fn {k, v}, acc ->
+        if isDecimal?.({k, v}), do: [round.({k, v}) | acc], else: acc
+      end)
+      |> Enum.into(%{})
+
+    IO.inspect(['TTT', ti])
+
     %{
       id: token.id,
       name: token.name,
       symbol: token.symbol,
       description: token.description,
-      token_info: token.token_info,
+      token_info: ti,
       daily_market_history:
         render_many(
           token.daily_market_history,
@@ -29,25 +62,25 @@ defmodule PlatformWeb.V1.Tokens.TokenView do
 
   def render("token_info.json", %{token_info: token_info}) do
     %{
-      btc_price: token_info.btc_price,
-      usd_price: token_info.usd_price,
-      cmc_id: token_info.cmc_id,
-      market_cap_usd: token_info.market_cap_usd,
-      market_cap_btc: token_info.market_cap_btc,
-      circulating_supply: token_info.circulating_supply,
-      total_supply: token_info.total_supply,
-      max_supply: token_info.max_supply,
+      btc_price: Float.round(token_info.btc_price, 2),
+      usd_price: Float.round(token_info.usd_price, 2),
+      cmc_id: Float.round(token_info.cmc_id, 2),
+      market_cap_usd: Float.round(token_info.market_cap_usd, 2),
+      market_cap_btc: Float.round(token_info.market_cap_btc, 2),
+      circulating_supply: Float.round(token_info.circulating_supply, 2),
+      total_supply: Float.round(token_info.total_supply, 2),
+      max_supply: Float.round(token_info.max_supply, 2),
       platform_id: token_info.platform_id,
       platform_name: token_info.platform_name,
-      percent_change_1h: token_info.percent_change_1h,
-      percent_change_24h: token_info.percent_change_24h,
-      percent_change_7d: token_info.percent_change_7d,
-      percent_change_30d: token_info.percent_change_30d,
-      percent_change_60d: token_info.percent_change_60d,
-      percent_change_90d: token_info.percent_change_90d,
-      volume_24h: token_info.volume_24h,
-      volume_7d: token_info.volume_7d,
-      volume_30d: token_info.volume_30d
+      percent_change_1h: Float.round(token_info.percent_change_1h, 2),
+      percent_change_24h: Float.round(token_info.percent_change_24h, 2),
+      percent_change_7d: Float.round(token_info.percent_change_7d, 2),
+      percent_change_30d: Float.round(token_info.percent_change_30d, 2),
+      percent_change_60d: Float.round(token_info.percent_change_60d, 2),
+      percent_change_90d: Float.round(token_info.percent_change_90d, 2),
+      volume_24h: Float.round(token_info.volume_24h, 2),
+      volume_7d: Float.round(token_info.volume_7d, 2),
+      volume_30d: Float.round(token_info.volume_3, 20)
     }
   end
 end
