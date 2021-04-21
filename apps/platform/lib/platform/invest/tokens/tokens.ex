@@ -11,6 +11,7 @@ defmodule Platform.Tokens do
   alias Platform.Tokens.Token
   alias Platform.Tokens.Asset
   alias Platform.Market.DailyMarketHistory
+  alias Platform.Market.TokenCache.CacheToken
 
   @doc """
   Returns the search of tokens.
@@ -48,7 +49,7 @@ defmodule Platform.Tokens do
 
     offset = if page > 1, do: (page - 1) * per_page, else: 0
 
-    q = from(t in Token, limit: ^per_page, offset: ^offset)
+    q = from(t in Token, limit: ^per_page, offset: ^offset, preload: :topics)
 
     tokens =
       Repo.preload(Repo.all(q),
@@ -58,6 +59,8 @@ defmodule Platform.Tokens do
           )
       )
 
+    IO.inspect(tokens)
+
     # update latest
 
     tokens =
@@ -66,17 +69,21 @@ defmodule Platform.Tokens do
         token_data = Platform.Market.TokenCache.lookup(t.symbol)
 
         case token_data do
-          %Platform.Market.TokenCache.CacheToken{} ->
+          %CacheToken{} ->
+            data = Map.from_struct(token_data)
+
             token_info_changeset =
-              token_data
-              |> Ecto.Changeset.change()
+              CacheToken.changeset(
+                %CacheToken{},
+                data
+              )
 
             changeset =
               t
               |> Ecto.Changeset.change()
               |> Ecto.Changeset.put_embed(:token_info, token_info_changeset)
 
-            Repo.update!(changeset)
+            t
 
           _ ->
             t

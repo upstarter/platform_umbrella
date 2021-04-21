@@ -33,7 +33,7 @@ defmodule Platform.Market.TokenCache.CacheToken do
     field(:circulating_supply, :decimal)
     field(:total_supply, :decimal)
     field(:max_supply, :decimal)
-    field(:platform_id, :string)
+    field(:platform_id, :decimal)
     field(:platform_name, :string)
     field(:percent_change_1h, :decimal)
     field(:percent_change_24h, :decimal)
@@ -48,8 +48,11 @@ defmodule Platform.Market.TokenCache.CacheToken do
 
   @doc false
   def changeset(token_data, attrs) do
+    # data = %{token_data | id: String.to_integer(token_data.id)}
+
     token_data
     |> cast(attrs, [
+      :id,
       :btc_price,
       :usd_price,
       :name,
@@ -61,7 +64,6 @@ defmodule Platform.Market.TokenCache.CacheToken do
       :circulating_supply,
       :total_supply,
       :max_supply,
-      :platform_id,
       :platform_name,
       :percent_change_1h,
       :percent_change_24h,
@@ -74,25 +76,18 @@ defmodule Platform.Market.TokenCache.CacheToken do
       :volume_30d
     ])
     |> validate_required([
-      :btc_price,
+      :id,
       :usd_price,
       :name,
       :symbol,
       :tags,
       :last_updated,
       :market_cap_usd,
-      :market_cap_btc,
       :circulating_supply,
       :total_supply,
-      :max_supply,
-      :platform_id,
-      :platform_name,
-      :percent_change_1h,
       :percent_change_24h,
       :percent_change_7d,
       :percent_change_30d,
-      :percent_change_60d,
-      :percent_change_90d,
       :volume_24h,
       :volume_7d,
       :volume_30d

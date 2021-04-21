@@ -36,21 +36,19 @@ defmodule PlatformWeb.V1.Tokens.TokenView do
       end
     end
 
-    ti =
+    token_info =
       Map.from_struct(token.token_info)
       |> Enum.reduce([], fn {k, v}, acc ->
         if isDecimal?.({k, v}), do: [round.({k, v}) | acc], else: acc
       end)
       |> Enum.into(%{})
 
-    IO.inspect(['TTT', ti])
-
     %{
       id: token.id,
       name: token.name,
       symbol: token.symbol,
       description: token.description,
-      token_info: ti,
+      token_info: token.token_info,
       daily_market_history:
         render_many(
           token.daily_market_history,
@@ -80,7 +78,8 @@ defmodule PlatformWeb.V1.Tokens.TokenView do
       percent_change_90d: Float.round(token_info.percent_change_90d, 2),
       volume_24h: Float.round(token_info.volume_24h, 2),
       volume_7d: Float.round(token_info.volume_7d, 2),
-      volume_30d: Float.round(token_info.volume_3, 20)
+      volume_30d: Float.round(token_info.volume_3, 20),
+      tags: token_info.tags
     }
   end
 end

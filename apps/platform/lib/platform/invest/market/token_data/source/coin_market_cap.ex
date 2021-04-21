@@ -62,7 +62,7 @@ defmodule Platform.Market.TokenCache.Source.CoinMarketCap do
           item["circulating_supply"] &&
             Decimal.from_float(item["circulating_supply"] / 1) |> Decimal.round(2),
         last_updated: last_updated,
-        platform_id: to_decimal(item["platform"]["id"]),
+        platform_id: item["platform"]["id"],
         platform_name: to_string(item["platform"]["name"]),
         usd_price: Decimal.from_float(item["quote"]["2781"]["price"]) |> Decimal.round(2),
         btc_price: btc_price,

@@ -19,7 +19,7 @@ defmodule Platform.Market.TokenCache do
   def handle_info(:update, state) do
     Logger.debug(fn -> "Updating cached token data" end)
 
-    # fetch_rates()
+    fetch_rates()
 
     {:noreply, state}
   end
