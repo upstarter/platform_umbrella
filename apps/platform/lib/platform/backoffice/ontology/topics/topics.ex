@@ -76,7 +76,6 @@ defmodule Platform.Topics do
 
   def analysis do
     root = Repo.get!(Topic, 2)
-    IO.inspect(['AAASnal', root])
     nlist = arrange_topic(root)
     JSONBuilder.to_list(nlist)
   end

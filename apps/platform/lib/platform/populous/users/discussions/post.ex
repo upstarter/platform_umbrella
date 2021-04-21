@@ -29,7 +29,6 @@ defmodule Platform.Users.Discussions.Post do
   end
 
   def list_posts(params) do
-    IO.inspect(['parms page', params])
     page = String.to_integer(params["page"])
     per_page = String.to_integer(params["per_page"])
 
@@ -47,8 +46,6 @@ defmodule Platform.Users.Discussions.Post do
   @derive {Jason.Encoder, only: [:title, :description, :body, :user_id, :thread_id, :parent_id]}
 
   def create_for_user(attrs) do
-    IO.inspect(['create post', attrs])
-
     attrs =
       Map.merge(attrs, %{
         "type" => "Users.Discussions.Post",
@@ -58,7 +55,6 @@ defmodule Platform.Users.Discussions.Post do
       })
 
     changeset = __MODULE__.changeset(%__MODULE__{}, attrs)
-    IO.inspect(['create post for user', attrs, changeset])
 
     {:ok, prop} =
       changeset
@@ -66,7 +62,6 @@ defmodule Platform.Users.Discussions.Post do
 
     prop = Platform.Repo.preload(prop, :user)
 
-    IO.inspect([prop])
     {:ok, prop}
   end
 

@@ -79,8 +79,6 @@ defmodule Platform.Topics.Topic do
   end
 
   def list_topics(params) do
-    IO.inspect(['parms page', params])
-
     page = String.to_integer(params["page"])
     per_page = String.to_integer(params["per_page"])
 

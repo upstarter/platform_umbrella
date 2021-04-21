@@ -21,7 +21,6 @@ defmodule Platform.Users.Proposal do
   end
 
   def list_proposals(params) do
-    IO.inspect(['parms page', params])
     page = String.to_integer(params["page"])
     per_page = String.to_integer(params["per_page"])
 
@@ -47,7 +46,6 @@ defmodule Platform.Users.Proposal do
       })
 
     changeset = Proposal.changeset(%Proposal{}, attrs)
-    IO.inspect(['create for user', attrs, changeset])
 
     {:ok, prop} =
       changeset
@@ -55,7 +53,6 @@ defmodule Platform.Users.Proposal do
 
     prop = Platform.Repo.preload(prop, :user)
 
-    IO.inspect([prop])
     {:ok, prop}
   end
 

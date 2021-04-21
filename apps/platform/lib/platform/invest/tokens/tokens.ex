@@ -59,8 +59,6 @@ defmodule Platform.Tokens do
           )
       )
 
-    IO.inspect(tokens)
-
     # update latest
 
     tokens =

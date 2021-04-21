@@ -26,7 +26,6 @@ defmodule Platform.Users.Discussions.Thread do
   end
 
   def list_threads(params) do
-    IO.inspect(['parms page', params])
     page = String.to_integer(params["page"])
     per_page = String.to_integer(params["per_page"])
 
@@ -69,8 +68,6 @@ defmodule Platform.Users.Discussions.Thread do
   @required_fields ~w(title description type status active user_id is_public)a
   @derive {Jason.Encoder, only: [:posts, :topic]}
   def create_for_user(attrs) do
-    IO.inspect(['create', attrs])
-
     attrs =
       Map.merge(attrs, %{
         "type" => "Users.Discussions.Thread",
@@ -80,7 +77,6 @@ defmodule Platform.Users.Discussions.Thread do
       })
 
     changeset = __MODULE__.changeset(%__MODULE__{}, attrs)
-    IO.inspect(['create discussion thread for user', attrs, changeset])
 
     {:ok, prop} =
       changeset
@@ -88,7 +84,6 @@ defmodule Platform.Users.Discussions.Thread do
 
     prop = prop |> Platform.Repo.preload([:posts, [topic: :tokens], :user])
 
-    IO.inspect([prop])
     {:ok, prop}
   end
 
