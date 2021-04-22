@@ -37,15 +37,7 @@ config :platform_web, PlatformWeb.Endpoint,
   pubsub: [name: PlatformWeb.PubSub, adapter: Phoenix.PubSub.PG2]
 
 config :cors_plug,
-  origin: [
-    "https://www.cryptowise.ai",
-    "https://cryptowise.ai",
-    "http://www.cryptowise.ai",
-    "http://cryptowise.ai",
-    "https://api.cryptowise.ai",
-    "http://api.cryptowise.ai",
-    "*"
-  ],
+  origin: "*",
   credentials: true,
   headers: [
     "Accept",
