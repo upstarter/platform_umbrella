@@ -55,9 +55,7 @@ defmodule PlatformWeb.Endpoint do
       "https://www.cryptowise.ai",
       "http://www.cryptowise.ai"
     ],
-    allow_headers: ["accept", "content-type", "authorization"],
-    allow_credentials: true,
-    log: [rejected: :error, invalid: :warn, accepted: :debug]
+    allow_credentials: true
   )
 
   plug(PlatformWeb.Router)
