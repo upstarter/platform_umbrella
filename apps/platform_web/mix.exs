@@ -47,7 +47,7 @@ defmodule PlatformWeb.Mixfile do
       {:phoenix_haml, "~> 0.2", override: true},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.17"},
-      {:cors_plug, "~> 2.0"},
+      {:corsica, "~> 1.0"},
       {:cowboy, "~> 2.6.3"},
       {:bamboo, "~> 1.3.0"},
       # {:absinthe, "~> 1.4.0"},

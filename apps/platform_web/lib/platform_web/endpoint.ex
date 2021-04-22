@@ -50,7 +50,7 @@ defmodule PlatformWeb.Endpoint do
     max_age: 60 * 60
   )
 
-  plug(CORSPlug)
+  plug(Corsica, origins: "*")
 
   plug(PlatformWeb.Router)
 

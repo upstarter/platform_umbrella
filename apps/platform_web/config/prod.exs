@@ -38,7 +38,7 @@ config :platform_web, PlatformWeb.Endpoint,
 
 config :cors_plug,
   origin: "*",
-  credentials: true,
+  allow_credentials: true,
   headers: [
     "Accept",
     "Authorization",
