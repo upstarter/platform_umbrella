@@ -43,7 +43,8 @@ config :cors_plug,
     "http://www.cryptowise.ai",
     "http://cryptowise.ai",
     "https://api.cryptowise.ai",
-    "http://api.cryptowise.ai"
+    "http://api.cryptowise.ai",
+    ~r/*.cryptowise.ai/
   ],
   credentials: true,
   headers: [
