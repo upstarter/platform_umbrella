@@ -50,7 +50,7 @@ defmodule PlatformWeb.Endpoint do
     max_age: 60 * 60
   )
 
-  plug(Corsica, origins: "*")
+  plug(Corsica, origins: ~r{^https?://(.*.?)cryptowise.ai$})
 
   plug(PlatformWeb.Router)
 
