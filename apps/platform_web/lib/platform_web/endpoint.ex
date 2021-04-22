@@ -50,7 +50,15 @@ defmodule PlatformWeb.Endpoint do
     max_age: 60 * 60
   )
 
-  plug(Corsica, origins: "*", expose_headers: ~w(Authorization))
+  plug(Corsica,
+    origins: [
+      "https://www.cryptowise.ai",
+      "http://www.cryptowise.ai"
+    ],
+    allow_headers: ["accept", "content-type", "authorization"],
+    allow_credentials: true,
+    log: [rejected: :error, invalid: :warn, accepted: :debug]
+  )
 
   plug(PlatformWeb.Router)
 
