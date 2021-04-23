@@ -36,29 +36,29 @@ config :platform_web, PlatformWeb.Endpoint,
   render_errors: [view: PlatformWeb.ErrorView, accepts: ~w(html haml json)],
   pubsub: [name: PlatformWeb.PubSub, adapter: Phoenix.PubSub.PG2]
 
-config :cors_plug,
-  origin: [
-    "https://www.cryptowise.ai",
-    "https://cryptowise.ai",
-    "http://www.cryptowise.ai",
-    "http://cryptowise.ai",
-    "https://api.cryptowise.ai",
-    "http://api.cryptowise.ai"
-  ],
-  credentials: true,
-  headers: [
-    "Accept",
-    "Authorization",
-    "Cache-Control",
-    "Content-Type",
-    "DNT",
-    "If-Modified-Since",
-    "Keep-Alive",
-    "Origin",
-    "User-Agent",
-    "X-Requested-With",
-    "X-CSRF-TOKEN"
-  ]
+# config :cors_plug,
+#   origin: [
+#     "https://www.cryptowise.ai",
+#     "https://cryptowise.ai",
+#     "http://www.cryptowise.ai",
+#     "http://cryptowise.ai",
+#     "https://api.cryptowise.ai",
+#     "http://api.cryptowise.ai"
+#   ],
+#   credentials: true,
+#   headers: [
+#     "Accept",
+#     "Authorization",
+#     "Cache-Control",
+#     "Content-Type",
+#     "DNT",
+#     "If-Modified-Since",
+#     "Keep-Alive",
+#     "Origin",
+#     "User-Agent",
+#     "X-Requested-With",
+#     "X-CSRF-TOKEN"
+#   ]
 
 # ## SSL Support
 #

@@ -16,9 +16,9 @@ config :platform_web, PlatformWeb.Endpoint,
   secret_key_base: "9Fr9IyYiWFpb9p8eP54ev2V/sd2TOhmGpzzkxjqLO+JNQrZ/nAqyyDwya37YH9aW",
   pubsub: [adapter: Phoenix.PubSub.PG2, name: PlatformWeb.PubSub]
 
-config :cors_plug,
-  origin: ["http://localhost:8081", "http://127.0.0.1:8081"],
-  supports_credentials: true
+# config :cors_plug,
+#   origin: ["http://localhost:8081", "http://127.0.0.1:8081"],
+#   supports_credentials: true
 
 # It also supports custom adapter configuration:
 #
