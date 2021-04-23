@@ -5,14 +5,8 @@ defmodule PlatformWeb.Endpoint do
   socket("/socket", PlatformWeb.UserSocket)
 
   plug(Corsica,
-    origins: [
-      "https://www.cryptowise.ai",
-      "http://www.cryptowise.ai",
-      "www.cryptowise.ai",
-      "cryptowise.ai"
-    ],
-    allow_credentials: true,
-    allow_headers: ["content-type", "accept"]
+    origins: "*",
+    allow_credentials: true
   )
 
   # Serve at "/" the static files from "priv/static" directory.
