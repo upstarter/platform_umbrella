@@ -4,6 +4,17 @@ defmodule PlatformWeb.Endpoint do
 
   socket("/socket", PlatformWeb.UserSocket)
 
+  plug(Corsica,
+    origins: [
+      "https://www.cryptowise.ai",
+      "http://www.cryptowise.ai",
+      "www.cryptowise.ai",
+      "cryptowise.ai"
+    ],
+    allow_credentials: true,
+    allow_headers: ["content-type", "accept"]
+  )
+
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phoenix.digest
@@ -25,17 +36,6 @@ defmodule PlatformWeb.Endpoint do
   end
 
   plug(Plug.Logger)
-
-  plug(Corsica,
-    origins: [
-      "https://www.cryptowise.ai",
-      "http://www.cryptowise.ai",
-      "www.cryptowise.ai",
-      "cryptowise.ai"
-    ],
-    allow_credentials: true,
-    allow_headers: ["content-type", "accept"]
-  )
 
   plug(Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
