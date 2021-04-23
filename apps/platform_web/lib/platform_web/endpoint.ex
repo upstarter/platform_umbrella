@@ -5,8 +5,7 @@ defmodule PlatformWeb.Endpoint do
   socket("/socket", PlatformWeb.UserSocket)
 
   plug(Corsica,
-    origins: "*",
-    allow_credentials: true
+    origins: "*"
   )
 
   # Serve at "/" the static files from "priv/static" directory.
