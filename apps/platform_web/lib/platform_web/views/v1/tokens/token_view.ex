@@ -37,11 +37,15 @@ defmodule PlatformWeb.V1.Tokens.TokenView do
     end
 
     token_info =
-      Map.from_struct(token.token_info)
-      |> Enum.reduce([], fn {k, v}, acc ->
-        if isDecimal?.({k, v}), do: [round.({k, v}) | acc], else: acc
-      end)
-      |> Enum.into(%{})
+      if token.token_info do
+        Map.from_struct(token.token_info)
+        |> Enum.reduce([], fn {k, v}, acc ->
+          if isDecimal?.({k, v}), do: [round.({k, v}) | acc], else: acc
+        end)
+        |> Enum.into(%{})
+      else
+        %{}
+      end
 
     %{
       id: token.id,
