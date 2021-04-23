@@ -26,6 +26,17 @@ defmodule PlatformWeb.Endpoint do
 
   plug(Plug.Logger)
 
+  plug(Corsica,
+    origins: [
+      "https://www.cryptowise.ai",
+      "http://www.cryptowise.ai",
+      "www.cryptowise.ai",
+      "cryptowise.ai"
+    ],
+    allow_credentials: true,
+    allow_headers: ["content-type", "accept"]
+  )
+
   plug(Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
     pass: ["*/*"],
@@ -48,14 +59,6 @@ defmodule PlatformWeb.Endpoint do
     # number of seconds in 4 weeks
     # 4 * 7 * 24 * 60 * 60
     max_age: 60 * 60
-  )
-
-  plug(Corsica,
-    origins: [
-      "https://www.cryptowise.ai",
-      "http://www.cryptowise.ai"
-    ],
-    allow_credentials: true
   )
 
   plug(PlatformWeb.Router)
