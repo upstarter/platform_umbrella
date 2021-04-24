@@ -6,7 +6,7 @@ defmodule PlatformWeb.Endpoint do
 
   plug(Corsica,
     origins: "*",
-    allow_headers: ["accept", "content-type", "authorization"],
+    allow_headers: :all,
     allow_credentials: true,
     log: [rejected: :error, invalid: :warn, accepted: :debug]
   )
