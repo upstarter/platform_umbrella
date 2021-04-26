@@ -5,8 +5,8 @@ defmodule PlatformWeb.Endpoint do
   socket("/socket", PlatformWeb.UserSocket)
 
   plug(Corsica,
-    origins: "*",
-    allow_headers: :all,
+    origins: "https://www.cryptowise.ai",
+    # allow_headers: "Access-Control-Allow-Origin",
     allow_credentials: true,
     log: [rejected: :error, invalid: :warn, accepted: :debug]
   )
