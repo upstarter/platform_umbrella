@@ -76,15 +76,11 @@ defmodule Platform.Tokens do
                 data
               )
 
-            changeset =
-              t
-              |> Ecto.Changeset.change()
-              |> Ecto.Changeset.put_embed(:token_info, token_info_changeset)
+            token = Ecto.Changeset.put_embed(t, :token_info, [token_info_changeset])
 
-            t = Repo.insert!(changeset)
-            IO.inspect(['toknlist', t])
+            IO.inspect(['token', tok])
 
-            t
+            tok
 
           _ ->
             t
