@@ -120,7 +120,7 @@ defmodule Platform.Market.TokenCache.Source.CoinMarketCap do
       |> Enum.filter(&(!is_nil(&1)))
       |> Enum.filter(&(&1 != "BLXR"))
       |> Enum.filter(&(&1 != "DFN"))
-      |> Enum.filter(&(&1 != "GNT"))
+      |> Enum.filter(&(&1 != "GLM"))
       |> Enum.join(",")
 
     convert_params = "convert_id=2781&"
