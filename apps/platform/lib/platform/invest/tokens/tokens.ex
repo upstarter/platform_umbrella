@@ -88,6 +88,7 @@ defmodule Platform.Tokens do
         end
       end)
 
+    IO.inspect(['index tok', tokens])
     tokens
   end
 

@@ -32,8 +32,6 @@ defmodule Platform.Market.TokenCache do
         {symbol, token}
       end
 
-    IO.inspect(['insert', records, tokens])
-
     if store() == :ets do
       :ets.insert(table_name(), records)
     end
