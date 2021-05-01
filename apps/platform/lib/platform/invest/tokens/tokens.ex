@@ -78,9 +78,9 @@ defmodule Platform.Tokens do
 
             token = Ecto.Changeset.put_embed(t, :token_info, [token_info_changeset])
 
-            IO.inspect(['token', tok])
+            IO.inspect(['token', token])
 
-            tok
+            token
 
           _ ->
             t
