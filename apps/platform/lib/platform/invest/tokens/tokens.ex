@@ -81,6 +81,8 @@ defmodule Platform.Tokens do
               |> Ecto.Changeset.change()
               |> Ecto.Changeset.put_embed(:token_info, token_info_changeset)
 
+            IO.inspect(['toknlist', token_info_changeset, changeset, t])
+
             t
 
           _ ->
@@ -88,7 +90,6 @@ defmodule Platform.Tokens do
         end
       end)
 
-    IO.inspect(['index tok', tokens])
     tokens
   end
 
