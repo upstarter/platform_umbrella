@@ -6,7 +6,6 @@ defmodule PlatformWeb.Endpoint do
 
   plug(Corsica,
     origins: "https://www.cryptowise.ai",
-    # allow_headers: "Access-Control-Allow-Origin",
     allow_credentials: true,
     log: [rejected: :error, invalid: :warn, accepted: :debug]
   )

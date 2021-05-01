@@ -52,7 +52,7 @@ defmodule PlatformWeb.V1.Tokens.TokenView do
       name: token.name,
       symbol: token.symbol,
       description: token.description,
-      token_info: token.token_info,
+      token_info: token_info,
       daily_market_history:
         render_many(
           token.daily_market_history,
