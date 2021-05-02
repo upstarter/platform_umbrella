@@ -19,7 +19,12 @@ alias Platform.Market.DailyMarketHistory, as: MH
 alias Platform.ExchangeRates, as: EX
 alias Platform.Users.Discussions.Thread
 alias Platform.Users.Discussions.Post
+alias Platform.Market.TokenCache.CacheToken, as: CT
+
 # alias Platform.Groups.Group
+
+IO.puts("TokenCache:")
+IO.puts(CT.list())
 
 IO.puts("Users:")
 IO.puts(Enum.count(Repo.all(User)))

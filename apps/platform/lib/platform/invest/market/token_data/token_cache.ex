@@ -1,6 +1,6 @@
 defmodule Platform.Market.TokenCache do
   @moduledoc """
-  Local cache for token token data.
+  Local cache for token data.
 
   Token data is updated every 5 minutes.
   """

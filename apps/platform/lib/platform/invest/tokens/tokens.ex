@@ -70,18 +70,20 @@ defmodule Platform.Tokens do
           %CacheToken{} ->
             data = Map.from_struct(token_data)
 
-            token_info_changeset =
-              CacheToken.changeset(
-                %CacheToken{},
-                data
-              )
+            if data.id do
+              token_info_changeset =
+                CacheToken.changeset(
+                  %CacheToken{},
+                  data
+                )
 
-            changeset =
               t
               |> Ecto.Changeset.change()
               |> Ecto.Changeset.put_embed(:token_info, token_info_changeset)
-
-            Repo.update!(changeset)
+              |> Ecto.Changeset.apply_changes()
+            else
+              t
+            end
 
           _ ->
             t
