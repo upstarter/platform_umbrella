@@ -11,6 +11,7 @@ alias Platform.Tokens
 alias Platform.Users.User
 alias Platform.Users.Proposal
 alias Platform.Users.UsersTopics, as: UT
+alias Platform.Topics.TopicsTokens, as: TT
 alias Platform.Users.Profiles.UserProfile, as: UP
 alias Platform.Portfolios.Portfolio, as: P
 alias Platform.Users.Portfolios.PortfolioToken, as: PT
@@ -19,12 +20,13 @@ alias Platform.Market.DailyMarketHistory, as: MH
 alias Platform.ExchangeRates, as: EX
 alias Platform.Users.Discussions.Thread
 alias Platform.Users.Discussions.Post
+alias Platform.Market.TokenCache, as: TC
 alias Platform.Market.TokenCache.CacheToken, as: CT
 
 # alias Platform.Groups.Group
 
 IO.puts("TokenCache:")
-IO.puts(CT.list())
+IO.puts(TC.list())
 
 IO.puts("Users:")
 IO.puts(Enum.count(Repo.all(User)))
