@@ -65,7 +65,6 @@ defmodule PlatformWeb.V1.Tokens.TokenView do
         )
     }
 
-    IO.inspect(["Toker info2", token.token_info])
     token
   end
 
