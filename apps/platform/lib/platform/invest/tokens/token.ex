@@ -58,5 +58,7 @@ defmodule Platform.Tokens.Token do
       :symbol,
       :tags
     ])
+
+    IO.inspect(['inform', token, attrs])
   end
 end

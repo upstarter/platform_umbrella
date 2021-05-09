@@ -40,14 +40,18 @@ defmodule PlatformWeb.V1.Tokens.TokenView do
       if token.token_info do
         Map.from_struct(token.token_info)
         |> Enum.reduce([], fn {k, v}, acc ->
-          if isDecimal?.({k, v}), do: [round.({k, v}) | acc], else: acc
+          if isDecimal?.({k, v}) do
+            [round.({k, v}) | acc]
+          else
+            [{k, v} | acc]
+          end
         end)
         |> Enum.into(%{})
       else
         %{}
       end
 
-    %{
+    token = %{
       id: token.id,
       name: token.name,
       symbol: token.symbol,
@@ -60,6 +64,9 @@ defmodule PlatformWeb.V1.Tokens.TokenView do
           "daily_market_history.json"
         )
     }
+
+    IO.inspect(["Toker info2", token.token_info])
+    token
   end
 
   def render("token_info.json", %{token_info: token_info}) do
