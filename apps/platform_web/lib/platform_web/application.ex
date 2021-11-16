@@ -22,7 +22,8 @@ defmodule PlatformWeb.Application do
           ttl_check_interval: :timer.seconds(1),
           global_ttl: :timer.seconds(604_800)
         ]
-      ])
+      ]),
+      {Phoenix.PubSub, [name: PlatformWeb.PubSub, adapter: Phoenix.PubSub.PG2]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

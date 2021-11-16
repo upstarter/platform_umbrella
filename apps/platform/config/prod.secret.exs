@@ -18,4 +18,5 @@ config :platform, Platform.Repo,
   # ssl: true,
   hostname: System.get_env("DATABASE_URL"),
   port: "5432",
-  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "20")
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "20"),
+  show_sensitive_data_on_connection_error: true
