@@ -22,7 +22,7 @@ defmodule Platform.Application do
         id: Platform.TaskSupervisor
       ),
       {Registry, keys: :duplicate, name: Registry.MarketEvents, id: Registry.MarketEvents},
-      {Platform.Ecto.Repo, [show_sensitive_data_on_connection_error: true]}
+      {Platform.Repo, [show_sensitive_data_on_connection_error: true]}
     ]
 
     children = base_children ++ configurable_children()
