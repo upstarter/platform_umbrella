@@ -19,4 +19,4 @@ config :platform, Platform.Repo,
   hostname: System.get_env("DATABASE_URL"),
   socket_dir: "/var/run/postgresql",
   port: "5432",
-  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "20")
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "30")

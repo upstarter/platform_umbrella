@@ -32,8 +32,9 @@ defmodule Platform.Repo do
     # ]
     sysopts = [
       username: System.get_env("POSTGRES_USER"),
-      hostname: System.get_env("DATABASE_URL"),
-      socket_dir: "/var/run/postgresql"
+      pool_size: String.to_integer(System.get_env("POOL_SIZE") || "30")
+      # hostname: System.get_env("DATABASE_URL"),
+      # socket_dir: "/var/run/postgresql"
     ]
 
     # opts = Mix.Config.merge(opts, sysopts)
