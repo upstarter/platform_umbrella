@@ -14,7 +14,6 @@ defmodule Platform.Application do
     import Supervisor.Spec, warn: false
 
     base_children = [
-      Platform.Repo,
       Supervisor.child_spec({Task.Supervisor, name: Platform.MarketTaskSupervisor},
         id: Platform.MarketTaskSupervisor
       ),
