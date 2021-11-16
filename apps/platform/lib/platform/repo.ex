@@ -13,7 +13,7 @@ defmodule Platform.Repo do
   def init(_, opts) do
     # certdir = Application.app_dir(:platform, "priv/cert")
 
-    # ssl_opts: [
+    # ssl_opts = [
     #   cacertfile:
     #     Path.join(
     #       certdir,
@@ -30,12 +30,6 @@ defmodule Platform.Repo do
     #       System.get_env("DB_KEYFILE")
     #     )
     # ]
-    sysopts = [
-      username: System.get_env("POSTGRES_USER"),
-      pool_size: String.to_integer(System.get_env("POOL_SIZE") || "30")
-      # hostname: System.get_env("DATABASE_URL"),
-      # socket_dir: "/var/run/postgresql"
-    ]
 
     # opts = Mix.Config.merge(opts, sysopts)
     # if url, do: {:ok, opts}, else: {:ok, opts}
