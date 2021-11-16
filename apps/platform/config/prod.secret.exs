@@ -13,5 +13,9 @@ use Mix.Config
 config :platform, Platform.Repo,
   adapter: Ecto.Adapters.Postgres,
   database: "platform_prod",
+  username: System.get_env("POSTGRES_USER"),
+  password: System.get_env("PGPASSWORD"),
   # ssl: true,
-  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "15")
+  hostname: System.get_env("DATABASE_URL"),
+  port: "5432",
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "20")

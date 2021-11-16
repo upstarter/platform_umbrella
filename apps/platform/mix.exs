@@ -43,6 +43,7 @@ defmodule Platform.Mixfile do
       {:postgrex, ">= 0.0.0"},
       {:httpoison, "~> 1.5.1"},
       {:jason, "~> 1.0"},
+      {:phoenix_pubsub, "~> 2.0", override: true},
       # {:ecto_autoslug_field, "~> 2.0"},
       # {:ex_machina, "~> 2.3", only: :test},
       {:timex, "~> 3.0"}

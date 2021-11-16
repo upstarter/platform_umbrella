@@ -1,4 +1,4 @@
-FROM envoyproxy/envoy:v1.17.0 as build-stage
+FROM envoyproxy/envoy:v1.20.0 as build-stage
 
 FROM elixir:latest as production-build
 COPY --from=build-stage /etc/envoy /etc/envoy/
@@ -12,11 +12,6 @@ ENV MIX_ENV=${build_env} TERM=xterm
 ENV CMC_PRO_API_KEY=108d9086-dbf4-49f7-a388-ed6c69c19b87
 
 
-# DB
-ENV DATABASE_URL=/tmp/cloudsql/eternal-sunset-206422:us-central1:umbrella-db
-ENV POSTGRES_USER=postgres
-ENV POSTGRES_PASSWORD=ZQLm3AsToWtXkyePALtGRhjs
-
 ENV CW_KEYFILE=platform-web.ai.key
 ENV CW_CERTFILE=platform-web.ai.pem
 ENV DB_CA_CERTFILE=server-ca.pem
@@ -28,8 +23,9 @@ EXPOSE 80
 WORKDIR /app
 RUN apt-get update -y \
     # && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
-    # && apt-get install -y -q --no-install-recommends nodejs \
-    && mix local.rebar --force \
+    && apt-get install -y -q --no-install-recommends net-tools
+
+RUN mix local.rebar --force \
     && mix local.hex --force
 
 # caches unchanged dependencies
@@ -47,10 +43,10 @@ RUN mix do deps.get, compile
 #     && mix phx.digest \
 #     && cd ../..
 
-RUN wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 \
-    -O cloud_sql_proxy
-RUN chmod +x cloud_sql_proxy
-RUN mkdir /tmp/cloudsql
+# RUN wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 \
+#     -O cloud_sql_proxy
+# RUN chmod +x cloud_sql_proxy
+# RUN mkdir /tmp/cloudsql
 
 RUN mix distillery.release --env=${build_env} --executable --verbose
 RUN mv _build/${build_env}/rel/${app_name}/bin/${app_name}.run start_release

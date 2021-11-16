@@ -7,4 +7,8 @@ config :platform, Platform.Repo,
   hostname: "localhost",
   code_reloader: true,
   port: "5432",
-  pool_size: 10
+  pool_size: 20
+  # pool_timeout: 60_000,
+  # timeout: 80_000,
+  # queue_target: 200,
+  # queue_interval: 2000

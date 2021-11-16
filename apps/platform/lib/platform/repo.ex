@@ -30,13 +30,12 @@ defmodule Platform.Repo do
     #       System.get_env("DB_KEYFILE")
     #     )
     # ]
-    sysopts = [
-      username: System.get_env("POSTGRES_USER"),
-      password: System.get_env("POSTGRES_PASSWORD"),
-      socket_dir: System.get_env("DATABASE_URL")
-    ]
+    # sysopts = [
+    #   username: System.get_env("POSTGRES_USER"),
+    #   hostname: System.get_env("DATABASE_URL")
+    # ]
 
-    opts = Mix.Config.merge(opts, sysopts)
+    # opts = Mix.Config.merge(opts, sysopts)
     # if url, do: {:ok, opts}, else: {:ok, opts}
     {:ok, opts}
   end
