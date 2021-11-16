@@ -17,5 +17,6 @@ config :platform, Platform.Repo,
   password: System.get_env("PGPASSWORD"),
   # ssl: true,
   hostname: System.get_env("DATABASE_URL"),
+  socket_dir: "/var/run/postgresql",
   port: "5432",
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "20")
