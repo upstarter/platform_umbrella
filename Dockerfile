@@ -10,7 +10,12 @@ ARG platform_subdir=apps/platform
 ARG build_env=prod
 ENV MIX_ENV=${build_env} TERM=xterm
 ENV CMC_PRO_API_KEY=108d9086-dbf4-49f7-a388-ed6c69c19b87
-
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=postgres
+ENV PGPASSWORD=postgres
+ENV POSTGRES_DB=platform_prod
+ENV DATABASE_URL=postgres_db
+ENV SERVICE_NAME=api
 
 ENV CW_KEYFILE=platform-web.ai.key
 ENV CW_CERTFILE=platform-web.ai.pem
@@ -23,7 +28,7 @@ EXPOSE 80
 WORKDIR /app
 RUN apt-get update -y \
     # && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
-    && apt-get install -y -q --no-install-recommends net-tools
+    && apt-get install -y -q --no-install-recommends net-tools postgresql-client
 
 RUN mix local.rebar --force \
     && mix local.hex --force
