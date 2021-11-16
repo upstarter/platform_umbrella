@@ -38,7 +38,7 @@ defmodule PlatformWeb.Mixfile do
     [
       {:httpoison, "~> 1.5.1", override: true},
       {:jason, "~> 1.0", override: true},
-      {:phoenix, "~> 1.5.3"},
+      {:phoenix, "~> 1.6.2"},
       {:platform, in_umbrella: true},
       {:plug_cowboy, "~> 2.5.2"},
       {:guardian, "~> 2.0"},
@@ -48,7 +48,7 @@ defmodule PlatformWeb.Mixfile do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.17"},
       {:corsica, "~> 1.0"},
-      {:cowboy, "~> 2.7"},
+      {:cowboy, "~> 2.7", override: true},
       {:bamboo, "~> 1.3.0"},
       # {:absinthe, "~> 1.4.0"},
       {:get_medium, "~> 0.3.0", override: true},
