@@ -21,7 +21,8 @@ defmodule Platform.Application do
       Supervisor.child_spec({Task.Supervisor, name: Platform.TaskSupervisor},
         id: Platform.TaskSupervisor
       ),
-      {Registry, keys: :duplicate, name: Registry.MarketEvents, id: Registry.MarketEvents}
+      {Registry, keys: :duplicate, name: Registry.MarketEvents, id: Registry.MarketEvents},
+      {Platform.Ecto.Repo, [show_sensitive_data_on_connection_error: true]}
     ]
 
     children = base_children ++ configurable_children()
